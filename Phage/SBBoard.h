@@ -22,6 +22,9 @@
 // isEqual: delegates to this
 - (BOOL)isEqualToBoard:(SBBoard*)board;
 
+- (void)setPiece:(id<SBPiece>)piece atColumn:(NSInteger)c row:(NSInteger)r;
+- (void)setPiece:(id<SBPiece>)piece atPoint:(SBPoint*)point;
+
 - (id<SBPiece>)pieceAtColumn:(NSInteger)c row:(NSInteger)r;
 - (id<SBPiece>)pieceAtPoint:(SBPoint*)point;
 
