@@ -25,8 +25,8 @@
 		D76A45A2151DE19300E59146 /* SBPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45A1151DE19300E59146 /* SBPoint.m */; };
 		D76A45A5151DE30600E59146 /* SBPointTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45A4151DE30600E59146 /* SBPointTest.m */; };
 		D76A45A8151DE43300E59146 /* SBMoveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45A7151DE43300E59146 /* SBMoveTest.m */; };
-		D76A45AB151DE99400E59146 /* SBBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45AA151DE99400E59146 /* SBBoard.m */; };
-		D76A45AE151DECE900E59146 /* SBBoardTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45AD151DECE900E59146 /* SBBoardTest.m */; };
+		D76A45AB151DE99400E59146 /* SBGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45AA151DE99400E59146 /* SBGrid.m */; };
+		D76A45AE151DECE900E59146 /* SBGridTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45AD151DECE900E59146 /* SBGridTest.m */; };
 		D76A45B5151DFC4700E59146 /* SBCirclePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45B4151DFC4700E59146 /* SBCirclePiece.m */; };
 		D76A45B8151DFD0000E59146 /* SBDiamondPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45B7151DFD0000E59146 /* SBDiamondPiece.m */; };
 		D76A45BB151DFD0E00E59146 /* SBSquarePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45BA151DFD0E00E59146 /* SBSquarePiece.m */; };
@@ -73,10 +73,10 @@
 		D76A45A4151DE30600E59146 /* SBPointTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPointTest.m; sourceTree = "<group>"; };
 		D76A45A6151DE43300E59146 /* SBMoveTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMoveTest.h; sourceTree = "<group>"; };
 		D76A45A7151DE43300E59146 /* SBMoveTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMoveTest.m; sourceTree = "<group>"; };
-		D76A45A9151DE99400E59146 /* SBBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoard.h; sourceTree = "<group>"; };
-		D76A45AA151DE99400E59146 /* SBBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoard.m; sourceTree = "<group>"; };
-		D76A45AC151DECE900E59146 /* SBBoardTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardTest.h; sourceTree = "<group>"; };
-		D76A45AD151DECE900E59146 /* SBBoardTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardTest.m; sourceTree = "<group>"; };
+		D76A45A9151DE99400E59146 /* SBGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SBGrid.h; sourceTree = "<group>"; };
+		D76A45AA151DE99400E59146 /* SBGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGrid.m; sourceTree = "<group>"; };
+		D76A45AC151DECE900E59146 /* SBGridTest.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SBGridTest.h; sourceTree = "<group>"; };
+		D76A45AD151DECE900E59146 /* SBGridTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGridTest.m; sourceTree = "<group>"; };
 		D76A45B2151DFC2B00E59146 /* SBPiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPiece.h; sourceTree = "<group>"; };
 		D76A45B3151DFC4700E59146 /* SBCirclePiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBCirclePiece.h; sourceTree = "<group>"; };
 		D76A45B4151DFC4700E59146 /* SBCirclePiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCirclePiece.m; sourceTree = "<group>"; };
@@ -157,8 +157,8 @@
 				D76A45A1151DE19300E59146 /* SBPoint.m */,
 				D76A459D151DE13700E59146 /* SBMove.h */,
 				D76A459E151DE13700E59146 /* SBMove.m */,
-				D76A45A9151DE99400E59146 /* SBBoard.h */,
-				D76A45AA151DE99400E59146 /* SBBoard.m */,
+				D76A45A9151DE99400E59146 /* SBGrid.h */,
+				D76A45AA151DE99400E59146 /* SBGrid.m */,
 				D76A45B2151DFC2B00E59146 /* SBPiece.h */,
 				D7BFA390151E48A000435C7F /* SBPiece.m */,
 				D76A45B3151DFC4700E59146 /* SBCirclePiece.h */,
@@ -194,8 +194,8 @@
 				D76A45A4151DE30600E59146 /* SBPointTest.m */,
 				D76A45A6151DE43300E59146 /* SBMoveTest.h */,
 				D76A45A7151DE43300E59146 /* SBMoveTest.m */,
-				D76A45AC151DECE900E59146 /* SBBoardTest.h */,
-				D76A45AD151DECE900E59146 /* SBBoardTest.m */,
+				D76A45AC151DECE900E59146 /* SBGridTest.h */,
+				D76A45AD151DECE900E59146 /* SBGridTest.m */,
 			);
 			path = PhageTests;
 			sourceTree = SOURCE_ROOT;
@@ -322,7 +322,7 @@
 				D76A457F151DDC7500E59146 /* SBViewController.m in Sources */,
 				D76A459F151DE13700E59146 /* SBMove.m in Sources */,
 				D76A45A2151DE19300E59146 /* SBPoint.m in Sources */,
-				D76A45AB151DE99400E59146 /* SBBoard.m in Sources */,
+				D76A45AB151DE99400E59146 /* SBGrid.m in Sources */,
 				D76A45B5151DFC4700E59146 /* SBCirclePiece.m in Sources */,
 				D76A45B8151DFD0000E59146 /* SBDiamondPiece.m in Sources */,
 				D76A45BB151DFD0E00E59146 /* SBSquarePiece.m in Sources */,
@@ -338,7 +338,7 @@
 				D76A4594151DDC7500E59146 /* PhageTests.m in Sources */,
 				D76A45A5151DE30600E59146 /* SBPointTest.m in Sources */,
 				D76A45A8151DE43300E59146 /* SBMoveTest.m in Sources */,
-				D76A45AE151DECE900E59146 /* SBBoardTest.m in Sources */,
+				D76A45AE151DECE900E59146 /* SBGridTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

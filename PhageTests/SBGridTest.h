@@ -8,6 +8,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface SBBoardTest : SenTestCase
+@interface SBGridTest : SenTestCase
 
 @end

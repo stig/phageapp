@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SBBoardTest.h"
-#import "SBBoard.h"
+#import "SBGridTest.h"
+#import "SBGrid.h"
 #import "SBPiece.h"
 
 @interface Piece : SBPiece
@@ -17,13 +17,13 @@
 @end
 
 
-@implementation SBBoardTest
+@implementation SBGridTest
 
 - (void)testEquals {
-    SBBoard *a = [[SBBoard alloc] init];
+    SBGrid *a = [[SBGrid alloc] init];
     STAssertEqualObjects(a, a, nil);
     
-    SBBoard *b = [[SBBoard alloc] init];
+    SBGrid *b = [[SBGrid alloc] init];
     STAssertEqualObjects(a, b, nil);
     
     Piece *p = [[Piece alloc] init];
@@ -35,13 +35,13 @@
 }
 
 - (void)testHash {
-    SBBoard *a = [[SBBoard alloc] init];    
-    SBBoard *b = [[SBBoard alloc] init];
+    SBGrid *a = [[SBGrid alloc] init];    
+    SBGrid *b = [[SBGrid alloc] init];
     STAssertEquals([a hash], [b hash], nil);
 }
 
 - (void)setAndGetPiece {
-    SBBoard *b = [[SBBoard alloc] init];
+    SBGrid *b = [[SBGrid alloc] init];
     STAssertNil([b pieceAtColumn:0 row:0], nil);
     
     Piece *p = [[Piece alloc] init];

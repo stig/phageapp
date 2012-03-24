@@ -11,16 +11,16 @@
 @class SBPoint;
 @class SBPiece;
 
-#define BOARDSIZE 8
+#define GRIDSIZE 8
 
-@interface SBBoard : NSObject  {
+@interface SBGrid : NSObject  {
 
 @private
-    id grid[BOARDSIZE][BOARDSIZE];
+    id grid[GRIDSIZE][GRIDSIZE];
 }
 
 // isEqual: delegates to this
-- (BOOL)isEqualToBoard:(SBBoard*)board;
+- (BOOL)isEqualToBoard:(SBGrid*)board;
 
 - (void)setPiece:(SBPiece*)piece atColumn:(NSInteger)c row:(NSInteger)r;
 - (void)setPiece:(SBPiece*)piece atPoint:(SBPoint*)point;

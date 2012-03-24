@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SBBoard.h"
+#import "SBGrid.h"
 #import "SBPoint.h"
 
-@implementation SBBoard
+@implementation SBGrid
 
 - (BOOL)isEqual:(id)other {
     if (other == self)
@@ -19,12 +19,12 @@
     return [self isEqualToBoard:other];
 }
 
-- (BOOL)isEqualToBoard:(SBBoard *)other {
+- (BOOL)isEqualToBoard:(SBGrid *)other {
     if (self == other)
         return YES;
     
-    for (int c = 0; c < BOARDSIZE; c++) {
-        for (int r = 0; r < BOARDSIZE; r++) {
+    for (int c = 0; c < GRIDSIZE; c++) {
+        for (int r = 0; r < GRIDSIZE; r++) {
             id a = [self pieceAtColumn:c row:r];
             id b = [other pieceAtColumn:c row:r];
             if (a != b && ![a isEqual:b])
@@ -36,8 +36,8 @@
 
 - (NSUInteger)hash {
     NSUInteger hash = 0;
-    for (int c = 0; c < BOARDSIZE; c++) {
-        for (int r = 0; r < BOARDSIZE; r++) {
+    for (int c = 0; c < GRIDSIZE; c++) {
+        for (int r = 0; r < GRIDSIZE; r++) {
             hash *= 31u;
             hash += [grid[c][r] hash];
         }
