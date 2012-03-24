@@ -49,4 +49,13 @@
     STAssertEquals([b pieceAtColumn:0 row:0], p, nil);
 }
 
+- (void)testDescription {
+    SBGrid *b = [[SBGrid alloc] init];
+    STAssertEqualObjects([b description], @"........\n........\n........\n........\n........\n........\n........\n........\n", nil);
+
+    [b setPiece:[[Piece alloc] init] atColumn:1 row:3];
+    [b setPiece:[[Piece alloc] initWithOwner:SOUTH] atColumn:3 row:1];
+    STAssertEqualObjects([b description], @"........\n...E....\n........\n.e......\n........\n........\n........\n........\n", nil);
+}
+
 @end

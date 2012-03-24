@@ -25,8 +25,8 @@
 - (void)setPiece:(SBPiece*)piece atColumn:(NSInteger)c row:(NSInteger)r;
 - (void)setPiece:(SBPiece*)piece atPoint:(SBPoint*)point;
 
-- (SBPiece *)pieceAtColumn:(NSInteger)c row:(NSInteger)r;
-- (SBPiece *)pieceAtPoint:(SBPoint*)point;
+- (SBPiece*)pieceAtColumn:(NSInteger)c row:(NSInteger)r;
+- (SBPiece*)pieceAtPoint:(SBPoint*)point;
 
 
 @end

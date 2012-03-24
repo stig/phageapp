@@ -8,10 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum { NORTH, SOUTH } SBPlayer;
+
 @interface SBPiece : NSObject
 
-@property (readonly) id owner;
+@property (readonly) SBPlayer owner;
 
-- (id)initWithOwner:(id)owner;
+- (id)initWithOwner:(SBPlayer)owner;
+
+- (NSString*)shortDescription;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "SBGrid.h"
 #import "SBPoint.h"
+#import "SBPiece.h"
 
 @implementation SBGrid
 
@@ -43,6 +44,18 @@
         }
     }
     return hash;
+}
+
+- (NSString*)description {
+    NSMutableString *string = [[NSMutableString alloc] initWithCapacity:GRIDSIZE * GRIDSIZE + GRIDSIZE];
+    for (int c = 0; c < GRIDSIZE; c++) {
+        for (int r = 0; r < GRIDSIZE; r++) {
+            id a = [self pieceAtColumn:c row:r];
+            [string appendFormat:@"%@", a == nil ? @"." : [a shortDescription]];
+        }
+        [string appendString:@"\n"];
+    }
+    return string;
 }
 
 #pragma mark mutators
