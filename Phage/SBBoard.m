@@ -11,18 +11,6 @@
 
 @implementation SBBoard
 
-- (id)init {
-    self = [super init];
-    if (self) {
-        for (int c = 0; c < BOARDSIZE; c++) {
-            for (int r = 0; r < BOARDSIZE; r++) {
-                grid[c][r] = nil;
-            }
-        }
-    }
-    return self;
-}
-
 - (BOOL)isEqual:(id)other {
     if (other == self)
         return YES;
