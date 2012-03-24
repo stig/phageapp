@@ -10,4 +10,8 @@
 
 @interface SBPiece : NSObject
 
+@property (readonly) id owner;
+
+- (id)initWithOwner:(id)owner;
+
 @end
