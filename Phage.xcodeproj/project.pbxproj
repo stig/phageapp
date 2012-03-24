@@ -1,0 +1,459 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D76A4566151DDC7500E59146 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4565151DDC7500E59146 /* UIKit.framework */; };
+		D76A4568151DDC7500E59146 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4567151DDC7500E59146 /* Foundation.framework */; };
+		D76A456A151DDC7500E59146 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4569151DDC7500E59146 /* CoreGraphics.framework */; };
+		D76A4570151DDC7500E59146 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D76A456E151DDC7500E59146 /* InfoPlist.strings */; };
+		D76A4572151DDC7500E59146 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A4571151DDC7500E59146 /* main.m */; };
+		D76A4576151DDC7500E59146 /* SBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A4575151DDC7500E59146 /* SBAppDelegate.m */; };
+		D76A4579151DDC7500E59146 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D76A4577151DDC7500E59146 /* MainStoryboard_iPhone.storyboard */; };
+		D76A457C151DDC7500E59146 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D76A457A151DDC7500E59146 /* MainStoryboard_iPad.storyboard */; };
+		D76A457F151DDC7500E59146 /* SBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A457E151DDC7500E59146 /* SBViewController.m */; };
+		D76A4587151DDC7500E59146 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4586151DDC7500E59146 /* SenTestingKit.framework */; };
+		D76A4588151DDC7500E59146 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4565151DDC7500E59146 /* UIKit.framework */; };
+		D76A4589151DDC7500E59146 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4567151DDC7500E59146 /* Foundation.framework */; };
+		D76A4591151DDC7500E59146 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D76A458F151DDC7500E59146 /* InfoPlist.strings */; };
+		D76A4594151DDC7500E59146 /* PhageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A4593151DDC7500E59146 /* PhageTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D76A458A151DDC7500E59146 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D76A4558151DDC7500E59146 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D76A4560151DDC7500E59146;
+			remoteInfo = Phage;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D76A4561151DDC7500E59146 /* Phage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Phage.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D76A4565151DDC7500E59146 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D76A4567151DDC7500E59146 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D76A4569151DDC7500E59146 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D76A456D151DDC7500E59146 /* Phage-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Phage-Info.plist"; sourceTree = "<group>"; };
+		D76A456F151DDC7500E59146 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D76A4571151DDC7500E59146 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D76A4573151DDC7500E59146 /* Phage-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Phage-Prefix.pch"; sourceTree = "<group>"; };
+		D76A4574151DDC7500E59146 /* SBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBAppDelegate.h; sourceTree = "<group>"; };
+		D76A4575151DDC7500E59146 /* SBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBAppDelegate.m; sourceTree = "<group>"; };
+		D76A4578151DDC7500E59146 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		D76A457B151DDC7500E59146 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		D76A457D151DDC7500E59146 /* SBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBViewController.h; sourceTree = "<group>"; };
+		D76A457E151DDC7500E59146 /* SBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBViewController.m; sourceTree = "<group>"; };
+		D76A4585151DDC7500E59146 /* PhageTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhageTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D76A4586151DDC7500E59146 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		D76A458E151DDC7500E59146 /* PhageTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PhageTests-Info.plist"; sourceTree = "<group>"; };
+		D76A4590151DDC7500E59146 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D76A4592151DDC7500E59146 /* PhageTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhageTests.h; sourceTree = "<group>"; };
+		D76A4593151DDC7500E59146 /* PhageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhageTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D76A455E151DDC7500E59146 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D76A4566151DDC7500E59146 /* UIKit.framework in Frameworks */,
+				D76A4568151DDC7500E59146 /* Foundation.framework in Frameworks */,
+				D76A456A151DDC7500E59146 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D76A4581151DDC7500E59146 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D76A4587151DDC7500E59146 /* SenTestingKit.framework in Frameworks */,
+				D76A4588151DDC7500E59146 /* UIKit.framework in Frameworks */,
+				D76A4589151DDC7500E59146 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D76A4556151DDC7500E59146 = {
+			isa = PBXGroup;
+			children = (
+				D76A456B151DDC7500E59146 /* Phage */,
+				D76A458C151DDC7500E59146 /* PhageTests */,
+				D76A4564151DDC7500E59146 /* Frameworks */,
+				D76A4562151DDC7500E59146 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D76A4562151DDC7500E59146 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D76A4561151DDC7500E59146 /* Phage.app */,
+				D76A4585151DDC7500E59146 /* PhageTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D76A4564151DDC7500E59146 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D76A4565151DDC7500E59146 /* UIKit.framework */,
+				D76A4567151DDC7500E59146 /* Foundation.framework */,
+				D76A4569151DDC7500E59146 /* CoreGraphics.framework */,
+				D76A4586151DDC7500E59146 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D76A456B151DDC7500E59146 /* Phage */ = {
+			isa = PBXGroup;
+			children = (
+				D76A4574151DDC7500E59146 /* SBAppDelegate.h */,
+				D76A4575151DDC7500E59146 /* SBAppDelegate.m */,
+				D76A4577151DDC7500E59146 /* MainStoryboard_iPhone.storyboard */,
+				D76A457A151DDC7500E59146 /* MainStoryboard_iPad.storyboard */,
+				D76A457D151DDC7500E59146 /* SBViewController.h */,
+				D76A457E151DDC7500E59146 /* SBViewController.m */,
+				D76A456C151DDC7500E59146 /* Supporting Files */,
+			);
+			path = Phage;
+			sourceTree = "<group>";
+		};
+		D76A456C151DDC7500E59146 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D76A456D151DDC7500E59146 /* Phage-Info.plist */,
+				D76A456E151DDC7500E59146 /* InfoPlist.strings */,
+				D76A4571151DDC7500E59146 /* main.m */,
+				D76A4573151DDC7500E59146 /* Phage-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D76A458C151DDC7500E59146 /* PhageTests */ = {
+			isa = PBXGroup;
+			children = (
+				D76A4592151DDC7500E59146 /* PhageTests.h */,
+				D76A4593151DDC7500E59146 /* PhageTests.m */,
+				D76A458D151DDC7500E59146 /* Supporting Files */,
+			);
+			path = PhageTests;
+			sourceTree = "<group>";
+		};
+		D76A458D151DDC7500E59146 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D76A458E151DDC7500E59146 /* PhageTests-Info.plist */,
+				D76A458F151DDC7500E59146 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D76A4560151DDC7500E59146 /* Phage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D76A4597151DDC7500E59146 /* Build configuration list for PBXNativeTarget "Phage" */;
+			buildPhases = (
+				D76A455D151DDC7500E59146 /* Sources */,
+				D76A455E151DDC7500E59146 /* Frameworks */,
+				D76A455F151DDC7500E59146 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Phage;
+			productName = Phage;
+			productReference = D76A4561151DDC7500E59146 /* Phage.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D76A4584151DDC7500E59146 /* PhageTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D76A459A151DDC7500E59146 /* Build configuration list for PBXNativeTarget "PhageTests" */;
+			buildPhases = (
+				D76A4580151DDC7500E59146 /* Sources */,
+				D76A4581151DDC7500E59146 /* Frameworks */,
+				D76A4582151DDC7500E59146 /* Resources */,
+				D76A4583151DDC7500E59146 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D76A458B151DDC7500E59146 /* PBXTargetDependency */,
+			);
+			name = PhageTests;
+			productName = PhageTests;
+			productReference = D76A4585151DDC7500E59146 /* PhageTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D76A4558151DDC7500E59146 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SB;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = D76A455B151DDC7500E59146 /* Build configuration list for PBXProject "Phage" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D76A4556151DDC7500E59146;
+			productRefGroup = D76A4562151DDC7500E59146 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D76A4560151DDC7500E59146 /* Phage */,
+				D76A4584151DDC7500E59146 /* PhageTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D76A455F151DDC7500E59146 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D76A4570151DDC7500E59146 /* InfoPlist.strings in Resources */,
+				D76A4579151DDC7500E59146 /* MainStoryboard_iPhone.storyboard in Resources */,
+				D76A457C151DDC7500E59146 /* MainStoryboard_iPad.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D76A4582151DDC7500E59146 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D76A4591151DDC7500E59146 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D76A4583151DDC7500E59146 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D76A455D151DDC7500E59146 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D76A4572151DDC7500E59146 /* main.m in Sources */,
+				D76A4576151DDC7500E59146 /* SBAppDelegate.m in Sources */,
+				D76A457F151DDC7500E59146 /* SBViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D76A4580151DDC7500E59146 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D76A4594151DDC7500E59146 /* PhageTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D76A458B151DDC7500E59146 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D76A4560151DDC7500E59146 /* Phage */;
+			targetProxy = D76A458A151DDC7500E59146 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D76A456E151DDC7500E59146 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D76A456F151DDC7500E59146 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D76A4577151DDC7500E59146 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D76A4578151DDC7500E59146 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		D76A457A151DDC7500E59146 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D76A457B151DDC7500E59146 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		D76A458F151DDC7500E59146 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D76A4590151DDC7500E59146 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D76A4595151DDC7500E59146 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D76A4596151DDC7500E59146 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D76A4598151DDC7500E59146 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Phage/Phage-Prefix.pch";
+				INFOPLIST_FILE = "Phage/Phage-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D76A4599151DDC7500E59146 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Phage/Phage-Prefix.pch";
+				INFOPLIST_FILE = "Phage/Phage-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		D76A459B151DDC7500E59146 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Phage.app/Phage";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Phage/Phage-Prefix.pch";
+				INFOPLIST_FILE = "PhageTests/PhageTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		D76A459C151DDC7500E59146 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Phage.app/Phage";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Phage/Phage-Prefix.pch";
+				INFOPLIST_FILE = "PhageTests/PhageTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D76A455B151DDC7500E59146 /* Build configuration list for PBXProject "Phage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D76A4595151DDC7500E59146 /* Debug */,
+				D76A4596151DDC7500E59146 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D76A4597151DDC7500E59146 /* Build configuration list for PBXNativeTarget "Phage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D76A4598151DDC7500E59146 /* Debug */,
+				D76A4599151DDC7500E59146 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D76A459A151DDC7500E59146 /* Build configuration list for PBXNativeTarget "PhageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D76A459B151DDC7500E59146 /* Debug */,
+				D76A459C151DDC7500E59146 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D76A4558151DDC7500E59146 /* Project object */;
+}
