@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "SBPiece.h"
 
-@interface SBCirclePiece : NSObject <SBPiece>
+@interface SBCirclePiece : SBPiece
 
 @end

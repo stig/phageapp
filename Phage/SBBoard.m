@@ -47,19 +47,19 @@
 
 #pragma mark mutators
 
-- (void)setPiece:(id<SBPiece>)piece atColumn:(NSInteger)c row:(NSInteger)r {
+- (void)setPiece:(SBPiece *)piece atColumn:(NSInteger)c row:(NSInteger)r {
     grid[c][r] = piece;
 }
 
-- (void)setPiece:(id<SBPiece>)piece atPoint:(SBPoint*)point {
+- (void)setPiece:(SBPiece *)piece atPoint:(SBPoint*)point {
     [self setPiece:piece atColumn:point.column row:point.row];
 }
 
-- (id)pieceAtColumn:(NSInteger)c row:(NSInteger)r {
+- (SBPiece *)pieceAtColumn:(NSInteger)c row:(NSInteger)r {
     return grid[c][r];
 }
 
-- (id)pieceAtPoint:(SBPoint *)point {
+- (SBPiece *)pieceAtPoint:(SBPoint *)point {
     return [self pieceAtColumn:point.column row:point.row];
 }
 

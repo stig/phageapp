@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol SBPiece <NSObject>
+@interface SBPiece : NSObject
 
 @end

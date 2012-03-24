@@ -7,26 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SBPiece.h"
 
 @class SBPoint;
+@class SBPiece;
 
 #define BOARDSIZE 8
 
 @interface SBBoard : NSObject  {
 
 @private
-    id<SBPiece> grid[BOARDSIZE][BOARDSIZE];
+    id grid[BOARDSIZE][BOARDSIZE];
 }
 
 // isEqual: delegates to this
 - (BOOL)isEqualToBoard:(SBBoard*)board;
 
-- (void)setPiece:(id<SBPiece>)piece atColumn:(NSInteger)c row:(NSInteger)r;
-- (void)setPiece:(id<SBPiece>)piece atPoint:(SBPoint*)point;
+- (void)setPiece:(SBPiece*)piece atColumn:(NSInteger)c row:(NSInteger)r;
+- (void)setPiece:(SBPiece*)piece atPoint:(SBPoint*)point;
 
-- (id<SBPiece>)pieceAtColumn:(NSInteger)c row:(NSInteger)r;
-- (id<SBPiece>)pieceAtPoint:(SBPoint*)point;
+- (SBPiece *)pieceAtColumn:(NSInteger)c row:(NSInteger)r;
+- (SBPiece *)pieceAtPoint:(SBPoint*)point;
 
 
 @end

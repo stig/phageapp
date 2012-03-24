@@ -8,8 +8,9 @@
 
 #import "SBBoardTest.h"
 #import "SBBoard.h"
+#import "SBPiece.h"
 
-@interface Piece : NSObject <SBPiece>
+@interface Piece : SBPiece
 @end
 
 @implementation Piece

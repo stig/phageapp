@@ -31,6 +31,7 @@
 		D76A45B8151DFD0000E59146 /* SBDiamondPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45B7151DFD0000E59146 /* SBDiamondPiece.m */; };
 		D76A45BB151DFD0E00E59146 /* SBSquarePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45BA151DFD0E00E59146 /* SBSquarePiece.m */; };
 		D76A45BE151DFD1A00E59146 /* SBTrianglePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45BD151DFD1A00E59146 /* SBTrianglePiece.m */; };
+		D7BFA391151E48A000435C7F /* SBPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA390151E48A000435C7F /* SBPiece.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		D76A45BA151DFD0E00E59146 /* SBSquarePiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBSquarePiece.m; sourceTree = "<group>"; };
 		D76A45BC151DFD1A00E59146 /* SBTrianglePiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBTrianglePiece.h; sourceTree = "<group>"; };
 		D76A45BD151DFD1A00E59146 /* SBTrianglePiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBTrianglePiece.m; sourceTree = "<group>"; };
+		D7BFA390151E48A000435C7F /* SBPiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPiece.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 				D76A45A9151DE99400E59146 /* SBBoard.h */,
 				D76A45AA151DE99400E59146 /* SBBoard.m */,
 				D76A45B2151DFC2B00E59146 /* SBPiece.h */,
+				D7BFA390151E48A000435C7F /* SBPiece.m */,
 				D76A45B3151DFC4700E59146 /* SBCirclePiece.h */,
 				D76A45B4151DFC4700E59146 /* SBCirclePiece.m */,
 				D76A45B6151DFD0000E59146 /* SBDiamondPiece.h */,
@@ -324,6 +327,7 @@
 				D76A45B8151DFD0000E59146 /* SBDiamondPiece.m in Sources */,
 				D76A45BB151DFD0E00E59146 /* SBSquarePiece.m in Sources */,
 				D76A45BE151DFD1A00E59146 /* SBTrianglePiece.m in Sources */,
+				D7BFA391151E48A000435C7F /* SBPiece.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +510,7 @@
 				D76A4599151DDC7500E59146 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D76A459A151DDC7500E59146 /* Build configuration list for PBXNativeTarget "PhageTests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +519,7 @@
 				D76A459C151DDC7500E59146 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
