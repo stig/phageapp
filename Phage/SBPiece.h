@@ -18,4 +18,6 @@ typedef enum { NORTH, SOUTH } SBPlayer;
 
 - (NSString*)shortDescription;
 
+- (BOOL)isEqualToPiece:(SBPiece*)piece;
+
 @end

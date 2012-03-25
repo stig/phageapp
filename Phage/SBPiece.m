@@ -29,4 +29,24 @@
     return _owner == NORTH ? [substr uppercaseString] : [substr lowercaseString];
 }
 
+- (BOOL)isEqual:(id)other {
+    if (other == self)
+        return YES;
+    if (!other || ![other isKindOfClass:[self class]])
+        return NO;
+    return [self isEqualToPiece:other];
+}
+
+- (BOOL)isEqualToPiece:(SBPiece *)other {
+    if (self == other)
+        return YES;
+    if (_owner != other.owner)
+        return NO;
+    return YES;
+}
+
+- (NSUInteger)hash {
+    return 31u * _owner + [NSStringFromClass([self class]) hash];
+}
+
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D73965B2151FB10600118094 /* SBPieceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D73965B1151FB10600118094 /* SBPieceTest.m */; };
 		D76A4566151DDC7500E59146 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4565151DDC7500E59146 /* UIKit.framework */; };
 		D76A4568151DDC7500E59146 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4567151DDC7500E59146 /* Foundation.framework */; };
 		D76A456A151DDC7500E59146 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4569151DDC7500E59146 /* CoreGraphics.framework */; };
@@ -47,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D73965B0151FB10600118094 /* SBPieceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPieceTest.h; sourceTree = "<group>"; };
+		D73965B1151FB10600118094 /* SBPieceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPieceTest.m; sourceTree = "<group>"; };
 		D76A4561151DDC7500E59146 /* Phage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Phage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D76A4565151DDC7500E59146 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D76A4567151DDC7500E59146 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -205,6 +208,8 @@
 				D76A45AD151DECE900E59146 /* SBGridTest.m */,
 				D7BFA3B0151F2AD300435C7F /* SBStateTest.h */,
 				D7BFA3B1151F2AD300435C7F /* SBStateTest.m */,
+				D73965B0151FB10600118094 /* SBPieceTest.h */,
+				D73965B1151FB10600118094 /* SBPieceTest.m */,
 				D76A458D151DDC7500E59146 /* Supporting Files */,
 			);
 			path = PhageTests;
@@ -351,6 +356,7 @@
 				D76A45A8151DE43300E59146 /* SBMoveTest.m in Sources */,
 				D76A45AE151DECE900E59146 /* SBGridTest.m in Sources */,
 				D7BFA3B2151F2AD300435C7F /* SBStateTest.m in Sources */,
+				D73965B2151FB10600118094 /* SBPieceTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
