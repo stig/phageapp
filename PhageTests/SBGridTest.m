@@ -53,9 +53,18 @@
     SBGrid *b = [[SBGrid alloc] init];
     STAssertEqualObjects([b description], @"........\n........\n........\n........\n........\n........\n........\n........\n", nil);
 
-    [b setPiece:[[Piece alloc] init] atColumn:1 row:3];
-    [b setPiece:[[Piece alloc] initWithOwner:SOUTH] atColumn:3 row:1];
-    STAssertEqualObjects([b description], @"........\n...E....\n........\n.e......\n........\n........\n........\n........\n", nil);
+    [b setPiece:[[Piece alloc] init] atColumn:0 row:0];
+    STAssertEqualObjects([b description], @"........\n........\n........\n........\n........\n........\n........\nE.......\n", nil);
+
+    [b setPiece:[[Piece alloc] initWithOwner:SOUTH] atColumn:7 row:0];
+    STAssertEqualObjects([b description], @"........\n........\n........\n........\n........\n........\n........\nE......e\n", nil);
+
+    [b setPiece:[[Piece alloc] init] atColumn:7 row:7];
+    STAssertEqualObjects([b description], @".......E\n........\n........\n........\n........\n........\n........\nE......e\n", nil);
+    
+    [b setPiece:[[Piece alloc] initWithOwner:SOUTH] atColumn:0 row:7];
+    STAssertEqualObjects([b description], @"e......E\n........\n........\n........\n........\n........\n........\nE......e\n", nil);
+
 }
 
 @end

@@ -48,8 +48,8 @@
 
 - (NSString*)description {
     NSMutableString *string = [[NSMutableString alloc] initWithCapacity:GRIDSIZE * GRIDSIZE + GRIDSIZE];
-    for (int c = 0; c < GRIDSIZE; c++) {
-        for (int r = 0; r < GRIDSIZE; r++) {
+    for (int r = GRIDSIZE - 1; r >= 0; r--) {
+        for (int c = 0; c < GRIDSIZE; c++) {
             id a = [self pieceAtColumn:c row:r];
             [string appendFormat:@"%@", a == nil ? @"." : [a shortDescription]];
         }
@@ -61,15 +61,19 @@
 #pragma mark mutators
 
 - (void)setPiece:(SBPiece *)piece atColumn:(NSInteger)c row:(NSInteger)r {
-    grid[c][r] = piece;
+    NSParameterAssert(c >= 0 && c < GRIDSIZE);
+    NSParameterAssert(r >= 0 && r < GRIDSIZE);
+    grid[r][c] = piece;
+}
+
+- (SBPiece *)pieceAtColumn:(NSInteger)c row:(NSInteger)r {
+    NSParameterAssert(c >= 0 && c < GRIDSIZE);
+    NSParameterAssert(r >= 0 && r < GRIDSIZE);
+    return grid[r][c];
 }
 
 - (void)setPiece:(SBPiece *)piece atPoint:(SBPoint*)point {
     [self setPiece:piece atColumn:point.column row:point.row];
-}
-
-- (SBPiece *)pieceAtColumn:(NSInteger)c row:(NSInteger)r {
-    return grid[c][r];
 }
 
 - (SBPiece *)pieceAtPoint:(SBPoint *)point {

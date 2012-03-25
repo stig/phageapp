@@ -32,6 +32,8 @@
 		D76A45BB151DFD0E00E59146 /* SBSquarePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45BA151DFD0E00E59146 /* SBSquarePiece.m */; };
 		D76A45BE151DFD1A00E59146 /* SBTrianglePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45BD151DFD1A00E59146 /* SBTrianglePiece.m */; };
 		D7BFA391151E48A000435C7F /* SBPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA390151E48A000435C7F /* SBPiece.m */; };
+		D7BFA3AF151F108100435C7F /* SBState.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3AE151F108100435C7F /* SBState.m */; };
+		D7BFA3B2151F2AD300435C7F /* SBStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B1151F2AD300435C7F /* SBStateTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,10 @@
 		D76A45BC151DFD1A00E59146 /* SBTrianglePiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBTrianglePiece.h; sourceTree = "<group>"; };
 		D76A45BD151DFD1A00E59146 /* SBTrianglePiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBTrianglePiece.m; sourceTree = "<group>"; };
 		D7BFA390151E48A000435C7F /* SBPiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPiece.m; sourceTree = "<group>"; };
+		D7BFA3AD151F108100435C7F /* SBState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBState.h; sourceTree = "<group>"; };
+		D7BFA3AE151F108100435C7F /* SBState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBState.m; sourceTree = "<group>"; };
+		D7BFA3B0151F2AD300435C7F /* SBStateTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBStateTest.h; sourceTree = "<group>"; };
+		D7BFA3B1151F2AD300435C7F /* SBStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBStateTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +162,8 @@
 				D76A45A1151DE19300E59146 /* SBPoint.m */,
 				D76A459D151DE13700E59146 /* SBMove.h */,
 				D76A459E151DE13700E59146 /* SBMove.m */,
+				D7BFA3AD151F108100435C7F /* SBState.h */,
+				D7BFA3AE151F108100435C7F /* SBState.m */,
 				D76A45A9151DE99400E59146 /* SBGrid.h */,
 				D76A45AA151DE99400E59146 /* SBGrid.m */,
 				D76A45B2151DFC2B00E59146 /* SBPiece.h */,
@@ -195,6 +203,8 @@
 				D76A45A7151DE43300E59146 /* SBMoveTest.m */,
 				D76A45AC151DECE900E59146 /* SBGridTest.h */,
 				D76A45AD151DECE900E59146 /* SBGridTest.m */,
+				D7BFA3B0151F2AD300435C7F /* SBStateTest.h */,
+				D7BFA3B1151F2AD300435C7F /* SBStateTest.m */,
 				D76A458D151DDC7500E59146 /* Supporting Files */,
 			);
 			path = PhageTests;
@@ -328,6 +338,7 @@
 				D76A45BB151DFD0E00E59146 /* SBSquarePiece.m in Sources */,
 				D76A45BE151DFD1A00E59146 /* SBTrianglePiece.m in Sources */,
 				D7BFA391151E48A000435C7F /* SBPiece.m in Sources */,
+				D7BFA3AF151F108100435C7F /* SBState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +350,7 @@
 				D76A45A5151DE30600E59146 /* SBPointTest.m in Sources */,
 				D76A45A8151DE43300E59146 /* SBMoveTest.m in Sources */,
 				D76A45AE151DECE900E59146 /* SBGridTest.m in Sources */,
+				D7BFA3B2151F2AD300435C7F /* SBStateTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
