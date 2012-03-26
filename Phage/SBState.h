@@ -23,6 +23,6 @@
 @property (readonly) NSArray *north;
 @property (readonly) NSArray *south;
 
-- (NSUInteger)movesLeft:(SBPiece*)piece;
+- (NSUInteger)movesLeftForPiece:(SBPiece*)piece;
 
 @end

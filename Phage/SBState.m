@@ -81,7 +81,7 @@
     return desc;
 }
 
-- (NSUInteger)movesLeft:(SBPiece *)piece {
+- (NSUInteger)movesLeftForPiece:(SBPiece *)piece {
     return [[movesLeft objectForKey:piece] unsignedIntegerValue];
 }
 
