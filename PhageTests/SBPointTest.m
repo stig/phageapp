@@ -11,27 +11,34 @@
 
 @implementation SBPointTest
 
+static SBPoint *loc;
+
+- (void)setUp {
+    loc = [[SBPoint alloc] initWithColumn:1 row:3];
+}
+
 - (void)testBasic {
-    SBPoint *point = [[SBPoint alloc] initWithColumn:1 row:3];
-    STAssertNotNil(point, nil);
+    STAssertNotNil(loc, nil);
     
-    STAssertEquals(point.column, 1, nil);
-    STAssertEquals(point.row, 3, nil);
+    STAssertEquals(loc.column, 1, nil);
+    STAssertEquals(loc.row, 3, nil);
 }
 
 - (void)testEqual {
-    SBPoint *a = [[SBPoint alloc] initWithColumn:1 row:3];
-    STAssertEqualObjects(a, a, nil);
+    STAssertEqualObjects(loc, loc, nil);
 
-    SBPoint *b = [[SBPoint alloc] initWithColumn:a.column row:a.row];
-    STAssertEqualObjects(a, b, nil);
+    SBPoint *b = [[SBPoint alloc] initWithColumn:loc.column row:loc.row];
+    STAssertEqualObjects(loc, b, nil);
 }
 
 - (void)testHash {
-    SBPoint *a = [[SBPoint alloc] initWithColumn:1 row:3];    
-    SBPoint *b = [[SBPoint alloc] initWithColumn:a.column row:a.row];
-    STAssertEquals([a hash], [b hash], nil);    
+    SBPoint *b = [[SBPoint alloc] initWithColumn:loc.column row:loc.row];
+    STAssertEquals([loc hash], [b hash], nil);
 }
 
+
+- (void)testDescription {
+    STAssertEqualObjects(@"b4", [loc description], nil);
+}
 
 @end

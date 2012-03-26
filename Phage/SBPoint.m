@@ -50,4 +50,9 @@
     return 31u * (NSUInteger)_column + (NSUInteger)_row;
 }
 
+- (NSString*)description {
+    static char *letters = "abcdefgh";
+    return [NSString stringWithFormat:@"%c%u", letters[_column], _row+1];
+}
+
 @end

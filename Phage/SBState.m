@@ -85,4 +85,8 @@
     return [[movesLeft objectForKey:piece] unsignedIntegerValue];
 }
 
+- (SBPoint *)locationForPiece:(SBPiece *)piece {
+    return [location objectForKey:piece];
+}
+
 @end

@@ -8,6 +8,9 @@
 
 #import "SBStateTest.h"
 #import "SBSTate.h"
+#import "SBPoint.h"
+#import "SBCirclePiece.h"
+#import "SBDiamondPiece.h"
 
 @implementation SBStateTest
 
@@ -39,6 +42,18 @@ static SBState *s;
                          nil];
 
     STAssertEqualObjects([s description], [expected componentsJoinedByString:@"\n"], nil);
+}
+
+- (void)testLocationForPiece {
+    STAssertEqualObjects(
+        [[SBPoint alloc] initWithColumn:1u row:4u],
+        [s locationForPiece:[[SBCirclePiece alloc] init]],
+        nil);
+
+    STAssertEqualObjects(
+        [[SBPoint alloc] initWithColumn:0u row:0u],
+        [s locationForPiece:[[SBDiamondPiece alloc] initWithOwner:SOUTH]],
+        nil);
 }
 
 - (void)testNorthPieces {

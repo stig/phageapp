@@ -24,5 +24,6 @@
 @property (readonly) NSArray *south;
 
 - (NSUInteger)movesLeftForPiece:(SBPiece*)piece;
+- (SBPoint*)locationForPiece:(SBPiece*)piece;
 
 @end
