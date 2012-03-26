@@ -7,7 +7,17 @@
 //
 
 #import "SBSquarePiece.h"
+#import "SBDirection.h"
 
 @implementation SBSquarePiece
+
+- (NSArray *)directions {
+    return [[NSArray alloc] initWithObjects:
+            [[SBDirection alloc] initWithColumn:-1 row:-1],
+            [[SBDirection alloc] initWithColumn:1 row:-1],
+            [[SBDirection alloc] initWithColumn:-1 row:1],
+            [[SBDirection alloc] initWithColumn:1 row:1],
+            nil];
+}
 
 @end

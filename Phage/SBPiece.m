@@ -51,6 +51,12 @@
     return YES;
 }
 
+- (NSArray *)directions {
+    [NSException raise:@"unimplemented" format:@"Implement this method in subclasses"];
+    return nil;
+}
+
+
 - (NSUInteger)hash {
     return 31u * _owner + [NSStringFromClass([self class]) hash];
 }
