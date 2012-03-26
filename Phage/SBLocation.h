@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SBPoint : NSObject <NSCopying>
+@interface SBLocation : NSObject <NSCopying>
 
 @property (readonly) NSInteger column;
 @property (readonly) NSInteger row;
@@ -16,6 +16,6 @@
 - (id)initWithColumn:(NSInteger)c row:(NSInteger)r;
 
 // isEqual: delegates to this..
-- (BOOL)isEqualToPoint:(SBPoint*)point;
+- (BOOL)isEqualToLocation:(SBLocation *)point;
 
 @end

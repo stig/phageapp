@@ -7,7 +7,7 @@
 //
 
 #import "SBGrid.h"
-#import "SBPoint.h"
+#import "SBLocation.h"
 #import "SBPiece.h"
 
 @implementation SBGrid
@@ -72,11 +72,11 @@
     return grid[r][c];
 }
 
-- (void)setPiece:(SBPiece *)piece atPoint:(SBPoint*)point {
+- (void)setPiece:(SBPiece *)piece atLocation:(SBLocation *)point {
     [self setPiece:piece atColumn:point.column row:point.row];
 }
 
-- (SBPiece *)pieceAtPoint:(SBPoint *)point {
+- (SBPiece *)pieceAtLocation:(SBLocation *)point {
     return [self pieceAtColumn:point.column row:point.row];
 }
 

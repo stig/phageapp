@@ -8,7 +8,7 @@
 
 #import "SBStateTest.h"
 #import "SBSTate.h"
-#import "SBPoint.h"
+#import "SBLocation.h"
 #import "SBCirclePiece.h"
 #import "SBDiamondPiece.h"
 
@@ -46,12 +46,12 @@ static SBState *s;
 
 - (void)testLocationForPiece {
     STAssertEqualObjects(
-        [[SBPoint alloc] initWithColumn:1u row:4u],
+        [[SBLocation alloc] initWithColumn:1u row:4u],
         [s locationForPiece:[[SBCirclePiece alloc] init]],
         nil);
 
     STAssertEqualObjects(
-        [[SBPoint alloc] initWithColumn:0u row:0u],
+        [[SBLocation alloc] initWithColumn:0u row:0u],
         [s locationForPiece:[[SBDiamondPiece alloc] initWithOwner:SOUTH]],
         nil);
 }

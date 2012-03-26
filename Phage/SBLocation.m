@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SBPoint.h"
+#import "SBLocation.h"
 
-@implementation SBPoint
+@implementation SBLocation
 
 @synthesize column = _column;
 @synthesize row = _row;
@@ -33,10 +33,10 @@
         return YES;
     if (!other || ![other isKindOfClass:[self class]])
         return NO;
-    return [self isEqualToPoint:other];
+    return [self isEqualToLocation:other];
 }
 
-- (BOOL)isEqualToPoint:(SBPoint *)other {
+- (BOOL)isEqualToLocation:(SBLocation *)other {
     if (self == other)
         return YES;
     if (_column != other.column)

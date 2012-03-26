@@ -10,7 +10,7 @@
 
 @class SBGrid;
 @class SBPiece;
-@class SBPoint;
+@class SBLocation;
 
 @interface SBState : NSObject {
 
@@ -24,6 +24,6 @@
 @property (readonly) NSArray *south;
 
 - (NSUInteger)movesLeftForPiece:(SBPiece*)piece;
-- (SBPoint*)locationForPiece:(SBPiece*)piece;
+- (SBLocation *)locationForPiece:(SBPiece*)piece;
 
 @end

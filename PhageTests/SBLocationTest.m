@@ -6,15 +6,15 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SBPointTest.h"
-#import "SBPoint.h"
+#import "SBLocationTest.h"
+#import "SBLocation.h"
 
-@implementation SBPointTest
+@implementation SBLocationTest
 
-static SBPoint *loc;
+static SBLocation *loc;
 
 - (void)setUp {
-    loc = [[SBPoint alloc] initWithColumn:1 row:3];
+    loc = [[SBLocation alloc] initWithColumn:1 row:3];
 }
 
 - (void)testBasic {
@@ -27,12 +27,12 @@ static SBPoint *loc;
 - (void)testEqual {
     STAssertEqualObjects(loc, loc, nil);
 
-    SBPoint *b = [[SBPoint alloc] initWithColumn:loc.column row:loc.row];
+    SBLocation *b = [[SBLocation alloc] initWithColumn:loc.column row:loc.row];
     STAssertEqualObjects(loc, b, nil);
 }
 
 - (void)testHash {
-    SBPoint *b = [[SBPoint alloc] initWithColumn:loc.column row:loc.row];
+    SBLocation *b = [[SBLocation alloc] initWithColumn:loc.column row:loc.row];
     STAssertEquals([loc hash], [b hash], nil);
 }
 

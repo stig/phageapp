@@ -23,8 +23,8 @@
 		D76A4591151DDC7500E59146 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D76A458F151DDC7500E59146 /* InfoPlist.strings */; };
 		D76A4594151DDC7500E59146 /* PhageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A4593151DDC7500E59146 /* PhageTests.m */; };
 		D76A459F151DE13700E59146 /* SBMove.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A459E151DE13700E59146 /* SBMove.m */; };
-		D76A45A2151DE19300E59146 /* SBPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45A1151DE19300E59146 /* SBPoint.m */; };
-		D76A45A5151DE30600E59146 /* SBPointTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45A4151DE30600E59146 /* SBPointTest.m */; };
+		D76A45A2151DE19300E59146 /* SBLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45A1151DE19300E59146 /* SBLocation.m */; };
+		D76A45A5151DE30600E59146 /* SBLocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45A4151DE30600E59146 /* SBLocationTest.m */; };
 		D76A45A8151DE43300E59146 /* SBMoveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45A7151DE43300E59146 /* SBMoveTest.m */; };
 		D76A45AB151DE99400E59146 /* SBGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45AA151DE99400E59146 /* SBGrid.m */; };
 		D76A45AE151DECE900E59146 /* SBGridTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45AD151DECE900E59146 /* SBGridTest.m */; };
@@ -72,10 +72,10 @@
 		D76A4593151DDC7500E59146 /* PhageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhageTests.m; sourceTree = "<group>"; };
 		D76A459D151DE13700E59146 /* SBMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMove.h; sourceTree = "<group>"; };
 		D76A459E151DE13700E59146 /* SBMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMove.m; sourceTree = "<group>"; };
-		D76A45A0151DE19300E59146 /* SBPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPoint.h; sourceTree = "<group>"; };
-		D76A45A1151DE19300E59146 /* SBPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPoint.m; sourceTree = "<group>"; };
-		D76A45A3151DE30600E59146 /* SBPointTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPointTest.h; sourceTree = "<group>"; };
-		D76A45A4151DE30600E59146 /* SBPointTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPointTest.m; sourceTree = "<group>"; };
+		D76A45A0151DE19300E59146 /* SBLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBLocation.h; sourceTree = "<group>"; };
+		D76A45A1151DE19300E59146 /* SBLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBLocation.m; sourceTree = "<group>"; };
+		D76A45A3151DE30600E59146 /* SBLocationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBLocationTest.h; sourceTree = "<group>"; };
+		D76A45A4151DE30600E59146 /* SBLocationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBLocationTest.m; sourceTree = "<group>"; };
 		D76A45A6151DE43300E59146 /* SBMoveTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMoveTest.h; sourceTree = "<group>"; };
 		D76A45A7151DE43300E59146 /* SBMoveTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMoveTest.m; sourceTree = "<group>"; };
 		D76A45A9151DE99400E59146 /* SBGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGrid.h; sourceTree = "<group>"; };
@@ -161,8 +161,8 @@
 				D76A457A151DDC7500E59146 /* MainStoryboard_iPad.storyboard */,
 				D76A457D151DDC7500E59146 /* SBViewController.h */,
 				D76A457E151DDC7500E59146 /* SBViewController.m */,
-				D76A45A0151DE19300E59146 /* SBPoint.h */,
-				D76A45A1151DE19300E59146 /* SBPoint.m */,
+				D76A45A0151DE19300E59146 /* SBLocation.h */,
+				D76A45A1151DE19300E59146 /* SBLocation.m */,
 				D76A459D151DE13700E59146 /* SBMove.h */,
 				D76A459E151DE13700E59146 /* SBMove.m */,
 				D7BFA3AD151F108100435C7F /* SBState.h */,
@@ -200,8 +200,8 @@
 			children = (
 				D76A4592151DDC7500E59146 /* PhageTests.h */,
 				D76A4593151DDC7500E59146 /* PhageTests.m */,
-				D76A45A3151DE30600E59146 /* SBPointTest.h */,
-				D76A45A4151DE30600E59146 /* SBPointTest.m */,
+				D76A45A3151DE30600E59146 /* SBLocationTest.h */,
+				D76A45A4151DE30600E59146 /* SBLocationTest.m */,
 				D76A45A6151DE43300E59146 /* SBMoveTest.h */,
 				D76A45A7151DE43300E59146 /* SBMoveTest.m */,
 				D76A45AC151DECE900E59146 /* SBGridTest.h */,
@@ -336,7 +336,7 @@
 				D76A4576151DDC7500E59146 /* SBAppDelegate.m in Sources */,
 				D76A457F151DDC7500E59146 /* SBViewController.m in Sources */,
 				D76A459F151DE13700E59146 /* SBMove.m in Sources */,
-				D76A45A2151DE19300E59146 /* SBPoint.m in Sources */,
+				D76A45A2151DE19300E59146 /* SBLocation.m in Sources */,
 				D76A45AB151DE99400E59146 /* SBGrid.m in Sources */,
 				D76A45B5151DFC4700E59146 /* SBCirclePiece.m in Sources */,
 				D76A45B8151DFD0000E59146 /* SBDiamondPiece.m in Sources */,
@@ -352,7 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D76A4594151DDC7500E59146 /* PhageTests.m in Sources */,
-				D76A45A5151DE30600E59146 /* SBPointTest.m in Sources */,
+				D76A45A5151DE30600E59146 /* SBLocationTest.m in Sources */,
 				D76A45A8151DE43300E59146 /* SBMoveTest.m in Sources */,
 				D76A45AE151DECE900E59146 /* SBGridTest.m in Sources */,
 				D7BFA3B2151F2AD300435C7F /* SBStateTest.m in Sources */,

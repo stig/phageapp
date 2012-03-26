@@ -7,17 +7,17 @@
 //
 
 #import "SBMoveTest.h"
-#import "SBPoint.h"
+#import "SBLocation.h"
 #import "SBMove.h"
 
-static SBPoint *a;
-static SBPoint *b;
+static SBLocation *a;
+static SBLocation *b;
 
 @implementation SBMoveTest
 
 - (void)setUp {
-    a = [[SBPoint alloc] initWithColumn:1 row:3];
-    b = [[SBPoint alloc] initWithColumn:2 row:4];
+    a = [[SBLocation alloc] initWithColumn:1 row:3];
+    b = [[SBLocation alloc] initWithColumn:2 row:4];
 }
 
 

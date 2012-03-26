@@ -7,14 +7,14 @@
 //
 
 #import "SBMove.h"
-#import "SBPoint.h"
+#import "SBLocation.h"
 
 @implementation SBMove
 
 @synthesize from = _from;
 @synthesize to = _to;
 
-- (id)initWithFrom:(SBPoint*)f to:(SBPoint*)t {
+- (id)initWithFrom:(SBLocation *)f to:(SBLocation *)t {
     self = [super init];
     if (self) {
         _from = f;
@@ -34,9 +34,9 @@
 - (BOOL)isEqualToMove:(SBMove *)other {
     if (self == other)
         return YES;
-    if (![_from isEqualToPoint:other.from])
+    if (![_from isEqualToLocation:other.from])
         return NO;
-    if (![_to isEqualToPoint:other.to])
+    if (![_to isEqualToLocation:other.to])
         return NO;
     return YES;
 }

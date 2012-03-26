@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class SBPoint;
+@class SBLocation;
 @class SBPiece;
 
 #define GRIDSIZE 8
@@ -23,10 +23,10 @@
 - (BOOL)isEqualToBoard:(SBGrid*)board;
 
 - (void)setPiece:(SBPiece*)piece atColumn:(NSInteger)c row:(NSInteger)r;
-- (void)setPiece:(SBPiece*)piece atPoint:(SBPoint*)point;
+- (void)setPiece:(SBPiece*)piece atLocation:(SBLocation *)point;
 
 - (SBPiece*)pieceAtColumn:(NSInteger)c row:(NSInteger)r;
-- (SBPiece*)pieceAtPoint:(SBPoint*)point;
+- (SBPiece*)pieceAtLocation:(SBLocation *)point;
 
 
 @end

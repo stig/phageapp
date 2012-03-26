@@ -13,7 +13,7 @@
 #import "SBDiamondPiece.h"
 #import "SBSquarePiece.h"
 #import "SBTrianglePiece.h"
-#import "SBPoint.h"
+#import "SBLocation.h"
 
 
 @implementation SBState
@@ -39,14 +39,14 @@
                  nil];
 
         NSArray *locations = [[NSArray alloc] initWithObjects:
-                [[SBPoint alloc] initWithColumn:1 row:4],
-                [[SBPoint alloc] initWithColumn:3 row:5],
-                [[SBPoint alloc] initWithColumn:5 row:6],
-                [[SBPoint alloc] initWithColumn:7 row:7],
-                [[SBPoint alloc] initWithColumn:6 row:3],
-                [[SBPoint alloc] initWithColumn:4 row:2],
-                [[SBPoint alloc] initWithColumn:2 row:1],
-                [[SBPoint alloc] initWithColumn:0 row:0],
+                [[SBLocation alloc] initWithColumn:1 row:4],
+                [[SBLocation alloc] initWithColumn:3 row:5],
+                [[SBLocation alloc] initWithColumn:5 row:6],
+                [[SBLocation alloc] initWithColumn:7 row:7],
+                [[SBLocation alloc] initWithColumn:6 row:3],
+                [[SBLocation alloc] initWithColumn:4 row:2],
+                [[SBLocation alloc] initWithColumn:2 row:1],
+                [[SBLocation alloc] initWithColumn:0 row:0],
                 nil];
 
         location = [[NSMutableDictionary alloc] initWithObjects:locations
@@ -54,7 +54,7 @@
         
         grid = [[SBGrid alloc] init];
         for (id p in location) {
-            [grid setPiece:p atPoint:[location objectForKey:p]];
+            [grid setPiece:p atLocation:[location objectForKey:p]];
         }
 
         movesLeft = [[NSMutableDictionary alloc] initWithCapacity:location.count];
@@ -85,7 +85,7 @@
     return [[movesLeft objectForKey:piece] unsignedIntegerValue];
 }
 
-- (SBPoint *)locationForPiece:(SBPiece *)piece {
+- (SBLocation *)locationForPiece:(SBPiece *)piece {
     return [location objectForKey:piece];
 }
 
