@@ -7,14 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SBPiece.h"
 
 @class SBGrid;
-@class SBPiece;
 @class SBLocation;
 
 @interface SBState : NSObject {
 
     @private
+    SBPlayer playerTurn;
     NSMutableDictionary *movesLeft;
     NSMutableDictionary *location;
     SBGrid *grid;

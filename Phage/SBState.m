@@ -24,6 +24,8 @@
 - (id)init {
     self = [super init];
     if (self) {
+        playerTurn = NORTH;
+
         north = [[NSArray alloc] initWithObjects:
                  [[SBCirclePiece alloc] initWithOwner:NORTH],
                  [[SBSquarePiece alloc] initWithOwner:NORTH],
@@ -67,6 +69,7 @@
 
 - (NSString*)description {
     NSMutableString *desc = [[NSMutableString alloc] init];
+    [desc appendFormat:@"PlayerTurn: %@\n", playerTurn == NORTH ? @"North" : @"South"];
 
     for (id p in north) {
         [desc appendFormat:@"%@: %@\n", p, [movesLeft objectForKey:p]];

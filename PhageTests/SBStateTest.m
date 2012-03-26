@@ -22,38 +22,39 @@ static SBState *s;
 
 - (void)testDescription {
     NSArray *expected = [[NSArray alloc] initWithObjects:
-                         @"C: 7",
-                         @"S: 7",
-                         @"T: 7",
-                         @"D: 7",
-                         @".......D",
-                         @".....T..",
-                         @"...S....",
-                         @".C......",
-                         @"......c.",
-                         @"....s...",
-                         @"..t.....",
-                         @"d.......",
-                         @"c: 7",
-                         @"s: 7",
-                         @"t: 7",
-                         @"d: 7",
-                         @"",
-                         nil];
+            @"PlayerTurn: North",
+            @"C: 7",
+            @"S: 7",
+            @"T: 7",
+            @"D: 7",
+            @".......D",
+            @".....T..",
+            @"...S....",
+            @".C......",
+            @"......c.",
+            @"....s...",
+            @"..t.....",
+            @"d.......",
+            @"c: 7",
+            @"s: 7",
+            @"t: 7",
+            @"d: 7",
+            @"",
+            nil];
 
     STAssertEqualObjects([s description], [expected componentsJoinedByString:@"\n"], nil);
 }
 
 - (void)testLocationForPiece {
     STAssertEqualObjects(
-        [[SBLocation alloc] initWithColumn:1u row:4u],
-        [s locationForPiece:[[SBCirclePiece alloc] init]],
-        nil);
+    [[SBLocation alloc] initWithColumn:1u row:4u],
+    [s locationForPiece:[[SBCirclePiece alloc] init]],
+    nil);
 
     STAssertEqualObjects(
-        [[SBLocation alloc] initWithColumn:0u row:0u],
-        [s locationForPiece:[[SBDiamondPiece alloc] initWithOwner:SOUTH]],
-        nil);
+    [[SBLocation alloc] initWithColumn:0u row:0u],
+    [s locationForPiece:[[SBDiamondPiece alloc] initWithOwner:SOUTH]],
+    nil);
 }
 
 - (void)testNorthPieces {
@@ -69,7 +70,6 @@ static SBState *s;
         STAssertEquals([s movesLeftForPiece:p], 7u, nil);
     }
 }
-
 
 
 @end
