@@ -10,8 +10,10 @@
 
 @class SBGrid;
 
-@interface SBState : NSObject
+@interface SBState : NSObject {
 
-@property (readonly) SBGrid *grid;
+    @private
+    SBGrid *grid;
+}
 
 @end

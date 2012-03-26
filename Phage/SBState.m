@@ -18,29 +18,28 @@
 
 @implementation SBState
 
-@synthesize grid = _grid;
 
 - (id)init {
     self = [super init];
     if (self) {
-        _grid = [[SBGrid alloc] init];
+        grid = [[SBGrid alloc] init];
         
-        [_grid setPiece:[[SBCirclePiece alloc]   initWithOwner:NORTH] atColumn:1 row:4];
-        [_grid setPiece:[[SBSquarePiece alloc]   initWithOwner:NORTH] atColumn:3 row:5];
-        [_grid setPiece:[[SBTrianglePiece alloc] initWithOwner:NORTH] atColumn:5 row:6];
-        [_grid setPiece:[[SBDiamondPiece alloc]  initWithOwner:NORTH] atColumn:7 row:7];
+        [grid setPiece:[[SBCirclePiece alloc]   initWithOwner:NORTH] atColumn:1 row:4];
+        [grid setPiece:[[SBSquarePiece alloc]   initWithOwner:NORTH] atColumn:3 row:5];
+        [grid setPiece:[[SBTrianglePiece alloc] initWithOwner:NORTH] atColumn:5 row:6];
+        [grid setPiece:[[SBDiamondPiece alloc]  initWithOwner:NORTH] atColumn:7 row:7];
 
-        [_grid setPiece:[[SBCirclePiece alloc]   initWithOwner:SOUTH] atColumn:6 row:3];
-        [_grid setPiece:[[SBSquarePiece alloc]   initWithOwner:SOUTH] atColumn:4 row:2];
-        [_grid setPiece:[[SBTrianglePiece alloc] initWithOwner:SOUTH] atColumn:2 row:1];
-        [_grid setPiece:[[SBDiamondPiece alloc]  initWithOwner:SOUTH] atColumn:0 row:0];
+        [grid setPiece:[[SBCirclePiece alloc]   initWithOwner:SOUTH] atColumn:6 row:3];
+        [grid setPiece:[[SBSquarePiece alloc]   initWithOwner:SOUTH] atColumn:4 row:2];
+        [grid setPiece:[[SBTrianglePiece alloc] initWithOwner:SOUTH] atColumn:2 row:1];
+        [grid setPiece:[[SBDiamondPiece alloc]  initWithOwner:SOUTH] atColumn:0 row:0];
     }
     return self;
 }
 
 - (NSString*)description {
     // hack for now...
-    return [_grid description];
+    return [grid description];
 }
 
 
