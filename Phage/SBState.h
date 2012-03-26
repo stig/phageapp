@@ -9,14 +9,20 @@
 #import <Foundation/Foundation.h>
 
 @class SBGrid;
+@class SBPiece;
+@class SBPoint;
 
 @interface SBState : NSObject {
 
     @private
-    NSArray *north, *south;
     NSMutableDictionary *movesLeft;
     NSMutableDictionary *location;
     SBGrid *grid;
 }
+
+@property (readonly) NSArray *north;
+@property (readonly) NSArray *south;
+
+- (NSUInteger)movesLeft:(SBPiece*)piece;
 
 @end

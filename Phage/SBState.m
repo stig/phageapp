@@ -18,6 +18,8 @@
 
 @implementation SBState
 
+@synthesize north;
+@synthesize south;
 
 - (id)init {
     self = [super init];
@@ -79,5 +81,8 @@
     return desc;
 }
 
+- (NSUInteger)movesLeft:(SBPiece *)piece {
+    return [[movesLeft objectForKey:piece] unsignedIntegerValue];
+}
 
 @end

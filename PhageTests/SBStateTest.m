@@ -11,9 +11,13 @@
 
 @implementation SBStateTest
 
+static SBState *s;
+
+- (void)setUp {
+    s = [[SBState alloc] init];
+}
+
 - (void)testDescription {
-    SBState *s = [[SBState alloc] init];
-    
     NSArray *expected = [[NSArray alloc] initWithObjects:
                          @"C: 7",
                          @"S: 7",
@@ -33,9 +37,24 @@
                          @"d: 7",
                          @"",
                          nil];
-    
+
     STAssertEqualObjects([s description], [expected componentsJoinedByString:@"\n"], nil);
 }
+
+- (void)testNorthPieces {
+    STAssertEquals(s.north.count, 4u, nil);
+    for (id p in s.north) {
+        STAssertEquals([s movesLeft:p], 7u, nil);
+    }
+}
+
+- (void)testSouthPieces {
+    STAssertEquals(s.south.count, 4u, nil);
+    for (id p in s.south) {
+        STAssertEquals([s movesLeft:p], 7u, nil);
+    }
+}
+
 
 
 @end
