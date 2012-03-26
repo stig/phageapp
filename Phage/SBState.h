@@ -13,6 +13,8 @@
 @interface SBState : NSObject {
 
     @private
+    NSArray *north, *south;
+    NSMutableDictionary *movesLeft;
     SBGrid *grid;
 }
 

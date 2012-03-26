@@ -24,7 +24,13 @@
     return self;
 }
 
-- (NSString*)shortDescription {
+#pragma mark NSCopying
+
+- (id)copyWithZone:(NSZone*)zone {
+    return self;
+}
+
+- (NSString*)description {
     NSString *substr = [NSStringFromClass([self class]) substringWithRange:NSMakeRange(2, 1)];
     return _owner == NORTH ? [substr uppercaseString] : [substr lowercaseString];
 }

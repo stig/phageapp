@@ -51,7 +51,7 @@
     for (int r = GRIDSIZE - 1; r >= 0; r--) {
         for (int c = 0; c < GRIDSIZE; c++) {
             id a = [self pieceAtColumn:c row:r];
-            [string appendFormat:@"%@", a == nil ? @"." : [a shortDescription]];
+            [string appendFormat:@"%@", a == nil ? @"." : a];
         }
         [string appendString:@"\n"];
     }

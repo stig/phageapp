@@ -13,7 +13,28 @@
 
 - (void)testDescription {
     SBState *s = [[SBState alloc] init];
-    STAssertEqualObjects([s description], @".......D\n.....T..\n...S....\n.C......\n......c.\n....s...\n..t.....\nd.......\n", nil);    
+    
+    NSArray *expected = [[NSArray alloc] initWithObjects:
+                         @"C: 7",
+                         @"S: 7",
+                         @"T: 7",
+                         @"D: 7",
+                         @".......D",
+                         @".....T..",
+                         @"...S....",
+                         @".C......",
+                         @"......c.",
+                         @"....s...",
+                         @"..t.....",
+                         @"d.......",
+                         @"c: 7",
+                         @"s: 7",
+                         @"t: 7",
+                         @"d: 7",
+                         @"",
+                         nil];
+    
+    STAssertEqualObjects([s description], [expected componentsJoinedByString:@"\n"], nil);
 }
 
 

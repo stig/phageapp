@@ -10,13 +10,11 @@
 
 typedef enum { NORTH, SOUTH } SBPlayer;
 
-@interface SBPiece : NSObject
+@interface SBPiece : NSObject <NSCopying>
 
 @property (readonly) SBPlayer owner;
 
 - (id)initWithOwner:(SBPlayer)owner;
-
-- (NSString*)shortDescription;
 
 - (BOOL)isEqualToPiece:(SBPiece*)piece;
 
