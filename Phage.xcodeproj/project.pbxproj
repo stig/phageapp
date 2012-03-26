@@ -35,6 +35,8 @@
 		D7BFA391151E48A000435C7F /* SBPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA390151E48A000435C7F /* SBPiece.m */; };
 		D7BFA3AF151F108100435C7F /* SBState.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3AE151F108100435C7F /* SBState.m */; };
 		D7BFA3B2151F2AD300435C7F /* SBStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B1151F2AD300435C7F /* SBStateTest.m */; };
+		D7BFA3B2151F2AD300435C81 /* SBDirection.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C80 /* SBDirection.m */; };
+		D7BFA3B2151F2AD300435C84 /* SBDirectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,9 @@
 		D7BFA3AE151F108100435C7F /* SBState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBState.m; sourceTree = "<group>"; };
 		D7BFA3B0151F2AD300435C7F /* SBStateTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBStateTest.h; sourceTree = "<group>"; };
 		D7BFA3B1151F2AD300435C7F /* SBStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBStateTest.m; sourceTree = "<group>"; };
+		D7BFA3B2151F2AD300435C80 /* SBDirection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDirection.m; sourceTree = "<group>"; };
+		D7BFA3B2151F2AD300435C82 /* SBDirection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBDirection.h; sourceTree = "<group>"; };
+		D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDirectionTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +160,8 @@
 		D76A456B151DDC7500E59146 /* Phage */ = {
 			isa = PBXGroup;
 			children = (
+				D7BFA3B2151F2AD300435C82 /* SBDirection.h */,
+				D7BFA3B2151F2AD300435C80 /* SBDirection.m */,
 				D76A4574151DDC7500E59146 /* SBAppDelegate.h */,
 				D76A4575151DDC7500E59146 /* SBAppDelegate.m */,
 				D76A4577151DDC7500E59146 /* MainStoryboard_iPhone.storyboard */,
@@ -198,6 +205,7 @@
 		D76A458C151DDC7500E59146 /* PhageTests */ = {
 			isa = PBXGroup;
 			children = (
+				D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */,
 				D76A4592151DDC7500E59146 /* PhageTests.h */,
 				D76A4593151DDC7500E59146 /* PhageTests.m */,
 				D76A45A3151DE30600E59146 /* SBLocationTest.h */,
@@ -344,6 +352,7 @@
 				D76A45BE151DFD1A00E59146 /* SBTrianglePiece.m in Sources */,
 				D7BFA391151E48A000435C7F /* SBPiece.m in Sources */,
 				D7BFA3AF151F108100435C7F /* SBState.m in Sources */,
+				D7BFA3B2151F2AD300435C81 /* SBDirection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +366,7 @@
 				D76A45AE151DECE900E59146 /* SBGridTest.m in Sources */,
 				D7BFA3B2151F2AD300435C7F /* SBStateTest.m in Sources */,
 				D73965B2151FB10600118094 /* SBPieceTest.m in Sources */,
+				D7BFA3B2151F2AD300435C84 /* SBDirectionTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
