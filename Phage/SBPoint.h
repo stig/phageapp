@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SBPoint : NSObject
+@interface SBPoint : NSObject <NSCopying>
 
 @property (readonly) NSInteger column;
 @property (readonly) NSInteger row;

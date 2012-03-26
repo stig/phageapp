@@ -22,32 +22,40 @@
 - (id)init {
     self = [super init];
     if (self) {
-        SBCirclePiece *const nc = [[SBCirclePiece alloc] initWithOwner:NORTH];
-        SBSquarePiece *const ns = [[SBSquarePiece alloc] initWithOwner:NORTH];
-        SBTrianglePiece *const nt = [[SBTrianglePiece alloc] initWithOwner:NORTH];
-        SBDiamondPiece *const nd = [[SBDiamondPiece alloc] initWithOwner:NORTH];
-
-        SBCirclePiece *const sc = [[SBCirclePiece alloc] initWithOwner:SOUTH];
-        SBSquarePiece *const ss = [[SBSquarePiece alloc] initWithOwner:SOUTH];
-        SBTrianglePiece *const st = [[SBTrianglePiece alloc] initWithOwner:SOUTH];
-        SBDiamondPiece *const sd = [[SBDiamondPiece alloc] initWithOwner:SOUTH];
-
-        grid = [[SBGrid alloc] init];
+        north = [[NSArray alloc] initWithObjects:
+                 [[SBCirclePiece alloc] initWithOwner:NORTH],
+                 [[SBSquarePiece alloc] initWithOwner:NORTH],
+                 [[SBTrianglePiece alloc] initWithOwner:NORTH],
+                 [[SBDiamondPiece alloc] initWithOwner:NORTH],
+                 nil];
         
-        [grid setPiece:nc atColumn:1 row:4];
-        [grid setPiece:ns atColumn:3 row:5];
-        [grid setPiece:nt atColumn:5 row:6];
-        [grid setPiece:nd atColumn:7 row:7];
+        south = [[NSArray alloc] initWithObjects:
+                 [[SBCirclePiece alloc] initWithOwner:SOUTH],
+                 [[SBSquarePiece alloc] initWithOwner:SOUTH],
+                 [[SBTrianglePiece alloc] initWithOwner:SOUTH],
+                 [[SBDiamondPiece alloc] initWithOwner:SOUTH],
+                 nil];
 
-        [grid setPiece:sc atColumn:6 row:3];
-        [grid setPiece:ss atColumn:4 row:2];
-        [grid setPiece:st atColumn:2 row:1];
-        [grid setPiece:sd atColumn:0 row:0];
+        NSArray *locations = [[NSArray alloc] initWithObjects:
+                [[SBPoint alloc] initWithColumn:1 row:4],
+                [[SBPoint alloc] initWithColumn:3 row:5],
+                [[SBPoint alloc] initWithColumn:5 row:6],
+                [[SBPoint alloc] initWithColumn:7 row:7],
+                [[SBPoint alloc] initWithColumn:6 row:3],
+                [[SBPoint alloc] initWithColumn:4 row:2],
+                [[SBPoint alloc] initWithColumn:2 row:1],
+                [[SBPoint alloc] initWithColumn:0 row:0],
+                nil];
 
-        north = [[NSArray alloc] initWithObjects:nc, ns, nt, nd, nil];
-        south = [[NSArray alloc] initWithObjects:sc, ss, st, sd, nil];
+        location = [[NSMutableDictionary alloc] initWithObjects:locations
+                                                        forKeys:[north arrayByAddingObjectsFromArray:south]];
+        
+        grid = [[SBGrid alloc] init];
+        for (id p in location) {
+            [grid setPiece:p atPoint:[location objectForKey:p]];
+        }
 
-        movesLeft = [[NSMutableDictionary alloc] init];
+        movesLeft = [[NSMutableDictionary alloc] initWithCapacity:location.count];
         for (id p in [north arrayByAddingObjectsFromArray:south]) {
             [movesLeft setObject:[NSNumber numberWithUnsignedInt:7ul] forKey:p];
         }

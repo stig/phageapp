@@ -15,6 +15,7 @@
     @private
     NSArray *north, *south;
     NSMutableDictionary *movesLeft;
+    NSMutableDictionary *location;
     SBGrid *grid;
 }
 
