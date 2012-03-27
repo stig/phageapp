@@ -28,5 +28,7 @@
 - (SBPiece*)pieceAtColumn:(NSInteger)c row:(NSInteger)r;
 - (SBPiece*)pieceAtLocation:(SBLocation *)point;
 
+- (BOOL)isUnoccupiedGridLocation:(SBLocation*)loc;
+- (BOOL)isGridLocation:(SBLocation*)loc;
 
 @end

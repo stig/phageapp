@@ -58,18 +58,32 @@
     return string;
 }
 
+#pragma mark logic
+
+- (BOOL)isGridColumn:(NSInteger)c row:(NSInteger)r {
+    return c >= 0 && c < GRIDSIZE && r >= 0 && r < GRIDSIZE;
+}
+
+- (BOOL)isGridLocation:(SBLocation*)loc {
+    return [self isGridColumn:loc.column row:loc.row];
+}
+
+- (BOOL)isUnoccupiedGridLocation:(SBLocation *)loc {
+    if (![self isGridLocation:loc])
+        return NO;
+    return nil == [self pieceAtLocation:loc];
+}
+
 #pragma mark mutators
 
 - (void)setPiece:(SBPiece *)piece atColumn:(NSInteger)c row:(NSInteger)r {
-    NSParameterAssert(c >= 0 && c < GRIDSIZE);
-    NSParameterAssert(r >= 0 && r < GRIDSIZE);
-    grid[r][c] = piece;
+    NSParameterAssert([self isGridColumn:c row:r]);
+    grid[c][r] = piece;
 }
 
 - (SBPiece *)pieceAtColumn:(NSInteger)c row:(NSInteger)r {
-    NSParameterAssert(c >= 0 && c < GRIDSIZE);
-    NSParameterAssert(r >= 0 && r < GRIDSIZE);
-    return grid[r][c];
+    NSParameterAssert([self isGridColumn:c row:r]);
+    return grid[c][r];
 }
 
 - (void)setPiece:(SBPiece *)piece atLocation:(SBLocation *)point {

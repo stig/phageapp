@@ -9,6 +9,7 @@
 #import "SBGridTest.h"
 #import "SBGrid.h"
 #import "SBPiece.h"
+#import "SBLocation.h"
 
 @interface Piece : SBPiece
 @end
@@ -16,55 +17,66 @@
 @implementation Piece
 @end
 
+static SBGrid *g;
 
 @implementation SBGridTest
 
+- (void)setUp {
+    g = [[SBGrid alloc] init];
+}
+
 - (void)testEquals {
-    SBGrid *a = [[SBGrid alloc] init];
-    STAssertEqualObjects(a, a, nil);
+    STAssertEqualObjects(g, g, nil);
     
     SBGrid *b = [[SBGrid alloc] init];
-    STAssertEqualObjects(a, b, nil);
+    STAssertEqualObjects(g, b, nil);
     
     Piece *p = [[Piece alloc] init];
     [b setPiece:p atColumn:0 row:0];
-    STAssertFalse([a isEqual:b], nil);
+    STAssertFalse([g isEqual:b], nil);
 
-    [a setPiece:p atColumn:0 row:0];
-    STAssertEqualObjects(a, b, nil);
+    [g setPiece:p atColumn:0 row:0];
+    STAssertEqualObjects(g, b, nil);
 }
 
 - (void)testHash {
-    SBGrid *a = [[SBGrid alloc] init];    
     SBGrid *b = [[SBGrid alloc] init];
-    STAssertEquals([a hash], [b hash], nil);
+    STAssertEquals([g hash], [b hash], nil);
 }
 
 - (void)setAndGetPiece {
-    SBGrid *b = [[SBGrid alloc] init];
-    STAssertNil([b pieceAtColumn:0 row:0], nil);
+    STAssertNil([g pieceAtColumn:0 row:0], nil);
     
     Piece *p = [[Piece alloc] init];
-    [b setPiece:p atColumn:0 row:0];
-    STAssertEquals([b pieceAtColumn:0 row:0], p, nil);
+    [g setPiece:p atColumn:0 row:0];
+    STAssertEquals([g pieceAtColumn:0 row:0], p, nil);
 }
 
 - (void)testDescription {
-    SBGrid *b = [[SBGrid alloc] init];
-    STAssertEqualObjects([b description], @"........\n........\n........\n........\n........\n........\n........\n........\n", nil);
+    STAssertEqualObjects([g description], @"........\n........\n........\n........\n........\n........\n........\n........\n", nil);
 
-    [b setPiece:[[Piece alloc] init] atColumn:0 row:0];
-    STAssertEqualObjects([b description], @"........\n........\n........\n........\n........\n........\n........\nE.......\n", nil);
+    [g setPiece:[[Piece alloc] init] atColumn:0 row:0];
+    STAssertEqualObjects([g description], @"........\n........\n........\n........\n........\n........\n........\nE.......\n", nil);
 
-    [b setPiece:[[Piece alloc] initWithOwner:SOUTH] atColumn:7 row:0];
-    STAssertEqualObjects([b description], @"........\n........\n........\n........\n........\n........\n........\nE......e\n", nil);
+    [g setPiece:[[Piece alloc] initWithOwner:SOUTH] atColumn:7 row:0];
+    STAssertEqualObjects([g description], @"........\n........\n........\n........\n........\n........\n........\nE......e\n", nil);
 
-    [b setPiece:[[Piece alloc] init] atColumn:7 row:7];
-    STAssertEqualObjects([b description], @".......E\n........\n........\n........\n........\n........\n........\nE......e\n", nil);
+    [g setPiece:[[Piece alloc] init] atColumn:7 row:7];
+    STAssertEqualObjects([g description], @".......E\n........\n........\n........\n........\n........\n........\nE......e\n", nil);
     
-    [b setPiece:[[Piece alloc] initWithOwner:SOUTH] atColumn:0 row:7];
-    STAssertEqualObjects([b description], @"e......E\n........\n........\n........\n........\n........\n........\nE......e\n", nil);
+    [g setPiece:[[Piece alloc] initWithOwner:SOUTH] atColumn:0 row:7];
+    STAssertEqualObjects([g description], @"e......E\n........\n........\n........\n........\n........\n........\nE......e\n", nil);
 
+}
+
+- (void)testCanMoveToLocation {
+    STAssertFalse([g isUnoccupiedGridLocation:[[SBLocation alloc] initWithColumn:-1 row:0]], nil);
+    STAssertFalse([g isUnoccupiedGridLocation:[[SBLocation alloc] initWithColumn:0 row:8]], nil);
+
+    SBLocation *loc = [[SBLocation alloc] initWithColumn:0 row:0];
+    STAssertTrue([g isUnoccupiedGridLocation:loc], nil);
+    [g setPiece:[[Piece alloc] init] atLocation:loc];
+    STAssertFalse([g isUnoccupiedGridLocation:loc], nil);
 }
 
 @end
