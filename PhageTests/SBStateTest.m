@@ -71,5 +71,10 @@ static SBState *s;
     }
 }
 
+- (void)testLegalMoves {
+    NSArray *moves = [s legalMoves];
+    STAssertEquals(moves.count, 61u, nil);
+}
+
 
 @end

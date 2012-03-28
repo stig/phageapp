@@ -9,38 +9,37 @@
 #import "SBMoveTest.h"
 #import "SBLocation.h"
 #import "SBMove.h"
+#import "SBCirclePiece.h"
 
-static SBLocation *a;
+static SBPiece *a;
 static SBLocation *b;
+static SBMove *m;
 
 @implementation SBMoveTest
 
 - (void)setUp {
-    a = [[SBLocation alloc] initWithColumn:1 row:3];
+    a = [[SBCirclePiece alloc] init];
     b = [[SBLocation alloc] initWithColumn:2 row:4];
+    m = [[SBMove alloc] initWithPiece:a to:b];
 }
 
-
 - (void)testBasic {
-    SBMove *m = [[SBMove alloc] initWithFrom:a to:b];
     STAssertNotNil(m, nil);
     
-    STAssertEqualObjects(m.from, a, nil);
+    STAssertEqualObjects(m.piece, a, nil);
     STAssertEqualObjects(m.to, b, nil);
 }
 
 - (void)testEqual {
-    SBMove *f = [[SBMove alloc] initWithFrom:a to:b];
-    STAssertEqualObjects(f, f, nil);
+    STAssertEqualObjects(m, m, nil);
     
-    SBMove *g = [[SBMove alloc] initWithFrom:f.from to:f.to];
-    STAssertEqualObjects(f, g, nil);
+    SBMove *g = [[SBMove alloc] initWithPiece:m.piece to:m.to];
+    STAssertEqualObjects(m, g, nil);
 }
 
 - (void)testHash {
-    SBMove *f = [[SBMove alloc] initWithFrom:a to:b];    
-    SBMove *g = [[SBMove alloc] initWithFrom:f.from to:f.to];
-    STAssertEquals([f hash], [g hash], nil);    
+    SBMove *g = [[SBMove alloc] initWithPiece:m.piece to:m.to];
+    STAssertEquals([m hash], [g hash], nil);
 }
 
 

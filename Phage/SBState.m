@@ -14,6 +14,8 @@
 #import "SBSquarePiece.h"
 #import "SBTrianglePiece.h"
 #import "SBLocation.h"
+#import "SBDirection.h"
+#import "SBMove.h"
 
 
 @implementation SBState
@@ -90,6 +92,40 @@
 
 - (SBLocation *)locationForPiece:(SBPiece *)piece {
     return [location objectForKey:piece];
+}
+
+- (NSArray *)currentPlayerPieces {
+    return NORTH == playerTurn ? north : south;
+}
+
+- (NSArray *)legalMovesForPiece:(SBPiece *)piece {
+    NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:32];
+
+    for (SBDirection *d in [piece directions]) {
+        SBLocation *loc = [self locationForPiece:piece];
+        for (;;) {
+            loc = [loc locationByMovingInDirection:d];
+
+            // If this is _not_ an unoccupied, legal grid location, we've either gone outside the board
+            // or hit another piece, or a previously occupied slot.
+            if (![grid isUnoccupiedGridLocation:loc])
+                break;
+
+            [moves addObject:[[SBMove alloc] initWithPiece:piece to:loc]];
+        }
+    }
+
+    return moves;
+}
+
+- (NSArray *)legalMoves {
+    NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:64];
+
+    for (SBPiece *p in [self currentPlayerPieces]) {
+        [moves addObjectsFromArray:[self legalMovesForPiece:p]];
+    }
+
+    return moves;
 }
 
 @end

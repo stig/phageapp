@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @class SBLocation;
+@class SBPiece;
 
 @interface SBMove : NSObject
 
-@property (readonly) SBLocation *from;
+@property (readonly) SBPiece *piece;
 @property (readonly) SBLocation *to;
 
-- (id)initWithFrom:(SBLocation *)f to:(SBLocation *)t;
+- (id)initWithPiece:(SBPiece *)piece to:(SBLocation *)location;
 
 // isEqual: delegates to this..
 - (BOOL)isEqualToMove:(SBMove*)move;

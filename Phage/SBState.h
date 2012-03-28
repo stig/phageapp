@@ -27,4 +27,6 @@
 - (NSUInteger)movesLeftForPiece:(SBPiece*)piece;
 - (SBLocation *)locationForPiece:(SBPiece*)piece;
 
+- (NSArray*)legalMoves;
+
 @end

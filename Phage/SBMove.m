@@ -8,16 +8,17 @@
 
 #import "SBMove.h"
 #import "SBLocation.h"
+#import "SBPiece.h"
 
 @implementation SBMove
 
-@synthesize from = _from;
+@synthesize piece = _piece;
 @synthesize to = _to;
 
-- (id)initWithFrom:(SBLocation *)f to:(SBLocation *)t {
+- (id)initWithPiece:(SBPiece *)p to:(SBLocation *)t {
     self = [super init];
     if (self) {
-        _from = f;
+        _piece = p;
         _to = t;
     }
     return self;
@@ -34,7 +35,7 @@
 - (BOOL)isEqualToMove:(SBMove *)other {
     if (self == other)
         return YES;
-    if (![_from isEqualToLocation:other.from])
+    if (![_piece isEqualToPiece:other.piece])
         return NO;
     if (![_to isEqualToLocation:other.to])
         return NO;
@@ -42,7 +43,7 @@
 }
 
 - (NSUInteger)hash {
-    return 31u * [_from hash] + [_to hash];
+    return 31u * [_piece hash] + [_to hash];
 }
 
 @end

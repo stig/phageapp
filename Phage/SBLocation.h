@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class SBDirection;
+
 @interface SBLocation : NSObject <NSCopying>
 
 @property (readonly) NSInteger column;
@@ -17,5 +19,7 @@
 
 // isEqual: delegates to this..
 - (BOOL)isEqualToLocation:(SBLocation *)point;
+
+- (SBLocation *)locationByMovingInDirection:(SBDirection *)direction;
 
 @end

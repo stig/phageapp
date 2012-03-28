@@ -7,6 +7,7 @@
 //
 
 #import "SBLocation.h"
+#import "SBDirection.h"
 
 @implementation SBLocation
 
@@ -55,4 +56,8 @@
     return [NSString stringWithFormat:@"%c%u", letters[_column], _row+1];
 }
 
+- (SBLocation *)locationByMovingInDirection:(SBDirection *)direction {
+    return [[SBLocation alloc] initWithColumn:self.column + direction.column
+                                          row:self.row + direction.row];
+}
 @end
