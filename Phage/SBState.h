@@ -14,18 +14,22 @@
 
 @interface SBState : NSObject {
 
-    @private
-    SBPlayer playerTurn;
+@protected
+    SBGrid *grid;
+
+@private
     NSMutableDictionary *movesLeft;
     NSMutableDictionary *location;
-    SBGrid *grid;
 }
 
 @property (strong, readonly) NSArray *north;
 @property (strong, readonly) NSArray *south;
+@property (readonly) SBPlayer playerTurn;
 
 - (NSUInteger)movesLeftForPiece:(SBPiece*)piece;
 - (SBLocation *)locationForPiece:(SBPiece*)piece;
+
+- (BOOL)isEqualToState:(SBState*)state;
 
 - (NSArray*)legalMoves;
 

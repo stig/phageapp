@@ -22,6 +22,7 @@
 
 @synthesize north;
 @synthesize south;
+@synthesize playerTurn;
 
 - (id)init {
     self = [super init];
@@ -68,6 +69,27 @@
     }
     return self;
 }
+
+- (BOOL)isEqual:(id)other {
+    if (other == self)
+        return YES;
+    if (!other || ![other isKindOfClass:[self class]])
+        return NO;
+    return [self isEqualToState:other];
+}
+
+- (BOOL)isEqualToState:(SBState *)other {
+    if (self == other)
+        return YES;
+    if (!playerTurn == other.playerTurn)
+        return NO;
+    return [grid isEqualToGrid:other->grid];
+}
+
+- (NSUInteger)hash {
+    return 31u * [grid hash] + playerTurn;
+}
+
 
 - (NSString*)description {
     NSMutableString *desc = [[NSMutableString alloc] init];

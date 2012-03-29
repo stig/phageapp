@@ -20,6 +20,18 @@ static SBState *s;
     s = [[SBState alloc] init];
 }
 
+- (void)testEquals {
+    STAssertEqualObjects(s, s, nil);
+
+    SBState *t = [[SBState alloc] init];
+    STAssertEqualObjects(s, t, nil);
+}
+
+- (void)testHash {
+    SBState *t = [[SBState alloc] init];
+    STAssertEquals([s hash], [t hash], nil);
+}
+
 - (void)testDescription {
     NSArray *expected = [[NSArray alloc] initWithObjects:
             @"PlayerTurn: North",

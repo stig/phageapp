@@ -20,7 +20,7 @@
 }
 
 // isEqual: delegates to this
-- (BOOL)isEqualToBoard:(SBGrid*)board;
+- (BOOL)isEqualToGrid:(SBGrid*)grid;
 
 - (void)setPiece:(SBPiece*)piece atColumn:(NSInteger)c row:(NSInteger)r;
 - (void)setPiece:(SBPiece*)piece atLocation:(SBLocation *)point;

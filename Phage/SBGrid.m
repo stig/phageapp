@@ -17,10 +17,10 @@
         return YES;
     if (!other || ![other isKindOfClass:[self class]])
         return NO;
-    return [self isEqualToBoard:other];
+    return [self isEqualToGrid:other];
 }
 
-- (BOOL)isEqualToBoard:(SBGrid *)other {
+- (BOOL)isEqualToGrid:(SBGrid *)other {
     if (self == other)
         return YES;
     
