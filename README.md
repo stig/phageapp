@@ -9,3 +9,14 @@ http://www.theallseeingi.proboards.com/index.cgi?board=fg&action=print&thread=32
 * There is no trademark issues; its inventor asked me to implement it, and was happy for me to charge for it.
 
 
+Features
+--------
+
+* Single-player mode: Simple AI opponent
+* Two-player mode: GameCentre-based. Turn-based games against random opponents / friends
+
+* Universal (iPad / iPhone)
+
+Milestones
+----------
+
