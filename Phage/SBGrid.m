@@ -20,6 +20,16 @@
     return [self isEqualToGrid:other];
 }
 
+- (id)copyWithZone:(NSZone *)zone {
+    SBGrid *copy = [[SBGrid alloc] init];
+    for (int c = 0; c < GRIDSIZE; c++) {
+        for (int r = 0; r < GRIDSIZE; r++) {
+            [copy setPiece:[self pieceAtColumn:c row:r] atColumn:c row:r];
+        }
+    }
+    return copy;
+}
+
 - (BOOL)isEqualToGrid:(SBGrid *)other {
     if (self == other)
         return YES;
@@ -93,5 +103,6 @@
 - (SBPiece *)pieceAtLocation:(SBLocation *)point {
     return [self pieceAtColumn:point.column row:point.row];
 }
+
 
 @end

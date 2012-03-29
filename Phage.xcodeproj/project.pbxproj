@@ -37,6 +37,7 @@
 		D7BFA3B2151F2AD300435C7F /* SBStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B1151F2AD300435C7F /* SBStateTest.m */; };
 		D7BFA3B2151F2AD300435C81 /* SBDirection.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C80 /* SBDirection.m */; };
 		D7BFA3B2151F2AD300435C84 /* SBDirectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */; };
+		D7BFA3B2151F2AD300435C86 /* SBMinefieldPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C85 /* SBMinefieldPiece.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		D7BFA3B2151F2AD300435C80 /* SBDirection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDirection.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C82 /* SBDirection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBDirection.h; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDirectionTest.m; sourceTree = "<group>"; };
+		D7BFA3B2151F2AD300435C85 /* SBMinefieldPiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMinefieldPiece.m; sourceTree = "<group>"; };
+		D7BFA3B2151F2AD300435C87 /* SBMinefieldPiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMinefieldPiece.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,8 @@
 		D76A456B151DDC7500E59146 /* Phage */ = {
 			isa = PBXGroup;
 			children = (
+				D7BFA3B2151F2AD300435C87 /* SBMinefieldPiece.h */,
+				D7BFA3B2151F2AD300435C85 /* SBMinefieldPiece.m */,
 				D7BFA3B2151F2AD300435C82 /* SBDirection.h */,
 				D7BFA3B2151F2AD300435C80 /* SBDirection.m */,
 				D76A4574151DDC7500E59146 /* SBAppDelegate.h */,
@@ -353,6 +358,7 @@
 				D7BFA391151E48A000435C7F /* SBPiece.m in Sources */,
 				D7BFA3AF151F108100435C7F /* SBState.m in Sources */,
 				D7BFA3B2151F2AD300435C81 /* SBDirection.m in Sources */,
+				D7BFA3B2151F2AD300435C86 /* SBMinefieldPiece.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,15 +11,14 @@
 
 @class SBGrid;
 @class SBLocation;
+@class SBMove;
 
 @interface SBState : NSObject {
 
-@protected
-    SBGrid *grid;
-
 @private
-    NSMutableDictionary *movesLeft;
-    NSMutableDictionary *location;
+    SBGrid *grid;
+    NSDictionary *movesLeft;
+    NSDictionary *location;
 }
 
 @property (strong, readonly) NSArray *north;
@@ -32,5 +31,7 @@
 - (BOOL)isEqualToState:(SBState*)state;
 
 - (NSArray*)legalMoves;
+
+- (SBState *)successorWithMove:(SBMove *)move;
 
 @end

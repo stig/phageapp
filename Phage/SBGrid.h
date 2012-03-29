@@ -13,7 +13,7 @@
 
 #define GRIDSIZE 8
 
-@interface SBGrid : NSObject  {
+@interface SBGrid : NSObject <NSCopying> {
 
 @private
     id grid[GRIDSIZE][GRIDSIZE];

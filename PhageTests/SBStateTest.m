@@ -11,6 +11,7 @@
 #import "SBLocation.h"
 #import "SBCirclePiece.h"
 #import "SBDiamondPiece.h"
+#import "SBMove.h"
 
 @implementation SBStateTest
 
@@ -86,6 +87,64 @@ static SBState *s;
 - (void)testLegalMoves {
     NSArray *moves = [s legalMoves];
     STAssertEquals(moves.count, 61u, nil);
+}
+
+- (void)testSuccessor {
+    NSArray *moves = [s legalMoves];
+    SBState *s1 = [s successorWithMove:[moves lastObject]];
+    STAssertNotNil(s1, nil);
+    STAssertFalse([s1 isEqual:s], nil);
+
+    NSArray *expected = [[NSArray alloc] initWithObjects:
+            @"PlayerTurn: South",
+            @"C: 7",
+            @"S: 7",
+            @"T: 7",
+            @"D: 6",
+            @".......*",
+            @".....T..",
+            @"...S....",
+            @".C......",
+            @"......c.",
+            @"....s...",
+            @"..t.....",
+            @"d......D",
+            @"c: 7",
+            @"s: 7",
+            @"t: 7",
+            @"d: 7",
+            @"",
+            nil];
+
+    STAssertEqualObjects([s1 description], [expected componentsJoinedByString:@"\n"], nil);
+}
+
+- (void)testSuccessor2 {
+    SBState *s1 = [s successorWithMove:[[s legalMoves] lastObject]];
+    SBState *s2 = [s1 successorWithMove:[[s1 legalMoves] lastObject]];
+
+    NSArray *expected = [[NSArray alloc] initWithObjects:
+            @"PlayerTurn: North",
+            @"C: 7",
+            @"S: 7",
+            @"T: 7",
+            @"D: 6",
+            @"d......*",
+            @".....T..",
+            @"...S....",
+            @".C......",
+            @"......c.",
+            @"....s...",
+            @"..t.....",
+            @"*......D",
+            @"c: 7",
+            @"s: 7",
+            @"t: 7",
+            @"d: 6",
+            @"",
+            nil];
+
+    STAssertEqualObjects([s2 description], [expected componentsJoinedByString:@"\n"], nil);
 }
 
 

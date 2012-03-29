@@ -52,8 +52,7 @@
 }
 
 - (NSArray *)directions {
-    [NSException raise:@"unimplemented" format:@"Implement this method in subclasses"];
-    return nil;
+    return [[NSArray alloc] init];
 }
 
 
