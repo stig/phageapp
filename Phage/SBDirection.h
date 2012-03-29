@@ -14,5 +14,6 @@
 @property (readonly) NSInteger row;
 
 - (id)initWithColumn:(NSInteger)c row:(NSInteger)r;
+- (BOOL)isEqualToDirection:(SBDirection *)other;
 
 @end

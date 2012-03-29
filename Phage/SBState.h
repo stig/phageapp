@@ -21,8 +21,8 @@
     SBGrid *grid;
 }
 
-@property (readonly) NSArray *north;
-@property (readonly) NSArray *south;
+@property (strong, readonly) NSArray *north;
+@property (strong, readonly) NSArray *south;
 
 - (NSUInteger)movesLeftForPiece:(SBPiece*)piece;
 - (SBLocation *)locationForPiece:(SBPiece*)piece;

@@ -7,7 +7,6 @@
 
 #import "SBDirection.h"
 
-
 @implementation SBDirection
 
 @synthesize column = _column;
