@@ -11,7 +11,7 @@
 @class SBLocation;
 @class SBPiece;
 
-@interface SBMove : NSObject
+@interface SBMove : NSObject <NSCopying>
 
 @property (strong, readonly) SBPiece *piece;
 @property (strong, readonly) SBLocation *to;
@@ -20,6 +20,5 @@
 
 // isEqual: delegates to this..
 - (BOOL)isEqualToMove:(SBMove*)move;
-
 
 @end

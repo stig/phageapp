@@ -55,7 +55,6 @@
     return [[NSArray alloc] init];
 }
 
-
 - (NSUInteger)hash {
     return 31u * _owner + [NSStringFromClass([self class]) hash];
 }

@@ -38,6 +38,8 @@
 		D7BFA3B2151F2AD300435C81 /* SBDirection.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C80 /* SBDirection.m */; };
 		D7BFA3B2151F2AD300435C84 /* SBDirectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */; };
 		D7BFA3B2151F2AD300435C86 /* SBMinefieldPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C85 /* SBMinefieldPiece.m */; };
+		D7BFA3B2151F2AD300435C89 /* SBMovePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C88 /* SBMovePicker.m */; };
+		D7BFA3B2151F2AD300435C8C /* SBMovePickerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,10 @@
 		D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDirectionTest.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C85 /* SBMinefieldPiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMinefieldPiece.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C87 /* SBMinefieldPiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMinefieldPiece.h; sourceTree = "<group>"; };
+		D7BFA3B2151F2AD300435C88 /* SBMovePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMovePicker.m; sourceTree = "<group>"; };
+		D7BFA3B2151F2AD300435C8A /* SBMovePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMovePicker.h; sourceTree = "<group>"; };
+		D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMovePickerTest.m; sourceTree = "<group>"; };
+		D7BFA3B2151F2AD300435C8D /* SBMovePickerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMovePickerTest.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +169,8 @@
 		D76A456B151DDC7500E59146 /* Phage */ = {
 			isa = PBXGroup;
 			children = (
+				D7BFA3B2151F2AD300435C8A /* SBMovePicker.h */,
+				D7BFA3B2151F2AD300435C88 /* SBMovePicker.m */,
 				D7BFA3B2151F2AD300435C87 /* SBMinefieldPiece.h */,
 				D7BFA3B2151F2AD300435C85 /* SBMinefieldPiece.m */,
 				D7BFA3B2151F2AD300435C82 /* SBDirection.h */,
@@ -210,6 +218,8 @@
 		D76A458C151DDC7500E59146 /* PhageTests */ = {
 			isa = PBXGroup;
 			children = (
+				D7BFA3B2151F2AD300435C8D /* SBMovePickerTest.h */,
+				D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */,
 				D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */,
 				D76A4592151DDC7500E59146 /* PhageTests.h */,
 				D76A4593151DDC7500E59146 /* PhageTests.m */,
@@ -359,6 +369,7 @@
 				D7BFA3AF151F108100435C7F /* SBState.m in Sources */,
 				D7BFA3B2151F2AD300435C81 /* SBDirection.m in Sources */,
 				D7BFA3B2151F2AD300435C86 /* SBMinefieldPiece.m in Sources */,
+				D7BFA3B2151F2AD300435C89 /* SBMovePicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +384,7 @@
 				D7BFA3B2151F2AD300435C7F /* SBStateTest.m in Sources */,
 				D73965B2151FB10600118094 /* SBPieceTest.m in Sources */,
 				D7BFA3B2151F2AD300435C84 /* SBDirectionTest.m in Sources */,
+				D7BFA3B2151F2AD300435C8C /* SBMovePickerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,6 +24,10 @@
     return self;
 }
 
+- (id)copyWithZone:(NSZone*)zone {
+    return self;
+}
+
 - (BOOL)isEqual:(id)other {
     if (other == self)
         return YES;
@@ -44,6 +48,10 @@
 
 - (NSUInteger)hash {
     return 31u * [_piece hash] + [_to hash];
+}
+
+- (NSString *)description {
+    return [[_piece description] stringByAppendingFormat:@":%@", [_to description]];
 }
 
 @end
