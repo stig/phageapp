@@ -13,8 +13,8 @@
 
 @interface SBMove : NSObject
 
-@property (weak, readonly) SBPiece *piece;
-@property (weak, readonly) SBLocation *to;
+@property (strong, readonly) SBPiece *piece;
+@property (strong, readonly) SBLocation *to;
 
 - (id)initWithPiece:(SBPiece *)piece to:(SBLocation *)location;
 
