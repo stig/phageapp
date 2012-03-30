@@ -17,8 +17,8 @@
 
 @private
     SBGrid *grid;
-    NSDictionary *movesLeft;
-    NSDictionary *locations;
+    NSDictionary *movesLeftMap;
+    NSDictionary *locationMap;
 }
 
 @property (strong, readonly) NSArray *north;
