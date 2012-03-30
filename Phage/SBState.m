@@ -25,15 +25,15 @@
 @synthesize playerTurn;
 
 // Designated initializer
-- (id)initWithPlayerTurn:(SBPlayer)turn_ location:(NSDictionary *)location_ grid:(SBGrid *)grid_ movesLeft:(NSDictionary *)movesLeft_ north:(NSArray *)north_ south:(NSArray *)south_ {
+- (id)initWithNorth:(NSArray *)theNorth south:(NSArray *)theSouth playerTurn:(SBPlayer)turn grid:(SBGrid *)theGrid locations:(NSDictionary *)theLocations movesLeft:(NSDictionary *)theMovesLeft {
     self = [super init];
     if (self) {
-        north = north_;
-        south = south_;
-        playerTurn = turn_;
-        location = location_;
-        grid = grid_;
-        movesLeft = movesLeft_;
+        north = theNorth;
+        south = theSouth;
+        playerTurn = turn;
+        locations = theLocations;
+        grid = theGrid;
+        movesLeft = theMovesLeft;
     }
     return self;
 }
@@ -76,12 +76,7 @@
 
     NSDictionary *theMovesLeft = [[NSDictionary alloc] initWithObjects:moves forKeys:pieces];
 
-    return [self initWithPlayerTurn:NORTH
-                           location:theLocations
-                               grid:theGrid
-                          movesLeft:theMovesLeft
-                              north:theNorth
-                              south:theSouth];
+    return [self initWithNorth:theNorth south:theSouth playerTurn:NORTH grid:theGrid locations:theLocations movesLeft:theMovesLeft];
 }
 
 - (BOOL)isEqual:(id)other {
@@ -126,7 +121,7 @@
 }
 
 - (SBLocation *)locationForPiece:(SBPiece *)piece {
-    return [location objectForKey:piece];
+    return [locations objectForKey:piece];
 }
 
 - (NSArray *)currentPlayerPieces {
@@ -164,9 +159,9 @@
 }
 
 - (SBState *)successorWithMove:(SBMove *)move {
-    SBLocation *from = [location objectForKey:move.piece];
+    SBLocation *from = [locations objectForKey:move.piece];
 
-    NSMutableDictionary *newLocations = [location mutableCopy];
+    NSMutableDictionary *newLocations = [locations mutableCopy];
     [newLocations setObject:move.to forKey:move.piece];
 
     SBGrid *newGrid = [grid copy];
@@ -177,12 +172,7 @@
     NSUInteger moves = [self movesLeftForPiece:move.piece];
     [newMovesLeft setObject:[NSNumber numberWithUnsignedInteger:moves - 1] forKey:move.piece];
 
-    return [[[self class] alloc] initWithPlayerTurn:playerTurn == NORTH ? SOUTH : NORTH
-                                           location:newLocations
-                                               grid:newGrid
-                                          movesLeft:newMovesLeft
-                                              north:north
-                                              south:south];
+    return [[[self class] alloc] initWithNorth:north south:south playerTurn:playerTurn == NORTH ? SOUTH : NORTH grid:newGrid locations:newLocations movesLeft:newMovesLeft];
 }
 
 @end
