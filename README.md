@@ -25,7 +25,8 @@ Milestones
 These are in no particular order, really. Apart from the last.
 
 * GameCentre support
-  1. Match making - find an opponent
+  1. Turn Based Match making - find an opponent
+  1. Ability to keep multiple games running at once
   1. Turn-based game support
   1. Ability to show leaderboards
   1. Ability to unlock / show achievements
