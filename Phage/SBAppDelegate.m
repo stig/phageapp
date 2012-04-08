@@ -14,7 +14,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+
+    [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
+        if (localPlayer.isAuthenticated) {
+            NSLog(@"Player is authenticated");
+        } else {
+            NSLog(@"Player is NOT authenticated");
+        }
+        
+        if (error) {
+            NSLog(@"ERROR: %@", error);
+        }
+    }];
+
     return YES;
 }
 							

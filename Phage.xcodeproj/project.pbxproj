@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D73965B2151FB10600118094 /* SBPieceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D73965B1151FB10600118094 /* SBPieceTest.m */; };
+		D755A48B15320B53003BB704 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D755A48A15320B53003BB704 /* GameKit.framework */; };
 		D76A4566151DDC7500E59146 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4565151DDC7500E59146 /* UIKit.framework */; };
 		D76A4568151DDC7500E59146 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4567151DDC7500E59146 /* Foundation.framework */; };
 		D76A456A151DDC7500E59146 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4569151DDC7500E59146 /* CoreGraphics.framework */; };
@@ -55,6 +56,7 @@
 /* Begin PBXFileReference section */
 		D73965B0151FB10600118094 /* SBPieceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPieceTest.h; sourceTree = "<group>"; };
 		D73965B1151FB10600118094 /* SBPieceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPieceTest.m; sourceTree = "<group>"; };
+		D755A48A15320B53003BB704 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		D76A4561151DDC7500E59146 /* Phage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Phage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D76A4565151DDC7500E59146 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D76A4567151DDC7500E59146 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -117,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D755A48B15320B53003BB704 /* GameKit.framework in Frameworks */,
 				D76A4566151DDC7500E59146 /* UIKit.framework in Frameworks */,
 				D76A4568151DDC7500E59146 /* Foundation.framework in Frameworks */,
 				D76A456A151DDC7500E59146 /* CoreGraphics.framework in Frameworks */,
@@ -170,6 +173,7 @@
 		D76A4556151DDC7500E59146 = {
 			isa = PBXGroup;
 			children = (
+				D755A48A15320B53003BB704 /* GameKit.framework */,
 				D76A456B151DDC7500E59146 /* Phage */,
 				D76A458C151DDC7500E59146 /* PhageTests */,
 				D76A4564151DDC7500E59146 /* Frameworks */,
