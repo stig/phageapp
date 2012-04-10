@@ -136,6 +136,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D755A4941532224C003BB704 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D76A45A0151DE19300E59146 /* SBLocation.h */,
+				D7BFA3B2151F2AD300435C8A /* SBMovePicker.h */,
+				D7BFA3B2151F2AD300435C88 /* SBMovePicker.m */,
+				D7BFA3B2151F2AD300435C87 /* SBMinefieldPiece.h */,
+				D7BFA3B2151F2AD300435C85 /* SBMinefieldPiece.m */,
+				D7BFA3B2151F2AD300435C82 /* SBDirection.h */,
+				D7BFA3B2151F2AD300435C80 /* SBDirection.m */,
+				D76A45A1151DE19300E59146 /* SBLocation.m */,
+				D76A459D151DE13700E59146 /* SBMove.h */,
+				D76A459E151DE13700E59146 /* SBMove.m */,
+				D7BFA3AD151F108100435C7F /* SBState.h */,
+				D7BFA3AE151F108100435C7F /* SBState.m */,
+				D76A45A9151DE99400E59146 /* SBGrid.h */,
+				D76A45AA151DE99400E59146 /* SBGrid.m */,
+				D76A45B2151DFC2B00E59146 /* SBPiece.h */,
+				D7BFA390151E48A000435C7F /* SBPiece.m */,
+				D76A45B3151DFC4700E59146 /* SBCirclePiece.h */,
+				D76A45B4151DFC4700E59146 /* SBCirclePiece.m */,
+				D76A45B6151DFD0000E59146 /* SBDiamondPiece.h */,
+				D76A45B7151DFD0000E59146 /* SBDiamondPiece.m */,
+				D76A45B9151DFD0E00E59146 /* SBSquarePiece.h */,
+				D76A45BA151DFD0E00E59146 /* SBSquarePiece.m */,
+				D76A45BC151DFD1A00E59146 /* SBTrianglePiece.h */,
+				D76A45BD151DFD1A00E59146 /* SBTrianglePiece.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		D76A4556151DDC7500E59146 = {
 			isa = PBXGroup;
 			children = (
@@ -169,36 +200,13 @@
 		D76A456B151DDC7500E59146 /* Phage */ = {
 			isa = PBXGroup;
 			children = (
-				D7BFA3B2151F2AD300435C8A /* SBMovePicker.h */,
-				D7BFA3B2151F2AD300435C88 /* SBMovePicker.m */,
-				D7BFA3B2151F2AD300435C87 /* SBMinefieldPiece.h */,
-				D7BFA3B2151F2AD300435C85 /* SBMinefieldPiece.m */,
-				D7BFA3B2151F2AD300435C82 /* SBDirection.h */,
-				D7BFA3B2151F2AD300435C80 /* SBDirection.m */,
+				D755A4941532224C003BB704 /* Model */,
 				D76A4574151DDC7500E59146 /* SBAppDelegate.h */,
 				D76A4575151DDC7500E59146 /* SBAppDelegate.m */,
 				D76A4577151DDC7500E59146 /* MainStoryboard_iPhone.storyboard */,
 				D76A457A151DDC7500E59146 /* MainStoryboard_iPad.storyboard */,
 				D76A457D151DDC7500E59146 /* SBViewController.h */,
 				D76A457E151DDC7500E59146 /* SBViewController.m */,
-				D76A45A0151DE19300E59146 /* SBLocation.h */,
-				D76A45A1151DE19300E59146 /* SBLocation.m */,
-				D76A459D151DE13700E59146 /* SBMove.h */,
-				D76A459E151DE13700E59146 /* SBMove.m */,
-				D7BFA3AD151F108100435C7F /* SBState.h */,
-				D7BFA3AE151F108100435C7F /* SBState.m */,
-				D76A45A9151DE99400E59146 /* SBGrid.h */,
-				D76A45AA151DE99400E59146 /* SBGrid.m */,
-				D76A45B2151DFC2B00E59146 /* SBPiece.h */,
-				D7BFA390151E48A000435C7F /* SBPiece.m */,
-				D76A45B3151DFC4700E59146 /* SBCirclePiece.h */,
-				D76A45B4151DFC4700E59146 /* SBCirclePiece.m */,
-				D76A45B6151DFD0000E59146 /* SBDiamondPiece.h */,
-				D76A45B7151DFD0000E59146 /* SBDiamondPiece.m */,
-				D76A45B9151DFD0E00E59146 /* SBSquarePiece.h */,
-				D76A45BA151DFD0E00E59146 /* SBSquarePiece.m */,
-				D76A45BC151DFD1A00E59146 /* SBTrianglePiece.h */,
-				D76A45BD151DFD1A00E59146 /* SBTrianglePiece.m */,
 				D76A456C151DDC7500E59146 /* Supporting Files */,
 			);
 			path = Phage;
