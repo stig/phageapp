@@ -58,13 +58,13 @@ static SBGrid *g;
     [g setPiece:[[Piece alloc] init] atColumn:0 row:0];
     STAssertEqualObjects([g description], @"........\n........\n........\n........\n........\n........\n........\nE.......\n", nil);
 
-    [g setPiece:[[Piece alloc] initWithOwner:SOUTH] atColumn:7 row:0];
+    [g setPiece:[[Piece alloc] initWithPlayer:SBPlayerSouth] atColumn:7 row:0];
     STAssertEqualObjects([g description], @"........\n........\n........\n........\n........\n........\n........\nE......e\n", nil);
 
     [g setPiece:[[Piece alloc] init] atColumn:7 row:7];
     STAssertEqualObjects([g description], @".......E\n........\n........\n........\n........\n........\n........\nE......e\n", nil);
     
-    [g setPiece:[[Piece alloc] initWithOwner:SOUTH] atColumn:0 row:7];
+    [g setPiece:[[Piece alloc] initWithPlayer:SBPlayerSouth] atColumn:0 row:7];
     STAssertEqualObjects([g description], @"e......E\n........\n........\n........\n........\n........\n........\nE......e\n", nil);
 
 }

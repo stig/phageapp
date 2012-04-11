@@ -65,7 +65,7 @@ static SBState *s;
 
     STAssertEqualObjects(
     [[SBLocation alloc] initWithColumn:0u row:0u],
-    [s locationForPiece:[[SBDiamondPiece alloc] initWithOwner:SOUTH]],
+    [s locationForPiece:[[SBDiamondPiece alloc] initWithPlayer:SBPlayerSouth]],
     nil);
 }
 
@@ -84,12 +84,12 @@ static SBState *s;
 }
 
 - (void)testLegalMoves {
-    NSArray *moves = [s legalMovesForPlayer:NORTH];
+    NSArray *moves = [s legalMovesForPlayer:SBPlayerNorth];
     STAssertEquals(moves.count, 61u, nil);
 }
 
 - (void)testSuccessor {
-    NSArray *moves = [s legalMovesForPlayer:NORTH];
+    NSArray *moves = [s legalMovesForPlayer:SBPlayerNorth];
     SBState *s1 = [s successorWithMove:[moves lastObject]];
     STAssertNotNil(s1, nil);
     STAssertFalse([s1 isEqual:s], nil);
@@ -118,8 +118,8 @@ static SBState *s;
 }
 
 - (void)testSuccessor2 {
-    SBState *s1 = [s successorWithMove:[[s legalMovesForPlayer:NORTH] lastObject]];
-    SBState *s2 = [s1 successorWithMove:[[s1 legalMovesForPlayer:SOUTH] lastObject]];
+    SBState *s1 = [s successorWithMove:[[s legalMovesForPlayer:SBPlayerNorth] lastObject]];
+    SBState *s2 = [s1 successorWithMove:[[s1 legalMovesForPlayer:SBPlayerSouth] lastObject]];
 
     NSArray *expected = [[NSArray alloc] initWithObjects:
             @"C: 7",

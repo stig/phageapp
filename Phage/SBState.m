@@ -38,16 +38,16 @@
 
 - (id)init {
 
-    NSArray *theNorth = [[NSArray alloc] initWithObjects:[[SBCirclePiece alloc] initWithOwner:NORTH],
-                                                         [[SBSquarePiece alloc] initWithOwner:NORTH],
-                                                         [[SBTrianglePiece alloc] initWithOwner:NORTH],
-                                                         [[SBDiamondPiece alloc] initWithOwner:NORTH],
+    NSArray *theNorth = [[NSArray alloc] initWithObjects:[[SBCirclePiece alloc] initWithPlayer:SBPlayerNorth],
+                                                         [[SBSquarePiece alloc] initWithPlayer:SBPlayerNorth],
+                                                         [[SBTrianglePiece alloc] initWithPlayer:SBPlayerNorth],
+                                                         [[SBDiamondPiece alloc] initWithPlayer:SBPlayerNorth],
                                                          nil];
 
-    NSArray *theSouth = [[NSArray alloc] initWithObjects:[[SBCirclePiece alloc] initWithOwner:SOUTH],
-                                                         [[SBSquarePiece alloc] initWithOwner:SOUTH],
-                                                         [[SBTrianglePiece alloc] initWithOwner:SOUTH],
-                                                         [[SBDiamondPiece alloc] initWithOwner:SOUTH],
+    NSArray *theSouth = [[NSArray alloc] initWithObjects:[[SBCirclePiece alloc] initWithPlayer:SBPlayerSouth],
+                                                         [[SBSquarePiece alloc] initWithPlayer:SBPlayerSouth],
+                                                         [[SBTrianglePiece alloc] initWithPlayer:SBPlayerSouth],
+                                                         [[SBDiamondPiece alloc] initWithPlayer:SBPlayerSouth],
                                                          nil];
 
     NSArray *theLocations = [[NSArray alloc] initWithObjects:[[SBLocation alloc] initWithColumn:1 row:4],
@@ -142,7 +142,7 @@
 - (NSArray *)legalMovesForPlayer:(SBPlayer)player {
     NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:64];
 
-    for (SBPiece *p in player == NORTH ? north : south) {
+    for (SBPiece *p in player == SBPlayerNorth ? north : south) {
         [moves addObjectsFromArray:[self legalMovesForPiece:p]];
     }
 

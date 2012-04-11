@@ -18,7 +18,7 @@
     SBMovePicker *picker = [[SBMovePicker alloc] init];
     SBState *state = [[SBState alloc] init];
 
-    SBMove *move = [picker optimalMoveForState:state withPlayer:NORTH];
+    SBMove *move = [picker optimalMoveForState:state withPlayer:SBPlayerNorth];
     STAssertNotNil(move, nil);
 
     SBPiece *piece = [[SBTrianglePiece alloc] init];

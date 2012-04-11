@@ -16,7 +16,7 @@
 
     NSArray *moves = [state legalMovesForPlayer:player];
 
-    SBPlayer opponent = player == NORTH ? SOUTH : NORTH;
+    SBPlayer opponent = player == SBPlayerNorth ? SBPlayerSouth : SBPlayerNorth;
 
     NSMutableDictionary *scores = [[NSMutableDictionary alloc] initWithCapacity:moves.count];
     for (SBMove *move in moves) {

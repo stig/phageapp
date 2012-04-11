@@ -13,10 +13,10 @@
 @synthesize owner = _owner;
 
 - (id)init {
-    return [self initWithOwner:NORTH];
+    return [self initWithPlayer:SBPlayerNorth];
 }
 
-- (id)initWithOwner:(SBPlayer)owner {
+- (id)initWithPlayer:(SBPlayer)owner {
     self = [super init];
     if (self) {
         _owner = owner;
@@ -32,7 +32,7 @@
 
 - (NSString*)description {
     NSString *substr = [NSStringFromClass([self class]) substringWithRange:NSMakeRange(2, 1)];
-    return _owner == NORTH ? [substr uppercaseString] : [substr lowercaseString];
+    return _owner == SBPlayerNorth ? [substr uppercaseString] : [substr lowercaseString];
 }
 
 - (BOOL)isEqual:(id)other {
