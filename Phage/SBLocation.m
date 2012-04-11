@@ -23,6 +23,18 @@
     return self;
 }
 
+#pragma mark NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeInteger:_column forKey:@"SBColumn"];
+    [coder encodeInteger:_row forKey:@"SBRow"];
+}
+
+- (id)initWithCoder:(NSCoder *)coder {
+    return [self initWithColumn:[coder decodeIntegerForKey:@"SBColumn"]
+                            row:[coder decodeIntegerForKey:@"SBRow"]];
+}
+
 #pragma mark NSCopying
 
 - (id)copyWithZone:(NSZone*)zone {

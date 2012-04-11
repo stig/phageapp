@@ -12,7 +12,7 @@
 @class SBLocation;
 @class SBMove;
 
-@interface SBState : NSObject {
+@interface SBState : NSObject <NSCoding> {
 
 @private
     NSSet *_occupied;

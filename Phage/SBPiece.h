@@ -13,9 +13,9 @@ typedef enum {
     SBPlayerSouth
 } SBPlayer;
 
-@interface SBPiece : NSObject <NSCopying>
+@interface SBPiece : NSObject <NSCopying, NSCoding>
 
-@property (readonly) SBPlayer owner;
+@property (readonly) SBPlayer player;
 
 - (id)initWithPlayer:(SBPlayer)owner;
 

@@ -10,19 +10,30 @@
 
 @implementation SBPiece
 
-@synthesize owner = _owner;
+@synthesize player = _player;
 
 - (id)init {
     return [self initWithPlayer:SBPlayerNorth];
 }
 
-- (id)initWithPlayer:(SBPlayer)owner {
+- (id)initWithPlayer:(SBPlayer)player {
     self = [super init];
     if (self) {
-        _owner = owner;
+        _player = player;
     }
     return self;
 }
+
+#pragma mark NSCoding
+
+- (id)initWithCoder:(NSCoder *)coder {
+    return [self initWithPlayer:[coder decodeIntegerForKey:@"SBPlayer"]];
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeInteger:_player forKey:@"SBPlayer"];
+}
+
 
 #pragma mark NSCopying
 
@@ -32,7 +43,7 @@
 
 - (NSString*)description {
     NSString *substr = [NSStringFromClass([self class]) substringWithRange:NSMakeRange(2, 1)];
-    return _owner == SBPlayerNorth ? [substr uppercaseString] : [substr lowercaseString];
+    return _player == SBPlayerNorth ? [substr uppercaseString] : [substr lowercaseString];
 }
 
 - (BOOL)isEqual:(id)other {
@@ -46,7 +57,7 @@
 - (BOOL)isEqualToPiece:(SBPiece *)other {
     if (self == other)
         return YES;
-    if (_owner != other.owner)
+    if (_player != other.player)
         return NO;
     return YES;
 }
@@ -56,7 +67,7 @@
 }
 
 - (NSUInteger)hash {
-    return 31u * _owner + [NSStringFromClass([self class]) hash];
+    return 31u * _player + [NSStringFromClass([self class]) hash];
 }
 
 @end

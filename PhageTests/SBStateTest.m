@@ -144,5 +144,26 @@ static SBState *s;
     STAssertEqualObjects([s2 description], [expected componentsJoinedByString:@"\n"], nil);
 }
 
+- (void)testCoding {
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:s];
+    SBState *s1 = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    STAssertEqualObjects(s1, s, nil);
+}
+
+- (void)testCodingSize {
+
+    SBPlayer player = SBPlayerNorth;
+    for (;;) {
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:s];
+        STAssertTrue(data.length < 3096u, @"Serialised state is less than 3K");
+
+        SBMove *move = [[s legalMovesForPlayer:player] lastObject];
+        if (!move)
+            break;
+
+        player = SBPlayerNorth == player ? SBPlayerSouth : SBPlayerNorth;
+        s = [s successorWithMove:move];
+    }
+}
 
 @end

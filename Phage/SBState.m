@@ -83,6 +83,26 @@
     return [self initWithNorth:theNorth south:theSouth locations:theLocationMap movesLeft:theMovesLeft occupied:occupiedLocSet];
 }
 
+#pragma mark NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:_north forKey:@"SBNorth"];
+    [coder encodeObject:_south forKey:@"SBSouth"];
+    [coder encodeObject:_locations forKey:@"SBLocations"];
+    [coder encodeObject:_moves forKey:@"SBMoves"];
+    [coder encodeObject:_occupied forKey:@"SBOccupied"];
+}
+
+- (id)initWithCoder:(NSCoder *)coder {
+    return [self initWithNorth:[coder decodeObjectForKey:@"SBNorth"]
+                         south:[coder decodeObjectForKey:@"SBSouth"]
+                     locations:[coder decodeObjectForKey:@"SBLocations"]
+                     movesLeft:[coder decodeObjectForKey:@"SBMoves"]
+                      occupied:[coder decodeObjectForKey:@"SBOccupied"]];
+}
+
+#pragma mark Hashable
+
 - (BOOL)isEqual:(id)other {
     if (other == self)
         return YES;
@@ -106,6 +126,8 @@
     hash = hash * 31u + [_occupied hash];
     return hash;
 }
+
+#pragma mark -
 
 - (NSString *)description {
     NSMutableString *desc = [[NSMutableString alloc] initWithCapacity:GRIDSIZE * GRIDSIZE * 2u];
@@ -142,6 +164,8 @@
 
     return desc;
 }
+
+#pragma mark -
 
 - (NSUInteger)movesLeftForPiece:(SBPiece *)piece {
     return [[_moves objectForKey:piece] unsignedIntegerValue];

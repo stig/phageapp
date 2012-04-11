@@ -10,7 +10,7 @@
 
 @class SBDirection;
 
-@interface SBLocation : NSObject <NSCopying>
+@interface SBLocation : NSObject <NSCopying, NSCoding>
 
 @property (readonly) NSInteger column;
 @property (readonly) NSInteger row;
