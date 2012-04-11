@@ -70,9 +70,27 @@
     NSLog(@"A Match has been found!: %@", match);
 }
 
+- (GKTurnBasedParticipant*)nextParticipantForMatch:(GKTurnBasedMatch*)match {
+    NSUInteger currIdx = [match.participants indexOfObject:match.currentParticipant];
+    NSUInteger nextIdx = (currIdx + 1) % match.participants.count;
+    return [match.participants objectAtIndex: nextIdx];
+}
+
 // Called when a users chooses to quit a match and that player has the current turn.  The developer should call playerQuitInTurnWithOutcome:nextPlayer:matchData:completionHandler: on the match passing in appropriate values.  They can also update matchOutcome for other players as appropriate.
 - (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController playerQuitForMatch:(GKTurnBasedMatch *)match {
     NSLog(@"Player quit match: %@", match);
+
+    GKTurnBasedParticipant *part = [self nextParticipantForMatch:match];
+    part.matchOutcome = GKTurnBasedMatchOutcomeWon;
+    
+    [match participantQuitInTurnWithOutcome:GKTurnBasedMatchOutcomeLost
+                            nextParticipant:part
+                                  matchData:[NSData data] // TODO: should send current state
+                          completionHandler:^(NSError *error) {
+                              if (error)
+                                  NSLog(@"ERROR: %@", error);
+                          }];
+
 }
 
 @end
