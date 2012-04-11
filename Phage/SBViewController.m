@@ -68,6 +68,11 @@
 - (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController didFindMatch:(GKTurnBasedMatch *)match {
     [viewController dismissModalViewControllerAnimated:YES];
     NSLog(@"A Match has been found!: %@", match);
+    // TODO: Should launch a game; handle these cases
+    // 1a) Set up initial game in turn
+    // 1b) Set up game in turn
+    // 2) Set up game out of turn (for view only)
+    // 2b) Game Over
 }
 
 - (GKTurnBasedParticipant*)nextParticipantForMatch:(GKTurnBasedMatch*)match {
