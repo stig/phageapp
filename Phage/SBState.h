@@ -15,9 +15,9 @@
 @interface SBState : NSObject {
 
 @private
-    NSSet *occupiedSet;
-    NSDictionary *movesLeftMap;
-    NSDictionary *locationMap;
+    NSSet *_occupied;
+    NSDictionary *_moves;
+    NSDictionary *_locations;
 }
 
 @property (strong, readonly) NSArray *north;
