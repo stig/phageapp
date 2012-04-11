@@ -45,8 +45,7 @@
     GKTurnBasedMatchmakerViewController *vc = [[GKTurnBasedMatchmakerViewController alloc] initWithMatchRequest:request];
     vc.turnBasedMatchmakerDelegate = self;
     vc.showExistingMatches = YES;
-    vc.turnBasedMatchmakerDelegate = self;
-    
+
     [self presentModalViewController:vc animated:YES];
 }
 
