@@ -9,14 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "SBPiece.h"
 
-@class SBGrid;
 @class SBLocation;
 @class SBMove;
 
 @interface SBState : NSObject {
 
 @private
-    SBGrid *grid;
+    NSSet *occupiedSet;
     NSDictionary *movesLeftMap;
     NSDictionary *locationMap;
 }

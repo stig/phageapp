@@ -27,8 +27,6 @@
 		D76A45A2151DE19300E59146 /* SBLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45A1151DE19300E59146 /* SBLocation.m */; };
 		D76A45A5151DE30600E59146 /* SBLocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45A4151DE30600E59146 /* SBLocationTest.m */; };
 		D76A45A8151DE43300E59146 /* SBMoveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45A7151DE43300E59146 /* SBMoveTest.m */; };
-		D76A45AB151DE99400E59146 /* SBGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45AA151DE99400E59146 /* SBGrid.m */; };
-		D76A45AE151DECE900E59146 /* SBGridTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45AD151DECE900E59146 /* SBGridTest.m */; };
 		D76A45B5151DFC4700E59146 /* SBCirclePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45B4151DFC4700E59146 /* SBCirclePiece.m */; };
 		D76A45B8151DFD0000E59146 /* SBDiamondPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45B7151DFD0000E59146 /* SBDiamondPiece.m */; };
 		D76A45BB151DFD0E00E59146 /* SBSquarePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45BA151DFD0E00E59146 /* SBSquarePiece.m */; };
@@ -38,7 +36,6 @@
 		D7BFA3B2151F2AD300435C7F /* SBStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B1151F2AD300435C7F /* SBStateTest.m */; };
 		D7BFA3B2151F2AD300435C81 /* SBDirection.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C80 /* SBDirection.m */; };
 		D7BFA3B2151F2AD300435C84 /* SBDirectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */; };
-		D7BFA3B2151F2AD300435C86 /* SBMinefieldPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C85 /* SBMinefieldPiece.m */; };
 		D7BFA3B2151F2AD300435C89 /* SBMovePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C88 /* SBMovePicker.m */; };
 		D7BFA3B2151F2AD300435C8C /* SBMovePickerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */; };
 /* End PBXBuildFile section */
@@ -85,10 +82,6 @@
 		D76A45A4151DE30600E59146 /* SBLocationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBLocationTest.m; sourceTree = "<group>"; };
 		D76A45A6151DE43300E59146 /* SBMoveTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMoveTest.h; sourceTree = "<group>"; };
 		D76A45A7151DE43300E59146 /* SBMoveTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMoveTest.m; sourceTree = "<group>"; };
-		D76A45A9151DE99400E59146 /* SBGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGrid.h; sourceTree = "<group>"; };
-		D76A45AA151DE99400E59146 /* SBGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGrid.m; sourceTree = "<group>"; };
-		D76A45AC151DECE900E59146 /* SBGridTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGridTest.h; sourceTree = "<group>"; };
-		D76A45AD151DECE900E59146 /* SBGridTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGridTest.m; sourceTree = "<group>"; };
 		D76A45B2151DFC2B00E59146 /* SBPiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPiece.h; sourceTree = "<group>"; };
 		D76A45B3151DFC4700E59146 /* SBCirclePiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBCirclePiece.h; sourceTree = "<group>"; };
 		D76A45B4151DFC4700E59146 /* SBCirclePiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCirclePiece.m; sourceTree = "<group>"; };
@@ -106,8 +99,6 @@
 		D7BFA3B2151F2AD300435C80 /* SBDirection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDirection.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C82 /* SBDirection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBDirection.h; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDirectionTest.m; sourceTree = "<group>"; };
-		D7BFA3B2151F2AD300435C85 /* SBMinefieldPiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMinefieldPiece.m; sourceTree = "<group>"; };
-		D7BFA3B2151F2AD300435C87 /* SBMinefieldPiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMinefieldPiece.h; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C88 /* SBMovePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMovePicker.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C8A /* SBMovePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMovePicker.h; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMovePickerTest.m; sourceTree = "<group>"; };
@@ -145,8 +136,6 @@
 				D76A45A0151DE19300E59146 /* SBLocation.h */,
 				D7BFA3B2151F2AD300435C8A /* SBMovePicker.h */,
 				D7BFA3B2151F2AD300435C88 /* SBMovePicker.m */,
-				D7BFA3B2151F2AD300435C87 /* SBMinefieldPiece.h */,
-				D7BFA3B2151F2AD300435C85 /* SBMinefieldPiece.m */,
 				D7BFA3B2151F2AD300435C82 /* SBDirection.h */,
 				D7BFA3B2151F2AD300435C80 /* SBDirection.m */,
 				D76A45A1151DE19300E59146 /* SBLocation.m */,
@@ -154,8 +143,6 @@
 				D76A459E151DE13700E59146 /* SBMove.m */,
 				D7BFA3AD151F108100435C7F /* SBState.h */,
 				D7BFA3AE151F108100435C7F /* SBState.m */,
-				D76A45A9151DE99400E59146 /* SBGrid.h */,
-				D76A45AA151DE99400E59146 /* SBGrid.m */,
 				D76A45B2151DFC2B00E59146 /* SBPiece.h */,
 				D7BFA390151E48A000435C7F /* SBPiece.m */,
 				D76A45B3151DFC4700E59146 /* SBCirclePiece.h */,
@@ -239,8 +226,6 @@
 				D76A45A4151DE30600E59146 /* SBLocationTest.m */,
 				D76A45A6151DE43300E59146 /* SBMoveTest.h */,
 				D76A45A7151DE43300E59146 /* SBMoveTest.m */,
-				D76A45AC151DECE900E59146 /* SBGridTest.h */,
-				D76A45AD151DECE900E59146 /* SBGridTest.m */,
 				D7BFA3B0151F2AD300435C7F /* SBStateTest.h */,
 				D7BFA3B1151F2AD300435C7F /* SBStateTest.m */,
 				D73965B0151FB10600118094 /* SBPieceTest.h */,
@@ -372,7 +357,6 @@
 				D76A457F151DDC7500E59146 /* SBViewController.m in Sources */,
 				D76A459F151DE13700E59146 /* SBMove.m in Sources */,
 				D76A45A2151DE19300E59146 /* SBLocation.m in Sources */,
-				D76A45AB151DE99400E59146 /* SBGrid.m in Sources */,
 				D76A45B5151DFC4700E59146 /* SBCirclePiece.m in Sources */,
 				D76A45B8151DFD0000E59146 /* SBDiamondPiece.m in Sources */,
 				D76A45BB151DFD0E00E59146 /* SBSquarePiece.m in Sources */,
@@ -380,7 +364,6 @@
 				D7BFA391151E48A000435C7F /* SBPiece.m in Sources */,
 				D7BFA3AF151F108100435C7F /* SBState.m in Sources */,
 				D7BFA3B2151F2AD300435C81 /* SBDirection.m in Sources */,
-				D7BFA3B2151F2AD300435C86 /* SBMinefieldPiece.m in Sources */,
 				D7BFA3B2151F2AD300435C89 /* SBMovePicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,7 +375,6 @@
 				D76A4594151DDC7500E59146 /* PhageTests.m in Sources */,
 				D76A45A5151DE30600E59146 /* SBLocationTest.m in Sources */,
 				D76A45A8151DE43300E59146 /* SBMoveTest.m in Sources */,
-				D76A45AE151DECE900E59146 /* SBGridTest.m in Sources */,
 				D7BFA3B2151F2AD300435C7F /* SBStateTest.m in Sources */,
 				D73965B2151FB10600118094 /* SBPieceTest.m in Sources */,
 				D7BFA3B2151F2AD300435C84 /* SBDirectionTest.m in Sources */,

@@ -7,7 +7,6 @@
 //
 
 #import "SBState.h"
-#import "SBGrid.h"
 #import "SBCirclePiece.h"
 #import "SBDiamondPiece.h"
 #import "SBSquarePiece.h"
@@ -15,23 +14,32 @@
 #import "SBLocation.h"
 #import "SBDirection.h"
 #import "SBMove.h"
-#import "SBMinefieldPiece.h"
 
+#define GRIDSIZE 8
+
+@interface SBState ()
+@property (readonly) NSDictionary *locationMap;
+@property (readonly) NSDictionary *movesLeftMap;
+@property (readonly) NSSet *occupiedSet;
+@end
 
 @implementation SBState
 
 @synthesize north;
 @synthesize south;
+@synthesize locationMap;
+@synthesize movesLeftMap;
+@synthesize occupiedSet;
 
 // Designated initializer
-- (id)initWithNorth:(NSArray *)theNorth south:(NSArray *)theSouth grid:(SBGrid *)theGrid locationMap:(NSDictionary *)theLocationMap movesLeftMap:(NSDictionary *)theMovesLeftMap {
+- (id)initWithNorth:(NSArray *)theNorth south:(NSArray *)theSouth locationMap:(NSDictionary *)theLocationMap movesLeftMap:(NSDictionary *)theMovesLeftMap occupiedSet:(NSSet *)theOccupiedSet {
     self = [super init];
     if (self) {
         north = theNorth;
         south = theSouth;
         locationMap = theLocationMap;
-        grid = theGrid;
         movesLeftMap = theMovesLeftMap;
+        occupiedSet = theOccupiedSet;
     }
     return self;
 }
@@ -64,17 +72,15 @@
 
     NSDictionary *theLocationMap = [[NSDictionary alloc] initWithObjects:theLocations forKeys:thePieces];
 
-    SBGrid *theGrid = [[SBGrid alloc] init];
-    for (id p in theLocationMap)
-        [theGrid setPiece:p atLocation:[theLocationMap objectForKey:p]];
-
     NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:8u];
     for (SBPiece *p in thePieces)
         [moves addObject:[NSNumber numberWithUnsignedInteger:7u]];
 
     NSDictionary *theMovesLeft = [[NSDictionary alloc] initWithObjects:moves forKeys:thePieces];
 
-    return [self initWithNorth:theNorth south:theSouth grid:theGrid locationMap:theLocationMap movesLeftMap:theMovesLeft];
+    NSSet *occupiedLocSet = [[NSSet alloc] initWithArray:theLocations];
+
+    return [self initWithNorth:theNorth south:theSouth locationMap:theLocationMap movesLeftMap:theMovesLeft occupiedSet:occupiedLocSet];
 }
 
 - (BOOL)isEqual:(id)other {
@@ -88,21 +94,47 @@
 - (BOOL)isEqualToState:(SBState *)other {
     if (self == other)
         return YES;
-    return [grid isEqualToGrid:other->grid];
+
+    return [locationMap isEqualToDictionary:other.locationMap] &&
+            [movesLeftMap isEqualToDictionary:other.movesLeftMap] &&
+            [occupiedSet isEqualToSet:other.occupiedSet];
 }
 
 - (NSUInteger)hash {
-    return [grid hash];
+    NSUInteger hash = [locationMap hash];
+    hash = hash * 31u + [movesLeftMap hash];
+    hash = hash * 31u + [occupiedSet hash];
+    return hash;
 }
 
 - (NSString *)description {
-    NSMutableString *desc = [[NSMutableString alloc] init];
+    NSMutableString *desc = [[NSMutableString alloc] initWithCapacity:GRIDSIZE * GRIDSIZE * 2u];
 
     for (id p in north) {
         [desc appendFormat:@"%@: %@\n", p, [movesLeftMap objectForKey:p]];
     }
 
-    [desc appendString:[grid description]];
+    NSMutableDictionary *map = [[NSMutableDictionary alloc] init];
+    for (SBPiece *p in locationMap) {
+        SBLocation *loc = [locationMap objectForKey:p];
+        [map setObject:p forKey:loc];
+    }
+
+    for (int r = GRIDSIZE - 1; r >= 0; r--) {
+        for (int c = 0; c < GRIDSIZE; c++) {
+            SBLocation *loc = [[SBLocation alloc] initWithColumn:c row:r];
+
+            SBPiece *p = [map objectForKey:loc];
+            if (p) {
+                [desc appendString:[p description]];
+            } else if ([occupiedSet containsObject:loc]) {
+                [desc appendString:@"*"];
+            } else {
+                [desc appendString:@"."];
+            }
+        }
+        [desc appendString:@"\n"];
+    }
 
     for (id p in south) {
         [desc appendFormat:@"%@: %@\n", p, [movesLeftMap objectForKey:p]];
@@ -119,6 +151,10 @@
     return [locationMap objectForKey:piece];
 }
 
+- (BOOL)isGridLocation:(SBLocation*)loc {
+    return loc.column >= 0 && loc.column < GRIDSIZE && loc.row >= 0 && loc.row < GRIDSIZE;
+}
+
 - (NSArray *)legalMovesForPiece:(SBPiece *)piece {
     NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:32];
 
@@ -127,9 +163,8 @@
         for (; ;) {
             loc = [loc locationByMovingInDirection:d];
 
-            // If this is _not_ an unoccupied, legal grid location, we've either gone outside the board
-            // or hit another piece, or a previously occupied slot.
-            if (![grid isUnoccupiedGridLocation:loc])
+            // Is the location not on the grid? Or already occupied?
+            if (![self isGridLocation:loc] || [occupiedSet containsObject:loc])
                 break;
 
             [moves addObject:[[SBMove alloc] initWithPiece:piece to:loc]];
@@ -140,7 +175,7 @@
 }
 
 - (NSArray *)legalMovesForPlayer:(SBPlayer)player {
-    NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:64];
+    NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:64u];
 
     for (SBPiece *p in player == SBPlayerNorth ? north : south) {
         [moves addObjectsFromArray:[self legalMovesForPiece:p]];
@@ -150,20 +185,16 @@
 }
 
 - (SBState *)successorWithMove:(SBMove *)move {
-    SBLocation *from = [locationMap objectForKey:move.piece];
+    NSSet *newOccupiedSet = [occupiedSet setByAddingObject:move.to];
 
     NSMutableDictionary *newLocations = [locationMap mutableCopy];
     [newLocations setObject:move.to forKey:move.piece];
-
-    SBGrid *newGrid = [grid copy];
-    [newGrid setPiece:[[SBMinefieldPiece alloc] init] atLocation:from];
-    [newGrid setPiece:move.piece atLocation:move.to];
 
     NSMutableDictionary *newMovesLeft = [movesLeftMap mutableCopy];
     NSUInteger moves = [self movesLeftForPiece:move.piece];
     [newMovesLeft setObject:[NSNumber numberWithUnsignedInteger:moves - 1] forKey:move.piece];
 
-    return [[[self class] alloc] initWithNorth:north south:south grid:newGrid locationMap:newLocations movesLeftMap:newMovesLeft];
+    return [[[self class] alloc] initWithNorth:north south:south locationMap:[newLocations copy] movesLeftMap:[newMovesLeft copy] occupiedSet:newOccupiedSet];
 }
 
 @end
