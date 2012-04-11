@@ -6,6 +6,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import "SBPiece.h"
 
 @class SBState;
 @class SBMove;
@@ -13,6 +14,6 @@
 
 @interface SBMovePicker : NSObject
 
-- (SBMove *)optimalMoveForState:(SBState*)state;
+- (SBMove *)optimalMoveForState:(SBState *)state withPlayer:(SBPlayer)player;
 
 @end

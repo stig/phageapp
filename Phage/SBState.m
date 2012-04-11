@@ -22,15 +22,13 @@
 
 @synthesize north;
 @synthesize south;
-@synthesize playerTurn;
 
 // Designated initializer
-- (id)initWithNorth:(NSArray *)theNorth south:(NSArray *)theSouth playerTurn:(SBPlayer)turn grid:(SBGrid *)theGrid locationMap:(NSDictionary *)theLocationMap movesLeftMap:(NSDictionary *)theMovesLeftMap {
+- (id)initWithNorth:(NSArray *)theNorth south:(NSArray *)theSouth grid:(SBGrid *)theGrid locationMap:(NSDictionary *)theLocationMap movesLeftMap:(NSDictionary *)theMovesLeftMap {
     self = [super init];
     if (self) {
         north = theNorth;
         south = theSouth;
-        playerTurn = turn;
         locationMap = theLocationMap;
         grid = theGrid;
         movesLeftMap = theMovesLeftMap;
@@ -76,7 +74,7 @@
 
     NSDictionary *theMovesLeft = [[NSDictionary alloc] initWithObjects:moves forKeys:thePieces];
 
-    return [self initWithNorth:theNorth south:theSouth playerTurn:NORTH grid:theGrid locationMap:theLocationMap movesLeftMap:theMovesLeft];
+    return [self initWithNorth:theNorth south:theSouth grid:theGrid locationMap:theLocationMap movesLeftMap:theMovesLeft];
 }
 
 - (BOOL)isEqual:(id)other {
@@ -90,18 +88,15 @@
 - (BOOL)isEqualToState:(SBState *)other {
     if (self == other)
         return YES;
-    if (!playerTurn == other.playerTurn)
-        return NO;
     return [grid isEqualToGrid:other->grid];
 }
 
 - (NSUInteger)hash {
-    return 31u * [grid hash] + playerTurn;
+    return [grid hash];
 }
 
 - (NSString *)description {
     NSMutableString *desc = [[NSMutableString alloc] init];
-    [desc appendFormat:@"PlayerTurn: %@\n", playerTurn == NORTH ? @"North" : @"South"];
 
     for (id p in north) {
         [desc appendFormat:@"%@: %@\n", p, [movesLeftMap objectForKey:p]];
@@ -124,10 +119,6 @@
     return [locationMap objectForKey:piece];
 }
 
-- (NSArray *)currentPlayerPieces {
-    return NORTH == playerTurn ? north : south;
-}
-
 - (NSArray *)legalMovesForPiece:(SBPiece *)piece {
     NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:32];
 
@@ -148,10 +139,10 @@
     return moves;
 }
 
-- (NSArray *)legalMoves {
+- (NSArray *)legalMovesForPlayer:(SBPlayer)player {
     NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:64];
 
-    for (SBPiece *p in [self currentPlayerPieces]) {
+    for (SBPiece *p in player == NORTH ? north : south) {
         [moves addObjectsFromArray:[self legalMovesForPiece:p]];
     }
 
@@ -172,7 +163,7 @@
     NSUInteger moves = [self movesLeftForPiece:move.piece];
     [newMovesLeft setObject:[NSNumber numberWithUnsignedInteger:moves - 1] forKey:move.piece];
 
-    return [[[self class] alloc] initWithNorth:north south:south playerTurn:playerTurn == NORTH ? SOUTH : NORTH grid:newGrid locationMap:newLocations movesLeftMap:newMovesLeft];
+    return [[[self class] alloc] initWithNorth:north south:south grid:newGrid locationMap:newLocations movesLeftMap:newMovesLeft];
 }
 
 @end

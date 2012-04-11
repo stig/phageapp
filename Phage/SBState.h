@@ -23,14 +23,13 @@
 
 @property (strong, readonly) NSArray *north;
 @property (strong, readonly) NSArray *south;
-@property (readonly) SBPlayer playerTurn;
 
 - (NSUInteger)movesLeftForPiece:(SBPiece*)piece;
 - (SBLocation *)locationForPiece:(SBPiece*)piece;
 
 - (BOOL)isEqualToState:(SBState*)state;
 
-- (NSArray*)legalMoves;
+- (NSArray *)legalMovesForPlayer:(SBPlayer)player;
 
 - (SBState *)successorWithMove:(SBMove *)move;
 
