@@ -42,3 +42,10 @@ These are in no particular order, really. Apart from the last.
   * Even after logging out and logging in as another user in Game Center!
 * Polish. It absolutely must look good, but I'm happy about it not being too full-featured.
 
+Resources
+---------
+* Beginning Turn-Based Gaming with iOS 5 blog post:
+  * http://www.raywenderlich.com/5480/beginning-turn-based-gaming-with-ios-5-part-1
+  * http://www.raywenderlich.com/5509/beginning-turn-based-gaming-with-ios-5-part-2
+
+
