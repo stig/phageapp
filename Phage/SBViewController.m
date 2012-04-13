@@ -80,23 +80,23 @@
     return [match.participants objectAtIndex:nextIdx];
 }
 
-- (void)enterNewGame:(GKTurnBasedMatch *)match1 {
+- (void)enterNewGame:(GKTurnBasedMatch *)match {
     NSLog(@"enterNewGame");
     self.currentState = [[SBState alloc] init];
     self.textView.text = [self.currentState description];
     self.moveButton.enabled = YES;
 }
 
-- (void)takeTurn:(GKTurnBasedMatch *)match1 {
+- (void)takeTurn:(GKTurnBasedMatch *)match {
     NSLog(@"takeTurn");
-    self.currentState = [NSKeyedUnarchiver unarchiveObjectWithData:match1.matchData];
+    self.currentState = [NSKeyedUnarchiver unarchiveObjectWithData:match.matchData];
     self.textView.text = [self.currentState description];
     self.moveButton.enabled = YES;
 }
 
-- (void)layoutMatch:(GKTurnBasedMatch *)match1 {
+- (void)layoutMatch:(GKTurnBasedMatch *)match {
     NSLog(@"layoutMatch");
-    self.currentState = [NSKeyedUnarchiver unarchiveObjectWithData:match1.matchData];
+    self.currentState = [NSKeyedUnarchiver unarchiveObjectWithData:match.matchData];
     self.textView.text = [self.currentState description];
     self.moveButton.enabled = NO;
 }
