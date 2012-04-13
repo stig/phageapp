@@ -9,9 +9,11 @@
 - (void)takeTurn:(GKTurnBasedMatch *)match;
 - (void)layoutMatch:(GKTurnBasedMatch *)match;
 - (GKTurnBasedParticipant*)nextParticipantForMatch:(GKTurnBasedMatch*)match;
+- (void)recieveEndGame:(GKTurnBasedMatch *)match;
+- (void)sendNotice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match;
 @end
 
-@interface TurnBasedMatchHelper : NSObject <GKTurnBasedMatchmakerViewControllerDelegate> {
+@interface TurnBasedMatchHelper : NSObject <GKTurnBasedMatchmakerViewControllerDelegate, GKTurnBasedEventHandlerDelegate> {
     @private
     UIViewController *_presentingViewController;
     id<TurnBasedMatchHelperDelegate> _delegate;
@@ -21,5 +23,7 @@
 
 - (id)initWithPresentingViewController:(UIViewController*)vc delegate:(id<TurnBasedMatchHelperDelegate>)delegate;
 - (void)findMatchWithMinPlayers:(NSUInteger)minPlayers maxPlayers:(NSUInteger)maxPlayers;
+- (BOOL)isCurrentMatch:(GKTurnBasedMatch*)match;
+- (BOOL)isLocalPlayerTurn:(GKTurnBasedMatch*)match;
 
 @end
