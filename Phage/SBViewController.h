@@ -6,14 +6,17 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "TurnBasedMatchHelper.h"
+
 @class SBState;
 
-@interface SBViewController : UIViewController <GKTurnBasedMatchmakerViewControllerDelegate>
+@interface SBViewController : UIViewController <TurnBasedMatchHelperDelegate>
+
+@property (strong) TurnBasedMatchHelper *turnBasedMatchHelper;
 
 @property (strong) IBOutlet UIButton *moveButton;
 @property (strong) IBOutlet UITextView *textView;
 
-@property (strong) GKTurnBasedMatch *currentMatch;
 @property (strong) SBState *currentState;
 
 - (IBAction)go;

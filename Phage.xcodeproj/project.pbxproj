@@ -38,6 +38,7 @@
 		D7BFA3B2151F2AD300435C84 /* SBDirectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */; };
 		D7BFA3B2151F2AD300435C89 /* SBMovePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C88 /* SBMovePicker.m */; };
 		D7BFA3B2151F2AD300435C8C /* SBMovePickerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */; };
+		D7BFA3B2151F2AD300435C8F /* TurnBasedMatchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C8E /* TurnBasedMatchHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,8 @@
 		D7BFA3B2151F2AD300435C8A /* SBMovePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMovePicker.h; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMovePickerTest.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C8D /* SBMovePickerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMovePickerTest.h; sourceTree = "<group>"; };
+		D7BFA3B2151F2AD300435C8E /* TurnBasedMatchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TurnBasedMatchHelper.m; sourceTree = "<group>"; };
+		D7BFA3B2151F2AD300435C90 /* TurnBasedMatchHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurnBasedMatchHelper.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +194,8 @@
 		D76A456B151DDC7500E59146 /* Phage */ = {
 			isa = PBXGroup;
 			children = (
+				D7BFA3B2151F2AD300435C90 /* TurnBasedMatchHelper.h */,
+				D7BFA3B2151F2AD300435C8E /* TurnBasedMatchHelper.m */,
 				D755A4941532224C003BB704 /* Model */,
 				D76A4574151DDC7500E59146 /* SBAppDelegate.h */,
 				D76A4575151DDC7500E59146 /* SBAppDelegate.m */,
@@ -365,6 +370,7 @@
 				D7BFA3AF151F108100435C7F /* SBState.m in Sources */,
 				D7BFA3B2151F2AD300435C81 /* SBDirection.m in Sources */,
 				D7BFA3B2151F2AD300435C89 /* SBMovePicker.m in Sources */,
+				D7BFA3B2151F2AD300435C8F /* TurnBasedMatchHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
