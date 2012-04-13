@@ -11,10 +11,6 @@
 #import "SBMovePicker.h"
 #import "SBMove.h"
 
-@interface SBViewController ()
-
-@end
-
 @implementation SBViewController
 
 @synthesize currentState = _currentState;
