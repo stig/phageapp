@@ -110,7 +110,7 @@
     [av show];
 }
 
-- (void)recieveEndGame:(GKTurnBasedMatch *)match {
+- (void)receiveEndGame:(GKTurnBasedMatch *)match {
     [self layoutMatch:match];
 }
 

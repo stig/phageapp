@@ -144,7 +144,7 @@
 - (void)handleMatchEnded:(GKTurnBasedMatch *)match {
     NSLog(@"Game has ended");
     if ([self isCurrentMatch:match]) {
-        [_delegate recieveEndGame:match];
+        [_delegate receiveEndGame:match];
     } else {
         [_delegate sendNotice:@"Another Game Ended!" forMatch:match];
     }
