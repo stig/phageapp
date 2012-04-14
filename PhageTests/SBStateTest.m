@@ -156,7 +156,6 @@ static SBPlayer *SBPlayerSouth;
 }
 
 - (void)testCodingSize {
-
     SBPlayer *player = SBPlayerNorth;
     for (;;) {
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:s];
@@ -172,16 +171,29 @@ static SBPlayer *SBPlayerSouth;
 }
 
 - (void)testIsGameOver {
-    STAssertFalse([s isGameOver], nil);
+    SBPlayer *player = [[SBPlayer alloc] init];
+    STAssertFalse([s isGameOverForPlayer:player], nil);
+    STAssertFalse([s isGameOverForPlayer:player.opponent], nil);
 
-    for (SBPlayer *player = SBPlayerNorth; ![s isGameOver]; player = [player opponent]) {
+    while (![s isGameOverForPlayer:player]) {
         SBMove *m = [[s legalMovesForPlayer:player] lastObject];
         s = [s successorWithMove:m];
+        player = [player opponent];
     }
     
-    STAssertTrue([s isGameOver], nil);
-    STAssertTrue([s isGameOverForPlayer:SBPlayerNorth], nil);
-    STAssertFalse([s isGameOverForPlayer:SBPlayerSouth], nil);
+    STAssertTrue([s isGameOverForPlayer:player], nil);
+    STAssertTrue([s isGameOverForPlayer:player.opponent], nil);
+}
+
+- (void)testIsWin {
+    SBPlayer *player = [[SBPlayer alloc] init];
+    STAssertFalse([s isWinForPlayer:player], nil);
+    STAssertFalse([s isWinForPlayer:player.opponent], nil);
+    
+    s = [s successorWithMove:[[s legalMovesForPlayer:SBPlayerNorth] lastObject]];
+    STAssertTrue([s isWinForPlayer:player], nil);
+    STAssertFalse([s isWinForPlayer:player.opponent], nil);
+
 }
 
 - (void)testIsDraw {

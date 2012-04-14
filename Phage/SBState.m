@@ -226,26 +226,30 @@
     return [[[self class] alloc] initWithNorth:_north south:_south locations:[newLocations copy] movesLeft:[newMovesLeft copy] occupied:newOccupiedSet];
 }
 
-- (BOOL)isGameOver {
-    SBPlayer *player = [[SBPlayer alloc] init];
-    return [self isGameOverForPlayer:player]
-        || [self isGameOverForPlayer:[player opponent]];
-}
-
 - (BOOL)isGameOverForPlayer:(SBPlayer*)player {
     return [self legalMovesForPlayer:player].count == 0u;
 }
 
+- (NSArray*)piecesForPlayer:(SBPlayer*)player {
+    return [player isNorth] ? _north : _south;
+}
+
+- (BOOL)isWinForPlayer:(SBPlayer *)player {
+    NSUInteger playerMoveCount = 0;
+    for (SBPiece *p in [self piecesForPlayer:player])
+        playerMoveCount += [[_moves objectForKey:p] unsignedIntegerValue];
+    
+    NSUInteger opponentMoveCount = 0;
+    for (SBPiece *p in [self piecesForPlayer:player.opponent])
+        opponentMoveCount += [[_moves objectForKey:p] unsignedIntegerValue];
+    
+    // Number of moves _left_ should be less for the winning player
+    return playerMoveCount < opponentMoveCount;
+}
+
 - (BOOL)isDraw {
-    NSUInteger northMoves = 0;
-    for (SBPiece *p in _north)
-        northMoves += [[_moves objectForKey:p] unsignedIntegerValue];
-    
-    NSUInteger southMoves = 0;
-    for (SBPiece *p in _south)
-        southMoves += [[_moves objectForKey:p] unsignedIntegerValue];
-    
-    return northMoves == southMoves;
+    SBPlayer *player = [[SBPlayer alloc] init];
+    return ![self isWinForPlayer:player] && ![self isWinForPlayer:player.opponent];
 }
 
 @end

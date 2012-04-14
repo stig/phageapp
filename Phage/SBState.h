@@ -29,11 +29,12 @@
 
 - (BOOL)isEqualToState:(SBState*)state;
 
+- (NSArray *)piecesForPlayer:(SBPlayer*)player;
 - (NSArray *)legalMovesForPlayer:(SBPlayer*)player;
 - (SBState *)successorWithMove:(SBMove *)move;
 
 - (BOOL)isGameOverForPlayer:(SBPlayer*)player;
-- (BOOL)isGameOver;
+- (BOOL)isWinForPlayer:(SBPlayer*)player;
 - (BOOL)isDraw;
 
 @end

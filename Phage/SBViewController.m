@@ -53,12 +53,38 @@
             : [[SBPlayer alloc] initForNorth:NO];
 
     SBMove *move = [[[SBMovePicker alloc] init] optimalMoveForState:self.currentState withPlayer:player];
+    NSAssert(move, @"Move MUST be available when we get here");
+    
+    SBState *newState = [self.currentState successorWithMove:move];
+    
+    GKTurnBasedParticipant *nextParticipant = [self nextParticipantForMatch:match];
+    NSData *matchData = [NSKeyedArchiver archivedDataWithRootObject:newState];
+    
+    if ([newState isGameOverForPlayer:player.opponent]) {
+        if ([newState isDraw]) {
+            nextParticipant.matchOutcome = GKTurnBasedMatchOutcomeTied;
+            match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeTied;
 
-    if (move) {
-        SBState *newState = [self.currentState successorWithMove:move];
-
-        [match endTurnWithNextParticipant:[self nextParticipantForMatch:match]
-                                matchData:[NSKeyedArchiver archivedDataWithRootObject:newState]
+        } else if ([newState isWinForPlayer:player]) {
+            match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeWon;
+            nextParticipant.matchOutcome = GKTurnBasedMatchOutcomeLost;
+            
+        } else {
+            NSAssert(NO, @"Should never get here...");
+        }
+        
+        [match endMatchInTurnWithMatchData:matchData completionHandler:^(NSError *error) {
+            if (error) {
+                NSLog(@"%@", error);
+            } else {
+                self.textView.text = [@"Game Over!\n" stringByAppendingString:self.textView.text];
+                
+            }
+        }];
+        
+    } else {
+        [match endTurnWithNextParticipant:nextParticipant
+                                matchData:matchData
                         completionHandler:^(NSError *error) {
                             if (error) {
                                 NSLog(@"%@", error);
@@ -69,7 +95,6 @@
                                 self.moveButton.enabled = NO;
                             }
                         }];
-
     }
 }
 
