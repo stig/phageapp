@@ -183,8 +183,10 @@
 }
 
 - (NSArray *)legalMovesForPiece:(SBPiece *)piece {
+    if (![[_moves objectForKey:piece] unsignedIntegerValue])
+        return [[NSArray alloc] init];
+    
     NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:32];
-
     for (SBDirection *d in [piece directions]) {
         SBLocation *loc = [self locationForPiece:piece];
         for (; ;) {
