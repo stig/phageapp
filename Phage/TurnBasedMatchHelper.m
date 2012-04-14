@@ -67,11 +67,10 @@
 
     _currentMatch = match;
 
-    GKTurnBasedParticipant *firstParticipant = [match.participants objectAtIndex:0];
-
-    if (firstParticipant.lastTurnDate == NULL) {
+    if (0 == match.matchData.length) {
         // It's a new game!
         [_delegate enterNewGame:match];
+        
     } else {
         if ([match.currentParticipant.playerID isEqualToString:[GKLocalPlayer localPlayer].playerID]) {
             // It's your turn!
