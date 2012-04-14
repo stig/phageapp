@@ -28,13 +28,7 @@
 #pragma mark NSCoding
 
 - (id)initWithCoder:(NSCoder *)coder {
-    // TODO: This is slightly ugly because I changed the serialisation format and want
-    // to allow upgrading the old objects. It can be cleaned up before release.
     SBPlayer *player = [coder decodeObjectForKey:@"SBPlayerV2"];
-    if (player == nil) {
-        NSLog(@"Upgrading player from enum to object!");
-        player = [[SBPlayer alloc] initForNorth:[coder decodeIntegerForKey:@"SBPlayer"] == 0];
-    }
     return [self initWithPlayer:player];
 }
 
