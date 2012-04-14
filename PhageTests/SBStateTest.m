@@ -166,4 +166,23 @@ static SBState *s;
     }
 }
 
+- (void)testIsGameOver {
+    STAssertFalse([s isGameOver], nil);
+
+    for (SBPlayer player = SBPlayerNorth; ![s isGameOver]; player = 1 - player) {
+        SBMove *m = [[s legalMovesForPlayer:player] lastObject];
+        s = [s successorWithMove:m];
+    }
+    
+    STAssertTrue([s isGameOver], nil);
+    STAssertTrue([s isGameOverForPlayer:SBPlayerNorth], nil);
+    STAssertFalse([s isGameOverForPlayer:SBPlayerSouth], nil);
+}
+
+- (void)testIsDraw {
+    STAssertTrue([s isDraw], nil);
+    s = [s successorWithMove:[[s legalMovesForPlayer:SBPlayerNorth] lastObject]];
+    STAssertFalse([s isDraw], nil);
+}
+
 @end

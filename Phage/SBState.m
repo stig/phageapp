@@ -221,4 +221,24 @@
     return [[[self class] alloc] initWithNorth:_north south:_south locations:[newLocations copy] movesLeft:[newMovesLeft copy] occupied:newOccupiedSet];
 }
 
+- (BOOL)isGameOver {
+    return [self isGameOverForPlayer:SBPlayerNorth] || [self isGameOverForPlayer:SBPlayerSouth];
+}
+
+- (BOOL)isGameOverForPlayer:(SBPlayer)player {
+    return [self legalMovesForPlayer:player].count == 0u;
+}
+
+- (BOOL)isDraw {
+    NSUInteger northMoves = 0;
+    for (SBPiece *p in _north)
+        northMoves += [[_moves objectForKey:p] unsignedIntegerValue];
+    
+    NSUInteger southMoves = 0;
+    for (SBPiece *p in _south)
+        southMoves += [[_moves objectForKey:p] unsignedIntegerValue];
+    
+    return northMoves == southMoves;
+}
+
 @end

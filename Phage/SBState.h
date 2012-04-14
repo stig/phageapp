@@ -29,7 +29,10 @@
 - (BOOL)isEqualToState:(SBState*)state;
 
 - (NSArray *)legalMovesForPlayer:(SBPlayer)player;
-
 - (SBState *)successorWithMove:(SBMove *)move;
+
+- (BOOL)isGameOverForPlayer:(SBPlayer)player;
+- (BOOL)isGameOver;
+- (BOOL)isDraw;
 
 @end
