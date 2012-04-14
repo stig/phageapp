@@ -10,7 +10,7 @@
 - (void)layoutMatch:(GKTurnBasedMatch *)match;
 - (GKTurnBasedParticipant*)nextParticipantForMatch:(GKTurnBasedMatch*)match;
 - (void)receiveEndGame:(GKTurnBasedMatch *)match;
-- (void)sendNotice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match;
+- (void)sendTitle:(NSString*)title notice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match;
 @end
 
 @interface TurnBasedMatchHelper : NSObject <GKTurnBasedMatchmakerViewControllerDelegate, GKTurnBasedEventHandlerDelegate> {

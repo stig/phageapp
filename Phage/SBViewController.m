@@ -102,8 +102,8 @@
     self.moveButton.enabled = NO;
 }
 
-- (void)sendNotice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match {
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Another game needs your attention!"
+- (void)sendTitle:(NSString*)title notice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match {
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:title
                                                  message:notice
                                                 delegate:self
                                        cancelButtonTitle:@"Sweet!"

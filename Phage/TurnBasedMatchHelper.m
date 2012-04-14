@@ -134,7 +134,9 @@
     } else {
         if ([self isLocalPlayerTurn:match]) {
             // it's not the current match and it's our turn now
-            [_delegate sendNotice:@"It's your turn for another match" forMatch:match];
+            [_delegate sendTitle:@"Attention: Your Turn!"
+                          notice:@"It is now your turn in another game."
+                        forMatch:match];
         } else {
             // it's the not current match, and it's someone else's turn
         }
@@ -146,7 +148,9 @@
     if ([self isCurrentMatch:match]) {
         [_delegate receiveEndGame:match];
     } else {
-        [_delegate sendNotice:@"Another Game Ended!" forMatch:match];
+        [_delegate sendTitle:@"Game Over!"
+                      notice:@"One of your other games has ended."
+                    forMatch:match];
     }
 }
 
