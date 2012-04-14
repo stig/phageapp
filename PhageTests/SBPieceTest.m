@@ -12,6 +12,7 @@
 #import "SBDiamondPiece.h"
 #import "SBSquarePiece.h"
 #import "SBTrianglePiece.h"
+#import "SBPlayer.h"
 
 SBPiece *a;
 
@@ -31,7 +32,7 @@ SBPiece *a;
 }
 
 - (void)testSouthNotEquals {
-    SBPiece *c = [[SBCirclePiece alloc] initWithPlayer:SBPlayerSouth];
+    SBPiece *c = [[SBCirclePiece alloc] initWithPlayer:[[SBPlayer alloc] initForNorth:NO]];
     STAssertFalse([a isEqual:c], nil);
 }
 
@@ -46,7 +47,7 @@ SBPiece *a;
 }
 
 - (void)testSouthHashNotEquals {
-    SBPiece *b = [[SBCirclePiece alloc] initWithPlayer:SBPlayerSouth];
+    SBPiece *b = [[SBCirclePiece alloc] initWithPlayer:[[SBPlayer alloc] initForNorth:NO]];
     STAssertFalse([a hash] == [b hash], nil);    
 }
 

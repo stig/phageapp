@@ -12,13 +12,18 @@
 #import "SBCirclePiece.h"
 #import "SBDiamondPiece.h"
 #import "SBMove.h"
+#import "SBPlayer.h"
 
 @implementation SBStateTest
 
 static SBState *s;
+static SBPlayer *SBPlayerNorth;
+static SBPlayer *SBPlayerSouth;
 
 - (void)setUp {
     s = [[SBState alloc] init];
+    SBPlayerNorth = [[SBPlayer alloc] init];
+    SBPlayerSouth = [SBPlayerNorth opponent];
 }
 
 - (void)testEquals {
@@ -152,7 +157,7 @@ static SBState *s;
 
 - (void)testCodingSize {
 
-    SBPlayer player = SBPlayerNorth;
+    SBPlayer *player = SBPlayerNorth;
     for (;;) {
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:s];
         STAssertTrue(data.length < 3096u, @"Serialised state is less than 3K");
@@ -169,7 +174,7 @@ static SBState *s;
 - (void)testIsGameOver {
     STAssertFalse([s isGameOver], nil);
 
-    for (SBPlayer player = SBPlayerNorth; ![s isGameOver]; player = 1 - player) {
+    for (SBPlayer *player = SBPlayerNorth; ![s isGameOver]; player = [player opponent]) {
         SBMove *m = [[s legalMovesForPlayer:player] lastObject];
         s = [s successorWithMove:m];
     }

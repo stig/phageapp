@@ -10,6 +10,7 @@
 #import "SBState.h"
 #import "SBMovePicker.h"
 #import "SBMove.h"
+#import "SBPlayer.h"
 
 @implementation SBViewController
 
@@ -47,9 +48,9 @@
 - (IBAction)makeMove {
     GKTurnBasedMatch *match = self.turnBasedMatchHelper.currentMatch;
 
-    SBPlayer player = [match.participants indexOfObject:match.currentParticipant] == 0
-            ? SBPlayerNorth
-            : SBPlayerSouth;
+    SBPlayer *player = [match.participants indexOfObject:match.currentParticipant] == 0
+            ? [[SBPlayer alloc] init]
+            : [[SBPlayer alloc] initForNorth:NO];
 
     SBMove *move = [[[SBMovePicker alloc] init] optimalMoveForState:self.currentState withPlayer:player];
 

@@ -11,6 +11,7 @@
 #import "SBMove.h"
 #import "SBLocation.h"
 #import "SBTrianglePiece.h"
+#import "SBPlayer.h"
 
 @implementation SBMovePickerTest
 
@@ -18,7 +19,7 @@
     SBMovePicker *picker = [[SBMovePicker alloc] init];
     SBState *state = [[SBState alloc] init];
 
-    SBMove *move = [picker optimalMoveForState:state withPlayer:SBPlayerNorth];
+    SBMove *move = [picker optimalMoveForState:state withPlayer:[[SBPlayer alloc] init]];
     STAssertNotNil(move, nil);
 
     SBPiece *piece = [[SBTrianglePiece alloc] init];

@@ -11,6 +11,7 @@
 
 @class SBLocation;
 @class SBMove;
+@class SBPlayer;
 
 @interface SBState : NSObject <NSCoding> {
 
@@ -28,10 +29,10 @@
 
 - (BOOL)isEqualToState:(SBState*)state;
 
-- (NSArray *)legalMovesForPlayer:(SBPlayer)player;
+- (NSArray *)legalMovesForPlayer:(SBPlayer*)player;
 - (SBState *)successorWithMove:(SBMove *)move;
 
-- (BOOL)isGameOverForPlayer:(SBPlayer)player;
+- (BOOL)isGameOverForPlayer:(SBPlayer*)player;
 - (BOOL)isGameOver;
 - (BOOL)isDraw;
 

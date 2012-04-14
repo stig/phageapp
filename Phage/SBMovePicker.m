@@ -8,15 +8,16 @@
 #import "SBMovePicker.h"
 #import "SBMove.h"
 #import "SBState.h"
+#import "SBPlayer.h"
 
 
 @implementation SBMovePicker
 
-- (SBMove *)optimalMoveForState:(SBState *)state withPlayer:(SBPlayer)player {
+- (SBMove *)optimalMoveForState:(SBState *)state withPlayer:(SBPlayer*)player {
 
     NSArray *moves = [state legalMovesForPlayer:player];
 
-    SBPlayer opponent = player == SBPlayerNorth ? SBPlayerSouth : SBPlayerNorth;
+    SBPlayer *opponent = [player opponent];
 
     NSMutableDictionary *scores = [[NSMutableDictionary alloc] initWithCapacity:moves.count];
     for (SBMove *move in moves) {

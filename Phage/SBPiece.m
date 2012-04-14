@@ -7,16 +7,17 @@
 //
 
 #import "SBPiece.h"
+#import "SBPlayer.h"
 
 @implementation SBPiece
 
 @synthesize player = _player;
 
 - (id)init {
-    return [self initWithPlayer:SBPlayerNorth];
+    return [self initWithPlayer:[[SBPlayer alloc] init]];
 }
 
-- (id)initWithPlayer:(SBPlayer)player {
+- (id)initWithPlayer:(SBPlayer*)player {
     self = [super init];
     if (self) {
         _player = player;
@@ -27,11 +28,11 @@
 #pragma mark NSCoding
 
 - (id)initWithCoder:(NSCoder *)coder {
-    return [self initWithPlayer:[coder decodeIntegerForKey:@"SBPlayer"]];
+    return [self initWithPlayer:[coder decodeObjectForKey:@"SBPlayer"]];
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeInteger:_player forKey:@"SBPlayer"];
+    [coder encodeObject:_player forKey:@"SBPlayer"];
 }
 
 
@@ -43,7 +44,7 @@
 
 - (NSString*)description {
     NSString *substr = [NSStringFromClass([self class]) substringWithRange:NSMakeRange(2, 1)];
-    return _player == SBPlayerNorth ? [substr uppercaseString] : [substr lowercaseString];
+    return [_player isNorth] ? [substr uppercaseString] : [substr lowercaseString];
 }
 
 - (BOOL)isEqual:(id)other {
@@ -57,9 +58,7 @@
 - (BOOL)isEqualToPiece:(SBPiece *)other {
     if (self == other)
         return YES;
-    if (_player != other.player)
-        return NO;
-    return YES;
+    return [self.player isEqualToPlayer:other.player];
 }
 
 - (NSArray *)directions {
@@ -67,7 +66,7 @@
 }
 
 - (NSUInteger)hash {
-    return 31u * _player + [NSStringFromClass([self class]) hash];
+    return 31u * [_player hash] + [NSStringFromClass([self class]) hash];
 }
 
 @end

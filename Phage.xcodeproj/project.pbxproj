@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D72B3B9C153964C8008548A4 /* SBPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D72B3B9B153964C8008548A4 /* SBPlayer.m */; };
 		D73965B2151FB10600118094 /* SBPieceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D73965B1151FB10600118094 /* SBPieceTest.m */; };
 		D755A48B15320B53003BB704 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D755A48A15320B53003BB704 /* GameKit.framework */; };
 		D76A4566151DDC7500E59146 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4565151DDC7500E59146 /* UIKit.framework */; };
@@ -52,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D72B3B9A153964C8008548A4 /* SBPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPlayer.h; sourceTree = "<group>"; };
+		D72B3B9B153964C8008548A4 /* SBPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPlayer.m; sourceTree = "<group>"; };
 		D73965B0151FB10600118094 /* SBPieceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPieceTest.h; sourceTree = "<group>"; };
 		D73965B1151FB10600118094 /* SBPieceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPieceTest.m; sourceTree = "<group>"; };
 		D755A48A15320B53003BB704 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -156,6 +159,8 @@
 				D76A45BA151DFD0E00E59146 /* SBSquarePiece.m */,
 				D76A45BC151DFD1A00E59146 /* SBTrianglePiece.h */,
 				D76A45BD151DFD1A00E59146 /* SBTrianglePiece.m */,
+				D72B3B9A153964C8008548A4 /* SBPlayer.h */,
+				D72B3B9B153964C8008548A4 /* SBPlayer.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -371,6 +376,7 @@
 				D7BFA3B2151F2AD300435C81 /* SBDirection.m in Sources */,
 				D7BFA3B2151F2AD300435C89 /* SBMovePicker.m in Sources */,
 				D7BFA3B2151F2AD300435C8F /* TurnBasedMatchHelper.m in Sources */,
+				D72B3B9C153964C8008548A4 /* SBPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

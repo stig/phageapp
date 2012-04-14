@@ -14,6 +14,7 @@
 #import "SBLocation.h"
 #import "SBDirection.h"
 #import "SBMove.h"
+#import "SBPlayer.h"
 
 #define GRIDSIZE 8
 
@@ -46,16 +47,18 @@
 
 - (id)init {
 
-    NSArray *theNorth = [[NSArray alloc] initWithObjects:[[SBCirclePiece alloc] initWithPlayer:SBPlayerNorth],
-                                                         [[SBSquarePiece alloc] initWithPlayer:SBPlayerNorth],
-                                                         [[SBTrianglePiece alloc] initWithPlayer:SBPlayerNorth],
-                                                         [[SBDiamondPiece alloc] initWithPlayer:SBPlayerNorth],
+    SBPlayer *playerNorth = [[SBPlayer alloc] init];
+    NSArray *theNorth = [[NSArray alloc] initWithObjects:[[SBCirclePiece alloc] initWithPlayer:playerNorth],
+                                                         [[SBSquarePiece alloc] initWithPlayer:playerNorth],
+                                                         [[SBTrianglePiece alloc] initWithPlayer:playerNorth],
+                                                         [[SBDiamondPiece alloc] initWithPlayer:playerNorth],
                                                          nil];
 
-    NSArray *theSouth = [[NSArray alloc] initWithObjects:[[SBCirclePiece alloc] initWithPlayer:SBPlayerSouth],
-                                                         [[SBSquarePiece alloc] initWithPlayer:SBPlayerSouth],
-                                                         [[SBTrianglePiece alloc] initWithPlayer:SBPlayerSouth],
-                                                         [[SBDiamondPiece alloc] initWithPlayer:SBPlayerSouth],
+    SBPlayer *playerSouth = [playerNorth opponent];
+    NSArray *theSouth = [[NSArray alloc] initWithObjects:[[SBCirclePiece alloc] initWithPlayer:playerSouth],
+                                                         [[SBSquarePiece alloc] initWithPlayer:playerSouth],
+                                                         [[SBTrianglePiece alloc] initWithPlayer:playerSouth],
+                                                         [[SBDiamondPiece alloc] initWithPlayer:playerSouth],
                                                          nil];
 
     NSArray *theLocations = [[NSArray alloc] initWithObjects:[[SBLocation alloc] initWithColumn:1 row:4],
@@ -198,10 +201,10 @@
     return moves;
 }
 
-- (NSArray *)legalMovesForPlayer:(SBPlayer)player {
+- (NSArray *)legalMovesForPlayer:(SBPlayer*)player {
     NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:64u];
 
-    for (SBPiece *p in player == SBPlayerNorth ? _north : _south) {
+    for (SBPiece *p in [player isNorth] ? _north : _south) {
         [moves addObjectsFromArray:[self legalMovesForPiece:p]];
     }
 
@@ -222,10 +225,12 @@
 }
 
 - (BOOL)isGameOver {
-    return [self isGameOverForPlayer:SBPlayerNorth] || [self isGameOverForPlayer:SBPlayerSouth];
+    SBPlayer *player = [[SBPlayer alloc] init];
+    return [self isGameOverForPlayer:player]
+        || [self isGameOverForPlayer:[player opponent]];
 }
 
-- (BOOL)isGameOverForPlayer:(SBPlayer)player {
+- (BOOL)isGameOverForPlayer:(SBPlayer*)player {
     return [self legalMovesForPlayer:player].count == 0u;
 }
 

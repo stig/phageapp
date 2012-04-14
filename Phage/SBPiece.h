@@ -8,16 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum {
-    SBPlayerNorth,
-    SBPlayerSouth
-} SBPlayer;
+@class SBPlayer;
 
 @interface SBPiece : NSObject <NSCopying, NSCoding>
 
-@property (readonly) SBPlayer player;
+@property (strong, readonly) SBPlayer *player;
 
-- (id)initWithPlayer:(SBPlayer)owner;
+- (id)initWithPlayer:(SBPlayer*)owner;
 
 - (BOOL)isEqualToPiece:(SBPiece*)piece;
 
