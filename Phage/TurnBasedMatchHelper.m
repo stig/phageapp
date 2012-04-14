@@ -94,8 +94,11 @@
                             nextParticipant:part
                                   matchData:match.matchData
                           completionHandler:^(NSError *error) {
-                              if (error)
+                              if (error) {
                                   NSLog(@"ERROR: %@", error);
+                                   // TODO: used while developing; disable before release
+                                  [match removeWithCompletionHandler:nil];
+                              }
                           }];
 
 }
