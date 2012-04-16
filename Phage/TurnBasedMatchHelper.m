@@ -23,6 +23,10 @@
     return self;
 }
 
+- (void)dealloc {
+    [GKTurnBasedEventHandler sharedTurnBasedEventHandler].delegate = nil;
+}
+
 
 #pragma mark Methods
 
@@ -67,7 +71,7 @@
 
     _currentMatch = match;
 
-    if (0 == match.matchData.length) {
+    if (0 == [match.matchData length]) {
         // It's a new game!
         [_delegate enterNewGame:match];
         
