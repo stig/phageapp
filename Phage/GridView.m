@@ -15,21 +15,36 @@
 @synthesize background = _background;
 @synthesize delegate = _delegate;
 
+- (CGFloat)cellWidthForState:(SBState *)state {
+    return self.bounds.size.width / state.columns;
+}
+
+- (CGFloat)cellHeightForState:(SBState *)state {
+    return self.bounds.size.height / state.rows;
+}
+
+- (CGRect)cellRectForState:(SBState *)state {
+    return CGRectMake(0, 0, [self cellWidthForState:state], [self cellHeightForState:state]);
+}
+
+- (CGPoint)cellPositionForLocation:(SBLocation *)loc inState:(SBState *)state {
+    return CGPointMake((loc.column + 0.5) * [self cellWidthForState:state], (loc.row + 0.5) * [self cellHeightForState:state]);
+}
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
     SBState *state = self.delegate.currentState;
 
-    CGRect cell = CGRectMake(0, 0, rect.size.width / state.columns, rect.size.height / state.rows);
     for (SBPiece *piece in [state.north arrayByAddingObjectsFromArray:state.south]) {
         SBLocation *loc = [state locationForPiece:piece];
-        CGRect cellRect = CGRectOffset(cell, loc.column * cell.size.width, loc.row * cell.size.height);
 
         CALayer *layer = [CALayer layer];
         layer.backgroundColor = [UIColor orangeColor].CGColor;
         layer.cornerRadius = 20.0;
-        layer.frame = cellRect;
+        layer.bounds = [self cellRectForState:state];
+        layer.position = [self cellPositionForLocation:loc inState:state];
 
         [self.layer addSublayer:layer];
     }
