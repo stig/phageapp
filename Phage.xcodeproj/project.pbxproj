@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		536BE854153E17F000750F54 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536BE853153E17F000750F54 /* QuartzCore.framework */; };
 		D72B3B9C153964C8008548A4 /* SBPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D72B3B9B153964C8008548A4 /* SBPlayer.m */; };
 		D73965B2151FB10600118094 /* SBPieceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D73965B1151FB10600118094 /* SBPieceTest.m */; };
 		D755A48B15320B53003BB704 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D755A48A15320B53003BB704 /* GameKit.framework */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		536BE853153E17F000750F54 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D72B3B9A153964C8008548A4 /* SBPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPlayer.h; sourceTree = "<group>"; };
 		D72B3B9B153964C8008548A4 /* SBPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPlayer.m; sourceTree = "<group>"; };
 		D73965B0151FB10600118094 /* SBPieceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPieceTest.h; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				536BE854153E17F000750F54 /* QuartzCore.framework in Frameworks */,
 				D755A48B15320B53003BB704 /* GameKit.framework in Frameworks */,
 				D76A4566151DDC7500E59146 /* UIKit.framework in Frameworks */,
 				D76A4568151DDC7500E59146 /* Foundation.framework in Frameworks */,
@@ -173,6 +176,7 @@
 		D76A4556151DDC7500E59146 = {
 			isa = PBXGroup;
 			children = (
+				536BE853153E17F000750F54 /* QuartzCore.framework */,
 				D76A456B151DDC7500E59146 /* Phage */,
 				D76A458C151DDC7500E59146 /* PhageTests */,
 				D76A4564151DDC7500E59146 /* Frameworks */,
