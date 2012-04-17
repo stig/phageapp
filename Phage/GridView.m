@@ -15,7 +15,6 @@
 @synthesize background = _background;
 @synthesize delegate = _delegate;
 
-
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
@@ -23,10 +22,16 @@
     SBState *state = self.delegate.currentState;
 
     CGRect cell = CGRectMake(0, 0, rect.size.width / state.columns, rect.size.height / state.rows);
-    for (SBPiece *p in [state.north arrayByAddingObjectsFromArray:state.south]) {
-        SBLocation *loc = [state locationForPiece:p];
+    for (SBPiece *piece in [state.north arrayByAddingObjectsFromArray:state.south]) {
+        SBLocation *loc = [state locationForPiece:piece];
         CGRect cellRect = CGRectOffset(cell, loc.column * cell.size.width, loc.row * cell.size.height);
-        NSLog(@"Cell rect: %@", NSStringFromCGRect(cellRect));
+
+        CALayer *layer = [CALayer layer];
+        layer.backgroundColor = [UIColor orangeColor].CGColor;
+        layer.cornerRadius = 20.0;
+        layer.frame = cellRect;
+
+        [self.layer addSublayer:layer];
     }
 
 }
