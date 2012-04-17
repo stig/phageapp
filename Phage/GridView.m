@@ -12,7 +12,6 @@
 
 @implementation GridView
 
-@synthesize background = _background;
 @synthesize delegate = _delegate;
 
 - (CGFloat)cellWidthForState:(SBState *)state {

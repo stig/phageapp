@@ -13,7 +13,10 @@
 @end
 
 
-@interface GridView : UIView
-@property(strong) IBOutlet UIImageView *background;
+@interface GridView : UIView {
+    @private
+    IBOutlet UIImageView *background;
+}
+
 @property(weak) IBOutlet id<GridViewDelegate> delegate;
 @end
