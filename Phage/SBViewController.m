@@ -11,13 +11,14 @@
 #import "SBMovePicker.h"
 #import "SBMove.h"
 #import "SBPlayer.h"
+#import "GridView.h"
 
 @implementation SBViewController
 
 @synthesize currentState = _currentState;
-@synthesize textView = _textView;
 @synthesize moveButton = _moveButton;
 @synthesize turnBasedMatchHelper = _turnBasedMatchHelper;
+@synthesize gridView = _gridView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -77,7 +78,8 @@
             if (error) {
                 NSLog(@"%@", error);
             } else {
-                self.textView.text = [@"Game Over!\n" stringByAppendingString:self.textView.text];
+                self.currentState = newState;
+                [self.gridView setNeedsDisplay];
                 
             }
         }];
@@ -91,8 +93,8 @@
                                 // statusLabel.text = @"Oops, there was a problem.  Try that again.";
                             } else {
                                 self.currentState = newState;
-                                self.textView.text = [newState description];
                                 self.moveButton.enabled = NO;
+                                [self.gridView setNeedsDisplay];
                             }
                         }];
     }
@@ -109,22 +111,22 @@
 - (void)enterNewGame:(GKTurnBasedMatch *)match {
     NSLog(@"enterNewGame");
     self.currentState = [[SBState alloc] init];
-    self.textView.text = [self.currentState description];
     self.moveButton.enabled = YES;
+    [self.gridView setNeedsDisplay];
 }
 
 - (void)takeTurn:(GKTurnBasedMatch *)match {
     NSLog(@"takeTurn");
     self.currentState = [NSKeyedUnarchiver unarchiveObjectWithData:match.matchData];
-    self.textView.text = [self.currentState description];
     self.moveButton.enabled = YES;
+    [self.gridView setNeedsDisplay];
 }
 
 - (void)layoutMatch:(GKTurnBasedMatch *)match {
     NSLog(@"layoutMatch");
     self.currentState = [NSKeyedUnarchiver unarchiveObjectWithData:match.matchData];
-    self.textView.text = [self.currentState description];
     self.moveButton.enabled = NO;
+    [self.gridView setNeedsDisplay];
 }
 
 - (void)sendTitle:(NSString*)title notice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match {

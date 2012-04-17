@@ -40,6 +40,8 @@
 		D7BFA3B2151F2AD300435C89 /* SBMovePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C88 /* SBMovePicker.m */; };
 		D7BFA3B2151F2AD300435C8C /* SBMovePickerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */; };
 		D7BFA3B2151F2AD300435C8F /* TurnBasedMatchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C8E /* TurnBasedMatchHelper.m */; };
+		D7BFA3B2151F2AD300435C93 /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C92 /* GridView.m */; };
+		D7BFA3B2151F2AD300435C95 /* chess-640x640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +111,9 @@
 		D7BFA3B2151F2AD300435C8D /* SBMovePickerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMovePickerTest.h; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C8E /* TurnBasedMatchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TurnBasedMatchHelper.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C90 /* TurnBasedMatchHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurnBasedMatchHelper.h; sourceTree = "<group>"; };
+		D7BFA3B2151F2AD300435C91 /* GridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridView.h; sourceTree = "<group>"; };
+		D7BFA3B2151F2AD300435C92 /* GridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridView.m; sourceTree = "<group>"; };
+		D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "chess-640x640.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +204,9 @@
 		D76A456B151DDC7500E59146 /* Phage */ = {
 			isa = PBXGroup;
 			children = (
+				D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */,
+				D7BFA3B2151F2AD300435C92 /* GridView.m */,
+				D7BFA3B2151F2AD300435C91 /* GridView.h */,
 				D7BFA3B2151F2AD300435C90 /* TurnBasedMatchHelper.h */,
 				D7BFA3B2151F2AD300435C8E /* TurnBasedMatchHelper.m */,
 				D755A4941532224C003BB704 /* Model */,
@@ -328,6 +336,7 @@
 				D76A4570151DDC7500E59146 /* InfoPlist.strings in Resources */,
 				D76A4579151DDC7500E59146 /* MainStoryboard_iPhone.storyboard in Resources */,
 				D76A457C151DDC7500E59146 /* MainStoryboard_iPad.storyboard in Resources */,
+				D7BFA3B2151F2AD300435C95 /* chess-640x640.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +386,7 @@
 				D7BFA3B2151F2AD300435C89 /* SBMovePicker.m in Sources */,
 				D7BFA3B2151F2AD300435C8F /* TurnBasedMatchHelper.m in Sources */,
 				D72B3B9C153964C8008548A4 /* SBPlayer.m in Sources */,
+				D7BFA3B2151F2AD300435C93 /* GridView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

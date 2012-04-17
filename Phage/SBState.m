@@ -16,8 +16,6 @@
 #import "SBMove.h"
 #import "SBPlayer.h"
 
-#define GRIDSIZE 8
-
 @interface SBState ()
 @property (readonly) NSDictionary *locations;
 @property (readonly) NSDictionary *moves;
@@ -133,7 +131,7 @@
 #pragma mark -
 
 - (NSString *)description {
-    NSMutableString *desc = [[NSMutableString alloc] initWithCapacity:GRIDSIZE * GRIDSIZE * 2u];
+    NSMutableString *desc = [[NSMutableString alloc] initWithCapacity:self.rows * self.columns * 2u];
 
     for (id p in _north) {
         [desc appendFormat:@"%@: %@\n", p, [_moves objectForKey:p]];
@@ -145,8 +143,8 @@
         [map setObject:p forKey:loc];
     }
 
-    for (int r = GRIDSIZE - 1; r >= 0; r--) {
-        for (int c = 0; c < GRIDSIZE; c++) {
+    for (int r = self.rows - 1; r >= 0; r--) {
+        for (int c = 0; c < self.columns; c++) {
             SBLocation *loc = [[SBLocation alloc] initWithColumn:c row:r];
 
             SBPiece *p = [map objectForKey:loc];
@@ -179,7 +177,7 @@
 }
 
 - (BOOL)isGridLocation:(SBLocation*)loc {
-    return loc.column >= 0 && loc.column < GRIDSIZE && loc.row >= 0 && loc.row < GRIDSIZE;
+    return loc.column >= 0 && loc.column < self.columns && loc.row >= 0 && loc.row < self.rows;
 }
 
 - (NSArray *)legalMovesForPiece:(SBPiece *)piece {
@@ -250,6 +248,14 @@
 - (BOOL)isDraw {
     SBPlayer *player = [[SBPlayer alloc] init];
     return ![self isWinForPlayer:player] && ![self isWinForPlayer:player.opponent];
+}
+
+- (NSUInteger)columns {
+    return 8u;
+}
+
+- (NSUInteger)rows {
+    return 8u;
 }
 
 @end

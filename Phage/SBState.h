@@ -21,8 +21,10 @@
     NSDictionary *_locations;
 }
 
-@property (strong, readonly) NSArray *north;
-@property (strong, readonly) NSArray *south;
+@property(readonly) NSUInteger rows;
+@property(readonly) NSUInteger columns;
+@property(strong, readonly) NSArray *north;
+@property(strong, readonly) NSArray *south;
 
 - (NSUInteger)movesLeftForPiece:(SBPiece*)piece;
 - (SBLocation *)locationForPiece:(SBPiece*)piece;

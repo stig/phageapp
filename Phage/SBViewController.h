@@ -9,13 +9,14 @@
 #import "TurnBasedMatchHelper.h"
 
 @class SBState;
+@class GridView;
 
 @interface SBViewController : UIViewController <TurnBasedMatchHelperDelegate>
 
 @property (strong) TurnBasedMatchHelper *turnBasedMatchHelper;
 
 @property (strong) IBOutlet UIButton *moveButton;
-@property (strong) IBOutlet UITextView *textView;
+@property (strong) IBOutlet GridView *gridView;
 
 @property (strong) SBState *currentState;
 
