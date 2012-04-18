@@ -7,11 +7,11 @@
 //
 
 #import "TurnBasedMatchHelper.h"
+#import "GridView.h"
 
 @class SBState;
-@class GridView;
 
-@interface SBViewController : UIViewController <TurnBasedMatchHelperDelegate>
+@interface SBViewController : UIViewController <TurnBasedMatchHelperDelegate, GridViewDelegate>
 
 @property (strong) TurnBasedMatchHelper *turnBasedMatchHelper;
 
@@ -21,6 +21,5 @@
 @property (strong) SBState *currentState;
 
 - (IBAction)go;
-- (IBAction)makeMove;
 
 @end

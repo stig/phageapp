@@ -9,6 +9,7 @@
 #import "GridView.h"
 #import "SBState.h"
 #import "SBLocation.h"
+#import "SBMove.h"
 
 @implementation GridView
 
@@ -64,6 +65,7 @@
             layer.bounds = [self cellRectForState:state];
             layer.borderWidth = 1.0f;
             layer.position = [self cellPositionForLocation:loc inState:state];
+            [layer setValue:loc forKey:@"location"];
             [cells setObject:layer forKey:loc];
             [cellLayer addSublayer:layer];
         }
@@ -82,6 +84,7 @@
             layer.backgroundColor = [UIColor orangeColor].CGColor;
             layer.cornerRadius = 20.0;
             layer.bounds = [self cellRectForState:state];
+            [layer setValue:piece forKey:@"piece"];
             [pieces setObject:layer forKey:piece];
             [pieceLayer addSublayer:layer];
         }
@@ -100,21 +103,51 @@
 
 #pragma mark GridView Touch
 
+- (CGPoint)pointOfTouch:(NSSet *)touches {
+    UITouch *touch = [touches anyObject];
+    CGPoint point = [touch locationInView:self];
+    return point;
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    if ([touches count] == 1) {
-        UITouch *touch = [touches anyObject];
-        CGPoint point = [touch locationInView:self];
-//        point = [self convertPoint:point toView:nil];
-
-        CALayer *layer = [pieceLayer hitTest:point];
-        if (layer)
-            NSLog(@"Found layer: %@", layer.name);
-
-        layer = [cellLayer hitTest:point];
-        if (layer)
-            NSLog(@"Found layer: %@", layer.name);
+    CGPoint point = [self pointOfTouch:touches];
+    CALayer *layer = [pieceLayer hitTest:point];
+    if (layer) {
+        NSLog(@"Found layer: %@", layer.name);
+        draggingLayer = layer;
+        // TODO zoom the layer so it looks like it's picked up
     }
 }
 
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (draggingLayer)
+        draggingLayer.position = [self pointOfTouch:touches];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (draggingLayer) {
+        CALayer *cell = [cellLayer hitTest:[self pointOfTouch:touches]];
+        NSAssert(cell, @"Should have a cell now");
+
+        SBLocation *loc = [cell valueForKey:@"location"];
+        SBPiece *piece = [draggingLayer valueForKey:@"piece"];
+        if ([[currentState moveLocationsForPiece:piece] containsObject:loc]) {
+            NSLog(@"%@ is a valid move location for %@", loc, piece);
+            [self.delegate performMove:[[SBMove alloc] initWithPiece:piece to:loc]];
+        } else {
+            NSLog(@"BEEEP! Illegal move!");
+            draggingLayer.position = [self cellPositionForLocation:[currentState locationForPiece:piece]
+                                                           inState:currentState];
+        }
+        draggingLayer = nil;
+    }
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (draggingLayer) {
+        NSLog(@"touchesCancelled");
+        draggingLayer = nil;
+    }
+}
 
 @end

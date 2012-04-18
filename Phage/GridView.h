@@ -7,14 +7,17 @@
 //
 
 @class SBState;
+@class SBMove;
 
 @protocol GridViewDelegate
+- (void)performMove:(SBMove*)move;
 @end
 
 @interface GridView : UIView {
     @private
     IBOutlet UIImageView *background;
 
+    CALayer *draggingLayer;
     CALayer *cellLayer;
     CALayer *pieceLayer;
     NSMutableDictionary *cells;

@@ -8,10 +8,7 @@
 
 #import "SBViewController.h"
 #import "SBState.h"
-#import "SBMovePicker.h"
 #import "SBMove.h"
-#import "SBPlayer.h"
-#import "GridView.h"
 
 @implementation SBViewController
 
@@ -24,7 +21,6 @@
     [super viewDidLoad];
 
     self.turnBasedMatchHelper = [[TurnBasedMatchHelper alloc] initWithPresentingViewController:self delegate:self];
-    [self.gridView setState:[[SBState alloc] init]];
 }
 
 - (void)viewDidUnload {
@@ -46,29 +42,23 @@
     [self.turnBasedMatchHelper findMatchWithMinPlayers:2 maxPlayers:2];
 }
 
-- (IBAction)makeMove {
-    GKTurnBasedMatch *match = self.turnBasedMatchHelper.currentMatch;
-
-    SBPlayer *player = [match.participants indexOfObject:match.currentParticipant] == 0
-            ? [[SBPlayer alloc] init]
-            : [[SBPlayer alloc] initForNorth:NO];
-
-    SBMove *move = [[[SBMovePicker alloc] init] optimalMoveForState:self.currentState withPlayer:player];
-    NSAssert(move, @"Move MUST be available when we get here");
-    
+- (void)performMove:(SBMove*) move
+{
+    NSParameterAssert([[self.currentState legalMoves] containsObject:move]);
     SBState *newState = [self.currentState successorWithMove:move];
-    
+
+    GKTurnBasedMatch *match = self.turnBasedMatchHelper.currentMatch;
     GKTurnBasedParticipant *nextParticipant = [self nextParticipantForMatch:match];
     NSData *matchData = [NSKeyedArchiver archivedDataWithRootObject:newState];
-    
+
     if ([newState isGameOver]) {
         if ([newState isDraw]) {
             nextParticipant.matchOutcome = GKTurnBasedMatchOutcomeTied;
             match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeTied;
 
         } else if ([newState isWin]) {
-            match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeWon;
-            nextParticipant.matchOutcome = GKTurnBasedMatchOutcomeLost;
+            match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeLost;
+            nextParticipant.matchOutcome = GKTurnBasedMatchOutcomeWon;
             
         } else {
             NSAssert(NO, @"Should never get here...");
@@ -140,5 +130,6 @@
 - (void)receiveEndGame:(GKTurnBasedMatch *)match {
     [self layoutMatch:match];
 }
+
 
 @end
