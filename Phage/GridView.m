@@ -14,6 +14,16 @@
 
 @synthesize delegate = _delegate;
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        layers = [[NSMutableDictionary alloc] init];
+    }
+    return self;
+}
+
+#pragma mark -
+
 - (CGFloat)cellWidthForState:(SBState *)state {
     return self.bounds.size.width / state.columns;
 }
@@ -34,8 +44,6 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
-    if (!layers) layers = [[NSMutableDictionary alloc] init];
-
     SBState *state = self.delegate.currentState;
 
     for (SBPiece *piece in [state.north arrayByAddingObjectsFromArray:state.south]) {
