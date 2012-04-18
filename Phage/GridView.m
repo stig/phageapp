@@ -18,6 +18,7 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         layers = [[NSMutableDictionary alloc] init];
+        cells = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -48,6 +49,21 @@
         NSLog(@"New state is identical to current state");
         return;
     }
+
+    [state enumerateLocationsUsingBlock:^(SBLocation *loc) {
+        CALayer *layer = [cells objectForKey:loc];
+        if (!layer) {
+            layer = [CALayer layer];
+            layer.name = [loc description];
+            layer.bounds = [self cellRectForState:state];
+            layer.borderColor = [UIColor yellowColor].CGColor;
+            layer.borderWidth = 1.0f;
+            layer.position = [self cellPositionForLocation:loc inState:state];
+            [cells setObject:layer forKey:loc];
+            [self.layer addSublayer:layer];
+        }
+        [layer setNeedsDisplay];
+    }];
 
     for (SBPiece *piece in [state.north arrayByAddingObjectsFromArray:state.south]) {
 

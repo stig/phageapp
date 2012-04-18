@@ -42,4 +42,5 @@
 - (BOOL)isWin;
 - (BOOL)isDraw;
 
+- (void)enumerateLocationsUsingBlock:(void (^)(SBLocation *location))block;
 @end

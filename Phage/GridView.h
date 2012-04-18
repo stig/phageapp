@@ -14,6 +14,8 @@
 @interface GridView : UIView {
     @private
     IBOutlet UIImageView *background;
+
+    NSMutableDictionary *cells;
     NSMutableDictionary *layers;
     SBState *currentState;
 }

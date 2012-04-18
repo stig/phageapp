@@ -262,6 +262,16 @@
     return 0 == [self result];
 }
 
+- (void)enumerateLocationsUsingBlock:(void (^)(SBLocation*location))block
+{
+    for (NSUInteger r = 0; r < self.rows; r++) {
+        for (NSUInteger c = 0; c < self.columns; c++) {
+            block([[SBLocation alloc] initWithColumn:c row:r]);
+        }
+    }
+}
+
+
 - (NSUInteger)columns {
     return 8u;
 }
