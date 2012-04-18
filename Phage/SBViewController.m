@@ -12,7 +12,6 @@
 
 @implementation SBViewController
 
-@synthesize moveButton = _moveButton;
 @synthesize turnBasedMatchHelper = _turnBasedMatchHelper;
 @synthesize gridView = _gridView;
 
@@ -94,7 +93,6 @@
                                 NSLog(@"%@", error);
                                 // statusLabel.text = @"Oops, there was a problem.  Try that again.";
                             } else {
-                                self.moveButton.enabled = NO;
                                 [self.gridView setState:newState];
                             }
                         }];
@@ -116,19 +114,16 @@
 
 - (void)enterNewGame:(GKTurnBasedMatch *)match {
     NSLog(@"enterNewGame");
-    self.moveButton.enabled = YES;
     [self.gridView setState:[self startState]];
 }
 
 - (void)takeTurn:(GKTurnBasedMatch *)match {
     NSLog(@"takeTurn");
-    self.moveButton.enabled = YES;
     [self.gridView setState:[NSKeyedUnarchiver unarchiveObjectWithData:match.matchData]];
 }
 
 - (void)layoutMatch:(GKTurnBasedMatch *)match {
     NSLog(@"layoutMatch");
-    self.moveButton.enabled = NO;
     [self.gridView setState:[NSKeyedUnarchiver unarchiveObjectWithData:match.matchData]];
 }
 

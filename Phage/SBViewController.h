@@ -14,8 +14,6 @@
 @interface SBViewController : UIViewController <TurnBasedMatchHelperDelegate, GridViewDelegate>
 
 @property (strong) TurnBasedMatchHelper *turnBasedMatchHelper;
-
-@property (strong) IBOutlet UIButton *moveButton;
 @property (strong) IBOutlet GridView *gridView;
 
 - (IBAction)go;
