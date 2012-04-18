@@ -18,8 +18,8 @@
 @private
     SBPlayer *_player;
     NSSet *_occupied;
-    NSDictionary *_moves;
-    NSDictionary *_locations;
+    NSDictionary *_movesLeft;
+    NSDictionary *_pieceLocations;
 }
 
 @property(readonly) SBPlayer *player;

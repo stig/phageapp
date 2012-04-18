@@ -17,8 +17,8 @@
 #import "SBPlayer.h"
 
 @interface SBState ()
-@property (readonly) NSDictionary *locations;
-@property (readonly) NSDictionary *moves;
+@property (readonly) NSDictionary *pieceLocations;
+@property (readonly) NSDictionary *movesLeft;
 @property (readonly) NSSet *occupied;
 @end
 
@@ -27,8 +27,8 @@
 @synthesize player = _player;
 @synthesize north = _north;
 @synthesize south = _south;
-@synthesize locations = _locations;
-@synthesize moves = _moves;
+@synthesize pieceLocations = _pieceLocations;
+@synthesize movesLeft = _movesLeft;
 @synthesize occupied = _occupied;
 
 // Designated initializer
@@ -38,8 +38,8 @@
         _player = thePlayer;
         _north = theNorth;
         _south = theSouth;
-        _locations = theLocationMap;
-        _moves = theMovesLeftMap;
+        _pieceLocations = theLocationMap;
+        _movesLeft = theMovesLeftMap;
         _occupied = theOccupiedSet;
     }
     return self;
@@ -97,8 +97,8 @@
     [coder encodeObject:_player forKey:@"SBPlayer"];
     [coder encodeObject:_north forKey:@"SBNorth"];
     [coder encodeObject:_south forKey:@"SBSouth"];
-    [coder encodeObject:_locations forKey:@"SBLocations"];
-    [coder encodeObject:_moves forKey:@"SBMoves"];
+    [coder encodeObject:_pieceLocations forKey:@"SBLocations"];
+    [coder encodeObject:_movesLeft forKey:@"SBMoves"];
     [coder encodeObject:_occupied forKey:@"SBOccupied"];
 }
 
@@ -125,16 +125,16 @@
     if (self == other)
         return YES;
 
-    return [_locations isEqualToDictionary:other.locations] &&
+    return [_pieceLocations isEqualToDictionary:other.pieceLocations] &&
             [_player isEqualToPlayer:other.player] &&
-            [_moves isEqualToDictionary:other.moves] &&
+            [_movesLeft isEqualToDictionary:other.movesLeft] &&
             [_occupied isEqualToSet:other.occupied];
 }
 
 - (NSUInteger)hash {
-    NSUInteger hash = [_locations hash];
+    NSUInteger hash = [_pieceLocations hash];
     hash = hash * 31u + [_player hash];
-    hash = hash * 31u + [_moves hash];
+    hash = hash * 31u + [_movesLeft hash];
     hash = hash * 31u + [_occupied hash];
     return hash;
 }
@@ -145,12 +145,12 @@
     NSMutableString *desc = [[NSMutableString alloc] initWithCapacity:self.rows * self.columns * 2u];
 
     for (id p in _north) {
-        [desc appendFormat:@"%@: %@\n", p, [_moves objectForKey:p]];
+        [desc appendFormat:@"%@: %@\n", p, [_movesLeft objectForKey:p]];
     }
 
     NSMutableDictionary *map = [[NSMutableDictionary alloc] init];
-    for (SBPiece *p in _locations) {
-        SBLocation *loc = [_locations objectForKey:p];
+    for (SBPiece *p in _pieceLocations) {
+        SBLocation *loc = [_pieceLocations objectForKey:p];
         [map setObject:p forKey:loc];
     }
 
@@ -171,7 +171,7 @@
     }
 
     for (id p in _south) {
-        [desc appendFormat:@"%@: %@\n", p, [_moves objectForKey:p]];
+        [desc appendFormat:@"%@: %@\n", p, [_movesLeft objectForKey:p]];
     }
 
     return desc;
@@ -180,11 +180,11 @@
 #pragma mark -
 
 - (NSUInteger)movesLeftForPiece:(SBPiece *)piece {
-    return [[_moves objectForKey:piece] unsignedIntegerValue];
+    return [[_movesLeft objectForKey:piece] unsignedIntegerValue];
 }
 
 - (SBLocation *)locationForPiece:(SBPiece *)piece {
-    return [_locations objectForKey:piece];
+    return [_pieceLocations objectForKey:piece];
 }
 
 - (BOOL)isGridLocation:(SBLocation*)loc {
@@ -192,7 +192,7 @@
 }
 
 - (NSArray *)legalMovesForPiece:(SBPiece *)piece {
-    if (![[_moves objectForKey:piece] unsignedIntegerValue])
+    if (![[_movesLeft objectForKey:piece] unsignedIntegerValue])
         return [[NSArray alloc] init];
     
     NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:32];
@@ -226,10 +226,10 @@
 - (SBState *)successorWithMove:(SBMove *)move {
     NSSet *newOccupiedSet = [_occupied setByAddingObject:move.to];
 
-    NSMutableDictionary *newLocations = [_locations mutableCopy];
+    NSMutableDictionary *newLocations = [_pieceLocations mutableCopy];
     [newLocations setObject:move.to forKey:move.piece];
 
-    NSMutableDictionary *newMovesLeft = [_moves mutableCopy];
+    NSMutableDictionary *newMovesLeft = [_movesLeft mutableCopy];
     NSUInteger moves = [self movesLeftForPiece:move.piece];
     [newMovesLeft setObject:[NSNumber numberWithUnsignedInteger:moves - 1] forKey:move.piece];
 
@@ -244,11 +244,11 @@
  {
     NSUInteger playerMoveCount = 0;
     for (SBPiece *p in [self piecesForPlayer:_player])
-        playerMoveCount += [[_moves objectForKey:p] unsignedIntegerValue];
+        playerMoveCount += [[_movesLeft objectForKey:p] unsignedIntegerValue];
     
     NSUInteger opponentMoveCount = 0;
     for (SBPiece *p in [self piecesForPlayer:_player.opponent])
-        opponentMoveCount += [[_moves objectForKey:p] unsignedIntegerValue];
+        opponentMoveCount += [[_movesLeft objectForKey:p] unsignedIntegerValue];
 
     // Number of moves _left_ should be less for the winning player
     return opponentMoveCount - playerMoveCount;
