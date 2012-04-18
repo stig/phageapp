@@ -16,11 +16,13 @@
 @interface SBState : NSObject <NSCoding> {
 
 @private
+    SBPlayer *_player;
     NSSet *_occupied;
     NSDictionary *_moves;
     NSDictionary *_locations;
 }
 
+@property(readonly) SBPlayer *player;
 @property(readonly) NSUInteger rows;
 @property(readonly) NSUInteger columns;
 @property(strong, readonly) NSArray *north;
@@ -35,8 +37,8 @@
 - (NSArray *)legalMovesForPlayer:(SBPlayer*)player;
 - (SBState *)successorWithMove:(SBMove *)move;
 
-- (BOOL)isGameOverForPlayer:(SBPlayer*)player;
-- (BOOL)isWinForPlayer:(SBPlayer*)player;
+- (BOOL)isGameOver;
+- (BOOL)isWin;
 - (BOOL)isDraw;
 
 @end

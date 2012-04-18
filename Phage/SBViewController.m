@@ -61,12 +61,12 @@
     GKTurnBasedParticipant *nextParticipant = [self nextParticipantForMatch:match];
     NSData *matchData = [NSKeyedArchiver archivedDataWithRootObject:newState];
     
-    if ([newState isGameOverForPlayer:player.opponent]) {
+    if ([newState isGameOver]) {
         if ([newState isDraw]) {
             nextParticipant.matchOutcome = GKTurnBasedMatchOutcomeTied;
             match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeTied;
 
-        } else if ([newState isWinForPlayer:player]) {
+        } else if ([newState isWin]) {
             match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeWon;
             nextParticipant.matchOutcome = GKTurnBasedMatchOutcomeLost;
             

@@ -171,28 +171,22 @@ static SBPlayer *SBPlayerSouth;
 }
 
 - (void)testIsGameOver {
-    SBPlayer *player = [[SBPlayer alloc] init];
-    STAssertFalse([s isGameOverForPlayer:player], nil);
-    STAssertFalse([s isGameOverForPlayer:player.opponent], nil);
+    STAssertFalse([s isGameOver], nil);
 
-    while (![s isGameOverForPlayer:player]) {
+    SBPlayer *player = s.player;
+    while (![s isGameOver]) {
         SBMove *m = [[s legalMovesForPlayer:player] lastObject];
         s = [s successorWithMove:m];
         player = [player opponent];
     }
     
-    STAssertTrue([s isGameOverForPlayer:player], nil);
-    STAssertTrue([s isGameOverForPlayer:player.opponent], nil);
+    STAssertTrue([s isGameOver], nil);
 }
 
 - (void)testIsWin {
-    SBPlayer *player = [[SBPlayer alloc] init];
-    STAssertFalse([s isWinForPlayer:player], nil);
-    STAssertFalse([s isWinForPlayer:player.opponent], nil);
-    
+    STAssertFalse([s isWin], nil);
     s = [s successorWithMove:[[s legalMovesForPlayer:SBPlayerNorth] lastObject]];
-    STAssertTrue([s isWinForPlayer:player], nil);
-    STAssertFalse([s isWinForPlayer:player.opponent], nil);
+    STAssertFalse([s isWin], nil);
 
 }
 
