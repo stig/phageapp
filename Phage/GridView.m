@@ -40,11 +40,14 @@
     return CGPointMake((loc.column + 0.5) * [self cellWidthForState:state], (loc.row + 0.5) * [self cellHeightForState:state]);
 }
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    SBState *state = self.delegate.currentState;
+#pragma mark -
+
+- (void)setState:(SBState *)state {
+
+    if ([currentState isEqualToState:state]) {
+        NSLog(@"New state is identical to current state");
+        return;
+    }
 
     for (SBPiece *piece in [state.north arrayByAddingObjectsFromArray:state.south]) {
 
@@ -63,6 +66,9 @@
         layer.position = [self cellPositionForLocation:[state locationForPiece:piece] inState:state];
     }
 
+    NSLog(@"Assigning new state to the current state");
+    currentState = state;
+    [self setNeedsDisplay];
 }
 
 @end

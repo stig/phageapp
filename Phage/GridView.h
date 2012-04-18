@@ -9,15 +9,17 @@
 @class SBState;
 
 @protocol GridViewDelegate
-@property(readonly) SBState *currentState;
 @end
-
 
 @interface GridView : UIView {
     @private
     IBOutlet UIImageView *background;
     NSMutableDictionary *layers;
+    SBState *currentState;
 }
 
-@property(weak) IBOutlet id<GridViewDelegate> delegate;
+@property(weak) IBOutlet id <GridViewDelegate> delegate;
+
+- (void)setState:(SBState *)state;
+
 @end

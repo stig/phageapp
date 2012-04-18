@@ -24,7 +24,7 @@
     [super viewDidLoad];
 
     self.turnBasedMatchHelper = [[TurnBasedMatchHelper alloc] initWithPresentingViewController:self delegate:self];
-    // Do any additional setup after loading the view, typically from a nib.
+    [self.gridView setState:[[SBState alloc] init]];
 }
 
 - (void)viewDidUnload {
@@ -79,8 +79,7 @@
                 NSLog(@"%@", error);
             } else {
                 self.currentState = newState;
-                [self.gridView setNeedsDisplay];
-                
+                [self.gridView setState:self.currentState];
             }
         }];
         
@@ -94,7 +93,7 @@
                             } else {
                                 self.currentState = newState;
                                 self.moveButton.enabled = NO;
-                                [self.gridView setNeedsDisplay];
+                                [self.gridView setState:newState];
                             }
                         }];
     }
@@ -112,21 +111,21 @@
     NSLog(@"enterNewGame");
     self.currentState = [[SBState alloc] init];
     self.moveButton.enabled = YES;
-    [self.gridView setNeedsDisplay];
+    [self.gridView setState:self.currentState];
 }
 
 - (void)takeTurn:(GKTurnBasedMatch *)match {
     NSLog(@"takeTurn");
     self.currentState = [NSKeyedUnarchiver unarchiveObjectWithData:match.matchData];
     self.moveButton.enabled = YES;
-    [self.gridView setNeedsDisplay];
+    [self.gridView setState:self.currentState];
 }
 
 - (void)layoutMatch:(GKTurnBasedMatch *)match {
     NSLog(@"layoutMatch");
     self.currentState = [NSKeyedUnarchiver unarchiveObjectWithData:match.matchData];
     self.moveButton.enabled = NO;
-    [self.gridView setNeedsDisplay];
+    [self.gridView setState:self.currentState];
 }
 
 - (void)sendTitle:(NSString*)title notice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match {
