@@ -15,8 +15,10 @@
     @private
     IBOutlet UIImageView *background;
 
+    CALayer *cellLayer;
+    CALayer *pieceLayer;
     NSMutableDictionary *cells;
-    NSMutableDictionary *layers;
+    NSMutableDictionary *pieces;
     SBState *currentState;
 }
 

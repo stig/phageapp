@@ -17,8 +17,14 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        layers = [[NSMutableDictionary alloc] init];
+        pieces = [[NSMutableDictionary alloc] init];
         cells = [[NSMutableDictionary alloc] init];
+
+        cellLayer = [[CALayer alloc] init];
+        pieceLayer = [[CALayer alloc] init];
+
+        [self.layer addSublayer:cellLayer];
+        [self.layer addSublayer:pieceLayer];
     }
     return self;
 }
@@ -59,7 +65,7 @@
             layer.borderWidth = 1.0f;
             layer.position = [self cellPositionForLocation:loc inState:state];
             [cells setObject:layer forKey:loc];
-            [self.layer addSublayer:layer];
+            [cellLayer addSublayer:layer];
         }
         layer.borderColor = ([state isPreviouslyOccupied:loc]
                 ? [UIColor redColor]
@@ -69,15 +75,15 @@
 
     for (SBPiece *piece in [state.north arrayByAddingObjectsFromArray:state.south]) {
 
-        CALayer *layer = [layers objectForKey:piece];
+        CALayer *layer = [pieces objectForKey:piece];
         if (!layer) {
             layer = [CALayer layer];
             layer.name = [piece description];
             layer.backgroundColor = [UIColor orangeColor].CGColor;
             layer.cornerRadius = 20.0;
             layer.bounds = [self cellRectForState:state];
-            [layers setObject:layer forKey:piece];
-            [self.layer addSublayer:layer];
+            [pieces setObject:layer forKey:piece];
+            [pieceLayer addSublayer:layer];
         }
 
         // Animate the piece to its new position
@@ -91,5 +97,24 @@
     currentState = state;
     [self setNeedsDisplay];
 }
+
+#pragma mark GridView Touch
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    if ([touches count] == 1) {
+        UITouch *touch = [touches anyObject];
+        CGPoint point = [touch locationInView:self];
+//        point = [self convertPoint:point toView:nil];
+
+        CALayer *layer = [pieceLayer hitTest:point];
+        if (layer)
+            NSLog(@"Found layer: %@", layer.name);
+
+        layer = [cellLayer hitTest:point];
+        if (layer)
+            NSLog(@"Found layer: %@", layer.name);
+    }
+}
+
 
 @end
