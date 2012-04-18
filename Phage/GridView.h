@@ -11,6 +11,7 @@
 
 @protocol GridViewDelegate
 - (void)performMove:(SBMove*)move;
+- (BOOL)isLocalPlayerTurn;
 @end
 
 @interface GridView : UIView {

@@ -101,6 +101,11 @@
     }
 }
 
+- (BOOL)isLocalPlayerTurn {
+    GKTurnBasedMatch *match = self.turnBasedMatchHelper.currentMatch;
+    return [self.turnBasedMatchHelper isLocalPlayerTurn:match];
+}
+
 #pragma mark Turn Based Match Helper Delegate
 
 - (GKTurnBasedParticipant *)nextParticipantForMatch:(GKTurnBasedMatch *)match {

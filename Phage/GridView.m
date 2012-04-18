@@ -110,6 +110,12 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+
+    if (![self.delegate isLocalPlayerTurn]) {
+        [[[UIAlertView alloc] initWithTitle:@"Patience!" message:@"Wait for your turn.." delegate:self cancelButtonTitle:@"OK, chill" otherButtonTitles:nil] show];
+        return;
+    }
+
     CGPoint point = [self pointOfTouch:touches];
     CALayer *layer = [pieceLayer hitTest:point];
     if (layer) {
