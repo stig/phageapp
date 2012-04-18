@@ -114,6 +114,13 @@
     CALayer *layer = [pieceLayer hitTest:point];
     if (layer) {
         NSLog(@"Found layer: %@", layer.name);
+
+        SBPiece *piece = [layer valueForKey:@"piece"];
+        if (![[currentState piecesForPlayer:currentState.player] containsObject:piece]) {
+            [[[UIAlertView alloc] initWithTitle:@"BEEEP!" message:@"You can't move that piece; it's not yours!" delegate:self cancelButtonTitle:@"OK, just testing.." otherButtonTitles:nil] show];
+            return;
+        }
+
         draggingLayer = layer;
         // TODO zoom the layer so it looks like it's picked up
     }
