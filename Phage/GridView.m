@@ -56,12 +56,14 @@
             layer = [CALayer layer];
             layer.name = [loc description];
             layer.bounds = [self cellRectForState:state];
-            layer.borderColor = [UIColor yellowColor].CGColor;
             layer.borderWidth = 1.0f;
             layer.position = [self cellPositionForLocation:loc inState:state];
             [cells setObject:layer forKey:loc];
             [self.layer addSublayer:layer];
         }
+        layer.borderColor = ([state isPreviouslyOccupied:loc]
+                ? [UIColor redColor]
+                : [UIColor greenColor]).CGColor;
         [layer setNeedsDisplay];
     }];
 

@@ -43,4 +43,6 @@
 - (BOOL)isDraw;
 
 - (void)enumerateLocationsUsingBlock:(void (^)(SBLocation *location))block;
+- (BOOL)isPreviouslyOccupied:(SBLocation *)loc;
+
 @end

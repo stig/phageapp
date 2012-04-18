@@ -139,7 +139,7 @@
     return hash;
 }
 
-#pragma mark -
+#pragma mark description
 
 - (NSString *)description {
     NSMutableString *desc = [[NSMutableString alloc] initWithCapacity:self.rows * self.columns * 2u];
@@ -177,7 +177,7 @@
     return desc;
 }
 
-#pragma mark -
+#pragma mark model methods
 
 - (NSUInteger)movesLeftForPiece:(SBPiece *)piece {
     return [[_movesLeft objectForKey:piece] unsignedIntegerValue];
@@ -191,6 +191,11 @@
     return loc.column >= 0 && loc.column < self.columns && loc.row >= 0 && loc.row < self.rows;
 }
 
+// TODO: this should not return true for locations which has a piece currently
+- (BOOL)isPreviouslyOccupied:(SBLocation *)loc {
+    return [_occupied containsObject:loc];
+}
+
 - (NSArray *)legalMovesForPiece:(SBPiece *)piece {
     if (![[_movesLeft objectForKey:piece] unsignedIntegerValue])
         return [[NSArray alloc] init];
@@ -202,7 +207,7 @@
             loc = [loc locationByMovingInDirection:d];
 
             // Is the location not on the grid? Or already occupied?
-            if (![self isGridLocation:loc] || [_occupied containsObject:loc])
+            if (![self isGridLocation:loc] || [self isPreviouslyOccupied:loc])
                 break;
 
             [moves addObject:[[SBMove alloc] initWithPiece:piece to:loc]];
