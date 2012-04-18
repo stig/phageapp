@@ -12,7 +12,6 @@
 
 @implementation SBViewController
 
-@synthesize currentState = _currentState;
 @synthesize moveButton = _moveButton;
 @synthesize turnBasedMatchHelper = _turnBasedMatchHelper;
 @synthesize gridView = _gridView;
@@ -38,16 +37,31 @@
 
 #pragma mark Actions
 
+- (SBState*)unarchiveMatchState:(GKTurnBasedMatch*)match {
+    return [NSKeyedUnarchiver unarchiveObjectWithData:match.matchData];
+}
+
 - (IBAction)go {
     [self.turnBasedMatchHelper findMatchWithMinPlayers:2 maxPlayers:2];
 }
 
+- (SBState *)startState {
+    return [[SBState alloc] init];
+}
+
 - (void)performMove:(SBMove*) move
 {
-    NSParameterAssert([[self.currentState legalMoves] containsObject:move]);
-    SBState *newState = [self.currentState successorWithMove:move];
-
     GKTurnBasedMatch *match = self.turnBasedMatchHelper.currentMatch;
+    SBState *state;
+    if (match.matchData.length) {
+        state = [NSKeyedUnarchiver unarchiveObjectWithData:match.matchData];
+    } else {
+        state = [self startState];
+    }
+
+    NSParameterAssert([[state legalMoves] containsObject:move]);
+    SBState *newState = [state successorWithMove:move];
+
     GKTurnBasedParticipant *nextParticipant = [self nextParticipantForMatch:match];
     NSData *matchData = [NSKeyedArchiver archivedDataWithRootObject:newState];
 
@@ -68,8 +82,7 @@
             if (error) {
                 NSLog(@"%@", error);
             } else {
-                self.currentState = newState;
-                [self.gridView setState:self.currentState];
+                [self.gridView setState:newState];
             }
         }];
         
@@ -81,7 +94,6 @@
                                 NSLog(@"%@", error);
                                 // statusLabel.text = @"Oops, there was a problem.  Try that again.";
                             } else {
-                                self.currentState = newState;
                                 self.moveButton.enabled = NO;
                                 [self.gridView setState:newState];
                             }
@@ -99,23 +111,20 @@
 
 - (void)enterNewGame:(GKTurnBasedMatch *)match {
     NSLog(@"enterNewGame");
-    self.currentState = [[SBState alloc] init];
     self.moveButton.enabled = YES;
-    [self.gridView setState:self.currentState];
+    [self.gridView setState:[self startState]];
 }
 
 - (void)takeTurn:(GKTurnBasedMatch *)match {
     NSLog(@"takeTurn");
-    self.currentState = [NSKeyedUnarchiver unarchiveObjectWithData:match.matchData];
     self.moveButton.enabled = YES;
-    [self.gridView setState:self.currentState];
+    [self.gridView setState:[NSKeyedUnarchiver unarchiveObjectWithData:match.matchData]];
 }
 
 - (void)layoutMatch:(GKTurnBasedMatch *)match {
     NSLog(@"layoutMatch");
-    self.currentState = [NSKeyedUnarchiver unarchiveObjectWithData:match.matchData];
     self.moveButton.enabled = NO;
-    [self.gridView setState:self.currentState];
+    [self.gridView setState:[NSKeyedUnarchiver unarchiveObjectWithData:match.matchData]];
 }
 
 - (void)sendTitle:(NSString*)title notice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match {

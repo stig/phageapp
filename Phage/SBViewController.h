@@ -18,8 +18,6 @@
 @property (strong) IBOutlet UIButton *moveButton;
 @property (strong) IBOutlet GridView *gridView;
 
-@property (strong) SBState *currentState;
-
 - (IBAction)go;
 
 @end
