@@ -196,11 +196,11 @@
     return [_occupied containsObject:loc];
 }
 
-- (NSArray *)legalMovesForPiece:(SBPiece *)piece {
+- (NSArray *)moveLocationsForPiece:(SBPiece *)piece {
     if (![[_movesLeft objectForKey:piece] unsignedIntegerValue])
         return [[NSArray alloc] init];
-    
-    NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:32];
+
+    NSMutableArray *locations = [[NSMutableArray alloc] initWithCapacity:32];
     for (SBDirection *d in [piece directions]) {
         SBLocation *loc = [self locationForPiece:piece];
         for (; ;) {
@@ -210,10 +210,17 @@
             if (![self isGridLocation:loc] || [self isPreviouslyOccupied:loc])
                 break;
 
-            [moves addObject:[[SBMove alloc] initWithPiece:piece to:loc]];
+            [locations addObject:loc];
         }
     }
+    return locations;
+}
 
+- (NSArray *)legalMovesForPiece:(SBPiece *)piece {
+    NSArray *locations = [self moveLocationsForPiece:piece];
+    NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:locations.count];
+    for (SBLocation *loc in locations)
+        [moves addObject:[[SBMove alloc] initWithPiece:piece to:loc]];
     return moves;
 }
 
