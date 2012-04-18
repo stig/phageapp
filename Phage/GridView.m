@@ -63,7 +63,10 @@
         }
 
         // Animate the piece to its new position
+        [CATransaction begin];
+        [CATransaction setAnimationDuration:1.0f];
         layer.position = [self cellPositionForLocation:[state locationForPiece:piece] inState:state];
+        [CATransaction commit];
     }
 
     NSLog(@"Assigning new state to the current state");
