@@ -212,13 +212,14 @@
     return moves;
 }
 
-- (NSArray *)legalMovesForPlayer:(SBPlayer*)player {
+- (NSArray *)piecesForPlayer:(SBPlayer *)player {
+    return [player isNorth] ? _north : _south;
+}
+
+- (NSArray *)legalMoves {
     NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:64u];
-
-    for (SBPiece *p in [player isNorth] ? _north : _south) {
+    for (SBPiece *p in [self piecesForPlayer:_player])
         [moves addObjectsFromArray:[self legalMovesForPiece:p]];
-    }
-
     return moves;
 }
 
@@ -236,11 +237,7 @@
 }
 
 - (BOOL)isGameOver {
-    return [self legalMovesForPlayer:_player].count == 0u;
-}
-
-- (NSArray*)piecesForPlayer:(SBPlayer*)player {
-    return [player isNorth] ? _north : _south;
+    return [self legalMoves].count == 0u;
 }
 
 - (NSInteger)result

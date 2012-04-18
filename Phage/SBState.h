@@ -34,7 +34,8 @@
 - (BOOL)isEqualToState:(SBState*)state;
 
 - (NSArray *)piecesForPlayer:(SBPlayer*)player;
-- (NSArray *)legalMovesForPlayer:(SBPlayer*)player;
+
+- (NSArray *)legalMoves;
 - (SBState *)successorWithMove:(SBMove *)move;
 
 - (BOOL)isGameOver;

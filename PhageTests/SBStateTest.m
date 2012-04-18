@@ -89,12 +89,12 @@ static SBPlayer *SBPlayerSouth;
 }
 
 - (void)testLegalMoves {
-    NSArray *moves = [s legalMovesForPlayer:SBPlayerNorth];
+    NSArray *moves = [s legalMoves];
     STAssertEquals(moves.count, 61u, nil);
 }
 
 - (void)testSuccessor {
-    NSArray *moves = [s legalMovesForPlayer:SBPlayerNorth];
+    NSArray *moves = [s legalMoves];
     SBState *s1 = [s successorWithMove:[moves lastObject]];
     STAssertNotNil(s1, nil);
     STAssertFalse([s1 isEqual:s], nil);
@@ -123,8 +123,8 @@ static SBPlayer *SBPlayerSouth;
 }
 
 - (void)testSuccessor2 {
-    SBState *s1 = [s successorWithMove:[[s legalMovesForPlayer:SBPlayerNorth] lastObject]];
-    SBState *s2 = [s1 successorWithMove:[[s1 legalMovesForPlayer:SBPlayerSouth] lastObject]];
+    SBState *s1 = [s successorWithMove:[[s legalMoves] lastObject]];
+    SBState *s2 = [s1 successorWithMove:[[s1 legalMoves] lastObject]];
 
     NSArray *expected = [[NSArray alloc] initWithObjects:
             @"C: 7",
@@ -161,7 +161,7 @@ static SBPlayer *SBPlayerSouth;
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:s];
         STAssertTrue(data.length < 3096u, @"Serialised state is less than 3K");
 
-        SBMove *move = [[s legalMovesForPlayer:player] lastObject];
+        SBMove *move = [[s legalMoves] lastObject];
         if (!move)
             break;
 
@@ -175,7 +175,7 @@ static SBPlayer *SBPlayerSouth;
 
     SBPlayer *player = s.player;
     while (![s isGameOver]) {
-        SBMove *m = [[s legalMovesForPlayer:player] lastObject];
+        SBMove *m = [[s legalMoves] lastObject];
         s = [s successorWithMove:m];
         player = [player opponent];
     }
@@ -185,14 +185,14 @@ static SBPlayer *SBPlayerSouth;
 
 - (void)testIsWin {
     STAssertFalse([s isWin], nil);
-    s = [s successorWithMove:[[s legalMovesForPlayer:SBPlayerNorth] lastObject]];
+    s = [s successorWithMove:[[s legalMoves] lastObject]];
     STAssertFalse([s isWin], nil);
 
 }
 
 - (void)testIsDraw {
     STAssertTrue([s isDraw], nil);
-    s = [s successorWithMove:[[s legalMovesForPlayer:SBPlayerNorth] lastObject]];
+    s = [s successorWithMove:[[s legalMoves] lastObject]];
     STAssertFalse([s isDraw], nil);
 }
 

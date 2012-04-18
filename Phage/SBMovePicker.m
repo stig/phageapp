@@ -13,16 +13,14 @@
 
 @implementation SBMovePicker
 
-- (SBMove *)optimalMoveForState:(SBState *)state withPlayer:(SBPlayer*)player {
-
-    NSArray *moves = [state legalMovesForPlayer:player];
-
-    SBPlayer *opponent = [player opponent];
+- (SBMove *)optimalMoveForState:(SBState *)state withPlayer:(SBPlayer*)player
+{
+    NSArray *moves = [state legalMoves];
 
     NSMutableDictionary *scores = [[NSMutableDictionary alloc] initWithCapacity:moves.count];
     for (SBMove *move in moves) {
         SBState *successor = [state successorWithMove:move];
-        NSUInteger score = [successor legalMovesForPlayer:opponent].count;
+        NSUInteger score = [successor legalMoves].count;
         [scores setObject:[NSNumber numberWithUnsignedInteger:score] forKey:move];
     }
 
