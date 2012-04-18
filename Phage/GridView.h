@@ -16,6 +16,7 @@
 @interface GridView : UIView {
     @private
     IBOutlet UIImageView *background;
+    NSMutableDictionary *layers;
 }
 
 @property(weak) IBOutlet id<GridViewDelegate> delegate;

@@ -34,18 +34,25 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
+    if (!layers) layers = [[NSMutableDictionary alloc] init];
+
     SBState *state = self.delegate.currentState;
 
     for (SBPiece *piece in [state.north arrayByAddingObjectsFromArray:state.south]) {
-        SBLocation *loc = [state locationForPiece:piece];
 
-        CALayer *layer = [CALayer layer];
-        layer.backgroundColor = [UIColor orangeColor].CGColor;
-        layer.cornerRadius = 20.0;
-        layer.bounds = [self cellRectForState:state];
-        layer.position = [self cellPositionForLocation:loc inState:state];
+        CALayer *layer = [layers objectForKey:piece];
+        if (!layer) {
+            layer = [CALayer layer];
+            layer.name = [piece description];
+            layer.backgroundColor = [UIColor orangeColor].CGColor;
+            layer.cornerRadius = 20.0;
+            layer.bounds = [self cellRectForState:state];
+            [layers setObject:layer forKey:piece];
+            [self.layer addSublayer:layer];
+        }
 
-        [self.layer addSublayer:layer];
+        // Animate the piece to its new position
+        layer.position = [self cellPositionForLocation:[state locationForPiece:piece] inState:state];
     }
 
 }
