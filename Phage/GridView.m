@@ -82,7 +82,7 @@
             layer = [CALayer layer];
             layer.name = [piece description];
             layer.backgroundColor = [UIColor orangeColor].CGColor;
-            layer.cornerRadius = 20.0;
+            layer.cornerRadius = 20.0; // TODO: animate pieces so we can see which is which
             layer.bounds = [self cellRectForState:state];
             [layer setValue:piece forKey:@"piece"];
             [pieces setObject:layer forKey:piece];
