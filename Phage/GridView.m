@@ -146,7 +146,9 @@
         SBPiece *piece = [draggingLayer valueForKey:@"piece"];
         if ([[currentState moveLocationsForPiece:piece] containsObject:loc]) {
             NSLog(@"%@ is a valid move location for %@", loc, piece);
+            draggingLayer.position = [self cellPositionForLocation:loc inState:currentState];
             [self.delegate performMove:[[SBMove alloc] initWithPiece:piece to:loc]];
+
         } else {
             NSLog(@"BEEEP! Illegal move!");
             draggingLayer.position = [self cellPositionForLocation:[currentState locationForPiece:piece]
