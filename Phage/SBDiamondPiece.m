@@ -20,5 +20,12 @@
             nil];
 }
 
+- (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx {
+    [super drawLayer:layer inContext:ctx];
+    layer.bounds = CGRectInset(layer.bounds, 2.0, 2.0);
+    layer.anchorPoint = CGPointMake(0.5f, 0.5f);
+    layer.affineTransform = CGAffineTransformMakeRotation(M_PI / 4.0);
+}
+
 
 @end

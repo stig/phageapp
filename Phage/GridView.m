@@ -81,10 +81,11 @@
         if (!layer) {
             layer = [CALayer layer];
             layer.name = [piece description];
-            layer.backgroundColor = [UIColor orangeColor].CGColor;
-            layer.cornerRadius = 20.0; // TODO: animate pieces so we can see which is which
-            layer.bounds = [self cellRectForState:state];
+            layer.delegate = piece;
+            layer.bounds = CGRectInset([self cellRectForState:state], 3.0, 3.0);
             [layer setValue:piece forKey:@"piece"];
+            [layer setNeedsDisplay];
+
             [pieces setObject:layer forKey:piece];
             [pieceLayer addSublayer:layer];
         }
@@ -96,7 +97,6 @@
         [CATransaction commit];
     }
 
-    NSLog(@"Assigning new state to the current state");
     currentState = state;
     [self setNeedsDisplay];
 }

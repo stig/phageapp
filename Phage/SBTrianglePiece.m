@@ -21,4 +21,11 @@
                     : [[SBDirection alloc] initWithColumn:0 row:1],
             nil];
 }
+
+- (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx {
+    [super drawLayer:layer inContext:ctx];
+    layer.bounds = CGRectInset(layer.bounds, 5.0, 5.0);
+}
+
+
 @end

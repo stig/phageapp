@@ -13,11 +13,8 @@
 @interface SBPiece : NSObject <NSCopying, NSCoding>
 
 @property (strong, readonly) SBPlayer *player;
-
 - (id)initWithPlayer:(SBPlayer*)owner;
-
 - (BOOL)isEqualToPiece:(SBPiece*)piece;
-
 - (NSArray*)directions;
-
+- (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx;
 @end

@@ -70,4 +70,8 @@
     return 31u * [_player hash] + [NSStringFromClass([self class]) hash];
 }
 
+- (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx {
+    layer.backgroundColor = (self.player.isNorth ? [UIColor blueColor] : [UIColor redColor]).CGColor;
+}
+
 @end
