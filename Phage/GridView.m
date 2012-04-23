@@ -101,9 +101,7 @@
 #pragma mark GridView Touch
 
 - (CGPoint)pointOfTouch:(NSSet *)touches {
-    UITouch *touch = [touches anyObject];
-    CGPoint point = [touch locationInView:self];
-    return point;
+    return [[touches anyObject] locationInView:self];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
