@@ -79,6 +79,8 @@
             if (error) {
                 NSLog(@"%@", error);
             } else {
+                // TODO this should not be necessary; -layoutMatch: should be called
+                // at this point, should it not?
                 [self.gridView setState:newState];
             }
         }];
@@ -91,6 +93,7 @@
                                 NSLog(@"%@", error);
                                 // statusLabel.text = @"Oops, there was a problem.  Try that again.";
                             } else {
+                                // TODO this should not be necessary; -layoutMatch should take care of it?
                                 [self.gridView setState:newState];
                             }
                         }];
