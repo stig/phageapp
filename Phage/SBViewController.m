@@ -42,7 +42,7 @@
 }
 
 - (IBAction)go {
-    [self.turnBasedMatchHelper findMatchWithMinPlayers:2 maxPlayers:2];
+    [self.turnBasedMatchHelper findMatch];
 }
 
 - (SBState *)startState:(GKTurnBasedMatch *)match {
@@ -143,5 +143,12 @@
     [self layoutMatch:match];
 }
 
+- (GKMatchRequest *)matchRequestWithPlayers:(NSArray *)playersToInvite {
+    GKMatchRequest *request = [[GKMatchRequest alloc] init];
+    request.playersToInvite = playersToInvite;
+    request.maxPlayers = 2;
+    request.minPlayers = 2;
+    return request;
+}
 
 @end

@@ -5,7 +5,8 @@
 //
 
 @protocol TurnBasedMatchHelperDelegate
-- (void)enterNewGame:(GKTurnBasedMatch *)match;
+- (GKMatchRequest *)matchRequestWithPlayers:(NSArray *)playersToInvite;
+    - (void)enterNewGame:(GKTurnBasedMatch *)match;
 - (void)takeTurn:(GKTurnBasedMatch *)match;
 - (void)layoutMatch:(GKTurnBasedMatch *)match;
 - (GKTurnBasedParticipant*)nextParticipantForMatch:(GKTurnBasedMatch*)match;
@@ -18,7 +19,8 @@
 @property (strong, readonly) GKTurnBasedMatch *currentMatch;
 
 - (id)initWithPresentingViewController:(UIViewController*)vc delegate:(id<TurnBasedMatchHelperDelegate>)delegate;
-- (void)findMatchWithMinPlayers:(NSUInteger)minPlayers maxPlayers:(NSUInteger)maxPlayers;
+
+- (void)findMatch;
 - (BOOL)isLocalPlayerTurn:(GKTurnBasedMatch*)match;
 
 @end

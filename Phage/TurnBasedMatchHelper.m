@@ -36,10 +36,8 @@
 
 #pragma mark Methods
 
-- (void)findMatchWithMinPlayers:(NSUInteger)minPlayers maxPlayers:(NSUInteger)maxPlayers {
-    GKMatchRequest *request = [[GKMatchRequest alloc] init];
-    request.minPlayers = minPlayers;
-    request.maxPlayers = maxPlayers;
+- (void)findMatch {
+    GKMatchRequest *request = [_delegate matchRequestWithPlayers:nil];
 
     GKTurnBasedMatchmakerViewController *vc = [[GKTurnBasedMatchmakerViewController alloc] initWithMatchRequest:request];
     vc.turnBasedMatchmakerDelegate = self;
@@ -114,15 +112,11 @@
 
 #pragma mark Turn Based Event Handler Delegate
 
-
 - (void)handleInviteFromGameCenter:(NSArray *)playersToInvite {
     [_presentingViewController dismissModalViewControllerAnimated:YES];
 
-    // TODO: Ask our delegate for a suitable match request object, so we can get the correct number of players, etc
-    GKMatchRequest *request = [[GKMatchRequest alloc] init];
-    request.playersToInvite = playersToInvite;
-    request.maxPlayers = 2;
-    request.minPlayers = 2;
+    GKMatchRequest *request = [_delegate matchRequestWithPlayers:playersToInvite];
+
 
     GKTurnBasedMatchmakerViewController *viewController = [[GKTurnBasedMatchmakerViewController alloc] initWithMatchRequest:request];
     viewController.showExistingMatches = NO;
