@@ -13,17 +13,12 @@
 - (void)sendTitle:(NSString*)title notice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match;
 @end
 
-@interface TurnBasedMatchHelper : NSObject <GKTurnBasedMatchmakerViewControllerDelegate, GKTurnBasedEventHandlerDelegate> {
-    @private
-    UIViewController *_presentingViewController;
-    id<TurnBasedMatchHelperDelegate> _delegate;
-}
+@interface TurnBasedMatchHelper : NSObject <GKTurnBasedMatchmakerViewControllerDelegate, GKTurnBasedEventHandlerDelegate>
 
 @property (strong, readonly) GKTurnBasedMatch *currentMatch;
 
 - (id)initWithPresentingViewController:(UIViewController*)vc delegate:(id<TurnBasedMatchHelperDelegate>)delegate;
 - (void)findMatchWithMinPlayers:(NSUInteger)minPlayers maxPlayers:(NSUInteger)maxPlayers;
-- (BOOL)isCurrentMatch:(GKTurnBasedMatch*)match;
 - (BOOL)isLocalPlayerTurn:(GKTurnBasedMatch*)match;
 
 @end

@@ -51,7 +51,7 @@
     return [[SBState alloc] initWithPlayer:player];
 }
 
-- (void)performMove:(SBMove*) move
+- (void)performMove:(SBMove*)move
 {
     GKTurnBasedMatch *match = self.turnBasedMatchHelper.currentMatch;
     SBState *state;

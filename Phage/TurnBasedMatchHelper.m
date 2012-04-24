@@ -7,6 +7,12 @@
 
 #import "TurnBasedMatchHelper.h"
 
+@interface TurnBasedMatchHelper () {
+    UIViewController *_presentingViewController;
+    id <TurnBasedMatchHelperDelegate> _delegate;
+}
+- (BOOL)isCurrentMatch:(GKTurnBasedMatch *)match;
+@end
 
 @implementation TurnBasedMatchHelper
 
@@ -76,7 +82,7 @@
         [_delegate enterNewGame:match];
         
     } else {
-        if ([match.currentParticipant.playerID isEqualToString:[GKLocalPlayer localPlayer].playerID]) {
+        if ([self isLocalPlayerTurn:match]) {
             // It's your turn!
             [_delegate takeTurn:match];
         } else {
