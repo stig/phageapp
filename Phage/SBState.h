@@ -28,6 +28,8 @@
 @property(strong, readonly) NSArray *north;
 @property(strong, readonly) NSArray *south;
 
+- (id)initWithPlayer:(SBPlayer *)thePlayer;
+
 - (NSUInteger)movesLeftForPiece:(SBPiece*)piece;
 - (SBLocation *)locationForPiece:(SBPiece*)piece;
 - (NSArray*)moveLocationsForPiece:(SBPiece*)piece;

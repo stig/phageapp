@@ -9,6 +9,7 @@
 #import "SBViewController.h"
 #import "SBState.h"
 #import "SBMove.h"
+#import "SBPlayer.h"
 
 @implementation SBViewController
 
@@ -44,8 +45,10 @@
     [self.turnBasedMatchHelper findMatchWithMinPlayers:2 maxPlayers:2];
 }
 
-- (SBState *)startState {
-    return [[SBState alloc] init];
+- (SBState *)startState:(GKTurnBasedMatch *)match {
+    BOOL isNorth = [[match.participants objectAtIndex:0] isEqual:match.currentParticipant];
+    SBPlayer *player = [[SBPlayer alloc] initForNorth:isNorth];
+    return [[SBState alloc] initWithPlayer:player];
 }
 
 - (void)performMove:(SBMove*) move
@@ -55,7 +58,7 @@
     if (match.matchData.length) {
         state = [NSKeyedUnarchiver unarchiveObjectWithData:match.matchData];
     } else {
-        state = [self startState];
+        state = [self startState:match];
     }
 
     NSParameterAssert([[state legalMoves] containsObject:move]);
@@ -114,7 +117,7 @@
 
 - (void)enterNewGame:(GKTurnBasedMatch *)match {
     NSLog(@"enterNewGame");
-    [self.gridView setState:[self startState]];
+    [self.gridView setState:[self startState:match]];
 }
 
 - (void)takeTurn:(GKTurnBasedMatch *)match {

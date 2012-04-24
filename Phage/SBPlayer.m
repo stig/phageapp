@@ -62,5 +62,10 @@
     return [self initForNorth:[coder decodeBoolForKey:@"SBNorth"]];
 }
 
+#pragma mark -
+
+- (NSString*)description {
+    return [NSString stringWithFormat:@"%@", self.isNorth ? @"NORTH" : @"SOUTH"];
+}
 
 @end
