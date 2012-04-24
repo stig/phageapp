@@ -45,20 +45,15 @@
     [self.turnBasedMatchHelper findMatch];
 }
 
-- (SBState *)startState:(GKTurnBasedMatch *)match {
-    BOOL isNorth = [[match.participants objectAtIndex:0] isEqual:match.currentParticipant];
-    SBPlayer *player = [[SBPlayer alloc] initForNorth:isNorth];
-    return [[SBState alloc] initWithPlayer:player];
-}
-
 - (void)performMove:(SBMove*)move
 {
     GKTurnBasedMatch *match = self.turnBasedMatchHelper.currentMatch;
-    SBState *state;
+    SBState *state = self.gridView.state;
+
+    // SANITY CHECKING - check that the state from the view matches what we have in the match
     if (match.matchData.length) {
-        state = [NSKeyedUnarchiver unarchiveObjectWithData:match.matchData];
-    } else {
-        state = [self startState:match];
+        SBState *matchState = [NSKeyedUnarchiver unarchiveObjectWithData:match.matchData];
+        NSAssert([matchState isEqualToState:state], @"Match in view should match TurnBased model");
     }
 
     NSParameterAssert([[state legalMoves] containsObject:move]);
@@ -117,7 +112,9 @@
 
 - (void)enterNewGame:(GKTurnBasedMatch *)match {
     NSLog(@"enterNewGame");
-    [self.gridView setState:[self startState:match]];
+    BOOL isNorth = [[match.participants objectAtIndex:0] isEqual:match.currentParticipant];
+    SBPlayer *player = [[SBPlayer alloc] initForNorth:isNorth];
+    [self.gridView setState:[[SBState alloc] initWithPlayer:player]];
 }
 
 - (void)takeTurn:(GKTurnBasedMatch *)match {

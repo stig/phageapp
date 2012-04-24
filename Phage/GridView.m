@@ -14,6 +14,7 @@
 @implementation GridView
 
 @synthesize delegate = _delegate;
+@synthesize state = _state;
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -52,7 +53,7 @@
 
 - (void)setState:(SBState *)state {
 
-    if ([currentState isEqualToState:state]) {
+    if ([_state isEqualToState:state]) {
         NSLog(@"New state is identical to current state");
         return;
     }
@@ -94,7 +95,7 @@
         [CATransaction commit];
     }
 
-    currentState = state;
+    _state = state;
     [self setNeedsDisplay];
 }
 
@@ -117,7 +118,7 @@
         NSLog(@"Found layer: %@", layer.name);
 
         SBPiece *piece = [layer valueForKey:@"piece"];
-        if (![[currentState piecesForPlayer:currentState.player] containsObject:piece]) {
+        if (![[_state piecesForPlayer:_state.player] containsObject:piece]) {
             [[[UIAlertView alloc] initWithTitle:@"BEEEP!" message:@"You can't move that piece; it's not yours!" delegate:self cancelButtonTitle:@"OK, just testing.." otherButtonTitles:nil] show];
             return;
         }
@@ -139,15 +140,15 @@
 
         SBLocation *loc = [cell valueForKey:@"location"];
         SBPiece *piece = [draggingLayer valueForKey:@"piece"];
-        if ([[currentState moveLocationsForPiece:piece] containsObject:loc]) {
+        if ([[_state moveLocationsForPiece:piece] containsObject:loc]) {
             NSLog(@"%@ is a valid move location for %@", loc, piece);
-            draggingLayer.position = [self cellPositionForLocation:loc inState:currentState];
+            draggingLayer.position = [self cellPositionForLocation:loc inState:_state];
             [self.delegate performMove:[[SBMove alloc] initWithPiece:piece to:loc]];
 
         } else {
             NSLog(@"BEEEP! Illegal move!");
-            draggingLayer.position = [self cellPositionForLocation:[currentState locationForPiece:piece]
-                                                           inState:currentState];
+            draggingLayer.position = [self cellPositionForLocation:[_state locationForPiece:piece]
+                                                           inState:_state];
         }
         draggingLayer = nil;
     }

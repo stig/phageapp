@@ -23,11 +23,10 @@
     CALayer *pieceLayer;
     NSMutableDictionary *cells;
     NSMutableDictionary *pieces;
-    SBState *currentState;
 }
 
 @property(weak) IBOutlet id <GridViewDelegate> delegate;
 
-- (void)setState:(SBState *)state;
+@property(strong, nonatomic) SBState *state;
 
 @end
