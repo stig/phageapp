@@ -8,13 +8,10 @@
 #import "SBMovePicker.h"
 #import "SBMove.h"
 #import "SBState.h"
-#import "SBPlayer.h"
-
 
 @implementation SBMovePicker
 
-- (SBMove *)optimalMoveForState:(SBState *)state withPlayer:(SBPlayer*)player
-{
+- (SBMove *)moveForState:(SBState *)state {
     NSArray *moves = [state legalMoves];
 
     NSMutableDictionary *scores = [[NSMutableDictionary alloc] initWithCapacity:moves.count];

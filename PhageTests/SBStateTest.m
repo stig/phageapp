@@ -7,23 +7,18 @@
 //
 
 #import "SBStateTest.h"
-#import "SBSTate.h"
+#import "SBState.h"
 #import "SBLocation.h"
 #import "SBCirclePiece.h"
 #import "SBDiamondPiece.h"
 #import "SBMove.h"
-#import "SBPlayer.h"
 
 @implementation SBStateTest
 
 static SBState *s;
-static SBPlayer *SBPlayerNorth;
-static SBPlayer *SBPlayerSouth;
 
 - (void)setUp {
     s = [[SBState alloc] init];
-    SBPlayerNorth = [[SBPlayer alloc] init];
-    SBPlayerSouth = [SBPlayerNorth opponent];
 }
 
 - (void)testEquals {
@@ -70,7 +65,7 @@ static SBPlayer *SBPlayerSouth;
 
     STAssertEqualObjects(
     [[SBLocation alloc] initWithColumn:0u row:0u],
-    [s locationForPiece:[[SBDiamondPiece alloc] initWithPlayer:SBPlayerSouth]],
+    [s locationForPiece:[[SBDiamondPiece alloc] initWithPlayer:kSBPlayerSouth]],
     nil);
 }
 
@@ -156,7 +151,7 @@ static SBPlayer *SBPlayerSouth;
 }
 
 - (void)testCodingSize {
-    SBPlayer *player = SBPlayerNorth;
+    SBPlayer player = kSBPlayerNorth;
     for (;;) {
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:s];
         STAssertTrue(data.length < 3096u, @"Serialised state is less than 3K");
@@ -165,7 +160,7 @@ static SBPlayer *SBPlayerSouth;
         if (!move)
             break;
 
-        player = SBPlayerNorth == player ? SBPlayerSouth : SBPlayerNorth;
+        player = kSBPlayerNorth == player ? kSBPlayerSouth : kSBPlayerNorth;
         s = [s successorWithMove:move];
     }
 }
@@ -173,11 +168,11 @@ static SBPlayer *SBPlayerSouth;
 - (void)testIsGameOver {
     STAssertFalse([s isGameOver], nil);
 
-    SBPlayer *player = s.player;
+    SBPlayer player = s.player;
     while (![s isGameOver]) {
         SBMove *m = [[s legalMoves] lastObject];
         s = [s successorWithMove:m];
-        player = [player opponent];
+        player = kSBPlayerNorth == player ? kSBPlayerSouth : kSBPlayerNorth;
     }
     
     STAssertTrue([s isGameOver], nil);

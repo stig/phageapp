@@ -14,7 +14,6 @@
 #import "SBLocation.h"
 #import "SBDirection.h"
 #import "SBMove.h"
-#import "SBPlayer.h"
 
 @interface SBState ()
 @property (readonly) NSDictionary *pieceLocations;
@@ -32,7 +31,7 @@
 @synthesize occupied = _occupied;
 
 // Designated initializer
-- (id)initWithPlayer:(SBPlayer *)thePlayer north:(NSArray *)theNorth south:(NSArray *)theSouth locations:(NSDictionary *)theLocationMap movesLeft:(NSDictionary *)theMovesLeftMap occupied:(NSSet *)theOccupiedSet {
+- (id)initWithPlayer:(SBPlayer)thePlayer north:(NSArray *)theNorth south:(NSArray *)theSouth locations:(NSDictionary *)theLocationMap movesLeft:(NSDictionary *)theMovesLeftMap occupied:(NSSet *)theOccupiedSet {
     self = [super init];
     if (self) {
         _player = thePlayer;
@@ -45,21 +44,19 @@
     return self;
 }
 
-- (id)initWithPlayer:(SBPlayer *)thePlayer
+- (id)initWithPlayer:(SBPlayer )thePlayer
 {
 
-    SBPlayer *playerNorth = [[SBPlayer alloc] init];
-    NSArray *theNorth = [[NSArray alloc] initWithObjects:[[SBCirclePiece alloc] initWithPlayer:playerNorth],
-                                                         [[SBSquarePiece alloc] initWithPlayer:playerNorth],
-                                                         [[SBTrianglePiece alloc] initWithPlayer:playerNorth],
-                                                         [[SBDiamondPiece alloc] initWithPlayer:playerNorth],
+    NSArray *theNorth = [[NSArray alloc] initWithObjects:[[SBCirclePiece alloc] initWithPlayer:kSBPlayerNorth],
+                                                         [[SBSquarePiece alloc] initWithPlayer:kSBPlayerNorth],
+                                                         [[SBTrianglePiece alloc] initWithPlayer:kSBPlayerNorth],
+                                                         [[SBDiamondPiece alloc] initWithPlayer:kSBPlayerNorth],
                                                          nil];
 
-    SBPlayer *playerSouth = [playerNorth opponent];
-    NSArray *theSouth = [[NSArray alloc] initWithObjects:[[SBCirclePiece alloc] initWithPlayer:playerSouth],
-                                                         [[SBSquarePiece alloc] initWithPlayer:playerSouth],
-                                                         [[SBTrianglePiece alloc] initWithPlayer:playerSouth],
-                                                         [[SBDiamondPiece alloc] initWithPlayer:playerSouth],
+    NSArray *theSouth = [[NSArray alloc] initWithObjects:[[SBCirclePiece alloc] initWithPlayer:kSBPlayerSouth],
+                                                         [[SBSquarePiece alloc] initWithPlayer:kSBPlayerSouth],
+                                                         [[SBTrianglePiece alloc] initWithPlayer:kSBPlayerSouth],
+                                                         [[SBDiamondPiece alloc] initWithPlayer:kSBPlayerSouth],
                                                          nil];
 
     NSArray *theLocations = [[NSArray alloc] initWithObjects:[[SBLocation alloc] initWithColumn:1 row:4],
@@ -88,13 +85,13 @@
 }
 
 - (id)init {
-    return [self initWithPlayer:[[SBPlayer alloc] init]];
+    return [self initWithPlayer:kSBPlayerNorth];
 }
 
 #pragma mark NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:_player forKey:@"SBPlayer"];
+    [coder encodeInteger:_player forKey:@"SBPlayer"];
     [coder encodeObject:_north forKey:@"SBNorth"];
     [coder encodeObject:_south forKey:@"SBSouth"];
     [coder encodeObject:_pieceLocations forKey:@"SBLocations"];
@@ -103,7 +100,7 @@
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
-    return [self initWithPlayer:[coder decodeObjectForKey:@"SBPlayer"]
+    return [self initWithPlayer:[coder decodeIntegerForKey:@"SBPlayer"]
                           north:[coder decodeObjectForKey:@"SBNorth"]
                           south:[coder decodeObjectForKey:@"SBSouth"]
                       locations:[coder decodeObjectForKey:@"SBLocations"]
@@ -126,14 +123,14 @@
         return YES;
 
     return [_pieceLocations isEqualToDictionary:other.pieceLocations] &&
-            [_player isEqualToPlayer:other.player] &&
+            _player == other.player &&
             [_movesLeft isEqualToDictionary:other.movesLeft] &&
             [_occupied isEqualToSet:other.occupied];
 }
 
 - (NSUInteger)hash {
     NSUInteger hash = [_pieceLocations hash];
-    hash = hash * 31u + [_player hash];
+    hash = hash * 31u + _player;
     hash = hash * 31u + [_movesLeft hash];
     hash = hash * 31u + [_occupied hash];
     return hash;
@@ -224,8 +221,8 @@
     return moves;
 }
 
-- (NSArray *)piecesForPlayer:(SBPlayer *)player {
-    return [player isNorth] ? _north : _south;
+- (NSArray *)piecesForPlayer:(SBPlayer)player {
+    return player == kSBPlayerNorth ? _north : _south;
 }
 
 - (NSArray *)legalMoves {
@@ -245,21 +242,24 @@
     NSUInteger moves = [self movesLeftForPiece:move.piece];
     [newMovesLeft setObject:[NSNumber numberWithUnsignedInteger:moves - 1] forKey:move.piece];
 
-    return [[[self class] alloc] initWithPlayer:_player.opponent north:_north south:_south locations:[newLocations copy] movesLeft:[newMovesLeft copy] occupied:newOccupiedSet];
+    return [[[self class] alloc] initWithPlayer:self.opponent north:_north south:_south locations:[newLocations copy] movesLeft:[newMovesLeft copy] occupied:newOccupiedSet];
 }
 
+- (SBPlayer)opponent {
+    return _player == kSBPlayerNorth ? kSBPlayerSouth : kSBPlayerNorth;
+}
 - (BOOL)isGameOver {
     return [self legalMoves].count == 0u;
 }
 
 - (NSInteger)result
- {
+{
     NSUInteger playerMoveCount = 0;
     for (SBPiece *p in [self piecesForPlayer:_player])
         playerMoveCount += [[_movesLeft objectForKey:p] unsignedIntegerValue];
     
     NSUInteger opponentMoveCount = 0;
-    for (SBPiece *p in [self piecesForPlayer:_player.opponent])
+    for (SBPiece *p in [self piecesForPlayer:self.opponent])
         opponentMoveCount += [[_movesLeft objectForKey:p] unsignedIntegerValue];
 
     // Number of moves _left_ should be less for the winning player
@@ -282,7 +282,6 @@
         }
     }
 }
-
 
 - (NSUInteger)columns {
     return 8u;

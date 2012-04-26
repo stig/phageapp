@@ -11,24 +11,23 @@
 
 @class SBLocation;
 @class SBMove;
-@class SBPlayer;
 
 @interface SBState : NSObject <NSCoding> {
 
 @private
-    SBPlayer *_player;
+    SBPlayer _player;
     NSSet *_occupied;
     NSDictionary *_movesLeft;
     NSDictionary *_pieceLocations;
 }
 
-@property(readonly) SBPlayer *player;
+@property(readonly) SBPlayer player;
 @property(readonly) NSUInteger rows;
 @property(readonly) NSUInteger columns;
 @property(strong, readonly) NSArray *north;
 @property(strong, readonly) NSArray *south;
 
-- (id)initWithPlayer:(SBPlayer *)thePlayer;
+- (id)initWithPlayer:(SBPlayer)thePlayer;
 
 - (NSUInteger)movesLeftForPiece:(SBPiece*)piece;
 - (SBLocation *)locationForPiece:(SBPiece*)piece;
@@ -36,7 +35,7 @@
 
 - (BOOL)isEqualToState:(SBState*)state;
 
-- (NSArray *)piecesForPlayer:(SBPlayer*)player;
+- (NSArray *)piecesForPlayer:(SBPlayer)player;
 
 - (NSArray *)legalMoves;
 - (SBState *)successorWithMove:(SBMove *)move;

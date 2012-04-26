@@ -9,7 +9,6 @@
 #import "SBViewController.h"
 #import "SBState.h"
 #import "SBMove.h"
-#import "SBPlayer.h"
 
 @implementation SBViewController
 
@@ -116,7 +115,7 @@
 - (void)enterNewGame:(GKTurnBasedMatch *)match {
     NSLog(@"enterNewGame");
     BOOL isNorth = [[match.participants objectAtIndex:0] isEqual:match.currentParticipant];
-    SBPlayer *player = [[SBPlayer alloc] initForNorth:isNorth];
+    SBPlayer player = isNorth ? kSBPlayerNorth : kSBPlayerSouth;
     [self.gridView setState:[[SBState alloc] initWithPlayer:player]];
 }
 
