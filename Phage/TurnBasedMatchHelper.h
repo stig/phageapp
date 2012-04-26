@@ -15,12 +15,9 @@
 @end
 
 @interface TurnBasedMatchHelper : NSObject <GKTurnBasedMatchmakerViewControllerDelegate, GKTurnBasedEventHandlerDelegate>
-
+@property(strong) UIViewController *presentingViewController;
+@property(strong) id<TurnBasedMatchHelperDelegate> delegate;
 @property (strong, readonly) GKTurnBasedMatch *currentMatch;
-
-- (id)initWithPresentingViewController:(UIViewController*)vc delegate:(id<TurnBasedMatchHelperDelegate>)delegate;
-
 - (void)findMatch;
 - (BOOL)isLocalPlayerTurn:(GKTurnBasedMatch*)match;
-
 @end

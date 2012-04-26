@@ -18,7 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.turnBasedMatchHelper = [[TurnBasedMatchHelper alloc] initWithPresentingViewController:self delegate:self];
+    self.turnBasedMatchHelper = [[TurnBasedMatchHelper alloc] init];
+    self.turnBasedMatchHelper.delegate = self;
+    self.turnBasedMatchHelper.presentingViewController = self;
 }
 
 - (void)viewDidUnload {

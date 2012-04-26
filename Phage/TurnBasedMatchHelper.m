@@ -7,23 +7,19 @@
 
 #import "TurnBasedMatchHelper.h"
 
-@interface TurnBasedMatchHelper () {
-    UIViewController *_presentingViewController;
-    id <TurnBasedMatchHelperDelegate> _delegate;
-}
+@interface TurnBasedMatchHelper ()
 - (BOOL)isCurrentMatch:(GKTurnBasedMatch *)match;
 @end
 
 @implementation TurnBasedMatchHelper
 
 @synthesize currentMatch = _currentMatch;
+@synthesize presentingViewController = _presentingViewController;
+@synthesize delegate = _delegate;
 
-- (id)initWithPresentingViewController:(UIViewController *)vc delegate:(id <TurnBasedMatchHelperDelegate>)delegate {
+- (id)init {
     self = [super init];
     if (self) {
-        _presentingViewController = vc;
-        _delegate = delegate;
-
         [GKTurnBasedEventHandler sharedTurnBasedEventHandler].delegate = self;
     }
     return self;
@@ -32,7 +28,6 @@
 - (void)dealloc {
     [GKTurnBasedEventHandler sharedTurnBasedEventHandler].delegate = nil;
 }
-
 
 #pragma mark Methods
 
