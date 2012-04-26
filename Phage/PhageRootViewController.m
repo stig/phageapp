@@ -19,7 +19,7 @@
     if ([segue.identifier isEqualToString:@"OnePlayer"]) {
         SBViewController *vc = segue.destinationViewController;
 
-        TurnBasedMatchHelper *helper = [[TurnBasedMatchHelper alloc] init];
+        SBAITurnBasedMatchHelper *helper = [[SBAITurnBasedMatchHelper alloc] init];
         helper.delegate = vc;
 
         vc.turnBasedMatchHelper = helper;
@@ -27,7 +27,7 @@
     } else if ([segue.identifier isEqualToString:@"TwoPlayer"]) {
         SBViewController *vc = segue.destinationViewController;
 
-        TurnBasedMatchHelper *helper = [[TurnBasedMatchHelper alloc] init];
+        SBGameKitTurnBasedMatchHelperInternal *helper = [[SBGameKitTurnBasedMatchHelperInternal alloc] init];
         helper.delegate = vc;
         helper.presentingViewController = vc;
 

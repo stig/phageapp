@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "TurnBasedMatchHelper.h"
+#import "SBGameKitTurnBasedMatchHelperInternal.h"
 #import "GridView.h"
 
 @class SBState;

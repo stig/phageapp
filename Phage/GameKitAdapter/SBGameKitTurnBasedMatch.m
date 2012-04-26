@@ -1,0 +1,54 @@
+//
+//  Created by stig on 26/04/2012.
+//
+// To change the template use AppCode | Preferences | File Templates.
+//
+
+
+#import "SBGameKitTurnBasedMatch.h"
+#import "SBGameKitTurnBasedParticipant.h"
+
+
+@implementation SBGameKitTurnBasedMatch
+
+@synthesize wrappedMatch = _wrappedMatch;
+
+- (id)initWithMatch:(GKTurnBasedMatch *)match {
+    self = [super init];
+    if (self) {
+        _wrappedMatch = match;
+    }
+    return self;
+}
+
+- (id <SBTurnBasedParticipant>)currentParticipant {
+    return [[SBGameKitTurnBasedParticipant alloc] initWithParticipant:_wrappedMatch.currentParticipant];
+}
+
+- (id)matchState {
+    if (_wrappedMatch.matchData.length)
+        return [NSKeyedUnarchiver unarchiveObjectWithData:_wrappedMatch.matchData];
+    return nil;
+}
+
+- (NSArray*)participants {
+    NSMutableArray *participants = [[NSMutableArray alloc] init];
+    for (GKTurnBasedParticipant *p in _wrappedMatch.participants)
+        [participants addObject:[[SBGameKitTurnBasedParticipant alloc] initWithParticipant:p]];
+    return participants;
+}
+
+- (void)endTurnWithNextParticipant:(id <SBTurnBasedParticipant>)nextParticipant matchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
+    SBGameKitTurnBasedParticipant *next = (SBGameKitTurnBasedParticipant *) nextParticipant;
+    [_wrappedMatch endTurnWithNextParticipant:next.wrappedParticipant
+                                    matchData:[NSKeyedArchiver archivedDataWithRootObject:matchState]
+                            completionHandler:completionHandler];
+}
+
+
+- (void)endMatchInTurnWithMatchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
+    [_wrappedMatch endMatchInTurnWithMatchData:[NSKeyedArchiver archivedDataWithRootObject:matchState]
+                             completionHandler:completionHandler];
+}
+
+@end

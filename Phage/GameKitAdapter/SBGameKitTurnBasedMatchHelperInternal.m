@@ -5,13 +5,13 @@
 //
 
 
-#import "TurnBasedMatchHelper.h"
+#import "SBGameKitTurnBasedMatchHelperInternal.h"
 
-@interface TurnBasedMatchHelper ()
+@interface SBGameKitTurnBasedMatchHelperInternal ()
 - (BOOL)isCurrentMatch:(GKTurnBasedMatch *)match;
 @end
 
-@implementation TurnBasedMatchHelper
+@implementation SBGameKitTurnBasedMatchHelperInternal
 
 @synthesize currentMatch = _currentMatch;
 @synthesize presentingViewController = _presentingViewController;
