@@ -9,6 +9,9 @@
 #import "SBViewController.h"
 #import "SBState.h"
 #import "SBMove.h"
+#import "SBGameKitTurnBasedMatchHelper.h"
+#import "SBTurnBasedMatch.h"
+#import "SBTurnBasedParticipant.h"
 
 @implementation SBViewController
 
@@ -35,30 +38,24 @@
 
 #pragma mark Actions
 
-- (SBState*)unarchiveMatchState:(GKTurnBasedMatch*)match {
-    return [NSKeyedUnarchiver unarchiveObjectWithData:match.matchData];
-}
-
 - (IBAction)go {
     [self.turnBasedMatchHelper findMatch];
 }
 
 - (void)performMove:(SBMove*)move
 {
-    GKTurnBasedMatch *match = self.turnBasedMatchHelper.currentMatch;
+    id<SBTurnBasedMatch>match = self.turnBasedMatchHelper.currentMatch;
     SBState *state = self.gridView.state;
 
     // SANITY CHECKING - check that the state from the view matches what we have in the match
-    if (match.matchData.length) {
-        SBState *matchState = [NSKeyedUnarchiver unarchiveObjectWithData:match.matchData];
-        NSAssert([matchState isEqualToState:state], @"Match in view should match TurnBased model");
+    if (match.matchState) {
+        NSAssert([match.matchState isEqualToState:state], @"Match in view should match TurnBased model");
     }
 
     NSParameterAssert([[state legalMoves] containsObject:move]);
     SBState *newState = [state successorWithMove:move];
 
-    GKTurnBasedParticipant *nextParticipant = [self nextParticipantForMatch:match];
-    NSData *matchData = [NSKeyedArchiver archivedDataWithRootObject:newState];
+    id<SBTurnBasedParticipant> nextParticipant = [self nextParticipantForMatch:match];
 
     if ([newState isGameOver]) {
         if ([newState isDraw]) {
@@ -73,7 +70,7 @@
             NSAssert(NO, @"Should never get here...");
         }
         
-        [match endMatchInTurnWithMatchData:matchData completionHandler:^(NSError *error) {
+        [match endMatchInTurnWithMatchState:newState completionHandler:^(NSError *error) {
             if (error) {
                 NSLog(@"%@", error);
             } else {
@@ -85,7 +82,7 @@
         
     } else {
         [match endTurnWithNextParticipant:nextParticipant
-                                matchData:matchData
+                                matchState:newState
                         completionHandler:^(NSError *error) {
                             if (error) {
                                 NSLog(@"%@", error);
@@ -99,35 +96,35 @@
 }
 
 - (BOOL)isLocalPlayerTurn {
-    GKTurnBasedMatch *match = self.turnBasedMatchHelper.currentMatch;
+    id<SBTurnBasedMatch> match = self.turnBasedMatchHelper.currentMatch;
     return [self.turnBasedMatchHelper isLocalPlayerTurn:match];
 }
 
 #pragma mark Turn Based Match Helper Delegate
 
-- (GKTurnBasedParticipant *)nextParticipantForMatch:(GKTurnBasedMatch *)match {
+- (id<SBTurnBasedParticipant>)nextParticipantForMatch:(id<SBTurnBasedMatch>)match {
     NSUInteger currIdx = [match.participants indexOfObject:match.currentParticipant];
     NSUInteger nextIdx = (currIdx + 1) % match.participants.count;
     return [match.participants objectAtIndex:nextIdx];
 }
 
-- (void)enterNewGame:(GKTurnBasedMatch *)match {
+- (void)enterNewGame:(id<SBTurnBasedMatch>)match {
     NSLog(@"enterNewGame");
     BOOL player = [[match.participants objectAtIndex:0] isEqual:match.currentParticipant];
     [self.gridView setState:[[SBState alloc] initWithPlayer:player]];
 }
 
-- (void)takeTurn:(GKTurnBasedMatch *)match {
+- (void)takeTurn:(id<SBTurnBasedMatch>)match {
     NSLog(@"takeTurn");
-    [self.gridView setState:[NSKeyedUnarchiver unarchiveObjectWithData:match.matchData]];
+    [self.gridView setState:match.matchState];
 }
 
-- (void)layoutMatch:(GKTurnBasedMatch *)match {
+- (void)layoutMatch:(id <SBTurnBasedMatch>)match {
     NSLog(@"layoutMatch");
-    [self.gridView setState:[NSKeyedUnarchiver unarchiveObjectWithData:match.matchData]];
+    [self.gridView setState:match.matchState];
 }
 
-- (void)sendTitle:(NSString*)title notice:(NSString *)notice forMatch:(GKTurnBasedMatch *)match {
+- (void)sendTitle:(NSString*)title notice:(NSString *)notice forMatch:(id<SBTurnBasedMatch>)match {
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:title
                                                  message:notice
                                                 delegate:self
@@ -136,7 +133,7 @@
     [av show];
 }
 
-- (void)receiveEndGame:(GKTurnBasedMatch *)match {
+- (void)receiveEndGame:(id<SBTurnBasedMatch>)match {
     [self layoutMatch:match];
 }
 

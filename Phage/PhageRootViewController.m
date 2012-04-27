@@ -28,10 +28,13 @@
         SBViewController *vc = segue.destinationViewController;
 
         SBGameKitTurnBasedMatchHelperInternal *helper = [[SBGameKitTurnBasedMatchHelperInternal alloc] init];
-        helper.delegate = vc;
-        helper.presentingViewController = vc;
+        helper.presentingViewController = self;
 
-        vc.turnBasedMatchHelper = helper;
+        SBGameKitTurnBasedMatchHelper *adapter = [[SBGameKitTurnBasedMatchHelper alloc] initWithTurnBasedMatchHelper:helper];
+        adapter.delegate = self;
+
+        helper.delegate = adapter;
+        vc.turnBasedMatchHelper = adapter;
 
     } else {
         // unhandled yet..

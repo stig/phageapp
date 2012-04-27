@@ -8,12 +8,13 @@
 
 #import "SBGameKitTurnBasedMatchHelperInternal.h"
 #import "GridView.h"
+#import "SBTurnBasedMatchHelper.h"
 
 @class SBState;
 
-@interface SBViewController : UIViewController <TurnBasedMatchHelperDelegate, GridViewDelegate>
+@interface SBViewController : UIViewController <SBTurnBasedMatchHelperDelegate, GridViewDelegate>
 
-@property (strong) TurnBasedMatchHelper *turnBasedMatchHelper;
+@property (strong) id<SBTurnBasedMatchHelper> turnBasedMatchHelper;
 @property (strong) IBOutlet GridView *gridView;
 
 - (IBAction)go;
