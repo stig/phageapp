@@ -49,3 +49,11 @@ Resources
   * http://www.raywenderlich.com/5509/beginning-turn-based-gaming-with-ios-5-part-2
 
 
+HACKING
+=======
+
+We now rely on OCMock in the tests target. This is in external
+dependency, using a git submodule. To pull in the right version, run:
+
+    $ git submodule update --init
+
