@@ -5,7 +5,6 @@
 //
 
 @protocol TurnBasedMatchHelperDelegate
-- (GKMatchRequest *)matchRequestWithPlayers:(NSArray *)playersToInvite;
 - (void)enterNewGame:(GKTurnBasedMatch *)match;
 - (void)takeTurn:(GKTurnBasedMatch *)match;
 - (void)layoutMatch:(GKTurnBasedMatch *)match;

@@ -143,12 +143,4 @@
     [self layoutMatch:match];
 }
 
-- (GKMatchRequest *)matchRequestWithPlayers:(NSArray *)playersToInvite {
-    GKMatchRequest *request = [[GKMatchRequest alloc] init];
-    request.playersToInvite = playersToInvite;
-    request.maxPlayers = 2;
-    request.minPlayers = 2;
-    return request;
-}
-
 @end

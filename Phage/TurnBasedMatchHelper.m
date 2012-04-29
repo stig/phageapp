@@ -32,7 +32,9 @@
 #pragma mark Methods
 
 - (void)findMatch {
-    GKMatchRequest *request = [_delegate matchRequestWithPlayers:nil];
+    GKMatchRequest *request = [[GKMatchRequest alloc] init];
+    request.maxPlayers = 2;
+    request.minPlayers = 2;
 
     GKTurnBasedMatchmakerViewController *vc = [[GKTurnBasedMatchmakerViewController alloc] initWithMatchRequest:request];
     vc.turnBasedMatchmakerDelegate = self;
@@ -110,8 +112,10 @@
 - (void)handleInviteFromGameCenter:(NSArray *)playersToInvite {
     [_presentingViewController dismissModalViewControllerAnimated:YES];
 
-    GKMatchRequest *request = [_delegate matchRequestWithPlayers:playersToInvite];
-
+    GKMatchRequest *request = [[GKMatchRequest alloc] init];
+    request.playersToInvite = playersToInvite;
+    request.maxPlayers = 2;
+    request.minPlayers = 2;
 
     GKTurnBasedMatchmakerViewController *viewController = [[GKTurnBasedMatchmakerViewController alloc] initWithMatchRequest:request];
     viewController.showExistingMatches = NO;
