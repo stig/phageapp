@@ -1,21 +1,23 @@
 //
-//  Created by stig on 13/04/2012.
+//  Created by stig on 26/04/2012.
 //
 // To change the template use AppCode | Preferences | File Templates.
 //
 
 
-#import "SBGameKitTurnBasedMatchHelperInternal.h"
+#import "SBGameKitTurnBasedMatchHelper.h"
+#import "SBGameKitTurnBasedMatch.h"
+#import "SBGameKitTurnBasedParticipant.h"
 
-@interface SBGameKitTurnBasedMatchHelperInternal ()
-- (BOOL)isCurrentMatch:(GKTurnBasedMatch *)match;
+@interface SBGameKitTurnBasedMatchHelper ()
+@property(strong) SBGameKitTurnBasedMatch *currentMatch;
 @end
 
-@implementation SBGameKitTurnBasedMatchHelperInternal
+@implementation SBGameKitTurnBasedMatchHelper
 
+@synthesize delegate = _delegate;
 @synthesize currentMatch = _currentMatch;
 @synthesize presentingViewController = _presentingViewController;
-@synthesize delegate = _delegate;
 
 - (id)init {
     self = [super init];
@@ -29,6 +31,12 @@
     [GKTurnBasedEventHandler sharedTurnBasedEventHandler].delegate = nil;
 }
 
+#pragma mark Private
+
+- (SBGameKitTurnBasedMatch *)wrap:(GKTurnBasedMatch *)match {
+    return [[SBGameKitTurnBasedMatch alloc] initWithMatch:match];
+}
+
 #pragma mark Methods
 
 - (void)findMatch {
@@ -40,15 +48,17 @@
     vc.turnBasedMatchmakerDelegate = self;
     vc.showExistingMatches = YES;
 
-    [_presentingViewController presentModalViewController:vc animated:YES];
+    [self.presentingViewController presentModalViewController:vc animated:YES];
 }
 
-- (BOOL)isCurrentMatch:(GKTurnBasedMatch *)match {
-    return [match.matchID isEqualToString:self.currentMatch.matchID];
+- (BOOL)isCurrentMatch:(id<SBTurnBasedMatch>)match {
+    return [self.currentMatch isEqual:match];
 }
 
-- (BOOL)isLocalPlayerTurn:(GKTurnBasedMatch *)match {
-    return [match.currentParticipant.playerID isEqualToString:[GKLocalPlayer localPlayer].playerID];
+- (BOOL)isLocalPlayerTurn:(id<SBTurnBasedMatch>)match {
+    SBGameKitTurnBasedMatch *adapter = (SBGameKitTurnBasedMatch *)match;
+    NSString *const localPlayerID = [GKLocalPlayer localPlayer].playerID;
+    return [adapter.wrappedMatch.currentParticipant.playerID isEqualToString:localPlayerID];
 }
 
 #pragma mark Turn Based Matchmaker View Controller Delegate
@@ -70,19 +80,19 @@
     [viewController dismissModalViewControllerAnimated:YES];
     NSLog(@"A Match has been found!: %@", match);
 
-    _currentMatch = match;
+    self.currentMatch = [self wrap:match];
 
     if (0 == [match.matchData length]) {
         // It's a new game!
-        [_delegate enterNewGame:match];
-        
+        [self.delegate enterNewGame:self.currentMatch];
+
     } else {
-        if ([self isLocalPlayerTurn:match]) {
+        if ([self isLocalPlayerTurn:self.currentMatch]) {
             // It's your turn!
-            [_delegate takeTurn:match];
+            [self.delegate takeTurn:self.currentMatch];
         } else {
             // It's not your turn, just display the game state.
-            [_delegate layoutMatch:match];
+            [self.delegate layoutMatch:self.currentMatch];
         }
     }
 }
@@ -91,16 +101,16 @@
 - (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController playerQuitForMatch:(GKTurnBasedMatch *)match {
     NSLog(@"Player quit match: %@", match);
 
-    GKTurnBasedParticipant *part = [_delegate nextParticipantForMatch:match];
+    SBGameKitTurnBasedParticipant *part = (SBGameKitTurnBasedParticipant *) [self.delegate nextParticipantForMatch:[self wrap:match]];
     part.matchOutcome = GKTurnBasedMatchOutcomeWon;
 
     [match participantQuitInTurnWithOutcome:GKTurnBasedMatchOutcomeLost
-                            nextParticipant:part
+                            nextParticipant:part.wrappedParticipant
                                   matchData:match.matchData
                           completionHandler:^(NSError *error) {
                               if (error) {
                                   NSLog(@"ERROR: %@", error);
-                                   // TODO: used while developing; disable before release
+                                  // TODO: used while developing; disable before release
                                   [match removeWithCompletionHandler:nil];
                               }
                           }];
@@ -124,22 +134,25 @@
     [_presentingViewController presentModalViewController:viewController animated:YES];
 }
 
-- (void)handleTurnEventForMatch:(GKTurnBasedMatch *)match {
+- (void)handleTurnEventForMatch:(GKTurnBasedMatch *)match_ {
     NSLog(@"Turn has happened");
+    SBGameKitTurnBasedMatch *match = [self wrap:match_];
+
     if ([self isCurrentMatch:match]) {
         // it's the current match..
-        _currentMatch = match;
+        self.currentMatch = match;
+
         if ([self isLocalPlayerTurn:match]) {
             // ..and it's our turn now
-            [_delegate takeTurn:match];
+            [self.delegate takeTurn:match];
         } else {
             // ..but it's someone else's turn
-            [_delegate layoutMatch:match];
+            [self.delegate layoutMatch:match];
         }
     } else {
         if ([self isLocalPlayerTurn:match]) {
             // it's not the current match and it's our turn now
-            [_delegate sendTitle:@"Attention: Your Turn!"
+            [self.delegate sendTitle:@"Attention: Your Turn!"
                           notice:@"It is now your turn in another game."
                         forMatch:match];
         } else {
@@ -148,12 +161,14 @@
     }
 }
 
-- (void)handleMatchEnded:(GKTurnBasedMatch *)match {
+- (void)handleMatchEnded:(GKTurnBasedMatch *)match_ {
     NSLog(@"Game has ended");
+    SBGameKitTurnBasedMatch *match = [self wrap:match_];
+
     if ([self isCurrentMatch:match]) {
-        [_delegate receiveEndGame:match];
+        [self.delegate receiveEndGame:match];
     } else {
-        [_delegate sendTitle:@"Game Over!"
+        [self.delegate sendTitle:@"Game Over!"
                       notice:@"One of your other games has ended."
                     forMatch:match];
     }

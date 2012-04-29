@@ -27,14 +27,11 @@
     } else if ([segue.identifier isEqualToString:@"TwoPlayer"]) {
         SBViewController *vc = segue.destinationViewController;
 
-        SBGameKitTurnBasedMatchHelperInternal *helper = [[SBGameKitTurnBasedMatchHelperInternal alloc] init];
-        helper.presentingViewController = self;
+	    SBGameKitTurnBasedMatchHelper *helper = [[SBGameKitTurnBasedMatchHelper alloc] init];
+    	helper.delegate = self;
+    	helper.presentingViewController = self;
 
-        SBGameKitTurnBasedMatchHelper *adapter = [[SBGameKitTurnBasedMatchHelper alloc] initWithTurnBasedMatchHelper:helper];
-        adapter.delegate = self;
-
-        helper.delegate = adapter;
-        vc.turnBasedMatchHelper = adapter;
+        vc.turnBasedMatchHelper = helper;
 
     } else {
         // unhandled yet..

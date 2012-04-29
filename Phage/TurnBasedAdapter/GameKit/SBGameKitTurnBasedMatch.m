@@ -21,6 +21,20 @@
     return self;
 }
 
+- (BOOL)isEqual:(id)other {
+    if (other == self)
+        return YES;
+    if (!other || ![other isKindOfClass:[self class]])
+        return NO;
+    return [self isEqualToTurnBasedMatch:other];
+}
+
+- (BOOL)isEqualToTurnBasedMatch:(SBGameKitTurnBasedMatch *)other {
+    if (self == other)
+        return YES;
+    return [self.wrappedMatch.matchID isEqualToString:other.wrappedMatch.matchID];
+}
+
 - (id <SBTurnBasedParticipant>)currentParticipant {
     return [[SBGameKitTurnBasedParticipant alloc] initWithParticipant:_wrappedMatch.currentParticipant];
 }

@@ -39,7 +39,6 @@
 		D7BFA3B2151F2AD300435C84 /* SBDirectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */; };
 		D7BFA3B2151F2AD300435C89 /* SBMovePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C88 /* SBMovePicker.m */; };
 		D7BFA3B2151F2AD300435C8C /* SBMovePickerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */; };
-		D7BFA3B2151F2AD300435C8F /* SBGameKitTurnBasedMatchHelperInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B24 /* SBGameKitTurnBasedMatchHelperInternal.m */; };
 		D7BFA3B2151F2AD300435C93 /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C92 /* GridView.m */; };
 		D7BFA3B2151F2AD300435C95 /* chess-640x640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */; };
 		FB89D43C154C7D27001A0B11 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C9D /* libOCMock.a */; };
@@ -165,8 +164,6 @@
 		FB89D43C154C7D27001A0B1E /* SBGameKitTurnBasedMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGameKitTurnBasedMatch.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B20 /* SBGameKitTurnBasedMatchHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGameKitTurnBasedMatchHelper.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B21 /* SBGameKitTurnBasedMatchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGameKitTurnBasedMatchHelper.m; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0B23 /* SBGameKitTurnBasedMatchHelperInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGameKitTurnBasedMatchHelperInternal.h; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0B24 /* SBGameKitTurnBasedMatchHelperInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGameKitTurnBasedMatchHelperInternal.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B26 /* SBGameKitTurnBasedParticipant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGameKitTurnBasedParticipant.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B27 /* SBGameKitTurnBasedParticipant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGameKitTurnBasedParticipant.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B29 /* SBAITurnBasedMatchHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAITurnBasedMatchHelperTest.m; sourceTree = "<group>"; };
@@ -275,9 +272,6 @@
 			children = (
 				FB89D43C154C7D27001A0B95 /* PhageRootViewController.h */,
 				FB89D43C154C7D27001A0B93 /* PhageRootViewController.m */,
-				FB89D43C154C7D27001A0B37 /* SBTurnBasedParticipant.h */,
-				FB89D43C154C7D27001A0B36 /* SBTurnBasedMatchHelper.h */,
-				FB89D43C154C7D27001A0B35 /* SBTurnBasedMatch.h */,
 				D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */,
 				D7BFA3B2151F2AD300435C92 /* GridView.m */,
 				D7BFA3B2151F2AD300435C91 /* GridView.h */,
@@ -289,8 +283,7 @@
 				D76A457E151DDC7500E59146 /* SBViewController.m */,
 				D76A456C151DDC7500E59146 /* Supporting Files */,
 				D755A4941532224C003BB704 /* Model */,
-				FB89D43C154C7D27001A0B12 /* AIAdapter */,
-				FB89D43C154C7D27001A0B1C /* GameKitAdapter */,
+				FB89D43C154C7D27001A0B96 /* TurnBasedAdapter */,
 			);
 			path = Phage;
 			sourceTree = "<group>";
@@ -352,7 +345,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FB89D43C154C7D27001A0B12 /* AIAdapter */ = {
+		FB89D43C154C7D27001A0B12 /* AI */ = {
 			isa = PBXGroup;
 			children = (
 				FB89D43C154C7D27001A0B1A /* SBAITurnBasedParticipant.m */,
@@ -362,22 +355,32 @@
 				FB89D43C154C7D27001A0B14 /* SBAITurnBasedMatch.m */,
 				FB89D43C154C7D27001A0B13 /* SBAITurnBasedMatch.h */,
 			);
-			path = AIAdapter;
+			path = AI;
 			sourceTree = "<group>";
 		};
-		FB89D43C154C7D27001A0B1C /* GameKitAdapter */ = {
+		FB89D43C154C7D27001A0B1C /* GameKit */ = {
 			isa = PBXGroup;
 			children = (
 				FB89D43C154C7D27001A0B27 /* SBGameKitTurnBasedParticipant.m */,
 				FB89D43C154C7D27001A0B26 /* SBGameKitTurnBasedParticipant.h */,
-				FB89D43C154C7D27001A0B24 /* SBGameKitTurnBasedMatchHelperInternal.m */,
-				FB89D43C154C7D27001A0B23 /* SBGameKitTurnBasedMatchHelperInternal.h */,
 				FB89D43C154C7D27001A0B21 /* SBGameKitTurnBasedMatchHelper.m */,
 				FB89D43C154C7D27001A0B20 /* SBGameKitTurnBasedMatchHelper.h */,
 				FB89D43C154C7D27001A0B1E /* SBGameKitTurnBasedMatch.m */,
 				FB89D43C154C7D27001A0B1D /* SBGameKitTurnBasedMatch.h */,
 			);
-			path = GameKitAdapter;
+			path = GameKit;
+			sourceTree = "<group>";
+		};
+		FB89D43C154C7D27001A0B96 /* TurnBasedAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				FB89D43C154C7D27001A0B1C /* GameKit */,
+				FB89D43C154C7D27001A0B12 /* AI */,
+				FB89D43C154C7D27001A0B37 /* SBTurnBasedParticipant.h */,
+				FB89D43C154C7D27001A0B36 /* SBTurnBasedMatchHelper.h */,
+				FB89D43C154C7D27001A0B35 /* SBTurnBasedMatch.h */,
+			);
+			path = TurnBasedAdapter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -540,7 +543,6 @@
 				FB89D43C154C7D27001A0B1B /* SBAITurnBasedParticipant.m in Sources */,
 				FB89D43C154C7D27001A0B1F /* SBGameKitTurnBasedMatch.m in Sources */,
 				FB89D43C154C7D27001A0B22 /* SBGameKitTurnBasedMatchHelper.m in Sources */,
-				D7BFA3B2151F2AD300435C8F /* SBGameKitTurnBasedMatchHelperInternal.m in Sources */,
 				FB89D43C154C7D27001A0B28 /* SBGameKitTurnBasedParticipant.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
