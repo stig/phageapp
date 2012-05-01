@@ -19,17 +19,24 @@ Features
 
 * Keep multiple games going at the same time?
 
-Milestones
-----------
 
-These are in no particular order, really. Apart from the last.
+"Completed" Milestones
+----------------------
 
-* GameCentre support
+* GameCenter:
+  * <del>Turn Based Match making - find an opponent</del>
+  * <del>Ability to keep multiple games running at once</del>
+  * <del>Turn-based game support</del>
+  * <del>Save game at every step, and resume after re-launch. (Even after logging out and logging in as another user in Game Center.)</del>
+
+Uncompleted" Milestones
+-----------------------
+
+These are in no particular order, really.
+
+* GameCenter
   * Determine how to store current Elo rating, since GC scores can only go up.
     * One suggestion is to use two leaderboards; one with positive, and one with negative scores. Accumulate negative scores in one, positive in others. Aggregate across both to get the current score.
-  * Turn Based Match making - find an opponent
-  * Ability to keep multiple games running at once
-  * Turn-based game support
   * Ability to show leaderboards
   * Ability to unlock / show achievements
     * Novice / Advanced / Master / Grand-Master / Galactic Overlord etc
@@ -38,8 +45,6 @@ These are in no particular order, really. Apart from the last.
 * AI player hooked up ("Solitare Mode")
 * Rules / game guide. Since this is a game nobody is likely to have played before, we need to present the rules
 * Localisations
-* Save game at every step, and resume after re-launch
-  * Even after logging out and logging in as another user in Game Center!
 * Polish. It absolutely must look good, but I'm happy about it not being too full-featured.
 
 Resources
@@ -49,7 +54,7 @@ Resources
   * http://www.raywenderlich.com/5509/beginning-turn-based-gaming-with-ios-5-part-2
 
 
-HACKING
+Hacking
 =======
 
 We now rely on OCMock in the tests target. This is in external
