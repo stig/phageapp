@@ -43,6 +43,7 @@
 		D7BFA3B2151F2AD300435C93 /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C92 /* GridView.m */; };
 		D7BFA3B2151F2AD300435C95 /* chess-640x640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */; };
 		FB89D43C154C7D27001A0B11 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C9D /* libOCMock.a */; };
+		FB89D43C154C7D27001A0B94 /* PhageRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B93 /* PhageRootViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +144,8 @@
 		D7BFA3B2151F2AD300435C92 /* GridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridView.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "chess-640x640.jpg"; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C96 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = libs/ocmock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0B93 /* PhageRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhageRootViewController.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0B95 /* PhageRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhageRootViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +238,8 @@
 		D76A456B151DDC7500E59146 /* Phage */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0B95 /* PhageRootViewController.h */,
+				FB89D43C154C7D27001A0B93 /* PhageRootViewController.m */,
 				D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */,
 				D7BFA3B2151F2AD300435C92 /* GridView.m */,
 				D7BFA3B2151F2AD300435C91 /* GridView.h */,
@@ -458,6 +463,7 @@
 				D7BFA3B2151F2AD300435C89 /* SBMovePicker.m in Sources */,
 				D7BFA3B2151F2AD300435C8F /* TurnBasedMatchHelper.m in Sources */,
 				D7BFA3B2151F2AD300435C93 /* GridView.m in Sources */,
+				FB89D43C154C7D27001A0B94 /* PhageRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

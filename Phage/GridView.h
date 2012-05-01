@@ -15,9 +15,6 @@
 @end
 
 @interface GridView : UIView {
-    @private
-    IBOutlet UIImageView *background;
-
     CALayer *draggingLayer;
     CALayer *cellLayer;
     CALayer *pieceLayer;
