@@ -38,7 +38,7 @@
 #pragma mark Methods called by Adapters
 
 - (void)handleDidFindMatch:(id <SBTurnBasedMatch>)match {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 
     self.currentMatch = match;
 
@@ -59,7 +59,7 @@
 }
 
 - (void)handlePlayerQuitForMatch:(id <SBTurnBasedMatch>)match {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 
     // Assumes 2-player game..
     id<SBTurnBasedParticipant> next = [self.delegate nextParticipantForMatch:match];
@@ -78,7 +78,7 @@
 }
 
 - (void)handleTurnEventForMatch:(id <SBTurnBasedMatch>)match {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 
     if ([self isCurrentMatch:match]) {
         // it's the current match..
@@ -104,7 +104,7 @@
 }
 
 - (void)handleMatchEnded:(id <SBTurnBasedMatch>)match {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 
     if ([self isCurrentMatch:match]) {
         [self.delegate receiveEndGame:match];

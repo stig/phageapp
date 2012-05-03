@@ -68,6 +68,7 @@
 }
 
 - (void)removeWithCompletionHandler:(void (^)(NSError *))completionHandler {
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     [[self wrappedMatch] removeWithCompletionHandler:completionHandler];
 }
 

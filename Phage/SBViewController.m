@@ -41,8 +41,9 @@
     [self.turnBasedMatchHelper findMatch];
 }
 
-- (void)performMove:(SBMove*)move
-{
+- (void)performMove:(SBMove*)move {
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+
     id<SBTurnBasedMatch>match = self.turnBasedMatchHelper.currentMatch;
     SBState *state = self.gridView.state;
 
@@ -108,22 +109,24 @@
 }
 
 - (void)enterNewGame:(id<SBTurnBasedMatch>)match {
-    NSLog(@"enterNewGame");
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     BOOL player = [[match.participants objectAtIndex:0] isEqual:match.currentParticipant];
     [self.gridView setState:[[SBState alloc] initWithPlayer:player]];
 }
 
 - (void)takeTurn:(id<SBTurnBasedMatch>)match {
-    NSLog(@"takeTurn");
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     [self.gridView setState:match.matchState];
 }
 
 - (void)layoutMatch:(id <SBTurnBasedMatch>)match {
-    NSLog(@"layoutMatch");
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     [self.gridView setState:match.matchState];
 }
 
 - (void)sendTitle:(NSString*)title notice:(NSString *)notice forMatch:(id<SBTurnBasedMatch>)match {
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:title
                                                  message:notice
                                                 delegate:self
@@ -133,6 +136,7 @@
 }
 
 - (void)receiveEndGame:(id<SBTurnBasedMatch>)match {
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     [self layoutMatch:match];
 }
 
