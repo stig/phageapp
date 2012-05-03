@@ -10,6 +10,7 @@
 
 @interface SBAITurnBasedMatch () {
     NSUInteger _idx;
+    id<SBAITurnBasedMatchDelegate> _delegate;
 }
 @end
 
@@ -18,11 +19,12 @@
 @synthesize matchState = _matchState;
 @synthesize participants = _participants;
 
-- (id)initWithMatchState:(id)matchState participants:(NSArray *)participants {
+- (id)initWithMatchState:(id)matchState participants:(NSArray *)participants delegate:(id<SBAITurnBasedMatchDelegate>)delegate {
     self = [super init];
     if (self) {
         _matchState = matchState;
         _participants = participants;
+        _delegate = delegate;
     }
     return self;
 }
@@ -32,15 +34,25 @@
 }
 
 - (void)endTurnWithNextParticipant:(id <SBTurnBasedParticipant>)nextParticipant matchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     _idx = [self.participants indexOfObject:nextParticipant];
     _matchState = matchState;
     completionHandler(nil);
 }
 
 - (void)endMatchInTurnWithMatchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
-
-    // TODO Implement me
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    [self doesNotRecognizeSelector:_cmd]; // TODO implement me
 }
 
+- (void)participantQuitInTurnWithOutcome:(GKTurnBasedMatchOutcome)outcome nextParticipant:(id <SBTurnBasedParticipant>)participant matchState:(id)matchState completionHandler:(void (^)(NSError *))block {
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    [self doesNotRecognizeSelector:_cmd]; // TODO implement me
+}
+
+- (void)removeWithCompletionHandler:(void (^)(NSError *))completionHandler {
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    [self doesNotRecognizeSelector:_cmd]; // TODO implement me
+}
 
 @end

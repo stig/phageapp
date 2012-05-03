@@ -5,7 +5,8 @@
 //
 
 #import "SBTurnBasedMatchHelper.h"
+#import "SBAITurnBasedMatch.h"
 
-@interface SBAITurnBasedAdapter : NSObject <SBTurnBasedMatchHelperAdapter>
+@interface SBAITurnBasedAdapter : NSObject <SBTurnBasedMatchHelperAdapter, SBAITurnBasedMatchDelegate>
 @property(weak) SBTurnBasedMatchHelper *delegate;
 @end

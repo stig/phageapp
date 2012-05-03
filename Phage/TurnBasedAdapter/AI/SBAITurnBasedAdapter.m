@@ -22,7 +22,7 @@
     NSArray *participants = [[NSArray alloc] initWithObjects:player1, player2, nil];
     SBState *state = [[SBState alloc] init];
 
-    SBAITurnBasedMatch *match = [[SBAITurnBasedMatch alloc] initWithMatchState:state participants:participants];
+    SBAITurnBasedMatch *match = [[SBAITurnBasedMatch alloc] initWithMatchState:state participants:participants delegate:self];
 
     [self.delegate handleDidFindMatch:match];
 }

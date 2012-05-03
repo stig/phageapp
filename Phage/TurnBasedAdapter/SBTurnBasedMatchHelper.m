@@ -27,7 +27,7 @@
 #pragma mark Methods implemented in Strategy
 
 - (void)findMatch {
-    NSLog(@"[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     [self.adapter findMatch];
 }
 
