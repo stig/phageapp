@@ -106,6 +106,7 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 
     if (![self.delegate isLocalPlayerTurn]) {
         [[[UIAlertView alloc] initWithTitle:@"Patience!" message:@"Wait for your turn.." delegate:self cancelButtonTitle:@"OK, chill" otherButtonTitles:nil] show];
@@ -134,19 +135,19 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     if (draggingLayer) {
-        CALayer *cell = [cellLayer hitTest:[self pointOfTouch:touches]];
-        NSAssert(cell, @"Should have a cell now");
-
-        SBLocation *loc = [cell valueForKey:@"location"];
         SBPiece *piece = [draggingLayer valueForKey:@"piece"];
-        if ([[_state moveLocationsForPiece:piece] containsObject:loc]) {
+
+        CALayer *cell = [cellLayer hitTest:[self pointOfTouch:touches]];
+        SBLocation *loc = [cell valueForKey:@"location"];
+        if (cell && [[_state moveLocationsForPiece:piece] containsObject:loc]) {
             NSLog(@"%@ is a valid move location for %@", loc, piece);
             draggingLayer.position = [self cellPositionForLocation:loc inState:_state];
             [self.delegate performMove:[[SBMove alloc] initWithPiece:piece to:loc]];
 
         } else {
-            NSLog(@"BEEEP! Illegal move!");
+            NSLog(@"%@ is NOT a valid move location for %@", loc, piece);
             draggingLayer.position = [self cellPositionForLocation:[_state locationForPiece:piece]
                                                            inState:_state];
         }
