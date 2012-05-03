@@ -6,22 +6,40 @@
 
 
 #import "SBAITurnBasedMatch.h"
+#import "SBTurnBasedParticipant.h"
 
+@interface SBAITurnBasedMatch () {
+    NSUInteger _idx;
+}
+@end
 
 @implementation SBAITurnBasedMatch
 
 @synthesize matchState = _matchState;
-@synthesize currentParticipant = _currentParticipant;
 @synthesize participants = _participants;
 
-- (void)endTurnWithNextParticipant:(id <SBTurnBasedParticipant>)nextParticipant matchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
-    //To change the template use AppCode | Preferences | File Templates.
+- (id)initWithMatchState:(id)matchState participants:(NSArray *)participants {
+    self = [super init];
+    if (self) {
+        _matchState = matchState;
+        _participants = participants;
+    }
+    return self;
+}
 
+- (id<SBTurnBasedParticipant>)currentParticipant {
+    return [self.participants objectAtIndex:_idx];
+}
+
+- (void)endTurnWithNextParticipant:(id <SBTurnBasedParticipant>)nextParticipant matchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
+    _idx = [self.participants indexOfObject:nextParticipant];
+    _matchState = matchState;
+    completionHandler(nil);
 }
 
 - (void)endMatchInTurnWithMatchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
-    //To change the template use AppCode | Preferences | File Templates.
 
+    // TODO Implement me
 }
 
 

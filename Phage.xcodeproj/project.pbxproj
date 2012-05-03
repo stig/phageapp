@@ -43,10 +43,10 @@
 		D7BFA3B2151F2AD300435C95 /* chess-640x640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */; };
 		FB89D43C154C7D27001A0B11 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C9D /* libOCMock.a */; };
 		FB89D43C154C7D27001A0B15 /* SBAITurnBasedMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B14 /* SBAITurnBasedMatch.m */; };
-		FB89D43C154C7D27001A0B18 /* SBAITurnBasedMatchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B17 /* SBAITurnBasedMatchHelper.m */; };
+		FB89D43C154C7D27001A0B18 /* SBAITurnBasedAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B17 /* SBAITurnBasedAdapter.m */; };
 		FB89D43C154C7D27001A0B1B /* SBAITurnBasedParticipant.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B1A /* SBAITurnBasedParticipant.m */; };
 		FB89D43C154C7D27001A0B1F /* SBGameKitTurnBasedMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B1E /* SBGameKitTurnBasedMatch.m */; };
-		FB89D43C154C7D27001A0B22 /* SBGameKitTurnBasedMatchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B21 /* SBGameKitTurnBasedMatchHelper.m */; };
+		FB89D43C154C7D27001A0B22 /* SBGameKitTurnBasedAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B21 /* SBGameKitTurnBasedAdapter.m */; };
 		FB89D43C154C7D27001A0B28 /* SBGameKitTurnBasedParticipant.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B27 /* SBGameKitTurnBasedParticipant.m */; };
 		FB89D43C154C7D27001A0B2A /* SBAITurnBasedMatchHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B29 /* SBAITurnBasedMatchHelperTest.m */; };
 		FB89D43C154C7D27001A0B2C /* SBAITurnBasedMatchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B2B /* SBAITurnBasedMatchTest.m */; };
@@ -56,6 +56,7 @@
 		FB89D43C154C7D27001A0B34 /* SBGameKitTurnBasedParticipantTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B33 /* SBGameKitTurnBasedParticipantTest.m */; };
 		FB89D43C154C7D27001A0B38 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D755A48A15320B53003BB704 /* GameKit.framework */; };
 		FB89D43C154C7D27001A0B94 /* PhageRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B93 /* PhageRootViewController.m */; };
+		FB89D43C154C7D27001A0B98 /* SBTurnBasedMatchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B97 /* SBTurnBasedMatchHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,14 +157,14 @@
 		D7BFA3B2151F2AD300435C96 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = libs/ocmock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B13 /* SBAITurnBasedMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAITurnBasedMatch.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B14 /* SBAITurnBasedMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAITurnBasedMatch.m; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0B16 /* SBAITurnBasedMatchHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAITurnBasedMatchHelper.h; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0B17 /* SBAITurnBasedMatchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAITurnBasedMatchHelper.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0B16 /* SBAITurnBasedAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAITurnBasedAdapter.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0B17 /* SBAITurnBasedAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAITurnBasedAdapter.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B19 /* SBAITurnBasedParticipant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAITurnBasedParticipant.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B1A /* SBAITurnBasedParticipant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAITurnBasedParticipant.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B1D /* SBGameKitTurnBasedMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGameKitTurnBasedMatch.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B1E /* SBGameKitTurnBasedMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGameKitTurnBasedMatch.m; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0B20 /* SBGameKitTurnBasedMatchHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGameKitTurnBasedMatchHelper.h; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0B21 /* SBGameKitTurnBasedMatchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGameKitTurnBasedMatchHelper.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0B20 /* SBGameKitTurnBasedAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGameKitTurnBasedAdapter.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0B21 /* SBGameKitTurnBasedAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGameKitTurnBasedAdapter.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B26 /* SBGameKitTurnBasedParticipant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGameKitTurnBasedParticipant.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B27 /* SBGameKitTurnBasedParticipant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGameKitTurnBasedParticipant.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B29 /* SBAITurnBasedMatchHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAITurnBasedMatchHelperTest.m; sourceTree = "<group>"; };
@@ -177,6 +178,7 @@
 		FB89D43C154C7D27001A0B37 /* SBTurnBasedParticipant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBTurnBasedParticipant.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B93 /* PhageRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhageRootViewController.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B95 /* PhageRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhageRootViewController.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0B97 /* SBTurnBasedMatchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBTurnBasedMatchHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,8 +352,8 @@
 			children = (
 				FB89D43C154C7D27001A0B1A /* SBAITurnBasedParticipant.m */,
 				FB89D43C154C7D27001A0B19 /* SBAITurnBasedParticipant.h */,
-				FB89D43C154C7D27001A0B17 /* SBAITurnBasedMatchHelper.m */,
-				FB89D43C154C7D27001A0B16 /* SBAITurnBasedMatchHelper.h */,
+				FB89D43C154C7D27001A0B17 /* SBAITurnBasedAdapter.m */,
+				FB89D43C154C7D27001A0B16 /* SBAITurnBasedAdapter.h */,
 				FB89D43C154C7D27001A0B14 /* SBAITurnBasedMatch.m */,
 				FB89D43C154C7D27001A0B13 /* SBAITurnBasedMatch.h */,
 			);
@@ -363,8 +365,8 @@
 			children = (
 				FB89D43C154C7D27001A0B27 /* SBGameKitTurnBasedParticipant.m */,
 				FB89D43C154C7D27001A0B26 /* SBGameKitTurnBasedParticipant.h */,
-				FB89D43C154C7D27001A0B21 /* SBGameKitTurnBasedMatchHelper.m */,
-				FB89D43C154C7D27001A0B20 /* SBGameKitTurnBasedMatchHelper.h */,
+				FB89D43C154C7D27001A0B21 /* SBGameKitTurnBasedAdapter.m */,
+				FB89D43C154C7D27001A0B20 /* SBGameKitTurnBasedAdapter.h */,
 				FB89D43C154C7D27001A0B1E /* SBGameKitTurnBasedMatch.m */,
 				FB89D43C154C7D27001A0B1D /* SBGameKitTurnBasedMatch.h */,
 			);
@@ -374,6 +376,7 @@
 		FB89D43C154C7D27001A0B96 /* TurnBasedAdapter */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0B97 /* SBTurnBasedMatchHelper.m */,
 				FB89D43C154C7D27001A0B1C /* GameKit */,
 				FB89D43C154C7D27001A0B12 /* AI */,
 				FB89D43C154C7D27001A0B37 /* SBTurnBasedParticipant.h */,
@@ -539,11 +542,12 @@
 				D7BFA3B2151F2AD300435C93 /* GridView.m in Sources */,
 				FB89D43C154C7D27001A0B94 /* PhageRootViewController.m in Sources */,
 				FB89D43C154C7D27001A0B15 /* SBAITurnBasedMatch.m in Sources */,
-				FB89D43C154C7D27001A0B18 /* SBAITurnBasedMatchHelper.m in Sources */,
+				FB89D43C154C7D27001A0B18 /* SBAITurnBasedAdapter.m in Sources */,
 				FB89D43C154C7D27001A0B1B /* SBAITurnBasedParticipant.m in Sources */,
 				FB89D43C154C7D27001A0B1F /* SBGameKitTurnBasedMatch.m in Sources */,
-				FB89D43C154C7D27001A0B22 /* SBGameKitTurnBasedMatchHelper.m in Sources */,
+				FB89D43C154C7D27001A0B22 /* SBGameKitTurnBasedAdapter.m in Sources */,
 				FB89D43C154C7D27001A0B28 /* SBGameKitTurnBasedParticipant.m in Sources */,
+				FB89D43C154C7D27001A0B98 /* SBTurnBasedMatchHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

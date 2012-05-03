@@ -5,36 +5,35 @@
 
 #import "PhageRootViewController.h"
 #import "SBViewController.h"
-#import "SBGameKitTurnBasedMatchHelper.h"
-#import "SBAITurnBasedMatchHelper.h"
+#import "SBGameKitTurnBasedAdapter.h"
+#import "SBAITurnBasedAdapter.h"
 
 @implementation PhageRootViewController
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSLog(@"%s - %@ sender: %@", (char*)_cmd, segue, sender);
+    NSLog(@"%@ - %@", NSStringFromSelector(_cmd), segue.identifier);
 
     [super prepareForSegue:segue sender:sender];
 
-    if ([segue.identifier isEqualToString:@"OnePlayer"]) {
+    if ([segue.identifier hasSuffix:@"Player"]) {
         SBViewController *vc = segue.destinationViewController;
-
-        SBAITurnBasedMatchHelper *helper = [[SBAITurnBasedMatchHelper alloc] init];
+        SBTurnBasedMatchHelper *helper = [[SBTurnBasedMatchHelper alloc] init];
         helper.delegate = vc;
 
+        if ([segue.identifier hasPrefix:@"One"]) {
+            SBAITurnBasedAdapter *adapter = [[SBAITurnBasedAdapter alloc] init];
+            adapter.delegate = helper;
+            helper.adapter = adapter;
+
+        } else if ([segue.identifier hasPrefix:@"Two"]) {
+            SBGameKitTurnBasedAdapter *adapter = [[SBGameKitTurnBasedAdapter alloc] init];
+            adapter.delegate = helper;
+            adapter.presentingViewController = vc;
+            helper.adapter = adapter;
+        }
+
         vc.turnBasedMatchHelper = helper;
-
-    } else if ([segue.identifier isEqualToString:@"TwoPlayer"]) {
-        SBViewController *vc = segue.destinationViewController;
-
-	    SBGameKitTurnBasedMatchHelper *helper = [[SBGameKitTurnBasedMatchHelper alloc] init];
-    	helper.delegate = self;
-    	helper.presentingViewController = self;
-
-        vc.turnBasedMatchHelper = helper;
-
-    } else {
-        // unhandled yet..
     }
 }
 

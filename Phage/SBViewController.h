@@ -13,7 +13,7 @@
 
 @interface SBViewController : UIViewController <SBTurnBasedMatchHelperDelegate, GridViewDelegate>
 
-@property (strong) id<SBTurnBasedMatchHelper> turnBasedMatchHelper;
+@property (strong) SBTurnBasedMatchHelper *turnBasedMatchHelper;
 @property (strong) IBOutlet GridView *gridView;
 
 - (IBAction)go;

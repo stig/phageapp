@@ -6,6 +6,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import "SBTurnBasedMatch.h"
 
 @protocol SBTurnBasedMatch;
 @protocol SBTurnBasedParticipant;
@@ -19,9 +20,20 @@
 - (void)sendTitle:(NSString *)title notice:(NSString *)notice forMatch:(id<SBTurnBasedMatch>)match;
 @end
 
-@protocol SBTurnBasedMatchHelper
-@property(weak) id<SBTurnBasedMatchHelperDelegate> delegate;
-@property(strong, readonly) id<SBTurnBasedMatch> currentMatch;
+@protocol SBTurnBasedMatchHelperAdapter
 - (void)findMatch;
-- (BOOL)isLocalPlayerTurn:(id<SBTurnBasedMatch>)match;
+- (BOOL)isLocalPlayerTurn:(id <SBTurnBasedMatch>)match;
+@end
+
+@interface SBTurnBasedMatchHelper : NSObject <SBTurnBasedMatchHelperAdapter>
+@property(weak) id <SBTurnBasedMatchHelperDelegate> delegate;
+@property(strong) id<SBTurnBasedMatchHelperAdapter> adapter;
+@property(strong, readonly) id<SBTurnBasedMatch> currentMatch;
+
+// Methods for use by the underlying adapters6
+- (void)handleDidFindMatch:(id <SBTurnBasedMatch>)match;
+- (void)handlePlayerQuitForMatch:(id <SBTurnBasedMatch>)match;
+- (void)handleTurnEventForMatch:(id <SBTurnBasedMatch>)match;
+- (void)handleMatchEnded:(id <SBTurnBasedMatch>)match;
+
 @end

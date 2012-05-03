@@ -4,9 +4,8 @@
 // To change the template use AppCode | Preferences | File Templates.
 //
 
-
-#import <Foundation/Foundation.h>
 #import "SBTurnBasedMatchHelper.h"
 
-@interface SBAITurnBasedMatchHelper : NSObject <SBTurnBasedMatchHelper>
+@interface SBAITurnBasedAdapter : NSObject <SBTurnBasedMatchHelperAdapter>
+@property(weak) SBTurnBasedMatchHelper *delegate;
 @end

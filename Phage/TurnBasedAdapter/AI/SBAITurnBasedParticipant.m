@@ -8,8 +8,5 @@
 #import "SBAITurnBasedParticipant.h"
 
 
-@implementation SBAITurnBasedParticipant {
-
-}
-
+@implementation SBAITurnBasedParticipant
 @end

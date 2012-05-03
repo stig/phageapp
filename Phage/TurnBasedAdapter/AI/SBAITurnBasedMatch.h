@@ -8,6 +8,9 @@
 #import <Foundation/Foundation.h>
 #import "SBTurnBasedMatch.h"
 
+
 @interface SBAITurnBasedMatch : NSObject < SBTurnBasedMatch >
-@property(strong) NSArray *participants;
+
+- (id)initWithMatchState:(id)matchState participants:(NSArray *)participants;
+
 @end

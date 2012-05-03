@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "SBTurnBasedMatchHelper.h"
 
-@interface SBGameKitTurnBasedMatchHelper : NSObject <SBTurnBasedMatchHelper, GKTurnBasedMatchmakerViewControllerDelegate, GKTurnBasedEventHandlerDelegate>
+@interface SBGameKitTurnBasedAdapter : NSObject < SBTurnBasedMatchHelperAdapter, GKTurnBasedMatchmakerViewControllerDelegate, GKTurnBasedEventHandlerDelegate>
+@property(weak) SBTurnBasedMatchHelper *delegate;
 @property(weak) UIViewController *presentingViewController;
 @end

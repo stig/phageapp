@@ -9,7 +9,6 @@
 #import "SBViewController.h"
 #import "SBState.h"
 #import "SBMove.h"
-#import "SBGameKitTurnBasedMatchHelper.h"
 #import "SBTurnBasedMatch.h"
 #import "SBTurnBasedParticipant.h"
 
