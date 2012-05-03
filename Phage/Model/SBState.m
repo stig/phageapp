@@ -232,6 +232,10 @@
     return moves;
 }
 
+- (SBPlayer)opponent {
+    return _player == kSBPlayerNorth ? kSBPlayerSouth : kSBPlayerNorth;
+}
+
 - (SBState *)successorWithMove:(SBMove *)move {
     NSSet *newOccupiedSet = [_occupied setByAddingObject:move.to];
 
@@ -245,9 +249,6 @@
     return [[[self class] alloc] initWithPlayer:self.opponent north:_north south:_south locations:[newLocations copy] movesLeft:[newMovesLeft copy] occupied:newOccupiedSet];
 }
 
-- (SBPlayer)opponent {
-    return _player == kSBPlayerNorth ? kSBPlayerSouth : kSBPlayerNorth;
-}
 - (BOOL)isGameOver {
     return [self legalMoves].count == 0u;
 }
