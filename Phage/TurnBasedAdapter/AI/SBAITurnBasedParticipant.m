@@ -9,4 +9,5 @@
 
 
 @implementation SBAITurnBasedParticipant
+@synthesize matchOutcome = _matchOutcome;
 @end
