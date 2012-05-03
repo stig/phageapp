@@ -8,15 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum {
-    kSBPlayerNorth = 0,
-    kSBPlayerSouth = 1,
-} SBPlayer;
-
 @interface SBPiece : NSObject <NSCopying, NSCoding>
 
-@property (readonly) SBPlayer player;
-- (id)initWithPlayer:(SBPlayer)owner;
+@property (readonly) BOOL isPlayerOne;
+- (id)initWithPlayerOne:(BOOL)x;
 - (BOOL)isEqualToPiece:(SBPiece*)piece;
 - (NSArray*)directions;
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx;

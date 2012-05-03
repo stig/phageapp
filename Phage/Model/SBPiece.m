@@ -10,16 +10,16 @@
 
 @implementation SBPiece
 
-@synthesize player = _player;
+@synthesize isPlayerOne = _isPlayerOne;
 
 - (id)init {
-    return [self initWithPlayer:kSBPlayerNorth];
+    return [self initWithPlayerOne:YES];
 }
 
-- (id)initWithPlayer:(SBPlayer)player {
+- (id)initWithPlayerOne:(BOOL)owner {
     self = [super init];
     if (self) {
-        _player = player;
+        _isPlayerOne = owner;
     }
     return self;
 }
@@ -27,12 +27,11 @@
 #pragma mark NSCoding
 
 - (id)initWithCoder:(NSCoder *)coder {
-    SBPlayer player = [coder decodeIntegerForKey:@"SBPlayer"];
-    return [self initWithPlayer:player];
+    return [self initWithPlayerOne:[coder decodeBoolForKey:@"SBPlayerOne"]];
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeInteger:_player forKey:@"SBPlayer"];
+    [coder encodeBool:_isPlayerOne forKey:@"SBPlayerOne"];
 }
 
 
@@ -44,7 +43,7 @@
 
 - (NSString*)description {
     NSString *substr = [NSStringFromClass([self class]) substringWithRange:NSMakeRange(2, 1)];
-    return _player == kSBPlayerNorth ? [substr uppercaseString] : [substr lowercaseString];
+    return _isPlayerOne == YES ? [substr uppercaseString] : [substr lowercaseString];
 }
 
 - (BOOL)isEqual:(id)other {
@@ -58,7 +57,7 @@
 - (BOOL)isEqualToPiece:(SBPiece *)other {
     if (self == other)
         return YES;
-    return _player == other.player;
+    return _isPlayerOne == other.isPlayerOne;
 }
 
 - (NSArray *)directions {
@@ -66,11 +65,11 @@
 }
 
 - (NSUInteger)hash {
-    return 31u * _player + [NSStringFromClass([self class]) hash];
+    return 31u * _isPlayerOne + [NSStringFromClass([self class]) hash];
 }
 
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx {
-    layer.backgroundColor = (_player == kSBPlayerNorth ? [UIColor blueColor] : [UIColor redColor]).CGColor;
+    layer.backgroundColor = (_isPlayerOne == YES ? [UIColor blueColor] : [UIColor redColor]).CGColor;
 }
 
 @end

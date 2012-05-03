@@ -29,7 +29,7 @@ SBPiece *a;
 }
 
 - (void)testSouthNotEquals {
-    SBPiece *c = [[SBCirclePiece alloc] initWithPlayer:kSBPlayerSouth];
+    SBPiece *c = [[SBCirclePiece alloc] initWithPlayerOne:NO];
     STAssertFalse([a isEqual:c], nil);
 }
 
@@ -44,7 +44,7 @@ SBPiece *a;
 }
 
 - (void)testSouthHashNotEquals {
-    SBPiece *b = [[SBCirclePiece alloc] initWithPlayer:kSBPlayerSouth];
+    SBPiece *b = [[SBCirclePiece alloc] initWithPlayerOne:NO];
     STAssertFalse([a hash] == [b hash], nil);    
 }
 

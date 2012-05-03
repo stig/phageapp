@@ -73,7 +73,7 @@
         [layer setNeedsDisplay];
     }];
 
-    for (SBPiece *piece in [state.north arrayByAddingObjectsFromArray:state.south]) {
+    for (SBPiece *piece in [state.playerOnePieces arrayByAddingObjectsFromArray:state.playerTwoPieces]) {
 
         CALayer *layer = [pieces objectForKey:piece];
         if (!layer) {
@@ -118,7 +118,7 @@
         NSLog(@"Found layer: %@", layer.name);
 
         SBPiece *piece = [layer valueForKey:@"piece"];
-        if (![[_state piecesForPlayer:_state.player] containsObject:piece]) {
+        if (![[_state piecesForPlayer:_state.isPlayerOne] containsObject:piece]) {
             [[[UIAlertView alloc] initWithTitle:@"BEEEP!" message:@"You can't move that piece; it's not yours!" delegate:self cancelButtonTitle:@"OK, just testing.." otherButtonTitles:nil] show];
             return;
         }

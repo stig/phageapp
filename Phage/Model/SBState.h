@@ -15,19 +15,19 @@
 @interface SBState : NSObject <NSCoding> {
 
 @private
-    SBPlayer _player;
+    BOOL _isPlayerOne;
     NSSet *_occupied;
     NSDictionary *_movesLeft;
     NSDictionary *_pieceLocations;
 }
 
-@property(readonly) SBPlayer player;
+@property(readonly) BOOL isPlayerOne;
 @property(readonly) NSUInteger rows;
 @property(readonly) NSUInteger columns;
-@property(strong, readonly) NSArray *north;
-@property(strong, readonly) NSArray *south;
+@property(strong, readonly) NSArray *playerOnePieces;
+@property(strong, readonly) NSArray *playerTwoPieces;
 
-- (id)initWithPlayer:(SBPlayer)thePlayer;
+- (id)initWithPlayer:(BOOL)thePlayer;
 
 - (NSUInteger)movesLeftForPiece:(SBPiece*)piece;
 - (SBLocation *)locationForPiece:(SBPiece*)piece;
@@ -35,7 +35,7 @@
 
 - (BOOL)isEqualToState:(SBState*)state;
 
-- (NSArray *)piecesForPlayer:(SBPlayer)player;
+- (NSArray *)piecesForPlayer:(BOOL)player;
 
 - (NSArray *)legalMoves;
 - (SBState *)successorWithMove:(SBMove *)move;

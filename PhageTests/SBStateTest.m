@@ -65,20 +65,20 @@ static SBState *s;
 
     STAssertEqualObjects(
     [[SBLocation alloc] initWithColumn:0u row:0u],
-    [s locationForPiece:[[SBDiamondPiece alloc] initWithPlayer:kSBPlayerSouth]],
+    [s locationForPiece:[[SBDiamondPiece alloc] initWithPlayerOne:NO]],
     nil);
 }
 
 - (void)testNorthPieces {
-    STAssertEquals(s.north.count, 4u, nil);
-    for (id p in s.north) {
+    STAssertEquals(s.playerOnePieces.count, 4u, nil);
+    for (id p in s.playerOnePieces) {
         STAssertEquals([s movesLeftForPiece:p], 7u, nil);
     }
 }
 
 - (void)testSouthPieces {
-    STAssertEquals(s.south.count, 4u, nil);
-    for (id p in s.south) {
+    STAssertEquals(s.playerTwoPieces.count, 4u, nil);
+    for (id p in s.playerTwoPieces) {
         STAssertEquals([s movesLeftForPiece:p], 7u, nil);
     }
 }
@@ -151,7 +151,7 @@ static SBState *s;
 }
 
 - (void)testCodingSize {
-    SBPlayer player = kSBPlayerNorth;
+    BOOL player = YES;
     for (;;) {
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:s];
         STAssertTrue(data.length < 3096u, @"Serialised state is less than 3K");
@@ -160,7 +160,7 @@ static SBState *s;
         if (!move)
             break;
 
-        player = kSBPlayerNorth == player ? kSBPlayerSouth : kSBPlayerNorth;
+        player = YES == player ? NO : YES;
         s = [s successorWithMove:move];
     }
 }
@@ -168,11 +168,11 @@ static SBState *s;
 - (void)testIsGameOver {
     STAssertFalse([s isGameOver], nil);
 
-    SBPlayer player = s.player;
+    BOOL player = s.isPlayerOne;
     while (![s isGameOver]) {
         SBMove *m = [[s legalMoves] lastObject];
         s = [s successorWithMove:m];
-        player = kSBPlayerNorth == player ? kSBPlayerSouth : kSBPlayerNorth;
+        player = YES == player ? NO : YES;
     }
     
     STAssertTrue([s isGameOver], nil);

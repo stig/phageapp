@@ -23,20 +23,20 @@
 
 @implementation SBState
 
-@synthesize player = _player;
-@synthesize north = _north;
-@synthesize south = _south;
+@synthesize isPlayerOne = _isPlayerOne;
+@synthesize playerOnePieces = _playerOnePieces;
+@synthesize playerTwoPieces = _playerTwoPieces;
 @synthesize pieceLocations = _pieceLocations;
 @synthesize movesLeft = _movesLeft;
 @synthesize occupied = _occupied;
 
 // Designated initializer
-- (id)initWithPlayer:(SBPlayer)thePlayer north:(NSArray *)theNorth south:(NSArray *)theSouth locations:(NSDictionary *)theLocationMap movesLeft:(NSDictionary *)theMovesLeftMap occupied:(NSSet *)theOccupiedSet {
+- (id)initWithPlayerOneTurn:(BOOL)thePlayer playerOnePieces:(NSArray *)theNorth playerTwoPieces:(NSArray *)theSouth locations:(NSDictionary *)theLocationMap movesLeft:(NSDictionary *)theMovesLeftMap occupied:(NSSet *)theOccupiedSet {
     self = [super init];
     if (self) {
-        _player = thePlayer;
-        _north = theNorth;
-        _south = theSouth;
+        _isPlayerOne = thePlayer;
+        _playerOnePieces = theNorth;
+        _playerTwoPieces = theSouth;
         _pieceLocations = theLocationMap;
         _movesLeft = theMovesLeftMap;
         _occupied = theOccupiedSet;
@@ -44,19 +44,19 @@
     return self;
 }
 
-- (id)initWithPlayer:(SBPlayer )thePlayer
+- (id)initWithPlayer:(BOOL)thePlayer
 {
 
-    NSArray *theNorth = [[NSArray alloc] initWithObjects:[[SBCirclePiece alloc] initWithPlayer:kSBPlayerNorth],
-                                                         [[SBSquarePiece alloc] initWithPlayer:kSBPlayerNorth],
-                                                         [[SBTrianglePiece alloc] initWithPlayer:kSBPlayerNorth],
-                                                         [[SBDiamondPiece alloc] initWithPlayer:kSBPlayerNorth],
+    NSArray *theNorth = [[NSArray alloc] initWithObjects:[[SBCirclePiece alloc] initWithPlayerOne:YES],
+                                                         [[SBSquarePiece alloc] initWithPlayerOne:YES],
+                                                         [[SBTrianglePiece alloc] initWithPlayerOne:YES],
+                                                         [[SBDiamondPiece alloc] initWithPlayerOne:YES],
                                                          nil];
 
-    NSArray *theSouth = [[NSArray alloc] initWithObjects:[[SBCirclePiece alloc] initWithPlayer:kSBPlayerSouth],
-                                                         [[SBSquarePiece alloc] initWithPlayer:kSBPlayerSouth],
-                                                         [[SBTrianglePiece alloc] initWithPlayer:kSBPlayerSouth],
-                                                         [[SBDiamondPiece alloc] initWithPlayer:kSBPlayerSouth],
+    NSArray *theSouth = [[NSArray alloc] initWithObjects:[[SBCirclePiece alloc] initWithPlayerOne:NO],
+                                                         [[SBSquarePiece alloc] initWithPlayerOne:NO],
+                                                         [[SBTrianglePiece alloc] initWithPlayerOne:NO],
+                                                         [[SBDiamondPiece alloc] initWithPlayerOne:NO],
                                                          nil];
 
     NSArray *theLocations = [[NSArray alloc] initWithObjects:[[SBLocation alloc] initWithColumn:1 row:4],
@@ -81,31 +81,31 @@
 
     NSSet *occupiedLocSet = [[NSSet alloc] initWithArray:theLocations];
 
-    return [self initWithPlayer:thePlayer north:theNorth south:theSouth locations:theLocationMap movesLeft:theMovesLeft occupied:occupiedLocSet];
+    return [self initWithPlayerOneTurn:thePlayer playerOnePieces:theNorth playerTwoPieces:theSouth locations:theLocationMap movesLeft:theMovesLeft occupied:occupiedLocSet];
 }
 
 - (id)init {
-    return [self initWithPlayer:kSBPlayerNorth];
+    return [self initWithPlayer:YES];
 }
 
 #pragma mark NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeInteger:_player forKey:@"SBPlayer"];
-    [coder encodeObject:_north forKey:@"SBNorth"];
-    [coder encodeObject:_south forKey:@"SBSouth"];
+    [coder encodeBool:_isPlayerOne forKey:@"SBPlayerOne"];
+    [coder encodeObject:_playerOnePieces forKey:@"SBNorth"];
+    [coder encodeObject:_playerTwoPieces forKey:@"SBSouth"];
     [coder encodeObject:_pieceLocations forKey:@"SBLocations"];
     [coder encodeObject:_movesLeft forKey:@"SBMoves"];
     [coder encodeObject:_occupied forKey:@"SBOccupied"];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
-    return [self initWithPlayer:[coder decodeIntegerForKey:@"SBPlayer"]
-                          north:[coder decodeObjectForKey:@"SBNorth"]
-                          south:[coder decodeObjectForKey:@"SBSouth"]
-                      locations:[coder decodeObjectForKey:@"SBLocations"]
-                      movesLeft:[coder decodeObjectForKey:@"SBMoves"]
-                       occupied:[coder decodeObjectForKey:@"SBOccupied"]];
+    return [self initWithPlayerOneTurn:[coder decodeBoolForKey:@"SBPlayerOne"]
+                       playerOnePieces:[coder decodeObjectForKey:@"SBNorth"]
+                       playerTwoPieces:[coder decodeObjectForKey:@"SBSouth"]
+                             locations:[coder decodeObjectForKey:@"SBLocations"]
+                             movesLeft:[coder decodeObjectForKey:@"SBMoves"]
+                              occupied:[coder decodeObjectForKey:@"SBOccupied"]];
 }
 
 #pragma mark Hashable
@@ -123,14 +123,14 @@
         return YES;
 
     return [_pieceLocations isEqualToDictionary:other.pieceLocations] &&
-            _player == other.player &&
+            _isPlayerOne == other.isPlayerOne &&
             [_movesLeft isEqualToDictionary:other.movesLeft] &&
             [_occupied isEqualToSet:other.occupied];
 }
 
 - (NSUInteger)hash {
     NSUInteger hash = [_pieceLocations hash];
-    hash = hash * 31u + _player;
+    hash = hash * 31u + _isPlayerOne;
     hash = hash * 31u + [_movesLeft hash];
     hash = hash * 31u + [_occupied hash];
     return hash;
@@ -141,7 +141,7 @@
 - (NSString *)description {
     NSMutableString *desc = [[NSMutableString alloc] initWithCapacity:self.rows * self.columns * 2u];
 
-    for (id p in _north) {
+    for (id p in _playerOnePieces) {
         [desc appendFormat:@"%@: %@\n", p, [_movesLeft objectForKey:p]];
     }
 
@@ -167,7 +167,7 @@
         [desc appendString:@"\n"];
     }
 
-    for (id p in _south) {
+    for (id p in _playerTwoPieces) {
         [desc appendFormat:@"%@: %@\n", p, [_movesLeft objectForKey:p]];
     }
 
@@ -221,19 +221,19 @@
     return moves;
 }
 
-- (NSArray *)piecesForPlayer:(SBPlayer)player {
-    return player == kSBPlayerNorth ? _north : _south;
+- (NSArray *)piecesForPlayer:(BOOL)player {
+    return player ? _playerOnePieces : _playerTwoPieces;
 }
 
 - (NSArray *)legalMoves {
     NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:64u];
-    for (SBPiece *p in [self piecesForPlayer:_player])
+    for (SBPiece *p in [self piecesForPlayer:_isPlayerOne])
         [moves addObjectsFromArray:[self legalMovesForPiece:p]];
     return moves;
 }
 
-- (SBPlayer)opponent {
-    return _player == kSBPlayerNorth ? kSBPlayerSouth : kSBPlayerNorth;
+- (BOOL)opponent {
+    return !_isPlayerOne;
 }
 
 - (SBState *)successorWithMove:(SBMove *)move {
@@ -246,7 +246,7 @@
     NSUInteger moves = [self movesLeftForPiece:move.piece];
     [newMovesLeft setObject:[NSNumber numberWithUnsignedInteger:moves - 1] forKey:move.piece];
 
-    return [[[self class] alloc] initWithPlayer:self.opponent north:_north south:_south locations:[newLocations copy] movesLeft:[newMovesLeft copy] occupied:newOccupiedSet];
+    return [[[self class] alloc] initWithPlayerOneTurn:self.opponent playerOnePieces:_playerOnePieces playerTwoPieces:_playerTwoPieces locations:[newLocations copy] movesLeft:[newMovesLeft copy] occupied:newOccupiedSet];
 }
 
 - (BOOL)isGameOver {
@@ -256,7 +256,7 @@
 - (NSInteger)result
 {
     NSUInteger playerMoveCount = 0;
-    for (SBPiece *p in [self piecesForPlayer:_player])
+    for (SBPiece *p in [self piecesForPlayer:_isPlayerOne])
         playerMoveCount += [[_movesLeft objectForKey:p] unsignedIntegerValue];
     
     NSUInteger opponentMoveCount = 0;

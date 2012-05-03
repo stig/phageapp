@@ -116,8 +116,7 @@
 
 - (void)enterNewGame:(GKTurnBasedMatch *)match {
     NSLog(@"enterNewGame");
-    BOOL isNorth = [[match.participants objectAtIndex:0] isEqual:match.currentParticipant];
-    SBPlayer player = isNorth ? kSBPlayerNorth : kSBPlayerSouth;
+    BOOL player = [[match.participants objectAtIndex:0] isEqual:match.currentParticipant];
     [self.gridView setState:[[SBState alloc] initWithPlayer:player]];
 }
 

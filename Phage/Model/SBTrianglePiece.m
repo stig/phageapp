@@ -15,7 +15,7 @@
     return [[NSArray alloc] initWithObjects:
             [[SBDirection alloc] initWithColumn:1 row:0],
             [[SBDirection alloc] initWithColumn:-1 row:0],
-            self.player == kSBPlayerNorth
+            self.isPlayerOne == YES
                     ? [[SBDirection alloc] initWithColumn:0 row:-1]
                     : [[SBDirection alloc] initWithColumn:0 row:1],
             nil];
