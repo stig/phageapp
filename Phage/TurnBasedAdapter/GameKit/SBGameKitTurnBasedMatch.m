@@ -53,6 +53,7 @@
 }
 
 - (void)endTurnWithNextParticipant:(id <SBTurnBasedParticipant>)nextParticipant matchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     SBGameKitTurnBasedParticipant *next = (SBGameKitTurnBasedParticipant *) nextParticipant;
     [_wrappedMatch endTurnWithNextParticipant:next.wrappedParticipant
                                     matchData:[NSKeyedArchiver archivedDataWithRootObject:matchState]
@@ -61,8 +62,28 @@
 
 
 - (void)endMatchInTurnWithMatchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     [_wrappedMatch endMatchInTurnWithMatchData:[NSKeyedArchiver archivedDataWithRootObject:matchState]
                              completionHandler:completionHandler];
+}
+
+- (void)removeWithCompletionHandler:(void (^)(NSError *))completionHandler {
+    [[self wrappedMatch] removeWithCompletionHandler:completionHandler];
+}
+
+
+- (void)participantQuitInTurnWithOutcome:(GKTurnBasedMatchOutcome)outcome
+                         nextParticipant:(id <SBTurnBasedParticipant>)participant_
+                              matchState:(id)matchState
+                       completionHandler:(void(^)(NSError *))block {
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+
+    SBGameKitTurnBasedParticipant *participant = (SBGameKitTurnBasedParticipant *)participant_;
+
+    [[self wrappedMatch] participantQuitInTurnWithOutcome:outcome
+                                          nextParticipant:[participant wrappedParticipant]
+                                                matchData:[NSKeyedArchiver archivedDataWithRootObject:matchState]
+                                        completionHandler:block];
 }
 
 
