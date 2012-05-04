@@ -74,7 +74,9 @@
     [_delegate handleDidFindMatch:[self wrap:match]];
 }
 
-// Called when a users chooses to quit a match and that player has the current turn.  The developer should call playerQuitInTurnWithOutcome:nextPlayer:matchData:completionHandler: on the match passing in appropriate values.  They can also update matchOutcome for other players as appropriate.
+// Called when a users chooses to quit a match and that player has the current turn.
+// The developer should call playerQuitInTurnWithOutcome:nextPlayer:matchData:completionHandler: on the match passing in appropriate values.
+// They can also update matchOutcome for other players as appropriate.
 - (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController playerQuitForMatch:(GKTurnBasedMatch *)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     [self.delegate handlePlayerQuitForMatch:[self wrap:match]];
