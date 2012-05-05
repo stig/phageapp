@@ -82,7 +82,6 @@
 
     if ([self isCurrentMatch:match]) {
         // it's the current match..
-        self.currentMatch = match; // TODO can we remove this?
 
         if ([self isLocalPlayerTurn:match]) {
             // ..and it's our turn now
