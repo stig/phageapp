@@ -138,6 +138,16 @@
 
 #pragma mark description
 
+- (SBPiece *)pieceForLocation:(SBLocation *)loc {
+    return [[_pieceLocations keysOfEntriesPassingTest:^(id key, id val, BOOL *stop) {
+        if ([loc isEqualToLocation:val]) {
+            *stop = YES;
+            return YES;
+        }
+        return NO;
+    }] anyObject];
+}
+
 - (NSString *)description {
     NSMutableString *desc = [[NSMutableString alloc] initWithCapacity:self.rows * self.columns * 2u];
 
@@ -145,17 +155,11 @@
         [desc appendFormat:@"%@: %@\n", p, [_movesLeft objectForKey:p]];
     }
 
-    NSMutableDictionary *map = [[NSMutableDictionary alloc] init];
-    for (SBPiece *p in _pieceLocations) {
-        SBLocation *loc = [_pieceLocations objectForKey:p];
-        [map setObject:p forKey:loc];
-    }
-
     for (int r = self.rows - 1; r >= 0; r--) {
         for (int c = 0; c < self.columns; c++) {
             SBLocation *loc = [[SBLocation alloc] initWithColumn:c row:r];
 
-            SBPiece *p = [map objectForKey:loc];
+            SBPiece *p = [self pieceForLocation:loc];
             if (p) {
                 [desc appendString:[p description]];
             } else if ([_occupied containsObject:loc]) {

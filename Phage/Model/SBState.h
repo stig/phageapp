@@ -31,6 +31,7 @@
 
 - (NSUInteger)movesLeftForPiece:(SBPiece*)piece;
 - (SBLocation *)locationForPiece:(SBPiece*)piece;
+- (SBPiece *)pieceForLocation:(SBLocation *)loc;
 - (NSArray*)moveLocationsForPiece:(SBPiece*)piece;
 
 - (BOOL)isEqualToState:(SBState*)state;
