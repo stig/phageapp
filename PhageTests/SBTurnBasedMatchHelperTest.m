@@ -33,8 +33,8 @@
     participant = [OCMockObject mockForProtocol:@protocol(SBTurnBasedParticipant)];
 
     helper = [[SBTurnBasedMatchHelper alloc] init];
-    [helper setValue:delegate forKey:@"delegate"];
-    [helper setValue:adapter forKey:@"adapter"];
+    helper.delegate = delegate;
+    helper.adapter = adapter;
 
     yes = YES;
     no = NO;
@@ -49,6 +49,7 @@
     [adapter verify];
     [match verify];
     [otherMatch verify];
+    [participant verify];
 }
 
 #pragma mark handleMatchEnded:
