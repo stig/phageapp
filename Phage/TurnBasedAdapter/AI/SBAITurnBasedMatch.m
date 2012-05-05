@@ -16,6 +16,7 @@
 
 @implementation SBAITurnBasedMatch
 
+@synthesize delegate = _delegate;
 @synthesize matchState = _matchState;
 @synthesize participants = _participants;
 

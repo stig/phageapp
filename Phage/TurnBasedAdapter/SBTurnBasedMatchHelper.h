@@ -36,7 +36,7 @@
 @end
 
 @interface SBTurnBasedMatchHelper : NSObject <SBTurnBasedMatchAdapter, SBTurnBasedMatchAdapterDelegate>
-@property(weak) id <SBTurnBasedMatchHelperDelegate> delegate;
+@property(strong) id <SBTurnBasedMatchHelperDelegate> delegate;
 @property(strong) id<SBTurnBasedMatchAdapter> adapter;
 @property(strong, readonly) id<SBTurnBasedMatch> currentMatch;
 @end

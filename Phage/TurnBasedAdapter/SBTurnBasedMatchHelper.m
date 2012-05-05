@@ -20,8 +20,8 @@
 
 
 - (BOOL)isCurrentMatch:(id <SBTurnBasedMatch>)match {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
-    return [self.currentMatch isEqual:match];
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    return [match isEqual:self.currentMatch];
 }
 
 #pragma mark Methods implemented in Strategy
@@ -82,7 +82,7 @@
 
     if ([self isCurrentMatch:match]) {
         // it's the current match..
-        self.currentMatch = match;
+        self.currentMatch = match; // TODO can we remove this?
 
         if ([self isLocalPlayerTurn:match]) {
             // ..and it's our turn now
