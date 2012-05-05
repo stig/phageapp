@@ -93,6 +93,37 @@
 
 #pragma mark handleDidFindMatch:
 
+- (void)testHandleDidFindMatch_nilMatchState {
+    [[[match stub] andReturn:nil] matchState];
+    [[delegate expect] enterNewGame:match];
+    STAssertNil(helper.currentMatch, nil);
+
+    [helper handleDidFindMatch:match];
+    STAssertEquals(helper.currentMatch, match, nil);
+}
+
+- (void)testHandleDidFindMatch_localPlayerTurn {
+    [[[match stub] andReturn:[NSNull null]] matchState];
+    [[[adapter stub] andReturnValue:OCMOCK_VALUE(yes)] isLocalPlayerTurn:match];
+
+    [[delegate expect] takeTurn:match];
+    STAssertNil(helper.currentMatch, nil);
+
+    [helper handleDidFindMatch:match];
+    STAssertEquals(helper.currentMatch, match, nil);
+}
+
+- (void)testHandleDidFindMatch_otherPlayerTurn {
+    [[[match stub] andReturn:[NSNull null]] matchState];
+    [[[adapter stub] andReturnValue:OCMOCK_VALUE(no)] isLocalPlayerTurn:match];
+
+    [[delegate expect] layoutMatch:match];
+    STAssertNil(helper.currentMatch, nil);
+
+    [helper handleDidFindMatch:match];
+    STAssertEquals(helper.currentMatch, match, nil);
+}
+
 #pragma mark handlePlayerQuitForMatch:
 
 #pragma mark Adapter methods
