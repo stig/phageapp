@@ -9,6 +9,7 @@
 #import <OCMock/OCMock.h>
 #import "SBTurnBasedMatch.h"
 #import "SBTurnBasedMatchHelper.h"
+#import "SBTurnBasedParticipant.h"
 
 @interface SBTurnBasedMatchHelperTest : SenTestCase {
     SBTurnBasedMatchHelper *helper;
@@ -16,6 +17,7 @@
     id adapter;
     id match;
     id otherMatch;
+    id participant;
     BOOL yes;
     BOOL no;
 }
@@ -28,6 +30,7 @@
     adapter = [OCMockObject mockForProtocol:@protocol(SBTurnBasedMatchAdapter)];
     match = [OCMockObject mockForProtocol:@protocol(SBTurnBasedMatch)];
     otherMatch = [OCMockObject mockForProtocol:@protocol(SBTurnBasedMatch)];
+    participant = [OCMockObject mockForProtocol:@protocol(SBTurnBasedParticipant)];
 
     helper = [[SBTurnBasedMatchHelper alloc] init];
     [helper setValue:delegate forKey:@"delegate"];
@@ -125,6 +128,21 @@
 }
 
 #pragma mark handlePlayerQuitForMatch:
+
+- (void)testHandlePlayerQuitForMatch {
+    [[[delegate stub] andReturn:participant] nextParticipantForMatch:match];
+    [[[match stub] andReturn:[NSNull null]] matchState];
+
+    [[participant expect] setMatchOutcome:GKTurnBasedMatchOutcomeWon];
+
+    [[match expect] participantQuitInTurnWithOutcome:GKTurnBasedMatchOutcomeLost
+                                     nextParticipant:participant
+                                          matchState:[NSNull null]
+                                   completionHandler:[OCMArg any]];
+
+    [helper handlePlayerQuitForMatch:match];
+
+}
 
 #pragma mark Adapter methods
 
