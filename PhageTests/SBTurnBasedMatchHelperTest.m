@@ -16,6 +16,8 @@
     id adapter;
     id match;
     id otherMatch;
+    BOOL yes;
+    BOOL no;
 }
 @end
 
@@ -31,11 +33,12 @@
     [helper setValue:delegate forKey:@"delegate"];
     [helper setValue:adapter forKey:@"adapter"];
 
-    BOOL yes = YES;
-    [[[match stub] andReturnValue:OCMOCK_VALUE(yes)] isEqual:match];
+    yes = YES;
+    no = NO;
 
-    BOOL no = NO;
+    [[[match stub] andReturnValue:OCMOCK_VALUE(yes)] isEqual:match];
     [[[match stub] andReturnValue:OCMOCK_VALUE(no)] isEqual:otherMatch];
+
 }
 
 - (void)tearDown {
@@ -60,6 +63,33 @@
 }
 
 #pragma mark handleTurnEventForMatch:
+
+- (void)testHandleTurnEventForMatch_currentMatch_localPlayerTurn {
+    [[[adapter stub] andReturnValue:OCMOCK_VALUE(yes)] isLocalPlayerTurn:match];
+    [helper setValue:match forKey:@"currentMatch"];
+    [[delegate expect] takeTurn:match];
+    [helper handleTurnEventForMatch:match];
+}
+
+- (void)testHandleTurnEventForMatch_currentMatch_otherPlayerTurn {
+    [[[adapter stub] andReturnValue:OCMOCK_VALUE(no)] isLocalPlayerTurn:match];
+    [helper setValue:match forKey:@"currentMatch"];
+    [[delegate expect] layoutMatch:match];
+    [helper handleTurnEventForMatch:match];
+}
+
+- (void)testHandleTurnEventForMatch_otherMatch_otherPlayerTurn {
+    [[[adapter stub] andReturnValue:OCMOCK_VALUE(no)] isLocalPlayerTurn:match];
+    [helper setValue:otherMatch forKey:@"currentMatch"];
+    [helper handleTurnEventForMatch:match];
+}
+
+- (void)testHandleTurnEventForMatch_otherMatch_localPlayerTurn {
+    [[[adapter stub] andReturnValue:OCMOCK_VALUE(yes)] isLocalPlayerTurn:match];
+    [helper setValue:otherMatch forKey:@"currentMatch"];
+    [[delegate expect] sendTitle:@"Attention: Your Turn!" notice:@"It is now your turn in another game." forMatch:match];
+    [helper handleTurnEventForMatch:match];
+}
 
 #pragma mark handleDidFindMatch:
 
