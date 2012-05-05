@@ -11,6 +11,7 @@
 @protocol SBTurnBasedMatch;
 @protocol SBTurnBasedParticipant;
 
+// Methods implemented by the controller using the ...Helper class
 @protocol SBTurnBasedMatchHelperDelegate
 - (void)enterNewGame:(id<SBTurnBasedMatch>)match;
 - (void)takeTurn:(id<SBTurnBasedMatch>)match;
@@ -20,20 +21,22 @@
 - (void)sendTitle:(NSString *)title notice:(NSString *)notice forMatch:(id<SBTurnBasedMatch>)match;
 @end
 
-@protocol SBTurnBasedMatchHelperAdapter
+// Methods implemented by the underlying adapters
+@protocol SBTurnBasedMatchAdapter
 - (void)findMatch;
 - (BOOL)isLocalPlayerTurn:(id <SBTurnBasedMatch>)match;
 @end
 
-@interface SBTurnBasedMatchHelper : NSObject <SBTurnBasedMatchHelperAdapter>
-@property(weak) id <SBTurnBasedMatchHelperDelegate> delegate;
-@property(strong) id<SBTurnBasedMatchHelperAdapter> adapter;
-@property(strong, readonly) id<SBTurnBasedMatch> currentMatch;
-
-// Methods for use by the underlying adapters6
+// Methods for use by the underlying adapters
+@protocol SBTurnBasedMatchAdapterDelegate
 - (void)handleDidFindMatch:(id <SBTurnBasedMatch>)match;
 - (void)handlePlayerQuitForMatch:(id <SBTurnBasedMatch>)match;
 - (void)handleTurnEventForMatch:(id <SBTurnBasedMatch>)match;
 - (void)handleMatchEnded:(id <SBTurnBasedMatch>)match;
+@end
 
+@interface SBTurnBasedMatchHelper : NSObject <SBTurnBasedMatchAdapter, SBTurnBasedMatchAdapterDelegate>
+@property(weak) id <SBTurnBasedMatchHelperDelegate> delegate;
+@property(strong) id<SBTurnBasedMatchAdapter> adapter;
+@property(strong, readonly) id<SBTurnBasedMatch> currentMatch;
 @end
