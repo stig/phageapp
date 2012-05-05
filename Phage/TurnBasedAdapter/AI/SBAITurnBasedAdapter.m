@@ -10,19 +10,28 @@
 #import "SBState.h"
 #import "SBAITurnBasedParticipant.h"
 
+@interface SBAITurnBasedAdapter ()
+@property(strong) SBAITurnBasedMatch *currentMatch;
+@end
+
 @implementation SBAITurnBasedAdapter
 
 @synthesize delegate = _delegate;
+@synthesize currentMatch = _currentMatch;
+
 
 - (void)findMatch {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 
     SBAITurnBasedParticipant *player1 = [[SBAITurnBasedParticipant alloc] init];
     SBAITurnBasedParticipant *player2 = [[SBAITurnBasedParticipant alloc] init];
-    NSArray *participants = [[NSArray alloc] initWithObjects:player1, player2, nil];
-    SBState *state = [[SBState alloc] init];
 
-    SBAITurnBasedMatch *match = [[SBAITurnBasedMatch alloc] initWithMatchState:state participants:participants delegate:self];
+    SBAITurnBasedMatch *match = [[SBAITurnBasedMatch alloc] init];
+    match.participants = [[NSArray alloc] initWithObjects:player1, player2, nil];
+    match.matchState = [[SBState alloc] init];
+    match.delegate = self;
+
+    self.currentMatch = match;
 
     [self.delegate handleDidFindMatch:match];
 }
@@ -30,7 +39,6 @@
 // TODO: fix this. Currently local player is always index 0
 - (BOOL)isLocalPlayerTurn:(id <SBTurnBasedMatch>)match {
     return ![match.participants indexOfObject:match.currentParticipant];
-
 }
 
 

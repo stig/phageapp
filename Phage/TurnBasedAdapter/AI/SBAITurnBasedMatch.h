@@ -8,13 +8,17 @@
 #import <Foundation/Foundation.h>
 #import "SBTurnBasedMatch.h"
 
+@class SBAITurnBasedMatch;
 @class SBAITurnBasedAdapter;
 
 @protocol SBAITurnBasedMatchDelegate
+- (void)handleTurnEventForMatch:(SBAITurnBasedMatch*)match;
 @end
 
 @interface SBAITurnBasedMatch : NSObject < SBTurnBasedMatch >
 
-- (id)initWithMatchState:(id)matchState participants:(NSArray *)participants delegate:(id<SBAITurnBasedMatchDelegate>)delegate;
+@property(weak) id <SBAITurnBasedMatchDelegate> delegate;
+@property(strong) id matchState;
+@property(strong) NSArray *participants;
 
 @end

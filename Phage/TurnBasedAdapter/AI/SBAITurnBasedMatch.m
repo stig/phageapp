@@ -7,10 +7,10 @@
 
 #import "SBAITurnBasedMatch.h"
 #import "SBTurnBasedParticipant.h"
+#import "SBTurnBasedMatchHelper.h"
 
 @interface SBAITurnBasedMatch () {
     NSUInteger _idx;
-    id<SBAITurnBasedMatchDelegate> _delegate;
 }
 @end
 
@@ -18,16 +18,6 @@
 
 @synthesize matchState = _matchState;
 @synthesize participants = _participants;
-
-- (id)initWithMatchState:(id)matchState participants:(NSArray *)participants delegate:(id<SBAITurnBasedMatchDelegate>)delegate {
-    self = [super init];
-    if (self) {
-        _matchState = matchState;
-        _participants = participants;
-        _delegate = delegate;
-    }
-    return self;
-}
 
 - (id<SBTurnBasedParticipant>)currentParticipant {
     return [self.participants objectAtIndex:_idx];
