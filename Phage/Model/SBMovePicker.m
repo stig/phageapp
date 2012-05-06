@@ -12,19 +12,19 @@
 @implementation SBMovePicker
 
 - (SBMove *)moveForState:(SBState *)state {
-    NSArray *moves = [state legalMoves];
+    __block NSInteger minScore = INT_MAX;
+    __block id bestMove = nil;
 
-    NSMutableDictionary *scores = [[NSMutableDictionary alloc] initWithCapacity:moves.count];
-    for (SBMove *move in moves) {
+    [[state legalMoves] enumerateObjectsUsingBlock:^(id move, NSUInteger idx, BOOL *stop) {
         SBState *successor = [state successorWithMove:move];
         NSUInteger score = [successor legalMoves].count;
-        [scores setObject:[NSNumber numberWithUnsignedInteger:score] forKey:move];
-    }
+        if (score < minScore) {
+            minScore = score;
+            bestMove = move;
+        }
+    }];
 
-    NSArray *keysSortedByValue = [scores keysSortedByValueUsingSelector:@selector(compare:)];
-
-    // Return the move which leaves our opponent with the lowest number of moves on her turn
-    return [keysSortedByValue objectAtIndex:0];
+    return bestMove;
 }
 
 
