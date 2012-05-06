@@ -65,11 +65,18 @@
             layer.name = [loc description];
             layer.bounds = [self cellRectForState:state];
             layer.position = [self cellPositionForLocation:loc inState:state];
-            layer.borderColor = [UIColor redColor].CGColor;
+            layer.backgroundColor = [UIColor orangeColor].CGColor;
             [layer setValue:loc forKey:@"location"];
             [cells setObject:layer forKey:loc];
             [cellLayer addSublayer:layer];
         }
+
+        if ([state wasLocationOccupied:loc]) {
+            layer.opacity = 0.7;
+        } else {
+            layer.opacity = 0.1;
+        }
+
         [layer setNeedsDisplay];
     }];
 
