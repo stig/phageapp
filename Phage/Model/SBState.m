@@ -79,7 +79,7 @@
 
     NSDictionary *theMovesLeft = [[NSDictionary alloc] initWithObjects:theMoves forKeys:thePieces];
 
-    NSSet *occupiedLocSet = [[NSSet alloc] initWithArray:theLocations];
+    NSSet *occupiedLocSet = [[NSSet alloc] init];
 
     return [self initWithPlayerOneTurn:thePlayer playerOnePieces:theNorth playerTwoPieces:theSouth locations:theLocationMap movesLeft:theMovesLeft occupied:occupiedLocSet];
 }
@@ -100,12 +100,22 @@
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
+    // This hackery is necessary because we used to write the current locations of pieces to GameCenter.
+    // TODO remove this hackery when all games have been upgraded to not require it
+    NSDictionary *locations = [coder decodeObjectForKey:@"SBLocations"];
+    NSSet *pieceLocations = [[NSSet alloc] initWithArray:locations.allValues];
+
+    NSSet *occupied = [coder decodeObjectForKey:@"SBOccupied"];
+    occupied = [occupied objectsPassingTest:^(id obj, BOOL *stop) {
+        return (BOOL)![pieceLocations containsObject:obj];
+    }];
+
     return [self initWithPlayerOneTurn:[coder decodeBoolForKey:@"SBPlayerOne"]
                        playerOnePieces:[coder decodeObjectForKey:@"SBNorth"]
                        playerTwoPieces:[coder decodeObjectForKey:@"SBSouth"]
-                             locations:[coder decodeObjectForKey:@"SBLocations"]
+                             locations:locations
                              movesLeft:[coder decodeObjectForKey:@"SBMoves"]
-                              occupied:[coder decodeObjectForKey:@"SBOccupied"]];
+                              occupied:occupied];
 }
 
 #pragma mark Hashable
@@ -138,6 +148,14 @@
 
 #pragma mark description
 
+- (BOOL)wasLocationOccupied:(SBLocation *)loc {
+    return [_occupied containsObject:loc];
+}
+
+- (BOOL)isLocationOccupied:(SBLocation*)loc {
+    return nil != [self pieceForLocation:loc];
+}
+
 - (SBPiece *)pieceForLocation:(SBLocation *)loc {
     return [[_pieceLocations keysOfEntriesPassingTest:^(id key, id val, BOOL *stop) {
         if ([loc isEqualToLocation:val]) {
@@ -162,7 +180,7 @@
             SBPiece *p = [self pieceForLocation:loc];
             if (p) {
                 [desc appendString:[p description]];
-            } else if ([_occupied containsObject:loc]) {
+            } else if ([self wasLocationOccupied:loc]) {
                 [desc appendString:@"*"];
             } else {
                 [desc appendString:@"."];
@@ -192,11 +210,6 @@
     return loc.column >= 0 && loc.column < self.columns && loc.row >= 0 && loc.row < self.rows;
 }
 
-// TODO: this should not return true for locations which has a piece currently
-- (BOOL)isPreviouslyOccupied:(SBLocation *)loc {
-    return [_occupied containsObject:loc];
-}
-
 - (NSArray *)moveLocationsForPiece:(SBPiece *)piece {
     if (![[_movesLeft objectForKey:piece] unsignedIntegerValue])
         return [[NSArray alloc] init];
@@ -207,8 +220,16 @@
         for (; ;) {
             loc = [loc locationByMovingInDirection:d];
 
-            // Is the location not on the grid? Or already occupied?
-            if (![self isGridLocation:loc] || [self isPreviouslyOccupied:loc])
+            // Is the location not on the grid?
+            if (![self isGridLocation:loc])
+                break;
+
+            // Or was already occupied?
+            if ([self wasLocationOccupied:loc])
+                break;
+
+            // Or perchance is _still_ occupied?
+            if ([self isLocationOccupied:loc])
                 break;
 
             [locations addObject:loc];
@@ -241,7 +262,7 @@
 }
 
 - (SBState *)successorWithMove:(SBMove *)move {
-    NSSet *newOccupiedSet = [_occupied setByAddingObject:move.to];
+    NSSet *newOccupiedSet = [_occupied setByAddingObject:[self locationForPiece:move.piece]];
 
     NSMutableDictionary *newLocations = [_pieceLocations mutableCopy];
     [newLocations setObject:move.to forKey:move.piece];

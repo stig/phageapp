@@ -38,6 +38,8 @@
 
 - (NSArray *)piecesForPlayer:(BOOL)player;
 
+- (BOOL)wasLocationOccupied:(SBLocation*)loc;
+
 - (NSArray *)legalMoves;
 - (SBState *)successorWithMove:(SBMove *)move;
 
@@ -46,6 +48,5 @@
 - (BOOL)isDraw;
 
 - (void)enumerateLocationsUsingBlock:(void (^)(SBLocation *location))block;
-- (BOOL)isPreviouslyOccupied:(SBLocation *)loc;
 
 @end
