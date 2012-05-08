@@ -28,12 +28,15 @@
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     _idx = [self.participants indexOfObject:nextParticipant];
     _matchState = matchState;
+
+    [self.delegate handleTurnEventForMatch:self];
+
     completionHandler(nil);
 }
 
 - (void)endMatchInTurnWithMatchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    [self doesNotRecognizeSelector:_cmd]; // TODO implement me
+    // [self.delegate handleMatchEnded:self];
 }
 
 - (void)participantQuitInTurnWithOutcome:(GKTurnBasedMatchOutcome)outcome nextParticipant:(id <SBTurnBasedParticipant>)participant matchState:(id)matchState completionHandler:(void (^)(NSError *))block {

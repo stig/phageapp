@@ -7,4 +7,5 @@
 
 @protocol SBTurnBasedParticipant
 @property(nonatomic, assign) GKTurnBasedMatchOutcome matchOutcome;
+@property(nonatomic, readonly) NSString *playerID;
 @end

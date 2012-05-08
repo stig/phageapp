@@ -114,4 +114,9 @@
     }
 }
 
+- (id <SBTurnBasedParticipant>)nextParticipantForMatch:(id <SBTurnBasedMatch>)match {
+    return [self.delegate nextParticipantForMatch:match];
+}
+
+
 @end

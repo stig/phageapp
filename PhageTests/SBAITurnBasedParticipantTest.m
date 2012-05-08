@@ -10,17 +10,24 @@
 
 @interface SBAITurnBasedParticipantTest : SenTestCase {
     SBAITurnBasedParticipant *participant;
+    SBAITurnBasedParticipant *otherParticipant;
 }
 @end
 
 @implementation SBAITurnBasedParticipantTest
 
 - (void)setUp {
-    participant = [[SBAITurnBasedParticipant alloc] init];
+    participant = [[SBAITurnBasedParticipant alloc] initWithPlayerID:@"human"];
+    otherParticipant = [[SBAITurnBasedParticipant alloc] initWithPlayerID:@"ai"];
 }
 
-- (void)test {
-    STAssertNotNil(participant, nil);
+- (void)testIsEqual {
+    STAssertEqualObjects(participant, participant, nil);
+    STAssertFalse([participant isEqual:otherParticipant], nil);
+
+    SBAITurnBasedParticipant *copy = [[SBAITurnBasedParticipant alloc] initWithPlayerID:participant.playerID];
+    STAssertEqualObjects(participant, copy, nil);
 }
+
 
 @end

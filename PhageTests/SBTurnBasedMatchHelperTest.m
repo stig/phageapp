@@ -145,6 +145,13 @@
 
 }
 
+#pragma mark nextParticipantForMatch:
+
+- (void)testNextParticipantForMatch {
+    [[delegate expect] nextParticipantForMatch:match];
+    [helper nextParticipantForMatch:match];
+}
+
 #pragma mark Adapter methods
 
 - (void)testFindMatch {

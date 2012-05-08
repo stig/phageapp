@@ -48,7 +48,7 @@
 		FB89D43C154C7D27001A0B1F /* SBGameKitTurnBasedMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B1E /* SBGameKitTurnBasedMatch.m */; };
 		FB89D43C154C7D27001A0B22 /* SBGameKitTurnBasedAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B21 /* SBGameKitTurnBasedAdapter.m */; };
 		FB89D43C154C7D27001A0B28 /* SBGameKitTurnBasedParticipant.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B27 /* SBGameKitTurnBasedParticipant.m */; };
-		FB89D43C154C7D27001A0B2A /* SBAITurnBasedMatchHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B29 /* SBAITurnBasedMatchHelperTest.m */; };
+		FB89D43C154C7D27001A0B2A /* SBAITurnBasedAdapterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B29 /* SBAITurnBasedAdapterTest.m */; };
 		FB89D43C154C7D27001A0B2C /* SBAITurnBasedMatchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B2B /* SBAITurnBasedMatchTest.m */; };
 		FB89D43C154C7D27001A0B2E /* SBAITurnBasedParticipantTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B2D /* SBAITurnBasedParticipantTest.m */; };
 		FB89D43C154C7D27001A0B30 /* SBGameKitTurnBasedMatchHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B2F /* SBGameKitTurnBasedMatchHelperTest.m */; };
@@ -168,7 +168,7 @@
 		FB89D43C154C7D27001A0B21 /* SBGameKitTurnBasedAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGameKitTurnBasedAdapter.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B26 /* SBGameKitTurnBasedParticipant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGameKitTurnBasedParticipant.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B27 /* SBGameKitTurnBasedParticipant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGameKitTurnBasedParticipant.m; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0B29 /* SBAITurnBasedMatchHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAITurnBasedMatchHelperTest.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0B29 /* SBAITurnBasedAdapterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAITurnBasedAdapterTest.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B2B /* SBAITurnBasedMatchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAITurnBasedMatchTest.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B2D /* SBAITurnBasedParticipantTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAITurnBasedParticipantTest.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B2F /* SBGameKitTurnBasedMatchHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGameKitTurnBasedMatchHelperTest.m; sourceTree = "<group>"; };
@@ -312,7 +312,7 @@
 				FB89D43C154C7D27001A0B2F /* SBGameKitTurnBasedMatchHelperTest.m */,
 				FB89D43C154C7D27001A0B2D /* SBAITurnBasedParticipantTest.m */,
 				FB89D43C154C7D27001A0B2B /* SBAITurnBasedMatchTest.m */,
-				FB89D43C154C7D27001A0B29 /* SBAITurnBasedMatchHelperTest.m */,
+				FB89D43C154C7D27001A0B29 /* SBAITurnBasedAdapterTest.m */,
 				D7BFA3B2151F2AD300435C8D /* SBMovePickerTest.h */,
 				D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */,
 				D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */,
@@ -565,7 +565,7 @@
 				D73965B2151FB10600118094 /* SBPieceTest.m in Sources */,
 				D7BFA3B2151F2AD300435C84 /* SBDirectionTest.m in Sources */,
 				D7BFA3B2151F2AD300435C8C /* SBMovePickerTest.m in Sources */,
-				FB89D43C154C7D27001A0B2A /* SBAITurnBasedMatchHelperTest.m in Sources */,
+				FB89D43C154C7D27001A0B2A /* SBAITurnBasedAdapterTest.m in Sources */,
 				FB89D43C154C7D27001A0B2C /* SBAITurnBasedMatchTest.m in Sources */,
 				FB89D43C154C7D27001A0B2E /* SBAITurnBasedParticipantTest.m in Sources */,
 				FB89D43C154C7D27001A0B30 /* SBGameKitTurnBasedMatchHelperTest.m in Sources */,

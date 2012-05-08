@@ -33,6 +33,9 @@
 - (void)handlePlayerQuitForMatch:(id <SBTurnBasedMatch>)match;
 - (void)handleTurnEventForMatch:(id <SBTurnBasedMatch>)match;
 - (void)handleMatchEnded:(id <SBTurnBasedMatch>)match;
+
+// This is not ideal, but AI adapter needs to have a way to ask the controller who's next.
+- (id<SBTurnBasedParticipant>)nextParticipantForMatch:(id<SBTurnBasedMatch>)match;
 @end
 
 @interface SBTurnBasedMatchHelper : NSObject <SBTurnBasedMatchAdapter, SBTurnBasedMatchAdapterDelegate>

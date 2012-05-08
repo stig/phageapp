@@ -9,4 +9,6 @@
 #import "SBTurnBasedParticipant.h"
 
 @interface SBAITurnBasedParticipant : NSObject < SBTurnBasedParticipant >
+- (id)initWithPlayerID:(NSString *)playerID;
+
 @end
