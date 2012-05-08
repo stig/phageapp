@@ -137,7 +137,31 @@
 
 - (void)receiveEndGame:(id<SBTurnBasedMatch>)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+
     [self layoutMatch:match];
+
+    NSString *title = nil;
+    NSString *message = nil;
+    switch ([[match.participants objectAtIndex:0] matchOutcome]) {
+        case GKTurnBasedMatchOutcomeWon:
+            title = @"Congratulations!";
+            message = @"You won this match!";
+            break;
+        case GKTurnBasedMatchOutcomeTied:
+            title = @"Well done!";
+            message = @"You managed a tie!";
+            break;
+        default:
+            title = @"Game Over";
+            message = @"You lost this match...";
+    }
+
+    [[[UIAlertView alloc] initWithTitle:title
+                                message:message
+                               delegate:self
+                      cancelButtonTitle:@"OK"
+                      otherButtonTitles:nil] show];
+
 }
 
 @end
