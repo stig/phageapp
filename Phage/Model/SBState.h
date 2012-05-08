@@ -44,7 +44,7 @@
 - (SBState *)successorWithMove:(SBMove *)move;
 
 - (BOOL)isGameOver;
-- (BOOL)isWin;
+- (BOOL)isLoss;
 - (BOOL)isDraw;
 
 - (void)enumerateLocationsUsingBlock:(void (^)(SBLocation *location))block;

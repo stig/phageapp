@@ -62,9 +62,9 @@
             nextParticipant.matchOutcome = GKTurnBasedMatchOutcomeTied;
             match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeTied;
 
-        } else if ([newState isWin]) {
-            match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeLost;
-            nextParticipant.matchOutcome = GKTurnBasedMatchOutcomeWon;
+        } else if ([newState isLoss]) {
+            match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeWon;
+            nextParticipant.matchOutcome = GKTurnBasedMatchOutcomeLost;
             
         } else {
             NSAssert(NO, @"Should never get here...");

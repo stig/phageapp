@@ -167,28 +167,20 @@ static SBState *s;
 
 - (void)testIsGameOver {
     STAssertFalse([s isGameOver], nil);
+    STAssertThrows([s isLoss], nil);
+    STAssertThrows([s isDraw], nil);
 
-    BOOL player = s.isPlayerOne;
-    while (![s isGameOver]) {
-        SBMove *m = [[s legalMoves] lastObject];
-        s = [s successorWithMove:m];
-        player = YES == player ? NO : YES;
+    for (;;) {
+        NSArray *moves = [s legalMoves];
+        if (!moves.count)
+            break;
+        s = [s successorWithMove:[moves lastObject]];
     }
-    
+
+    STAssertTrue(s.isPlayerOne, nil);
     STAssertTrue([s isGameOver], nil);
-}
-
-- (void)testIsWin {
-    STAssertFalse([s isWin], nil);
-    s = [s successorWithMove:[[s legalMoves] lastObject]];
-    STAssertFalse([s isWin], nil);
-
-}
-
-- (void)testIsDraw {
+    STAssertFalse([s isLoss], nil);
     STAssertTrue([s isDraw], nil);
-    s = [s successorWithMove:[[s legalMoves] lastObject]];
-    STAssertFalse([s isDraw], nil);
 }
 
 @end

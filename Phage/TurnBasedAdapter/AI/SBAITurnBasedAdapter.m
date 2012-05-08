@@ -64,13 +64,13 @@
         opponent.matchOutcome = GKTurnBasedMatchOutcomeTied;
         match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeTied;
 
-    } else if (state.isWin) {
-        opponent.matchOutcome = GKTurnBasedMatchOutcomeLost;
-        match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeWon;
-
-    } else {
+    } else if (state.isLoss) {
         opponent.matchOutcome = GKTurnBasedMatchOutcomeWon;
         match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeLost;
+
+    } else {
+        opponent.matchOutcome = GKTurnBasedMatchOutcomeLost;
+        match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeWon;
 
     }
 

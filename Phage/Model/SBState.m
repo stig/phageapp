@@ -250,11 +250,15 @@
     return player ? _playerOnePieces : _playerTwoPieces;
 }
 
-- (NSArray *)legalMoves {
+- (NSArray *)legalMovesForPlayer:(BOOL)one {
     NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:64u];
-    for (SBPiece *p in [self piecesForPlayer:_isPlayerOne])
+    for (SBPiece *p in [self piecesForPlayer:one])
         [moves addObjectsFromArray:[self legalMovesForPiece:p]];
     return moves;
+}
+
+- (NSArray *)legalMoves {
+    return [self legalMovesForPlayer:_isPlayerOne];
 }
 
 - (BOOL)opponent {
@@ -275,29 +279,19 @@
 }
 
 - (BOOL)isGameOver {
-    return [self legalMoves].count == 0u;
+    return 0u == [self legalMoves].count;
 }
 
-- (NSInteger)result
-{
-    NSUInteger playerMoveCount = 0;
-    for (SBPiece *p in [self piecesForPlayer:_isPlayerOne])
-        playerMoveCount += [[_movesLeft objectForKey:p] unsignedIntegerValue];
-    
-    NSUInteger opponentMoveCount = 0;
-    for (SBPiece *p in [self piecesForPlayer:self.opponent])
-        opponentMoveCount += [[_movesLeft objectForKey:p] unsignedIntegerValue];
-
-    // Number of moves _left_ should be less for the winning player
-    return opponentMoveCount - playerMoveCount;
-}
-
-- (BOOL)isWin {
-    return [self result] > 0;
+// The game is over when the current player can't perform any moves.
+// Therefore the current player cannot be the winner; they can only achieve draw or loss.
+- (BOOL)isLoss {
+    NSParameterAssert([self isGameOver]);
+    return ![self isDraw];
 }
 
 - (BOOL)isDraw {
-    return 0 == [self result];
+    NSParameterAssert([self isGameOver]);
+    return 0 == [self legalMovesForPlayer:self.opponent].count;
 }
 
 - (void)enumerateLocationsUsingBlock:(void (^)(SBLocation*location))block
