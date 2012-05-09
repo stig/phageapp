@@ -59,22 +59,22 @@
     }
 
     [state enumerateLocationsUsingBlock:^(SBLocation *loc) {
-        CALayer *layer = [cells objectForKey:loc];
+        CAShapeLayer *layer = [cells objectForKey:loc];
         if (!layer) {
-            layer = [CALayer layer];
+            layer = [CAShapeLayer layer];
             layer.name = [loc description];
             layer.bounds = [self cellRectForState:state];
             layer.position = [self cellPositionForLocation:loc inState:state];
-            layer.backgroundColor = [UIColor grayColor].CGColor;
+            layer.delegate = self;
             [layer setValue:loc forKey:@"location"];
             [cells setObject:layer forKey:loc];
             [cellLayer addSublayer:layer];
         }
 
         if ([state wasLocationOccupied:loc]) {
-            layer.opacity = 0.7;
+            layer.strokeEnd = 1.0;
         } else {
-            layer.opacity = 0.1;
+            layer.strokeEnd = 0.0;
         }
 
         [layer setNeedsDisplay];
@@ -105,6 +105,25 @@
     _state = state;
     [self setNeedsDisplay];
 }
+
+- (void)drawLayer:(CAShapeLayer *)layer inContext:(CGContextRef)ctx {
+    layer.lineWidth = 7.0;
+    layer.strokeColor = [UIColor darkGrayColor].CGColor;
+
+    CGRect r = CGRectInset(layer.bounds, 6.0, 6.0);
+
+    CGMutablePathRef path = CGPathCreateMutable();
+
+    CGPathMoveToPoint(path, nil, r.origin.x, r.origin.y);
+    CGPathAddLineToPoint(path, nil, r.origin.x + r.size.width, r.origin.y + r.size.width);
+
+    CGPathMoveToPoint(path, nil, r.origin.x, r.origin.y + r.size.width);
+    CGPathAddLineToPoint(path, nil, r.origin.x + r.size.height, r.origin.y);
+
+    layer.path = path;
+    CGPathRelease(path);
+}
+
 
 #pragma mark GridView Touch
 
