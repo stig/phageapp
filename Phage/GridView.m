@@ -65,7 +65,7 @@
             layer.name = [loc description];
             layer.bounds = [self cellRectForState:state];
             layer.position = [self cellPositionForLocation:loc inState:state];
-            layer.backgroundColor = [UIColor orangeColor].CGColor;
+            layer.backgroundColor = [UIColor grayColor].CGColor;
             [layer setValue:loc forKey:@"location"];
             [cells setObject:layer forKey:loc];
             [cellLayer addSublayer:layer];
@@ -82,12 +82,12 @@
 
     for (SBPiece *piece in [state.playerOnePieces arrayByAddingObjectsFromArray:state.playerTwoPieces]) {
 
-        CALayer *layer = [pieces objectForKey:piece];
+        CAShapeLayer *layer = [pieces objectForKey:piece];
         if (!layer) {
-            layer = [CALayer layer];
+            layer = [CAShapeLayer layer];
             layer.name = [piece description];
             layer.delegate = piece;
-            layer.bounds = CGRectInset([self cellRectForState:state], 3.0, 3.0);
+            layer.bounds = [self cellRectForState:state];
             [layer setValue:piece forKey:@"piece"];
             [layer setNeedsDisplay];
 

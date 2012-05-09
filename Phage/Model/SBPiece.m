@@ -68,8 +68,10 @@
     return 31u * _isPlayerOne + [NSStringFromClass([self class]) hash];
 }
 
-- (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx {
-    layer.backgroundColor = (_isPlayerOne == YES ? [UIColor blueColor] : [UIColor redColor]).CGColor;
+- (void)drawLayer:(CAShapeLayer *)layer inContext:(CGContextRef)ctx {
+    layer.fillColor = [UIColor colorWithWhite:0.5 alpha:0.5].CGColor;
+    layer.lineWidth = 7.0;
+    layer.strokeColor = (_isPlayerOne == YES ? [UIColor blueColor] : [UIColor redColor]).CGColor;
 }
 
 @end

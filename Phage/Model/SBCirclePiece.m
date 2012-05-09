@@ -25,9 +25,13 @@
             nil];
 }
 
-- (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx {
+- (void)drawLayer:(CAShapeLayer *)layer inContext:(CGContextRef)ctx {
     [super drawLayer:layer inContext:ctx];
-    layer.cornerRadius = layer.bounds.size.height / 2.0;
+
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathAddEllipseInRect(path, nil, CGRectInset(layer.bounds, 5.0, 5.0));
+    layer.path = path;
+    CGPathRelease(path);
 }
 
 
