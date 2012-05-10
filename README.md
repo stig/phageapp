@@ -47,7 +47,7 @@ Suggested timeline
 * May: rudimentary AI 1-player play
 * June: Scores & Achievements
 * *July: Mostly a  wash-out development-wise due to vacation. Hopefully some user testing?*
-* August: Rules / Game guide / Polish
+* August: Rules / Game guide / Polish / Icons
 * September: Polish
 * October: 1.0 Release!
 * November: 1.1 release: Localisations! (TBD)
