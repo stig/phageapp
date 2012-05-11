@@ -12,7 +12,7 @@
 
 @interface SBAITurnBasedMatch : NSObject < SBTurnBasedMatch >
 
-@property(weak) id<SBTurnBasedMatchAdapterDelegate> delegate;
+@property(strong) id<SBTurnBasedMatchAdapterDelegate> delegate;
 @property(strong) id matchState;
 @property(strong) NSArray *participants;
 
