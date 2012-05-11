@@ -36,7 +36,8 @@
 
 - (void)endMatchInTurnWithMatchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    // [self.delegate handleMatchEnded:self];
+    [self.delegate handleMatchEnded:self];
+    NSLog(@"STATE: %@", matchState);
 }
 
 - (void)participantQuitInTurnWithOutcome:(GKTurnBasedMatchOutcome)outcome nextParticipant:(id <SBTurnBasedParticipant>)participant matchState:(id)matchState completionHandler:(void (^)(NSError *))block {

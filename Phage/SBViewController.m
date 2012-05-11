@@ -55,19 +55,21 @@
     NSParameterAssert([[state legalMoves] containsObject:move]);
     SBState *newState = [state successorWithMove:move];
 
-    id<SBTurnBasedParticipant> nextParticipant = [self nextParticipantForMatch:match];
+    id<SBTurnBasedParticipant> opponent = [self nextParticipantForMatch:match];
 
     if ([newState isGameOver]) {
         if ([newState isDraw]) {
-            nextParticipant.matchOutcome = GKTurnBasedMatchOutcomeTied;
+            opponent.matchOutcome = GKTurnBasedMatchOutcomeTied;
             match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeTied;
 
         } else if ([newState isLoss]) {
-            match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeWon;
-            nextParticipant.matchOutcome = GKTurnBasedMatchOutcomeLost;
-            
+            opponent.matchOutcome = GKTurnBasedMatchOutcomeWon;
+            match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeLost;
+
         } else {
-            NSAssert(NO, @"Should never get here...");
+            opponent.matchOutcome = GKTurnBasedMatchOutcomeLost;
+            match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeWon;
+
         }
         
         [match endMatchInTurnWithMatchState:newState completionHandler:^(NSError *error) {
@@ -81,7 +83,7 @@
         }];
         
     } else {
-        [match endTurnWithNextParticipant:nextParticipant
+        [match endTurnWithNextParticipant:opponent
                                 matchState:newState
                         completionHandler:^(NSError *error) {
                             if (error) {

@@ -60,11 +60,11 @@
 
     id<SBTurnBasedParticipant> opponent = [self nextParticipantForMatch:match];
     SBState *state = match.matchState;
-    if (state.isDraw) {
+    if ([state isDraw]) {
         opponent.matchOutcome = GKTurnBasedMatchOutcomeTied;
         match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeTied;
 
-    } else if (state.isLoss) {
+    } else if ([state isLoss]) {
         opponent.matchOutcome = GKTurnBasedMatchOutcomeWon;
         match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeLost;
 
