@@ -93,7 +93,6 @@
         NSAssert(move != nil, @"Should not be nil!");
 
         id successor = [match.matchState successorWithMove:move];
-
         [match endTurnWithNextParticipant:[self nextParticipantForMatch:match]
                                matchState:successor
                         completionHandler:^(NSError *error) {
