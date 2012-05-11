@@ -10,11 +10,13 @@
 #import "SBTurnBasedMatchHelper.h"
 
 @class SBState;
+@class PhageModelHelper;
 
 @interface SBViewController : UIViewController <SBTurnBasedMatchHelperDelegate, GridViewDelegate>
 
-@property (strong) SBTurnBasedMatchHelper *turnBasedMatchHelper;
-@property (strong) IBOutlet GridView *gridView;
+@property(strong) PhageModelHelper *modelHelper;
+@property(strong) SBTurnBasedMatchHelper *turnBasedMatchHelper;
+@property(strong) IBOutlet GridView *gridView;
 
 - (IBAction)go;
 

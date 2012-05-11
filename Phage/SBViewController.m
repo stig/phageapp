@@ -11,19 +11,24 @@
 #import "SBMove.h"
 #import "SBTurnBasedMatch.h"
 #import "SBTurnBasedParticipant.h"
+#import "PhageModelHelper.h"
 
 @implementation SBViewController
 
 @synthesize turnBasedMatchHelper = _turnBasedMatchHelper;
 @synthesize gridView = _gridView;
+@synthesize modelHelper = _modelHelper;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.modelHelper = [[PhageModelHelper alloc] init];
     [self.turnBasedMatchHelper findMatch];
 }
 
 - (void)viewDidUnload {
     [super viewDidUnload];
+    self.modelHelper = nil;
     // Release any retained subviews of the main view.
 }
 
@@ -41,6 +46,7 @@
     [self.turnBasedMatchHelper findMatch];
 }
 
+
 - (void)performMove:(SBMove*)move {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 
@@ -55,38 +61,7 @@
     NSParameterAssert([[state legalMoves] containsObject:move]);
     SBState *newState = [state successorWithMove:move];
 
-    id<SBTurnBasedParticipant> opponent = [self nextParticipantForMatch:match];
-
-    if ([newState isGameOver]) {
-        if ([newState isDraw]) {
-            opponent.matchOutcome = GKTurnBasedMatchOutcomeTied;
-            match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeTied;
-
-        } else if ([newState isLoss]) {
-            opponent.matchOutcome = GKTurnBasedMatchOutcomeWon;
-            match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeLost;
-
-        } else {
-            opponent.matchOutcome = GKTurnBasedMatchOutcomeLost;
-            match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeWon;
-
-        }
-        
-        [match endMatchInTurnWithMatchState:newState completionHandler:^(NSError *error) {
-            if (error) {
-                NSLog(@"%@", error);
-            }
-        }];
-        
-    } else {
-        [match endTurnWithNextParticipant:opponent
-                                matchState:newState
-                        completionHandler:^(NSError *error) {
-                            if (error) {
-                                NSLog(@"%@", error);
-                            }
-                        }];
-    }
+    [self.modelHelper endTurnOrMatch:match withMatchState:newState];
 }
 
 - (BOOL)isLocalPlayerTurn {
@@ -97,9 +72,7 @@
 #pragma mark Turn Based Match Helper Delegate
 
 - (id<SBTurnBasedParticipant>)nextParticipantForMatch:(id<SBTurnBasedMatch>)match {
-    NSUInteger currIdx = [match.participants indexOfObject:match.currentParticipant];
-    NSUInteger nextIdx = (currIdx + 1) % match.participants.count;
-    return [match.participants objectAtIndex:nextIdx];
+    return [self.modelHelper nextParticipantForMatch:match];
 }
 
 - (void)enterNewGame:(id<SBTurnBasedMatch>)match {
