@@ -28,14 +28,13 @@
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     _idx = [self.participants indexOfObject:nextParticipant];
     _matchState = matchState;
-
-    [self.delegate handleTurnEventForMatch:self];
-
     completionHandler(nil);
+    [self.delegate handleTurnEventForMatch:self];
 }
 
 - (void)endMatchInTurnWithMatchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    completionHandler(nil);
     [self.delegate handleMatchEnded:self];
     NSLog(@"STATE: %@", matchState);
 }

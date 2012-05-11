@@ -74,9 +74,11 @@
 
     }
 
-    [match endMatchInTurnWithMatchState:state completionHandler:nil];
-
-    [self.delegate handleMatchEnded:match];
+    [match endMatchInTurnWithMatchState:state completionHandler:^(NSError *error){
+        if (error) {
+            NSLog(@"Error: %@", error);
+        }
+    }];
 }
 
 - (void)performComputerMoveActionForMatch:(SBAITurnBasedMatch*)match
@@ -97,8 +99,6 @@
                         completionHandler:^(NSError *error) {
                             if (error) {
                                 NSLog(@"XXX: %@", error);
-                            } else {
-                                [self.delegate handleTurnEventForMatch:match];
                             }
                         }];
     }
