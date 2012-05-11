@@ -1,0 +1,12 @@
+#!/bin/sh
+
+SRCFILE="$1"
+DSTDIR="$2"
+DSTFILE="$DSTDIR/$3"
+
+echo "Creating $DSTDIR if it doesn't already exist.."
+mkdir -p $DSTDIR
+
+echo "Processing $SRCFILE.."
+echo " -> $DSTFILE"
+$SRCROOT/Scripts/Markdown.pl $SRCFILE > $DSTFILE

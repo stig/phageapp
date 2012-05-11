@@ -32,8 +32,17 @@
             adapter.presentingViewController = vc;
             helper.adapter = adapter;
         }
-
         vc.turnBasedMatchHelper = helper;
+
+    } else if ([segue.identifier isEqualToString:@"HowToPlay"]) {
+
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"HowToPlay" ofType:@"html"];
+        NSURL *url = [[NSURL alloc] initFileURLWithPath:path];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+
+        UIViewController *vc = segue.destinationViewController;
+        [(UIWebView*)vc.view loadRequest:request];
+
     }
 }
 

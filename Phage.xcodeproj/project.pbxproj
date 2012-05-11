@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		536BE854153E17F000750F54 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536BE853153E17F000750F54 /* QuartzCore.framework */; };
+		D719864F155D78BB00349052 /* HowToPlay.md in Resources */ = {isa = PBXBuildFile; fileRef = D719864D155D78BB00349052 /* HowToPlay.md */; };
 		D73965B2151FB10600118094 /* SBPieceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D73965B1151FB10600118094 /* SBPieceTest.m */; };
 		D755A48B15320B53003BB704 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D755A48A15320B53003BB704 /* GameKit.framework */; };
 		D76A4566151DDC7500E59146 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4565151DDC7500E59146 /* UIKit.framework */; };
@@ -60,6 +61,20 @@
 		FB89D43C154C7D27001A0B9A /* SBTurnBasedMatchHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B99 /* SBTurnBasedMatchHelperTest.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		D7198649155D726500349052 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.md";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+				"$(DERIVED_FILES_DIR)/$(LOCALIZED_RESOURCES_FOLDER_PATH)/$(INPUT_FILE_BASE).html",
+			);
+			script = "$SRCROOT/Scripts/Markdown \"$INPUT_FILE_PATH\" \"$DERIVED_FILES_DIR/$LOCALIZED_RESOURCES_FOLDER_PATH/\" $INPUT_FILE_BASE.html";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXContainerItemProxy section */
 		D76A458A151DDC7500E59146 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -100,6 +115,7 @@
 
 /* Begin PBXFileReference section */
 		536BE853153E17F000750F54 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D719864E155D78BB00349052 /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = HowToPlay.md; path = en.lproj/HowToPlay.md; sourceTree = "<group>"; };
 		D73965B0151FB10600118094 /* SBPieceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPieceTest.h; sourceTree = "<group>"; };
 		D73965B1151FB10600118094 /* SBPieceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPieceTest.m; sourceTree = "<group>"; };
 		D755A48A15320B53003BB704 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -295,6 +311,7 @@
 		D76A456C151DDC7500E59146 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D719864D155D78BB00349052 /* HowToPlay.md */,
 				D76A456D151DDC7500E59146 /* Phage-Info.plist */,
 				D76A456E151DDC7500E59146 /* InfoPlist.strings */,
 				D76A4571151DDC7500E59146 /* main.m */,
@@ -401,6 +418,7 @@
 				D76A455F151DDC7500E59146 /* Resources */,
 			);
 			buildRules = (
+				D7198649155D726500349052 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -495,6 +513,7 @@
 				D76A4579151DDC7500E59146 /* MainStoryboard_iPhone.storyboard in Resources */,
 				D76A457C151DDC7500E59146 /* MainStoryboard_iPad.storyboard in Resources */,
 				D7BFA3B2151F2AD300435C95 /* chess-640x640.jpg in Resources */,
+				D719864F155D78BB00349052 /* HowToPlay.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +610,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D719864D155D78BB00349052 /* HowToPlay.md */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D719864E155D78BB00349052 /* en */,
+			);
+			name = HowToPlay.md;
+			sourceTree = "<group>";
+		};
 		D76A456E151DDC7500E59146 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
