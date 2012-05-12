@@ -21,7 +21,7 @@
 @implementation SBAITurnBasedMatchTest
 
 - (void)setUp {
-    delegate = [OCMockObject mockForProtocol:@protocol(SBTurnBasedMatchAdapterDelegate)];
+    delegate = [OCMockObject mockForProtocol:@protocol(SBAITurnBasedMatchDelegate)];
     participant = [OCMockObject mockForProtocol:@protocol(SBTurnBasedParticipant)];
     otherParticipant = [OCMockObject mockForProtocol:@protocol(SBTurnBasedParticipant)];
 

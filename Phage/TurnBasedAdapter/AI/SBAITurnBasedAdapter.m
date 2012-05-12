@@ -106,8 +106,7 @@
     [self performSelector:@selector(performComputerMoveActionForMatch:) withObject:match afterDelay:1.0];
 }
 
-
-- (void)handleMatchEnded:(id <SBTurnBasedMatch>)match {
+- (void)handleMatchEnded:(SBAITurnBasedMatch *)match {
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
     [self.delegate handleMatchEnded:match];
 }
