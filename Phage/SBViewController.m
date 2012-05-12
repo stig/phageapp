@@ -109,7 +109,8 @@
 
     NSString *title = nil;
     NSString *message = nil;
-    switch ([[match.participants objectAtIndex:0] matchOutcome]) {
+
+    switch ([[match localParticipant] matchOutcome]) {
         case GKTurnBasedMatchOutcomeWon:
             title = @"Congratulations!";
             message = @"You won this match!";
