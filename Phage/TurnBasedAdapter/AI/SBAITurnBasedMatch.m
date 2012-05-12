@@ -19,10 +19,7 @@
 @synthesize delegate = _delegate;
 @synthesize matchState = _matchState;
 @synthesize participants = _participants;
-
-- (id <SBTurnBasedParticipant>)localParticipant {
-    return [self.participants objectAtIndex:0];
-}
+@synthesize localParticipant = _localParticipant;
 
 - (id<SBTurnBasedParticipant>)currentParticipant {
     return [self.participants objectAtIndex:_idx];

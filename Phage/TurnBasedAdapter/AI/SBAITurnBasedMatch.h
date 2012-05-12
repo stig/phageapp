@@ -9,6 +9,7 @@
 #import "SBTurnBasedMatch.h"
 
 @class SBAITurnBasedMatch;
+@protocol SBTurnBasedParticipant;
 
 @protocol SBAITurnBasedMatchDelegate
 - (void)handleTurnEventForMatch:(SBAITurnBasedMatch *)match;
@@ -20,5 +21,6 @@
 @property(strong) id<SBAITurnBasedMatchDelegate> delegate;
 @property(strong) id matchState;
 @property(strong) NSArray *participants;
+@property(strong) id<SBTurnBasedParticipant> localParticipant;
 
 @end
