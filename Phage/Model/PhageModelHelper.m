@@ -30,13 +30,11 @@
             match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeTied;
 
         } else if ([successor isLoss]) {
-            opponent.matchOutcome = GKTurnBasedMatchOutcomeWon;
-            match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeLost;
+            match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeWon;
+            opponent.matchOutcome = GKTurnBasedMatchOutcomeLost;
 
         } else {
-            opponent.matchOutcome = GKTurnBasedMatchOutcomeLost;
-            match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeWon;
-
+            @throw @"Should never get here";
         }
 
         [match endMatchInTurnWithMatchState:successor completionHandler:^(NSError *error) {

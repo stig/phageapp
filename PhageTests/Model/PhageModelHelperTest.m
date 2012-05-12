@@ -66,8 +66,10 @@
     [[[successor stub] andReturnValue:OCMOCK_VALUE(no)] isDraw];
     [[[successor stub] andReturnValue:OCMOCK_VALUE(yes)] isLoss];
 
-    [[participant expect] setMatchOutcome:GKTurnBasedMatchOutcomeLost];
-    [[otherParticipant expect] setMatchOutcome:GKTurnBasedMatchOutcomeWon];
+    // This might look backwards (it tricked stigbra a while) but if the state is
+    // a loss for the _opponent at the successor state_ then it is a win for the _current_ player.
+    [[participant expect] setMatchOutcome:GKTurnBasedMatchOutcomeWon];
+    [[otherParticipant expect] setMatchOutcome:GKTurnBasedMatchOutcomeLost];
     [[match expect] endMatchInTurnWithMatchState:successor completionHandler:[OCMArg any]];
 
     [helper endTurnOrMatch:match withMatchState:successor];
