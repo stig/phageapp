@@ -11,6 +11,7 @@
 #import "SBAITurnBasedParticipant.h"
 #import "SBMovePicker.h"
 #import "SBMove.h"
+#import "PhageModelHelper.h"
 
 @interface SBAITurnBasedAdapter ()
 @property(strong) SBAITurnBasedMatch *currentMatch;
@@ -48,52 +49,13 @@
     [self.delegate handleDidFindMatch:match];
 }
 
-- (void)matchEnded:(id<SBTurnBasedMatch>)match {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-
-    id<SBTurnBasedParticipant> opponent = [self.delegate nextParticipantForMatch:match];
-    SBState *state = match.matchState;
-    if ([state isDraw]) {
-        opponent.matchOutcome = GKTurnBasedMatchOutcomeTied;
-        match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeTied;
-
-    } else if ([state isLoss]) {
-        opponent.matchOutcome = GKTurnBasedMatchOutcomeWon;
-        match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeLost;
-
-    } else {
-        opponent.matchOutcome = GKTurnBasedMatchOutcomeLost;
-        match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeWon;
-
-    }
-
-    [match endMatchInTurnWithMatchState:state completionHandler:^(NSError *error){
-        if (error) {
-            NSLog(@"Error: %@", error);
-        }
-    }];
-}
-
-- (void)performComputerMoveActionForMatch:(SBAITurnBasedMatch*)match
-{
+- (void)performComputerMoveActionForMatch:(SBAITurnBasedMatch*)match {
     NSLog(@"%s", sel_getName(_cmd));
 
-    if ([match.matchState isGameOver]) {
-        [self matchEnded:match];
-
-    } else if (![self.delegate isLocalPlayerTurn:match]) {
-        id move = [self.movePicker moveForState:match.matchState];
-        NSAssert(move != nil, @"Should not be nil!");
-
-        id successor = [match.matchState successorWithMove:move];
-        [match endTurnWithNextParticipant:[self.delegate nextParticipantForMatch:match]
-                               matchState:successor
-                        completionHandler:^(NSError *error) {
-                            if (error) {
-                                NSLog(@"XXX: %@", error);
-                            }
-                        }];
-    }
+    id move = [self.movePicker moveForState:match.matchState];
+    NSAssert(move != nil, @"Should not be nil!");
+    id successor = [match.matchState successorWithMove:move];
+    [[[PhageModelHelper alloc] init] endTurnOrMatch:match withMatchState:successor];
 }
 
 
@@ -102,8 +64,10 @@
 
     [self.delegate handleTurnEventForMatch:match];
 
-    // Wait 1 second, then see if we need to perform another move
-    [self performSelector:@selector(performComputerMoveActionForMatch:) withObject:match afterDelay:1.0];
+    if (![self.delegate isLocalPlayerTurn:match]) {
+        // Wait 1 second then perform a move on behalf of the computer.
+        [self performSelector:@selector(performComputerMoveActionForMatch:) withObject:match afterDelay:1.0];
+    }
 }
 
 - (void)handleMatchEnded:(SBAITurnBasedMatch *)match {
