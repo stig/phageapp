@@ -31,11 +31,5 @@
     [match verify];
 }
 
-#pragma mark nextParticipantForMatch:
-
-- (void)testNextParticipantForMatch {
-    [[delegate expect] nextParticipantForMatch:match];
-    [helper nextParticipantForMatch:match];
-}
 
 @end

@@ -51,7 +51,7 @@
 - (void)matchEnded:(id<SBTurnBasedMatch>)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 
-    id<SBTurnBasedParticipant> opponent = [self nextParticipantForMatch:match];
+    id<SBTurnBasedParticipant> opponent = [self.delegate nextParticipantForMatch:match];
     SBState *state = match.matchState;
     if ([state isDraw]) {
         opponent.matchOutcome = GKTurnBasedMatchOutcomeTied;
@@ -86,7 +86,7 @@
         NSAssert(move != nil, @"Should not be nil!");
 
         id successor = [match.matchState successorWithMove:move];
-        [match endTurnWithNextParticipant:[self nextParticipantForMatch:match]
+        [match endTurnWithNextParticipant:[self.delegate nextParticipantForMatch:match]
                                matchState:successor
                         completionHandler:^(NSError *error) {
                             if (error) {
@@ -106,10 +106,6 @@
     [self performSelector:@selector(performComputerMoveActionForMatch:) withObject:match afterDelay:1.0];
 }
 
-
-- (id <SBTurnBasedParticipant>)nextParticipantForMatch:(id <SBTurnBasedMatch>)match {
-    return [self.delegate nextParticipantForMatch:match];
-}
 
 - (void)handleMatchEnded:(id <SBTurnBasedMatch>)match {
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));

@@ -10,6 +10,6 @@
 @class SBMovePicker;
 
 @interface SBAITurnBasedAdapter : NSObject <SBTurnBasedMatchAdapter, SBTurnBasedMatchAdapterDelegate>
-@property(strong) id<SBTurnBasedMatchAdapterDelegate> delegate;
+@property(strong) SBTurnBasedMatchHelper *delegate;
 @property(strong) SBMovePicker *movePicker;
 @end
