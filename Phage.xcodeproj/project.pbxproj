@@ -118,7 +118,6 @@
 /* Begin PBXFileReference section */
 		536BE853153E17F000750F54 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D719864E155D78BB00349052 /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = HowToPlay.md; path = en.lproj/HowToPlay.md; sourceTree = "<group>"; };
-		D73965B0151FB10600118094 /* SBPieceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPieceTest.h; sourceTree = "<group>"; };
 		D73965B1151FB10600118094 /* SBPieceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPieceTest.m; sourceTree = "<group>"; };
 		D755A48A15320B53003BB704 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		D76A4561151DDC7500E59146 /* Phage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Phage.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,9 +142,7 @@
 		D76A459E151DE13700E59146 /* SBMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMove.m; sourceTree = "<group>"; };
 		D76A45A0151DE19300E59146 /* SBLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBLocation.h; sourceTree = "<group>"; };
 		D76A45A1151DE19300E59146 /* SBLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBLocation.m; sourceTree = "<group>"; };
-		D76A45A3151DE30600E59146 /* SBLocationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBLocationTest.h; sourceTree = "<group>"; };
 		D76A45A4151DE30600E59146 /* SBLocationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBLocationTest.m; sourceTree = "<group>"; };
-		D76A45A6151DE43300E59146 /* SBMoveTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMoveTest.h; sourceTree = "<group>"; };
 		D76A45A7151DE43300E59146 /* SBMoveTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMoveTest.m; sourceTree = "<group>"; };
 		D76A45B2151DFC2B00E59146 /* SBPiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPiece.h; sourceTree = "<group>"; };
 		D76A45B3151DFC4700E59146 /* SBCirclePiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBCirclePiece.h; sourceTree = "<group>"; };
@@ -159,7 +156,6 @@
 		D7BFA390151E48A000435C7F /* SBPiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPiece.m; sourceTree = "<group>"; };
 		D7BFA3AD151F108100435C7F /* SBState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBState.h; sourceTree = "<group>"; };
 		D7BFA3AE151F108100435C7F /* SBState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBState.m; sourceTree = "<group>"; };
-		D7BFA3B0151F2AD300435C7F /* SBStateTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBStateTest.h; sourceTree = "<group>"; };
 		D7BFA3B1151F2AD300435C7F /* SBStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBStateTest.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C80 /* SBDirection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDirection.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C82 /* SBDirection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBDirection.h; sourceTree = "<group>"; };
@@ -167,7 +163,6 @@
 		D7BFA3B2151F2AD300435C88 /* SBMovePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMovePicker.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C8A /* SBMovePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMovePicker.h; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMovePickerTest.m; sourceTree = "<group>"; };
-		D7BFA3B2151F2AD300435C8D /* SBMovePickerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMovePickerTest.h; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C91 /* GridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridView.h; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C92 /* GridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridView.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "chess-640x640.jpg"; sourceTree = "<group>"; };
@@ -336,16 +331,11 @@
 				FB89D43C154C7D27001A0B2D /* SBAITurnBasedParticipantTest.m */,
 				FB89D43C154C7D27001A0B2B /* SBAITurnBasedMatchTest.m */,
 				FB89D43C154C7D27001A0B29 /* SBAITurnBasedAdapterTest.m */,
-				D7BFA3B2151F2AD300435C8D /* SBMovePickerTest.h */,
 				D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */,
 				D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */,
-				D76A45A3151DE30600E59146 /* SBLocationTest.h */,
 				D76A45A4151DE30600E59146 /* SBLocationTest.m */,
-				D76A45A6151DE43300E59146 /* SBMoveTest.h */,
 				D76A45A7151DE43300E59146 /* SBMoveTest.m */,
-				D7BFA3B0151F2AD300435C7F /* SBStateTest.h */,
 				D7BFA3B1151F2AD300435C7F /* SBStateTest.m */,
-				D73965B0151FB10600118094 /* SBPieceTest.h */,
 				D73965B1151FB10600118094 /* SBPieceTest.m */,
 				D76A458D151DDC7500E59146 /* Supporting Files */,
 			);

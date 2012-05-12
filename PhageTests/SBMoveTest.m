@@ -6,14 +6,18 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SBMoveTest.h"
+#import <SenTestingKit/SenTestingKit.h>
 #import "SBLocation.h"
 #import "SBMove.h"
 #import "SBCirclePiece.h"
 
-static SBPiece *a;
-static SBLocation *b;
-static SBMove *m;
+@interface SBMoveTest : SenTestCase {
+    SBPiece *a;
+    SBLocation *b;
+    SBMove *m;
+}
+@end
+
 
 @implementation SBMoveTest
 

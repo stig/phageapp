@@ -6,16 +6,20 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SBStateTest.h"
+#import <SenTestingKit/SenTestingKit.h>
 #import "SBState.h"
 #import "SBLocation.h"
 #import "SBCirclePiece.h"
 #import "SBDiamondPiece.h"
 #import "SBMove.h"
 
+@interface SBStateTest : SenTestCase {
+    SBState *s;
+}
+@end
+
 @implementation SBStateTest
 
-static SBState *s;
 
 - (void)setUp {
     s = [[SBState alloc] init];

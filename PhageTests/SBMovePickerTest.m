@@ -5,12 +5,15 @@
 //
 
 
-#import "SBMovePickerTest.h"
+#import <SenTestingKit/SenTestingKit.h>
 #import "SBMovePicker.h"
 #import "SBState.h"
 #import "SBMove.h"
 #import "SBLocation.h"
 #import "SBTrianglePiece.h"
+
+@interface SBMovePickerTest : SenTestCase
+@end
 
 @implementation SBMovePickerTest
 

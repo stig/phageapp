@@ -6,12 +6,15 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SBLocationTest.h"
+#import <SenTestingKit/SenTestingKit.h>
 #import "SBLocation.h"
 
-@implementation SBLocationTest
+@interface SBLocationTest : SenTestCase {
+    SBLocation *loc;
+}
+@end
 
-static SBLocation *loc;
+@implementation SBLocationTest
 
 - (void)setUp {
     loc = [[SBLocation alloc] initWithColumn:1 row:3];

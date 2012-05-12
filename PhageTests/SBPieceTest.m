@@ -6,12 +6,16 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SBPieceTest.h"
+#import <SenTestingKit/SenTestingKit.h>
 #import "SBPiece.h"
 #import "SBCirclePiece.h"
 #import "SBTrianglePiece.h"
 
-SBPiece *a;
+@interface SBPieceTest : SenTestCase {
+    SBPiece *a;
+}
+@end
+
 
 @implementation SBPieceTest
 
