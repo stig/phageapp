@@ -24,7 +24,7 @@
 		D76A4588151DDC7500E59146 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4565151DDC7500E59146 /* UIKit.framework */; };
 		D76A4589151DDC7500E59146 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4567151DDC7500E59146 /* Foundation.framework */; };
 		D76A4591151DDC7500E59146 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D76A458F151DDC7500E59146 /* InfoPlist.strings */; };
-		D76A4594151DDC7500E59146 /* PhageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A4593151DDC7500E59146 /* PhageTests.m */; };
+		D76A4594151DDC7500E59146 /* PhageTests.m in Sources */ = {isa = PBXBuildFile; };
 		D76A459F151DE13700E59146 /* SBMove.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A459E151DE13700E59146 /* SBMove.m */; };
 		D76A45A2151DE19300E59146 /* SBLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45A1151DE19300E59146 /* SBLocation.m */; };
 		D76A45A5151DE30600E59146 /* SBLocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45A4151DE30600E59146 /* SBLocationTest.m */; };
@@ -139,8 +139,6 @@
 		D76A4586151DDC7500E59146 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		D76A458E151DDC7500E59146 /* PhageTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PhageTests-Info.plist"; sourceTree = "<group>"; };
 		D76A4590151DDC7500E59146 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D76A4592151DDC7500E59146 /* PhageTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhageTests.h; sourceTree = "<group>"; };
-		D76A4593151DDC7500E59146 /* PhageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhageTests.m; sourceTree = "<group>"; };
 		D76A459D151DE13700E59146 /* SBMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMove.h; sourceTree = "<group>"; };
 		D76A459E151DE13700E59146 /* SBMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMove.m; sourceTree = "<group>"; };
 		D76A45A0151DE19300E59146 /* SBLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBLocation.h; sourceTree = "<group>"; };
@@ -341,8 +339,6 @@
 				D7BFA3B2151F2AD300435C8D /* SBMovePickerTest.h */,
 				D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */,
 				D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */,
-				D76A4592151DDC7500E59146 /* PhageTests.h */,
-				D76A4593151DDC7500E59146 /* PhageTests.m */,
 				D76A45A3151DE30600E59146 /* SBLocationTest.h */,
 				D76A45A4151DE30600E59146 /* SBLocationTest.m */,
 				D76A45A6151DE43300E59146 /* SBMoveTest.h */,
