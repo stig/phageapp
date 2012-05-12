@@ -9,6 +9,7 @@
 
 
 @implementation SBGameKitTurnBasedParticipant
+
 @synthesize wrappedParticipant = _wrappedParticipant;
 
 - (id)initWithParticipant:(GKTurnBasedParticipant *)participant {
@@ -17,6 +18,10 @@
         _wrappedParticipant = participant;
     }
     return self;
+}
+
+- (NSString*)playerID {
+    return _wrappedParticipant.playerID;
 }
 
 - (GKTurnBasedMatchOutcome)matchOutcome {
