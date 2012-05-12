@@ -323,7 +323,6 @@
 		D76A458C151DDC7500E59146 /* PhageTests */ = {
 			isa = PBXGroup;
 			children = (
-				FB89D43C154C7D27001A0B9E /* PhageModelHelperTest.m */,
 				FB89D43C154C7D27001A0B99 /* SBTurnBasedMatchHelperTest.m */,
 				FB89D43C154C7D27001A0B33 /* SBGameKitTurnBasedParticipantTest.m */,
 				FB89D43C154C7D27001A0B31 /* SBGameKitTurnBasedMatchTest.m */,
@@ -331,13 +330,8 @@
 				FB89D43C154C7D27001A0B2D /* SBAITurnBasedParticipantTest.m */,
 				FB89D43C154C7D27001A0B2B /* SBAITurnBasedMatchTest.m */,
 				FB89D43C154C7D27001A0B29 /* SBAITurnBasedAdapterTest.m */,
-				D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */,
-				D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */,
-				D76A45A4151DE30600E59146 /* SBLocationTest.m */,
-				D76A45A7151DE43300E59146 /* SBMoveTest.m */,
-				D7BFA3B1151F2AD300435C7F /* SBStateTest.m */,
-				D73965B1151FB10600118094 /* SBPieceTest.m */,
 				D76A458D151DDC7500E59146 /* Supporting Files */,
+				FB89D43C154C7D27001A0BA0 /* Model */,
 			);
 			path = PhageTests;
 			sourceTree = SOURCE_ROOT;
@@ -398,6 +392,20 @@
 				FB89D43C154C7D27001A0B35 /* SBTurnBasedMatch.h */,
 			);
 			path = TurnBasedAdapter;
+			sourceTree = "<group>";
+		};
+		FB89D43C154C7D27001A0BA0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FB89D43C154C7D27001A0B9E /* PhageModelHelperTest.m */,
+				D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */,
+				D73965B1151FB10600118094 /* SBPieceTest.m */,
+				D76A45A7151DE43300E59146 /* SBMoveTest.m */,
+				D7BFA3B1151F2AD300435C7F /* SBStateTest.m */,
+				D76A45A4151DE30600E59146 /* SBLocationTest.m */,
+				D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
