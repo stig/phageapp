@@ -107,24 +107,20 @@
 
     [self layoutMatch:match];
 
-    NSString *title = nil;
     NSString *message = nil;
 
     switch ([[match localParticipant] matchOutcome]) {
         case GKTurnBasedMatchOutcomeWon:
-            title = @"Congratulations!";
-            message = @"You won this match!";
+            message = @"You won the match!";
             break;
         case GKTurnBasedMatchOutcomeTied:
-            title = @"Well done!";
             message = @"You managed a tie!";
             break;
         default:
-            title = @"Game Over";
-            message = @"You lost this match...";
+            message = @"You lost the match... Better luck next time!";
     }
 
-    [[[UIAlertView alloc] initWithTitle:title
+    [[[UIAlertView alloc] initWithTitle:@"Game Over"
                                 message:message
                                delegate:self
                       cancelButtonTitle:@"OK"
