@@ -18,8 +18,7 @@
     id match;
     id otherMatch;
     id participant;
-    BOOL yes;
-    BOOL no;
+    id otherParticipant;
 }
 @end
 
@@ -31,17 +30,21 @@
     match = [OCMockObject mockForProtocol:@protocol(SBTurnBasedMatch)];
     otherMatch = [OCMockObject mockForProtocol:@protocol(SBTurnBasedMatch)];
     participant = [OCMockObject mockForProtocol:@protocol(SBTurnBasedParticipant)];
+    otherParticipant = [OCMockObject mockForProtocol:@protocol(SBTurnBasedParticipant)];
 
     helper = [[SBTurnBasedMatchHelper alloc] init];
     helper.delegate = delegate;
     helper.adapter = adapter;
 
-    yes = YES;
-    no = NO;
+    BOOL yes = YES;
+    BOOL no = NO;
 
     [[[match stub] andReturnValue:OCMOCK_VALUE(yes)] isEqual:match];
     [[[match stub] andReturnValue:OCMOCK_VALUE(no)] isEqual:otherMatch];
+    [[[match stub] andReturn:participant] localParticipant];
 
+    [[[participant stub] andReturnValue:OCMOCK_VALUE(yes)] isEqual:participant];
+    [[[participant stub] andReturnValue:OCMOCK_VALUE(yes)] isEqual:otherParticipant];
 }
 
 - (void)tearDown {
@@ -50,6 +53,7 @@
     [match verify];
     [otherMatch verify];
     [participant verify];
+    [otherParticipant verify];
 }
 
 #pragma mark handleMatchEnded:
@@ -69,27 +73,27 @@
 #pragma mark handleTurnEventForMatch:
 
 - (void)testHandleTurnEventForMatch_currentMatch_localPlayerTurn {
-    [[[adapter stub] andReturnValue:OCMOCK_VALUE(yes)] isLocalPlayerTurn:match];
+    [[[match stub] andReturn:participant] currentParticipant];
     [helper setValue:match forKey:@"currentMatch"];
     [[delegate expect] takeTurn:match];
     [helper handleTurnEventForMatch:match];
 }
 
 - (void)testHandleTurnEventForMatch_currentMatch_otherPlayerTurn {
-    [[[adapter stub] andReturnValue:OCMOCK_VALUE(no)] isLocalPlayerTurn:match];
+    [[[match stub] andReturn:otherParticipant] currentParticipant];
     [helper setValue:match forKey:@"currentMatch"];
     [[delegate expect] layoutMatch:match];
     [helper handleTurnEventForMatch:match];
 }
 
 - (void)testHandleTurnEventForMatch_otherMatch_otherPlayerTurn {
-    [[[adapter stub] andReturnValue:OCMOCK_VALUE(no)] isLocalPlayerTurn:match];
+    [[[match stub] andReturn:otherParticipant] currentParticipant];
     [helper setValue:otherMatch forKey:@"currentMatch"];
     [helper handleTurnEventForMatch:match];
 }
 
 - (void)testHandleTurnEventForMatch_otherMatch_localPlayerTurn {
-    [[[adapter stub] andReturnValue:OCMOCK_VALUE(yes)] isLocalPlayerTurn:match];
+    [[[match stub] andReturn:participant] currentParticipant];
     [helper setValue:otherMatch forKey:@"currentMatch"];
     [[delegate expect] sendTitle:@"Attention: Your Turn!" notice:@"It is now your turn in another game." forMatch:match];
     [helper handleTurnEventForMatch:match];
@@ -108,7 +112,7 @@
 
 - (void)testHandleDidFindMatch_localPlayerTurn {
     [[[match stub] andReturn:[NSNull null]] matchState];
-    [[[adapter stub] andReturnValue:OCMOCK_VALUE(yes)] isLocalPlayerTurn:match];
+    [[[match stub] andReturn:participant] currentParticipant];
 
     [[delegate expect] takeTurn:match];
     STAssertNil(helper.currentMatch, nil);
@@ -119,7 +123,7 @@
 
 - (void)testHandleDidFindMatch_otherPlayerTurn {
     [[[match stub] andReturn:[NSNull null]] matchState];
-    [[[adapter stub] andReturnValue:OCMOCK_VALUE(no)] isLocalPlayerTurn:match];
+    [[[match stub] andReturn:otherParticipant] currentParticipant];
 
     [[delegate expect] layoutMatch:match];
     STAssertNil(helper.currentMatch, nil);
@@ -159,9 +163,14 @@
     [helper findMatch];
 }
 
-- (void)testIsLocalPlayerTurn {
-    [[adapter expect] isLocalPlayerTurn:match];
-    [helper isLocalPlayerTurn:match];
+- (void)testIsLocalPlayerTurn_true {
+    [[[match stub] andReturn:participant] currentParticipant];
+    STAssertTrue([helper isLocalPlayerTurn:match], nil);
+}
+
+- (void)testIsLocalPlayerTurn_false {
+    [[[match stub] andReturn:otherParticipant] currentParticipant];
+    STAssertFalse([helper isLocalPlayerTurn:match], nil);
 }
 
 @end

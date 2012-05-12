@@ -35,6 +35,17 @@
     return [self.wrappedMatch.matchID isEqualToString:other.wrappedMatch.matchID];
 }
 
+
+- (id <SBTurnBasedParticipant>)localParticipant {
+    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    for (GKTurnBasedParticipant *part in self.wrappedMatch.participants) {
+        if ([part.playerID isEqualToString:localPlayer.playerID]) {
+            return [[SBGameKitTurnBasedParticipant alloc] initWithParticipant:part];
+        }
+    }
+    @throw @"Should never get here: the local player should _always_ be one of the players in the match";
+}
+
 - (id <SBTurnBasedParticipant>)currentParticipant {
     return [[SBGameKitTurnBasedParticipant alloc] initWithParticipant:_wrappedMatch.currentParticipant];
 }

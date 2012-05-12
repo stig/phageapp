@@ -46,12 +46,6 @@
     [self.presentingViewController presentModalViewController:vc animated:YES];
 }
 
-- (BOOL)isLocalPlayerTurn:(id<SBTurnBasedMatch>)match_ {
-    SBGameKitTurnBasedMatch *match = (SBGameKitTurnBasedMatch *)match_;
-    NSString *const localPlayerID = [GKLocalPlayer localPlayer].playerID;
-    return [match.wrappedMatch.currentParticipant.playerID isEqualToString:localPlayerID];
-}
-
 #pragma mark Turn Based Matchmaker View Controller Delegate
 
 // The user has cancelled

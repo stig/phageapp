@@ -32,7 +32,7 @@
 }
 
 - (BOOL)isLocalPlayerTurn:(id <SBTurnBasedMatch>)match {
-    return [self.adapter isLocalPlayerTurn:match];
+    return [match.currentParticipant isEqual:match.localParticipant];
 }
 
 #pragma mark Methods called by Adapters

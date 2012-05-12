@@ -48,13 +48,6 @@
     [self.delegate handleDidFindMatch:match];
 }
 
-// TODO: fix this. Currently local player is always index 0
-- (BOOL)isLocalPlayerTurn:(id <SBTurnBasedMatch>)match {
-    NSArray *participants = match.participants;
-    id currentParticipant = match.currentParticipant;
-    return ![participants indexOfObject:currentParticipant];
-}
-
 - (void)matchEnded:(id<SBTurnBasedMatch>)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 
@@ -88,7 +81,7 @@
     if ([match.matchState isGameOver]) {
         [self matchEnded:match];
 
-    } else if (![self isLocalPlayerTurn:match]) {
+    } else if (![self.delegate isLocalPlayerTurn:match]) {
         id move = [self.movePicker moveForState:match.matchState];
         NSAssert(move != nil, @"Should not be nil!");
 

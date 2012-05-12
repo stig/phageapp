@@ -24,7 +24,6 @@
 // Methods implemented by the underlying adapters
 @protocol SBTurnBasedMatchAdapter
 - (void)findMatch;
-- (BOOL)isLocalPlayerTurn:(id <SBTurnBasedMatch>)match;
 @end
 
 // Methods for use by the underlying adapters
@@ -36,6 +35,7 @@
 
 // This is not ideal, but AI adapter needs to have a way to ask the controller who's next.
 - (id<SBTurnBasedParticipant>)nextParticipantForMatch:(id<SBTurnBasedMatch>)match;
+- (BOOL)isLocalPlayerTurn:(id <SBTurnBasedMatch>)match;
 @end
 
 @interface SBTurnBasedMatchHelper : NSObject <SBTurnBasedMatchAdapter, SBTurnBasedMatchAdapterDelegate>

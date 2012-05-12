@@ -10,6 +10,7 @@
 @protocol SBTurnBasedMatch < NSObject >
 
 @property(readonly) id matchState;
+@property(readonly) id<SBTurnBasedParticipant> localParticipant;
 @property(readonly) id<SBTurnBasedParticipant> currentParticipant;
 @property(readonly) NSArray *participants;
 
