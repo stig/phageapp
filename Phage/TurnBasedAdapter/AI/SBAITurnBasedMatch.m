@@ -29,27 +29,27 @@
 }
 
 - (void)endTurnWithNextParticipant:(id <SBTurnBasedParticipant>)nextParticipant matchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
     _idx = [self.participants indexOfObject:nextParticipant];
-    _matchState = matchState;
+    self.matchState = matchState;
     completionHandler(nil);
     [self.delegate handleTurnEventForMatch:self];
 }
 
 - (void)endMatchInTurnWithMatchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    _matchState = matchState;
+    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+    self.matchState = matchState;
     completionHandler(nil);
     [self.delegate handleMatchEnded:self];
 }
 
 - (void)participantQuitInTurnWithOutcome:(GKTurnBasedMatchOutcome)outcome nextParticipant:(id <SBTurnBasedParticipant>)participant matchState:(id)matchState completionHandler:(void (^)(NSError *))block {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
     [self doesNotRecognizeSelector:_cmd]; // TODO implement me
 }
 
 - (void)removeWithCompletionHandler:(void (^)(NSError *))completionHandler {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
     [self doesNotRecognizeSelector:_cmd]; // TODO implement me
 }
 

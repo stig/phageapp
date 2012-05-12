@@ -22,6 +22,7 @@
 @end
 
 // Methods implemented by the underlying adapters
+// TODO: try to find a better way to do this, so the helper doesn't have to hold on to the adapters
 @protocol SBTurnBasedMatchAdapter
 - (void)findMatch;
 @end
@@ -35,7 +36,7 @@
 @end
 
 @interface SBTurnBasedMatchHelper : NSObject <SBTurnBasedMatchAdapter, SBTurnBasedMatchAdapterDelegate>
-@property(strong) id <SBTurnBasedMatchHelperDelegate> delegate;
+@property(strong) id<SBTurnBasedMatchHelperDelegate> delegate;
 @property(strong) id<SBTurnBasedMatchAdapter> adapter;
 @property(strong, readonly) id<SBTurnBasedMatch> currentMatch;
 - (BOOL)isLocalPlayerTurn:(id <SBTurnBasedMatch>)match;
