@@ -43,18 +43,16 @@
     self.currentMatch = match;
 
     if (nil == match.matchState) {
-
         // It's a new game!
         [self.delegate enterNewGame:match];
 
+    } else if ([self isLocalPlayerTurn:match]) {
+        // It's your turn!
+        [self.delegate takeTurn:match];
+
     } else {
-        if ([self isLocalPlayerTurn:match]) {
-            // It's your turn!
-            [self.delegate takeTurn:match];
-        } else {
-            // It's not your turn, just display the game state.
-            [self.delegate layoutMatch:match];
-        }
+        // It's not your turn, just display the game state.
+        [self.delegate layoutMatch:match];
     }
 }
 
