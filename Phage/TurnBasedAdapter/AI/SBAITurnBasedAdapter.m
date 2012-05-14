@@ -43,6 +43,7 @@
     match.participants = [[NSArray alloc] initWithObjects:player1, player2, nil];
     match.matchState = [[SBState alloc] init];
     match.localParticipant = player1;
+    match.currentParticipant = player1;
     match.delegate = self;
 
     self.currentMatch = match;

@@ -45,10 +45,6 @@
     STAssertEquals([match.participants lastObject], otherParticipant, nil);
 }
 
-- (void)testCurrentParticipant {
-    STAssertEquals(match.currentParticipant, participant, nil);
-}
-
 - (void)testEndTurnWithNextParticipant {
     [[delegate expect] handleTurnEventForMatch:match];
 
@@ -71,8 +67,24 @@
     }];
 
     STAssertTrue(completionHandlerWasCalled, nil);
-    STAssertEqualObjects(match.currentParticipant, participant, nil);
     STAssertEqualObjects(match.matchState, @"FOOBAR", nil);
 }
+
+- (void)testParticipantQuitInTurnWithOutcome_nextParticipant_matchState_completionHandler {
+    match.currentParticipant = participant;
+    [[delegate expect] handleMatchEnded:match];
+    [[participant expect] setMatchOutcome:GKTurnBasedMatchOutcomeQuit];
+    [[otherParticipant expect] setMatchOutcome:GKTurnBasedMatchOutcomeWon];
+
+    __block BOOL completionHandlerWasCalled = NO;
+    [match participantQuitInTurnWithOutcome:GKTurnBasedMatchOutcomeQuit nextParticipant:otherParticipant matchState:@"FOOBAR" completionHandler:^(NSError *error) {
+        completionHandlerWasCalled = YES;
+    }];
+
+    STAssertTrue(completionHandlerWasCalled, nil);
+    STAssertEqualObjects(match.matchState, @"FOOBAR", nil);
+    STAssertEquals(match.status, GKTurnBasedMatchStatusEnded, nil);
+}
+
 
 @end
