@@ -9,25 +9,19 @@
 #import "SBTurnBasedParticipant.h"
 #import "SBTurnBasedMatchHelper.h"
 
-@interface SBAITurnBasedMatch () {
-    NSUInteger _idx;
-}
-@end
-
 @implementation SBAITurnBasedMatch
 
 @synthesize delegate = _delegate;
 @synthesize matchState = _matchState;
 @synthesize participants = _participants;
 @synthesize localParticipant = _localParticipant;
+@synthesize currentParticipant = _currentParticipant;
+@synthesize status = _status;
 
-- (id<SBTurnBasedParticipant>)currentParticipant {
-    return [self.participants objectAtIndex:_idx];
-}
 
 - (void)endTurnWithNextParticipant:(id <SBTurnBasedParticipant>)nextParticipant matchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
-    _idx = [self.participants indexOfObject:nextParticipant];
+    self.currentParticipant = nextParticipant;
     self.matchState = matchState;
     completionHandler(nil);
     [self.delegate handleTurnEventForMatch:self];
@@ -40,9 +34,14 @@
     [self.delegate handleMatchEnded:self];
 }
 
-- (void)participantQuitInTurnWithOutcome:(GKTurnBasedMatchOutcome)outcome nextParticipant:(id <SBTurnBasedParticipant>)participant matchState:(id)matchState completionHandler:(void (^)(NSError *))block {
+- (void)participantQuitInTurnWithOutcome:(GKTurnBasedMatchOutcome)outcome nextParticipant:(id <SBTurnBasedParticipant>)participant matchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
-    [self doesNotRecognizeSelector:_cmd]; // TODO implement me
+    self.matchState = matchState;
+    self.currentParticipant.matchOutcome = outcome;
+    participant.matchOutcome = GKTurnBasedMatchOutcomeWon;
+    self.status = GKTurnBasedMatchStatusEnded;
+    completionHandler(nil);
+    [self.delegate handleMatchEnded:self];
 }
 
 - (void)removeWithCompletionHandler:(void (^)(NSError *))completionHandler {

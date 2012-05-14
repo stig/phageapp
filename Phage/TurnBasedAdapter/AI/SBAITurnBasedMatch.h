@@ -22,5 +22,7 @@
 @property(strong) id matchState;
 @property(strong) NSArray *participants;
 @property(strong) id<SBTurnBasedParticipant> localParticipant;
+@property(strong) id<SBTurnBasedParticipant> currentParticipant;
+@property(assign) GKTurnBasedMatchStatus status;
 
 @end
