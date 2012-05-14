@@ -42,9 +42,6 @@
     [[[match stub] andReturnValue:OCMOCK_VALUE(yes)] isEqual:match];
     [[[match stub] andReturnValue:OCMOCK_VALUE(no)] isEqual:otherMatch];
     [[[match stub] andReturn:participant] localParticipant];
-
-    [[[participant stub] andReturnValue:OCMOCK_VALUE(yes)] isEqual:participant];
-    [[[participant stub] andReturnValue:OCMOCK_VALUE(yes)] isEqual:otherParticipant];
 }
 
 - (void)tearDown {
