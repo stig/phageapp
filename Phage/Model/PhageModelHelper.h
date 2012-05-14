@@ -13,5 +13,5 @@
 
 @interface PhageModelHelper : NSObject
 - (id<SBTurnBasedParticipant>)nextParticipantForMatch:(id<SBTurnBasedMatch>)match;
-- (void)endTurnOrMatch:(id <SBTurnBasedMatch>)match withMatchState:(SBState *)successor completionHandler:(void(^)(NSError*error))completionHandler;
+- (void)endTurnOrMatch:(id <SBTurnBasedMatch>)match withMatchState:(SBState *)successor;
 @end

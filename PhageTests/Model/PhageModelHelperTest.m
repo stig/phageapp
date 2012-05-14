@@ -56,11 +56,9 @@
 
     [[participant expect] setMatchOutcome:GKTurnBasedMatchOutcomeTied];
     [[otherParticipant expect] setMatchOutcome:GKTurnBasedMatchOutcomeTied];
+    [[match expect] endMatchInTurnWithMatchState:successor completionHandler:[OCMArg any]];
 
-    id block = ^(NSError *error){};
-    [[match expect] endMatchInTurnWithMatchState:successor completionHandler:block];
-
-    [helper endTurnOrMatch:match withMatchState:successor completionHandler:block];
+    [helper endTurnOrMatch:match withMatchState:successor];
 }
 
 - (void)testEndTurnOrMatchWithMatchState_isLoss {
@@ -72,20 +70,17 @@
     // a loss for the _opponent at the successor state_ then it is a win for the _current_ player.
     [[participant expect] setMatchOutcome:GKTurnBasedMatchOutcomeWon];
     [[otherParticipant expect] setMatchOutcome:GKTurnBasedMatchOutcomeLost];
+    [[match expect] endMatchInTurnWithMatchState:successor completionHandler:[OCMArg any]];
 
-    id block = ^(NSError *error){};
-    [[match expect] endMatchInTurnWithMatchState:successor completionHandler:block];
-
-    [helper endTurnOrMatch:match withMatchState:successor completionHandler:block];
+    [helper endTurnOrMatch:match withMatchState:successor];
 }
 
 - (void)testEndTurnOrMatchWithMatchState_notGameOver {
     [[[successor stub] andReturnValue:OCMOCK_VALUE(no)] isGameOver];
 
-    id block = ^(NSError *error){};
-    [[match expect] endTurnWithNextParticipant:otherParticipant matchState:successor completionHandler:block];
+    [[match expect] endTurnWithNextParticipant:otherParticipant matchState:successor completionHandler:[OCMArg any]];
 
-    [helper endTurnOrMatch:match withMatchState:successor completionHandler:block];
+    [helper endTurnOrMatch:match withMatchState:successor];
 }
 
 @end

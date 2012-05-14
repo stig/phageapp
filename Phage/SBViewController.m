@@ -61,13 +61,7 @@
     NSParameterAssert([[state legalMoves] containsObject:move]);
     SBState *newState = [state successorWithMove:move];
 
-    [self.modelHelper endTurnOrMatch:match withMatchState:newState completionHandler:^(NSError *error) {
-        if (error) {
-            NSLog(@"ERROR: %@", error);
-        } else {
-            self.gridView.state = newState;
-        }
-    }];
+    [self.modelHelper endTurnOrMatch:match withMatchState:newState];
 }
 
 - (BOOL)isLocalPlayerTurn {
