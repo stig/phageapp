@@ -93,7 +93,21 @@
 
             [pieces setObject:layer forKey:piece];
             [pieceLayer addSublayer:layer];
+
+            CATextLayer *textLayer = [CATextLayer layer];
+            textLayer.backgroundColor = [UIColor darkGrayColor].CGColor;
+            textLayer.foregroundColor = [UIColor whiteColor].CGColor;
+            textLayer.contentsScale = [[UIScreen mainScreen] scale];
+            textLayer.frame = CGRectMake(layer.bounds.size.width - 14, 0, 14, 14);
+            textLayer.fontSize = 14.0;
+            textLayer.cornerRadius = 7.0;
+            textLayer.alignmentMode = kCAAlignmentCenter;
+
+            [layer addSublayer:textLayer];
+            [layer setValue:textLayer forKey:@"movesLeft"];
         }
+
+        ((CATextLayer *)[layer valueForKey:@"movesLeft"]).string = [NSString stringWithFormat:@"%u", [state movesLeftForPiece:piece]];
 
         // Animate the piece to its new position
         [CATransaction begin];
