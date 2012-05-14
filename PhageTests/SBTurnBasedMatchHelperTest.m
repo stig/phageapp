@@ -137,7 +137,7 @@
 
     [[participant expect] setMatchOutcome:GKTurnBasedMatchOutcomeWon];
 
-    [[match expect] participantQuitInTurnWithOutcome:GKTurnBasedMatchOutcomeLost
+    [[match expect] participantQuitInTurnWithOutcome:GKTurnBasedMatchOutcomeQuit
                                      nextParticipant:participant
                                           matchState:[NSNull null]
                                    completionHandler:[OCMArg any]];
