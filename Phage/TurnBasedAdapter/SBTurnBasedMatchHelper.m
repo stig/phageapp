@@ -63,7 +63,7 @@
     id<SBTurnBasedParticipant> next = [self.delegate nextParticipantForMatch:match];
     next.matchOutcome = GKTurnBasedMatchOutcomeWon;
 
-    [match participantQuitInTurnWithOutcome:GKTurnBasedMatchOutcomeLost
+    [match participantQuitInTurnWithOutcome:GKTurnBasedMatchOutcomeQuit
                             nextParticipant:next
                                   matchState:match.matchState
                           completionHandler:^(NSError *error) {
