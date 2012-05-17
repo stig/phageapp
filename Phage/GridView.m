@@ -116,6 +116,16 @@
         [CATransaction commit];
     }
 
+    legalDestinations = [[NSMutableDictionary alloc] init];
+    for (SBMove *move in state.legalMoves) {
+        NSMutableSet *dst = [legalDestinations objectForKey:move.piece];
+        if (!dst) {
+            dst = [NSMutableSet set];
+            [legalDestinations setObject:dst forKey:move.piece];
+        }
+        [dst addObject:move.to];
+    }
+
     _state = state;
     [self setNeedsDisplay];
 }
@@ -175,10 +185,9 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     if (draggingLayer) {
         SBPiece *piece = [draggingLayer valueForKey:@"piece"];
-
         CALayer *cell = [cellLayer hitTest:[self pointOfTouch:touches]];
         SBLocation *loc = [cell valueForKey:@"location"];
-        if (cell && [[_state moveLocationsForPiece:piece] containsObject:loc]) {
+        if (cell && [[legalDestinations objectForKey:piece] containsObject:loc]) {
             NSLog(@"%@ is a valid move location for %@", loc, piece);
             draggingLayer.position = [self cellPositionForLocation:loc inState:_state];
             [self.delegate performMove:[[SBMove alloc] initWithPiece:piece to:loc]];
