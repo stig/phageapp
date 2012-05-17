@@ -117,14 +117,14 @@
     }
 
     legalDestinations = [[NSMutableDictionary alloc] init];
-    for (SBMove *move in state.legalMoves) {
+    [state enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
         NSMutableSet *dst = [legalDestinations objectForKey:move.piece];
         if (!dst) {
             dst = [NSMutableSet set];
             [legalDestinations setObject:dst forKey:move.piece];
         }
         [dst addObject:move.to];
-    }
+    }];
 
     _state = state;
     [self setNeedsDisplay];

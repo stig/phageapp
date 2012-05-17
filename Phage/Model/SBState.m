@@ -210,55 +210,54 @@
     return loc.column >= 0 && loc.column < self.columns && loc.row >= 0 && loc.row < self.rows;
 }
 
-- (NSArray *)moveLocationsForPiece:(SBPiece *)piece {
-    if (![[_movesLeft objectForKey:piece] unsignedIntegerValue])
-        return [[NSArray alloc] init];
 
-    NSMutableArray *locations = [[NSMutableArray alloc] initWithCapacity:32];
-    for (SBDirection *d in [piece directions]) {
-        SBLocation *loc = [self locationForPiece:piece];
-        for (; ;) {
-            loc = [loc locationByMovingInDirection:d];
+- (void)enumerateLegalMovesForPlayerOne:(BOOL)one withBlock:(void(^)(SBMove *move, BOOL *stop))block {
+    for (SBPiece *piece in [self piecesForPlayer:one]) {
+        if (![self movesLeftForPiece:piece])
+            continue;
 
-            // Is the location not on the grid?
-            if (![self isGridLocation:loc])
-                break;
+        for (SBDirection *d in piece.directions) {
+            SBLocation *loc = [self locationForPiece:piece];
+            for (;;) {
+                loc = [loc locationByMovingInDirection:d];
 
-            // Or was already occupied?
-            if ([self wasLocationOccupied:loc])
-                break;
+                // Is the location not on the grid?
+                if (![self isGridLocation:loc])
+                    break;
 
-            // Or perchance is _still_ occupied?
-            if ([self isLocationOccupied:loc])
-                break;
+                // Or was already occupied?
+                if ([self wasLocationOccupied:loc])
+                    break;
 
-            [locations addObject:loc];
+                // Or perchance is _still_ occupied?
+                if ([self isLocationOccupied:loc])
+                    break;
+
+                BOOL stop = NO;
+                block([[SBMove alloc] initWithPiece:piece to:loc], &stop);
+                if (stop) return;
+            }
         }
     }
-    return locations;
 }
 
-- (NSArray *)legalMovesForPiece:(SBPiece *)piece {
-    NSArray *locations = [self moveLocationsForPiece:piece];
-    NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:locations.count];
-    for (SBLocation *loc in locations)
-        [moves addObject:[[SBMove alloc] initWithPiece:piece to:loc]];
-    return moves;
+- (void)enumerateLegalMovesWithBlock:(void(^)(SBMove *move, BOOL *stop))block {
+    [self enumerateLegalMovesForPlayerOne:self.isPlayerOne withBlock:block];
 }
 
 - (NSArray *)piecesForPlayer:(BOOL)player {
     return player ? _playerOnePieces : _playerTwoPieces;
 }
 
-- (NSArray *)legalMovesForPlayer:(BOOL)one {
-    NSMutableArray *moves = [[NSMutableArray alloc] initWithCapacity:64u];
-    for (SBPiece *p in [self piecesForPlayer:one])
-        [moves addObjectsFromArray:[self legalMovesForPiece:p]];
-    return moves;
-}
-
-- (NSArray *)legalMoves {
-    return [self legalMovesForPlayer:_isPlayerOne];
+- (BOOL)isLegalMove:(SBMove*)aMove {
+    __block BOOL isLegalMove = NO;
+    [self enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
+        if ([move isEqualToMove:aMove]) {
+            isLegalMove = YES;
+            *stop = NO;
+        }
+    }];
+    return isLegalMove;
 }
 
 - (BOOL)opponent {
@@ -279,7 +278,12 @@
 }
 
 - (BOOL)isGameOver {
-    return 0u == [self legalMoves].count;
+    __block BOOL isGameOver = YES;
+    [self enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
+        isGameOver = NO;
+        *stop = YES;
+    }];
+    return isGameOver;
 }
 
 // The game is over when the current player can't perform any moves.
@@ -291,11 +295,15 @@
 
 - (BOOL)isDraw {
     NSParameterAssert([self isGameOver]);
-    return 0 == [self legalMovesForPlayer:self.opponent].count;
+    __block BOOL isDraw = YES;
+    [self enumerateLegalMovesForPlayerOne:self.opponent withBlock:^(SBMove *move, BOOL *stop) {
+        isDraw = NO;
+        *stop = YES;
+    }];
+    return isDraw;
 }
 
-- (void)enumerateLocationsUsingBlock:(void (^)(SBLocation*location))block
-{
+- (void)enumerateLocationsUsingBlock:(void (^)(SBLocation*location))block {
     for (NSUInteger r = 0; r < self.rows; r++) {
         for (NSUInteger c = 0; c < self.columns; c++) {
             block([[SBLocation alloc] initWithColumn:c row:r]);

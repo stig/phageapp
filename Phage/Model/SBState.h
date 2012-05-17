@@ -32,7 +32,6 @@
 - (NSUInteger)movesLeftForPiece:(SBPiece*)piece;
 - (SBLocation *)locationForPiece:(SBPiece*)piece;
 - (SBPiece *)pieceForLocation:(SBLocation *)loc;
-- (NSArray*)moveLocationsForPiece:(SBPiece*)piece;
 
 - (BOOL)isEqualToState:(SBState*)state;
 
@@ -40,13 +39,15 @@
 
 - (BOOL)wasLocationOccupied:(SBLocation*)loc;
 
-- (NSArray *)legalMoves;
 - (SBState *)successorWithMove:(SBMove *)move;
+
+- (BOOL)isLegalMove:(SBMove*)move;
 
 - (BOOL)isGameOver;
 - (BOOL)isLoss;
 - (BOOL)isDraw;
 
 - (void)enumerateLocationsUsingBlock:(void (^)(SBLocation *location))block;
+- (void)enumerateLegalMovesWithBlock:(void(^)(SBMove *move, BOOL *stop))block;
 
 @end

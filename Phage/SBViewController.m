@@ -58,7 +58,7 @@
         NSAssert([match.matchState isEqualToState:state], @"Match in view should match TurnBased model");
     }
 
-    NSParameterAssert([[state legalMoves] containsObject:move]);
+    NSParameterAssert([state isLegalMove:move]);
     SBState *newState = [state successorWithMove:move];
 
     [self.modelHelper endTurnOrMatch:match withMatchState:newState];

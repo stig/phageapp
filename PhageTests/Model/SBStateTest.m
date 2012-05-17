@@ -88,13 +88,25 @@
 }
 
 - (void)testLegalMoves {
-    NSArray *moves = [s legalMoves];
-    STAssertEquals(moves.count, 61u, nil);
+    __block NSUInteger count = 0;
+    [s enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
+        count++;
+    }];
+
+    STAssertEquals(count, 61u, nil);
+}
+
+
+- (id)lastMoveForState:(SBState *)state {
+    __block id lastMove = nil;
+    [state enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
+        lastMove = move;
+    }];
+    return lastMove;
 }
 
 - (void)testSuccessor {
-    NSArray *moves = [s legalMoves];
-    SBState *s1 = [s successorWithMove:[moves lastObject]];
+    SBState *s1 = [s successorWithMove:[self lastMoveForState:s]];
     STAssertNotNil(s1, nil);
     STAssertFalse([s1 isEqual:s], nil);
 
@@ -122,8 +134,8 @@
 }
 
 - (void)testSuccessor2 {
-    SBState *s1 = [s successorWithMove:[[s legalMoves] lastObject]];
-    SBState *s2 = [s1 successorWithMove:[[s1 legalMoves] lastObject]];
+    SBState *s1 = [s successorWithMove:[self lastMoveForState:s]];
+    SBState *s2 = [s1 successorWithMove:[self lastMoveForState:s1]];
 
     NSArray *expected = [[NSArray alloc] initWithObjects:
             @"C: 7",
@@ -155,16 +167,14 @@
 }
 
 - (void)testCodingSize {
-    BOOL player = YES;
     for (;;) {
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:s];
         STAssertTrue(data.length < 3096u, @"Serialised state is less than 3K");
 
-        SBMove *move = [[s legalMoves] lastObject];
+        SBMove *move = [self lastMoveForState:s];
         if (!move)
             break;
 
-        player = YES == player ? NO : YES;
         s = [s successorWithMove:move];
     }
 }
@@ -175,10 +185,10 @@
     STAssertThrows([s isDraw], nil);
 
     for (;;) {
-        NSArray *moves = [s legalMoves];
-        if (!moves.count)
+        id move = [self lastMoveForState:s];
+        if (!move)
             break;
-        s = [s successorWithMove:[moves lastObject]];
+        s = [s successorWithMove:move];
     }
 
     STAssertTrue(s.isPlayerOne, nil);

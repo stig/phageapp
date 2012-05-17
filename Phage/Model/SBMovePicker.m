@@ -15,9 +15,12 @@
     __block NSInteger minScore = INT_MAX;
     __block id bestMove = nil;
 
-    [[state legalMoves] enumerateObjectsUsingBlock:^(id move, NSUInteger idx, BOOL *stop) {
+    [state enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
         SBState *successor = [state successorWithMove:move];
-        NSUInteger score = [successor legalMoves].count;
+        __block NSUInteger score = 0;
+        [successor enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
+            score++;
+        }];
         if (score < minScore) {
             minScore = score;
             bestMove = move;
