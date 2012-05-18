@@ -8,9 +8,12 @@
 
 @class SBState;
 @class SBMove;
+@class SBLocation;
+@class SBPiece;
 
 @protocol GridViewDelegate
-- (void)performMove:(SBMove*)move;
+- (BOOL)canMovePiece:(SBPiece*)piece toLocation:(SBLocation*)location;
+- (void)movePiece:(SBPiece*)piece toLocation:(SBLocation*)location;
 - (BOOL)isLocalPlayerTurn;
 @end
 

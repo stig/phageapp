@@ -46,9 +46,16 @@
     [self.turnBasedMatchHelper findMatch];
 }
 
+- (BOOL)canMovePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
+    SBMove *move = [SBMove moveWithPiece:piece to:location];
+    SBState *state = self.turnBasedMatchHelper.currentMatch.matchState;
+    return [state isLegalMove:move];
+}
 
-- (void)performMove:(SBMove*)move {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+- (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
+    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+
+    SBMove *move = [SBMove moveWithPiece:piece to:location];
 
     id<SBTurnBasedMatch>match = self.turnBasedMatchHelper.currentMatch;
     SBState *state = self.gridView.state;

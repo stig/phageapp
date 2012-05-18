@@ -9,7 +9,6 @@
 #import "GridView.h"
 #import "SBState.h"
 #import "SBLocation.h"
-#import "SBMove.h"
 
 @implementation GridView {
     CALayer *draggingLayer;
@@ -183,11 +182,10 @@
         SBPiece *piece = [draggingLayer valueForKey:@"piece"];
         CALayer *cell = [cellLayer hitTest:[self pointOfTouch:touches]];
         SBLocation *loc = [cell valueForKey:@"location"];
-        SBMove *move = [[SBMove alloc] initWithPiece:piece to:loc];
-        if (cell && [self.state isLegalMove:move]) {
-            NSLog(@"%@ is a valid move", move);
+        if (cell && [self.delegate canMovePiece:piece toLocation:loc]) {
+            NSLog(@"%@ can be moved to %@", piece, loc);
             draggingLayer.position = [self cellPositionForLocation:loc inState:_state];
-            [self.delegate performMove:move];
+            [self.delegate movePiece:piece toLocation:loc];
 
         } else {
             NSLog(@"%@ is NOT a valid move location for %@", loc, piece);

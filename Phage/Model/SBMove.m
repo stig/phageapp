@@ -15,6 +15,10 @@
 @synthesize piece = _piece;
 @synthesize to = _to;
 
++ (id)moveWithPiece:(SBPiece *)piece to:(SBLocation *)location {
+    return [[self alloc] initWithPiece:piece to:location];
+}
+
 - (id)initWithPiece:(SBPiece *)p to:(SBLocation *)t {
     self = [super init];
     if (self) {

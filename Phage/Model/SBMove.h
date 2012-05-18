@@ -16,6 +16,7 @@
 @property (strong, readonly) SBPiece *piece;
 @property (strong, readonly) SBLocation *to;
 
++ (id)moveWithPiece:(SBPiece*)piece to:(SBLocation*)location;
 - (id)initWithPiece:(SBPiece *)piece to:(SBLocation *)location;
 
 // isEqual: delegates to this..
