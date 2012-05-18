@@ -58,7 +58,8 @@
     [[otherParticipant expect] setMatchOutcome:GKTurnBasedMatchOutcomeTied];
     [[match expect] endMatchInTurnWithMatchState:successor completionHandler:[OCMArg any]];
 
-    [helper endTurnOrMatch:match withMatchState:successor];
+    [helper endTurnOrMatch:match withMatchState:successor completionHandler:^(NSError *error) {
+    }];
 }
 
 - (void)testEndTurnOrMatchWithMatchState_isLoss {
@@ -72,7 +73,8 @@
     [[otherParticipant expect] setMatchOutcome:GKTurnBasedMatchOutcomeLost];
     [[match expect] endMatchInTurnWithMatchState:successor completionHandler:[OCMArg any]];
 
-    [helper endTurnOrMatch:match withMatchState:successor];
+    [helper endTurnOrMatch:match withMatchState:successor completionHandler:^(NSError *error) {
+    }];
 }
 
 - (void)testEndTurnOrMatchWithMatchState_notGameOver {
@@ -80,7 +82,8 @@
 
     [[match expect] endTurnWithNextParticipant:otherParticipant matchState:successor completionHandler:[OCMArg any]];
 
-    [helper endTurnOrMatch:match withMatchState:successor];
+    [helper endTurnOrMatch:match withMatchState:successor completionHandler:^(NSError *error) {
+    }];
 }
 
 @end

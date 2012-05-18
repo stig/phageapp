@@ -19,7 +19,7 @@
     return [match.participants objectAtIndex:nextIdx];
 }
 
-- (void)endTurnOrMatch:(id <SBTurnBasedMatch>)match withMatchState:(SBState *)successor {
+- (void)endTurnOrMatch:(id <SBTurnBasedMatch>)match withMatchState:(SBState *)successor completionHandler:(void(^)(NSError *))completionHandler {
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
 
     id<SBTurnBasedParticipant> opponent = [self nextParticipantForMatch:match];
@@ -38,18 +38,14 @@
         }
 
         [match endMatchInTurnWithMatchState:successor completionHandler:^(NSError *error) {
-            if (error) {
-                NSLog(@"%@", error);
-            }
+            if (completionHandler) completionHandler(error);
         }];
 
     } else {
         [match endTurnWithNextParticipant:opponent
                                matchState:successor
                         completionHandler:^(NSError *error) {
-                            if (error) {
-                                NSLog(@"%@", error);
-                            }
+                            if (completionHandler) completionHandler(error);
                         }];
     }
 }

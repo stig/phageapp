@@ -57,7 +57,8 @@
     id move = [self.movePicker moveForState:match.matchState];
     NSAssert(move != nil, @"Should not be nil!");
     id successor = [match.matchState successorWithMove:move];
-    [[[PhageModelHelper alloc] init] endTurnOrMatch:match withMatchState:successor];
+    [[[PhageModelHelper alloc] init] endTurnOrMatch:match withMatchState:successor completionHandler:^(NSError *error) {
+    }];
 }
 
 
