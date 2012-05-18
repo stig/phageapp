@@ -21,7 +21,9 @@
 @property (readonly) NSSet *occupied;
 @end
 
-@implementation SBState
+@implementation SBState {
+    NSMutableDictionary *_isLegalMove;
+}
 
 @synthesize isPlayerOne = _isPlayerOne;
 @synthesize playerOnePieces = _playerOnePieces;
@@ -210,7 +212,6 @@
     return loc.column >= 0 && loc.column < self.columns && loc.row >= 0 && loc.row < self.rows;
 }
 
-
 - (void)enumerateLegalMovesForPlayerOne:(BOOL)one withBlock:(void(^)(SBMove *move, BOOL *stop))block {
     for (SBPiece *piece in [self piecesForPlayer:one]) {
         if (![self movesLeftForPiece:piece])
@@ -250,14 +251,18 @@
 }
 
 - (BOOL)isLegalMove:(SBMove*)aMove {
-    __block BOOL isLegalMove = NO;
-    [self enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
-        if ([move isEqualToMove:aMove]) {
-            isLegalMove = YES;
-            *stop = NO;
-        }
-    }];
-    return isLegalMove;
+    if (!_isLegalMove) {
+        _isLegalMove = [NSMutableDictionary dictionary];
+        [self enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
+            NSMutableSet *dst = [_isLegalMove objectForKey:move.piece];
+            if (!dst) {
+                dst = [NSMutableSet set];
+                [_isLegalMove setObject:dst forKey:move.piece];
+            }
+            [dst addObject:move.to];
+        }];
+    }
+    return [[_isLegalMove objectForKey:aMove.piece] containsObject:aMove.to];
 }
 
 - (BOOL)opponent {

@@ -20,7 +20,6 @@
     CALayer *pieceLayer;
     NSMutableDictionary *cells;
     NSMutableDictionary *pieces;
-    NSMutableDictionary *legalDestinations;
 }
 
 @property(weak) IBOutlet id <GridViewDelegate> delegate;
