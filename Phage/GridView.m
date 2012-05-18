@@ -172,8 +172,11 @@
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (draggingLayer)
-        draggingLayer.position = [self pointOfTouch:touches];
+    if (draggingLayer) {
+        CALayer *cell = [cellLayer hitTest:[self pointOfTouch:touches]];
+        if (cell)
+            draggingLayer.position = cell.position;
+    }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
