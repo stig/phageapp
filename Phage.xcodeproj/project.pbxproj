@@ -60,6 +60,7 @@
 		FB89D43C154C7D27001A0B9A /* SBTurnBasedMatchHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B99 /* SBTurnBasedMatchHelperTest.m */; };
 		FB89D43C154C7D27001A0B9C /* PhageModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B9B /* PhageModelHelper.m */; };
 		FB89D43C154C7D27001A0B9F /* PhageModelHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B9E /* PhageModelHelperTest.m */; };
+		FB89D43C154C7D27001A0BA2 /* SBPieceLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BA1 /* SBPieceLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -194,6 +195,8 @@
 		FB89D43C154C7D27001A0B9B /* PhageModelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhageModelHelper.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B9D /* PhageModelHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhageModelHelper.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B9E /* PhageModelHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhageModelHelperTest.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BA1 /* SBPieceLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPieceLayer.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BA3 /* SBPieceLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPieceLayer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +292,8 @@
 		D76A456B151DDC7500E59146 /* Phage */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0BA3 /* SBPieceLayer.h */,
+				FB89D43C154C7D27001A0BA1 /* SBPieceLayer.m */,
 				FB89D43C154C7D27001A0B95 /* PhageRootViewController.h */,
 				FB89D43C154C7D27001A0B93 /* PhageRootViewController.m */,
 				D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */,
@@ -572,6 +577,7 @@
 				FB89D43C154C7D27001A0B28 /* SBGameKitTurnBasedParticipant.m in Sources */,
 				FB89D43C154C7D27001A0B98 /* SBTurnBasedMatchHelper.m in Sources */,
 				FB89D43C154C7D27001A0B9C /* PhageModelHelper.m in Sources */,
+				FB89D43C154C7D27001A0BA2 /* SBPieceLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

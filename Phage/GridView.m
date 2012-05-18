@@ -9,10 +9,11 @@
 #import "GridView.h"
 #import "SBState.h"
 #import "SBLocation.h"
+#import "SBPieceLayer.h"
 
 @implementation GridView {
     CALayer *draggingLayerCell;
-    CALayer *draggingLayer;
+    SBPieceLayer *draggingLayer;
     CALayer *cellLayer;
     CALayer *pieceLayer;
     NSMutableDictionary *cells;
@@ -87,13 +88,10 @@
 
     for (SBPiece *piece in [state.playerOnePieces arrayByAddingObjectsFromArray:state.playerTwoPieces]) {
 
-        CAShapeLayer *layer = [pieces objectForKey:piece];
+        SBPieceLayer *layer = [pieces objectForKey:piece];
         if (!layer) {
-            layer = [CAShapeLayer layer];
-            layer.name = [piece description];
-            layer.delegate = piece;
+            layer = [SBPieceLayer layerWithPiece:piece];
             layer.bounds = [self cellRect];
-            [layer setValue:piece forKey:@"piece"];
             [layer setNeedsDisplay];
 
             [pieces setObject:layer forKey:piece];
@@ -108,11 +106,10 @@
             textLayer.cornerRadius = 7.0;
             textLayer.alignmentMode = kCAAlignmentCenter;
 
-            [layer addSublayer:textLayer];
-            [layer setValue:textLayer forKey:@"movesLeft"];
+            layer.movesLeftLayer = textLayer;
         }
 
-        ((CATextLayer *)[layer valueForKey:@"movesLeft"]).string = [NSString stringWithFormat:@"%u", [state movesLeftForPiece:piece]];
+        layer.movesLeftLayer.string = [NSString stringWithFormat:@"%u", [state movesLeftForPiece:piece]];
 
         // Animate the piece to its new position
         [CATransaction begin];
@@ -156,11 +153,11 @@
     }
 
     CGPoint point = [self pointOfTouch:touches];
-    CALayer *layer = [pieceLayer hitTest:point];
+    SBPieceLayer *layer = (SBPieceLayer *)[pieceLayer hitTest:point];
     if (layer) {
         NSLog(@"Found layer: %@", layer.name);
 
-        if (![self.delegate canCurrentPlayerMovePiece:[layer valueForKey:@"piece"]]) {
+        if (![self.delegate canCurrentPlayerMovePiece:layer.piece]) {
             [[[UIAlertView alloc] initWithTitle:@"BEEEP!" message:@"You can't move that piece; it's not yours!" delegate:self cancelButtonTitle:@"OK, just testing.." otherButtonTitles:nil] show];
             return;
         }
@@ -181,7 +178,7 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     if (draggingLayer) {
-        SBPiece *piece = [draggingLayer valueForKey:@"piece"];
+        SBPiece *piece = draggingLayer.piece;
         CALayer *cell = [cellLayer hitTest:[self pointOfTouch:touches]];
         SBLocation *loc = [cell valueForKey:@"location"];
         if (cell && [self.delegate canMovePiece:piece toLocation:loc]) {
