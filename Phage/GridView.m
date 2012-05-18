@@ -10,6 +10,7 @@
 #import "SBState.h"
 #import "SBLocation.h"
 #import "SBPieceLayer.h"
+#import "SBMovesLeftLayer.h"
 
 @implementation GridView {
     CALayer *draggingLayerCell;
@@ -97,7 +98,7 @@
             [pieces setObject:layer forKey:piece];
             [pieceLayer addSublayer:layer];
 
-            CATextLayer *textLayer = [CATextLayer layer];
+            SBMovesLeftLayer *textLayer = [SBMovesLeftLayer layer];
             textLayer.backgroundColor = [UIColor darkGrayColor].CGColor;
             textLayer.foregroundColor = [UIColor whiteColor].CGColor;
             textLayer.contentsScale = [[UIScreen mainScreen] scale];
@@ -109,7 +110,7 @@
             layer.movesLeftLayer = textLayer;
         }
 
-        layer.movesLeftLayer.string = [NSString stringWithFormat:@"%u", [state movesLeftForPiece:piece]];
+        layer.movesLeftLayer.movesLeft = [state movesLeftForPiece:piece];
 
         // Animate the piece to its new position
         [CATransaction begin];

@@ -7,10 +7,11 @@
 
 #import "SBPieceLayer.h"
 #import "SBPiece.h"
+#import "SBMovesLeftLayer.h"
 
 
 @implementation SBPieceLayer {
-    CATextLayer *_movesLeftLayer;
+    SBMovesLeftLayer *_movesLeftLayer;
 
 }
 
@@ -30,11 +31,11 @@
     return self;
 }
 
-- (CATextLayer *)movesLeftLayer {
+- (SBMovesLeftLayer *)movesLeftLayer {
     return _movesLeftLayer;
 }
 
-- (void)setMovesLeftLayer:(CATextLayer *)aMovesLeftLayer {
+- (void)setMovesLeftLayer:(SBMovesLeftLayer *)aMovesLeftLayer {
     if (_movesLeftLayer)
         [self replaceSublayer:_movesLeftLayer with:aMovesLeftLayer];
     else
