@@ -11,6 +11,7 @@
 #import "SBLocation.h"
 
 @implementation GridView {
+    CALayer *draggingLayerCell;
     CALayer *draggingLayer;
     CALayer *cellLayer;
     CALayer *pieceLayer;
@@ -165,6 +166,7 @@
         }
 
         draggingLayer = layer;
+        draggingLayerCell = [cellLayer hitTest:point];
         // TODO zoom the layer so it looks like it's picked up
     }
 }
@@ -186,7 +188,7 @@
 
         } else {
             NSLog(@"%@ is NOT a valid move location for %@", loc, piece);
-            draggingLayer.position = [self cellPositionForLocation:[self.delegate locationForPiece:piece]];
+            draggingLayer.position = draggingLayerCell.position;
         }
         draggingLayer = nil;
     }

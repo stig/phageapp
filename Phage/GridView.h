@@ -16,7 +16,6 @@
 - (BOOL)canMovePiece:(SBPiece*)piece toLocation:(SBLocation*)location;
 - (void)movePiece:(SBPiece*)piece toLocation:(SBLocation*)location;
 - (BOOL)isLocalPlayerTurn;
-- (SBLocation*)locationForPiece:(SBPiece*)piece;
 @end
 
 @interface GridView : UIView

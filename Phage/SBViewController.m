@@ -46,11 +46,6 @@
     [self.turnBasedMatchHelper findMatch];
 }
 
-- (SBLocation *)locationForPiece:(SBPiece *)piece {
-    SBState *state = self.turnBasedMatchHelper.currentMatch.matchState;
-    return [state locationForPiece:piece];
-}
-
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece {
     SBState *state = self.turnBasedMatchHelper.currentMatch.matchState;
     return [[state piecesForPlayer:state.isPlayerOne] containsObject:piece];
