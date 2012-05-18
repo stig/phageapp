@@ -12,15 +12,17 @@
 @class SBPiece;
 
 @protocol GridViewDelegate
+- (BOOL)canCurrentPlayerMovePiece:(SBPiece*)piece;
 - (BOOL)canMovePiece:(SBPiece*)piece toLocation:(SBLocation*)location;
 - (void)movePiece:(SBPiece*)piece toLocation:(SBLocation*)location;
 - (BOOL)isLocalPlayerTurn;
+- (SBLocation*)locationForPiece:(SBPiece*)piece;
 @end
 
 @interface GridView : UIView
 
 @property(weak) IBOutlet id <GridViewDelegate> delegate;
 
-@property(strong, nonatomic) SBState *state;
+- (void)layoutForState:(SBState*)state;
 
 @end

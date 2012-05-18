@@ -46,6 +46,16 @@
     [self.turnBasedMatchHelper findMatch];
 }
 
+- (SBLocation *)locationForPiece:(SBPiece *)piece {
+    SBState *state = self.turnBasedMatchHelper.currentMatch.matchState;
+    return [state locationForPiece:piece];
+}
+
+- (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece {
+    SBState *state = self.turnBasedMatchHelper.currentMatch.matchState;
+    return [[state piecesForPlayer:state.isPlayerOne] containsObject:piece];
+}
+
 - (BOOL)canMovePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
     SBMove *move = [SBMove moveWithPiece:piece to:location];
     SBState *state = self.turnBasedMatchHelper.currentMatch.matchState;
@@ -58,12 +68,7 @@
     SBMove *move = [SBMove moveWithPiece:piece to:location];
 
     id<SBTurnBasedMatch>match = self.turnBasedMatchHelper.currentMatch;
-    SBState *state = self.gridView.state;
-
-    // SANITY CHECKING - check that the state from the view matches what we have in the match
-    if (match.matchState) {
-        NSAssert([match.matchState isEqualToState:state], @"Match in view should match TurnBased model");
-    }
+    SBState *state = match.matchState;
 
     NSParameterAssert([state isLegalMove:move]);
     SBState *newState = [state successorWithMove:move];
@@ -85,17 +90,17 @@
 - (void)enterNewGame:(id<SBTurnBasedMatch>)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     BOOL player = [[match.participants objectAtIndex:0] isEqual:match.currentParticipant];
-    [self.gridView setState:[[SBState alloc] initWithPlayer:player]];
+    [self.gridView layoutForState:[[SBState alloc] initWithPlayer:player]];
 }
 
 - (void)takeTurn:(id<SBTurnBasedMatch>)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    [self.gridView setState:match.matchState];
+    [self.gridView layoutForState:match.matchState];
 }
 
 - (void)layoutMatch:(id <SBTurnBasedMatch>)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    [self.gridView setState:match.matchState];
+    [self.gridView layoutForState:match.matchState];
 }
 
 - (void)sendTitle:(NSString*)title notice:(NSString *)notice forMatch:(id<SBTurnBasedMatch>)match {

@@ -16,10 +16,12 @@
     CALayer *pieceLayer;
     NSMutableDictionary *cells;
     NSMutableDictionary *pieces;
+
+    NSUInteger columns;
+    NSUInteger rows;
 }
 
 @synthesize delegate = _delegate;
-@synthesize state = _state;
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -36,40 +38,37 @@
     return self;
 }
 
+#pragma mark Cell calculations
+
+- (CGFloat)cellWidth {
+    return self.bounds.size.width / columns;
+}
+
+- (CGFloat)cellHeight {
+    return self.bounds.size.height / rows;
+}
+
+- (CGRect)cellRect {
+    return CGRectMake(0, 0, [self cellWidth], [self cellHeight]);
+}
+
+- (CGPoint)cellPositionForLocation:(SBLocation *)loc {
+    return CGPointMake((loc.column + 0.5) * self.cellWidth, (loc.row + 0.5) * self.cellHeight);
+}
+
 #pragma mark -
 
-- (CGFloat)cellWidthForState:(SBState *)state {
-    return self.bounds.size.width / state.columns;
-}
-
-- (CGFloat)cellHeightForState:(SBState *)state {
-    return self.bounds.size.height / state.rows;
-}
-
-- (CGRect)cellRectForState:(SBState *)state {
-    return CGRectMake(0, 0, [self cellWidthForState:state], [self cellHeightForState:state]);
-}
-
-- (CGPoint)cellPositionForLocation:(SBLocation *)loc inState:(SBState *)state {
-    return CGPointMake((loc.column + 0.5) * [self cellWidthForState:state], (loc.row + 0.5) * [self cellHeightForState:state]);
-}
-
-#pragma mark -
-
-- (void)setState:(SBState *)state {
-
-    if ([_state isEqualToState:state]) {
-        NSLog(@"New state is identical to current state");
-        return;
-    }
+- (void)layoutForState:(SBState *)state {
+    rows = state.rows;
+    columns = state.columns;
 
     [state enumerateLocationsUsingBlock:^(SBLocation *loc) {
         CAShapeLayer *layer = [cells objectForKey:loc];
         if (!layer) {
             layer = [CAShapeLayer layer];
             layer.name = [loc description];
-            layer.bounds = [self cellRectForState:state];
-            layer.position = [self cellPositionForLocation:loc inState:state];
+            layer.bounds = [self cellRect];
+            layer.position = [self cellPositionForLocation:loc];
             layer.delegate = self;
             [layer setValue:loc forKey:@"location"];
             [cells setObject:layer forKey:loc];
@@ -92,7 +91,7 @@
             layer = [CAShapeLayer layer];
             layer.name = [piece description];
             layer.delegate = piece;
-            layer.bounds = [self cellRectForState:state];
+            layer.bounds = [self cellRect];
             [layer setValue:piece forKey:@"piece"];
             [layer setNeedsDisplay];
 
@@ -117,11 +116,10 @@
         // Animate the piece to its new position
         [CATransaction begin];
         [CATransaction setAnimationDuration:1.0f];
-        layer.position = [self cellPositionForLocation:[state locationForPiece:piece] inState:state];
+        layer.position = [self cellPositionForLocation:[state locationForPiece:piece]];
         [CATransaction commit];
     }
 
-    _state = state;
     [self setNeedsDisplay];
 }
 
@@ -161,8 +159,7 @@
     if (layer) {
         NSLog(@"Found layer: %@", layer.name);
 
-        SBPiece *piece = [layer valueForKey:@"piece"];
-        if (![[_state piecesForPlayer:_state.isPlayerOne] containsObject:piece]) {
+        if (![self.delegate canCurrentPlayerMovePiece:[layer valueForKey:@"piece"]]) {
             [[[UIAlertView alloc] initWithTitle:@"BEEEP!" message:@"You can't move that piece; it's not yours!" delegate:self cancelButtonTitle:@"OK, just testing.." otherButtonTitles:nil] show];
             return;
         }
@@ -184,13 +181,12 @@
         SBLocation *loc = [cell valueForKey:@"location"];
         if (cell && [self.delegate canMovePiece:piece toLocation:loc]) {
             NSLog(@"%@ can be moved to %@", piece, loc);
-            draggingLayer.position = [self cellPositionForLocation:loc inState:_state];
+            draggingLayer.position = [self cellPositionForLocation:loc];
             [self.delegate movePiece:piece toLocation:loc];
 
         } else {
             NSLog(@"%@ is NOT a valid move location for %@", loc, piece);
-            draggingLayer.position = [self cellPositionForLocation:[_state locationForPiece:piece]
-                                                           inState:_state];
+            draggingLayer.position = [self cellPositionForLocation:[self.delegate locationForPiece:piece]];
         }
         draggingLayer = nil;
     }
