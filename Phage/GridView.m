@@ -11,9 +11,10 @@
 #import "SBLocation.h"
 #import "SBPieceLayer.h"
 #import "SBMovesLeftLayer.h"
+#import "SBCellLayer.h"
 
 @implementation GridView {
-    CALayer *draggingLayerCell;
+    SBCellLayer *draggingLayerCell;
     SBPieceLayer *draggingLayer;
     CALayer *cellLayer;
     CALayer *pieceLayer;
@@ -66,23 +67,16 @@
     columns = state.columns;
 
     [state enumerateLocationsUsingBlock:^(SBLocation *loc) {
-        CAShapeLayer *layer = [cells objectForKey:loc];
+        SBCellLayer *layer = [cells objectForKey:loc];
         if (!layer) {
-            layer = [CAShapeLayer layer];
-            layer.name = [loc description];
+            layer = [SBCellLayer layerWithLocation:loc];
             layer.bounds = [self cellRect];
             layer.position = [self cellPositionForLocation:loc];
-            layer.delegate = self;
-            [layer setValue:loc forKey:@"location"];
             [cells setObject:layer forKey:loc];
             [cellLayer addSublayer:layer];
         }
 
-        if ([state wasLocationOccupied:loc]) {
-            layer.strokeEnd = 1.0;
-        } else {
-            layer.strokeEnd = 0.0;
-        }
+        layer.blocked = [state wasLocationOccupied:loc];
 
         [layer setNeedsDisplay];
     }];
@@ -122,25 +116,6 @@
     [self setNeedsDisplay];
 }
 
-- (void)drawLayer:(CAShapeLayer *)layer inContext:(CGContextRef)ctx {
-    layer.lineWidth = 7.0;
-    layer.strokeColor = [UIColor darkGrayColor].CGColor;
-
-    CGRect r = CGRectInset(layer.bounds, 6.0, 6.0);
-
-    CGMutablePathRef path = CGPathCreateMutable();
-
-    CGPathMoveToPoint(path, nil, r.origin.x, r.origin.y);
-    CGPathAddLineToPoint(path, nil, r.origin.x + r.size.width, r.origin.y + r.size.width);
-
-    CGPathMoveToPoint(path, nil, r.origin.x, r.origin.y + r.size.width);
-    CGPathAddLineToPoint(path, nil, r.origin.x + r.size.height, r.origin.y);
-
-    layer.path = path;
-    CGPathRelease(path);
-}
-
-
 #pragma mark GridView Touch
 
 - (CGPoint)pointOfTouch:(NSSet *)touches {
@@ -164,7 +139,7 @@
         }
 
         draggingLayer = layer;
-        draggingLayerCell = [cellLayer hitTest:point];
+        draggingLayerCell = (SBCellLayer *)[cellLayer hitTest:point];
         // TODO zoom the layer so it looks like it's picked up
     }
 }
@@ -180,15 +155,14 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     if (draggingLayer) {
         SBPiece *piece = draggingLayer.piece;
-        CALayer *cell = [cellLayer hitTest:[self pointOfTouch:touches]];
-        SBLocation *loc = [cell valueForKey:@"location"];
-        if (cell && [self.delegate canMovePiece:piece toLocation:loc]) {
-            NSLog(@"%@ can be moved to %@", piece, loc);
-            draggingLayer.position = [self cellPositionForLocation:loc];
-            [self.delegate movePiece:piece toLocation:loc];
+        SBCellLayer *cell = (SBCellLayer *)[cellLayer hitTest:[self pointOfTouch:touches]];
+        if (cell && [self.delegate canMovePiece:piece toLocation:cell.location]) {
+            NSLog(@"%@ can be moved to %@", piece, cell.location);
+            draggingLayer.position = [self cellPositionForLocation:cell.location];
+            [self.delegate movePiece:piece toLocation:cell.location];
 
         } else {
-            NSLog(@"%@ is NOT a valid move location for %@", loc, piece);
+            NSLog(@"%@ is NOT a valid move location for %@", cell.location, piece);
             draggingLayer.position = draggingLayerCell.position;
         }
         draggingLayer = nil;
