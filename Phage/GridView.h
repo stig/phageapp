@@ -14,13 +14,7 @@
 - (BOOL)isLocalPlayerTurn;
 @end
 
-@interface GridView : UIView {
-    CALayer *draggingLayer;
-    CALayer *cellLayer;
-    CALayer *pieceLayer;
-    NSMutableDictionary *cells;
-    NSMutableDictionary *pieces;
-}
+@interface GridView : UIView
 
 @property(weak) IBOutlet id <GridViewDelegate> delegate;
 

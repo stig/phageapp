@@ -11,7 +11,13 @@
 #import "SBLocation.h"
 #import "SBMove.h"
 
-@implementation GridView
+@implementation GridView {
+    CALayer *draggingLayer;
+    CALayer *cellLayer;
+    CALayer *pieceLayer;
+    NSMutableDictionary *cells;
+    NSMutableDictionary *pieces;
+}
 
 @synthesize delegate = _delegate;
 @synthesize state = _state;
