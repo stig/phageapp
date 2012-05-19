@@ -14,6 +14,7 @@
 #import "SBCellLayer.h"
 
 @implementation SBBoardView {
+    SBCellLayer *previousDraggingCell;
     SBCellLayer *draggingLayerCell;
     SBPieceLayer *draggingLayer;
     CALayer *cellLayer;
@@ -146,9 +147,15 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     if (draggingLayer) {
-        CALayer *cell = [cellLayer hitTest:[self pointOfTouch:touches]];
-        if (cell)
-            draggingLayer.position = cell.position;
+        SBCellLayer *cell = (SBCellLayer*)[cellLayer hitTest:[self pointOfTouch:touches]];
+        if (cell) {
+            if (![cell isEqual:previousDraggingCell]) {
+                previousDraggingCell.highlighted = NO;
+                draggingLayer.position = cell.position;
+                cell.highlighted = [self.delegate canMovePiece:draggingLayer.piece toLocation:cell.location];
+            }
+            previousDraggingCell = cell;
+        }
     }
 }
 
@@ -166,6 +173,8 @@
             draggingLayer.position = draggingLayerCell.position;
         }
         draggingLayer = nil;
+        previousDraggingCell.highlighted = NO;
+        previousDraggingCell = nil;
     }
 }
 

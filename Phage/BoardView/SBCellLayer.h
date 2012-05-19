@@ -9,10 +9,11 @@
 
 @interface SBCellLayer : CAShapeLayer
 @property(readonly) SBLocation *location;
+@property(nonatomic) BOOL blocked;
+@property(nonatomic) BOOL highlighted;
 
 + (id)layerWithLocation:(SBLocation*)location;
 - (id)initWithLocation:(SBLocation *)location;
 
-- (void)setBlocked:(BOOL)blocked;
 
 @end
