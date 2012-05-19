@@ -8,15 +8,14 @@ body { font-family: sans-serif; }
 How To Play
 ===========
 
-Phage is a two-player abstract strategy game not entirely unlike chess.
-Players alternate moving until the current player cannot make a move. If
-the opponent can still move at this point he or she wins the game,
+Phage is a two-player abstract strategy game with similarities to chess.
+Players take turn moving until one player is unable to. If the
+_opponent_ can make a move at this point he or she wins the game,
 otherwise it's a draw.
 
-Each player has four pieces (Circle, Square, Diamond & Triangle) that can
-be moved a maximum of seven times each. (For this reason, games tend to be short.)
-
-The pieces move in different ways:
+Each player has four pieces; Circle, Square, Diamond & Triangle; that
+can be moved a maximum of seven times each. Thus, games tend to be
+short. There are no pass moves. The pieces move in different ways:
 
 - Circle moves horizontally, vertically and diagonally in any direction.
   (Like Queens in Chess.)
@@ -26,7 +25,7 @@ The pieces move in different ways:
 - Triangle moves horizontally in any direction, and vertically *in the
   direction of its point*. This piece has no direct equivalents in Chess.
 
-A square which has been previously occupied by a piece is blocked. It
+A square which has been previously occupied by a piece is _blocked_. It
 cannot be occupied again, nor can any piece be moved *across* it in any
 direction.
 
