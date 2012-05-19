@@ -92,16 +92,16 @@
             [pieces setObject:layer forKey:piece];
             [pieceLayer addSublayer:layer];
 
-            SBMovesLeftLayer *textLayer = [SBMovesLeftLayer layer];
-            textLayer.backgroundColor = [UIColor darkGrayColor].CGColor;
-            textLayer.foregroundColor = [UIColor whiteColor].CGColor;
-            textLayer.contentsScale = [[UIScreen mainScreen] scale];
-            textLayer.frame = CGRectMake(layer.bounds.size.width - 14, 0, 14, 14);
-            textLayer.fontSize = 14.0;
-            textLayer.cornerRadius = 7.0;
-            textLayer.alignmentMode = kCAAlignmentCenter;
+            SBMovesLeftLayer *movesLeftLayer = [SBMovesLeftLayer layer];
+            movesLeftLayer.backgroundColor = [UIColor darkGrayColor].CGColor;
+            movesLeftLayer.foregroundColor = [UIColor whiteColor].CGColor;
+            movesLeftLayer.contentsScale = [[UIScreen mainScreen] scale];
+            movesLeftLayer.frame = CGRectMake(layer.bounds.size.width - 14, 0, 14, 14);
+            movesLeftLayer.fontSize = 14.0;
+            movesLeftLayer.cornerRadius = 7.0;
+            movesLeftLayer.alignmentMode = kCAAlignmentCenter;
 
-            layer.movesLeftLayer = textLayer;
+            layer.movesLeftLayer = movesLeftLayer;
         }
 
         layer.movesLeftLayer.movesLeft = [state movesLeftForPiece:piece];
