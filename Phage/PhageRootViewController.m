@@ -4,7 +4,7 @@
 
 
 #import "PhageRootViewController.h"
-#import "SBViewController.h"
+#import "SBBoardViewController.h"
 #import "SBGameKitTurnBasedAdapter.h"
 #import "SBAITurnBasedAdapter.h"
 
@@ -17,7 +17,7 @@
     [super prepareForSegue:segue sender:sender];
 
     if ([segue.identifier hasSuffix:@"Player"]) {
-        SBViewController *vc = segue.destinationViewController;
+        SBBoardViewController *vc = segue.destinationViewController;
         SBTurnBasedMatchHelper *helper = [[SBTurnBasedMatchHelper alloc] init];
         helper.delegate = vc;
 

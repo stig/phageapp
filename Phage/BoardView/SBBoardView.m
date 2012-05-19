@@ -6,14 +6,14 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "GridView.h"
+#import "SBBoardView.h"
 #import "SBState.h"
 #import "SBLocation.h"
 #import "SBPieceLayer.h"
 #import "SBMovesLeftLayer.h"
 #import "SBCellLayer.h"
 
-@implementation GridView {
+@implementation SBBoardView {
     SBCellLayer *draggingLayerCell;
     SBPieceLayer *draggingLayer;
     CALayer *cellLayer;

@@ -6,14 +6,14 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SBViewController.h"
+#import "SBBoardViewController.h"
 #import "SBState.h"
 #import "SBMove.h"
 #import "SBTurnBasedMatch.h"
 #import "SBTurnBasedParticipant.h"
 #import "PhageModelHelper.h"
 
-@implementation SBViewController
+@implementation SBBoardViewController
 
 @synthesize turnBasedMatchHelper = _turnBasedMatchHelper;
 @synthesize gridView = _gridView;

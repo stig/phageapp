@@ -6,17 +6,17 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "GridView.h"
+#import "SBBoardView.h"
 #import "SBTurnBasedMatchHelper.h"
 
 @class SBState;
 @class PhageModelHelper;
 
-@interface SBViewController : UIViewController <SBTurnBasedMatchHelperDelegate, GridViewDelegate>
+@interface SBBoardViewController : UIViewController <SBTurnBasedMatchHelperDelegate, SBBoardViewDelegate>
 
 @property(strong) PhageModelHelper *modelHelper;
 @property(strong) SBTurnBasedMatchHelper *turnBasedMatchHelper;
-@property(strong) IBOutlet GridView *gridView;
+@property(strong) IBOutlet SBBoardView *gridView;
 
 - (IBAction)go;
 

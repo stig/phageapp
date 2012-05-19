@@ -19,7 +19,7 @@
 		D76A4576151DDC7500E59146 /* SBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A4575151DDC7500E59146 /* SBAppDelegate.m */; };
 		D76A4579151DDC7500E59146 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D76A4577151DDC7500E59146 /* MainStoryboard_iPhone.storyboard */; };
 		D76A457C151DDC7500E59146 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D76A457A151DDC7500E59146 /* MainStoryboard_iPad.storyboard */; };
-		D76A457F151DDC7500E59146 /* SBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A457E151DDC7500E59146 /* SBViewController.m */; };
+		D76A457F151DDC7500E59146 /* SBBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A457E151DDC7500E59146 /* SBBoardViewController.m */; };
 		D76A4587151DDC7500E59146 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4586151DDC7500E59146 /* SenTestingKit.framework */; };
 		D76A4588151DDC7500E59146 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4565151DDC7500E59146 /* UIKit.framework */; };
 		D76A4589151DDC7500E59146 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4567151DDC7500E59146 /* Foundation.framework */; };
@@ -39,7 +39,7 @@
 		D7BFA3B2151F2AD300435C84 /* SBDirectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */; };
 		D7BFA3B2151F2AD300435C89 /* SBMovePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C88 /* SBMovePicker.m */; };
 		D7BFA3B2151F2AD300435C8C /* SBMovePickerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */; };
-		D7BFA3B2151F2AD300435C93 /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C92 /* GridView.m */; };
+		D7BFA3B2151F2AD300435C93 /* SBBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C92 /* SBBoardView.m */; };
 		D7BFA3B2151F2AD300435C95 /* chess-640x640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */; };
 		FB89D43C154C7D27001A0B11 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C9D /* libOCMock.a */; };
 		FB89D43C154C7D27001A0B15 /* SBAITurnBasedMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B14 /* SBAITurnBasedMatch.m */; };
@@ -134,8 +134,8 @@
 		D76A4575151DDC7500E59146 /* SBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBAppDelegate.m; sourceTree = "<group>"; };
 		D76A4578151DDC7500E59146 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		D76A457B151DDC7500E59146 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		D76A457D151DDC7500E59146 /* SBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBViewController.h; sourceTree = "<group>"; };
-		D76A457E151DDC7500E59146 /* SBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBViewController.m; sourceTree = "<group>"; };
+		D76A457D151DDC7500E59146 /* SBBoardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBBoardViewController.h; sourceTree = "<group>"; };
+		D76A457E151DDC7500E59146 /* SBBoardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewController.m; sourceTree = "<group>"; };
 		D76A4585151DDC7500E59146 /* PhageTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhageTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D76A4586151DDC7500E59146 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		D76A458E151DDC7500E59146 /* PhageTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PhageTests-Info.plist"; sourceTree = "<group>"; };
@@ -165,8 +165,8 @@
 		D7BFA3B2151F2AD300435C88 /* SBMovePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMovePicker.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C8A /* SBMovePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMovePicker.h; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMovePickerTest.m; sourceTree = "<group>"; };
-		D7BFA3B2151F2AD300435C91 /* GridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridView.h; sourceTree = "<group>"; };
-		D7BFA3B2151F2AD300435C92 /* GridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridView.m; sourceTree = "<group>"; };
+		D7BFA3B2151F2AD300435C91 /* SBBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardView.h; sourceTree = "<group>"; };
+		D7BFA3B2151F2AD300435C92 /* SBBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardView.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "chess-640x640.jpg"; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C96 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = libs/ocmock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B13 /* SBAITurnBasedMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAITurnBasedMatch.h; sourceTree = "<group>"; };
@@ -298,26 +298,17 @@
 		D76A456B151DDC7500E59146 /* Phage */ = {
 			isa = PBXGroup;
 			children = (
-				FB89D43C154C7D27001A0BA9 /* SBCellLayer.h */,
-				FB89D43C154C7D27001A0BA7 /* SBCellLayer.m */,
-				FB89D43C154C7D27001A0BA6 /* SBMovesLeftLayer.h */,
-				FB89D43C154C7D27001A0BA4 /* SBMovesLeftLayer.m */,
-				FB89D43C154C7D27001A0BA3 /* SBPieceLayer.h */,
-				FB89D43C154C7D27001A0BA1 /* SBPieceLayer.m */,
 				FB89D43C154C7D27001A0B95 /* PhageRootViewController.h */,
 				FB89D43C154C7D27001A0B93 /* PhageRootViewController.m */,
 				D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */,
-				D7BFA3B2151F2AD300435C92 /* GridView.m */,
-				D7BFA3B2151F2AD300435C91 /* GridView.h */,
 				D76A4574151DDC7500E59146 /* SBAppDelegate.h */,
 				D76A4575151DDC7500E59146 /* SBAppDelegate.m */,
 				D76A4577151DDC7500E59146 /* MainStoryboard_iPhone.storyboard */,
 				D76A457A151DDC7500E59146 /* MainStoryboard_iPad.storyboard */,
-				D76A457D151DDC7500E59146 /* SBViewController.h */,
-				D76A457E151DDC7500E59146 /* SBViewController.m */,
 				D76A456C151DDC7500E59146 /* Supporting Files */,
 				D755A4941532224C003BB704 /* Model */,
 				FB89D43C154C7D27001A0B96 /* TurnBasedAdapter */,
+				FB89D43C154C7D27001A0BAA /* BoardView */,
 			);
 			path = Phage;
 			sourceTree = "<group>";
@@ -420,6 +411,23 @@
 				D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FB89D43C154C7D27001A0BAA /* BoardView */ = {
+			isa = PBXGroup;
+			children = (
+				D76A457E151DDC7500E59146 /* SBBoardViewController.m */,
+				D76A457D151DDC7500E59146 /* SBBoardViewController.h */,
+				D7BFA3B2151F2AD300435C92 /* SBBoardView.m */,
+				D7BFA3B2151F2AD300435C91 /* SBBoardView.h */,
+				FB89D43C154C7D27001A0BA1 /* SBPieceLayer.m */,
+				FB89D43C154C7D27001A0BA3 /* SBPieceLayer.h */,
+				FB89D43C154C7D27001A0BA4 /* SBMovesLeftLayer.m */,
+				FB89D43C154C7D27001A0BA6 /* SBMovesLeftLayer.h */,
+				FB89D43C154C7D27001A0BA7 /* SBCellLayer.m */,
+				FB89D43C154C7D27001A0BA9 /* SBCellLayer.h */,
+			);
+			path = BoardView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -566,7 +574,7 @@
 			files = (
 				D76A4572151DDC7500E59146 /* main.m in Sources */,
 				D76A4576151DDC7500E59146 /* SBAppDelegate.m in Sources */,
-				D76A457F151DDC7500E59146 /* SBViewController.m in Sources */,
+				D76A457F151DDC7500E59146 /* SBBoardViewController.m in Sources */,
 				D76A459F151DE13700E59146 /* SBMove.m in Sources */,
 				D76A45A2151DE19300E59146 /* SBLocation.m in Sources */,
 				D76A45B5151DFC4700E59146 /* SBCirclePiece.m in Sources */,
@@ -577,7 +585,7 @@
 				D7BFA3AF151F108100435C7F /* SBState.m in Sources */,
 				D7BFA3B2151F2AD300435C81 /* SBDirection.m in Sources */,
 				D7BFA3B2151F2AD300435C89 /* SBMovePicker.m in Sources */,
-				D7BFA3B2151F2AD300435C93 /* GridView.m in Sources */,
+				D7BFA3B2151F2AD300435C93 /* SBBoardView.m in Sources */,
 				FB89D43C154C7D27001A0B94 /* PhageRootViewController.m in Sources */,
 				FB89D43C154C7D27001A0B15 /* SBAITurnBasedMatch.m in Sources */,
 				FB89D43C154C7D27001A0B18 /* SBAITurnBasedAdapter.m in Sources */,
