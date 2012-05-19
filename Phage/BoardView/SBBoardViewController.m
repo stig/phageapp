@@ -9,7 +9,6 @@
 #import "SBBoardViewController.h"
 #import "SBState.h"
 #import "SBMove.h"
-#import "SBTurnBasedMatch.h"
 #import "SBTurnBasedParticipant.h"
 #import "PhageModelHelper.h"
 
