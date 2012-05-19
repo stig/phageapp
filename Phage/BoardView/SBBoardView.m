@@ -93,7 +93,7 @@
             [pieceLayer addSublayer:layer];
 
             SBMovesLeftLayer *movesLeftLayer = [SBMovesLeftLayer layer];
-            movesLeftLayer.backgroundColor = [UIColor darkGrayColor].CGColor;
+            movesLeftLayer.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.7].CGColor;
             movesLeftLayer.foregroundColor = [UIColor whiteColor].CGColor;
             movesLeftLayer.contentsScale = [[UIScreen mainScreen] scale];
             movesLeftLayer.frame = CGRectMake(layer.bounds.size.width - 14, 0, 14, 14);
