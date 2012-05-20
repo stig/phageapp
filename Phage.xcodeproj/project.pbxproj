@@ -63,6 +63,8 @@
 		FB89D43C154C7D27001A0BA2 /* SBPieceLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BA1 /* SBPieceLayer.m */; };
 		FB89D43C154C7D27001A0BA5 /* SBMovesLeftLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BA4 /* SBMovesLeftLayer.m */; };
 		FB89D43C154C7D27001A0BA8 /* SBCellLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BA7 /* SBCellLayer.m */; };
+		FB89D43C154C7D27001A0BAD /* SBBoardViewReadonly.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BAC /* SBBoardViewReadonly.m */; };
+		FB89D43C154C7D27001A0BB0 /* SBBoardViewDraggedState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BAF /* SBBoardViewDraggedState.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -203,6 +205,11 @@
 		FB89D43C154C7D27001A0BA6 /* SBMovesLeftLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMovesLeftLayer.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BA7 /* SBCellLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCellLayer.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BA9 /* SBCellLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBCellLayer.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BAB /* SBBoardViewTouching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewTouching.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BAC /* SBBoardViewReadonly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewReadonly.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BAE /* SBBoardViewReadonly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewReadonly.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BAF /* SBBoardViewDraggedState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewDraggedState.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BB1 /* SBBoardViewDraggedState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewDraggedState.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -426,8 +433,21 @@
 				FB89D43C154C7D27001A0BA6 /* SBMovesLeftLayer.h */,
 				FB89D43C154C7D27001A0BA7 /* SBCellLayer.m */,
 				FB89D43C154C7D27001A0BA9 /* SBCellLayer.h */,
+				FB89D43C154C7D27001A0BB2 /* StateMachine */,
 			);
 			path = BoardView;
+			sourceTree = "<group>";
+		};
+		FB89D43C154C7D27001A0BB2 /* StateMachine */ = {
+			isa = PBXGroup;
+			children = (
+				FB89D43C154C7D27001A0BAF /* SBBoardViewDraggedState.m */,
+				FB89D43C154C7D27001A0BB1 /* SBBoardViewDraggedState.h */,
+				FB89D43C154C7D27001A0BAB /* SBBoardViewTouching.h */,
+				FB89D43C154C7D27001A0BAC /* SBBoardViewReadonly.m */,
+				FB89D43C154C7D27001A0BAE /* SBBoardViewReadonly.h */,
+			);
+			path = StateMachine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -598,6 +618,8 @@
 				FB89D43C154C7D27001A0BA2 /* SBPieceLayer.m in Sources */,
 				FB89D43C154C7D27001A0BA5 /* SBMovesLeftLayer.m in Sources */,
 				FB89D43C154C7D27001A0BA8 /* SBCellLayer.m in Sources */,
+				FB89D43C154C7D27001A0BAD /* SBBoardViewReadonly.m in Sources */,
+				FB89D43C154C7D27001A0BB0 /* SBBoardViewDraggedState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

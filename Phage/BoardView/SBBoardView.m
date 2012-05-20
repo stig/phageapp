@@ -12,13 +12,13 @@
 #import "SBPieceLayer.h"
 #import "SBMovesLeftLayer.h"
 #import "SBCellLayer.h"
+#import "SBBoardViewTouching.h"
+#import "SBBoardViewDraggedState.h"
+#import "SBBoardViewReadonly.h"
 
 @implementation SBBoardView {
-    SBCellLayer *previousDraggingCell;
-    SBCellLayer *draggingLayerCell;
-    SBPieceLayer *draggingLayer;
-    CALayer *cellLayer;
-    CALayer *pieceLayer;
+    id<SBBoardViewTouching> _state;
+
     NSMutableDictionary *cells;
     NSMutableDictionary *pieces;
 
@@ -27,6 +27,11 @@
 }
 
 @synthesize delegate = _delegate;
+@synthesize cellLayer = _cellLayer;
+@synthesize pieceLayer = _pieceLayer;
+@synthesize draggingLayer = _draggingLayer;
+@synthesize draggingLayerCell = _draggingLayerCell;
+@synthesize previousDraggingCell = _previousDraggingCell;
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -34,11 +39,11 @@
         pieces = [[NSMutableDictionary alloc] init];
         cells = [[NSMutableDictionary alloc] init];
 
-        cellLayer = [[CALayer alloc] init];
-        pieceLayer = [[CALayer alloc] init];
+        self.cellLayer = [[CALayer alloc] init];
+        self.pieceLayer = [[CALayer alloc] init];
 
-        [self.layer addSublayer:cellLayer];
-        [self.layer addSublayer:pieceLayer];
+        [self.layer addSublayer:self.cellLayer];
+        [self.layer addSublayer:self.pieceLayer];
     }
     return self;
 }
@@ -74,7 +79,7 @@
             layer.bounds = [self cellRect];
             layer.position = [self cellPositionForLocation:loc];
             [cells setObject:layer forKey:loc];
-            [cellLayer addSublayer:layer];
+            [self.cellLayer addSublayer:layer];
         }
 
         layer.blocked = [state wasLocationOccupied:loc];
@@ -91,7 +96,7 @@
             [layer setNeedsDisplay];
 
             [pieces setObject:layer forKey:piece];
-            [pieceLayer addSublayer:layer];
+            [self.pieceLayer addSublayer:layer];
 
             SBMovesLeftLayer *movesLeftLayer = [SBMovesLeftLayer layer];
             movesLeftLayer.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.7].CGColor;
@@ -114,75 +119,35 @@
         [CATransaction commit];
     }
 
+    if ([self.delegate isLocalPlayerTurn]) {
+        _state = [[SBBoardViewDraggedState alloc] init];
+    } else {
+        _state = [[SBBoardViewReadonly alloc] init];
+    }
+
     [self setNeedsDisplay];
 }
 
 #pragma mark GridView Touch
 
-- (CGPoint)pointOfTouch:(NSSet *)touches {
-    return [[touches anyObject] locationInView:self];
-}
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (![self.delegate isLocalPlayerTurn]) {
-        [[[UIAlertView alloc] initWithTitle:@"Patience!" message:@"Wait for your turn.." delegate:self cancelButtonTitle:@"OK, chill" otherButtonTitles:nil] show];
-        return;
-    }
-
-    CGPoint point = [self pointOfTouch:touches];
-    SBPieceLayer *layer = (SBPieceLayer *)[pieceLayer hitTest:point];
-    if (layer) {
-        NSLog(@"Found layer: %@", layer.name);
-
-        if (![self.delegate canCurrentPlayerMovePiece:layer.piece]) {
-            [[[UIAlertView alloc] initWithTitle:@"BEEEP!" message:@"You can't move that piece; it's not yours!" delegate:self cancelButtonTitle:@"OK, just testing.." otherButtonTitles:nil] show];
-            return;
-        }
-
-        draggingLayer = layer;
-        draggingLayerCell = (SBCellLayer *)[cellLayer hitTest:point];
-        // TODO zoom the layer so it looks like it's picked up
-    }
+    [_state touchesBegan:touches inBoardView:self];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (draggingLayer) {
-        SBCellLayer *cell = (SBCellLayer*)[cellLayer hitTest:[self pointOfTouch:touches]];
-        if (cell) {
-            if (![cell isEqual:previousDraggingCell]) {
-                previousDraggingCell.highlighted = NO;
-                draggingLayer.position = cell.position;
-                cell.highlighted = [self.delegate canMovePiece:draggingLayer.piece toLocation:cell.location];
-            }
-            previousDraggingCell = cell;
-        }
-    }
+    [_state touchesMoved:touches inBoardView:self];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (draggingLayer) {
-        SBPiece *piece = draggingLayer.piece;
-        SBCellLayer *cell = (SBCellLayer *)[cellLayer hitTest:[self pointOfTouch:touches]];
-        if (cell && [self.delegate canMovePiece:piece toLocation:cell.location]) {
-            NSLog(@"%@ can be moved to %@", piece, cell.location);
-            draggingLayer.position = [self cellPositionForLocation:cell.location];
-            [self.delegate movePiece:piece toLocation:cell.location];
-
-        } else {
-            NSLog(@"%@ is NOT a valid move location for %@", cell.location, piece);
-            draggingLayer.position = draggingLayerCell.position;
-        }
-        draggingLayer = nil;
-        previousDraggingCell.highlighted = NO;
-        previousDraggingCell = nil;
-    }
+    [_state touchesEnded:touches inBoardView:self];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (draggingLayer) {
+    if (self.draggingLayer) {
         NSLog(@"touchesCancelled");
-        draggingLayer = nil;
+        self.draggingLayer = nil;
     }
 }
+
 
 @end

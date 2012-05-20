@@ -10,6 +10,8 @@
 @class SBMove;
 @class SBLocation;
 @class SBPiece;
+@class SBCellLayer;
+@class SBPieceLayer;
 
 @protocol SBBoardViewDelegate
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece*)piece;
@@ -19,6 +21,12 @@
 @end
 
 @interface SBBoardView : UIView
+@property(strong) CALayer *cellLayer;
+@property(strong) CALayer *pieceLayer;
+
+@property(weak) SBPieceLayer *draggingLayer;
+@property(weak) SBCellLayer *draggingLayerCell;
+@property(weak) SBCellLayer *previousDraggingCell;
 
 @property(weak) IBOutlet id <SBBoardViewDelegate> delegate;
 
