@@ -21,5 +21,4 @@
 
 - (void)touchesEnded:(NSSet *)touches inBoardView:(SBBoardView *)boardView {}
 
-
 @end

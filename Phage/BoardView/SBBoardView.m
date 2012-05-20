@@ -142,12 +142,5 @@
     [_state touchesEnded:touches inBoardView:self];
 }
 
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (self.draggingLayer) {
-        NSLog(@"touchesCancelled");
-        self.draggingLayer = nil;
-    }
-}
-
 
 @end
