@@ -18,7 +18,7 @@
 
     if (layer) {
         if ([self.delegate.delegate canCurrentPlayerMovePiece:layer.piece]) {
-            self.selectedPieceLayer = layer;
+            self.touchDownPieceLayer = layer;
 
         } else {
             // TODO: Replace this with a beep and possibly a shiver
@@ -35,7 +35,7 @@
     CGPoint point = [[touches anyObject] locationInView:self.delegate];
     SBPieceLayer *layer = (SBPieceLayer *)[self.delegate.pieceLayer hitTest:point];
 
-    if (layer && [layer isEqual:self.selectedPieceLayer]) {
+    if (layer && [layer isEqual:self.touchDownPieceLayer]) {
         SBBoardViewAbstractState *state = [SBBoardViewSelectedState state];
         state.selectedPieceLayer = layer;
         [self transitionToState:state];

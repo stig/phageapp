@@ -12,6 +12,7 @@
 @interface SBBoardViewAbstractState : NSObject
 @property(weak) SBBoardView *delegate;
 @property(weak) SBPieceLayer *selectedPieceLayer;
+@property(weak) SBPieceLayer *touchDownPieceLayer;
 
 + (id)state;
 + (id)stateWithDelegate:(SBBoardView *)delegate;

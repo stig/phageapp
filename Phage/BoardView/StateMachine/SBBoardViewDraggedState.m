@@ -9,7 +9,6 @@
 #import "SBBoardView.h"
 #import "SBPieceLayer.h"
 #import "SBCellLayer.h"
-#import "SBBoardViewSelectedState.h"
 
 @implementation SBBoardViewDraggedState
 @synthesize previousState = _previousState;

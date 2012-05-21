@@ -13,6 +13,17 @@
 
 @implementation SBBoardViewSelectedState
 
+- (void)touchesBegan:(NSSet *)touches {
+    CGPoint point = [[touches anyObject] locationInView:self.delegate];
+    SBPieceLayer *layer = (SBPieceLayer *)[self.delegate.pieceLayer hitTest:point];
+
+    if (layer) {
+        if ([self.delegate.delegate canCurrentPlayerMovePiece:layer.piece]) {
+            self.touchDownPieceLayer = layer;
+        }
+    }
+}
+
 - (void)touchesEnded:(NSSet *)touches nextStateClass:(Class)clazz {
     CGPoint point = [[touches anyObject] locationInView:self.delegate];
     SBPieceLayer *layer = (SBPieceLayer *)[self.delegate.pieceLayer hitTest:point];
@@ -23,7 +34,7 @@
             state.selectedPieceLayer = layer;
             [self transitionToState:state];
 
-        } else if ([self.delegate.delegate canCurrentPlayerMovePiece:layer.piece]) {
+        } else if ([layer isEqual:self.touchDownPieceLayer]) {
             SBBoardViewAbstractState *state = [[self class] state];
             state.selectedPieceLayer = layer;
             [self transitionToState:state];
