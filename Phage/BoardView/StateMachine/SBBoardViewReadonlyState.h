@@ -6,7 +6,7 @@
 
 
 
-#import "SBBoardViewTouching.h"
+#import "SBBoardViewAbstractState.h"
 
-@interface SBBoardViewReadonly : NSObject < SBBoardViewTouching >
+@interface SBBoardViewReadonlyState : SBBoardViewAbstractState
 @end

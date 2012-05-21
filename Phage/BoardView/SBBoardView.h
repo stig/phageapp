@@ -12,6 +12,7 @@
 @class SBPiece;
 @class SBCellLayer;
 @class SBPieceLayer;
+@class SBBoardViewAbstractState;
 
 @protocol SBBoardViewDelegate
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece*)piece;
@@ -21,6 +22,7 @@
 @end
 
 @interface SBBoardView : UIView
+@property(strong) SBBoardViewAbstractState *state;
 @property(strong) CALayer *cellLayer;
 @property(strong) CALayer *pieceLayer;
 

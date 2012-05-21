@@ -8,8 +8,5 @@
 
 #import "SBBoardViewAbstractState.h"
 
-@class SBBoardViewSelectedState;
-
-@interface SBBoardViewDraggedState : SBBoardViewAbstractState
-@property(strong) SBBoardViewSelectedState *previousState;
+@interface SBBoardViewUnselectedState : SBBoardViewAbstractState
 @end

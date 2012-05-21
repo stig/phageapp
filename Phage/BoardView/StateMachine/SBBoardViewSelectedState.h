@@ -8,8 +8,8 @@
 
 #import "SBBoardViewAbstractState.h"
 
-@class SBBoardViewSelectedState;
+@class SBPieceLayer;
 
-@interface SBBoardViewDraggedState : SBBoardViewAbstractState
-@property(strong) SBBoardViewSelectedState *previousState;
+@interface SBBoardViewSelectedState : SBBoardViewAbstractState
+@property(weak) SBPieceLayer *selectedPieceLayer;
 @end

@@ -5,11 +5,11 @@
 //
 
 
-#import "SBBoardViewReadonly.h"
+#import "SBBoardViewReadonlyState.h"
 
-@implementation SBBoardViewReadonly
+@implementation SBBoardViewReadonlyState
 
-- (void)touchesBegan:(NSSet *)touches inBoardView:(SBBoardView *)boardView {
+- (void)touchesBegan:(NSSet *)touches {
     [[[UIAlertView alloc] initWithTitle:@"Patience!"
                                 message:@"Wait for your turn.."
                                delegate:self
@@ -17,8 +17,6 @@
                       otherButtonTitles:nil] show];
 }
 
-- (void)touchesMoved:(NSSet *)touches inBoardView:(SBBoardView *)boardView {}
-
-- (void)touchesEnded:(NSSet *)touches inBoardView:(SBBoardView *)boardView {}
+- (void)touchesMoved:(NSSet *)touches {}
 
 @end

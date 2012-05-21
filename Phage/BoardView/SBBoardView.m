@@ -12,13 +12,12 @@
 #import "SBPieceLayer.h"
 #import "SBMovesLeftLayer.h"
 #import "SBCellLayer.h"
-#import "SBBoardViewTouching.h"
 #import "SBBoardViewDraggedState.h"
-#import "SBBoardViewReadonly.h"
+#import "SBBoardViewReadonlyState.h"
+#import "SBBoardViewUnselectedState.h"
+#import "SBBoardViewAbstractState.h"
 
 @implementation SBBoardView {
-    id<SBBoardViewTouching> _state;
-
     NSMutableDictionary *cells;
     NSMutableDictionary *pieces;
 
@@ -32,6 +31,8 @@
 @synthesize draggingLayer = _draggingLayer;
 @synthesize draggingLayerCell = _draggingLayerCell;
 @synthesize previousDraggingCell = _previousDraggingCell;
+@synthesize state = _state;
+
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -44,6 +45,8 @@
 
         [self.layer addSublayer:self.cellLayer];
         [self.layer addSublayer:self.pieceLayer];
+
+        self.state = [SBBoardViewAbstractState stateWithDelegate:self];
     }
     return self;
 }
@@ -119,27 +122,26 @@
         [CATransaction commit];
     }
 
-    if ([self.delegate isLocalPlayerTurn]) {
-        _state = [[SBBoardViewDraggedState alloc] init];
-    } else {
-        _state = [[SBBoardViewReadonly alloc] init];
-    }
+    SBBoardViewAbstractState *newState = [self.delegate isLocalPlayerTurn]
+            ? [SBBoardViewUnselectedState state]
+            : [SBBoardViewReadonlyState state];
 
+    [self.state transitionToState:newState];
     [self setNeedsDisplay];
 }
 
 #pragma mark GridView Touch
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [_state touchesBegan:touches inBoardView:self];
+    [_state touchesBegan:touches];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    [_state touchesMoved:touches inBoardView:self];
+    [_state touchesMoved:touches];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [_state touchesEnded:touches inBoardView:self];
+    [_state touchesEnded:touches];
 }
 
 
