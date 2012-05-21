@@ -15,7 +15,6 @@
 #import "SBBoardViewDraggedState.h"
 #import "SBBoardViewReadonlyState.h"
 #import "SBBoardViewUnselectedState.h"
-#import "SBBoardViewAbstractState.h"
 
 @implementation SBBoardView {
     NSMutableDictionary *cells;
@@ -28,9 +27,6 @@
 @synthesize delegate = _delegate;
 @synthesize cellLayer = _cellLayer;
 @synthesize pieceLayer = _pieceLayer;
-@synthesize draggingLayer = _draggingLayer;
-@synthesize draggingLayerCell = _draggingLayerCell;
-@synthesize previousDraggingCell = _previousDraggingCell;
 @synthesize state = _state;
 
 

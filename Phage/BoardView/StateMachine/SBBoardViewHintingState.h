@@ -11,5 +11,4 @@
 @class SBPieceLayer;
 
 @interface SBBoardViewHintingState : SBBoardViewAbstractState
-@property(weak) SBPieceLayer *selectedPieceLayer;
 @end

@@ -11,5 +11,4 @@
 @class SBPieceLayer;
 
 @interface SBBoardViewSelectedState : SBBoardViewAbstractState
-@property(weak) SBPieceLayer *selectedPieceLayer;
 @end

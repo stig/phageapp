@@ -7,9 +7,11 @@
 
 
 @class SBBoardView;
+@class SBPieceLayer;
 
 @interface SBBoardViewAbstractState : NSObject
 @property(weak) SBBoardView *delegate;
+@property(weak) SBPieceLayer *selectedPieceLayer;
 
 + (id)state;
 + (id)stateWithDelegate:(SBBoardView *)delegate;

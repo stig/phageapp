@@ -13,23 +13,21 @@
 
 @implementation SBBoardViewHintingState
 
-@synthesize selectedPieceLayer = _selectedPieceLayer;
-
-
-- (void)touchesBegan:(NSSet *)touches {
+- (void)touchesEnded:(NSSet *)touches {
     CGPoint point = [[touches anyObject] locationInView:self.delegate];
     SBPieceLayer *layer = (SBPieceLayer *)[self.delegate.pieceLayer hitTest:point];
 
     if (layer) {
         if ([layer isEqual:self.selectedPieceLayer]) {
-            SBBoardViewUnselectedState *state = [SBBoardViewUnselectedState state];
+            SBBoardViewAbstractState *state = [SBBoardViewUnselectedState state];
+            state.selectedPieceLayer = layer;
             [self transitionToState:state];
+
         } else if ([self.delegate.delegate canCurrentPlayerMovePiece:layer.piece]) {
-            SBBoardViewHintingState *state = [SBBoardViewHintingState state];
+            SBBoardViewAbstractState *state = [[self class] state];
             state.selectedPieceLayer = layer;
             [self transitionToState:state];
         }
-
     } else {
         SBCellLayer *cell = (SBCellLayer *)[self.delegate.cellLayer hitTest:point];
         if ([self.delegate.delegate canMovePiece:self.selectedPieceLayer.piece toLocation:cell.location]) {

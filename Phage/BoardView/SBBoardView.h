@@ -26,10 +26,6 @@
 @property(strong) CALayer *cellLayer;
 @property(strong) CALayer *pieceLayer;
 
-@property(weak) SBPieceLayer *draggingLayer;
-@property(weak) SBCellLayer *draggingLayerCell;
-@property(weak) SBCellLayer *previousDraggingCell;
-
 @property(weak) IBOutlet id <SBBoardViewDelegate> delegate;
 
 - (void)layoutForState:(SBState*)state;

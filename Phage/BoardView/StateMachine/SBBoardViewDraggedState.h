@@ -9,7 +9,12 @@
 #import "SBBoardViewAbstractState.h"
 
 @class SBBoardViewSelectedState;
+@class SBCellLayer;
+@class SBPieceLayer;
 
 @interface SBBoardViewDraggedState : SBBoardViewAbstractState
+@property(weak) SBPieceLayer *draggingPieceLayer;
+@property(weak) SBCellLayer *previousCellLayer;
+@property CGPoint draggingPieceLayerOriginalPosition;
 @property(strong) SBBoardViewSelectedState *previousState;
 @end

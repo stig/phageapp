@@ -9,9 +9,12 @@
 #import "SBBoardView.h"
 #import "SBBoardViewDraggedState.h"
 #import "SBBoardViewSelectedState.h"
+#import "SBPieceLayer.h"
 
 @implementation SBBoardViewAbstractState
 @synthesize delegate = _delegate;
+@synthesize selectedPieceLayer = _selectedPieceLayer;
+
 
 + (id)stateWithDelegate:(SBBoardView *)delegate {
     return [[self alloc] initWithDelegate:delegate];
@@ -49,6 +52,7 @@
 - (void)touchesMoved:(NSSet *)touches {
     SBBoardViewDraggedState *state = [SBBoardViewDraggedState state];
     state.previousState = (SBBoardViewSelectedState *)self.delegate.state;
+    state.draggingPieceLayer = [self selectedPieceLayer];
     [self transitionToState:state];
     [state touchesMoved:touches];
 }

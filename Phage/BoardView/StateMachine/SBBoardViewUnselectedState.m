@@ -18,9 +18,8 @@
 
     if (layer) {
         if ([self.delegate.delegate canCurrentPlayerMovePiece:layer.piece]) {
-            SBBoardViewSelectedState *state = [SBBoardViewSelectedState state];
-            state.selectedPieceLayer = layer;
-            [self transitionToState:state];
+            self.selectedPieceLayer = layer;
+
         } else {
             // TODO: Replace this with a beep and possibly a shiver
             [[[UIAlertView alloc] initWithTitle:@"BEEEP!"
@@ -32,5 +31,15 @@
     }
 }
 
+- (void)touchesEnded:(NSSet *)touches {
+    CGPoint point = [[touches anyObject] locationInView:self.delegate];
+    SBPieceLayer *layer = (SBPieceLayer *)[self.delegate.pieceLayer hitTest:point];
+
+    if (layer && [layer isEqual:self.selectedPieceLayer]) {
+        SBBoardViewAbstractState *state = [SBBoardViewSelectedState state];
+        state.selectedPieceLayer = layer;
+        [self transitionToState:state];
+    }
+}
 
 @end

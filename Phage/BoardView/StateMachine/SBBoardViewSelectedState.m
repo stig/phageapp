@@ -13,19 +13,19 @@
 
 @implementation SBBoardViewSelectedState
 
-@synthesize selectedPieceLayer = _selectedPieceLayer;
 
-- (void)touchesBegan:(NSSet *)touches {
+- (void)touchesEnded:(NSSet *)touches {
     CGPoint point = [[touches anyObject] locationInView:self.delegate];
     SBPieceLayer *layer = (SBPieceLayer *)[self.delegate.pieceLayer hitTest:point];
 
     if (layer) {
         if ([layer isEqual:self.selectedPieceLayer]) {
-            SBBoardViewHintingState *state = [SBBoardViewHintingState state];
-            state.selectedPieceLayer = self.selectedPieceLayer;
+            SBBoardViewAbstractState *state = [SBBoardViewHintingState state];
+            state.selectedPieceLayer = layer;
             [self transitionToState:state];
+
         } else if ([self.delegate.delegate canCurrentPlayerMovePiece:layer.piece]) {
-            SBBoardViewSelectedState *state = [SBBoardViewSelectedState state];
+            SBBoardViewAbstractState *state = [[self class] state];
             state.selectedPieceLayer = layer;
             [self transitionToState:state];
         }
@@ -38,7 +38,6 @@
         }
     }
 }
-
 
 
 
