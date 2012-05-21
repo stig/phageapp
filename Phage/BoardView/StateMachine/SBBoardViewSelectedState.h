@@ -8,7 +8,6 @@
 
 #import "SBBoardViewAbstractState.h"
 
-@class SBPieceLayer;
-
 @interface SBBoardViewSelectedState : SBBoardViewAbstractState
+- (void)touchesEnded:(NSSet *)touches nextStateClass:(Class)clazz;
 @end

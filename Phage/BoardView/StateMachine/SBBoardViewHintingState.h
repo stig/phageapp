@@ -6,9 +6,7 @@
 
 
 
-#import "SBBoardViewAbstractState.h"
+#import "SBBoardViewSelectedState.h"
 
-@class SBPieceLayer;
-
-@interface SBBoardViewHintingState : SBBoardViewAbstractState
+@interface SBBoardViewHintingState : SBBoardViewSelectedState
 @end

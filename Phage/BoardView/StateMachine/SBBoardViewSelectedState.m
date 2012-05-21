@@ -13,14 +13,13 @@
 
 @implementation SBBoardViewSelectedState
 
-
-- (void)touchesEnded:(NSSet *)touches {
+- (void)touchesEnded:(NSSet *)touches nextStateClass:(Class)clazz {
     CGPoint point = [[touches anyObject] locationInView:self.delegate];
     SBPieceLayer *layer = (SBPieceLayer *)[self.delegate.pieceLayer hitTest:point];
 
     if (layer) {
         if ([layer isEqual:self.selectedPieceLayer]) {
-            SBBoardViewAbstractState *state = [SBBoardViewHintingState state];
+            SBBoardViewAbstractState *state = [clazz state];
             state.selectedPieceLayer = layer;
             [self transitionToState:state];
 
@@ -39,6 +38,8 @@
     }
 }
 
-
+- (void)touchesEnded:(NSSet *)touches {
+    [self touchesEnded:touches nextStateClass:[SBBoardViewHintingState class]];
+}
 
 @end
