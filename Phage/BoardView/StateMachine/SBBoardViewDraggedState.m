@@ -38,17 +38,15 @@
 
 - (void)touchesEnded:(NSSet *)touches {
     SBCellLayer *cellLayer = (SBCellLayer*)[self.delegate.cellLayer hitTest:[[touches anyObject] locationInView:self.delegate]];
-    if (cellLayer) {
-        if ([self.delegate.delegate canMovePiece:self.draggingPieceLayer.piece toLocation:cellLayer.location]) {
-            self.draggingPieceLayer.position = cellLayer.position;
-            self.previousCellLayer.highlighted = NO;
-            [self.delegate.delegate movePiece:self.draggingPieceLayer.piece toLocation:cellLayer.location];
-        } else {
-            NSLog(@"%@ is NOT a valid move location for %@", cellLayer.location, self.draggingPieceLayer.piece);
-            self.previousCellLayer.highlighted = NO;
-            self.draggingPieceLayer.position = self.draggingPieceLayerOriginalPosition;
-            [self transitionToState:self.previousState];
-        }
+    if (cellLayer && [self.delegate.delegate canMovePiece:self.draggingPieceLayer.piece toLocation:cellLayer.location]) {
+        self.draggingPieceLayer.position = cellLayer.position;
+        self.previousCellLayer.highlighted = NO;
+        [self.delegate.delegate movePiece:self.draggingPieceLayer.piece toLocation:cellLayer.location];
+    } else {
+        NSLog(@"%@ is NOT a valid move location for %@", cellLayer.location, self.draggingPieceLayer.piece);
+        self.previousCellLayer.highlighted = NO;
+        self.draggingPieceLayer.position = self.draggingPieceLayerOriginalPosition;
+        [self transitionToState:self.previousState];
     }
 }
 
