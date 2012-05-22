@@ -12,7 +12,7 @@
 #import "SBPieceLayer.h"
 #import "SBMovesLeftLayer.h"
 #import "SBCellLayer.h"
-#import "SBBoardViewDraggedState.h"
+#import "SBBoardViewSelectedDraggedState.h"
 #import "SBBoardViewReadonlyState.h"
 #import "SBBoardViewUnselectedState.h"
 

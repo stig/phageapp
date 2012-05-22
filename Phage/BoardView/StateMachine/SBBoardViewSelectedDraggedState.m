@@ -5,13 +5,13 @@
 //
 
 
-#import "SBBoardViewDraggedState.h"
+#import "SBBoardViewSelectedDraggedState.h"
 #import "SBBoardView.h"
 #import "SBPieceLayer.h"
 #import "SBCellLayer.h"
 #import "SBAnimationHelper.h"
 
-@implementation SBBoardViewDraggedState
+@implementation SBBoardViewSelectedDraggedState
 @synthesize previousState = _previousState;
 @synthesize previousCellLayer = _previousCellLayer;
 @synthesize selectedPieceLayerOriginalPosition = _selectedPieceLayerOriginalPosition;
@@ -28,17 +28,20 @@
     [SBAnimationHelper removePulseAnimationFromLayer:self.selectedPieceLayer];
 }
 
+- (void)touchesMoved:(NSSet*)touches block:(void(^)(SBCellLayer *cell))block {
+    SBCellLayer *cellLayer = (SBCellLayer*)[self.delegate.cellLayer hitTest:[[touches anyObject] locationInView:self.delegate]];
+    if (cellLayer && ![cellLayer isEqual:self.previousCellLayer]) {
+        if (block) block(cellLayer);
+        self.selectedPieceLayer.position = cellLayer.position;
+        self.previousCellLayer = cellLayer;
+    }
+}
 
 - (void)touchesMoved:(NSSet *)touches {
-    SBCellLayer *cellLayer = (SBCellLayer*)[self.delegate.cellLayer hitTest:[[touches anyObject] locationInView:self.delegate]];
-    if (cellLayer) {
-        if (![cellLayer isEqual:self.previousCellLayer]) {
-            cellLayer.highlighted = [self.delegate.delegate canMovePiece:self.selectedPieceLayer.piece toLocation:cellLayer.location];
-            self.selectedPieceLayer.position = cellLayer.position;
-            self.previousCellLayer.highlighted = NO;
-            self.previousCellLayer = cellLayer;
-        }
-    }
+    [self touchesMoved:touches block:^(SBCellLayer *cell) {
+        cell.highlighted = [self.delegate.delegate canMovePiece:self.selectedPieceLayer.piece toLocation:cell.location];
+        self.previousCellLayer.highlighted = NO;
+    }];
 }
 
 - (void)touchesEnded:(NSSet *)touches {

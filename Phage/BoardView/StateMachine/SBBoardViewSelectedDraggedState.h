@@ -12,8 +12,11 @@
 @class SBCellLayer;
 @class SBPieceLayer;
 
-@interface SBBoardViewDraggedState : SBBoardViewAbstractState
+@interface SBBoardViewSelectedDraggedState : SBBoardViewAbstractState
 @property(weak) SBCellLayer *previousCellLayer;
 @property CGPoint selectedPieceLayerOriginalPosition;
 @property(strong) SBBoardViewAbstractState *previousState;
+
+- (void)touchesMoved:(NSSet *)touches block:(void (^)(SBCellLayer *))block;
+
 @end

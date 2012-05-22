@@ -7,7 +7,7 @@
 
 #import "SBBoardViewAbstractState.h"
 #import "SBBoardView.h"
-#import "SBBoardViewDraggedState.h"
+#import "SBBoardViewSelectedDraggedState.h"
 #import "SBPieceLayer.h"
 
 @implementation SBBoardViewAbstractState
@@ -48,10 +48,15 @@
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
 }
 
+- (Class)draggedStateClass {
+    return [SBBoardViewSelectedDraggedState class];
+}
+
+
 - (void)touchesBegan:(NSSet *)touches {}
 
 - (void)touchesMoved:(NSSet *)touches {
-    SBBoardViewDraggedState *state = [SBBoardViewDraggedState state];
+    SBBoardViewSelectedDraggedState *state = [[self draggedStateClass] state];
     state.previousState = self;
     state.selectedPieceLayer = self.touchDownPieceLayer;
     [self transitionToState:state];

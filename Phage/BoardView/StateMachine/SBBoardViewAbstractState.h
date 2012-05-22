@@ -24,6 +24,9 @@
 // Overriden in subclasses to handle specifics of each state
 - (void)transitionIn;
 - (void)transitionOut;
+
+- (Class)draggedStateClass;
+
 - (void)touchesBegan:(NSSet *)touches;
 - (void)touchesMoved:(NSSet *)touches;
 - (void)touchesEnded:(NSSet *)touches;
