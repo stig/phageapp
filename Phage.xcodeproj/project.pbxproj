@@ -227,6 +227,7 @@
 		FB89D43C154C7D27001A0BC1 /* SBAnimationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAnimationHelper.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BC2 /* SBBoardViewHintingDraggedState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewHintingDraggedState.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BC4 /* SBBoardViewHintingDraggedState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewHintingDraggedState.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BC6 /* 00 State Machine Diagram.graffle */ = {isa = PBXFileReference; lastKnownFileType = file.graffle; path = "00 State Machine Diagram.graffle"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -460,6 +461,7 @@
 		FB89D43C154C7D27001A0BB2 /* StateMachine */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0BC6 /* 00 State Machine Diagram.graffle */,
 				FB89D43C154C7D27001A0BC4 /* SBBoardViewHintingDraggedState.h */,
 				FB89D43C154C7D27001A0BC2 /* SBBoardViewHintingDraggedState.m */,
 				FB89D43C154C7D27001A0BBE /* SBBoardViewHintingState.h */,
