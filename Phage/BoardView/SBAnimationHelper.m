@@ -17,6 +17,7 @@
     theAnimation.autoreverses = YES;
     theAnimation.fromValue = [NSNumber numberWithFloat:1.0];
     theAnimation.toValue = [NSNumber numberWithFloat:0.5];
+    theAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     [layer addAnimation:theAnimation forKey:@"opacityAnimation"];
 }
 
