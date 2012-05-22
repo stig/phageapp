@@ -69,6 +69,7 @@
 		FB89D43C154C7D27001A0BB7 /* SBBoardViewUnselectedState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BB6 /* SBBoardViewUnselectedState.m */; };
 		FB89D43C154C7D27001A0BBA /* SBBoardViewSelectedState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BB9 /* SBBoardViewSelectedState.m */; };
 		FB89D43C154C7D27001A0BBD /* SBBoardViewHintingState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BBC /* SBBoardViewHintingState.m */; };
+		FB89D43C154C7D27001A0BC0 /* SBAnimationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BBF /* SBAnimationHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -221,6 +222,8 @@
 		FB89D43C154C7D27001A0BBB /* SBBoardViewSelectedState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewSelectedState.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BBC /* SBBoardViewHintingState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewHintingState.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BBE /* SBBoardViewHintingState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewHintingState.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BBF /* SBAnimationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAnimationHelper.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BC1 /* SBAnimationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAnimationHelper.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -433,6 +436,8 @@
 		FB89D43C154C7D27001A0BAA /* BoardView */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0BC1 /* SBAnimationHelper.h */,
+				FB89D43C154C7D27001A0BBF /* SBAnimationHelper.m */,
 				D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */,
 				D76A457E151DDC7500E59146 /* SBBoardViewController.m */,
 				D76A457D151DDC7500E59146 /* SBBoardViewController.h */,
@@ -642,6 +647,7 @@
 				FB89D43C154C7D27001A0BB7 /* SBBoardViewUnselectedState.m in Sources */,
 				FB89D43C154C7D27001A0BBA /* SBBoardViewSelectedState.m in Sources */,
 				FB89D43C154C7D27001A0BBD /* SBBoardViewHintingState.m in Sources */,
+				FB89D43C154C7D27001A0BC0 /* SBAnimationHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

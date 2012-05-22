@@ -10,8 +10,20 @@
 #import "SBBoardView.h"
 #import "SBBoardViewHintingState.h"
 #import "SBCellLayer.h"
+#import "SBAnimationHelper.h"
 
 @implementation SBBoardViewSelectedState
+
+- (void)transitionIn {
+    [super transitionIn];
+    [SBAnimationHelper addPulseAnimationToLayer:self.selectedPieceLayer];
+}
+
+- (void)transitionOut {
+    [super transitionOut];
+    [SBAnimationHelper removePulseAnimationFromLayer:self.selectedPieceLayer];
+}
+
 
 - (void)touchesBegan:(NSSet *)touches {
     CGPoint point = [[touches anyObject] locationInView:self.delegate];

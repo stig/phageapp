@@ -34,6 +34,7 @@
 
 - (void)transitionToState:(SBBoardViewAbstractState *)state {
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+    [self transitionOut];
     state.delegate = self.delegate;
     self.delegate.state = state;
     [state transitionIn];

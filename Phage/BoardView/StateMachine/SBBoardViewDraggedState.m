@@ -9,6 +9,7 @@
 #import "SBBoardView.h"
 #import "SBPieceLayer.h"
 #import "SBCellLayer.h"
+#import "SBAnimationHelper.h"
 
 @implementation SBBoardViewDraggedState
 @synthesize previousState = _previousState;
@@ -19,8 +20,13 @@
 
 - (void)transitionIn {
     [super transitionIn];
-
     self.draggingPieceLayerOriginalPosition = self.draggingPieceLayer.position;
+    [SBAnimationHelper addPulseAnimationToLayer:self.draggingPieceLayer];
+}
+
+- (void)transitionOut {
+    [super transitionOut];
+    [SBAnimationHelper removePulseAnimationFromLayer:self.draggingPieceLayer];
 }
 
 
