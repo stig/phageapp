@@ -20,6 +20,16 @@
     return self;
 }
 
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.playerID forKey:@"SBPlayerID"];
+
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    return [self initWithPlayerID:[aDecoder decodeObjectForKey:@"SBPlayerID"]];
+}
+
+
 - (BOOL)isEqual:(id)other {
     if (other == self)
         return YES;

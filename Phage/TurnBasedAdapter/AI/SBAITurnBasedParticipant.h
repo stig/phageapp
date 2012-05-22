@@ -8,7 +8,6 @@
 #import <Foundation/Foundation.h>
 #import "SBTurnBasedParticipant.h"
 
-@interface SBAITurnBasedParticipant : NSObject < SBTurnBasedParticipant >
+@interface SBAITurnBasedParticipant : NSObject < SBTurnBasedParticipant, NSCoding >
 - (id)initWithPlayerID:(NSString *)playerID;
-
 @end

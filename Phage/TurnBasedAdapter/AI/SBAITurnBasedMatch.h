@@ -16,7 +16,7 @@
 - (void)handleMatchEnded:(SBAITurnBasedMatch *)match;
 @end
 
-@interface SBAITurnBasedMatch : NSObject < SBTurnBasedMatch >
+@interface SBAITurnBasedMatch : NSObject < SBTurnBasedMatch, NSCoding >
 
 @property(strong) id<SBAITurnBasedMatchDelegate> delegate;
 @property(strong) id matchState;

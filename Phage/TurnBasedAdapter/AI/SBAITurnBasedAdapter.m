@@ -33,9 +33,7 @@
 }
 
 
-- (void)findMatch {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-
+- (SBAITurnBasedMatch *)createMatch {
     SBAITurnBasedParticipant *player1 = [[SBAITurnBasedParticipant alloc] initWithPlayerID:@"human"];
     SBAITurnBasedParticipant *player2 = [[SBAITurnBasedParticipant alloc] initWithPlayerID:@"ai"];
 
@@ -44,6 +42,35 @@
     match.matchState = [[SBState alloc] init];
     match.localParticipant = player1;
     match.currentParticipant = player1;
+    return match;
+}
+
+- (NSString*)savedMatchFilePath {
+    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    return [rootPath stringByAppendingPathComponent:@"SavedGame.dat"];
+}
+
+- (SBAITurnBasedMatch *)findSavedMatch {
+    return [NSKeyedUnarchiver unarchiveObjectWithFile:[self savedMatchFilePath]];
+}
+
+- (void)removeOldMatch {
+    [[NSFileManager defaultManager] removeItemAtPath:[self savedMatchFilePath] error:nil];
+}
+
+- (void)saveMatch:(SBAITurnBasedMatch *)match {
+    if ([NSKeyedArchiver archiveRootObject:match toFile:[self savedMatchFilePath]]) {
+        NSLog(@"Failed to save game");
+    }
+
+}
+
+- (void)findMatch {
+    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+
+    SBAITurnBasedMatch *match = [self findSavedMatch];
+    if (!match) match = [self createMatch];
+
     match.delegate = self;
 
     self.currentMatch = match;
@@ -66,6 +93,7 @@
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
 
     [self.delegate handleTurnEventForMatch:match];
+    [self saveMatch:match];
 
     if (![self.delegate isLocalPlayerTurn:match]) {
         // Wait 1 second then perform a move on behalf of the computer.
@@ -76,6 +104,7 @@
 - (void)handleMatchEnded:(SBAITurnBasedMatch *)match {
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
     [self.delegate handleMatchEnded:match];
+    [self removeOldMatch];
 }
 
 

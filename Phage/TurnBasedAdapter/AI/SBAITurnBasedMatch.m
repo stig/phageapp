@@ -18,6 +18,26 @@
 @synthesize currentParticipant = _currentParticipant;
 @synthesize status = _status;
 
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.currentParticipant forKey:@"SBCurrentParticipant"];
+    [aCoder encodeObject:self.localParticipant forKey:@"SBLocalParticipant"];
+    [aCoder encodeObject:self.participants forKey:@"SBParticipants"];
+    [aCoder encodeObject:self.matchState forKey:@"SBMatchState"];
+    [aCoder encodeInteger:self.status forKey:@"SBStatus"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    if (self) {
+        self.currentParticipant = [aDecoder decodeObjectForKey:@"SBCurrentParticipant"];
+        self.localParticipant = [aDecoder decodeObjectForKey:@"SBLocalParticipant"];
+        self.participants = [aDecoder decodeObjectForKey:@"SBParticipants"];
+        self.matchState = [aDecoder decodeObjectForKey:@"SBMatchState"];
+        self.status = [aDecoder decodeIntegerForKey:@"SBStatus"];
+    }
+    return self;
+}
+
 
 - (void)endTurnWithNextParticipant:(id <SBTurnBasedParticipant>)nextParticipant matchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
