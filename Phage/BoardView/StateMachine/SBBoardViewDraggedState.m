@@ -13,20 +13,19 @@
 
 @implementation SBBoardViewDraggedState
 @synthesize previousState = _previousState;
-@synthesize draggingPieceLayer = _draggingPieceLayer;
 @synthesize previousCellLayer = _previousCellLayer;
-@synthesize draggingPieceLayerOriginalPosition = _draggingPieceLayerOriginalPosition;
+@synthesize selectedPieceLayerOriginalPosition = _selectedPieceLayerOriginalPosition;
 
 
 - (void)transitionIn {
     [super transitionIn];
-    self.draggingPieceLayerOriginalPosition = self.draggingPieceLayer.position;
-    [SBAnimationHelper addPulseAnimationToLayer:self.draggingPieceLayer];
+    self.selectedPieceLayerOriginalPosition = self.selectedPieceLayer.position;
+    [SBAnimationHelper addPulseAnimationToLayer:self.selectedPieceLayer];
 }
 
 - (void)transitionOut {
     [super transitionOut];
-    [SBAnimationHelper removePulseAnimationFromLayer:self.draggingPieceLayer];
+    [SBAnimationHelper removePulseAnimationFromLayer:self.selectedPieceLayer];
 }
 
 
@@ -34,8 +33,8 @@
     SBCellLayer *cellLayer = (SBCellLayer*)[self.delegate.cellLayer hitTest:[[touches anyObject] locationInView:self.delegate]];
     if (cellLayer) {
         if (![cellLayer isEqual:self.previousCellLayer]) {
-            cellLayer.highlighted = [self.delegate.delegate canMovePiece:self.draggingPieceLayer.piece toLocation:cellLayer.location];
-            self.draggingPieceLayer.position = cellLayer.position;
+            cellLayer.highlighted = [self.delegate.delegate canMovePiece:self.selectedPieceLayer.piece toLocation:cellLayer.location];
+            self.selectedPieceLayer.position = cellLayer.position;
             self.previousCellLayer.highlighted = NO;
             self.previousCellLayer = cellLayer;
         }
@@ -44,14 +43,14 @@
 
 - (void)touchesEnded:(NSSet *)touches {
     SBCellLayer *cellLayer = (SBCellLayer*)[self.delegate.cellLayer hitTest:[[touches anyObject] locationInView:self.delegate]];
-    if (cellLayer && [self.delegate.delegate canMovePiece:self.draggingPieceLayer.piece toLocation:cellLayer.location]) {
-        self.draggingPieceLayer.position = cellLayer.position;
+    if (cellLayer && [self.delegate.delegate canMovePiece:self.selectedPieceLayer.piece toLocation:cellLayer.location]) {
+        self.selectedPieceLayer.position = cellLayer.position;
         self.previousCellLayer.highlighted = NO;
-        [self.delegate.delegate movePiece:self.draggingPieceLayer.piece toLocation:cellLayer.location];
+        [self.delegate.delegate movePiece:self.selectedPieceLayer.piece toLocation:cellLayer.location];
     } else {
-        NSLog(@"%@ is NOT a valid move location for %@", cellLayer.location, self.draggingPieceLayer.piece);
+        NSLog(@"%@ is NOT a valid move location for %@", cellLayer.location, self.selectedPieceLayer.piece);
         self.previousCellLayer.highlighted = NO;
-        self.draggingPieceLayer.position = self.draggingPieceLayerOriginalPosition;
+        self.selectedPieceLayer.position = self.selectedPieceLayerOriginalPosition;
         [self transitionToState:self.previousState];
     }
 }

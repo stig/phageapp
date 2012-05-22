@@ -13,8 +13,7 @@
 @class SBPieceLayer;
 
 @interface SBBoardViewDraggedState : SBBoardViewAbstractState
-@property(weak) SBPieceLayer *draggingPieceLayer;
 @property(weak) SBCellLayer *previousCellLayer;
-@property CGPoint draggingPieceLayerOriginalPosition;
+@property CGPoint selectedPieceLayerOriginalPosition;
 @property(strong) SBBoardViewAbstractState *previousState;
 @end

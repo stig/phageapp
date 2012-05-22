@@ -53,7 +53,7 @@
 - (void)touchesMoved:(NSSet *)touches {
     SBBoardViewDraggedState *state = [SBBoardViewDraggedState state];
     state.previousState = self;
-    state.draggingPieceLayer = self.touchDownPieceLayer;
+    state.selectedPieceLayer = self.touchDownPieceLayer;
     [self transitionToState:state];
     [state touchesMoved:touches];
 }
