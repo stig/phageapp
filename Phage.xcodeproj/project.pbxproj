@@ -41,6 +41,8 @@
 		D7BFA3B2151F2AD300435C8C /* SBMovePickerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */; };
 		D7BFA3B2151F2AD300435C93 /* SBBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C92 /* SBBoardView.m */; };
 		D7BFA3B2151F2AD300435C95 /* chess-640x640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */; };
+		D7FDA3A2156DAA4700E65C5E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FDA3A1156DAA4700E65C5E /* libz.dylib */; };
+		D7FDA3A4156DAA8F00E65C5E /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FDA3A3156DAA8F00E65C5E /* libTestFlight.a */; };
 		FB89D43C154C7D27001A0B11 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C9D /* libOCMock.a */; };
 		FB89D43C154C7D27001A0B15 /* SBAITurnBasedMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B14 /* SBAITurnBasedMatch.m */; };
 		FB89D43C154C7D27001A0B18 /* SBAITurnBasedAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B17 /* SBAITurnBasedAdapter.m */; };
@@ -177,6 +179,8 @@
 		D7BFA3B2151F2AD300435C92 /* SBBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardView.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "chess-640x640.jpg"; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C96 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = libs/ocmock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
+		D7FDA3A1156DAA4700E65C5E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		D7FDA3A3156DAA8F00E65C5E /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTestFlight.a; path = libs/TestFlight/libTestFlight.a; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B13 /* SBAITurnBasedMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAITurnBasedMatch.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B14 /* SBAITurnBasedMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAITurnBasedMatch.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0B16 /* SBAITurnBasedAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAITurnBasedAdapter.h; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7FDA3A4156DAA8F00E65C5E /* libTestFlight.a in Frameworks */,
+				D7FDA3A2156DAA4700E65C5E /* libz.dylib in Frameworks */,
 				536BE854153E17F000750F54 /* QuartzCore.framework in Frameworks */,
 				D755A48B15320B53003BB704 /* GameKit.framework in Frameworks */,
 				D76A4566151DDC7500E59146 /* UIKit.framework in Frameworks */,
@@ -309,6 +315,8 @@
 		D76A4564151DDC7500E59146 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D7FDA3A3156DAA8F00E65C5E /* libTestFlight.a */,
+				D7FDA3A1156DAA4700E65C5E /* libz.dylib */,
 				D7BFA3B2151F2AD300435C96 /* OCMock.xcodeproj */,
 				536BE853153E17F000750F54 /* QuartzCore.framework */,
 				D755A48A15320B53003BB704 /* GameKit.framework */,
@@ -796,8 +804,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Phage/Phage-Prefix.pch";
 				INFOPLIST_FILE = "Phage/Phage-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/libs/TestFlight\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/libs/ocmock/Source/**";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/libs/TestFlight/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -808,8 +820,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Phage/Phage-Prefix.pch";
 				INFOPLIST_FILE = "Phage/Phage-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/libs/TestFlight\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/libs/ocmock/Source/**";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/libs/TestFlight/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
