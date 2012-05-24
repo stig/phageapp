@@ -15,16 +15,18 @@ Key Features
 * GameCentre-enabled: Play turn-based games against friends or random opponents.
 * Should be universal, i.e. same purchase for iPad & iPhone.
 
-"Completed" Milestones
+Completed Milestones
+--------------------
+
+* GameCenter: Turn Based Match making - find an opponent
+* GameCenter: Ability to keep multiple games running at once
+* GameCenter: Turn-based game support
+* GameCenter: Save game at every step, and resume after re-launch. (Even after logging out and logging in as another user in Game Center.)
+* UI (not necessarily pretty) working
+* AI player hooked up ("Solitare Mode")
+
+Uncompleted Milestones
 ----------------------
-
-* <del>GameCenter: Turn Based Match making - find an opponent</del>
-* <del>GameCenter: Ability to keep multiple games running at once</del>
-* <del>GameCenter: Turn-based game support</del>
-* <del>GameCenter: Save game at every step, and resume after re-launch. (Even after logging out and logging in as another user in Game Center.)</del>
-
-Uncompleted" Milestones
------------------------
 
 These are in no particular order, really.
 
@@ -34,8 +36,6 @@ These are in no particular order, really.
   * Novice / Advanced / Master / Grand-Master / Galactic Overlord etc
   * Winning Streak / Short-cut to Looserville
   * Burning midnight oil (midnight - 6am)
-* UI (not necessarily pretty) working
-* AI player hooked up ("Solitare Mode")
 * Rules / game guide. Since this is a game nobody is likely to have played before, we need to present the rules
 * Localisations
 * Polish. It absolutely must look good, but I'm happy about it not being too full-featured.
@@ -43,8 +43,8 @@ These are in no particular order, really.
 Suggested timeline
 ------------------
 
-* April: rudimentary GameCenter turn-based 2-player play
-* May: rudimentary AI 1-player play
+* <del>April: rudimentary GameCenter turn-based 2-player play</del>
+* <del>May: rudimentary AI 1-player play</del>
 * June: Scores & Achievements
 * *July: Mostly a  wash-out development-wise due to vacation. Hopefully some user testing?*
 * August: Rules / Game guide / Polish / Icons
