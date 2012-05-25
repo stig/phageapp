@@ -10,6 +10,7 @@
 #import "SBPieceLayer.h"
 #import "SBCellLayer.h"
 #import "SBAnimationHelper.h"
+#import "SBBoardViewConfirmingState.h"
 
 @implementation SBBoardViewSelectedDraggedState
 @synthesize previousState = _previousState;
@@ -26,6 +27,7 @@
 - (void)transitionOut {
     [super transitionOut];
     [SBAnimationHelper removePulseAnimationFromLayer:self.selectedPieceLayer];
+    self.previousCellLayer.highlighted = NO;
 }
 
 - (void)touchesMoved:(NSSet*)touches block:(void(^)(SBCellLayer *cell))block {
@@ -47,12 +49,14 @@
 - (void)touchesEnded:(NSSet *)touches {
     SBCellLayer *cellLayer = (SBCellLayer*)[self.delegate.cellLayer hitTest:[[touches anyObject] locationInView:self.delegate]];
     if (cellLayer && [self.delegate.delegate canMovePiece:self.selectedPieceLayer.piece toLocation:cellLayer.location]) {
-        self.selectedPieceLayer.position = cellLayer.position;
-        self.previousCellLayer.highlighted = NO;
-        [self.delegate.delegate movePiece:self.selectedPieceLayer.piece toLocation:cellLayer.location];
+        SBBoardViewConfirmingState *state = [SBBoardViewConfirmingState state];
+        state.droppedCellLayer = cellLayer;
+        state.selectedPieceLayer = self.selectedPieceLayer;
+        state.selectedPieceLayerOriginalPosition = self.selectedPieceLayerOriginalPosition;
+        state.previousState = self.previousState;
+        [self transitionToState:state];
     } else {
         NSLog(@"%@ is NOT a valid move location for %@", cellLayer.location, self.selectedPieceLayer.piece);
-        self.previousCellLayer.highlighted = NO;
         self.selectedPieceLayer.position = self.selectedPieceLayerOriginalPosition;
         [self transitionToState:self.previousState];
     }

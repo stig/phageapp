@@ -11,6 +11,7 @@
 #import "SBBoardViewHintingState.h"
 #import "SBCellLayer.h"
 #import "SBAnimationHelper.h"
+#import "SBBoardViewConfirmingState.h"
 
 @implementation SBBoardViewSelectedState
 
@@ -54,9 +55,12 @@
     } else {
         SBCellLayer *cell = (SBCellLayer *)[self.delegate.cellLayer hitTest:point];
         if ([self.delegate.delegate canMovePiece:self.selectedPieceLayer.piece toLocation:cell.location]) {
-            [self.delegate.delegate movePiece:self.selectedPieceLayer.piece toLocation:cell.location];
-        } else {
-            // TODO bonk bonk bonk
+            SBBoardViewConfirmingState *state = [SBBoardViewConfirmingState state];
+            state.droppedCellLayer = cell;
+            state.selectedPieceLayer = self.selectedPieceLayer;
+            state.selectedPieceLayerOriginalPosition = self.selectedPieceLayer.position;
+            state.previousState = self;
+            [self transitionToState:state];
         }
     }
 }
