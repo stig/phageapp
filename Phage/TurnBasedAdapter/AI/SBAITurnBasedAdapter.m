@@ -47,11 +47,13 @@
 
 - (NSString*)savedMatchFilePath {
     NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    return [rootPath stringByAppendingPathComponent:@"SavedGame.dat"];
+    return [rootPath stringByAppendingPathComponent:@"SavedComputerMatch.dat"];
 }
 
 - (SBAITurnBasedMatch *)findSavedMatch {
-    return [NSKeyedUnarchiver unarchiveObjectWithFile:[self savedMatchFilePath]];
+    @synchronized (self) {
+        return [NSKeyedUnarchiver unarchiveObjectWithFile:[self savedMatchFilePath]];
+    }
 }
 
 - (void)removeOldMatch {
@@ -59,8 +61,12 @@
 }
 
 - (void)saveMatch:(SBAITurnBasedMatch *)match {
-    if ([NSKeyedArchiver archiveRootObject:match toFile:[self savedMatchFilePath]]) {
-        NSLog(@"Failed to save game");
+    @synchronized (self) {
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:match];
+        NSError *error = nil;
+        if (![data writeToFile:self.savedMatchFilePath options:NSDataWritingAtomic error:&error]) {
+            NSLog(@"Failed to save match: %@", error);
+        }
     }
 
 }
