@@ -5,17 +5,21 @@ body { font-family: sans-serif; }
 </style>
 </head><body>
 
-How To Play
-===========
+Phage
+=====
 
-Phage is a two-player abstract strategy game with similarities to chess.
-Players take turn moving until one player is unable to. If the
-_opponent_ can make a move at this point he or she wins the game,
-otherwise it's a draw.
+A two-player abstract strategy game with similarities to chess.
 
-Each player has four pieces; Circle, Square, Diamond & Triangle; that
-can be moved a maximum of seven times each. Thus, games tend to be
-short. There are no pass moves. The pieces move in different ways:
+Game Mechanics
+--------------
+
+Each of the players take turn moving one of their pieces until a player
+runs out of legal moves. The player that performs the most moves wins.
+Draws are possible.
+
+Each player has four pieces: Circle, Square, Diamond & Triangle. Each
+can be moved a maximum of seven times. Thus, games tend to be short.
+There are no pass moves. The pieces move in different ways:
 
 - Circle moves horizontally, vertically and diagonally in any direction.
   (Like Queens in Chess.)
@@ -25,9 +29,20 @@ short. There are no pass moves. The pieces move in different ways:
 - Triangle moves horizontally in any direction, and vertically *in the
   direction of its point*. This piece has no direct equivalents in Chess.
 
-A square which has been previously occupied by a piece is _blocked_. It
+A cell which has been previously occupied by a piece is blocked. It
 cannot be occupied again, nor can any piece be moved *across* it in any
 direction.
+
+Performing a move
+-----------------
+
+Tap a piece to select it; it should start gently pulsing. Tap it again
+to reveal its legal destinations, or just tap the location you want to
+move it to.
+
+Alternatively, drag and drop one of your pieces to a new destination.
+You can even tap a piece twice to reveal its legal destinations before
+dragging.
 
 
 </body>
