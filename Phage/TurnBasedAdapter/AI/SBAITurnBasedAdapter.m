@@ -32,7 +32,6 @@
     return self;
 }
 
-
 - (SBAITurnBasedMatch *)createMatch {
     SBAITurnBasedParticipant *player1 = [[SBAITurnBasedParticipant alloc] initWithPlayerID:@"human"];
     SBAITurnBasedParticipant *player2 = [[SBAITurnBasedParticipant alloc] initWithPlayerID:@"ai"];
@@ -68,7 +67,13 @@
             NSLog(@"Failed to save match: %@", error);
         }
     }
+}
 
+- (void)maybePerformComputerMoveForMatch:(SBAITurnBasedMatch *)match {
+    if (![self.delegate isLocalPlayerTurn:match]) {
+        // Wait 1 second then perform a move on behalf of the computer.
+        [self performSelector:@selector(performComputerMoveActionForMatch:) withObject:match afterDelay:1.0];
+    }
 }
 
 - (void)findMatch {
@@ -82,6 +87,8 @@
     self.currentMatch = match;
 
     [self.delegate handleDidFindMatch:match];
+
+    [self maybePerformComputerMoveForMatch:match];
 }
 
 - (void)performComputerMoveActionForMatch:(SBAITurnBasedMatch*)match {
@@ -93,17 +100,13 @@
     [[[PhageModelHelper alloc] init] endTurnOrMatch:match withMatchState:successor completionHandler:NULL];
 }
 
-
 - (void)handleTurnEventForMatch:(SBAITurnBasedMatch *)match {
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
 
     [self.delegate handleTurnEventForMatch:match];
     [self saveMatch:match];
 
-    if (![self.delegate isLocalPlayerTurn:match]) {
-        // Wait 1 second then perform a move on behalf of the computer.
-        [self performSelector:@selector(performComputerMoveActionForMatch:) withObject:match afterDelay:1.0];
-    }
+    [self maybePerformComputerMoveForMatch:match];
 }
 
 - (void)handleMatchEnded:(SBAITurnBasedMatch *)match {
