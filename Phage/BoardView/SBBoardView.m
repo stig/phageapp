@@ -180,5 +180,9 @@
     [self.delegate movePiece:piece toLocation:location];
 }
 
+- (UIView *)actionSheetView {
+    return self;
+}
+
 
 @end

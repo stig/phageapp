@@ -20,6 +20,7 @@
 - (BOOL)canMovePiece:(SBPiece*)piece toLocation:(SBLocation*)location;
 - (void)movePiece:(SBPiece*)piece toLocation:(SBLocation*)location;
 - (NSArray*)allCellLayers;
+- (UIView*)actionSheetView;
 @end
 
 @protocol SBBoardViewState <NSObject>

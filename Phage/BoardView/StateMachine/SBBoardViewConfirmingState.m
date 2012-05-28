@@ -9,8 +9,10 @@
 #import "SBCellLayer.h"
 #import "SBPieceLayer.h"
 
-@interface SBBoardViewConfirmingState () < UIAlertViewDelegate >
+@interface SBBoardViewConfirmingState () < UIActionSheetDelegate >
 @end
+
+static NSString *const kSBPhageConfirmPerformMoveKey = @"SBPhageConfirmPerformMoveKey";
 
 @implementation SBBoardViewConfirmingState
 
@@ -21,25 +23,32 @@
 
 - (void)transitionIn {
     [super transitionIn];
-
     self.selectedPieceLayer.position = self.droppedCellLayer.position;
     [self.delegate cellLayerForPoint:self.selectedPieceLayerOriginalPosition].blocked = YES;
 
-    [[[UIAlertView alloc] initWithTitle:@"Perform this move?"
-                                message:@""
-                               delegate:self
-                      cancelButtonTitle:@"No"
-                      otherButtonTitles:@"Yes", nil] show];
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:kSBPhageConfirmPerformMoveKey]) {
+        UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Perform this move?"
+                                                        delegate:self
+                                               cancelButtonTitle:@"No"
+                                          destructiveButtonTitle:@"Yes; don't ask again"
+                                               otherButtonTitles:@"Yes", nil];
+        [as showInView:[self.delegate actionSheetView]];
+    }
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
-    if (0 == buttonIndex) {
+    if (actionSheet.cancelButtonIndex == buttonIndex) {
         self.selectedPieceLayer.position = self.selectedPieceLayerOriginalPosition;
         [self.delegate cellLayerForPoint:self.selectedPieceLayerOriginalPosition].blocked = NO;
         [self.delegate transitionToState:self.previousState];
     } else {
         [self.delegate movePiece:self.selectedPieceLayer.piece toLocation:self.droppedCellLayer.location];
+        if (actionSheet.destructiveButtonIndex ==  buttonIndex) {
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setBool:YES forKey:kSBPhageConfirmPerformMoveKey];
+            [defaults synchronize];
+        }
     }
 }
 
