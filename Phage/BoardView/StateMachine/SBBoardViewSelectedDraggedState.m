@@ -6,7 +6,6 @@
 
 
 #import "SBBoardViewSelectedDraggedState.h"
-#import "SBBoardView.h"
 #import "SBPieceLayer.h"
 #import "SBCellLayer.h"
 #import "SBAnimationHelper.h"
@@ -31,7 +30,9 @@
 }
 
 - (void)touchesMoved:(NSSet*)touches block:(void(^)(SBCellLayer *cell))block {
-    SBCellLayer *cellLayer = (SBCellLayer*)[self.delegate.cellLayer hitTest:[[touches anyObject] locationInView:self.delegate]];
+    CGPoint point = [self.delegate pointForTouches:touches];
+    SBCellLayer *cellLayer = [self.delegate cellLayerForPoint:point];
+
     if (cellLayer && ![cellLayer isEqual:self.previousCellLayer]) {
         if (block) block(cellLayer);
         self.selectedPieceLayer.position = cellLayer.position;
@@ -41,24 +42,25 @@
 
 - (void)touchesMoved:(NSSet *)touches {
     [self touchesMoved:touches block:^(SBCellLayer *cell) {
-        cell.highlighted = [self.delegate.delegate canMovePiece:self.selectedPieceLayer.piece toLocation:cell.location];
+        cell.highlighted = [self.delegate canMovePiece:self.selectedPieceLayer.piece toLocation:cell.location];
         self.previousCellLayer.highlighted = NO;
     }];
 }
 
 - (void)touchesEnded:(NSSet *)touches {
-    SBCellLayer *cellLayer = (SBCellLayer*)[self.delegate.cellLayer hitTest:[[touches anyObject] locationInView:self.delegate]];
-    if (cellLayer && [self.delegate.delegate canMovePiece:self.selectedPieceLayer.piece toLocation:cellLayer.location]) {
+    CGPoint point = [self.delegate pointForTouches:touches];
+    SBCellLayer *cellLayer = [self.delegate cellLayerForPoint:point];
+    if (cellLayer && [self.delegate canMovePiece:self.selectedPieceLayer.piece toLocation:cellLayer.location]) {
         SBBoardViewConfirmingState *state = [SBBoardViewConfirmingState state];
         state.droppedCellLayer = cellLayer;
         state.selectedPieceLayer = self.selectedPieceLayer;
         state.selectedPieceLayerOriginalPosition = self.selectedPieceLayerOriginalPosition;
         state.previousState = self.previousState;
-        [self transitionToState:state];
+        [self.delegate transitionToState:state];
     } else {
         NSLog(@"%@ is NOT a valid move location for %@", cellLayer.location, self.selectedPieceLayer.piece);
         self.selectedPieceLayer.position = self.selectedPieceLayerOriginalPosition;
-        [self transitionToState:self.previousState];
+        [self.delegate transitionToState:self.previousState];
     }
 }
 

@@ -118,26 +118,66 @@
         [CATransaction commit];
     }
 
-    SBBoardViewAbstractState *newState = [self.delegate isLocalPlayerTurn]
+    id<SBBoardViewState> newState = [self.delegate isLocalPlayerTurn]
             ? [SBBoardViewUnselectedState state]
-            : [SBBoardViewReadonlyState state];
+            : [[SBBoardViewReadonlyState alloc] init];
 
-    [self.state transitionToState:newState];
+    [self transitionToState:newState];
     [self setNeedsDisplay];
 }
 
-#pragma mark GridView Touch
+#pragma mark SBBoardViewState
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [_state touchesBegan:touches];
+    [self.state touchesBegan:touches];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    [_state touchesMoved:touches];
+    [self.state touchesMoved:touches];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [_state touchesEnded:touches];
+    [self.state touchesEnded:touches];
+}
+
+#pragma mark SBBoardViewStateDelegate
+
+- (void)transitionToState:(id<SBBoardViewState>)state {
+    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+    [self.state transitionOut];
+
+    state.delegate = self;
+    [state transitionIn];
+
+    self.state = state;
+}
+
+- (CGPoint)pointForTouches:(NSSet *)touches {
+    return [[touches anyObject] locationInView:self];
+}
+
+- (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece {
+    return [self.delegate canCurrentPlayerMovePiece:piece];
+}
+
+- (SBPieceLayer *)pieceLayerForPoint:(CGPoint)point {
+    return (SBPieceLayer*)[self.pieceLayer hitTest:point];
+}
+
+- (SBCellLayer *)cellLayerForPoint:(CGPoint)point {
+    return (SBCellLayer *)[self.cellLayer hitTest:point];
+}
+
+- (BOOL)canMovePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
+    return [self.delegate canMovePiece:piece toLocation:location];
+}
+
+- (NSArray *)allCellLayers {
+    return self.cellLayer.sublayers;
+}
+
+- (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
+    [self.delegate movePiece:piece toLocation:location];
 }
 
 

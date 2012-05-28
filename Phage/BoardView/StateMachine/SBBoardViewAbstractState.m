@@ -32,14 +32,6 @@
     return self;
 }
 
-- (void)transitionToState:(SBBoardViewAbstractState *)state {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
-    [self transitionOut];
-    state.delegate = self.delegate;
-    self.delegate.state = state;
-    [state transitionIn];
-}
-
 - (void)transitionIn {
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
 }
@@ -59,7 +51,7 @@
     SBBoardViewSelectedDraggedState *state = [[self draggedStateClass] state];
     state.previousState = self;
     state.selectedPieceLayer = self.touchDownPieceLayer;
-    [self transitionToState:state];
+    [self.delegate transitionToState:state];
     [state touchesMoved:touches];
 }
 

@@ -6,29 +6,20 @@
 
 
 
+#import "SBBoardViewState.h"
+
 @class SBBoardView;
 @class SBPieceLayer;
+@protocol SBBoardViewDelegate;
 
-@interface SBBoardViewAbstractState : NSObject
-@property(weak) SBBoardView *delegate;
+@interface SBBoardViewAbstractState : NSObject <SBBoardViewState>
 @property(weak) SBPieceLayer *selectedPieceLayer;
 @property(weak) SBPieceLayer *touchDownPieceLayer;
 
 + (id)state;
-+ (id)stateWithDelegate:(SBBoardView *)delegate;
-- (id)initWithDelegate:(SBBoardView *)delegate;
-
-- (void)transitionToState:(SBBoardViewAbstractState *)state;
-
-
-// Overriden in subclasses to handle specifics of each state
-- (void)transitionIn;
-- (void)transitionOut;
++ (id)stateWithDelegate:(id<SBBoardViewStateDelegate>)delegate;
+- (id)initWithDelegate:(id<SBBoardViewStateDelegate>)delegate;
 
 - (Class)draggedStateClass;
-
-- (void)touchesBegan:(NSSet *)touches;
-- (void)touchesMoved:(NSSet *)touches;
-- (void)touchesEnded:(NSSet *)touches;
 
 @end

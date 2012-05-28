@@ -231,6 +231,7 @@
 		FB89D43C154C7D27001A0BC6 /* 00 State Machine Diagram.graffle */ = {isa = PBXFileReference; lastKnownFileType = file.graffle; path = "00 State Machine Diagram.graffle"; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BC7 /* SBBoardViewConfirmingState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewConfirmingState.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BC9 /* SBBoardViewConfirmingState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewConfirmingState.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BCB /* SBBoardViewState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewState.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -464,6 +465,7 @@
 		FB89D43C154C7D27001A0BB2 /* StateMachine */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0BCB /* SBBoardViewState.h */,
 				FB89D43C154C7D27001A0BC9 /* SBBoardViewConfirmingState.h */,
 				FB89D43C154C7D27001A0BC7 /* SBBoardViewConfirmingState.m */,
 				FB89D43C154C7D27001A0BC6 /* 00 State Machine Diagram.graffle */,

@@ -7,7 +7,6 @@
 
 #import "SBBoardViewSelectedState.h"
 #import "SBPieceLayer.h"
-#import "SBBoardView.h"
 #import "SBBoardViewHintingState.h"
 #import "SBCellLayer.h"
 #import "SBAnimationHelper.h"
@@ -27,40 +26,40 @@
 
 
 - (void)touchesBegan:(NSSet *)touches {
-    CGPoint point = [[touches anyObject] locationInView:self.delegate];
-    SBPieceLayer *layer = (SBPieceLayer *)[self.delegate.pieceLayer hitTest:point];
+    CGPoint point = [self.delegate pointForTouches:touches];
+    SBPieceLayer *layer = [self.delegate pieceLayerForPoint:point];
 
     if (layer) {
-        if ([self.delegate.delegate canCurrentPlayerMovePiece:layer.piece]) {
+        if ([self.delegate canCurrentPlayerMovePiece:layer.piece]) {
             self.touchDownPieceLayer = layer;
         }
     }
 }
 
 - (void)touchesEnded:(NSSet *)touches nextStateClass:(Class)clazz {
-    CGPoint point = [[touches anyObject] locationInView:self.delegate];
-    SBPieceLayer *layer = (SBPieceLayer *)[self.delegate.pieceLayer hitTest:point];
+    CGPoint point = [self.delegate pointForTouches:touches];
+    SBPieceLayer *layer = [self.delegate pieceLayerForPoint:point];
 
     if (layer) {
         if ([layer isEqual:self.selectedPieceLayer]) {
             SBBoardViewAbstractState *state = [clazz state];
             state.selectedPieceLayer = layer;
-            [self transitionToState:state];
+            [self.delegate transitionToState:state];
 
         } else if ([layer isEqual:self.touchDownPieceLayer]) {
             SBBoardViewAbstractState *state = [[self class] state];
             state.selectedPieceLayer = layer;
-            [self transitionToState:state];
+            [self.delegate transitionToState:state];
         }
     } else {
-        SBCellLayer *cell = (SBCellLayer *)[self.delegate.cellLayer hitTest:point];
-        if ([self.delegate.delegate canMovePiece:self.selectedPieceLayer.piece toLocation:cell.location]) {
+        SBCellLayer *cell = [self.delegate cellLayerForPoint:point];
+        if ([self.delegate canMovePiece:self.selectedPieceLayer.piece toLocation:cell.location]) {
             SBBoardViewConfirmingState *state = [SBBoardViewConfirmingState state];
             state.droppedCellLayer = cell;
             state.selectedPieceLayer = self.selectedPieceLayer;
             state.selectedPieceLayerOriginalPosition = self.selectedPieceLayer.position;
             state.previousState = self;
-            [self transitionToState:state];
+            [self.delegate transitionToState:state];
         }
     }
 }

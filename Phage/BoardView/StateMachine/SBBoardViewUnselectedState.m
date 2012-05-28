@@ -6,18 +6,17 @@
 
 
 #import "SBBoardViewUnselectedState.h"
-#import "SBBoardView.h"
 #import "SBBoardViewSelectedState.h"
 #import "SBPieceLayer.h"
 
 @implementation SBBoardViewUnselectedState
 
 - (void)touchesBegan:(NSSet *)touches {
-    CGPoint point = [[touches anyObject] locationInView:self.delegate];
-    SBPieceLayer *layer = (SBPieceLayer *)[self.delegate.pieceLayer hitTest:point];
+    CGPoint point = [self.delegate pointForTouches:touches];
+    SBPieceLayer *layer = [self.delegate pieceLayerForPoint:point];
 
     if (layer) {
-        if ([self.delegate.delegate canCurrentPlayerMovePiece:layer.piece]) {
+        if ([self.delegate canCurrentPlayerMovePiece:layer.piece]) {
             self.touchDownPieceLayer = layer;
 
         } else {
@@ -32,13 +31,13 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches {
-    CGPoint point = [[touches anyObject] locationInView:self.delegate];
-    SBPieceLayer *layer = (SBPieceLayer *)[self.delegate.pieceLayer hitTest:point];
+    CGPoint point = [self.delegate pointForTouches:touches];
+    SBPieceLayer *layer = [self.delegate pieceLayerForPoint:point];
 
     if (layer && [layer isEqual:self.touchDownPieceLayer]) {
         SBBoardViewAbstractState *state = [SBBoardViewSelectedState state];
         state.selectedPieceLayer = layer;
-        [self transitionToState:state];
+        [self.delegate transitionToState:state];
     }
 }
 

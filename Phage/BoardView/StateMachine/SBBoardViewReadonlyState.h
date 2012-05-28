@@ -8,5 +8,5 @@
 
 #import "SBBoardViewAbstractState.h"
 
-@interface SBBoardViewReadonlyState : SBBoardViewAbstractState
+@interface SBBoardViewReadonlyState : NSObject < SBBoardViewState >
 @end

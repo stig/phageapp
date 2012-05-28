@@ -7,7 +7,6 @@
 
 #import "SBBoardViewConfirmingState.h"
 #import "SBCellLayer.h"
-#import "SBBoardView.h"
 #import "SBPieceLayer.h"
 
 @interface SBBoardViewConfirmingState () < UIAlertViewDelegate >
@@ -41,9 +40,9 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
     if (0 == buttonIndex) {
-        [self transitionToState:self.previousState];
+        [self.delegate transitionToState:self.previousState];
     } else {
-        [self.delegate.delegate movePiece:self.selectedPieceLayer.piece toLocation:self.droppedCellLayer.location];
+        [self.delegate movePiece:self.selectedPieceLayer.piece toLocation:self.droppedCellLayer.location];
     }
 }
 

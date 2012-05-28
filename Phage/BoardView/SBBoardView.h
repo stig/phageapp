@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "SBBoardViewState.h"
+
 @class SBState;
 @class SBMove;
 @class SBLocation;
@@ -21,8 +23,8 @@
 - (BOOL)isLocalPlayerTurn;
 @end
 
-@interface SBBoardView : UIView
-@property(strong) SBBoardViewAbstractState *state;
+@interface SBBoardView : UIView < SBBoardViewStateDelegate >
+@property(strong) id<SBBoardViewState> state;
 @property(strong) CALayer *cellLayer;
 @property(strong) CALayer *pieceLayer;
 

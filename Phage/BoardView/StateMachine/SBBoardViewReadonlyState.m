@@ -8,15 +8,23 @@
 #import "SBBoardViewReadonlyState.h"
 
 @implementation SBBoardViewReadonlyState
+@synthesize delegate = _delegate;
+
+
+- (void)transitionIn {}
+
+- (void)transitionOut {}
 
 - (void)touchesBegan:(NSSet *)touches {
     [[[UIAlertView alloc] initWithTitle:@"Patience!"
                                 message:@"Wait for your turn.."
                                delegate:self
-                      cancelButtonTitle:@"OK, chill"
+                      cancelButtonTitle:@"OK"
                       otherButtonTitles:nil] show];
 }
 
 - (void)touchesMoved:(NSSet *)touches {}
+
+- (void)touchesEnded:(NSSet *)touches {}
 
 @end

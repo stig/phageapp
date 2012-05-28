@@ -7,7 +7,6 @@
 
 #import "SBBoardViewHintingState.h"
 #import "SBBoardViewUnselectedState.h"
-#import "SBBoardView.h"
 #import "SBPieceLayer.h"
 #import "SBPiece.h"
 #import "SBCellLayer.h"
@@ -19,14 +18,14 @@
     [super transitionIn];
 
     SBPiece *piece = self.selectedPieceLayer.piece;
-    for (SBCellLayer *cell in self.delegate.cellLayer.sublayers) {
-        cell.highlighted = [self.delegate.delegate canMovePiece:piece toLocation:cell.location];
+    for (SBCellLayer *cell in [self.delegate allCellLayers]) {
+        cell.highlighted = [self.delegate canMovePiece:piece toLocation:cell.location];
     }
 }
 
 - (void)transitionOut {
     [super transitionOut];
-    for (SBCellLayer *cell in self.delegate.cellLayer.sublayers) {
+    for (SBCellLayer *cell in [self.delegate allCellLayers]) {
         cell.highlighted = NO;
     }
 }
