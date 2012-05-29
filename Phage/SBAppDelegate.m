@@ -14,6 +14,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [TestFlight takeOff:@"b15ebf354cbefc8afa12b65ca5ae3799_OTA1MDgyMDEyLTA1LTE5IDA4OjMwOjQ1LjQ2NzUwNQ"];
+#define TESTING 1
+#ifdef TESTING
+    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+#endif
+
     GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
 
     [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
