@@ -18,6 +18,6 @@
 @property(strong) SBTurnBasedMatchHelper *turnBasedMatchHelper;
 @property(strong) IBOutlet SBBoardView *gridView;
 
-- (IBAction)go;
+- (IBAction)forfeit;
 
 @end

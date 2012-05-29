@@ -15,4 +15,7 @@
 - (id<SBTurnBasedParticipant>)nextParticipantForMatch:(id<SBTurnBasedMatch>)match;
 
 - (void)endTurnOrMatch:(id <SBTurnBasedMatch>)match withMatchState:(SBState *)successor completionHandler:(void(^)(NSError *))completionHandler;
+
+- (void)forfeitMatch:(id <SBTurnBasedMatch>)match inTurnWithCompletionHandler:(void (^)(NSError *))completionHandler;
+
 @end

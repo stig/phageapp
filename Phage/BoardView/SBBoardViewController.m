@@ -12,11 +12,16 @@
 #import "SBTurnBasedParticipant.h"
 #import "PhageModelHelper.h"
 
+@interface SBBoardViewController () < UIActionSheetDelegate >
+@property(strong) UIActionSheet *forfeitActionSheet;
+@end
+
 @implementation SBBoardViewController
 
 @synthesize turnBasedMatchHelper = _turnBasedMatchHelper;
 @synthesize gridView = _gridView;
 @synthesize modelHelper = _modelHelper;
+@synthesize forfeitActionSheet = _forfeitActionSheet;
 
 
 - (void)viewDidLoad {
@@ -41,8 +46,13 @@
 
 #pragma mark Actions
 
-- (IBAction)go {
-    [self.turnBasedMatchHelper findMatch];
+- (IBAction)forfeit {
+    if ([self.turnBasedMatchHelper isLocalPlayerTurn:self.turnBasedMatchHelper.currentMatch]) {
+        self.forfeitActionSheet = [[UIActionSheet alloc] initWithTitle:@"Really forfeit match?" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
+        [self.forfeitActionSheet showInView:self.view];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"Wait for your turn" message:@"You can only forfeit when it is your turn." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    }
 }
 
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece {
@@ -134,6 +144,17 @@
                       cancelButtonTitle:@"OK"
                       otherButtonTitles:nil] show];
 
+}
+
+#pragma mark UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ([actionSheet isEqual:self.forfeitActionSheet]) {
+        if ([actionSheet destructiveButtonIndex] == buttonIndex) {
+            [self.modelHelper forfeitMatch:self.turnBasedMatchHelper.currentMatch inTurnWithCompletionHandler:^(NSError *error) {}];
+        }
+        self.forfeitActionSheet = nil;
+    }
 }
 
 @end

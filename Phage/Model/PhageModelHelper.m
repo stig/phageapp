@@ -50,5 +50,11 @@
     }
 }
 
+- (void)forfeitMatch:(id <SBTurnBasedMatch>)match inTurnWithCompletionHandler:(void(^)(NSError *error))completionHandler {
+    id<SBTurnBasedParticipant> opponent = [self nextParticipantForMatch:match];
+    opponent.matchOutcome = GKTurnBasedMatchOutcomeWon;
+    match.currentParticipant.matchOutcome = GKTurnBasedMatchOutcomeQuit;
+    [match endMatchInTurnWithMatchState:match.matchState completionHandler:completionHandler];
+}
 
 @end
