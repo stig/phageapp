@@ -125,7 +125,7 @@
 
     [self layoutMatch:match];
 
-    NSString *message = nil;
+    NSString *message;
 
     switch ([[match localParticipant] matchOutcome]) {
         case GKTurnBasedMatchOutcomeWon:

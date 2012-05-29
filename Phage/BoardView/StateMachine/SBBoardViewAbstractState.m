@@ -6,7 +6,6 @@
 
 
 #import "SBBoardViewAbstractState.h"
-#import "SBBoardView.h"
 #import "SBBoardViewSelectedDraggedState.h"
 #import "SBPieceLayer.h"
 
@@ -16,7 +15,7 @@
 @synthesize touchDownPieceLayer = _touchDownPieceLayer;
 
 
-+ (id)stateWithDelegate:(SBBoardView *)delegate {
++ (id)stateWithDelegate:(id<SBBoardViewStateDelegate>)delegate {
     return [[self alloc] initWithDelegate:delegate];
 }
 
@@ -24,7 +23,7 @@
     return [[self alloc] init];
 }
 
-- (id)initWithDelegate:(SBBoardView *)delegate {
+- (id)initWithDelegate:(id<SBBoardViewStateDelegate>)delegate {
     self = [super init];
     if (self) {
         _delegate = delegate;

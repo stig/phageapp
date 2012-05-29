@@ -6,7 +6,6 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <CoreGraphics/CoreGraphics.h>
 #import "SBCirclePiece.h"
 #import "SBDirection.h"
 

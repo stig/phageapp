@@ -7,7 +7,6 @@
 
 #import "SBAITurnBasedMatch.h"
 #import "SBTurnBasedParticipant.h"
-#import "SBTurnBasedMatchHelper.h"
 
 @implementation SBAITurnBasedMatch
 

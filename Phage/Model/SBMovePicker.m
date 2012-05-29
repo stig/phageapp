@@ -18,7 +18,7 @@
     [state enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
         SBState *successor = [state successorWithMove:move];
         __block NSUInteger score = 0;
-        [successor enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
+        [successor enumerateLegalMovesWithBlock:^(SBMove *move1, BOOL *stop1) {
             score++;
         }];
         if (score < minScore) {
