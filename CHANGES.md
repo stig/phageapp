@@ -1,4 +1,5 @@
 0.3 (2012-05-29)
+================
 
 * Ask user for confirmation to avoid accidental moves.
 * Allow turning said move confirmations off, as they get tedious after a while.
