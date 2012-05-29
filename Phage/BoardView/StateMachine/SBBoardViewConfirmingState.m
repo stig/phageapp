@@ -23,6 +23,7 @@
     [super transitionIn];
 
     self.selectedPieceLayer.position = self.droppedCellLayer.position;
+    [self.delegate cellLayerForPoint:self.selectedPieceLayerOriginalPosition].blocked = YES;
 
     [[[UIAlertView alloc] initWithTitle:@"Perform this move?"
                                 message:@""
@@ -31,15 +32,11 @@
                       otherButtonTitles:@"Yes", nil] show];
 }
 
-- (void)transitionOut {
-    [super transitionOut];
-    self.selectedPieceLayer.position = self.selectedPieceLayerOriginalPosition;
-}
-
-
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
     if (0 == buttonIndex) {
+        self.selectedPieceLayer.position = self.selectedPieceLayerOriginalPosition;
+        [self.delegate cellLayerForPoint:self.selectedPieceLayerOriginalPosition].blocked = NO;
         [self.delegate transitionToState:self.previousState];
     } else {
         [self.delegate movePiece:self.selectedPieceLayer.piece toLocation:self.droppedCellLayer.location];
