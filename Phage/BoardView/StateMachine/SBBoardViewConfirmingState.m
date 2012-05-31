@@ -21,6 +21,10 @@ static NSString *const kSBPhageConfirmPerformMoveKey = @"SBPhageConfirmPerformMo
 @synthesize selectedPieceLayerOriginalPosition = _selectedPieceLayerOriginalPosition;
 
 
+- (void)performConfirmedMove {
+    [self.delegate movePiece:self.selectedPieceLayer.piece toLocation:self.droppedCellLayer.location];
+}
+
 - (void)transitionIn {
     [super transitionIn];
     self.selectedPieceLayer.position = self.droppedCellLayer.position;
@@ -33,6 +37,8 @@ static NSString *const kSBPhageConfirmPerformMoveKey = @"SBPhageConfirmPerformMo
                                           destructiveButtonTitle:@"Yes; don't ask again"
                                                otherButtonTitles:@"Yes", nil];
         [as showInView:[self.delegate actionSheetView]];
+    } else {
+        [self performConfirmedMove];
     }
 }
 
@@ -43,7 +49,7 @@ static NSString *const kSBPhageConfirmPerformMoveKey = @"SBPhageConfirmPerformMo
         [self.delegate cellLayerForPoint:self.selectedPieceLayerOriginalPosition].blocked = NO;
         [self.delegate transitionToState:self.previousState];
     } else {
-        [self.delegate movePiece:self.selectedPieceLayer.piece toLocation:self.droppedCellLayer.location];
+        [self performConfirmedMove];
         if (actionSheet.destructiveButtonIndex ==  buttonIndex) {
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setBool:YES forKey:kSBPhageConfirmPerformMoveKey];
