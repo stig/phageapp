@@ -817,9 +817,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Phage/Phage-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"${PROJECT_DIR}/libs/TestFlight",
-				);
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/libs/TestFlight";
 				INFOPLIST_FILE = "Phage/Phage-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -835,9 +833,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Phage/Phage-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"${PROJECT_DIR}/libs/TestFlight",
-				);
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/libs/TestFlight";
 				INFOPLIST_FILE = "Phage/Phage-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
