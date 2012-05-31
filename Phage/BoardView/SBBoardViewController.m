@@ -95,7 +95,7 @@
 
 - (void)enterNewGame:(id<SBTurnBasedMatch>)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    BOOL player = [[match.participants objectAtIndex:0] isEqual:match.currentParticipant];
+    BOOL player = [match.localParticipant isEqual:match.currentParticipant];
     [self.gridView layoutForState:[[SBState alloc] initWithPlayer:player]];
 }
 
