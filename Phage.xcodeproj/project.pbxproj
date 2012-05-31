@@ -811,13 +811,15 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Phage/Phage-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/libs/TestFlight",
+				);
 				INFOPLIST_FILE = "Phage/Phage-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/libs/TestFlight\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/libs/TestFlight/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -827,13 +829,15 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Phage/Phage-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/libs/TestFlight",
+				);
 				INFOPLIST_FILE = "Phage/Phage-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/libs/TestFlight\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/libs/TestFlight/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -848,7 +852,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Phage/Phage-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/libs/ocmock/Source/";
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/libs/TestFlight",
+					"${PROJECT_DIR}/libs/ocmock/Source/",
+				);
 				INFOPLIST_FILE = "PhageTests/PhageTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -856,7 +863,6 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/libs/ocmock/Source/**";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -871,7 +877,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Phage/Phage-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/libs/ocmock/Source/";
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/libs/TestFlight",
+					"${PROJECT_DIR}/libs/ocmock/Source/",
+				);
 				INFOPLIST_FILE = "PhageTests/PhageTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -879,7 +888,6 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/libs/ocmock/Source/**";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
