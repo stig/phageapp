@@ -14,6 +14,7 @@
 
 @interface SBBoardViewController : UIViewController <SBTurnBasedMatchHelperDelegate, SBBoardViewDelegate>
 
+@property(nonatomic, weak) IBOutlet UIBarButtonItem *forfeitButton;
 @property(strong) PhageModelHelper *modelHelper;
 @property(strong) SBTurnBasedMatchHelper *turnBasedMatchHelper;
 @property(strong) IBOutlet SBBoardView *gridView;

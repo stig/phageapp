@@ -14,6 +14,8 @@
 
 @interface SBBoardViewController () < UIActionSheetDelegate >
 @property(strong) UIActionSheet *forfeitActionSheet;
+- (SBState*)currentState;
+- (SBState*)stateForMatch:(id<SBTurnBasedMatch>)match;
 @end
 
 @implementation SBBoardViewController
@@ -22,6 +24,7 @@
 @synthesize gridView = _gridView;
 @synthesize modelHelper = _modelHelper;
 @synthesize forfeitActionSheet = _forfeitActionSheet;
+@synthesize forfeitButton = _forfeitButton;
 
 
 - (void)viewDidLoad {
@@ -46,45 +49,50 @@
 
 #pragma mark Actions
 
-- (IBAction)forfeit {
-    if ([self.turnBasedMatchHelper isLocalPlayerTurn:self.turnBasedMatchHelper.currentMatch]) {
-        self.forfeitActionSheet = [[UIActionSheet alloc] initWithTitle:@"Really forfeit match?" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
-        [self.forfeitActionSheet showInView:self.view];
-    } else {
-        [[[UIAlertView alloc] initWithTitle:@"Wait for your turn" message:@"You can only forfeit when it is your turn." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+- (SBState*)stateForMatch:(id<SBTurnBasedMatch>)match {
+    if (nil == match.matchState) {
+        BOOL player = [match.localParticipant isEqual:match.currentParticipant];
+        return [[SBState alloc] initWithPlayer:player];
     }
+    return match.matchState;
+}
+
+- (SBState*)currentState {
+    return [self stateForMatch:self.turnBasedMatchHelper.currentMatch];
+}
+
+- (IBAction)forfeit {
+    NSAssert([self.turnBasedMatchHelper isLocalPlayerTurn:self.turnBasedMatchHelper.currentMatch], @"Should be localPlayerTurn");
+    self.forfeitActionSheet = [[UIActionSheet alloc] initWithTitle:@"Really forfeit match?" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
+    [self.forfeitActionSheet showInView:self.view];
 }
 
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece {
-    SBState *state = self.turnBasedMatchHelper.currentMatch.matchState;
+    SBState *state = [self currentState];
     return [[state piecesForPlayer:state.isPlayerOne] containsObject:piece];
 }
 
 - (BOOL)canMovePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
     SBMove *move = [SBMove moveWithPiece:piece to:location];
-    SBState *state = self.turnBasedMatchHelper.currentMatch.matchState;
-    return [state isLegalMove:move];
+    return [[self currentState] isLegalMove:move];
 }
 
 - (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
 
     SBMove *move = [SBMove moveWithPiece:piece to:location];
-
-    id<SBTurnBasedMatch>match = self.turnBasedMatchHelper.currentMatch;
-    SBState *state = match.matchState;
-
+    SBState *state = [self currentState];
     NSParameterAssert([state isLegalMove:move]);
+
     SBState *newState = [state successorWithMove:move];
 
-    [self.modelHelper endTurnOrMatch:match withMatchState:newState completionHandler:^(NSError *error) {
-        if (!error) [self.gridView layoutForState:newState];
+    [self.modelHelper endTurnOrMatch:self.turnBasedMatchHelper.currentMatch withMatchState:newState completionHandler:^(NSError *error) {
+        if (error) NSLog(@"There was an error performing the move: %@", error);
     }];
 }
 
 - (BOOL)isLocalPlayerTurn {
-    id<SBTurnBasedMatch> match = self.turnBasedMatchHelper.currentMatch;
-    return [self.turnBasedMatchHelper isLocalPlayerTurn:match];
+    return [self.turnBasedMatchHelper isLocalPlayerTurn:self.turnBasedMatchHelper.currentMatch];
 }
 
 #pragma mark Turn Based Match Helper Delegate
@@ -95,17 +103,19 @@
 
 - (void)enterNewGame:(id<SBTurnBasedMatch>)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    BOOL player = [match.localParticipant isEqual:match.currentParticipant];
-    [self.gridView layoutForState:[[SBState alloc] initWithPlayer:player]];
+    self.forfeitButton.enabled = NO;
+    [self.gridView layoutForState:[self stateForMatch:match]];
 }
 
 - (void)takeTurn:(id<SBTurnBasedMatch>)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    self.forfeitButton.enabled = YES;
     [self.gridView layoutForState:match.matchState];
 }
 
 - (void)layoutMatch:(id <SBTurnBasedMatch>)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    self.forfeitButton.enabled = NO;
     [self.gridView layoutForState:match.matchState];
 }
 

@@ -112,6 +112,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="forfeitButton" destination="joo-9E-hMy" id="Iou-VR-x6X"/>
                         <outlet property="gridView" destination="byh-uj-4wq" id="cbh-g8-A05"/>
                     </connections>
                 </viewController>
@@ -169,6 +170,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SBBoardViewController.h"/>
             <relationships>
                 <relationship kind="action" name="forfeit"/>
+                <relationship kind="outlet" name="forfeitButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="gridView" candidateClass="SBBoardView"/>
             </relationships>
         </class>

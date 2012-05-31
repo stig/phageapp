@@ -54,7 +54,7 @@
 - (id)matchState {
     if (_wrappedMatch.matchData.length)
         return [NSKeyedUnarchiver unarchiveObjectWithData:_wrappedMatch.matchData];
-    return [[SBState alloc] init];
+    return nil;
 }
 
 - (NSArray*)participants {
