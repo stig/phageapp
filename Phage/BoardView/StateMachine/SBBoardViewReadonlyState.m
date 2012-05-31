@@ -10,6 +10,9 @@
 @implementation SBBoardViewReadonlyState
 @synthesize delegate = _delegate;
 
++ (id)state {
+    return [[self alloc] init];
+}
 
 - (void)transitionIn {}
 

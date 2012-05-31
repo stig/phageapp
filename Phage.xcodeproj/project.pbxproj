@@ -74,6 +74,7 @@
 		FB89D43C154C7D27001A0BC0 /* SBAnimationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BBF /* SBAnimationHelper.m */; };
 		FB89D43C154C7D27001A0BC3 /* SBBoardViewHintingDraggedState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BC2 /* SBBoardViewHintingDraggedState.m */; };
 		FB89D43C154C7D27001A0BC8 /* SBBoardViewConfirmingState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BC7 /* SBBoardViewConfirmingState.m */; };
+		FB89D43C154C7D27001A0BCD /* SBBoardViewGameOverState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BCC /* SBBoardViewGameOverState.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -236,6 +237,8 @@
 		FB89D43C154C7D27001A0BC7 /* SBBoardViewConfirmingState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewConfirmingState.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BC9 /* SBBoardViewConfirmingState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewConfirmingState.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BCB /* SBBoardViewState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewState.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BCC /* SBBoardViewGameOverState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewGameOverState.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BCE /* SBBoardViewGameOverState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewGameOverState.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,6 +476,8 @@
 		FB89D43C154C7D27001A0BB2 /* StateMachine */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0BCE /* SBBoardViewGameOverState.h */,
+				FB89D43C154C7D27001A0BCC /* SBBoardViewGameOverState.m */,
 				FB89D43C154C7D27001A0BCB /* SBBoardViewState.h */,
 				FB89D43C154C7D27001A0BC9 /* SBBoardViewConfirmingState.h */,
 				FB89D43C154C7D27001A0BC7 /* SBBoardViewConfirmingState.m */,
@@ -672,6 +677,7 @@
 				FB89D43C154C7D27001A0BC0 /* SBAnimationHelper.m in Sources */,
 				FB89D43C154C7D27001A0BC3 /* SBBoardViewHintingDraggedState.m in Sources */,
 				FB89D43C154C7D27001A0BC8 /* SBBoardViewConfirmingState.m in Sources */,
+				FB89D43C154C7D27001A0BCD /* SBBoardViewGameOverState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,6 +25,7 @@
 
 @protocol SBBoardViewState <NSObject>
 @property(weak) id<SBBoardViewStateDelegate> delegate;
++ (id)state;
 - (void)transitionIn;
 - (void)transitionOut;
 - (void)touchesBegan:(NSSet *)touches;

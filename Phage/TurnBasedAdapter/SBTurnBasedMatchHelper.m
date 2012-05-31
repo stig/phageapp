@@ -24,15 +24,15 @@
     return [match isEqual:self.currentMatch];
 }
 
+- (BOOL)isLocalPlayerTurn:(id <SBTurnBasedMatch>)match {
+    return [match.currentParticipant isEqual:match.localParticipant];
+}
+
 #pragma mark Methods implemented in Strategy
 
 - (void)findMatch {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     [self.adapter findMatch];
-}
-
-- (BOOL)isLocalPlayerTurn:(id <SBTurnBasedMatch>)match {
-    return [match.currentParticipant isEqual:match.localParticipant];
 }
 
 #pragma mark Methods called by Adapters

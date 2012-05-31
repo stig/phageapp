@@ -13,8 +13,6 @@
 #import "SBMovesLeftLayer.h"
 #import "SBCellLayer.h"
 #import "SBBoardViewSelectedDraggedState.h"
-#import "SBBoardViewReadonlyState.h"
-#import "SBBoardViewUnselectedState.h"
 
 @implementation SBBoardView {
     NSMutableDictionary *cells;
@@ -67,7 +65,7 @@
 
 #pragma mark -
 
-- (void)layoutForState:(SBState *)state {
+- (void)layoutForState:(SBState *)state state:(id <SBBoardViewState>)boardViewState {
     rows = state.rows;
     columns = state.columns;
 
@@ -118,11 +116,7 @@
         [CATransaction commit];
     }
 
-    id<SBBoardViewState> newState = [self.delegate isLocalPlayerTurn]
-            ? [SBBoardViewUnselectedState state]
-            : [[SBBoardViewReadonlyState alloc] init];
-
-    [self transitionToState:newState];
+    [self transitionToState:boardViewState];
     [self setNeedsDisplay];
 }
 

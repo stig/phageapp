@@ -11,6 +11,9 @@
 #import "SBMove.h"
 #import "SBTurnBasedParticipant.h"
 #import "PhageModelHelper.h"
+#import "SBBoardViewReadonlyState.h"
+#import "SBBoardViewUnselectedState.h"
+#import "SBBoardViewGameOverState.h"
 
 @interface SBBoardViewController () < UIActionSheetDelegate >
 @property(strong) UIActionSheet *forfeitActionSheet;
@@ -91,10 +94,6 @@
     }];
 }
 
-- (BOOL)isLocalPlayerTurn {
-    return [self.turnBasedMatchHelper isLocalPlayerTurn:self.turnBasedMatchHelper.currentMatch];
-}
-
 #pragma mark Turn Based Match Helper Delegate
 
 - (id<SBTurnBasedParticipant>)nextParticipantForMatch:(id<SBTurnBasedMatch>)match {
@@ -104,19 +103,24 @@
 - (void)enterNewGame:(id<SBTurnBasedMatch>)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     self.forfeitButton.enabled = NO;
-    [self.gridView layoutForState:[self stateForMatch:match]];
+
+    id<SBBoardViewState> newState = [self.turnBasedMatchHelper isLocalPlayerTurn:match]
+            ? [SBBoardViewUnselectedState state]
+            : [SBBoardViewReadonlyState state];
+
+    [self.gridView layoutForState:[self stateForMatch:match] state:newState];
 }
 
 - (void)takeTurn:(id<SBTurnBasedMatch>)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     self.forfeitButton.enabled = YES;
-    [self.gridView layoutForState:match.matchState];
+    [self.gridView layoutForState:match.matchState state:[SBBoardViewUnselectedState state]];
 }
 
 - (void)layoutMatch:(id <SBTurnBasedMatch>)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     self.forfeitButton.enabled = NO;
-    [self.gridView layoutForState:match.matchState];
+    [self.gridView layoutForState:match.matchState state:[SBBoardViewReadonlyState state]];
 }
 
 - (void)sendTitle:(NSString*)title notice:(NSString *)notice forMatch:(id<SBTurnBasedMatch>)match {
@@ -133,7 +137,8 @@
 - (void)receiveEndGame:(id<SBTurnBasedMatch>)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 
-    [self layoutMatch:match];
+    self.forfeitButton.enabled = NO;
+    [self.gridView layoutForState:match.matchState state:[SBBoardViewGameOverState state]];
 
     NSString *message;
 

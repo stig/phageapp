@@ -20,7 +20,6 @@
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece*)piece;
 - (BOOL)canMovePiece:(SBPiece*)piece toLocation:(SBLocation*)location;
 - (void)movePiece:(SBPiece*)piece toLocation:(SBLocation*)location;
-- (BOOL)isLocalPlayerTurn;
 @end
 
 @interface SBBoardView : UIView < SBBoardViewStateDelegate >
@@ -30,6 +29,6 @@
 
 @property(weak) IBOutlet id <SBBoardViewDelegate> delegate;
 
-- (void)layoutForState:(SBState*)state;
+- (void)layoutForState:(SBState *)state state:(id <SBBoardViewState>)boardViewState;
 
 @end
