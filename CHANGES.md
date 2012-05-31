@@ -1,3 +1,13 @@
+0.3.1 (2012-06-01)
+==================
+
+Fixed bugs:
+
+* Disallow moves after GameOver has been reached.
+* Only enable forfeit button when it's your turn.
+* Enable forfeit button on iPad.
+* Perform moves immediately if you turn off move confirmations.
+
 0.3 (2012-05-29)
 ================
 
