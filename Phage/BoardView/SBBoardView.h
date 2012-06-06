@@ -17,6 +17,18 @@
 @class SBBoardViewAbstractState;
 
 @protocol SBBoardViewDelegate
+- (void)handleSingleTapWithPiece:(SBPiece *)piece;
+- (void)handleSingleTapWithLocation:(SBLocation *)location;
+
+- (void)handleDoubleTapWithPiece:(SBPiece *)piece;
+- (void)handleDoubleTapWithLocation:(SBLocation *)location;
+
+- (BOOL)shouldLongPressStartWithPiece:(SBPiece *)piece;
+- (void)longPressStartedWithPiece:(SBPiece *)piece;
+
+- (BOOL)shouldLongPressStartWithLocation:(SBLocation *)location;
+- (void)longPressStartedWithLocation:(SBLocation *)location;
+
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece*)piece;
 - (BOOL)canMovePiece:(SBPiece*)piece toLocation:(SBLocation*)location;
 - (void)movePiece:(SBPiece*)piece toLocation:(SBLocation*)location;

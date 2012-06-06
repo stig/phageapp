@@ -41,6 +41,21 @@
         [self.layer addSublayer:self.pieceLayer];
 
         self.state = [SBBoardViewAbstractState stateWithDelegate:self];
+
+
+        UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
+        doubleTap.numberOfTapsRequired = 2u;
+        [self addGestureRecognizer:doubleTap];
+
+        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+        [singleTap requireGestureRecognizerToFail:doubleTap];
+        [self addGestureRecognizer:singleTap];
+
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                                action:@selector(handleLongPress:)];
+        [self addGestureRecognizer:longPress];
+
+
     }
     return self;
 }
@@ -176,6 +191,73 @@
 
 - (UIView *)actionSheetView {
     return self;
+}
+
+#pragma mark Gesture Handlers
+
+- (void)handleSingleTap:(UITapGestureRecognizer *)sender {
+    NSParameterAssert(UIGestureRecognizerStateEnded == sender.state);
+    CALayer *layer = [self.layer hitTest:[sender locationInView:self]];
+    if ([layer isKindOfClass:[SBPieceLayer class]]) {
+        [self.delegate handleSingleTapWithPiece:((SBPieceLayer *)layer).piece];
+
+    } else if ([layer isKindOfClass:[SBCellLayer class]]) {
+        [self.delegate handleSingleTapWithLocation:((SBCellLayer *)layer).location];
+
+    } else {
+        @throw @"Cannot get here";
+    }
+}
+
+- (void)handleDoubleTap:(UITapGestureRecognizer *)sender {
+    NSParameterAssert(UIGestureRecognizerStateEnded == sender.state);
+    CALayer *layer = [self.layer hitTest:[sender locationInView:self]];
+    if ([layer isKindOfClass:[SBPieceLayer class]]) {
+        [self.delegate handleDoubleTapWithPiece:((SBPieceLayer *)layer).piece];
+
+    } else if ([layer isKindOfClass:[SBCellLayer class]]) {
+        [self.delegate handleDoubleTapWithLocation:((SBCellLayer *)layer).location];
+
+    } else {
+        @throw @"Cannot get here";
+    }
+}
+
+- (void)handleLongPress:(UILongPressGestureRecognizer *)sender {
+    CALayer *layer = [self.layer hitTest:[sender locationInView:self]];
+    if ([layer isKindOfClass:[SBPieceLayer class]]) {
+        SBPiece *piece = ((SBPieceLayer *)layer).piece;
+        switch (sender.state) {
+            case UIGestureRecognizerStateBegan:
+                if ([self.delegate shouldLongPressStartWithPiece:piece]) {
+                    [self.delegate longPressStartedWithPiece:piece];
+                }
+                break;
+            case UIGestureRecognizerStateChanged:
+                break;
+            case UIGestureRecognizerStateEnded:
+                break;
+            default:
+                @throw [NSString stringWithFormat:@"Unhandled guesture state [%u] for piece", sender.state];
+        }
+    } else if ([layer isKindOfClass:[SBCellLayer class]]) {
+        SBLocation *location = ((SBCellLayer *)layer).location;
+        switch (sender.state) {
+            case UIGestureRecognizerStateBegan:
+                if ([self.delegate shouldLongPressStartWithLocation:location]) {
+                    [self.delegate longPressStartedWithLocation:location];
+                }
+                break;
+            case UIGestureRecognizerStateChanged:
+                break;
+            case UIGestureRecognizerStateEnded:
+                break;
+            default:
+                @throw [NSString stringWithFormat:@"Unhandled guesture state [%u] for piece", sender.state];
+            }
+    } else {
+        @throw @"Cannot get here";
+    }
 }
 
 

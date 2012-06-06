@@ -172,4 +172,42 @@
     }
 }
 
+#pragma mark Board View Delegate
+
+- (void)handleSingleTapWithPiece:(SBPiece *)piece {
+    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+}
+
+- (void)handleSingleTapWithLocation:(SBLocation *)location {
+    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+}
+
+- (void)handleDoubleTapWithPiece:(SBPiece *)piece {
+    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+}
+
+- (void)handleDoubleTapWithLocation:(SBLocation *)location {
+    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+}
+
+- (BOOL)shouldLongPressStartWithPiece:(SBPiece *)piece {
+    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+    return NO;
+}
+
+- (void)longPressStartedWithPiece:(SBPiece *)piece {
+    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+}
+
+- (BOOL)shouldLongPressStartWithLocation:(SBLocation *)location {
+    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+    return NO;
+}
+
+- (void)longPressStartedWithLocation:(SBLocation *)location {
+    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+
+}
+
+
 @end
