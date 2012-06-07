@@ -12,6 +12,7 @@
 #import "SBPieceLayer.h"
 #import "SBMovesLeftLayer.h"
 #import "SBCellLayer.h"
+#import "SBAnimationHelper.h"
 
 @interface SBBoardView ()
 @property(strong) CALayer *cellLayer;
@@ -106,6 +107,16 @@
     }
 
     [self setNeedsDisplay];
+}
+
+- (void)pickUpPiece:(SBPiece *)piece {
+    SBPieceLayer *layer = [pieces objectForKey:piece];
+    [SBAnimationHelper addPulseAnimationToLayer:layer];
+}
+
+- (void)putDownPiece:(SBPiece *)piece {
+    SBPieceLayer *layer = [pieces objectForKey:piece];
+    [SBAnimationHelper removePulseAnimationFromLayer:layer];
 }
 
 #pragma mark Gesture Handlers

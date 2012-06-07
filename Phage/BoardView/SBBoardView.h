@@ -32,5 +32,9 @@
 @property(weak) IBOutlet id <SBBoardViewDelegate> delegate;
 
 - (void)layoutForState:(SBState *)state;
+- (void)pickUpPiece:(SBPiece *)piece;
+
+- (void)putDownPiece:(SBPiece *)piece;
+
 
 @end

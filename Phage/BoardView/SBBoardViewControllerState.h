@@ -7,8 +7,12 @@
 #import "SBBoardView.h"
 
 @class SBBoardViewControllerState;
+@class SBPiece;
 
 @protocol SBBoardViewControllerStateDelegate
+- (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece;
+- (void)pickUpPiece:(SBPiece *)piece;
+- (void)putDownPiece:(SBPiece *)piece;
 - (void)transitionToState:(SBBoardViewControllerState*)state;
 @end
 
@@ -20,5 +24,9 @@
 + (id)stateWithDelegate:(id <SBBoardViewControllerStateDelegate>)delegate;
 
 - (id)initWithDelegate:(id <SBBoardViewControllerStateDelegate>)delegate;
+
+- (void)transitionIn;
+- (void)transitionOut;
+
 
 @end

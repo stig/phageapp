@@ -6,6 +6,7 @@
 
 
 #import "SBBoardViewControllerState.h"
+#import "SBPiece.h"
 
 @implementation SBBoardViewControllerState
 
@@ -26,6 +27,17 @@
     }
     return self;
 }
+
+#pragma mark State Transitions
+
+- (void)transitionIn {
+    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+}
+
+- (void)transitionOut {
+    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+}
+
 
 #pragma mark Board View Delegate
 

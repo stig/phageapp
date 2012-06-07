@@ -7,8 +7,5 @@
 
 #import "SBBoardViewControllerReadonlyState.h"
 
-@implementation SBBoardViewControllerReadonlyState {
-
-}
-
+@implementation SBBoardViewControllerReadonlyState
 @end

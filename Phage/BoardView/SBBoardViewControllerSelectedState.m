@@ -5,10 +5,22 @@
 //
 
 
-#import "SBBoardViewControllerUnselectedState.h"
 #import "SBBoardViewControllerSelectedState.h"
+#import "SBPiece.h"
 
-@implementation SBBoardViewControllerUnselectedState
+@implementation SBBoardViewControllerSelectedState
+
+@synthesize selected = _selected;
+
+- (void)transitionIn {
+    [super transitionIn];
+    [self.delegate pickUpPiece:self.selected];
+}
+
+- (void)transitionOut {
+    [super transitionOut];
+    [self.delegate putDownPiece:self.selected];
+}
 
 - (void)handleSingleTapWithPiece:(SBPiece *)piece {
     [super handleSingleTapWithPiece:piece];
@@ -19,5 +31,6 @@
         [self.delegate transitionToState:state];
     }
 }
+
 
 @end
