@@ -29,6 +29,8 @@
 - (BOOL)shouldLongPressStartWithLocation:(SBLocation *)location;
 - (void)longPressStartedWithLocation:(SBLocation *)location;
 
+
+// TODO: remove these
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece*)piece;
 - (BOOL)canMovePiece:(SBPiece*)piece toLocation:(SBLocation*)location;
 - (void)movePiece:(SBPiece*)piece toLocation:(SBLocation*)location;
@@ -36,8 +38,6 @@
 
 @interface SBBoardView : UIView < SBBoardViewStateDelegate >
 @property(strong) id<SBBoardViewState> state;
-@property(strong) CALayer *cellLayer;
-@property(strong) CALayer *pieceLayer;
 
 @property(weak) IBOutlet id <SBBoardViewDelegate> delegate;
 

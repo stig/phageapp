@@ -15,6 +15,9 @@
 #import "SBBoardViewSelectedDraggedState.h"
 
 @interface SBBoardView ()
+@property(strong) CALayer *cellLayer;
+@property(strong) CALayer *pieceLayer;
+
 - (void)createBoardCells;
 - (void)createInitialBoardPieces;
 @end
