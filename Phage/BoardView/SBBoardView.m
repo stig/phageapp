@@ -18,8 +18,7 @@
     NSMutableDictionary *cells;
     NSMutableDictionary *pieces;
 
-    NSUInteger columns;
-    NSUInteger rows;
+    NSUInteger columns, rows;
 }
 
 @synthesize delegate = _delegate;
@@ -31,6 +30,8 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
+        rows = columns = 8u;
+
         pieces = [[NSMutableDictionary alloc] init];
         cells = [[NSMutableDictionary alloc] init];
 
@@ -81,8 +82,6 @@
 #pragma mark -
 
 - (void)layoutForState:(SBState *)state state:(id <SBBoardViewState>)boardViewState {
-    rows = state.rows;
-    columns = state.columns;
 
     [state enumerateLocationsUsingBlock:^(SBLocation *loc) {
         SBCellLayer *layer = [cells objectForKey:loc];
