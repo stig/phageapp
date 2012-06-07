@@ -8,11 +8,14 @@
 
 #import "SBBoardView.h"
 #import "SBTurnBasedMatchHelper.h"
+#import "SBBoardViewControllerState.h"
 
 @class SBState;
 @class PhageModelHelper;
 
-@interface SBBoardViewController : UIViewController <SBTurnBasedMatchHelperDelegate, SBBoardViewDelegate>
+@interface SBBoardViewController : UIViewController <SBTurnBasedMatchHelperDelegate, SBBoardViewDelegate, SBBoardViewControllerStateDelegate>
+
+@property(strong) SBBoardViewControllerState *state;
 
 @property(nonatomic, weak) IBOutlet UIBarButtonItem *forfeitButton;
 @property(strong) PhageModelHelper *modelHelper;

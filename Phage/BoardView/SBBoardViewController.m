@@ -11,6 +11,8 @@
 #import "SBMove.h"
 #import "SBTurnBasedParticipant.h"
 #import "PhageModelHelper.h"
+#import "SBBoardViewControllerUnselectedState.h"
+#import "SBBoardViewControllerReadonlyState.h"
 
 @interface SBBoardViewController () < UIActionSheetDelegate >
 @property(strong) UIActionSheet *forfeitActionSheet;
@@ -25,11 +27,13 @@
 @synthesize modelHelper = _modelHelper;
 @synthesize forfeitActionSheet = _forfeitActionSheet;
 @synthesize forfeitButton = _forfeitButton;
+@synthesize state = _state;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.modelHelper = [[PhageModelHelper alloc] init];
+    self.state = [SBBoardViewControllerState stateWithDelegate:self];
     [self.turnBasedMatchHelper findMatch];
 }
 
@@ -101,11 +105,10 @@
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     self.forfeitButton.enabled = NO;
 
-    /* TODO replace with our own states
-    id<SBBoardViewState> newState = [self.turnBasedMatchHelper isLocalPlayerTurn:match]
-            ? [SBBoardViewUnselectedState state]
-            : [SBBoardViewReadonlyState state];
-    */
+    id state = [self.turnBasedMatchHelper isLocalPlayerTurn:match]
+            ? [SBBoardViewControllerUnselectedState state]
+            : [SBBoardViewControllerReadonlyState state];
+    [self transitionToState:state];
 
     [self.gridView layoutForState:[self stateForMatch:match]];
 }
@@ -113,12 +116,14 @@
 - (void)takeTurn:(id<SBTurnBasedMatch>)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     self.forfeitButton.enabled = YES;
+    [self transitionToState:[SBBoardViewControllerUnselectedState state]];
     [self.gridView layoutForState:match.matchState];
 }
 
 - (void)layoutMatch:(id <SBTurnBasedMatch>)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     self.forfeitButton.enabled = NO;
+    [self transitionToState:[SBBoardViewControllerReadonlyState state]];
     [self.gridView layoutForState:match.matchState];
 }
 
@@ -174,38 +179,42 @@
 #pragma mark Board View Delegate
 
 - (void)handleSingleTapWithPiece:(SBPiece *)piece {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+    [self.state handleSingleTapWithPiece:piece];
 }
 
 - (void)handleSingleTapWithLocation:(SBLocation *)location {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+    [self.state handleSingleTapWithLocation:location];
 }
 
 - (void)handleDoubleTapWithPiece:(SBPiece *)piece {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+    [self.state handleDoubleTapWithPiece:piece];
 }
 
 - (void)handleDoubleTapWithLocation:(SBLocation *)location {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+    [self.state handleDoubleTapWithLocation:location];
 }
 
 - (BOOL)shouldLongPressStartWithPiece:(SBPiece *)piece {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
-    return NO;
+    return [self.state shouldLongPressStartWithPiece:piece];
 }
 
 - (void)longPressStartedWithPiece:(SBPiece *)piece {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+    [self.state longPressStartedWithPiece:piece];
 }
 
 - (BOOL)shouldLongPressStartWithLocation:(SBLocation *)location {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
-    return NO;
+    return [self.state shouldLongPressStartWithLocation:location];
 }
 
 - (void)longPressStartedWithLocation:(SBLocation *)location {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+    [self.state longPressStartedWithLocation:location];
+}
 
+#pragma mark Board View Controller State Delegate
+
+- (void)transitionToState:(SBBoardViewControllerState *)state {
+    state.delegate = self.state.delegate;
+    self.state = state;
 }
 
 
