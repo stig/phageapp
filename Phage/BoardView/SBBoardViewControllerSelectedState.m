@@ -28,6 +28,8 @@
     if ([self.delegate canCurrentPlayerMovePiece:piece]) {
         SBBoardViewControllerSelectedState *state = [SBBoardViewControllerSelectedState state];
         state.selected = piece;
+
+        [self transitionOut];
         [self.delegate transitionToState:state];
     }
 }

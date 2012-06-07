@@ -215,7 +215,6 @@
 #pragma mark Board View Controller State Delegate
 
 - (void)transitionToState:(SBBoardViewControllerState *)state {
-    [self.state transitionOut];
     state.delegate = self.state.delegate;
     state.gridView = self.state.gridView;
     self.state = state;
