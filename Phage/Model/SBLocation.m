@@ -14,6 +14,10 @@
 @synthesize column = _column;
 @synthesize row = _row;
 
++ (id)locationWithColumn:(NSInteger)column row:(NSInteger)row {
+    return [[self alloc] initWithColumn:column row:row];
+}
+
 - (id)initWithColumn:(NSInteger)c row:(NSInteger)r {
     self = [super init];
     if (self) {

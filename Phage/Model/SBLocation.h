@@ -15,6 +15,7 @@
 @property (readonly) NSInteger column;
 @property (readonly) NSInteger row;
 
++ (id)locationWithColumn:(NSInteger)c row:(NSInteger)r;
 - (id)initWithColumn:(NSInteger)c row:(NSInteger)r;
 
 // isEqual: delegates to this..
