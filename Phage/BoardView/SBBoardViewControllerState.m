@@ -11,21 +11,11 @@
 @implementation SBBoardViewControllerState
 
 @synthesize delegate = _delegate;
+@synthesize gridView = _gridView;
+
 
 + (id)state {
     return [[self alloc] init];
-}
-
-+ (id)stateWithDelegate:(id<SBBoardViewControllerStateDelegate>)delegate {
-    return [[self alloc] initWithDelegate:delegate];
-}
-
-- (id)initWithDelegate:(id <SBBoardViewControllerStateDelegate>)delegate {
-    self = [super init];
-    if (self) {
-        _delegate = delegate;
-    }
-    return self;
 }
 
 #pragma mark State Transitions

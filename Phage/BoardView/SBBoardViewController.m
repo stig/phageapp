@@ -33,7 +33,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.modelHelper = [[PhageModelHelper alloc] init];
-    self.state = [SBBoardViewControllerState stateWithDelegate:self];
+    self.state = [SBBoardViewControllerState state];
+    self.state.delegate = self;
+    self.state.gridView = self.gridView;
     [self.turnBasedMatchHelper findMatch];
 }
 
@@ -215,17 +217,9 @@
 - (void)transitionToState:(SBBoardViewControllerState *)state {
     [self.state transitionOut];
     state.delegate = self.state.delegate;
+    state.gridView = self.state.gridView;
     self.state = state;
     [self.state transitionIn];
-}
-
-- (void)pickUpPiece:(SBPiece *)piece {
-    [self.gridView pickUpPiece:piece];
-
-}
-
-- (void)putDownPiece:(SBPiece *)piece {
-    [self.gridView putDownPiece:piece];
 }
 
 @end

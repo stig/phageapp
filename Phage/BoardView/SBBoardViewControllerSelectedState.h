@@ -11,5 +11,5 @@
 @class SBPiece;
 
 @interface SBBoardViewControllerSelectedState : SBBoardViewControllerState
-@property(weak) SBPiece* selected;
+@property(nonatomic, weak) SBPiece* selected;
 @end

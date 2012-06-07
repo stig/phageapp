@@ -11,22 +11,18 @@
 
 @protocol SBBoardViewControllerStateDelegate
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece;
-- (void)pickUpPiece:(SBPiece *)piece;
-- (void)putDownPiece:(SBPiece *)piece;
+- (BOOL)canMovePiece:(SBPiece *)piece toLocation:(SBLocation *)location;
 - (void)transitionToState:(SBBoardViewControllerState*)state;
 @end
 
 
 @interface SBBoardViewControllerState : NSObject < SBBoardViewDelegate >
+@property(weak) SBBoardView *gridView;
 @property(weak) id<SBBoardViewControllerStateDelegate> delegate;
 
 + (id)state;
-+ (id)stateWithDelegate:(id <SBBoardViewControllerStateDelegate>)delegate;
-
-- (id)initWithDelegate:(id <SBBoardViewControllerStateDelegate>)delegate;
 
 - (void)transitionIn;
 - (void)transitionOut;
-
 
 @end

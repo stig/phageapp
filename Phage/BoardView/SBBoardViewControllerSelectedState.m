@@ -14,12 +14,12 @@
 
 - (void)transitionIn {
     [super transitionIn];
-    [self.delegate pickUpPiece:self.selected];
+    [self.gridView pickUpPiece:self.selected];
 }
 
 - (void)transitionOut {
     [super transitionOut];
-    [self.delegate putDownPiece:self.selected];
+    [self.gridView putDownPiece:self.selected];
 }
 
 - (void)handleSingleTapWithPiece:(SBPiece *)piece {
