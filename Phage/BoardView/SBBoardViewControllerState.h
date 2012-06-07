@@ -12,6 +12,8 @@
 @protocol SBBoardViewControllerStateDelegate
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece;
 - (BOOL)canMovePiece:(SBPiece *)piece toLocation:(SBLocation *)location;
+- (SBLocation*)locationOfPiece:(SBPiece *)piece;
+- (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location;
 - (void)transitionToState:(SBBoardViewControllerState*)state;
 @end
 

@@ -33,8 +33,7 @@
 
 - (void)layoutForState:(SBState *)state;
 - (void)pickUpPiece:(SBPiece *)piece;
-
 - (void)putDownPiece:(SBPiece *)piece;
-
+- (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location;
 
 @end

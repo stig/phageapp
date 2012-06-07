@@ -119,6 +119,12 @@
     [SBAnimationHelper removePulseAnimationFromLayer:layer];
 }
 
+- (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
+    SBPieceLayer *pieceLayer = [pieces objectForKey:piece];
+    SBCellLayer *cellLayer = [cells objectForKey:location];
+    pieceLayer.position = cellLayer.position;
+}
+
 #pragma mark Gesture Handlers
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)sender {

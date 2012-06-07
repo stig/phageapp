@@ -79,6 +79,7 @@
 		FB89D43C154C7D27001A0BD3 /* SBBoardViewControllerReadonlyState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BD2 /* SBBoardViewControllerReadonlyState.m */; };
 		FB89D43C154C7D27001A0BD6 /* SBBoardViewControllerUnselectedState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BD5 /* SBBoardViewControllerUnselectedState.m */; };
 		FB89D43C154C7D27001A0BD9 /* SBBoardViewControllerSelectedState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BD8 /* SBBoardViewControllerSelectedState.m */; };
+		FB89D43C154C7D27001A0BDC /* SBBoardViewControllerConfirmState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BDB /* SBBoardViewControllerConfirmState.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -251,6 +252,8 @@
 		FB89D43C154C7D27001A0BD7 /* SBBoardViewControllerUnselectedState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerUnselectedState.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BD8 /* SBBoardViewControllerSelectedState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerSelectedState.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BDA /* SBBoardViewControllerSelectedState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerSelectedState.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BDB /* SBBoardViewControllerConfirmState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerConfirmState.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BDD /* SBBoardViewControllerConfirmState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerConfirmState.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -467,6 +470,8 @@
 		FB89D43C154C7D27001A0BAA /* BoardView */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0BDD /* SBBoardViewControllerConfirmState.h */,
+				FB89D43C154C7D27001A0BDB /* SBBoardViewControllerConfirmState.m */,
 				FB89D43C154C7D27001A0BDA /* SBBoardViewControllerSelectedState.h */,
 				FB89D43C154C7D27001A0BD8 /* SBBoardViewControllerSelectedState.m */,
 				FB89D43C154C7D27001A0BD7 /* SBBoardViewControllerUnselectedState.h */,
@@ -702,6 +707,7 @@
 				FB89D43C154C7D27001A0BD3 /* SBBoardViewControllerReadonlyState.m in Sources */,
 				FB89D43C154C7D27001A0BD6 /* SBBoardViewControllerUnselectedState.m in Sources */,
 				FB89D43C154C7D27001A0BD9 /* SBBoardViewControllerSelectedState.m in Sources */,
+				FB89D43C154C7D27001A0BDC /* SBBoardViewControllerConfirmState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

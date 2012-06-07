@@ -221,4 +221,9 @@
     [self.state transitionIn];
 }
 
+- (SBLocation *)locationOfPiece:(SBPiece *)piece {
+    return [[self currentState] locationForPiece:piece];
+}
+
+
 @end
