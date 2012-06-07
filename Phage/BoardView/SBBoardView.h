@@ -6,15 +6,12 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SBBoardViewState.h"
-
 @class SBState;
 @class SBMove;
 @class SBLocation;
 @class SBPiece;
 @class SBCellLayer;
 @class SBPieceLayer;
-@class SBBoardViewAbstractState;
 
 @protocol SBBoardViewDelegate
 - (void)handleSingleTapWithPiece:(SBPiece *)piece;
@@ -28,19 +25,12 @@
 
 - (BOOL)shouldLongPressStartWithLocation:(SBLocation *)location;
 - (void)longPressStartedWithLocation:(SBLocation *)location;
-
-
-// TODO: remove these
-- (BOOL)canCurrentPlayerMovePiece:(SBPiece*)piece;
-- (BOOL)canMovePiece:(SBPiece*)piece toLocation:(SBLocation*)location;
-- (void)movePiece:(SBPiece*)piece toLocation:(SBLocation*)location;
 @end
 
-@interface SBBoardView : UIView < SBBoardViewStateDelegate >
-@property(strong) id<SBBoardViewState> state;
+@interface SBBoardView : UIView
 
 @property(weak) IBOutlet id <SBBoardViewDelegate> delegate;
 
-- (void)layoutForState:(SBState *)state state:(id <SBBoardViewState>)boardViewState;
+- (void)layoutForState:(SBState *)state;
 
 @end

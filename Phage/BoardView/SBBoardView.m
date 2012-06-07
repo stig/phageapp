@@ -12,7 +12,6 @@
 #import "SBPieceLayer.h"
 #import "SBMovesLeftLayer.h"
 #import "SBCellLayer.h"
-#import "SBBoardViewSelectedDraggedState.h"
 
 @interface SBBoardView ()
 @property(strong) CALayer *cellLayer;
@@ -32,7 +31,6 @@
 @synthesize delegate = _delegate;
 @synthesize cellLayer = _cellLayer;
 @synthesize pieceLayer = _pieceLayer;
-@synthesize state = _state;
 
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -48,8 +46,6 @@
 
         [self.layer addSublayer:self.cellLayer];
         [self.layer addSublayer:self.pieceLayer];
-
-        self.state = [SBBoardViewAbstractState stateWithDelegate:self];
 
         UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
         doubleTap.numberOfTapsRequired = 2u;
@@ -89,7 +85,7 @@
 
 #pragma mark -
 
-- (void)layoutForState:(SBState *)state state:(id <SBBoardViewState>)boardViewState {
+- (void)layoutForState:(SBState *)state {
 
     [state enumerateLocationsUsingBlock:^(SBLocation *loc) {
         SBCellLayer *layer = [cells objectForKey:loc];
@@ -109,66 +105,7 @@
         [CATransaction commit];
     }
 
-    [self transitionToState:boardViewState];
     [self setNeedsDisplay];
-}
-
-#pragma mark SBBoardViewState
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.state touchesBegan:touches];
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.state touchesMoved:touches];
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.state touchesEnded:touches];
-}
-
-#pragma mark SBBoardViewStateDelegate
-
-- (void)transitionToState:(id<SBBoardViewState>)state {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
-    [self.state transitionOut];
-
-    state.delegate = self;
-    [state transitionIn];
-
-    self.state = state;
-}
-
-- (CGPoint)pointForTouches:(NSSet *)touches {
-    return [[touches anyObject] locationInView:self];
-}
-
-- (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece {
-    return [self.delegate canCurrentPlayerMovePiece:piece];
-}
-
-- (SBPieceLayer *)pieceLayerForPoint:(CGPoint)point {
-    return (SBPieceLayer*)[self.pieceLayer hitTest:point];
-}
-
-- (SBCellLayer *)cellLayerForPoint:(CGPoint)point {
-    return (SBCellLayer *)[self.cellLayer hitTest:point];
-}
-
-- (BOOL)canMovePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
-    return [self.delegate canMovePiece:piece toLocation:location];
-}
-
-- (NSArray *)allCellLayers {
-    return self.cellLayer.sublayers;
-}
-
-- (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
-    [self.delegate movePiece:piece toLocation:location];
-}
-
-- (UIView *)actionSheetView {
-    return self;
 }
 
 #pragma mark Gesture Handlers
