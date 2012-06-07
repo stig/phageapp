@@ -13,6 +13,7 @@
 #import "PhageModelHelper.h"
 #import "SBBoardViewControllerUnselectedState.h"
 #import "SBBoardViewControllerReadonlyState.h"
+#import "SBBoardViewControllerGameOverState.h"
 
 @interface SBBoardViewController () < UIActionSheetDelegate >
 @property(strong) UIActionSheet *forfeitActionSheet;
@@ -142,6 +143,8 @@
 
 - (void)receiveEndGame:(id<SBTurnBasedMatch>)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+
+    [self transitionToState:[SBBoardViewControllerGameOverState state]];
 
     self.forfeitButton.enabled = NO;
     [self.gridView layoutForState:match.matchState];
