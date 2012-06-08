@@ -14,6 +14,20 @@
 
 @synthesize selected = _selected;
 
+- (BOOL)isEqual:(id)other {
+    if (other == self)
+        return YES;
+    if (!other || ![other isKindOfClass:[self class]])
+        return NO;
+    return [self isEqualToBoardViewControllerSelectedState:other];
+}
+
+- (BOOL)isEqualToBoardViewControllerSelectedState:(SBBoardViewControllerSelectedState *)other {
+    if (self == other)
+        return YES;
+    return self.selected == other.selected;
+}
+
 - (void)transitionIn {
     [super transitionIn];
     [self.gridView pickUpPiece:self.selected];
@@ -31,8 +45,10 @@
         SBBoardViewControllerSelectedState *state = [SBBoardViewControllerSelectedState state];
         state.selected = piece;
 
-        [self transitionOut];
-        [self.delegate transitionToState:state];
+        if (![self isEqual:state]) {
+            [self transitionOut];
+            [self.delegate transitionToState:state];
+        }
     }
 }
 
@@ -43,8 +59,10 @@
         SBBoardViewControllerHintState *state = [SBBoardViewControllerHintState state];
         state.selected = piece;
 
-        [self transitionOut];
-        [self.delegate transitionToState:state];
+        if (![self isEqual:state]) {
+            [self transitionOut];
+            [self.delegate transitionToState:state];
+        }
     }
 }
 

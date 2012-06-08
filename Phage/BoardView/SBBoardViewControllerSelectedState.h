@@ -12,4 +12,7 @@
 
 @interface SBBoardViewControllerSelectedState : SBBoardViewControllerState
 @property(nonatomic, weak) SBPiece* selected;
+
+- (BOOL)isEqualToBoardViewControllerSelectedState:(SBBoardViewControllerSelectedState *)other;
+
 @end
