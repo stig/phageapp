@@ -14,7 +14,7 @@
 #import "SBCellLayer.h"
 #import "SBAnimationHelper.h"
 
-@interface SBBoardView ()
+@interface SBBoardView () < UIGestureRecognizerDelegate >
 @property(strong) CALayer *cellLayer;
 @property(strong) CALayer *pieceLayer;
 
@@ -58,6 +58,7 @@
 
         UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self
                                                                                                 action:@selector(handleLongPress:)];
+        longPress.delegate = self;
         [self addGestureRecognizer:longPress];
 
         [self createBoardCells];
@@ -163,40 +164,43 @@
     }
 }
 
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)sender {
+    if (![sender isKindOfClass:[UILongPressGestureRecognizer class]])
+        return YES;
+
+    CGPoint point = [sender locationInView:self];
+    SBPieceLayer *layer = (SBPieceLayer*)[self.pieceLayer hitTest:point];
+    if (layer) {
+        return [self.delegate shouldLongPressStartWithPiece:layer.piece];
+    }
+
+    return NO;
+}
+
 - (void)handleLongPress:(UILongPressGestureRecognizer *)sender {
-    CALayer *layer = [self.layer hitTest:[sender locationInView:self]];
-    if ([layer isKindOfClass:[SBPieceLayer class]]) {
-        SBPiece *piece = ((SBPieceLayer *)layer).piece;
-        switch (sender.state) {
-            case UIGestureRecognizerStateBegan:
-                if ([self.delegate shouldLongPressStartWithPiece:piece]) {
-                    [self.delegate longPressStartedWithPiece:piece];
-                }
-                break;
-            case UIGestureRecognizerStateChanged:
-                break;
-            case UIGestureRecognizerStateEnded:
-                break;
-            default:
-                @throw [NSString stringWithFormat:@"Unhandled guesture state [%u] for piece", sender.state];
+    NSLog(@"sender = %@", sender);
+
+    static SBPieceLayer *longPressPieceLayer = nil;
+
+    CGPoint point = [sender locationInView:self];
+    switch (sender.state) {
+        case UIGestureRecognizerStateBegan:
+            longPressPieceLayer = (SBPieceLayer *)[self.pieceLayer hitTest:point];
+            [self.delegate longPressStartedWithPiece:longPressPieceLayer.piece];
+            break;
+        case UIGestureRecognizerStateChanged: {
+            SBCellLayer *cell = (SBCellLayer *)[self.cellLayer hitTest:point];
+            longPressPieceLayer.position = cell.position;
+            break;
         }
-    } else if ([layer isKindOfClass:[SBCellLayer class]]) {
-        SBLocation *location = ((SBCellLayer *)layer).location;
-        switch (sender.state) {
-            case UIGestureRecognizerStateBegan:
-                if ([self.delegate shouldLongPressStartWithLocation:location]) {
-                    [self.delegate longPressStartedWithLocation:location];
-                }
-                break;
-            case UIGestureRecognizerStateChanged:
-                break;
-            case UIGestureRecognizerStateEnded:
-                break;
-            default:
-                @throw [NSString stringWithFormat:@"Unhandled guesture state [%u] for piece", sender.state];
-            }
-    } else {
-        @throw @"Cannot get here";
+        case UIGestureRecognizerStateEnded: {
+            SBCellLayer *cell = (SBCellLayer *)[self.cellLayer hitTest:point];
+            longPressPieceLayer.position = cell.position;
+            [self.delegate longPressEndedWithPiece:longPressPieceLayer.piece atLocation:cell.location];
+            break;
+        }
+        default:
+            @throw [NSString stringWithFormat:@"Unhandled gesture state [%u]!", sender.state];
     }
 }
 

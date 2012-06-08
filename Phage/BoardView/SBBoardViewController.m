@@ -207,6 +207,10 @@
     [self.state longPressStartedWithPiece:piece];
 }
 
+- (void)longPressEndedWithPiece:(SBPiece *)piece atLocation:(SBLocation *)location {
+    [self.state longPressEndedWithPiece:piece atLocation:location];
+}
+
 - (BOOL)shouldLongPressStartWithLocation:(SBLocation *)location {
     return [self.state shouldLongPressStartWithLocation:location];
 }
@@ -234,6 +238,5 @@
         [self.gridView setCellHighlighted:highlighted atLocation:location];
     }];
 }
-
 
 @end

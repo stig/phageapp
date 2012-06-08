@@ -56,6 +56,10 @@
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
 }
 
+- (void)longPressEndedWithPiece:(SBPiece *)piece atLocation:(SBLocation *)location {
+    @throw @"Should not get here";
+}
+
 - (BOOL)shouldLongPressStartWithLocation:(SBLocation *)location {
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
     return NO;
@@ -64,6 +68,5 @@
 - (void)longPressStartedWithLocation:(SBLocation *)location {
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
 }
-
 
 @end

@@ -9,6 +9,7 @@
 #import "SBPiece.h"
 #import "SBBoardViewControllerConfirmState.h"
 #import "SBBoardViewControllerHintState.h"
+#import "SBBoardViewControllerDraggedState.h"
 
 @implementation SBBoardViewControllerSelectedState
 
@@ -78,7 +79,17 @@
     } else {
         NSLog(@"Cannot move %@ to %@", self.selected, location);
     }
+}
 
+- (BOOL)shouldLongPressStartWithPiece:(SBPiece *)piece {
+    return [self.delegate canCurrentPlayerMovePiece:piece];
+}
+
+- (void)longPressStartedWithPiece:(SBPiece *)piece {
+    [self transitionOut];
+    SBBoardViewControllerDraggedState *state = [SBBoardViewControllerDraggedState state];
+    state.dragged = piece;
+    [self.delegate transitionToState:state];
 }
 
 
