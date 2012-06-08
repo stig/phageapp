@@ -35,5 +35,6 @@
 - (void)pickUpPiece:(SBPiece *)piece;
 - (void)putDownPiece:(SBPiece *)piece;
 - (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location;
+- (void)setCellHighlighted:(BOOL)highlighted atLocation:(SBLocation*)location;
 
 @end

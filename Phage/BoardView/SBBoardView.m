@@ -125,6 +125,14 @@
     pieceLayer.position = cellLayer.position;
 }
 
+- (void)setCellHighlighted:(BOOL)highlighted atLocation:(SBLocation *)location {
+    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+    SBCellLayer *cell = [cells objectForKey:location];
+    cell.highlighted = highlighted;
+    [cell setNeedsDisplay];
+}
+
+
 #pragma mark Gesture Handlers
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)sender {

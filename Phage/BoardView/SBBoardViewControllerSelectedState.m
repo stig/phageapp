@@ -8,6 +8,7 @@
 #import "SBBoardViewControllerSelectedState.h"
 #import "SBPiece.h"
 #import "SBBoardViewControllerConfirmState.h"
+#import "SBBoardViewControllerHintState.h"
 
 @implementation SBBoardViewControllerSelectedState
 
@@ -28,6 +29,18 @@
 
     if ([self.delegate canCurrentPlayerMovePiece:piece]) {
         SBBoardViewControllerSelectedState *state = [SBBoardViewControllerSelectedState state];
+        state.selected = piece;
+
+        [self transitionOut];
+        [self.delegate transitionToState:state];
+    }
+}
+
+- (void)handleDoubleTapWithPiece:(SBPiece *)piece {
+    [super handleDoubleTapWithPiece:piece];
+
+    if ([self.delegate canCurrentPlayerMovePiece:piece]) {
+        SBBoardViewControllerHintState *state = [SBBoardViewControllerHintState state];
         state.selected = piece;
 
         [self transitionOut];

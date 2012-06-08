@@ -81,6 +81,7 @@
 		FB89D43C154C7D27001A0BD9 /* SBBoardViewControllerSelectedState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BD8 /* SBBoardViewControllerSelectedState.m */; };
 		FB89D43C154C7D27001A0BDC /* SBBoardViewControllerConfirmState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BDB /* SBBoardViewControllerConfirmState.m */; };
 		FB89D43C154C7D27001A0BDF /* SBBoardViewControllerGameOverState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BDE /* SBBoardViewControllerGameOverState.m */; };
+		FB89D43C154C7D27001A0BE2 /* SBBoardViewControllerHintState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BE1 /* SBBoardViewControllerHintState.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -257,6 +258,8 @@
 		FB89D43C154C7D27001A0BDD /* SBBoardViewControllerConfirmState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerConfirmState.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BDE /* SBBoardViewControllerGameOverState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerGameOverState.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BE0 /* SBBoardViewControllerGameOverState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerGameOverState.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BE1 /* SBBoardViewControllerHintState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerHintState.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BE3 /* SBBoardViewControllerHintState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerHintState.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,6 +476,8 @@
 		FB89D43C154C7D27001A0BAA /* BoardView */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0BE3 /* SBBoardViewControllerHintState.h */,
+				FB89D43C154C7D27001A0BE1 /* SBBoardViewControllerHintState.m */,
 				FB89D43C154C7D27001A0BE0 /* SBBoardViewControllerGameOverState.h */,
 				FB89D43C154C7D27001A0BDE /* SBBoardViewControllerGameOverState.m */,
 				FB89D43C154C7D27001A0BDD /* SBBoardViewControllerConfirmState.h */,
@@ -714,6 +719,7 @@
 				FB89D43C154C7D27001A0BD9 /* SBBoardViewControllerSelectedState.m in Sources */,
 				FB89D43C154C7D27001A0BDC /* SBBoardViewControllerConfirmState.m in Sources */,
 				FB89D43C154C7D27001A0BDF /* SBBoardViewControllerGameOverState.m in Sources */,
+				FB89D43C154C7D27001A0BE2 /* SBBoardViewControllerHintState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

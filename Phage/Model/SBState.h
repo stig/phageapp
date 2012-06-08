@@ -49,5 +49,6 @@
 
 - (void)enumerateLocationsUsingBlock:(void (^)(SBLocation *location))block;
 - (void)enumerateLegalMovesWithBlock:(void(^)(SBMove *move, BOOL *stop))block;
+- (void)enumerateLegalDestinationsForPiece:(SBPiece*)piece withBlock:(void (^)(SBLocation *location, BOOL *stop))block;
 
 @end

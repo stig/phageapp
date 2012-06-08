@@ -212,33 +212,41 @@
     return loc.column >= 0 && loc.column < self.columns && loc.row >= 0 && loc.row < self.rows;
 }
 
+- (void)enumerateLegalDestinationsForPiece:(SBPiece *)piece withBlock:(void (^)(SBLocation *loc, BOOL *stop))block {
+    if (![self movesLeftForPiece:piece])
+        return;
+
+    for (SBDirection *d in piece.directions) {
+        SBLocation *loc = [self locationForPiece:piece];
+        for (;;) {
+            loc = [loc locationByMovingInDirection:d];
+
+            // Is the location not on the grid?
+            if (![self isGridLocation:loc])
+                break;
+
+            // Or was already occupied?
+            if ([self wasLocationOccupied:loc])
+                break;
+
+            // Or perchance is _still_ occupied?
+            if ([self isLocationOccupied:loc])
+                break;
+
+            BOOL stop = NO;
+            block(loc, &stop);
+            if (stop) return;
+        }
+    }
+
+}
+
 - (void)enumerateLegalMovesForPlayerOne:(BOOL)one withBlock:(void(^)(SBMove *move, BOOL *stop))block {
     for (SBPiece *piece in [self piecesForPlayer:one]) {
-        if (![self movesLeftForPiece:piece])
-            continue;
-
-        for (SBDirection *d in piece.directions) {
-            SBLocation *loc = [self locationForPiece:piece];
-            for (;;) {
-                loc = [loc locationByMovingInDirection:d];
-
-                // Is the location not on the grid?
-                if (![self isGridLocation:loc])
-                    break;
-
-                // Or was already occupied?
-                if ([self wasLocationOccupied:loc])
-                    break;
-
-                // Or perchance is _still_ occupied?
-                if ([self isLocationOccupied:loc])
-                    break;
-
-                BOOL stop = NO;
-                block([[SBMove alloc] initWithPiece:piece to:loc], &stop);
-                if (stop) return;
-            }
-        }
+        [self enumerateLegalDestinationsForPiece:piece
+                                       withBlock:^(SBLocation *loc, BOOL *stop) {
+                                           block([[SBMove alloc] initWithPiece:piece to:loc], stop);
+                                       }];
     }
 }
 

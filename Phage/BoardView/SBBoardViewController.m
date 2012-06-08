@@ -228,5 +228,12 @@
     return [[self currentState] locationForPiece:piece];
 }
 
+- (void)setLegalDestinationsForPiece:(SBPiece *)piece highlighted:(BOOL)highlighted {
+    SBState *state = self.currentState;
+    [state enumerateLegalDestinationsForPiece:piece withBlock:^(SBLocation *location, BOOL *stop) {
+        [self.gridView setCellHighlighted:highlighted atLocation:location];
+    }];
+}
+
 
 @end

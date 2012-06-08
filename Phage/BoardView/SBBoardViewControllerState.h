@@ -15,6 +15,8 @@
 - (SBLocation*)locationOfPiece:(SBPiece *)piece;
 - (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location;
 - (void)transitionToState:(SBBoardViewControllerState*)state;
+
+- (void)setLegalDestinationsForPiece:(SBPiece *)piece highlighted:(BOOL)highlighted;
 @end
 
 
