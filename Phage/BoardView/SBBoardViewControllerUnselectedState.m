@@ -9,6 +9,8 @@
 #import "SBBoardViewControllerSelectedState.h"
 #import "SBBoardViewControllerHintState.h"
 #import "SBBoardViewControllerDraggedState.h"
+#import "SBPiece.h"
+#import "SBLocation.h"
 
 @implementation SBBoardViewControllerUnselectedState
 
@@ -36,9 +38,10 @@
     return [self.delegate canCurrentPlayerMovePiece:piece];
 }
 
-- (void)longPressStartedWithPiece:(SBPiece *)piece {
+- (void)longPressStartedWithPiece:(SBPiece *)piece atLocation:(SBLocation *)location {
     SBBoardViewControllerDraggedState *state = [SBBoardViewControllerDraggedState state];
     state.dragged = piece;
+    state.origin = location;
     [self.delegate transitionToState:state];
 }
 

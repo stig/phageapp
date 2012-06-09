@@ -7,6 +7,7 @@
 
 #import "SBBoardViewControllerState.h"
 #import "SBPiece.h"
+#import "SBLocation.h"
 
 @implementation SBBoardViewControllerState
 
@@ -52,7 +53,7 @@
     return NO;
 }
 
-- (void)longPressStartedWithPiece:(SBPiece *)piece {
+- (void)longPressStartedWithPiece:(SBPiece *)piece atLocation:(SBLocation *)location {
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
 }
 

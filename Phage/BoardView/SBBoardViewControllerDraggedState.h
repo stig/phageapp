@@ -10,4 +10,5 @@
 
 @interface SBBoardViewControllerDraggedState : SBBoardViewControllerState
 @property(nonatomic, strong) SBPiece* dragged;
+@property(nonatomic, strong) SBLocation* origin;
 @end

@@ -184,21 +184,19 @@
 }
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)sender {
-    NSLog(@"sender = %@", sender);
 
     CGPoint point = [sender locationInView:self];
+    SBCellLayer *cell = (SBCellLayer *)[self.cellLayer hitTest:point];
     switch (sender.state) {
         case UIGestureRecognizerStateBegan:
             self.longPressPieceLayer = (SBPieceLayer *)[self.pieceLayer hitTest:point];
-            [self.delegate longPressStartedWithPiece:self.longPressPieceLayer.piece];
+            [self.delegate longPressStartedWithPiece:self.longPressPieceLayer.piece atLocation:cell.location];
             break;
         case UIGestureRecognizerStateChanged: {
-            SBCellLayer *cell = (SBCellLayer *)[self.cellLayer hitTest:point];
             self.longPressPieceLayer.position = cell.position;
             break;
         }
         case UIGestureRecognizerStateEnded: {
-            SBCellLayer *cell = (SBCellLayer *)[self.cellLayer hitTest:point];
             self.longPressPieceLayer.position = cell.position;
             [self.delegate longPressEndedWithPiece:self.longPressPieceLayer.piece atLocation:cell.location];
             break;

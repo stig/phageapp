@@ -10,6 +10,8 @@
 
 @implementation SBBoardViewControllerDraggedState
 @synthesize dragged = _dragged;
+@synthesize origin = _origin;
+
 
 - (void)transitionIn {
     [super transitionIn];
@@ -28,7 +30,8 @@
         [self.delegate movePiece:piece toLocation:location];
 
     } else {
-        [self.gridView movePiece:self.dragged toLocation:[self.delegate locationOfPiece:piece]];
+        NSLog(@"self.origin = %@", self.origin);
+        [self.gridView movePiece:self.dragged toLocation:self.origin];
         [self.delegate transitionToState:[SBBoardViewControllerUnselectedState state]];
 
         [[[UIAlertView alloc] initWithTitle:@"Illegal Move"

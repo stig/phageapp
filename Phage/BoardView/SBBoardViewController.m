@@ -14,6 +14,7 @@
 #import "SBBoardViewControllerUnselectedState.h"
 #import "SBBoardViewControllerReadonlyState.h"
 #import "SBBoardViewControllerGameOverState.h"
+#import "SBLocation.h"
 
 @interface SBBoardViewController () < UIActionSheetDelegate >
 @property(strong) UIActionSheet *forfeitActionSheet;
@@ -203,8 +204,8 @@
     return [self.state shouldLongPressStartWithPiece:piece];
 }
 
-- (void)longPressStartedWithPiece:(SBPiece *)piece {
-    [self.state longPressStartedWithPiece:piece];
+- (void)longPressStartedWithPiece:(SBPiece *)piece atLocation:(SBLocation *)location {
+    [self.state longPressStartedWithPiece:piece atLocation:location];
 }
 
 - (void)longPressEndedWithPiece:(SBPiece *)piece atLocation:(SBLocation *)location {
