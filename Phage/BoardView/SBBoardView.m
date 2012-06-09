@@ -17,30 +17,36 @@
 @interface SBBoardView () < UIGestureRecognizerDelegate >
 @property(strong) CALayer *cellLayer;
 @property(strong) CALayer *pieceLayer;
+@property(nonatomic, strong) SBPieceLayer *longPressPieceLayer;
+@property(nonatomic, strong) NSMutableDictionary *cells;
+@property(nonatomic, strong) NSMutableDictionary *pieces;
+@property(nonatomic) NSUInteger columns;
+@property(nonatomic) NSUInteger rows;
+
 
 - (void)createBoardCells;
 - (void)createInitialBoardPieces;
 @end
 
-@implementation SBBoardView {
-    NSMutableDictionary *cells;
-    NSMutableDictionary *pieces;
-
-    NSUInteger columns, rows;
-}
+@implementation SBBoardView
 
 @synthesize delegate = _delegate;
 @synthesize cellLayer = _cellLayer;
 @synthesize pieceLayer = _pieceLayer;
+@synthesize longPressPieceLayer = _longPressPieceLayer;
+@synthesize cells = _cells;
+@synthesize pieces = _pieces;
+@synthesize columns = _columns;
+@synthesize rows = _rows;
 
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        rows = columns = 8u;
+        self.rows = self.columns = 8u;
 
-        pieces = [[NSMutableDictionary alloc] init];
-        cells = [[NSMutableDictionary alloc] init];
+        self.pieces = [[NSMutableDictionary alloc] init];
+        self.cells = [[NSMutableDictionary alloc] init];
 
         self.cellLayer = [[CALayer alloc] init];
         self.pieceLayer = [[CALayer alloc] init];
@@ -70,11 +76,11 @@
 #pragma mark Cell calculations
 
 - (CGFloat)cellWidth {
-    return self.bounds.size.width / columns;
+    return self.bounds.size.width / self.columns;
 }
 
 - (CGFloat)cellHeight {
-    return self.bounds.size.height / rows;
+    return self.bounds.size.height / self.rows;
 }
 
 - (CGRect)cellRect {
@@ -90,7 +96,7 @@
 - (void)layoutForState:(SBState *)state {
 
     [state enumerateLocationsUsingBlock:^(SBLocation *loc) {
-        SBCellLayer *layer = [cells objectForKey:loc];
+        SBCellLayer *layer = [self.cells objectForKey:loc];
         layer.blocked = [state wasLocationOccupied:loc];
     }];
 
@@ -100,7 +106,7 @@
         [CATransaction begin];
         [CATransaction setAnimationDuration:1.0f];
 
-        SBPieceLayer *layer = [pieces objectForKey:piece];
+        SBPieceLayer *layer = [self.pieces objectForKey:piece];
         layer.movesLeftLayer.movesLeft = [state movesLeftForPiece:piece];
         layer.position = [self cellPositionForLocation:[state locationForPiece:piece]];
 
@@ -111,24 +117,24 @@
 }
 
 - (void)pickUpPiece:(SBPiece *)piece {
-    SBPieceLayer *layer = [pieces objectForKey:piece];
+    SBPieceLayer *layer = [self.pieces objectForKey:piece];
     [SBAnimationHelper addPulseAnimationToLayer:layer];
 }
 
 - (void)putDownPiece:(SBPiece *)piece {
-    SBPieceLayer *layer = [pieces objectForKey:piece];
+    SBPieceLayer *layer = [self.pieces objectForKey:piece];
     [SBAnimationHelper removePulseAnimationFromLayer:layer];
 }
 
 - (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
-    SBPieceLayer *pieceLayer = [pieces objectForKey:piece];
-    SBCellLayer *cellLayer = [cells objectForKey:location];
+    SBPieceLayer *pieceLayer = [self.pieces objectForKey:piece];
+    SBCellLayer *cellLayer = [self.cells objectForKey:location];
     pieceLayer.position = cellLayer.position;
 }
 
 - (void)setCellHighlighted:(BOOL)highlighted atLocation:(SBLocation *)location {
     NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
-    SBCellLayer *cell = [cells objectForKey:location];
+    SBCellLayer *cell = [self.cells objectForKey:location];
     cell.highlighted = highlighted;
     [cell setNeedsDisplay];
 }
@@ -180,23 +186,21 @@
 - (void)handleLongPress:(UILongPressGestureRecognizer *)sender {
     NSLog(@"sender = %@", sender);
 
-    static SBPieceLayer *longPressPieceLayer = nil;
-
     CGPoint point = [sender locationInView:self];
     switch (sender.state) {
         case UIGestureRecognizerStateBegan:
-            longPressPieceLayer = (SBPieceLayer *)[self.pieceLayer hitTest:point];
-            [self.delegate longPressStartedWithPiece:longPressPieceLayer.piece];
+            self.longPressPieceLayer = (SBPieceLayer *)[self.pieceLayer hitTest:point];
+            [self.delegate longPressStartedWithPiece:self.longPressPieceLayer.piece];
             break;
         case UIGestureRecognizerStateChanged: {
             SBCellLayer *cell = (SBCellLayer *)[self.cellLayer hitTest:point];
-            longPressPieceLayer.position = cell.position;
+            self.longPressPieceLayer.position = cell.position;
             break;
         }
         case UIGestureRecognizerStateEnded: {
             SBCellLayer *cell = (SBCellLayer *)[self.cellLayer hitTest:point];
-            longPressPieceLayer.position = cell.position;
-            [self.delegate longPressEndedWithPiece:longPressPieceLayer.piece atLocation:cell.location];
+            self.longPressPieceLayer.position = cell.position;
+            [self.delegate longPressEndedWithPiece:self.longPressPieceLayer.piece atLocation:cell.location];
             break;
         }
         default:
@@ -205,8 +209,8 @@
 }
 
 - (void)createBoardCells {
-    for (NSUInteger r = 0; r < rows; r++) {
-        for (NSUInteger c = 0; c < columns; c++) {
+    for (NSUInteger r = 0; r < self.rows; r++) {
+        for (NSUInteger c = 0; c < self.columns; c++) {
             SBLocation *location = [SBLocation locationWithColumn:c row:r];
             SBCellLayer *layer = [SBCellLayer layerWithLocation:location];
             layer.bounds = [self cellRect];
@@ -214,7 +218,7 @@
             layer.blocked = NO;
             [self.cellLayer addSublayer:layer];
             [layer setNeedsDisplay];
-            [cells setObject:layer forKey:location];
+            [self.cells setObject:layer forKey:location];
         }
     }
 }
@@ -239,7 +243,7 @@
         layer.movesLeftLayer.movesLeft = [state movesLeftForPiece:piece];
         layer.position = [self cellPositionForLocation:[state locationForPiece:piece]];
 
-        [pieces setObject:layer forKey:piece];
+        [self.pieces setObject:layer forKey:piece];
         [self.pieceLayer addSublayer:layer];
         [layer setNeedsDisplay];
     }
