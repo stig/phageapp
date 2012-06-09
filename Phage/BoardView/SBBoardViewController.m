@@ -208,8 +208,8 @@
     [self.state longPressStartedWithPiece:piece atLocation:location];
 }
 
-- (void)longPressEndedWithPiece:(SBPiece *)piece atLocation:(SBLocation *)location {
-    [self.state longPressEndedWithPiece:piece atLocation:location];
+- (void)longPressEndedAtLocation:(SBLocation *)location {
+    [self.state longPressEndedAtLocation:location];
 }
 
 #pragma mark Board View Controller State Delegate

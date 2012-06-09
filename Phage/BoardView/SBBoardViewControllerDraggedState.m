@@ -7,6 +7,7 @@
 
 #import "SBBoardViewControllerDraggedState.h"
 #import "SBBoardViewControllerUnselectedState.h"
+#import "SBLocation.h"
 
 @implementation SBBoardViewControllerDraggedState
 @synthesize dragged = _dragged;
@@ -24,10 +25,10 @@
 }
 
 
-- (void)longPressEndedWithPiece:(SBPiece *)piece atLocation:(SBLocation *)location {
+- (void)longPressEndedAtLocation:(SBLocation *)location {
     [self transitionOut];
-    if ([self.delegate canMovePiece:piece toLocation:location]) {
-        [self.delegate movePiece:piece toLocation:location];
+    if ([self.delegate canMovePiece:self.dragged toLocation:location]) {
+        [self.delegate movePiece:self.dragged toLocation:location];
 
     } else {
         NSLog(@"self.origin = %@", self.origin);

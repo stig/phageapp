@@ -198,7 +198,7 @@
         }
         case UIGestureRecognizerStateEnded: {
             self.longPressPieceLayer.position = cell.position;
-            [self.delegate longPressEndedWithPiece:self.longPressPieceLayer.piece atLocation:cell.location];
+            [self.delegate longPressEndedAtLocation:cell.location];
             break;
         }
         default:
