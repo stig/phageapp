@@ -23,9 +23,6 @@
 - (BOOL)shouldLongPressStartWithPiece:(SBPiece *)piece;
 - (void)longPressStartedWithPiece:(SBPiece *)piece;
 - (void)longPressEndedWithPiece:(SBPiece *)piece atLocation:(SBLocation*)location;
-
-- (BOOL)shouldLongPressStartWithLocation:(SBLocation *)location;
-- (void)longPressStartedWithLocation:(SBLocation *)location;
 @end
 
 @interface SBBoardView : UIView

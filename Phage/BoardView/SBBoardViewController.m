@@ -211,14 +211,6 @@
     [self.state longPressEndedWithPiece:piece atLocation:location];
 }
 
-- (BOOL)shouldLongPressStartWithLocation:(SBLocation *)location {
-    return [self.state shouldLongPressStartWithLocation:location];
-}
-
-- (void)longPressStartedWithLocation:(SBLocation *)location {
-    [self.state longPressStartedWithLocation:location];
-}
-
 #pragma mark Board View Controller State Delegate
 
 - (void)transitionToState:(SBBoardViewControllerState *)state {
