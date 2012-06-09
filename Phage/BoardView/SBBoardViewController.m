@@ -215,10 +215,12 @@
 #pragma mark Board View Controller State Delegate
 
 - (void)transitionToState:(SBBoardViewControllerState *)state {
-    state.delegate = self.state.delegate;
-    state.gridView = self.state.gridView;
-    self.state = state;
-    [self.state transitionIn];
+    @synchronized (self) {
+        state.delegate = self.state.delegate;
+        state.gridView = self.state.gridView;
+        self.state = state;
+        [self.state transitionIn];
+    }
 }
 
 - (SBLocation *)locationOfPiece:(SBPiece *)piece {
