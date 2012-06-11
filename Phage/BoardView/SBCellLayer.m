@@ -9,11 +9,7 @@
 #import "SBLocation.h"
 
 
-@implementation SBCellLayer {
-    BOOL _blocked;
-    BOOL _highlighted;
-}
-
+@implementation SBCellLayer
 @synthesize location = _location;
 @synthesize blocked = _blocked;
 @synthesize highlighted = _highlighted;

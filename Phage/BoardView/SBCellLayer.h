@@ -8,7 +8,7 @@
 @class SBLocation;
 
 @interface SBCellLayer : CAShapeLayer
-@property(readonly) SBLocation *location;
+@property(nonatomic, readonly) SBLocation *location;
 @property(nonatomic) BOOL blocked;
 @property(nonatomic) BOOL highlighted;
 

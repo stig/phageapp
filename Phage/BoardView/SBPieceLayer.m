@@ -10,12 +10,11 @@
 #import "SBMovesLeftLayer.h"
 
 
-@implementation SBPieceLayer {
-    SBMovesLeftLayer *_movesLeftLayer;
-
-}
+@implementation SBPieceLayer
 
 @synthesize piece = _piece;
+@synthesize movesLeftLayer = _movesLeftLayer;
+
 
 + (id)layerWithPiece:(SBPiece*)piece {
     return [[self alloc] initWithPiece:piece];
@@ -29,10 +28,6 @@
         self.name = [piece description];
     }
     return self;
-}
-
-- (SBMovesLeftLayer *)movesLeftLayer {
-    return _movesLeftLayer;
 }
 
 - (void)setMovesLeftLayer:(SBMovesLeftLayer *)aMovesLeftLayer {

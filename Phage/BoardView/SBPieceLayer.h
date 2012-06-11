@@ -10,10 +10,9 @@
 
 
 @interface SBPieceLayer : CAShapeLayer
-@property(readonly) SBPiece* piece;
-@property(strong) SBMovesLeftLayer *movesLeftLayer;
+@property(nonatomic,readonly) SBPiece* piece;
+@property(nonatomic,strong) SBMovesLeftLayer *movesLeftLayer;
 + (id)layerWithPiece:(SBPiece *)piece;
 - (id)initWithPiece:(SBPiece *)piece;
-
 
 @end
