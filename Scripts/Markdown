@@ -9,4 +9,20 @@ mkdir -p $DSTDIR
 
 echo "Processing $SRCFILE.."
 echo " -> $DSTFILE"
-$SRCROOT/Scripts/Markdown.pl $SRCFILE > $DSTFILE
+
+cat <<HEADER > $DSTFILE
+<html>
+<head>
+<style type="text/css">
+body { font-family: sans-serif; }
+</style>
+</head>
+<body>
+HEADER
+
+$SRCROOT/Scripts/Markdown.pl $SRCFILE >> $DSTFILE
+
+cat <<FOOTER >> $DSTFILE
+</body>
+</html>
+FOOTER
