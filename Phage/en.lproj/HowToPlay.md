@@ -36,14 +36,11 @@ direction.
 Performing a move
 -----------------
 
-Tap a piece to select it; it should start gently pulsing. Tap it again
-to reveal its legal destinations, or just tap the location you want to
-move it to.
-
-Alternatively, drag and drop one of your pieces to a new destination.
-You can even tap a piece twice to reveal its legal destinations before
-dragging.
-
+Tap a piece to select it, then tap the location you want to move it to.
+Double-tap to select a piece and its legal destinations will be
+highlighted. Tap/double-tap a different piece to select that one
+instead. Alternatively, long-press a piece to pick it up and drag it
+where you want it.
 
 </body>
 </html>
