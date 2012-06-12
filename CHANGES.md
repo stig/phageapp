@@ -1,3 +1,17 @@
+0.4 (2012-06-??)
+================
+
+Change to use gesture recognisers rather than my custom touch detection
+code. This cleans up a lot of mess and should make it easier to make
+user interface improvements. It also results in some functionality
+changes:
+
+* Double-tap to show hints rather than the previous "tap twice behaviour".
+* Require a long-press to select a piece for dragging.
+
+* Scale up pieces when they are tapped / dragged so it looks like they're picked up.
+
+
 0.3.1 (2012-06-01)
 ==================
 
