@@ -65,16 +65,7 @@
 		FB89D43C154C7D27001A0BA2 /* SBPieceLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BA1 /* SBPieceLayer.m */; };
 		FB89D43C154C7D27001A0BA5 /* SBMovesLeftLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BA4 /* SBMovesLeftLayer.m */; };
 		FB89D43C154C7D27001A0BA8 /* SBCellLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BA7 /* SBCellLayer.m */; };
-		FB89D43C154C7D27001A0BAD /* SBBoardViewReadonlyState.m in Sources */ = {isa = PBXBuildFile; };
-		FB89D43C154C7D27001A0BB0 /* SBBoardViewSelectedDraggedState.m in Sources */ = {isa = PBXBuildFile; };
-		FB89D43C154C7D27001A0BB4 /* SBBoardViewAbstractState.m in Sources */ = {isa = PBXBuildFile; };
-		FB89D43C154C7D27001A0BB7 /* SBBoardViewUnselectedState.m in Sources */ = {isa = PBXBuildFile; };
-		FB89D43C154C7D27001A0BBA /* SBBoardViewSelectedState.m in Sources */ = {isa = PBXBuildFile; };
-		FB89D43C154C7D27001A0BBD /* SBBoardViewHintingState.m in Sources */ = {isa = PBXBuildFile; };
 		FB89D43C154C7D27001A0BC0 /* SBAnimationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BBF /* SBAnimationHelper.m */; };
-		FB89D43C154C7D27001A0BC3 /* SBBoardViewHintingDraggedState.m in Sources */ = {isa = PBXBuildFile; };
-		FB89D43C154C7D27001A0BC8 /* SBBoardViewConfirmingState.m in Sources */ = {isa = PBXBuildFile; };
-		FB89D43C154C7D27001A0BCD /* SBBoardViewGameOverState.m in Sources */ = {isa = PBXBuildFile; };
 		FB89D43C154C7D27001A0BD0 /* SBBoardViewControllerState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BCF /* SBBoardViewControllerState.m */; };
 		FB89D43C154C7D27001A0BD3 /* SBBoardViewControllerReadonlyState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BD2 /* SBBoardViewControllerReadonlyState.m */; };
 		FB89D43C154C7D27001A0BD6 /* SBBoardViewControllerUnselectedState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BD5 /* SBBoardViewControllerUnselectedState.m */; };
@@ -660,16 +651,7 @@
 				FB89D43C154C7D27001A0BA2 /* SBPieceLayer.m in Sources */,
 				FB89D43C154C7D27001A0BA5 /* SBMovesLeftLayer.m in Sources */,
 				FB89D43C154C7D27001A0BA8 /* SBCellLayer.m in Sources */,
-				FB89D43C154C7D27001A0BAD /* SBBoardViewReadonlyState.m in Sources */,
-				FB89D43C154C7D27001A0BB0 /* SBBoardViewSelectedDraggedState.m in Sources */,
-				FB89D43C154C7D27001A0BB4 /* SBBoardViewAbstractState.m in Sources */,
-				FB89D43C154C7D27001A0BB7 /* SBBoardViewUnselectedState.m in Sources */,
-				FB89D43C154C7D27001A0BBA /* SBBoardViewSelectedState.m in Sources */,
-				FB89D43C154C7D27001A0BBD /* SBBoardViewHintingState.m in Sources */,
 				FB89D43C154C7D27001A0BC0 /* SBAnimationHelper.m in Sources */,
-				FB89D43C154C7D27001A0BC3 /* SBBoardViewHintingDraggedState.m in Sources */,
-				FB89D43C154C7D27001A0BC8 /* SBBoardViewConfirmingState.m in Sources */,
-				FB89D43C154C7D27001A0BCD /* SBBoardViewGameOverState.m in Sources */,
 				FB89D43C154C7D27001A0BD0 /* SBBoardViewControllerState.m in Sources */,
 				FB89D43C154C7D27001A0BD3 /* SBBoardViewControllerReadonlyState.m in Sources */,
 				FB89D43C154C7D27001A0BD6 /* SBBoardViewControllerUnselectedState.m in Sources */,
