@@ -136,7 +136,6 @@
 }
 
 - (void)setCellHighlighted:(BOOL)highlighted atLocation:(SBLocation *)location {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
     SBCellLayer *cell = [self.cells objectForKey:location];
     cell.highlighted = highlighted;
     [cell setNeedsDisplay];

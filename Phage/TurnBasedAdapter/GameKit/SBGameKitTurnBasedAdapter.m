@@ -34,7 +34,6 @@
 #pragma mark Methods
 
 - (void)findMatch {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     GKMatchRequest *request = [[GKMatchRequest alloc] init];
     request.maxPlayers = 2;
     request.minPlayers = 2;
@@ -50,19 +49,16 @@
 
 // The user has cancelled
 - (void)turnBasedMatchmakerViewControllerWasCancelled:(GKTurnBasedMatchmakerViewController *)viewController {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     [viewController dismissModalViewControllerAnimated:YES];
 }
 
 // Matchmaking has failed with an error
 - (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController didFailWithError:(NSError *)error {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     [viewController dismissModalViewControllerAnimated:YES];
 }
 
 // A turned-based match has been found, the game should start
 - (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController didFindMatch:(GKTurnBasedMatch *)match {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     [viewController dismissModalViewControllerAnimated:YES];
 
     [_delegate handleDidFindMatch:[self wrap:match]];
@@ -72,14 +68,13 @@
 // The developer should call playerQuitInTurnWithOutcome:nextPlayer:matchData:completionHandler: on the match passing in appropriate values.
 // They can also update matchOutcome for other players as appropriate.
 - (void)turnBasedMatchmakerViewController:(GKTurnBasedMatchmakerViewController *)viewController playerQuitForMatch:(GKTurnBasedMatch *)match {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     [self.delegate handlePlayerQuitForMatch:[self wrap:match]];
 }
 
 #pragma mark Turn Based Event Handler Delegate
 
 - (void)handleInviteFromGameCenter:(NSArray *)playersToInvite {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    TFLog(@"%s playersToInvite = %@", __PRETTY_FUNCTION__, playersToInvite);
 
     [_presentingViewController dismissModalViewControllerAnimated:YES];
 
@@ -96,12 +91,10 @@
 }
 
 - (void)handleTurnEventForMatch:(GKTurnBasedMatch *)match_ {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     [self.delegate handleTurnEventForMatch:[self wrap:match_]];
 }
 
 - (void)handleMatchEnded:(GKTurnBasedMatch *)match_ {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     [self.delegate handleMatchEnded:[self wrap:match_]];
 }
 

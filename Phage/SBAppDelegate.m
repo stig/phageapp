@@ -23,14 +23,10 @@
     GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
 
     [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
-        if (localPlayer.isAuthenticated) {
-            NSLog(@"Player is authenticated");
-        } else {
-            NSLog(@"Player is NOT authenticated");
-        }
-        
+        TFLog(@"%s localPlayer.isAuthenticated = %@", __PRETTY_FUNCTION__, localPlayer.isAuthenticated ? @"YES" : @"NO");
+
         if (error) {
-            NSLog(@"ERROR: %@", error);
+            TFLog(@"%s error = %@", __PRETTY_FUNCTION__, error);
         }
     }];
 

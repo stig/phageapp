@@ -31,7 +31,6 @@
         [self.delegate movePiece:self.dragged toLocation:location];
 
     } else {
-        NSLog(@"self.origin = %@", self.origin);
         [self.gridView movePiece:self.dragged toLocation:self.origin];
         [self.delegate transitionToState:[SBBoardViewControllerStateUnselected state]];
 

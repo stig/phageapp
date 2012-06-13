@@ -78,7 +78,7 @@
         state.previousState = self;
         [self.delegate transitionToState:state];
     } else {
-        NSLog(@"Cannot move %@ to %@", self.selected, location);
+        TFLog(@"%s cannot move %@ to %@", __PRETTY_FUNCTION__, self.selected, location);
     }
 }
 

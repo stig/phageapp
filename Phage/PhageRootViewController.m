@@ -12,8 +12,6 @@
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSLog(@"%@ - %@", NSStringFromSelector(_cmd), segue.identifier);
-
     [super prepareForSegue:segue sender:sender];
 
     if ([segue.identifier hasSuffix:@"Player"]) {

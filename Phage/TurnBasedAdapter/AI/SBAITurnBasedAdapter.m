@@ -64,7 +64,7 @@
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:match];
         NSError *error = nil;
         if (![data writeToFile:self.savedMatchFilePath options:NSDataWritingAtomic error:&error]) {
-            NSLog(@"Failed to save match: %@", error);
+            TFLog(@"%s Failed to save match: %@", __PRETTY_FUNCTION__, error);
         }
     }
 }
@@ -77,8 +77,6 @@
 }
 
 - (void)findMatch {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-
     SBAITurnBasedMatch *match = [self findSavedMatch];
     if (!match) match = [self createMatch];
 
@@ -92,8 +90,6 @@
 }
 
 - (void)performComputerMoveActionForMatch:(SBAITurnBasedMatch*)match {
-    NSLog(@"%s", sel_getName(_cmd));
-
     id move = [self.movePicker moveForState:match.matchState];
     NSAssert(move != nil, @"Should not be nil!");
     id successor = [match.matchState successorWithMove:move];
@@ -101,8 +97,6 @@
 }
 
 - (void)handleTurnEventForMatch:(SBAITurnBasedMatch *)match {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
-
     [self.delegate handleTurnEventForMatch:match];
     [self saveMatch:match];
 
@@ -110,7 +104,6 @@
 }
 
 - (void)handleMatchEnded:(SBAITurnBasedMatch *)match {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
     [self.delegate handleMatchEnded:match];
     [self removeOldMatch];
 }

@@ -86,7 +86,7 @@
 }
 
 - (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+    TFLog(@"%s move %@ to %@", __PRETTY_FUNCTION__, piece, location);
 
     SBMove *move = [SBMove moveWithPiece:piece to:location];
     SBState *state = [self currentState];
@@ -95,7 +95,7 @@
     SBState *newState = [state successorWithMove:move];
 
     [self.modelHelper endTurnOrMatch:self.turnBasedMatchHelper.currentMatch withMatchState:newState completionHandler:^(NSError *error) {
-        if (error) NSLog(@"There was an error performing the move: %@", error);
+        if (error) TFLog(@"There was an error performing the move: %@", error);
     }];
 }
 
@@ -106,33 +106,29 @@
 }
 
 - (void)enterNewGame:(id<SBTurnBasedMatch>)match {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     self.forfeitButton.enabled = NO;
 
     id state = [self.turnBasedMatchHelper isLocalPlayerTurn:match]
             ? [SBBoardViewControllerStateUnselected state]
             : [SBBoardViewControllerStateReadonly state];
-    [self transitionToState:state];
 
+    [self transitionToState:state];
     [self.gridView layoutForState:[self stateForMatch:match]];
 }
 
 - (void)takeTurn:(id<SBTurnBasedMatch>)match {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     self.forfeitButton.enabled = YES;
     [self transitionToState:[SBBoardViewControllerStateUnselected state]];
     [self.gridView layoutForState:match.matchState];
 }
 
 - (void)layoutMatch:(id <SBTurnBasedMatch>)match {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     self.forfeitButton.enabled = NO;
     [self transitionToState:[SBBoardViewControllerStateReadonly state]];
     [self.gridView layoutForState:match.matchState];
 }
 
 - (void)sendTitle:(NSString*)title notice:(NSString *)notice forMatch:(id<SBTurnBasedMatch>)match {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:title
                                                  message:notice
@@ -143,7 +139,6 @@
 }
 
 - (void)receiveEndGame:(id<SBTurnBasedMatch>)match {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 
     [self transitionToState:[SBBoardViewControllerStateGameOver state]];
 

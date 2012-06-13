@@ -21,41 +21,26 @@
 
 #pragma mark State Transitions
 
-- (void)transitionIn {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
-}
+- (void)transitionIn {}
 
-- (void)transitionOut {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
-}
+- (void)transitionOut {}
 
 
 #pragma mark Board View Delegate
 
-- (void)handleSingleTapWithPiece:(SBPiece *)piece {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
-}
+- (void)handleSingleTapWithPiece:(SBPiece *)piece {}
 
-- (void)handleSingleTapWithLocation:(SBLocation *)location {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
-}
+- (void)handleSingleTapWithLocation:(SBLocation *)location {}
 
-- (void)handleDoubleTapWithPiece:(SBPiece *)piece {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
-}
+- (void)handleDoubleTapWithPiece:(SBPiece *)piece {}
 
-- (void)handleDoubleTapWithLocation:(SBLocation *)location {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
-}
+- (void)handleDoubleTapWithLocation:(SBLocation *)location {}
 
 - (BOOL)shouldLongPressStartWithPiece:(SBPiece *)piece {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
     return NO;
 }
 
-- (void)longPressStartedWithPiece:(SBPiece *)piece atLocation:(SBLocation *)location {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
-}
+- (void)longPressStartedWithPiece:(SBPiece *)piece atLocation:(SBLocation *)location {}
 
 - (void)longPressEndedAtLocation:(SBLocation *)location {
     @throw @"Should not get here";

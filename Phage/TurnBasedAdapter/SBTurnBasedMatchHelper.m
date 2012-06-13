@@ -20,7 +20,6 @@
 
 
 - (BOOL)isCurrentMatch:(id <SBTurnBasedMatch>)match {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     return [match isEqual:self.currentMatch];
 }
 
@@ -31,14 +30,13 @@
 #pragma mark Methods implemented in Strategy
 
 - (void)findMatch {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     [self.adapter findMatch];
 }
 
 #pragma mark Methods called by Adapters
 
 - (void)handleDidFindMatch:(id <SBTurnBasedMatch>)match {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    TFLog(@"%s match = %@", __PRETTY_FUNCTION__, match);
 
     self.currentMatch = match;
 
@@ -57,7 +55,7 @@
 }
 
 - (void)handlePlayerQuitForMatch:(id <SBTurnBasedMatch>)match {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    TFLog(@"%s match = %@", __PRETTY_FUNCTION__, match);
 
     // Assumes 2-player game..
     id<SBTurnBasedParticipant> next = [self.delegate nextParticipantForMatch:match];
@@ -68,7 +66,7 @@
                                   matchState:match.matchState
                           completionHandler:^(NSError *error) {
                               if (error) {
-                                  NSLog(@"ERROR: %@", error);
+                                  TFLog(@"%s error = %@", __PRETTY_FUNCTION__, error);
                                   // TODO: used while developing; disable before release
                                   [match removeWithCompletionHandler:nil];
                               }
@@ -76,7 +74,7 @@
 }
 
 - (void)handleTurnEventForMatch:(id <SBTurnBasedMatch>)match {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    TFLog(@"%s match = %@", __PRETTY_FUNCTION__, match);
 
     if ([self isCurrentMatch:match]) {
         // it's the current match..
@@ -101,7 +99,7 @@
 }
 
 - (void)handleMatchEnded:(id <SBTurnBasedMatch>)match {
-    NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    TFLog(@"%s match = %@", __PRETTY_FUNCTION__, match);
 
     if ([self isCurrentMatch:match]) {
         [self.delegate receiveEndGame:match];

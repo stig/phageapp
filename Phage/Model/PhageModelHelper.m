@@ -20,8 +20,6 @@
 }
 
 - (void)endTurnOrMatch:(id <SBTurnBasedMatch>)match withMatchState:(SBState *)successor completionHandler:(void(^)(NSError *))completionHandler {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
-
     id<SBTurnBasedParticipant> opponent = [self nextParticipantForMatch:match];
 
     if ([successor isGameOver]) {

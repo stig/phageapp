@@ -39,7 +39,7 @@
 
 
 - (void)endTurnWithNextParticipant:(id <SBTurnBasedParticipant>)nextParticipant matchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+    TFLog(@"%s matchState = %@ nextParticipant = %@", __PRETTY_FUNCTION__, matchState, nextParticipant);
     self.currentParticipant = nextParticipant;
     self.matchState = matchState;
     completionHandler(nil);
@@ -47,14 +47,14 @@
 }
 
 - (void)endMatchInTurnWithMatchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+    TFLog(@"%s matchState = %@", __PRETTY_FUNCTION__, matchState);
     self.matchState = matchState;
     completionHandler(nil);
     [self.delegate handleMatchEnded:self];
 }
 
 - (void)participantQuitInTurnWithOutcome:(GKTurnBasedMatchOutcome)outcome nextParticipant:(id <SBTurnBasedParticipant>)participant matchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
+    TFLog(@"%s outcome = %li", __PRETTY_FUNCTION__, outcome);
     self.matchState = matchState;
     self.currentParticipant.matchOutcome = outcome;
     participant.matchOutcome = GKTurnBasedMatchOutcomeWon;
@@ -64,7 +64,6 @@
 }
 
 - (void)removeWithCompletionHandler:(void (^)(NSError *))completionHandler {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
     [self doesNotRecognizeSelector:_cmd]; // TODO implement me
 }
 

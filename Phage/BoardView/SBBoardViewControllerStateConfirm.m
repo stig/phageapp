@@ -42,8 +42,6 @@ static NSString *const kSBPhageConfirmKey = @"SBPhageConfirmKey";
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSLog(@"[%@ %s]", [self class], sel_getName(_cmd));
-
     [self.previousState transitionOut];
 
     if (actionSheet.cancelButtonIndex == buttonIndex) {
