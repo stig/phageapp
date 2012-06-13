@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="TtX-cB-gaV">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
@@ -105,7 +104,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="5Jp-9x-Li8">
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="joo-9E-hMy">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="joo-9E-hMy">
                             <connections>
                                 <action selector="forfeit" destination="2" id="gf0-W4-APW"/>
                             </connections>
