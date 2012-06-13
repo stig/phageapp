@@ -1,18 +1,11 @@
 0.4 (2012-06-??)
 ================
 
-Change to use gesture recognisers rather than my custom touch detection
-code. This cleans up a lot of mess and should make it easier to make
-user interface improvements. It also results in some functionality
-changes:
-
-* Double-tap to show hints rather than the previous "tap twice behaviour".
-* Require a long-press to select a piece for dragging.
-
-Other changes:
-
-* Scale up selected pieces when they are tapped / dragged.
-
+* Double-tap to show hints rather than the previous "tap twice" behaviour.
+* Long press pieces (tap and hold for 0.5s) to select before dragging.
+* Scale up selected/dragged pieces to suggest them being "picked up" off the board.
+* Send logs to TestFlight to aid debugging.
+* Add TestFlight Checkpoints.
 
 0.3.1 (2012-06-01)
 ==================
