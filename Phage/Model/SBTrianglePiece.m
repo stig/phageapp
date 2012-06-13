@@ -21,14 +21,11 @@
             nil];
 }
 
-- (void)drawLayer:(CAShapeLayer *)layer inContext:(CGContextRef)ctx {
-    [super drawLayer:layer inContext:ctx];
-
-    CGRect r = CGRectInset(layer.bounds, 6.0, 6.0);
+- (CGPathRef)createPathInRect:(CGRect)rect {
+    CGRect r = CGRectInset(rect, 6.0, 6.0);
     CGFloat w2 = r.origin.x + r.size.width / 2.0;
 
     CGMutablePathRef path = CGPathCreateMutable();
-
     if (self.isPlayerOne) {
         CGPathMoveToPoint(path, nil, r.origin.x, r.size.height + r.origin.y);
         CGPathAddLineToPoint(path, nil, w2, r.origin.y);
@@ -40,9 +37,20 @@
     }
     CGPathCloseSubpath(path);
 
-    layer.path = path;
+    return path;
+}
 
-    CGPathRelease(path);
+
+- (CGPathRef)pathInRect:(CGRect)rect {
+    if (self.isPlayerOne) {
+        static CGPathRef path = nil;
+        if (!path) path = [self createPathInRect:rect];
+        return path;
+    } else {
+        static CGPathRef path = nil;
+        if (!path) path = [self createPathInRect:rect];
+        return path;
+    }
 }
 
 

@@ -74,4 +74,10 @@
     layer.strokeColor = (_isPlayerOne == YES ? [UIColor blueColor] : [UIColor redColor]).CGColor;
 }
 
+- (CGPathRef)pathInRect:(CGRect)rect {
+    [self doesNotRecognizeSelector:_cmd];
+    @throw @"Cannot get here";
+}
+
+
 @end

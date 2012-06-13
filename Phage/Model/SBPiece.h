@@ -9,10 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface SBPiece : NSObject <NSCopying, NSCoding>
-
 @property (readonly) BOOL isPlayerOne;
 - (id)initWithPlayerOne:(BOOL)x;
 - (BOOL)isEqualToPiece:(SBPiece*)piece;
 - (NSArray*)directions;
-- (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx;
+- (CGPathRef)pathInRect:(CGRect)rect;
 @end

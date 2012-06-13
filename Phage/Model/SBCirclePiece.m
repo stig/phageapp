@@ -24,13 +24,10 @@
             nil];
 }
 
-- (void)drawLayer:(CAShapeLayer *)layer inContext:(CGContextRef)ctx {
-    [super drawLayer:layer inContext:ctx];
-
-    CGMutablePathRef path = CGPathCreateMutable();
-    CGPathAddEllipseInRect(path, nil, CGRectInset(layer.bounds, 5.0, 5.0));
-    layer.path = path;
-    CGPathRelease(path);
+- (CGPathRef)pathInRect:(CGRect)rect {
+    static CGPathRef path = nil;
+    if (!path) path = CGPathCreateWithEllipseInRect(CGRectInset(rect, 5.0, 5.0), nil);
+    return path;
 }
 
 

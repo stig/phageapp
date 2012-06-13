@@ -253,6 +253,7 @@
 
         SBPieceLayer *layer = [SBPieceLayer layerWithPiece:piece];
         layer.bounds = [self cellRect];
+        layer.path = [piece pathInRect:layer.bounds];
         layer.movesLeftLayer = movesLeftLayer;
         layer.position = [self cellPositionForLocation:[state locationForPiece:piece]];
         layer.movesLeftLayer = movesLeftLayer;
@@ -260,10 +261,9 @@
 
         [self.pieces setObject:layer forKey:piece];
         [self.pieceLayer addSublayer:layer];
-        [layer setNeedsDisplay];
     }
-
 }
+
 
 
 @end
