@@ -117,11 +117,15 @@
 
 - (void)pickUpPiece:(SBPiece *)piece {
     SBPieceLayer *layer = [self.pieces objectForKey:piece];
+    layer.affineTransform = CGAffineTransformMakeScale(2.0, 2.0);
+    layer.zPosition++;
     [SBAnimationHelper addPulseAnimationToLayer:layer];
 }
 
 - (void)putDownPiece:(SBPiece *)piece {
     SBPieceLayer *layer = [self.pieces objectForKey:piece];
+    layer.affineTransform = CGAffineTransformMakeScale(1.0, 1.0);
+    layer.zPosition--;
     [SBAnimationHelper removePulseAnimationFromLayer:layer];
 }
 
