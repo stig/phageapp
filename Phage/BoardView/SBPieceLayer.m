@@ -7,7 +7,6 @@
 
 #import "SBPieceLayer.h"
 #import "SBPiece.h"
-#import "SBMovesLeftLayer.h"
 
 
 @implementation SBPieceLayer
@@ -28,14 +27,6 @@
         self.name = [piece description];
     }
     return self;
-}
-
-- (void)setMovesLeftLayer:(SBMovesLeftLayer *)aMovesLeftLayer {
-    if (_movesLeftLayer)
-        [self replaceSublayer:_movesLeftLayer with:aMovesLeftLayer];
-    else
-        [self addSublayer:aMovesLeftLayer];
-    _movesLeftLayer = aMovesLeftLayer;
 }
 
 @end

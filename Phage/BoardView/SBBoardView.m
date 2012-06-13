@@ -10,7 +10,6 @@
 #import "SBState.h"
 #import "SBLocation.h"
 #import "SBPieceLayer.h"
-#import "SBMovesLeftLayer.h"
 #import "SBCellLayer.h"
 #import "SBAnimationHelper.h"
 
@@ -107,7 +106,7 @@
         [CATransaction setAnimationDuration:1.0f];
 
         SBPieceLayer *layer = [self.pieces objectForKey:piece];
-        layer.movesLeftLayer.movesLeft = [state movesLeftForPiece:piece];
+        layer.movesLeftLayer.string = [self movesLeftForPiece:piece atState:state];
         layer.position = [self cellPositionForLocation:[state locationForPiece:piece]];
 
         [CATransaction commit];
@@ -221,12 +220,16 @@
     }
 }
 
+- (NSString *)movesLeftForPiece:(SBPiece *)piece atState:(SBState *)state {
+    return [NSString stringWithFormat:@"%u", [state movesLeftForPiece:piece]];
+}
+
 - (void)createInitialBoardPieces {
     // TODO this is a nasty hack. It would be better to set it some other way. But it will suffice...
     SBState *state = [[SBState alloc] init];
     for (SBPiece *piece in [state.playerOnePieces arrayByAddingObjectsFromArray:state.playerTwoPieces]) {
 
-        SBMovesLeftLayer *movesLeftLayer = [SBMovesLeftLayer layer];
+        CATextLayer *movesLeftLayer = [CATextLayer layer];
         movesLeftLayer.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.7].CGColor;
         movesLeftLayer.foregroundColor = [UIColor whiteColor].CGColor;
         movesLeftLayer.contentsScale = [[UIScreen mainScreen] scale];
@@ -234,12 +237,14 @@
         movesLeftLayer.fontSize = 14.0;
         movesLeftLayer.cornerRadius = 7.0;
         movesLeftLayer.alignmentMode = kCAAlignmentCenter;
+        movesLeftLayer.string = [self movesLeftForPiece:piece atState:state];
 
         SBPieceLayer *layer = [SBPieceLayer layerWithPiece:piece];
         layer.bounds = [self cellRect];
         layer.movesLeftLayer = movesLeftLayer;
-        layer.movesLeftLayer.movesLeft = [state movesLeftForPiece:piece];
         layer.position = [self cellPositionForLocation:[state locationForPiece:piece]];
+        layer.movesLeftLayer = movesLeftLayer;
+        [layer addSublayer:movesLeftLayer];
 
         [self.pieces setObject:layer forKey:piece];
         [self.pieceLayer addSublayer:layer];

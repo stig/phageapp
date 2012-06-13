@@ -6,12 +6,11 @@
 
 
 @class SBPiece;
-@class SBMovesLeftLayer;
 
 
 @interface SBPieceLayer : CAShapeLayer
 @property(nonatomic,readonly) SBPiece* piece;
-@property(nonatomic,strong) SBMovesLeftLayer *movesLeftLayer;
+@property(nonatomic,strong) CATextLayer *movesLeftLayer;
 + (id)layerWithPiece:(SBPiece *)piece;
 - (id)initWithPiece:(SBPiece *)piece;
 
