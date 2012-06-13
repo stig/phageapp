@@ -213,8 +213,20 @@
             layer.bounds = [self cellRect];
             layer.position = [self cellPositionForLocation:location];
             layer.blocked = NO;
+
+            CGRect r = CGRectInset(layer.bounds, 6.0, 6.0);
+            CGMutablePathRef path = CGPathCreateMutable();
+
+            CGPathMoveToPoint(path, nil, r.origin.x, r.origin.y);
+            CGPathAddLineToPoint(path, nil, r.origin.x + r.size.width, r.origin.y + r.size.width);
+
+            CGPathMoveToPoint(path, nil, r.origin.x, r.origin.y + r.size.width);
+            CGPathAddLineToPoint(path, nil, r.origin.x + r.size.height, r.origin.y);
+
+            layer.path = path;
+            CGPathRelease(path);
+
             [self.cellLayer addSublayer:layer];
-            [layer setNeedsDisplay];
             [self.cells setObject:layer forKey:location];
         }
     }
