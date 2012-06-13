@@ -104,6 +104,8 @@
 }
 
 - (void)handleMatchEnded:(SBAITurnBasedMatch *)match {
+    [TestFlight passCheckpoint:@"FINISH_ONE_PLAYER_MATCH"];
+
     [self.delegate handleMatchEnded:match];
     [self removeOldMatch];
 }

@@ -34,6 +34,8 @@
 
     } else if ([segue.identifier isEqualToString:@"HowToPlay"]) {
 
+        [TestFlight passCheckpoint:@"VIEW_HOWTO"];
+
         NSString *path = [[NSBundle mainBundle] pathForResource:@"HowToPlay" ofType:@"html"];
         NSURL *url = [[NSURL alloc] initFileURLWithPath:path];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];

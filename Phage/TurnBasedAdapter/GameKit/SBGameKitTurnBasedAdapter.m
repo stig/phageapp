@@ -95,6 +95,8 @@
 }
 
 - (void)handleMatchEnded:(GKTurnBasedMatch *)match_ {
+    [TestFlight passCheckpoint:@"FINISH_TWO_PLAYER_MATCH"];
+
     [self.delegate handleMatchEnded:[self wrap:match_]];
 }
 
