@@ -8,7 +8,7 @@
 
 #import "SBBoardViewControllerState.h"
 
-@interface SBBoardViewControllerConfirmState : SBBoardViewControllerState
+@interface SBBoardViewControllerStateConfirm : SBBoardViewControllerState
 @property(nonatomic, strong) SBBoardViewControllerState *previousState;
 @property(nonatomic, weak) SBPiece* selected;
 @property(nonatomic, weak) SBLocation* destination;

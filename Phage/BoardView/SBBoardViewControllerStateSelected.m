@@ -5,14 +5,14 @@
 //
 
 
-#import "SBBoardViewControllerSelectedState.h"
+#import "SBBoardViewControllerStateSelected.h"
 #import "SBPiece.h"
-#import "SBBoardViewControllerConfirmState.h"
-#import "SBBoardViewControllerHintState.h"
-#import "SBBoardViewControllerDraggedState.h"
+#import "SBBoardViewControllerStateConfirm.h"
+#import "SBBoardViewControllerStateHint.h"
+#import "SBBoardViewControllerStateDragged.h"
 #import "SBLocation.h"
 
-@implementation SBBoardViewControllerSelectedState
+@implementation SBBoardViewControllerStateSelected
 
 @synthesize selected = _selected;
 
@@ -24,7 +24,7 @@
     return [self isEqualToBoardViewControllerSelectedState:other];
 }
 
-- (BOOL)isEqualToBoardViewControllerSelectedState:(SBBoardViewControllerSelectedState *)other {
+- (BOOL)isEqualToBoardViewControllerSelectedState:(SBBoardViewControllerStateSelected *)other {
     if (self == other)
         return YES;
     return self.selected == other.selected;
@@ -44,7 +44,7 @@
     [super handleSingleTapWithPiece:piece];
 
     if ([self.delegate canCurrentPlayerMovePiece:piece]) {
-        SBBoardViewControllerSelectedState *state = [SBBoardViewControllerSelectedState state];
+        SBBoardViewControllerStateSelected *state = [SBBoardViewControllerStateSelected state];
         state.selected = piece;
 
         if (![self isEqual:state]) {
@@ -58,7 +58,7 @@
     [super handleDoubleTapWithPiece:piece];
 
     if ([self.delegate canCurrentPlayerMovePiece:piece]) {
-        SBBoardViewControllerHintState *state = [SBBoardViewControllerHintState state];
+        SBBoardViewControllerStateHint *state = [SBBoardViewControllerStateHint state];
         state.selected = piece;
 
         if (![self isEqual:state]) {
@@ -72,7 +72,7 @@
     [super handleSingleTapWithLocation:location];
 
     if ([self.delegate canMovePiece:self.selected toLocation:location]) {
-        SBBoardViewControllerConfirmState *state = [SBBoardViewControllerConfirmState state];
+        SBBoardViewControllerStateConfirm *state = [SBBoardViewControllerStateConfirm state];
         state.selected = self.selected;
         state.destination = location;
         state.previousState = self;
@@ -88,7 +88,7 @@
 
 - (void)longPressStartedWithPiece:(SBPiece *)piece atLocation:(SBLocation *)location {
     [self transitionOut];
-    SBBoardViewControllerDraggedState *state = [SBBoardViewControllerDraggedState state];
+    SBBoardViewControllerStateDragged *state = [SBBoardViewControllerStateDragged state];
     state.dragged = piece;
     state.origin = location;
     [self.delegate transitionToState:state];

@@ -5,9 +5,9 @@
 //
 
 
-#import "SBBoardViewControllerReadonlyState.h"
+#import "SBBoardViewControllerStateReadonly.h"
 
-@implementation SBBoardViewControllerReadonlyState
+@implementation SBBoardViewControllerStateReadonly
 
 
 - (void)displayMessage {

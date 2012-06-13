@@ -5,11 +5,11 @@
 //
 
 
-#import "SBBoardViewControllerDraggedState.h"
-#import "SBBoardViewControllerUnselectedState.h"
+#import "SBBoardViewControllerStateDragged.h"
+#import "SBBoardViewControllerStateUnselected.h"
 #import "SBLocation.h"
 
-@implementation SBBoardViewControllerDraggedState
+@implementation SBBoardViewControllerStateDragged
 @synthesize dragged = _dragged;
 @synthesize origin = _origin;
 
@@ -33,7 +33,7 @@
     } else {
         NSLog(@"self.origin = %@", self.origin);
         [self.gridView movePiece:self.dragged toLocation:self.origin];
-        [self.delegate transitionToState:[SBBoardViewControllerUnselectedState state]];
+        [self.delegate transitionToState:[SBBoardViewControllerStateUnselected state]];
 
         [[[UIAlertView alloc] initWithTitle:@"Illegal Move"
                                     message:@"Double-tap a piece to show its legal destinations."

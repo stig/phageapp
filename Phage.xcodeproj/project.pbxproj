@@ -66,13 +66,13 @@
 		FB89D43C154C7D27001A0BA8 /* SBCellLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BA7 /* SBCellLayer.m */; };
 		FB89D43C154C7D27001A0BC0 /* SBAnimationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BBF /* SBAnimationHelper.m */; };
 		FB89D43C154C7D27001A0BD0 /* SBBoardViewControllerState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BCF /* SBBoardViewControllerState.m */; };
-		FB89D43C154C7D27001A0BD3 /* SBBoardViewControllerReadonlyState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BD2 /* SBBoardViewControllerReadonlyState.m */; };
-		FB89D43C154C7D27001A0BD6 /* SBBoardViewControllerUnselectedState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BD5 /* SBBoardViewControllerUnselectedState.m */; };
-		FB89D43C154C7D27001A0BD9 /* SBBoardViewControllerSelectedState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BD8 /* SBBoardViewControllerSelectedState.m */; };
-		FB89D43C154C7D27001A0BDC /* SBBoardViewControllerConfirmState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BDB /* SBBoardViewControllerConfirmState.m */; };
-		FB89D43C154C7D27001A0BDF /* SBBoardViewControllerGameOverState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BDE /* SBBoardViewControllerGameOverState.m */; };
-		FB89D43C154C7D27001A0BE2 /* SBBoardViewControllerHintState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BE1 /* SBBoardViewControllerHintState.m */; };
-		FB89D43C154C7D27001A0BE5 /* SBBoardViewControllerDraggedState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BE4 /* SBBoardViewControllerDraggedState.m */; };
+		FB89D43C154C7D27001A0BD3 /* SBBoardViewControllerStateReadonly.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BD2 /* SBBoardViewControllerStateReadonly.m */; };
+		FB89D43C154C7D27001A0BD6 /* SBBoardViewControllerStateUnselected.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BD5 /* SBBoardViewControllerStateUnselected.m */; };
+		FB89D43C154C7D27001A0BD9 /* SBBoardViewControllerStateSelected.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BD8 /* SBBoardViewControllerStateSelected.m */; };
+		FB89D43C154C7D27001A0BDC /* SBBoardViewControllerStateConfirm.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BDB /* SBBoardViewControllerStateConfirm.m */; };
+		FB89D43C154C7D27001A0BDF /* SBBoardViewControllerStateGameOver.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BDE /* SBBoardViewControllerStateGameOver.m */; };
+		FB89D43C154C7D27001A0BE2 /* SBBoardViewControllerStateHint.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BE1 /* SBBoardViewControllerStateHint.m */; };
+		FB89D43C154C7D27001A0BE5 /* SBBoardViewControllerStateDragged.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BE4 /* SBBoardViewControllerStateDragged.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -217,20 +217,20 @@
 		FB89D43C154C7D27001A0BC1 /* SBAnimationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAnimationHelper.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BCF /* SBBoardViewControllerState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerState.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BD1 /* SBBoardViewControllerState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerState.h; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0BD2 /* SBBoardViewControllerReadonlyState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerReadonlyState.m; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0BD4 /* SBBoardViewControllerReadonlyState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerReadonlyState.h; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0BD5 /* SBBoardViewControllerUnselectedState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerUnselectedState.m; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0BD7 /* SBBoardViewControllerUnselectedState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerUnselectedState.h; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0BD8 /* SBBoardViewControllerSelectedState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerSelectedState.m; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0BDA /* SBBoardViewControllerSelectedState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerSelectedState.h; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0BDB /* SBBoardViewControllerConfirmState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerConfirmState.m; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0BDD /* SBBoardViewControllerConfirmState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerConfirmState.h; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0BDE /* SBBoardViewControllerGameOverState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerGameOverState.m; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0BE0 /* SBBoardViewControllerGameOverState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerGameOverState.h; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0BE1 /* SBBoardViewControllerHintState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerHintState.m; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0BE3 /* SBBoardViewControllerHintState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerHintState.h; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0BE4 /* SBBoardViewControllerDraggedState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerDraggedState.m; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0BE6 /* SBBoardViewControllerDraggedState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerDraggedState.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BD2 /* SBBoardViewControllerStateReadonly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerStateReadonly.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BD4 /* SBBoardViewControllerStateReadonly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerStateReadonly.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BD5 /* SBBoardViewControllerStateUnselected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerStateUnselected.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BD7 /* SBBoardViewControllerStateUnselected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerStateUnselected.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BD8 /* SBBoardViewControllerStateSelected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerStateSelected.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BDA /* SBBoardViewControllerStateSelected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerStateSelected.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BDB /* SBBoardViewControllerStateConfirm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerStateConfirm.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BDD /* SBBoardViewControllerStateConfirm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerStateConfirm.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BDE /* SBBoardViewControllerStateGameOver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerStateGameOver.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BE0 /* SBBoardViewControllerStateGameOver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerStateGameOver.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BE1 /* SBBoardViewControllerStateHint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerStateHint.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BE3 /* SBBoardViewControllerStateHint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerStateHint.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BE4 /* SBBoardViewControllerStateDragged.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerStateDragged.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BE6 /* SBBoardViewControllerStateDragged.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerStateDragged.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -447,20 +447,20 @@
 		FB89D43C154C7D27001A0BAA /* BoardView */ = {
 			isa = PBXGroup;
 			children = (
-				FB89D43C154C7D27001A0BE6 /* SBBoardViewControllerDraggedState.h */,
-				FB89D43C154C7D27001A0BE4 /* SBBoardViewControllerDraggedState.m */,
-				FB89D43C154C7D27001A0BE3 /* SBBoardViewControllerHintState.h */,
-				FB89D43C154C7D27001A0BE1 /* SBBoardViewControllerHintState.m */,
-				FB89D43C154C7D27001A0BE0 /* SBBoardViewControllerGameOverState.h */,
-				FB89D43C154C7D27001A0BDE /* SBBoardViewControllerGameOverState.m */,
-				FB89D43C154C7D27001A0BDD /* SBBoardViewControllerConfirmState.h */,
-				FB89D43C154C7D27001A0BDB /* SBBoardViewControllerConfirmState.m */,
-				FB89D43C154C7D27001A0BDA /* SBBoardViewControllerSelectedState.h */,
-				FB89D43C154C7D27001A0BD8 /* SBBoardViewControllerSelectedState.m */,
-				FB89D43C154C7D27001A0BD7 /* SBBoardViewControllerUnselectedState.h */,
-				FB89D43C154C7D27001A0BD5 /* SBBoardViewControllerUnselectedState.m */,
-				FB89D43C154C7D27001A0BD4 /* SBBoardViewControllerReadonlyState.h */,
-				FB89D43C154C7D27001A0BD2 /* SBBoardViewControllerReadonlyState.m */,
+				FB89D43C154C7D27001A0BE6 /* SBBoardViewControllerStateDragged.h */,
+				FB89D43C154C7D27001A0BE4 /* SBBoardViewControllerStateDragged.m */,
+				FB89D43C154C7D27001A0BE3 /* SBBoardViewControllerStateHint.h */,
+				FB89D43C154C7D27001A0BE1 /* SBBoardViewControllerStateHint.m */,
+				FB89D43C154C7D27001A0BE0 /* SBBoardViewControllerStateGameOver.h */,
+				FB89D43C154C7D27001A0BDE /* SBBoardViewControllerStateGameOver.m */,
+				FB89D43C154C7D27001A0BDD /* SBBoardViewControllerStateConfirm.h */,
+				FB89D43C154C7D27001A0BDB /* SBBoardViewControllerStateConfirm.m */,
+				FB89D43C154C7D27001A0BDA /* SBBoardViewControllerStateSelected.h */,
+				FB89D43C154C7D27001A0BD8 /* SBBoardViewControllerStateSelected.m */,
+				FB89D43C154C7D27001A0BD7 /* SBBoardViewControllerStateUnselected.h */,
+				FB89D43C154C7D27001A0BD5 /* SBBoardViewControllerStateUnselected.m */,
+				FB89D43C154C7D27001A0BD4 /* SBBoardViewControllerStateReadonly.h */,
+				FB89D43C154C7D27001A0BD2 /* SBBoardViewControllerStateReadonly.m */,
 				FB89D43C154C7D27001A0BD1 /* SBBoardViewControllerState.h */,
 				FB89D43C154C7D27001A0BCF /* SBBoardViewControllerState.m */,
 				FB89D43C154C7D27001A0BC1 /* SBAnimationHelper.h */,
@@ -647,13 +647,13 @@
 				FB89D43C154C7D27001A0BA8 /* SBCellLayer.m in Sources */,
 				FB89D43C154C7D27001A0BC0 /* SBAnimationHelper.m in Sources */,
 				FB89D43C154C7D27001A0BD0 /* SBBoardViewControllerState.m in Sources */,
-				FB89D43C154C7D27001A0BD3 /* SBBoardViewControllerReadonlyState.m in Sources */,
-				FB89D43C154C7D27001A0BD6 /* SBBoardViewControllerUnselectedState.m in Sources */,
-				FB89D43C154C7D27001A0BD9 /* SBBoardViewControllerSelectedState.m in Sources */,
-				FB89D43C154C7D27001A0BDC /* SBBoardViewControllerConfirmState.m in Sources */,
-				FB89D43C154C7D27001A0BDF /* SBBoardViewControllerGameOverState.m in Sources */,
-				FB89D43C154C7D27001A0BE2 /* SBBoardViewControllerHintState.m in Sources */,
-				FB89D43C154C7D27001A0BE5 /* SBBoardViewControllerDraggedState.m in Sources */,
+				FB89D43C154C7D27001A0BD3 /* SBBoardViewControllerStateReadonly.m in Sources */,
+				FB89D43C154C7D27001A0BD6 /* SBBoardViewControllerStateUnselected.m in Sources */,
+				FB89D43C154C7D27001A0BD9 /* SBBoardViewControllerStateSelected.m in Sources */,
+				FB89D43C154C7D27001A0BDC /* SBBoardViewControllerStateConfirm.m in Sources */,
+				FB89D43C154C7D27001A0BDF /* SBBoardViewControllerStateGameOver.m in Sources */,
+				FB89D43C154C7D27001A0BE2 /* SBBoardViewControllerStateHint.m in Sources */,
+				FB89D43C154C7D27001A0BE5 /* SBBoardViewControllerStateDragged.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

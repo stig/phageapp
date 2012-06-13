@@ -5,9 +5,9 @@
 //
 
 
-#import "SBBoardViewControllerHintState.h"
+#import "SBBoardViewControllerStateHint.h"
 
-@implementation SBBoardViewControllerHintState
+@implementation SBBoardViewControllerStateHint
 
 - (void)transitionIn {
     [super transitionIn];

@@ -5,15 +5,15 @@
 //
 
 
-#import "SBBoardViewControllerConfirmState.h"
-#import "SBBoardViewControllerUnselectedState.h"
+#import "SBBoardViewControllerStateConfirm.h"
+#import "SBBoardViewControllerStateUnselected.h"
 
 static NSString *const kSBPhageConfirmKey = @"SBPhageConfirmKey";
 
-@interface SBBoardViewControllerConfirmState () < UIActionSheetDelegate >
+@interface SBBoardViewControllerStateConfirm () < UIActionSheetDelegate >
 @end
 
-@implementation SBBoardViewControllerConfirmState
+@implementation SBBoardViewControllerStateConfirm
 @synthesize selected = _selected;
 @synthesize destination = _destination;
 @synthesize previousState = _previousState;
@@ -48,7 +48,7 @@ static NSString *const kSBPhageConfirmKey = @"SBPhageConfirmKey";
 
     if (actionSheet.cancelButtonIndex == buttonIndex) {
         [self transitionOut];
-        [self.delegate transitionToState:[SBBoardViewControllerUnselectedState state]];
+        [self.delegate transitionToState:[SBBoardViewControllerStateUnselected state]];
 
     } else {
         [self.delegate movePiece:self.selected toLocation:self.destination];

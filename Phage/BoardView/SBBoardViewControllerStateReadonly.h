@@ -8,5 +8,5 @@
 
 #import "SBBoardViewControllerState.h"
 
-@interface SBBoardViewControllerUnselectedState : SBBoardViewControllerState
+@interface SBBoardViewControllerStateReadonly : SBBoardViewControllerState
 @end

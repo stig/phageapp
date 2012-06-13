@@ -11,9 +11,9 @@
 #import "SBMove.h"
 #import "SBTurnBasedParticipant.h"
 #import "PhageModelHelper.h"
-#import "SBBoardViewControllerUnselectedState.h"
-#import "SBBoardViewControllerReadonlyState.h"
-#import "SBBoardViewControllerGameOverState.h"
+#import "SBBoardViewControllerStateUnselected.h"
+#import "SBBoardViewControllerStateReadonly.h"
+#import "SBBoardViewControllerStateGameOver.h"
 #import "SBLocation.h"
 
 @interface SBBoardViewController () < UIActionSheetDelegate >
@@ -110,8 +110,8 @@
     self.forfeitButton.enabled = NO;
 
     id state = [self.turnBasedMatchHelper isLocalPlayerTurn:match]
-            ? [SBBoardViewControllerUnselectedState state]
-            : [SBBoardViewControllerReadonlyState state];
+            ? [SBBoardViewControllerStateUnselected state]
+            : [SBBoardViewControllerStateReadonly state];
     [self transitionToState:state];
 
     [self.gridView layoutForState:[self stateForMatch:match]];
@@ -120,14 +120,14 @@
 - (void)takeTurn:(id<SBTurnBasedMatch>)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     self.forfeitButton.enabled = YES;
-    [self transitionToState:[SBBoardViewControllerUnselectedState state]];
+    [self transitionToState:[SBBoardViewControllerStateUnselected state]];
     [self.gridView layoutForState:match.matchState];
 }
 
 - (void)layoutMatch:(id <SBTurnBasedMatch>)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     self.forfeitButton.enabled = NO;
-    [self transitionToState:[SBBoardViewControllerReadonlyState state]];
+    [self transitionToState:[SBBoardViewControllerStateReadonly state]];
     [self.gridView layoutForState:match.matchState];
 }
 
@@ -145,7 +145,7 @@
 - (void)receiveEndGame:(id<SBTurnBasedMatch>)match {
     NSLog(@"-[%@ %@]", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 
-    [self transitionToState:[SBBoardViewControllerGameOverState state]];
+    [self transitionToState:[SBBoardViewControllerStateGameOver state]];
 
     self.forfeitButton.enabled = NO;
     [self.gridView layoutForState:match.matchState];

@@ -10,9 +10,9 @@
 
 @class SBPiece;
 
-@interface SBBoardViewControllerSelectedState : SBBoardViewControllerState
+@interface SBBoardViewControllerStateSelected : SBBoardViewControllerState
 @property(nonatomic, weak) SBPiece* selected;
 
-- (BOOL)isEqualToBoardViewControllerSelectedState:(SBBoardViewControllerSelectedState *)other;
+- (BOOL)isEqualToBoardViewControllerSelectedState:(SBBoardViewControllerStateSelected *)other;
 
 @end

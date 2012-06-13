@@ -8,7 +8,7 @@
 
 #import "SBBoardViewControllerState.h"
 
-@interface SBBoardViewControllerDraggedState : SBBoardViewControllerState
+@interface SBBoardViewControllerStateDragged : SBBoardViewControllerState
 @property(nonatomic, strong) SBPiece* dragged;
 @property(nonatomic, strong) SBLocation* origin;
 @end
