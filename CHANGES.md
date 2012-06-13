@@ -9,7 +9,9 @@ changes:
 * Double-tap to show hints rather than the previous "tap twice behaviour".
 * Require a long-press to select a piece for dragging.
 
-* Scale up pieces when they are tapped / dragged so it looks like they're picked up.
+Other changes:
+
+* Scale up selected pieces when they are tapped / dragged.
 
 
 0.3.1 (2012-06-01)
