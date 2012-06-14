@@ -39,6 +39,7 @@ These are in no particular order, really.
 * Rules / game guide. Since this is a game nobody is likely to have played before, we need to present the rules
 * Localisations
 * Polish. It absolutely must look good, but I'm happy about it not being too full-featured.
+* Share with Twitter / Facebook / email
 
 Suggested timeline
 ------------------

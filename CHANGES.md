@@ -6,6 +6,7 @@
 * Scale up selected/dragged pieces to suggest them being "picked up" off the board.
 * Send logs to TestFlight to aid debugging.
 * Add TestFlight Checkpoints.
+* Should no longer be able to perform moves after GAME OVER.
 
 0.3.1 (2012-06-01)
 ==================
