@@ -7,6 +7,7 @@
 * Send logs to TestFlight to aid debugging.
 * Add TestFlight Checkpoints.
 * Should no longer be able to perform moves after GAME OVER.
+* On iPhone / iPod Touch only support portrait orientation.
 
 0.3.1 (2012-06-01)
 ==================
