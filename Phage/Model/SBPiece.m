@@ -68,12 +68,6 @@
     return 31u * _isPlayerOne + [NSStringFromClass([self class]) hash];
 }
 
-- (void)drawLayer:(CAShapeLayer *)layer inContext:(CGContextRef)ctx {
-    layer.fillColor = [UIColor colorWithWhite:0.5 alpha:0.5].CGColor;
-    layer.lineWidth = 7.0;
-    layer.strokeColor = (_isPlayerOne == YES ? [UIColor blueColor] : [UIColor redColor]).CGColor;
-}
-
 - (CGPathRef)pathInRect:(CGRect)rect {
     [self doesNotRecognizeSelector:_cmd];
     @throw @"Cannot get here";
