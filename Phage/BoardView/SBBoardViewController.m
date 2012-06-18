@@ -59,8 +59,7 @@
 
 - (SBState*)stateForMatch:(id<SBTurnBasedMatch>)match {
     if (nil == match.matchState) {
-        BOOL player = [match.localParticipant isEqual:match.currentParticipant];
-        return [[SBState alloc] initWithPlayer:player];
+        return [[SBState alloc] init];
     }
     return match.matchState;
 }

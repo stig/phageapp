@@ -44,9 +44,7 @@
     return self;
 }
 
-- (id)initWithPlayer:(BOOL)thePlayer
-{
-
+- (id)init {
     NSArray *theNorth = [NSArray arrayWithObjects:[SBCirclePiece pieceWithOwner:0],
                                                          [SBSquarePiece pieceWithOwner:0],
                                                          [SBTrianglePiece pieceWithOwner:0],
@@ -81,11 +79,7 @@
 
     NSSet *occupiedLocSet = [[NSSet alloc] init];
 
-    return [self initWithPlayerOneTurn:thePlayer playerOnePieces:theNorth playerTwoPieces:theSouth locations:theLocationMap movesLeft:theMovesLeft occupied:occupiedLocSet];
-}
-
-- (id)init {
-    return [self initWithPlayer:YES];
+    return [self initWithPlayerOneTurn:YES playerOnePieces:theNorth playerTwoPieces:theSouth locations:theLocationMap movesLeft:theMovesLeft occupied:occupiedLocSet];
 }
 
 #pragma mark NSCoding

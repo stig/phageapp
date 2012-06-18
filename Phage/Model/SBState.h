@@ -20,8 +20,6 @@
 @property(strong, readonly) NSArray *playerOnePieces;
 @property(strong, readonly) NSArray *playerTwoPieces;
 
-- (id)initWithPlayer:(BOOL)thePlayer;
-
 - (NSUInteger)movesLeftForPiece:(SBPiece*)piece;
 - (SBLocation *)locationForPiece:(SBPiece*)piece;
 - (SBPiece *)pieceForLocation:(SBLocation *)loc;
