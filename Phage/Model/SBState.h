@@ -12,14 +12,7 @@
 @class SBLocation;
 @class SBMove;
 
-@interface SBState : NSObject <NSCoding> {
-
-@private
-    BOOL _isPlayerOne;
-    NSSet *_occupied;
-    NSDictionary *_movesLeft;
-    NSDictionary *_pieceLocations;
-}
+@interface SBState : NSObject <NSCoding>
 
 @property(readonly) BOOL isPlayerOne;
 @property(readonly) NSUInteger rows;

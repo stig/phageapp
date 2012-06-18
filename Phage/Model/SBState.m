@@ -22,6 +22,13 @@
 @end
 
 @implementation SBState {
+
+@private
+    BOOL _isPlayerOne;
+    NSSet *_occupied;
+    NSDictionary *_movesLeft;
+    NSDictionary *_pieceLocations;
+
     NSMutableDictionary *_isLegalMove;
 }
 
