@@ -28,8 +28,6 @@
     NSSet *_occupied;
     NSDictionary *_movesLeft;
     NSDictionary *_pieceLocations;
-
-    NSMutableDictionary *_isLegalMove;
 }
 
 @synthesize isPlayerOne = _isPlayerOne;
@@ -266,18 +264,14 @@
 }
 
 - (BOOL)isLegalMove:(SBMove*)aMove {
-    if (!_isLegalMove) {
-        _isLegalMove = [NSMutableDictionary dictionary];
-        [self enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
-            NSMutableSet *dst = [_isLegalMove objectForKey:move.piece];
-            if (!dst) {
-                dst = [NSMutableSet set];
-                [_isLegalMove setObject:dst forKey:move.piece];
-            }
-            [dst addObject:move.to];
-        }];
-    }
-    return [[_isLegalMove objectForKey:aMove.piece] containsObject:aMove.to];
+    __block BOOL isLegalMove = NO;
+    [self enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
+        if ([aMove isEqualToMove:move]) {
+            *stop = YES;
+            isLegalMove = YES;
+        }
+    }];
+    return isLegalMove;
 }
 
 - (BOOL)opponent {
