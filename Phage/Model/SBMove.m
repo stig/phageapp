@@ -43,9 +43,9 @@
 - (BOOL)isEqualToMove:(SBMove *)other {
     if (self == other)
         return YES;
-    if (![_piece isEqualToPiece:other.piece])
+    if (![_piece isEqual:other.piece])
         return NO;
-    if (![_to isEqualToLocation:other.to])
+    if (![_to isEqual:other.to])
         return NO;
     return YES;
 }

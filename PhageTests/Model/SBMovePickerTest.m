@@ -10,7 +10,7 @@
 #import "SBState.h"
 #import "SBMove.h"
 #import "SBLocation.h"
-#import "SBTrianglePiece.h"
+#import "SBSquarePiece.h"
 
 @interface SBMovePickerTest : SenTestCase
 @end
@@ -24,7 +24,7 @@
     SBMove *move = [picker moveForState:state];
     STAssertNotNil(move, nil);
 
-    SBPiece *piece = [SBTrianglePiece pieceWithOwner:0];
+    SBPiece *piece = [SBSquarePiece pieceWithOwner:0];
     SBLocation *location = [SBLocation locationWithColumn:5 row:3];
     STAssertEqualObjects(move, [SBMove moveWithPiece:piece to:location], nil);
 }
