@@ -250,7 +250,7 @@
     for (SBPiece *piece in [self piecesForPlayer:one]) {
         [self enumerateLegalDestinationsForPiece:piece
                                        withBlock:^(SBLocation *loc, BOOL *stop) {
-                                           block([[SBMove alloc] initWithPiece:piece to:loc], stop);
+                                           block([SBMove moveWithPiece:piece to:loc], stop);
                                        }];
     }
 }

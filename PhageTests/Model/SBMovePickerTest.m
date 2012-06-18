@@ -26,7 +26,7 @@
 
     SBPiece *piece = [SBTrianglePiece pieceWithOwner:0];
     SBLocation *location = [SBLocation locationWithColumn:5 row:3];
-    STAssertEqualObjects(move, [[SBMove alloc] initWithPiece:piece to:location], nil);
+    STAssertEqualObjects(move, [SBMove moveWithPiece:piece to:location], nil);
 }
 
 

@@ -24,7 +24,7 @@
 - (void)setUp {
     a = [SBCirclePiece pieceWithOwner:0];
     b = [SBLocation locationWithColumn:2 row:4];
-    m = [[SBMove alloc] initWithPiece:a to:b];
+    m = [SBMove moveWithPiece:a to:b];
 }
 
 - (void)testBasic {
@@ -37,12 +37,12 @@
 - (void)testEqual {
     STAssertEqualObjects(m, m, nil);
 
-    SBMove *g = [[SBMove alloc] initWithPiece:m.piece to:m.to];
+    SBMove *g = [SBMove moveWithPiece:m.piece to:m.to];
     STAssertEqualObjects(m, g, nil);
 }
 
 - (void)testHash {
-    SBMove *g = [[SBMove alloc] initWithPiece:m.piece to:m.to];
+    SBMove *g = [SBMove moveWithPiece:m.piece to:m.to];
     STAssertEquals([m hash], [g hash], nil);
 }
 
