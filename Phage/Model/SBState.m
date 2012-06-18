@@ -16,20 +16,13 @@
 #import "SBMove.h"
 
 @interface SBState ()
-@property (readonly) NSDictionary *pieceLocations;
-@property (readonly) NSDictionary *movesLeft;
-@property (readonly) NSSet *occupied;
+@property(strong) NSDictionary *pieceLocations;
+@property(strong) NSDictionary *movesLeft;
+@property(strong) NSSet *occupied;
+@property BOOL isPlayerOne;
 @end
 
-@implementation SBState {
-
-@private
-    BOOL _isPlayerOne;
-    NSSet *_occupied;
-    NSDictionary *_movesLeft;
-    NSDictionary *_pieceLocations;
-}
-
+@implementation SBState
 @synthesize isPlayerOne = _isPlayerOne;
 @synthesize playerOnePieces = _playerOnePieces;
 @synthesize playerTwoPieces = _playerTwoPieces;
