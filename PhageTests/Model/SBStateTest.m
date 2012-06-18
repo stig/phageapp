@@ -38,7 +38,7 @@
 }
 
 - (void)testDescription {
-    NSArray *expected = [[NSArray alloc] initWithObjects:
+    NSArray *expected = [NSArray arrayWithObjects:
             @"C: 7",
             @"S: 7",
             @"T: 7",
@@ -110,7 +110,7 @@
     STAssertNotNil(s1, nil);
     STAssertFalse([s1 isEqual:s], nil);
 
-    NSArray *expected = [[NSArray alloc] initWithObjects:
+    NSArray *expected = [NSArray arrayWithObjects:
             @"C: 7",
             @"S: 7",
             @"T: 7",
@@ -137,7 +137,7 @@
     SBState *s1 = [s successorWithMove:[self lastMoveForState:s]];
     SBState *s2 = [s1 successorWithMove:[self lastMoveForState:s1]];
 
-    NSArray *expected = [[NSArray alloc] initWithObjects:
+    NSArray *expected = [NSArray arrayWithObjects:
             @"C: 7",
             @"S: 7",
             @"T: 7",

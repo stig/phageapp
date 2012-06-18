@@ -54,19 +54,19 @@
 - (id)initWithPlayer:(BOOL)thePlayer
 {
 
-    NSArray *theNorth = [[NSArray alloc] initWithObjects:[SBCirclePiece pieceWithOwner:0],
+    NSArray *theNorth = [NSArray arrayWithObjects:[SBCirclePiece pieceWithOwner:0],
                                                          [SBSquarePiece pieceWithOwner:0],
                                                          [SBTrianglePiece pieceWithOwner:0],
                                                          [SBDiamondPiece pieceWithOwner:0],
                                                          nil];
 
-    NSArray *theSouth = [[NSArray alloc] initWithObjects:[SBCirclePiece pieceWithOwner:1],
+    NSArray *theSouth = [NSArray arrayWithObjects:[SBCirclePiece pieceWithOwner:1],
                                                          [SBSquarePiece pieceWithOwner:1],
                                                          [SBTrianglePiece pieceWithOwner:1],
                                                          [SBDiamondPiece pieceWithOwner:1],
                                                          nil];
 
-    NSArray *theLocations = [[NSArray alloc] initWithObjects:[SBLocation locationWithColumn:1 row:4],
+    NSArray *theLocations = [NSArray arrayWithObjects:[SBLocation locationWithColumn:1 row:4],
                                                           [SBLocation locationWithColumn:3 row:5],
                                                           [SBLocation locationWithColumn:5 row:6],
                                                           [SBLocation locationWithColumn:7 row:7],

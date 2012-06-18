@@ -37,7 +37,7 @@
     SBAITurnBasedParticipant *player2 = [[SBAITurnBasedParticipant alloc] initWithPlayerID:@"ai"];
 
     SBAITurnBasedMatch *match = [[SBAITurnBasedMatch alloc] init];
-    match.participants = [[NSArray alloc] initWithObjects:player1, player2, nil];
+    match.participants = [NSArray arrayWithObjects:player1, player2, nil];
     match.matchState = nil;
     match.localParticipant = player1;
     match.currentParticipant = player1;

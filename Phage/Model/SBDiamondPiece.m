@@ -12,7 +12,7 @@
 @implementation SBDiamondPiece
 
 - (NSArray *)directions {
-    return [[NSArray alloc] initWithObjects:
+    return [NSArray arrayWithObjects:
             [SBDirection directionWithColumn:-1 row:0],
             [SBDirection directionWithColumn:1 row:0],
             [SBDirection directionWithColumn:0 row:-1],

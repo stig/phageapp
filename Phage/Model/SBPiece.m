@@ -62,7 +62,7 @@
 }
 
 - (NSArray *)directions {
-    return [[NSArray alloc] init];
+    return [NSArray array];
 }
 
 - (NSUInteger)hash {
