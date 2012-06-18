@@ -63,12 +63,12 @@
 
 - (void)testLocationForPiece {
     STAssertEqualObjects(
-    [[SBLocation alloc] initWithColumn:1u row:4u],
+    [SBLocation locationWithColumn:1u row:4u],
     [s locationForPiece:[SBCirclePiece pieceWithOwner:0]],
     nil);
 
     STAssertEqualObjects(
-    [[SBLocation alloc] initWithColumn:0u row:0u],
+    [SBLocation locationWithColumn:0u row:0u],
     [s locationForPiece:[SBDiamondPiece pieceWithOwner:1]],
     nil);
 }

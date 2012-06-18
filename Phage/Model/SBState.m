@@ -66,14 +66,14 @@
                                                          [SBDiamondPiece pieceWithOwner:1],
                                                          nil];
 
-    NSArray *theLocations = [[NSArray alloc] initWithObjects:[[SBLocation alloc] initWithColumn:1 row:4],
-                                                          [[SBLocation alloc] initWithColumn:3 row:5],
-                                                          [[SBLocation alloc] initWithColumn:5 row:6],
-                                                          [[SBLocation alloc] initWithColumn:7 row:7],
-                                                          [[SBLocation alloc] initWithColumn:6 row:3],
-                                                          [[SBLocation alloc] initWithColumn:4 row:2],
-                                                          [[SBLocation alloc] initWithColumn:2 row:1],
-                                                          [[SBLocation alloc] initWithColumn:0 row:0],
+    NSArray *theLocations = [[NSArray alloc] initWithObjects:[SBLocation locationWithColumn:1 row:4],
+                                                          [SBLocation locationWithColumn:3 row:5],
+                                                          [SBLocation locationWithColumn:5 row:6],
+                                                          [SBLocation locationWithColumn:7 row:7],
+                                                          [SBLocation locationWithColumn:6 row:3],
+                                                          [SBLocation locationWithColumn:4 row:2],
+                                                          [SBLocation locationWithColumn:2 row:1],
+                                                          [SBLocation locationWithColumn:0 row:0],
                                                           nil];
 
     NSArray *thePieces = [theNorth arrayByAddingObjectsFromArray:theSouth];
@@ -182,7 +182,7 @@
 
     for (int r = self.rows - 1; r >= 0; r--) {
         for (int c = 0; c < self.columns; c++) {
-            SBLocation *loc = [[SBLocation alloc] initWithColumn:c row:r];
+            SBLocation *loc = [SBLocation locationWithColumn:c row:r];
 
             SBPiece *p = [self pieceForLocation:loc];
             if (p) {
@@ -320,7 +320,7 @@
 - (void)enumerateLocationsUsingBlock:(void (^)(SBLocation*location))block {
     for (NSUInteger r = 0; r < self.rows; r++) {
         for (NSUInteger c = 0; c < self.columns; c++) {
-            block([[SBLocation alloc] initWithColumn:c row:r]);
+            block([SBLocation locationWithColumn:c row:r]);
         }
     }
 }

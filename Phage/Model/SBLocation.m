@@ -73,7 +73,7 @@
 }
 
 - (SBLocation *)locationByMovingInDirection:(SBDirection *)direction {
-    return [[SBLocation alloc] initWithColumn:self.column + direction.column
+    return [SBLocation locationWithColumn:self.column + direction.column
                                           row:self.row + direction.row];
 }
 @end

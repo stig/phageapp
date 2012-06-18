@@ -17,7 +17,7 @@
 @implementation SBLocationTest
 
 - (void)setUp {
-    loc = [[SBLocation alloc] initWithColumn:1 row:3];
+    loc = [SBLocation locationWithColumn:1 row:3];
 }
 
 - (void)testBasic {
@@ -30,12 +30,12 @@
 - (void)testEqual {
     STAssertEqualObjects(loc, loc, nil);
 
-    SBLocation *b = [[SBLocation alloc] initWithColumn:loc.column row:loc.row];
+    SBLocation *b = [SBLocation locationWithColumn:loc.column row:loc.row];
     STAssertEqualObjects(loc, b, nil);
 }
 
 - (void)testHash {
-    SBLocation *b = [[SBLocation alloc] initWithColumn:loc.column row:loc.row];
+    SBLocation *b = [SBLocation locationWithColumn:loc.column row:loc.row];
     STAssertEquals([loc hash], [b hash], nil);
 }
 
