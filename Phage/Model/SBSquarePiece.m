@@ -13,10 +13,10 @@
 
 - (NSArray *)directions {
     return [[NSArray alloc] initWithObjects:
-            [[SBDirection alloc] initWithColumn:-1 row:-1],
-            [[SBDirection alloc] initWithColumn:1 row:-1],
-            [[SBDirection alloc] initWithColumn:-1 row:1],
-            [[SBDirection alloc] initWithColumn:1 row:1],
+            [SBDirection directionWithColumn:-1 row:-1],
+            [SBDirection directionWithColumn:1 row:-1],
+            [SBDirection directionWithColumn:-1 row:1],
+            [SBDirection directionWithColumn:1 row:1],
             nil];
 }
 

@@ -13,6 +13,7 @@
 @property (readonly) NSInteger column;
 @property (readonly) NSInteger row;
 
++ (id)directionWithColumn:(NSInteger)column row:(NSInteger)row;
 - (id)initWithColumn:(NSInteger)c row:(NSInteger)r;
 - (BOOL)isEqualToDirection:(SBDirection *)other;
 

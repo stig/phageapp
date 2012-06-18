@@ -9,7 +9,7 @@
 static SBDirection *dir;
 
 - (void)setUp {
-    dir = [[SBDirection alloc] initWithColumn:1 row:-1];
+    dir = [SBDirection directionWithColumn:1 row:-1];
 }
 
 - (void)testBasic {
@@ -22,12 +22,12 @@ static SBDirection *dir;
 - (void)testEqual {
     STAssertEqualObjects(dir, dir, nil);
 
-    SBDirection *b = [[SBDirection alloc] initWithColumn:dir.column row:dir.row];
+    SBDirection *b = [SBDirection directionWithColumn:dir.column row:dir.row];
     STAssertEqualObjects(dir, b, nil);
 }
 
 - (void)testHash {
-    SBDirection *b = [[SBDirection alloc] initWithColumn:dir.column row:dir.row];
+    SBDirection *b = [SBDirection directionWithColumn:dir.column row:dir.row];
     STAssertEquals([dir hash], [b hash], nil);
 }
 
