@@ -73,17 +73,13 @@
     nil);
 }
 
-- (void)testNorthPieces {
-    STAssertEquals(s.playerOnePieces.count, 4u, nil);
-    for (id p in s.playerOnePieces) {
-        STAssertEquals([s movesLeftForPiece:p], 7u, nil);
-    }
-}
-
-- (void)testSouthPieces {
-    STAssertEquals(s.playerTwoPieces.count, 4u, nil);
-    for (id p in s.playerTwoPieces) {
-        STAssertEquals([s movesLeftForPiece:p], 7u, nil);
+- (void)testPieces {
+    STAssertEquals(s.pieces.count, 2u, nil);
+    for (NSArray* pp in s.pieces) {
+        STAssertEquals(pp.count, 4u, nil);
+        for (SBPiece *p in pp) {
+            STAssertEquals([s movesLeftForPiece:p], 7u, nil);
+        }
     }
 }
 

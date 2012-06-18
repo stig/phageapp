@@ -17,8 +17,7 @@
 @property(readonly) BOOL isPlayerOne;
 @property(readonly) NSUInteger rows;
 @property(readonly) NSUInteger columns;
-@property(strong, readonly) NSArray *playerOnePieces;
-@property(strong, readonly) NSArray *playerTwoPieces;
+@property(readonly) NSArray *pieces;
 
 - (NSUInteger)movesLeftForPiece:(SBPiece*)piece;
 - (SBLocation *)locationForPiece:(SBPiece*)piece;

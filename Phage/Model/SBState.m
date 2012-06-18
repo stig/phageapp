@@ -24,19 +24,18 @@
 
 @implementation SBState
 @synthesize isPlayerOne = _isPlayerOne;
-@synthesize playerOnePieces = _playerOnePieces;
-@synthesize playerTwoPieces = _playerTwoPieces;
 @synthesize pieceLocations = _pieceLocations;
 @synthesize movesLeft = _movesLeft;
 @synthesize occupied = _occupied;
+@synthesize pieces = _pieces;
+
 
 // Designated initializer
 - (id)initWithPlayerOneTurn:(BOOL)thePlayer playerOnePieces:(NSArray *)theNorth playerTwoPieces:(NSArray *)theSouth locations:(NSDictionary *)theLocationMap movesLeft:(NSDictionary *)theMovesLeftMap occupied:(NSSet *)theOccupiedSet {
     self = [super init];
     if (self) {
         _isPlayerOne = thePlayer;
-        _playerOnePieces = theNorth;
-        _playerTwoPieces = theSouth;
+        _pieces = [NSArray arrayWithObjects: theNorth, theSouth, nil];
         _pieceLocations = theLocationMap;
         _movesLeft = theMovesLeftMap;
         _occupied = theOccupiedSet;
@@ -86,8 +85,8 @@
 
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeBool:_isPlayerOne forKey:@"SBPlayerOne"];
-    [coder encodeObject:_playerOnePieces forKey:@"SBNorth"];
-    [coder encodeObject:_playerTwoPieces forKey:@"SBSouth"];
+    [coder encodeObject:[self piecesForPlayer:YES] forKey:@"SBNorth"];
+    [coder encodeObject:[self piecesForPlayer:NO] forKey:@"SBSouth"];
     [coder encodeObject:_pieceLocations forKey:@"SBLocations"];
     [coder encodeObject:_movesLeft forKey:@"SBMoves"];
     [coder encodeObject:_occupied forKey:@"SBOccupied"];
@@ -163,7 +162,7 @@
 - (NSString *)description {
     NSMutableString *desc = [[NSMutableString alloc] initWithCapacity:self.rows * self.columns * 2u];
 
-    for (id p in _playerOnePieces) {
+    for (id p in [self piecesForPlayer:YES]) {
         [desc appendFormat:@"%@: %@\n", p, [_movesLeft objectForKey:p]];
     }
 
@@ -183,7 +182,7 @@
         [desc appendString:@"\n"];
     }
 
-    for (id p in _playerTwoPieces) {
+    for (id p in [self piecesForPlayer:NO]) {
         [desc appendFormat:@"%@: %@\n", p, [_movesLeft objectForKey:p]];
     }
 
@@ -247,7 +246,7 @@
 }
 
 - (NSArray *)piecesForPlayer:(BOOL)player {
-    return player ? _playerOnePieces : _playerTwoPieces;
+    return [_pieces objectAtIndex:player ? 0 : 1];
 }
 
 - (BOOL)isLegalMove:(SBMove*)aMove {
@@ -275,7 +274,8 @@
     NSUInteger moves = [self movesLeftForPiece:move.piece];
     [newMovesLeft setObject:[NSNumber numberWithUnsignedInteger:moves - 1] forKey:move.piece];
 
-    return [[[self class] alloc] initWithPlayerOneTurn:self.opponent playerOnePieces:_playerOnePieces playerTwoPieces:_playerTwoPieces locations:[newLocations copy] movesLeft:[newMovesLeft copy] occupied:newOccupiedSet];
+    return [[[self class] alloc] initWithPlayerOneTurn:self.opponent playerOnePieces:[self piecesForPlayer:YES]
+                                                                     playerTwoPieces:[self piecesForPlayer:NO] locations:[newLocations copy] movesLeft:[newMovesLeft copy] occupied:newOccupiedSet];
 }
 
 - (BOOL)isGameOver {

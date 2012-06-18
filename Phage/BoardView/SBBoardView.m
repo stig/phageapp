@@ -99,17 +99,19 @@
         layer.blocked = [state wasLocationOccupied:loc];
     }];
 
-    for (SBPiece *piece in [state.playerOnePieces arrayByAddingObjectsFromArray:state.playerTwoPieces]) {
+    for (NSArray *playerPieces in state.pieces) {
+        for (SBPiece *piece in playerPieces) {
 
-        // Animate the piece to its new position
-        [CATransaction begin];
-        [CATransaction setAnimationDuration:1.0f];
+            // Animate the piece to its new position
+            [CATransaction begin];
+            [CATransaction setAnimationDuration:1.0f];
 
-        SBPieceLayer *layer = [self.pieces objectForKey:piece];
-        layer.movesLeftLayer.string = [self movesLeftForPiece:piece atState:state];
-        layer.position = [self cellPositionForLocation:[state locationForPiece:piece]];
+            SBPieceLayer *layer = [self.pieces objectForKey:piece];
+            layer.movesLeftLayer.string = [self movesLeftForPiece:piece atState:state];
+            layer.position = [self cellPositionForLocation:[state locationForPiece:piece]];
 
-        [CATransaction commit];
+            [CATransaction commit];
+        }
     }
 
     [self setNeedsDisplay];
@@ -242,28 +244,30 @@
 - (void)createInitialBoardPieces {
     // TODO this is a nasty hack. It would be better to set it some other way. But it will suffice...
     SBState *state = [[SBState alloc] init];
-    for (SBPiece *piece in [state.playerOnePieces arrayByAddingObjectsFromArray:state.playerTwoPieces]) {
+    for (NSArray *playerPieces in state.pieces) {
+        for (SBPiece *piece in playerPieces) {
 
-        CATextLayer *movesLeftLayer = [CATextLayer layer];
-        movesLeftLayer.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.7].CGColor;
-        movesLeftLayer.foregroundColor = [UIColor whiteColor].CGColor;
-        movesLeftLayer.contentsScale = [[UIScreen mainScreen] scale];
-        movesLeftLayer.frame = CGRectMake([self cellWidth] - 14, 0, 14, 14);
-        movesLeftLayer.fontSize = 14.0;
-        movesLeftLayer.cornerRadius = 7.0;
-        movesLeftLayer.alignmentMode = kCAAlignmentCenter;
-        movesLeftLayer.string = [self movesLeftForPiece:piece atState:state];
+            CATextLayer *movesLeftLayer = [CATextLayer layer];
+            movesLeftLayer.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.7].CGColor;
+            movesLeftLayer.foregroundColor = [UIColor whiteColor].CGColor;
+            movesLeftLayer.contentsScale = [[UIScreen mainScreen] scale];
+            movesLeftLayer.frame = CGRectMake([self cellWidth] - 14, 0, 14, 14);
+            movesLeftLayer.fontSize = 14.0;
+            movesLeftLayer.cornerRadius = 7.0;
+            movesLeftLayer.alignmentMode = kCAAlignmentCenter;
+            movesLeftLayer.string = [self movesLeftForPiece:piece atState:state];
 
-        SBPieceLayer *layer = [SBPieceLayer layerWithPiece:piece];
-        layer.bounds = [self cellRect];
-        layer.path = [piece pathInRect:layer.bounds];
-        layer.movesLeftLayer = movesLeftLayer;
-        layer.position = [self cellPositionForLocation:[state locationForPiece:piece]];
-        layer.movesLeftLayer = movesLeftLayer;
-        [layer addSublayer:movesLeftLayer];
+            SBPieceLayer *layer = [SBPieceLayer layerWithPiece:piece];
+            layer.bounds = [self cellRect];
+            layer.path = [piece pathInRect:layer.bounds];
+            layer.movesLeftLayer = movesLeftLayer;
+            layer.position = [self cellPositionForLocation:[state locationForPiece:piece]];
+            layer.movesLeftLayer = movesLeftLayer;
+            [layer addSublayer:movesLeftLayer];
 
-        [self.pieces setObject:layer forKey:piece];
-        [self.pieceLayer addSublayer:layer];
+            [self.pieces setObject:layer forKey:piece];
+            [self.pieceLayer addSublayer:layer];
+        }
     }
 }
 
