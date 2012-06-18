@@ -27,7 +27,7 @@
 
         self.fillColor = [UIColor colorWithWhite:0.5 alpha:0.5].CGColor;
         self.lineWidth = 7.0;
-        self.strokeColor = (piece.isPlayerOne == YES ? [UIColor blueColor] : [UIColor redColor]).CGColor;
+        self.strokeColor = (piece.owner == 0 ? [UIColor blueColor] : [UIColor redColor]).CGColor;
     }
     return self;
 }

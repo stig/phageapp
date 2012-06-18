@@ -15,7 +15,7 @@
     return [[NSArray alloc] initWithObjects:
             [[SBDirection alloc] initWithColumn:1 row:0],
             [[SBDirection alloc] initWithColumn:-1 row:0],
-            self.isPlayerOne == YES
+            self.owner == 0
                     ? [[SBDirection alloc] initWithColumn:0 row:-1]
                     : [[SBDirection alloc] initWithColumn:0 row:1],
             nil];
@@ -26,7 +26,7 @@
     CGFloat w2 = r.origin.x + r.size.width / 2.0;
 
     CGMutablePathRef path = CGPathCreateMutable();
-    if (self.isPlayerOne) {
+    if (self.owner == 0) {
         CGPathMoveToPoint(path, nil, r.origin.x, r.size.height + r.origin.y);
         CGPathAddLineToPoint(path, nil, w2, r.origin.y);
         CGPathAddLineToPoint(path, nil, r.origin.x + r.size.width, r.size.height + r.origin.y);
@@ -42,7 +42,7 @@
 
 
 - (CGPathRef)pathInRect:(CGRect)rect {
-    if (self.isPlayerOne) {
+    if (self.owner) {
         static CGPathRef path = nil;
         if (!path) path = [self createPathInRect:rect];
         return path;

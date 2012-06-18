@@ -20,7 +20,7 @@
 @implementation SBPieceTest
 
 - (void)setUp {
-    a = [[SBCirclePiece alloc] init];
+    a = [SBCirclePiece pieceWithOwner:0];
 }
 
 - (void)testSelfEquals {
@@ -28,33 +28,33 @@
 }
 
 - (void)testSameEquals {
-    SBPiece *b = [[SBCirclePiece alloc] init];
+    SBPiece *b = [SBCirclePiece pieceWithOwner:0];
     STAssertEqualObjects(a, b, nil);
 }
 
 - (void)testSouthNotEquals {
-    SBPiece *c = [[SBCirclePiece alloc] initWithPlayerOne:NO];
+    SBPiece *c = [SBCirclePiece pieceWithOwner:1];
     STAssertFalse([a isEqual:c], nil);
 }
 
 - (void)testTriangleNotEquals {
-    SBPiece *d = [[SBTrianglePiece alloc] init];
+    SBPiece *d = [SBTrianglePiece pieceWithOwner:0];
     STAssertFalse([a isEqual:d], nil);
 }
 
 - (void)testHash {
-    SBPiece *b = [[SBCirclePiece alloc] init];
+    SBPiece *b = [SBCirclePiece pieceWithOwner:0];
     STAssertEquals([a hash], [b hash], nil);    
 }
 
 - (void)testSouthHashNotEquals {
-    SBPiece *b = [[SBCirclePiece alloc] initWithPlayerOne:NO];
+    SBPiece *b = [SBCirclePiece pieceWithOwner:1];
     STAssertFalse([a hash] == [b hash], nil);    
 }
 
 
 - (void)testTriangleHashNotEquals {
-    SBPiece *b = [[SBTrianglePiece alloc] init];
+    SBPiece *b = [SBTrianglePiece pieceWithOwner:0];
     STAssertFalse([a hash] == [b hash], nil);    
 }
 

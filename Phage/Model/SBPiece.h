@@ -9,8 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface SBPiece : NSObject <NSCopying, NSCoding>
-@property (readonly) BOOL isPlayerOne;
-- (id)initWithPlayerOne:(BOOL)x;
+@property (readonly) NSUInteger owner;
+
++ (id)pieceWithOwner:(NSUInteger)owner;
+
+- (id)initWithOwner:(NSUInteger)owner;
+
 - (BOOL)isEqualToPiece:(SBPiece*)piece;
 - (NSArray*)directions;
 - (CGPathRef)pathInRect:(CGRect)rect;

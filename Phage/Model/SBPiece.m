@@ -10,16 +10,16 @@
 
 @implementation SBPiece
 
-@synthesize isPlayerOne = _isPlayerOne;
+@synthesize owner = _owner;
 
-- (id)init {
-    return [self initWithPlayerOne:YES];
++ (id)pieceWithOwner:(NSUInteger)owner {
+    return [[self alloc] initWithOwner:owner];
 }
 
-- (id)initWithPlayerOne:(BOOL)owner {
+- (id)initWithOwner:(NSUInteger)owner {
     self = [super init];
     if (self) {
-        _isPlayerOne = owner;
+        _owner = owner;
     }
     return self;
 }
@@ -27,11 +27,12 @@
 #pragma mark NSCoding
 
 - (id)initWithCoder:(NSCoder *)coder {
-    return [self initWithPlayerOne:[coder decodeBoolForKey:@"SBPlayerOne"]];
+    BOOL owner = [coder decodeBoolForKey:@"SBPlayerOne"];
+    return [self initWithOwner:owner ? 0 : 1];
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeBool:_isPlayerOne forKey:@"SBPlayerOne"];
+    [coder encodeBool:_owner ? NO : YES forKey:@"SBPlayerOne"];
 }
 
 
@@ -43,7 +44,7 @@
 
 - (NSString*)description {
     NSString *substr = [NSStringFromClass([self class]) substringWithRange:NSMakeRange(2, 1)];
-    return _isPlayerOne == YES ? [substr uppercaseString] : [substr lowercaseString];
+    return 0 == _owner ? [substr uppercaseString] : [substr lowercaseString];
 }
 
 - (BOOL)isEqual:(id)other {
@@ -57,7 +58,7 @@
 - (BOOL)isEqualToPiece:(SBPiece *)other {
     if (self == other)
         return YES;
-    return _isPlayerOne == other.isPlayerOne;
+    return _owner == other.owner;
 }
 
 - (NSArray *)directions {
@@ -65,7 +66,7 @@
 }
 
 - (NSUInteger)hash {
-    return 31u * _isPlayerOne + [NSStringFromClass([self class]) hash];
+    return 31u * _owner + [NSStringFromClass([self class]) hash];
 }
 
 - (CGPathRef)pathInRect:(CGRect)rect {
