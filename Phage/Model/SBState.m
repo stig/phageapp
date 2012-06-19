@@ -134,8 +134,11 @@
 - (NSString *)description {
     NSMutableString *desc = [[NSMutableString alloc] initWithCapacity:self.rows * self.columns * 2u];
 
-    for (id p in [self.pieces objectAtIndex:0]) {
-        [desc appendFormat:@"%@: %@\n", p, [self.moveCountMap objectForKey:p]];
+    for (id pp in self.pieces) {
+        for (id p in pp) {
+            [desc appendFormat:@"%@:%@ ", p, [self.moveCountMap objectForKey:p]];
+        }
+        [desc appendString:@"\n"];
     }
 
     for (int r = self.rows - 1; r >= 0; r--) {
@@ -152,10 +155,6 @@
             }
         }
         [desc appendString:@"\n"];
-    }
-
-    for (id p in [self.pieces objectAtIndex:1]) {
-        [desc appendFormat:@"%@: %@\n", p, [self.moveCountMap objectForKey:p]];
     }
 
     return desc;

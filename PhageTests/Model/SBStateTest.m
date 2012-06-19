@@ -39,10 +39,8 @@
 
 - (void)testDescription {
     NSArray *expected = [NSArray arrayWithObjects:
-            @"C: 7",
-            @"S: 7",
-            @"T: 7",
-            @"D: 7",
+            @"C:7 S:7 T:7 D:7 ",
+            @"c:7 s:7 t:7 d:7 ",
             @".......D",
             @".....T..",
             @"...S....",
@@ -51,10 +49,6 @@
             @"....s...",
             @"..t.....",
             @"d.......",
-            @"c: 7",
-            @"s: 7",
-            @"t: 7",
-            @"d: 7",
             @"",
             nil];
 
@@ -107,10 +101,8 @@
     STAssertFalse([s1 isEqual:s], nil);
 
     NSArray *expected = [NSArray arrayWithObjects:
-            @"C: 7",
-            @"S: 7",
-            @"T: 7",
-            @"D: 6",
+            @"C:7 S:7 T:7 D:6 ",
+            @"c:7 s:7 t:7 d:7 ",
             @".......*",
             @".....T..",
             @"...S....",
@@ -119,10 +111,6 @@
             @"....s...",
             @"..t.....",
             @"d......D",
-            @"c: 7",
-            @"s: 7",
-            @"t: 7",
-            @"d: 7",
             @"",
             nil];
 
@@ -134,10 +122,8 @@
     SBState *s2 = [s1 successorWithMove:[self lastMoveForState:s1]];
 
     NSArray *expected = [NSArray arrayWithObjects:
-            @"C: 7",
-            @"S: 7",
-            @"T: 7",
-            @"D: 6",
+            @"C:7 S:7 T:7 D:6 ",
+            @"c:7 s:7 t:7 d:6 ",
             @"d......*",
             @".....T..",
             @"...S....",
@@ -146,10 +132,6 @@
             @"....s...",
             @"..t.....",
             @"*......D",
-            @"c: 7",
-            @"s: 7",
-            @"t: 7",
-            @"d: 6",
             @"",
             nil];
 
