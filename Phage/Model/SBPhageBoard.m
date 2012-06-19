@@ -20,12 +20,12 @@
 @property(nonatomic, strong) NSArray *moveHistory;
 @property(nonatomic, strong) NSMutableDictionary *pieceMap;
 @property(nonatomic, strong) NSMutableDictionary *locationMap;
-@property(nonatomic, strong) NSMutableDictionary *moveCountMap;
+@property(nonatomic, strong) NSMutableDictionary *pieceTurnCountMap;
 @property(nonatomic, strong) NSSet *occupied;
 @end
 
 @implementation SBPhageBoard
-@synthesize moveCountMap = _moveCountMap;
+@synthesize pieceTurnCountMap = _pieceTurnCountMap;
 @synthesize occupied = _occupied;
 @synthesize pieces = _pieces;
 @synthesize moveHistory = _moveHistory;
@@ -78,9 +78,9 @@
     self.locationMap = [NSMutableDictionary dictionaryWithObjects:theLocations forKeys:thePieces];
     self.pieceMap = [NSMutableDictionary dictionaryWithObjects:thePieces forKeys:theLocations];
 
-    self.moveCountMap = [NSMutableDictionary dictionaryWithCapacity:thePieces.count];
+    self.pieceTurnCountMap = [NSMutableDictionary dictionaryWithCapacity:thePieces.count];
     for (SBPiece *p in thePieces) {
-        [self.moveCountMap setObject:[NSNumber numberWithUnsignedInteger:7u] forKey:p];
+        [self.pieceTurnCountMap setObject:[NSNumber numberWithUnsignedInteger:7u] forKey:p];
     }
 
     self.occupied = [NSSet set];
@@ -136,7 +136,7 @@
 
     for (id pp in self.pieces) {
         for (id p in pp) {
-            [desc appendFormat:@"%@:%@ ", p, [self.moveCountMap objectForKey:p]];
+            [desc appendFormat:@"%@:%@ ", p, [self.pieceTurnCountMap objectForKey:p]];
         }
         [desc appendString:@"\n"];
     }
@@ -163,7 +163,7 @@
 #pragma mark model methods
 
 - (NSNumber*)turnsLeftForPiece:(SBPiece *)piece {
-    return [self.moveCountMap objectForKey:piece];
+    return [self.pieceTurnCountMap objectForKey:piece];
 }
 
 - (SBLocation *)locationForPiece:(SBPiece *)piece {
@@ -239,7 +239,7 @@
     [self.pieceMap setObject:piece forKey:move.to];
 
     NSUInteger n = [[self turnsLeftForPiece:piece] unsignedIntegerValue];
-    [self.moveCountMap setObject:[NSNumber numberWithUnsignedInteger:n - 1] forKey:piece];
+    [self.pieceTurnCountMap setObject:[NSNumber numberWithUnsignedInteger:n - 1] forKey:piece];
 }
 
 - (SBPhageBoard *)successorWithMove:(SBMove *)move {
