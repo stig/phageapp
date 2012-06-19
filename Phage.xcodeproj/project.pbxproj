@@ -73,6 +73,8 @@
 		FB89D43C154C7D27001A0BDF /* SBBoardViewControllerStateGameOver.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BDE /* SBBoardViewControllerStateGameOver.m */; };
 		FB89D43C154C7D27001A0BE2 /* SBBoardViewControllerStateHint.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BE1 /* SBBoardViewControllerStateHint.m */; };
 		FB89D43C154C7D27001A0BE5 /* SBBoardViewControllerStateDragged.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BE4 /* SBBoardViewControllerStateDragged.m */; };
+		FB89D43C154C7D27001A0BE9 /* SBPhageMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BE8 /* SBPhageMatch.m */; };
+		FB89D43C154C7D27001A0BEE /* SBPhageMatchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BEB /* SBPhageMatchTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -231,6 +233,10 @@
 		FB89D43C154C7D27001A0BE3 /* SBBoardViewControllerStateHint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerStateHint.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BE4 /* SBBoardViewControllerStateDragged.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerStateDragged.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BE6 /* SBBoardViewControllerStateDragged.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerStateDragged.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BE7 /* SBPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPlayer.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BE8 /* SBPhageMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPhageMatch.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BEA /* SBPhageMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPhageMatch.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BEB /* SBPhageMatchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPhageMatchTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +272,9 @@
 		D755A4941532224C003BB704 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0BEA /* SBPhageMatch.h */,
+				FB89D43C154C7D27001A0BE8 /* SBPhageMatch.m */,
+				FB89D43C154C7D27001A0BE7 /* SBPlayer.h */,
 				D76A45BD151DFD1A00E59146 /* SBTriangle.m */,
 				D76A45BC151DFD1A00E59146 /* SBTriangle.h */,
 				D76A45BA151DFD0E00E59146 /* SBSquare.m */,
@@ -434,6 +443,7 @@
 		FB89D43C154C7D27001A0BA0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0BEB /* SBPhageMatchTest.m */,
 				D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */,
 				D73965B1151FB10600118094 /* SBPieceTest.m */,
 				D76A45A7151DE43300E59146 /* SBMoveTest.m */,
@@ -654,6 +664,7 @@
 				FB89D43C154C7D27001A0BDF /* SBBoardViewControllerStateGameOver.m in Sources */,
 				FB89D43C154C7D27001A0BE2 /* SBBoardViewControllerStateHint.m in Sources */,
 				FB89D43C154C7D27001A0BE5 /* SBBoardViewControllerStateDragged.m in Sources */,
+				FB89D43C154C7D27001A0BE9 /* SBPhageMatch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,6 +686,7 @@
 				FB89D43C154C7D27001A0B34 /* SBGameKitTurnBasedParticipantTest.m in Sources */,
 				FB89D43C154C7D27001A0B9A /* SBTurnBasedMatchHelperTest.m in Sources */,
 				FB89D43C154C7D27001A0B9F /* PhageModelHelperTest.m in Sources */,
+				FB89D43C154C7D27001A0BEE /* SBPhageMatchTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -841,6 +853,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/libs/ocmock/Source/**";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -866,6 +879,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/libs/ocmock/Source/**";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
