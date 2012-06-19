@@ -28,8 +28,6 @@
 - (SBLocation *)locationForPiece:(SBPiece*)piece;
 - (SBPiece *)pieceForLocation:(SBLocation *)loc;
 
-- (BOOL)isEqualToState:(SBPhageBoard *)state;
-
 - (BOOL)wasLocationOccupied:(SBLocation*)loc;
 
 - (SBPhageBoard *)successorWithMove:(SBMove *)move;
