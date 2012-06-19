@@ -24,18 +24,6 @@
     return self;
 }
 
-#pragma mark NSCoding
-
-- (id)initWithCoder:(NSCoder *)coder {
-    BOOL owner = [coder decodeBoolForKey:@"SBPlayerOne"];
-    return [self initWithOwner:owner ? 0 : 1];
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeBool:_owner ? NO : YES forKey:@"SBPlayerOne"];
-}
-
-
 #pragma mark NSCopying
 
 - (id)copyWithZone:(NSZone*)zone {

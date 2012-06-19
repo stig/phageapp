@@ -8,14 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SBPiece : NSObject <NSCopying, NSCoding>
+@interface SBPiece : NSObject <NSCopying>
 @property (readonly) NSUInteger owner;
 
 + (id)pieceWithOwner:(NSUInteger)owner;
-
 - (id)initWithOwner:(NSUInteger)owner;
 
 - (BOOL)isEqualToPiece:(SBPiece*)piece;
+
 - (NSArray*)directions;
+
 - (CGPathRef)pathInRect:(CGRect)rect;
 @end
