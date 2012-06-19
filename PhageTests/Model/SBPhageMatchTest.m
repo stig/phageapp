@@ -10,6 +10,8 @@
 #import "SBPhageMatch.h"
 #import "SBPlayer.h"
 #import "SBPhageBoard.h"
+#import "SBMove.h"
+#import "SBLocation.h"
 
 @interface SBPhageMatchTest : SenTestCase {
     SBPhageMatch *match;
@@ -32,6 +34,17 @@
     STAssertEqualObjects(match.board, [SBPhageBoard board], nil);
     STAssertEqualObjects([match.players objectAtIndex:0], one, nil);
     STAssertEqualObjects([match.players objectAtIndex:1], two, nil);
+}
+
+- (void)testInitWithMoveHistory {
+    SBLocation *from = [SBLocation locationWithColumn:1 row:4];
+    SBLocation *to = [SBLocation locationWithColumn:1 row:5];
+    NSArray *history = [NSArray arrayWithObject:[SBMove moveWithFrom:from to:to]];
+    match = [SBPhageMatch matchWithPlayerOne:one two:two moveHistory:history];
+    STAssertNotNil(match, nil);
+
+    STAssertEqualObjects(match.currentPlayer, two, nil);
+    STAssertEqualObjects(match.board.moveHistory, history, nil);
 }
 
 @end

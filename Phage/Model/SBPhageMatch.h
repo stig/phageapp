@@ -18,4 +18,7 @@
 + (id)matchWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two;
 - (id)initWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two;
 
++ (id)matchWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two moveHistory:(NSArray*)moveHistory;
+- (id)initWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two moveHistory:(NSArray*)moveHistory;
+
 @end
