@@ -48,4 +48,8 @@
 
 
 
+- (IBAction)leaveFeedback {
+    [TestFlight openFeedbackView];
+}
+
 @end

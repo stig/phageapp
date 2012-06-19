@@ -7,4 +7,5 @@
 
 
 @interface PhageRootViewController : UIViewController
+- (IBAction)leaveFeedback;
 @end
