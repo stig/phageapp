@@ -16,45 +16,39 @@
 #import "SBMove.h"
 
 @interface SBState ()
-@property(strong) NSDictionary *pieceLocations;
-@property(strong) NSDictionary *movesLeft;
-@property(strong) NSSet *occupied;
-@property BOOL isPlayerOne;
+@property(nonatomic, strong) NSArray *pieces;
+@property(nonatomic, strong) NSArray *moves;
+@property(nonatomic, strong) NSMutableDictionary *locationMap;
+@property(nonatomic, strong) NSMutableDictionary *moveCountMap;
+@property(nonatomic, strong) NSSet *occupied;
 @end
 
 @implementation SBState
-@synthesize isPlayerOne = _isPlayerOne;
-@synthesize pieceLocations = _pieceLocations;
-@synthesize movesLeft = _movesLeft;
+@synthesize moveCountMap = _moveCountMap;
 @synthesize occupied = _occupied;
 @synthesize pieces = _pieces;
+@synthesize moves = _moves;
+@synthesize locationMap = _locationMap;
 
 
 // Designated initializer
-- (id)initWithPlayerOneTurn:(BOOL)thePlayer playerOnePieces:(NSArray *)theNorth playerTwoPieces:(NSArray *)theSouth locations:(NSDictionary *)theLocationMap movesLeft:(NSDictionary *)theMovesLeftMap occupied:(NSSet *)theOccupiedSet {
-    self = [super init];
-    if (self) {
-        _isPlayerOne = thePlayer;
-        _pieces = [NSArray arrayWithObjects: theNorth, theSouth, nil];
-        _pieceLocations = theLocationMap;
-        _movesLeft = theMovesLeftMap;
-        _occupied = theOccupiedSet;
-    }
-    return self;
-}
-
 - (id)init {
-    NSArray *theNorth = [NSArray arrayWithObjects:[SBCirclePiece pieceWithOwner:0],
-                                                         [SBSquarePiece pieceWithOwner:0],
-                                                         [SBTrianglePiece pieceWithOwner:0],
-                                                         [SBDiamondPiece pieceWithOwner:0],
-                                                         nil];
+    self = [super init];
+    if (!self) return nil;
 
-    NSArray *theSouth = [NSArray arrayWithObjects:[SBCirclePiece pieceWithOwner:1],
-                                                         [SBSquarePiece pieceWithOwner:1],
-                                                         [SBTrianglePiece pieceWithOwner:1],
-                                                         [SBDiamondPiece pieceWithOwner:1],
-                                                         nil];
+    NSArray *thePieces = [NSArray arrayWithObjects:[SBCirclePiece pieceWithOwner:0],
+                                                   [SBSquarePiece pieceWithOwner:0],
+                                                   [SBTrianglePiece pieceWithOwner:0],
+                                                   [SBDiamondPiece pieceWithOwner:0],
+                                                   [SBCirclePiece pieceWithOwner:1],
+                                                   [SBSquarePiece pieceWithOwner:1],
+                                                   [SBTrianglePiece pieceWithOwner:1],
+                                                   [SBDiamondPiece pieceWithOwner:1],
+                                                   nil];
+
+    self.pieces = [NSArray arrayWithObjects:[thePieces subarrayWithRange:NSMakeRange(0, 4)],
+                                            [thePieces subarrayWithRange:NSMakeRange(4, 4)],
+                                            nil];
 
     NSArray *theLocations = [NSArray arrayWithObjects:[SBLocation locationWithColumn:1 row:4],
                                                           [SBLocation locationWithColumn:3 row:5],
@@ -66,49 +60,26 @@
                                                           [SBLocation locationWithColumn:0 row:0],
                                                           nil];
 
-    NSArray *thePieces = [theNorth arrayByAddingObjectsFromArray:theSouth];
+    self.locationMap = [NSMutableDictionary dictionaryWithObjects:theLocations forKeys:thePieces];
 
-    NSDictionary *theLocationMap = [[NSDictionary alloc] initWithObjects:theLocations forKeys:thePieces];
+    self.moveCountMap = [NSMutableDictionary dictionaryWithCapacity:thePieces.count];
+    for (SBPiece *p in thePieces) {
+        [self.moveCountMap setObject:[NSNumber numberWithUnsignedInteger:7u] forKey:p];
+    }
 
-    NSMutableArray *theMoves = [[NSMutableArray alloc] initWithCapacity:8u];
-    for (SBPiece *p in thePieces)
-        [theMoves addObject:[NSNumber numberWithUnsignedInteger:7u]];
+    self.occupied = [NSSet set];
+    self.moves = [NSArray array];
 
-    NSDictionary *theMovesLeft = [[NSDictionary alloc] initWithObjects:theMoves forKeys:thePieces];
-
-    NSSet *occupiedLocSet = [[NSSet alloc] init];
-
-    return [self initWithPlayerOneTurn:YES playerOnePieces:theNorth playerTwoPieces:theSouth locations:theLocationMap movesLeft:theMovesLeft occupied:occupiedLocSet];
+    return self;
 }
 
-#pragma mark NSCoding
+#pragma mark NSCopying
 
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeBool:_isPlayerOne forKey:@"SBPlayerOne"];
-    [coder encodeObject:[self piecesForPlayer:YES] forKey:@"SBNorth"];
-    [coder encodeObject:[self piecesForPlayer:NO] forKey:@"SBSouth"];
-    [coder encodeObject:_pieceLocations forKey:@"SBLocations"];
-    [coder encodeObject:_movesLeft forKey:@"SBMoves"];
-    [coder encodeObject:_occupied forKey:@"SBOccupied"];
-}
-
-- (id)initWithCoder:(NSCoder *)coder {
-    // This hackery is necessary because we used to write the current locations of pieces to GameCenter.
-    // TODO remove this hackery when all games have been upgraded to not require it
-    NSDictionary *locations = [coder decodeObjectForKey:@"SBLocations"];
-    NSSet *pieceLocations = [[NSSet alloc] initWithArray:locations.allValues];
-
-    NSSet *occupied = [coder decodeObjectForKey:@"SBOccupied"];
-    occupied = [occupied objectsPassingTest:^(id obj, BOOL *stop) {
-        return (BOOL)![pieceLocations containsObject:obj];
-    }];
-
-    return [self initWithPlayerOneTurn:[coder decodeBoolForKey:@"SBPlayerOne"]
-                       playerOnePieces:[coder decodeObjectForKey:@"SBNorth"]
-                       playerTwoPieces:[coder decodeObjectForKey:@"SBSouth"]
-                             locations:locations
-                             movesLeft:[coder decodeObjectForKey:@"SBMoves"]
-                              occupied:occupied];
+- (id)copyWithZone:(NSZone*)zone {
+    SBState *copy = [[[self class] alloc] init];
+    for (SBMove *move in self.moves)
+        [copy transformIntoSuccessorWithMove:move];
+    return copy;
 }
 
 #pragma mark Hashable
@@ -125,18 +96,11 @@
     if (self == other)
         return YES;
 
-    return [_pieceLocations isEqualToDictionary:other.pieceLocations] &&
-            _isPlayerOne == other.isPlayerOne &&
-            [_movesLeft isEqualToDictionary:other.movesLeft] &&
-            [_occupied isEqualToSet:other.occupied];
+    return [self.moves isEqualToArray:other.moves];
 }
 
 - (NSUInteger)hash {
-    NSUInteger hash = [_pieceLocations hash];
-    hash = hash * 31u + _isPlayerOne;
-    hash = hash * 31u + [_movesLeft hash];
-    hash = hash * 31u + [_occupied hash];
-    return hash;
+    return [self.moves hash];
 }
 
 #pragma mark description
@@ -150,7 +114,7 @@
 }
 
 - (SBPiece *)pieceForLocation:(SBLocation *)loc {
-    return [[_pieceLocations keysOfEntriesPassingTest:^(id key, id val, BOOL *stop) {
+    return [[self.locationMap keysOfEntriesPassingTest:^(id key, id val, BOOL *stop) {
         if ([loc isEqualToLocation:val]) {
             *stop = YES;
             return YES;
@@ -163,7 +127,7 @@
     NSMutableString *desc = [[NSMutableString alloc] initWithCapacity:self.rows * self.columns * 2u];
 
     for (id p in [self piecesForPlayer:YES]) {
-        [desc appendFormat:@"%@: %@\n", p, [_movesLeft objectForKey:p]];
+        [desc appendFormat:@"%@: %@\n", p, [_moveCountMap objectForKey:p]];
     }
 
     for (int r = self.rows - 1; r >= 0; r--) {
@@ -183,7 +147,7 @@
     }
 
     for (id p in [self piecesForPlayer:NO]) {
-        [desc appendFormat:@"%@: %@\n", p, [_movesLeft objectForKey:p]];
+        [desc appendFormat:@"%@: %@\n", p, [_moveCountMap objectForKey:p]];
     }
 
     return desc;
@@ -192,11 +156,12 @@
 #pragma mark model methods
 
 - (NSUInteger)movesLeftForPiece:(SBPiece *)piece {
-    return [[_movesLeft objectForKey:piece] unsignedIntegerValue];
+
+    return [[_moveCountMap objectForKey:piece] unsignedIntegerValue];
 }
 
 - (SBLocation *)locationForPiece:(SBPiece *)piece {
-    return [_pieceLocations objectForKey:piece];
+    return [self.locationMap objectForKey:piece];
 }
 
 - (BOOL)isGridLocation:(SBLocation*)loc {
@@ -262,23 +227,24 @@
 }
 
 - (BOOL)opponent {
-    return !_isPlayerOne;
+    return !self.isPlayerOne;
+}
+
+- (void)transformIntoSuccessorWithMove:(SBMove*)move {
+    self.occupied = [self.occupied setByAddingObject:move.from];
+    self.moves = [self.moves arrayByAddingObject:move];
+
+    SBPiece *piece = [self pieceForLocation:move.from];
+    [self.locationMap setObject:move.to forKey:piece];
+
+    NSUInteger n = [self movesLeftForPiece:piece];
+    [self.moveCountMap setObject:[NSNumber numberWithUnsignedInteger:n - 1] forKey:piece];
 }
 
 - (SBState *)successorWithMove:(SBMove *)move {
-
-    NSSet *newOccupiedSet = [_occupied setByAddingObject:move.from];
-
-    SBPiece *piece = [self pieceForLocation:move.from];
-    NSMutableDictionary *newLocations = [_pieceLocations mutableCopy];
-    [newLocations setObject:move.to forKey:piece];
-
-    NSMutableDictionary *newMovesLeft = [_movesLeft mutableCopy];
-    NSUInteger moves = [self movesLeftForPiece:piece];
-    [newMovesLeft setObject:[NSNumber numberWithUnsignedInteger:moves - 1] forKey:piece];
-
-    return [[[self class] alloc] initWithPlayerOneTurn:self.opponent playerOnePieces:[self piecesForPlayer:YES]
-                                                                     playerTwoPieces:[self piecesForPlayer:NO] locations:[newLocations copy] movesLeft:[newMovesLeft copy] occupied:newOccupiedSet];
+    SBState *copy = [self copy];
+    [copy transformIntoSuccessorWithMove:move];
+    return copy;
 }
 
 - (BOOL)isGameOver {
@@ -313,6 +279,14 @@
             block([SBLocation locationWithColumn:c row:r]);
         }
     }
+}
+
+- (BOOL)isPlayerOne {
+    return 0 == [self playerTurn];
+}
+
+- (NSUInteger)playerTurn {
+    return self.moves.count % 2u;
 }
 
 - (NSUInteger)columns {

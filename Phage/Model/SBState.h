@@ -12,12 +12,12 @@
 @class SBLocation;
 @class SBMove;
 
-@interface SBState : NSObject <NSCoding>
+@interface SBState : NSObject <NSCopying>
 
 @property(readonly) BOOL isPlayerOne;
-@property(readonly) NSUInteger rows;
-@property(readonly) NSUInteger columns;
-@property(readonly) NSArray *pieces;
+@property(nonatomic, readonly) NSUInteger rows;
+@property(nonatomic, readonly) NSUInteger columns;
+@property(nonatomic, strong, readonly) NSArray *pieces;
 
 - (NSUInteger)movesLeftForPiece:(SBPiece*)piece;
 - (SBLocation *)locationForPiece:(SBPiece*)piece;

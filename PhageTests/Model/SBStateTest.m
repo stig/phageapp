@@ -156,25 +156,6 @@
     STAssertEqualObjects([s2 description], [expected componentsJoinedByString:@"\n"], nil);
 }
 
-- (void)testCoding {
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:s];
-    SBState *s1 = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    STAssertEqualObjects(s1, s, nil);
-}
-
-- (void)testCodingSize {
-    for (;;) {
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:s];
-        STAssertTrue(data.length < 3096u, @"Serialised state is less than 3K");
-
-        SBMove *move = [self lastMoveForState:s];
-        if (!move)
-            break;
-
-        s = [s successorWithMove:move];
-    }
-}
-
 - (void)testIsGameOver {
     STAssertFalse([s isGameOver], nil);
     STAssertThrows([s isLoss], nil);
