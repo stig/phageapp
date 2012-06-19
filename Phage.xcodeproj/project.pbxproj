@@ -276,8 +276,6 @@
 				D76A45B6151DFD0000E59146 /* SBDiamond.h */,
 				D76A45B4151DFC4700E59146 /* SBCircle.m */,
 				D76A45B3151DFC4700E59146 /* SBCircle.h */,
-				FB89D43C154C7D27001A0B9D /* PhageModelHelper.h */,
-				FB89D43C154C7D27001A0B9B /* PhageModelHelper.m */,
 				D7BFA3AE151F108100435C7F /* SBPhageBoard.m */,
 				D7BFA3AD151F108100435C7F /* SBPhageBoard.h */,
 				D7BFA3B2151F2AD300435C88 /* SBMovePicker.m */,
@@ -359,6 +357,7 @@
 		D76A458C151DDC7500E59146 /* PhageTests */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0B9E /* PhageModelHelperTest.m */,
 				FB89D43C154C7D27001A0B99 /* SBTurnBasedMatchHelperTest.m */,
 				FB89D43C154C7D27001A0B33 /* SBGameKitTurnBasedParticipantTest.m */,
 				FB89D43C154C7D27001A0B31 /* SBGameKitTurnBasedMatchTest.m */,
@@ -420,6 +419,8 @@
 		FB89D43C154C7D27001A0B96 /* TurnBasedAdapter */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0B9B /* PhageModelHelper.m */,
+				FB89D43C154C7D27001A0B9D /* PhageModelHelper.h */,
 				FB89D43C154C7D27001A0B97 /* SBTurnBasedMatchHelper.m */,
 				FB89D43C154C7D27001A0B1C /* GameKit */,
 				FB89D43C154C7D27001A0B12 /* AI */,
@@ -433,7 +434,6 @@
 		FB89D43C154C7D27001A0BA0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FB89D43C154C7D27001A0B9E /* PhageModelHelperTest.m */,
 				D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */,
 				D73965B1151FB10600118094 /* SBPieceTest.m */,
 				D76A45A7151DE43300E59146 /* SBMoveTest.m */,
