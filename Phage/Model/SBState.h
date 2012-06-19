@@ -24,8 +24,7 @@
 + (id)stateWithMoves:(NSArray*)moves;
 - (id)initWithMoves:(NSArray *)moves;
 
-
-- (NSUInteger)movesLeftForPiece:(SBPiece*)piece;
+- (NSNumber*)movesLeftForPiece:(SBPiece*)piece;
 - (SBLocation *)locationForPiece:(SBPiece*)piece;
 - (SBPiece *)pieceForLocation:(SBLocation *)loc;
 

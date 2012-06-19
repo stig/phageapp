@@ -107,7 +107,7 @@
             [CATransaction setAnimationDuration:1.0f];
 
             SBPieceLayer *layer = [self.pieces objectForKey:piece];
-            layer.movesLeftLayer.string = [self movesLeftForPiece:piece atState:state];
+            layer.movesLeftLayer.string = [[state movesLeftForPiece:piece] stringValue];
             layer.position = [self cellPositionForLocation:[state locationForPiece:piece]];
 
             [CATransaction commit];
@@ -237,10 +237,6 @@
     }
 }
 
-- (NSString *)movesLeftForPiece:(SBPiece *)piece atState:(SBState *)state {
-    return [NSString stringWithFormat:@"%u", [state movesLeftForPiece:piece]];
-}
-
 - (void)createInitialBoardPieces {
     // TODO this is a nasty hack. It would be better to set it some other way. But it will suffice...
     SBState *state = [SBState state];
@@ -255,7 +251,7 @@
             movesLeftLayer.fontSize = 14.0;
             movesLeftLayer.cornerRadius = 7.0;
             movesLeftLayer.alignmentMode = kCAAlignmentCenter;
-            movesLeftLayer.string = [self movesLeftForPiece:piece atState:state];
+            movesLeftLayer.string = [[state movesLeftForPiece:piece] stringValue];
 
             SBPieceLayer *layer = [SBPieceLayer layerWithPiece:piece];
             layer.bounds = [self cellRect];

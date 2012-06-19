@@ -135,7 +135,7 @@
     NSMutableString *desc = [[NSMutableString alloc] initWithCapacity:self.rows * self.columns * 2u];
 
     for (id p in [self piecesForPlayer:YES]) {
-        [desc appendFormat:@"%@: %@\n", p, [_moveCountMap objectForKey:p]];
+        [desc appendFormat:@"%@: %@\n", p, [self.moveCountMap objectForKey:p]];
     }
 
     for (int r = self.rows - 1; r >= 0; r--) {
@@ -155,7 +155,7 @@
     }
 
     for (id p in [self piecesForPlayer:NO]) {
-        [desc appendFormat:@"%@: %@\n", p, [_moveCountMap objectForKey:p]];
+        [desc appendFormat:@"%@: %@\n", p, [self.moveCountMap objectForKey:p]];
     }
 
     return desc;
@@ -163,8 +163,8 @@
 
 #pragma mark model methods
 
-- (NSUInteger)movesLeftForPiece:(SBPiece *)piece {
-    return [[_moveCountMap objectForKey:piece] unsignedIntegerValue];
+- (NSNumber*)movesLeftForPiece:(SBPiece *)piece {
+    return [self.moveCountMap objectForKey:piece];
 }
 
 - (SBLocation *)locationForPiece:(SBPiece *)piece {
@@ -176,7 +176,7 @@
 }
 
 - (void)enumerateLegalDestinationsForPiece:(SBPiece *)piece withBlock:(void (^)(SBLocation *loc, BOOL *stop))block {
-    if (![self movesLeftForPiece:piece])
+    if ([[NSNumber numberWithUnsignedInteger:0] isEqualToNumber:[self movesLeftForPiece:piece]])
         return;
 
     for (SBDirection *d in piece.directions) {
@@ -219,7 +219,7 @@
 }
 
 - (NSArray *)piecesForPlayer:(BOOL)player {
-    return [_pieces objectAtIndex:player ? 0 : 1];
+    return [self.pieces objectAtIndex:player ? 0 : 1];
 }
 
 - (BOOL)isLegalMove:(SBMove*)aMove {
@@ -247,7 +247,7 @@
     [self.pieceMap removeObjectForKey:move.from];
     [self.pieceMap setObject:piece forKey:move.to];
 
-    NSUInteger n = [self movesLeftForPiece:piece];
+    NSUInteger n = [[self movesLeftForPiece:piece] unsignedIntegerValue];
     [self.moveCountMap setObject:[NSNumber numberWithUnsignedInteger:n - 1] forKey:piece];
 }
 
