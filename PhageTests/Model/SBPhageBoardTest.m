@@ -9,8 +9,8 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "SBPhageBoard.h"
 #import "SBLocation.h"
-#import "SBCirclePiece.h"
-#import "SBDiamondPiece.h"
+#import "SBCircle.h"
+#import "SBDiamond.h"
 #import "SBMove.h"
 
 @interface SBPhageBoardTest : SenTestCase {
@@ -58,12 +58,12 @@
 - (void)testLocationForPiece {
     STAssertEqualObjects(
     [SBLocation locationWithColumn:1u row:4u],
-    [s locationForPiece:[SBCirclePiece pieceWithOwner:0]],
+    [s locationForPiece:[SBCircle pieceWithOwner:0]],
     nil);
 
     STAssertEqualObjects(
     [SBLocation locationWithColumn:0u row:0u],
-    [s locationForPiece:[SBDiamondPiece pieceWithOwner:1]],
+    [s locationForPiece:[SBDiamond pieceWithOwner:1]],
     nil);
 }
 

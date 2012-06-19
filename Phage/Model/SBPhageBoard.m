@@ -7,10 +7,10 @@
 //
 
 #import "SBPhageBoard.h"
-#import "SBCirclePiece.h"
-#import "SBDiamondPiece.h"
-#import "SBSquarePiece.h"
-#import "SBTrianglePiece.h"
+#import "SBCircle.h"
+#import "SBDiamond.h"
+#import "SBSquare.h"
+#import "SBTriangle.h"
 #import "SBLocation.h"
 #import "SBDirection.h"
 #import "SBMove.h"
@@ -51,14 +51,14 @@
     self = [super init];
     if (!self) return nil;
 
-    NSArray *thePieces = [NSArray arrayWithObjects:[SBCirclePiece pieceWithOwner:0],
-                                                   [SBSquarePiece pieceWithOwner:0],
-                                                   [SBTrianglePiece pieceWithOwner:0],
-                                                   [SBDiamondPiece pieceWithOwner:0],
-                                                   [SBCirclePiece pieceWithOwner:1],
-                                                   [SBSquarePiece pieceWithOwner:1],
-                                                   [SBTrianglePiece pieceWithOwner:1],
-                                                   [SBDiamondPiece pieceWithOwner:1],
+    NSArray *thePieces = [NSArray arrayWithObjects:[SBCircle pieceWithOwner:0],
+                                                   [SBSquare pieceWithOwner:0],
+                                                   [SBTriangle pieceWithOwner:0],
+                                                   [SBDiamond pieceWithOwner:0],
+                                                   [SBCircle pieceWithOwner:1],
+                                                   [SBSquare pieceWithOwner:1],
+                                                   [SBTriangle pieceWithOwner:1],
+                                                   [SBDiamond pieceWithOwner:1],
                                                    nil];
 
     self.pieces = [NSArray arrayWithObjects:[thePieces subarrayWithRange:NSMakeRange(0, 4)],

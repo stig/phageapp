@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SBCirclePiece.h"
+#import "SBCircle.h"
 #import "SBDirection.h"
 
-@implementation SBCirclePiece
+@implementation SBCircle
 
 - (NSArray *)directions {
     return [NSArray arrayWithObjects:

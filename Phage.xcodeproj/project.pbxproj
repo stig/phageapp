@@ -28,10 +28,10 @@
 		D76A45A2151DE19300E59146 /* SBLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45A1151DE19300E59146 /* SBLocation.m */; };
 		D76A45A5151DE30600E59146 /* SBLocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45A4151DE30600E59146 /* SBLocationTest.m */; };
 		D76A45A8151DE43300E59146 /* SBMoveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45A7151DE43300E59146 /* SBMoveTest.m */; };
-		D76A45B5151DFC4700E59146 /* SBCirclePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45B4151DFC4700E59146 /* SBCirclePiece.m */; };
-		D76A45B8151DFD0000E59146 /* SBDiamondPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45B7151DFD0000E59146 /* SBDiamondPiece.m */; };
-		D76A45BB151DFD0E00E59146 /* SBSquarePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45BA151DFD0E00E59146 /* SBSquarePiece.m */; };
-		D76A45BE151DFD1A00E59146 /* SBTrianglePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45BD151DFD1A00E59146 /* SBTrianglePiece.m */; };
+		D76A45B5151DFC4700E59146 /* SBCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45B4151DFC4700E59146 /* SBCircle.m */; };
+		D76A45B8151DFD0000E59146 /* SBDiamond.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45B7151DFD0000E59146 /* SBDiamond.m */; };
+		D76A45BB151DFD0E00E59146 /* SBSquare.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45BA151DFD0E00E59146 /* SBSquare.m */; };
+		D76A45BE151DFD1A00E59146 /* SBTriangle.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45BD151DFD1A00E59146 /* SBTriangle.m */; };
 		D7BFA391151E48A000435C7F /* SBPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA390151E48A000435C7F /* SBPiece.m */; };
 		D7BFA3AF151F108100435C7F /* SBPhageBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3AE151F108100435C7F /* SBPhageBoard.m */; };
 		D7BFA3B2151F2AD300435C7F /* SBPhageBoardTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B1151F2AD300435C7F /* SBPhageBoardTest.m */; };
@@ -157,14 +157,14 @@
 		D76A45A4151DE30600E59146 /* SBLocationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBLocationTest.m; sourceTree = "<group>"; };
 		D76A45A7151DE43300E59146 /* SBMoveTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMoveTest.m; sourceTree = "<group>"; };
 		D76A45B2151DFC2B00E59146 /* SBPiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPiece.h; sourceTree = "<group>"; };
-		D76A45B3151DFC4700E59146 /* SBCirclePiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBCirclePiece.h; sourceTree = "<group>"; };
-		D76A45B4151DFC4700E59146 /* SBCirclePiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCirclePiece.m; sourceTree = "<group>"; };
-		D76A45B6151DFD0000E59146 /* SBDiamondPiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBDiamondPiece.h; sourceTree = "<group>"; };
-		D76A45B7151DFD0000E59146 /* SBDiamondPiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDiamondPiece.m; sourceTree = "<group>"; };
-		D76A45B9151DFD0E00E59146 /* SBSquarePiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBSquarePiece.h; sourceTree = "<group>"; };
-		D76A45BA151DFD0E00E59146 /* SBSquarePiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBSquarePiece.m; sourceTree = "<group>"; };
-		D76A45BC151DFD1A00E59146 /* SBTrianglePiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBTrianglePiece.h; sourceTree = "<group>"; };
-		D76A45BD151DFD1A00E59146 /* SBTrianglePiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBTrianglePiece.m; sourceTree = "<group>"; };
+		D76A45B3151DFC4700E59146 /* SBCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBCircle.h; sourceTree = "<group>"; };
+		D76A45B4151DFC4700E59146 /* SBCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCircle.m; sourceTree = "<group>"; };
+		D76A45B6151DFD0000E59146 /* SBDiamond.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBDiamond.h; sourceTree = "<group>"; };
+		D76A45B7151DFD0000E59146 /* SBDiamond.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDiamond.m; sourceTree = "<group>"; };
+		D76A45B9151DFD0E00E59146 /* SBSquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBSquare.h; sourceTree = "<group>"; };
+		D76A45BA151DFD0E00E59146 /* SBSquare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBSquare.m; sourceTree = "<group>"; };
+		D76A45BC151DFD1A00E59146 /* SBTriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBTriangle.h; sourceTree = "<group>"; };
+		D76A45BD151DFD1A00E59146 /* SBTriangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBTriangle.m; sourceTree = "<group>"; };
 		D7BFA390151E48A000435C7F /* SBPiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPiece.m; sourceTree = "<group>"; };
 		D7BFA3AD151F108100435C7F /* SBPhageBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPhageBoard.h; sourceTree = "<group>"; };
 		D7BFA3AE151F108100435C7F /* SBPhageBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPhageBoard.m; sourceTree = "<group>"; };
@@ -266,16 +266,20 @@
 		D755A4941532224C003BB704 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FB89D43C154C7D27001A0B9D /* PhageModelHelper.h */,
-				FB89D43C154C7D27001A0B9B /* PhageModelHelper.m */,
-				D76A45BD151DFD1A00E59146 /* SBTrianglePiece.m */,
-				D76A45BC151DFD1A00E59146 /* SBTrianglePiece.h */,
-				D7BFA3AE151F108100435C7F /* SBPhageBoard.m */,
-				D7BFA3AD151F108100435C7F /* SBPhageBoard.h */,
-				D76A45BA151DFD0E00E59146 /* SBSquarePiece.m */,
-				D76A45B9151DFD0E00E59146 /* SBSquarePiece.h */,
+				D76A45BD151DFD1A00E59146 /* SBTriangle.m */,
+				D76A45BC151DFD1A00E59146 /* SBTriangle.h */,
+				D76A45BA151DFD0E00E59146 /* SBSquare.m */,
+				D76A45B9151DFD0E00E59146 /* SBSquare.h */,
 				D7BFA390151E48A000435C7F /* SBPiece.m */,
 				D76A45B2151DFC2B00E59146 /* SBPiece.h */,
+				D76A45B7151DFD0000E59146 /* SBDiamond.m */,
+				D76A45B6151DFD0000E59146 /* SBDiamond.h */,
+				D76A45B4151DFC4700E59146 /* SBCircle.m */,
+				D76A45B3151DFC4700E59146 /* SBCircle.h */,
+				FB89D43C154C7D27001A0B9D /* PhageModelHelper.h */,
+				FB89D43C154C7D27001A0B9B /* PhageModelHelper.m */,
+				D7BFA3AE151F108100435C7F /* SBPhageBoard.m */,
+				D7BFA3AD151F108100435C7F /* SBPhageBoard.h */,
 				D7BFA3B2151F2AD300435C88 /* SBMovePicker.m */,
 				D7BFA3B2151F2AD300435C8A /* SBMovePicker.h */,
 				D76A459E151DE13700E59146 /* SBMove.m */,
@@ -284,10 +288,6 @@
 				D76A45A0151DE19300E59146 /* SBLocation.h */,
 				D7BFA3B2151F2AD300435C80 /* SBDirection.m */,
 				D7BFA3B2151F2AD300435C82 /* SBDirection.h */,
-				D76A45B7151DFD0000E59146 /* SBDiamondPiece.m */,
-				D76A45B6151DFD0000E59146 /* SBDiamondPiece.h */,
-				D76A45B4151DFC4700E59146 /* SBCirclePiece.m */,
-				D76A45B3151DFC4700E59146 /* SBCirclePiece.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -625,10 +625,10 @@
 				D76A457F151DDC7500E59146 /* SBBoardViewController.m in Sources */,
 				D76A459F151DE13700E59146 /* SBMove.m in Sources */,
 				D76A45A2151DE19300E59146 /* SBLocation.m in Sources */,
-				D76A45B5151DFC4700E59146 /* SBCirclePiece.m in Sources */,
-				D76A45B8151DFD0000E59146 /* SBDiamondPiece.m in Sources */,
-				D76A45BB151DFD0E00E59146 /* SBSquarePiece.m in Sources */,
-				D76A45BE151DFD1A00E59146 /* SBTrianglePiece.m in Sources */,
+				D76A45B5151DFC4700E59146 /* SBCircle.m in Sources */,
+				D76A45B8151DFD0000E59146 /* SBDiamond.m in Sources */,
+				D76A45BB151DFD0E00E59146 /* SBSquare.m in Sources */,
+				D76A45BE151DFD1A00E59146 /* SBTriangle.m in Sources */,
 				D7BFA391151E48A000435C7F /* SBPiece.m in Sources */,
 				D7BFA3AF151F108100435C7F /* SBPhageBoard.m in Sources */,
 				D7BFA3B2151F2AD300435C81 /* SBDirection.m in Sources */,

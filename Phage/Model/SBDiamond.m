@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SBDiamondPiece.h"
+#import "SBDiamond.h"
 #import "SBDirection.h"
 
-@implementation SBDiamondPiece
+@implementation SBDiamond
 
 - (NSArray *)directions {
     return [NSArray arrayWithObjects:

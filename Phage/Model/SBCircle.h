@@ -1,5 +1,5 @@
 //
-//  SBTrianglePiece.h
+//  SBCirclePiece.h
 //  Phage
 //
 //  Created by Stig Brautaset on 24/3/12.
@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "SBPiece.h"
 
-@interface SBTrianglePiece : SBPiece
+@interface SBCircle : SBPiece
 
 @end

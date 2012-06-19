@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SBSquarePiece.h"
+#import "SBSquare.h"
 #import "SBDirection.h"
 
-@implementation SBSquarePiece
+@implementation SBSquare
 
 - (NSArray *)directions {
     return [NSArray arrayWithObjects:
