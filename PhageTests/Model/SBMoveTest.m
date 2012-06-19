@@ -9,7 +9,6 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "SBLocation.h"
 #import "SBMove.h"
-#import "SBCircle.h"
 
 @interface SBMoveTest : SenTestCase {
     SBLocation *a;

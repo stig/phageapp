@@ -8,7 +8,6 @@
 
 #import "SBMove.h"
 #import "SBLocation.h"
-#import "SBPiece.h"
 
 @implementation SBMove
 
