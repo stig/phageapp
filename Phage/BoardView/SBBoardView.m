@@ -107,7 +107,7 @@
             [CATransaction setAnimationDuration:1.0f];
 
             SBPieceLayer *layer = [self.pieces objectForKey:piece];
-            layer.movesLeftLayer.string = [[state movesLeftForPiece:piece] stringValue];
+            layer.movesLeftLayer.string = [[state turnsLeftForPiece:piece] stringValue];
             layer.position = [self cellPositionForLocation:[state locationForPiece:piece]];
 
             [CATransaction commit];
@@ -251,7 +251,7 @@
             movesLeftLayer.fontSize = 14.0;
             movesLeftLayer.cornerRadius = 7.0;
             movesLeftLayer.alignmentMode = kCAAlignmentCenter;
-            movesLeftLayer.string = [[state movesLeftForPiece:piece] stringValue];
+            movesLeftLayer.string = [[state turnsLeftForPiece:piece] stringValue];
 
             SBPieceLayer *layer = [SBPieceLayer layerWithPiece:piece];
             layer.bounds = [self cellRect];

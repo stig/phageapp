@@ -72,7 +72,7 @@
     for (NSArray* pp in s.pieces) {
         STAssertEquals(pp.count, 4u, nil);
         for (SBPiece *p in pp) {
-            STAssertEqualObjects([s movesLeftForPiece:p], [NSNumber numberWithUnsignedInteger:7u], nil);
+            STAssertEqualObjects([s turnsLeftForPiece:p], [NSNumber numberWithUnsignedInteger:7u], nil);
         }
     }
 }

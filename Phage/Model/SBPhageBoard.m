@@ -162,7 +162,7 @@
 
 #pragma mark model methods
 
-- (NSNumber*)movesLeftForPiece:(SBPiece *)piece {
+- (NSNumber*)turnsLeftForPiece:(SBPiece *)piece {
     return [self.moveCountMap objectForKey:piece];
 }
 
@@ -175,7 +175,7 @@
 }
 
 - (void)enumerateLegalDestinationsForPiece:(SBPiece *)piece withBlock:(void (^)(SBLocation *loc, BOOL *stop))block {
-    if ([[NSNumber numberWithUnsignedInteger:0] isEqualToNumber:[self movesLeftForPiece:piece]])
+    if ([[NSNumber numberWithUnsignedInteger:0] isEqualToNumber:[self turnsLeftForPiece:piece]])
         return;
 
     for (SBDirection *d in piece.directions) {
@@ -238,7 +238,7 @@
     [self.pieceMap removeObjectForKey:move.from];
     [self.pieceMap setObject:piece forKey:move.to];
 
-    NSUInteger n = [[self movesLeftForPiece:piece] unsignedIntegerValue];
+    NSUInteger n = [[self turnsLeftForPiece:piece] unsignedIntegerValue];
     [self.moveCountMap setObject:[NSNumber numberWithUnsignedInteger:n - 1] forKey:piece];
 }
 
