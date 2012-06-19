@@ -14,7 +14,7 @@
 
 @interface SBState : NSObject <NSCopying>
 
-@property(readonly) BOOL isPlayerOne;
+@property(nonatomic, readonly) NSUInteger currentPlayer;
 @property(nonatomic, readonly) NSUInteger rows;
 @property(nonatomic, readonly) NSUInteger columns;
 @property(nonatomic, strong, readonly) NSArray *pieces;

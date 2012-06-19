@@ -76,7 +76,9 @@
 
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece {
     SBState *state = [self currentState];
-    return [[state piecesForPlayer:state.isPlayerOne] containsObject:piece];
+    NSUInteger playerTurn = state.currentPlayer;
+    NSArray *pieces = [state.pieces objectAtIndex:playerTurn];
+    return [pieces containsObject:piece];
 }
 
 - (BOOL)canMovePiece:(SBPiece *)piece toLocation:(SBLocation *)location {

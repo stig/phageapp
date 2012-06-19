@@ -197,8 +197,8 @@
 
 }
 
-- (void)enumerateLegalMovesForPlayerOne:(BOOL)one withBlock:(void(^)(SBMove *move, BOOL *stop))block {
-    for (SBPiece *piece in [self piecesForPlayer:one]) {
+- (void)enumerateLegalMovesForPlayer:(NSUInteger)playerTurn withBlock:(void(^)(SBMove *move, BOOL *stop))block {
+    for (SBPiece *piece in [self.pieces objectAtIndex:playerTurn]) {
         SBLocation *from = [self locationForPiece:piece];
         [self enumerateLegalDestinationsForPiece:piece
                                        withBlock:^(SBLocation *loc, BOOL *stop) {
@@ -208,7 +208,7 @@
 }
 
 - (void)enumerateLegalMovesWithBlock:(void(^)(SBMove *move, BOOL *stop))block {
-    [self enumerateLegalMovesForPlayerOne:self.isPlayerOne withBlock:block];
+    [self enumerateLegalMovesForPlayer:self.currentPlayer withBlock:block];
 }
 
 - (NSArray *)piecesForPlayer:(BOOL)player {
@@ -226,8 +226,8 @@
     return isLegalMove;
 }
 
-- (BOOL)opponent {
-    return !self.isPlayerOne;
+- (NSUInteger)opponent {
+    return 1 - [self currentPlayer];
 }
 
 - (void)transformIntoSuccessorWithMove:(SBMove*)move {
@@ -266,7 +266,7 @@
 - (BOOL)isDraw {
     NSParameterAssert([self isGameOver]);
     __block BOOL isDraw = YES;
-    [self enumerateLegalMovesForPlayerOne:self.opponent withBlock:^(SBMove *move, BOOL *stop) {
+    [self enumerateLegalMovesForPlayer:self.opponent withBlock:^(SBMove *move, BOOL *stop) {
         isDraw = NO;
         *stop = YES;
     }];
@@ -282,10 +282,10 @@
 }
 
 - (BOOL)isPlayerOne {
-    return 0 == [self playerTurn];
+    return 0 == [self currentPlayer];
 }
 
-- (NSUInteger)playerTurn {
+- (NSUInteger)currentPlayer {
     return self.moves.count % 2u;
 }
 

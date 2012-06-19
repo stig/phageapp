@@ -168,7 +168,7 @@
         s = [s successorWithMove:move];
     }
 
-    STAssertTrue(s.isPlayerOne, nil);
+    STAssertEquals(s.currentPlayer, 0u, nil);
     STAssertTrue([s isGameOver], nil);
     STAssertFalse([s isLoss], nil);
     STAssertTrue([s isDraw], nil);
