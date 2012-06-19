@@ -53,7 +53,7 @@
 
 - (id)matchState {
     if (_wrappedMatch.matchData.length)
-        return [NSKeyedUnarchiver unarchiveObjectWithData:_wrappedMatch.matchData];
+        return [SBState stateWithMoves:[NSKeyedUnarchiver unarchiveObjectWithData:_wrappedMatch.matchData]];
     return nil;
 }
 
@@ -68,14 +68,14 @@
     TFLog(@"%s matchState = %@ nextParticipant = %@", __PRETTY_FUNCTION__, matchState, nextParticipant);
     SBGameKitTurnBasedParticipant *next = (SBGameKitTurnBasedParticipant *) nextParticipant;
     [_wrappedMatch endTurnWithNextParticipant:next.wrappedParticipant
-                                    matchData:[NSKeyedArchiver archivedDataWithRootObject:matchState]
+                                    matchData:[NSKeyedArchiver archivedDataWithRootObject:[matchState moves]]
                             completionHandler:completionHandler];
 }
 
 
 - (void)endMatchInTurnWithMatchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
     TFLog(@"%s matchState = %@", __PRETTY_FUNCTION__, matchState);
-    [_wrappedMatch endMatchInTurnWithMatchData:[NSKeyedArchiver archivedDataWithRootObject:matchState]
+    [_wrappedMatch endMatchInTurnWithMatchData:[NSKeyedArchiver archivedDataWithRootObject:[matchState moves]]
                              completionHandler:completionHandler];
 }
 
@@ -94,7 +94,7 @@
 
     [[self wrappedMatch] participantQuitInTurnWithOutcome:outcome
                                           nextParticipant:[participant wrappedParticipant]
-                                                matchData:[NSKeyedArchiver archivedDataWithRootObject:matchState]
+                                                matchData:[NSKeyedArchiver archivedDataWithRootObject:[matchState moves]]
                                         completionHandler:block];
 }
 

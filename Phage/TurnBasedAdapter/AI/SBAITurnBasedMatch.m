@@ -7,6 +7,7 @@
 
 #import "SBAITurnBasedMatch.h"
 #import "SBTurnBasedParticipant.h"
+#import "SBState.h"
 
 @implementation SBAITurnBasedMatch
 
@@ -21,7 +22,7 @@
     [aCoder encodeObject:self.currentParticipant forKey:@"SBCurrentParticipant"];
     [aCoder encodeObject:self.localParticipant forKey:@"SBLocalParticipant"];
     [aCoder encodeObject:self.participants forKey:@"SBParticipants"];
-    [aCoder encodeObject:self.matchState forKey:@"SBMatchState"];
+    [aCoder encodeObject:[self.matchState moves] forKey:@"SBMoves"];
     [aCoder encodeInteger:self.status forKey:@"SBStatus"];
 }
 
@@ -31,7 +32,7 @@
         self.currentParticipant = [aDecoder decodeObjectForKey:@"SBCurrentParticipant"];
         self.localParticipant = [aDecoder decodeObjectForKey:@"SBLocalParticipant"];
         self.participants = [aDecoder decodeObjectForKey:@"SBParticipants"];
-        self.matchState = [aDecoder decodeObjectForKey:@"SBMatchState"];
+        self.matchState = [SBState stateWithMoves:[aDecoder decodeObjectForKey:@"SBMoves"]];
         self.status = [aDecoder decodeIntegerForKey:@"SBStatus"];
     }
     return self;
