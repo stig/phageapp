@@ -18,6 +18,7 @@
 @interface SBState ()
 @property(nonatomic, strong) NSArray *pieces;
 @property(nonatomic, strong) NSArray *moves;
+@property(nonatomic, strong) NSMutableDictionary *pieceMap;
 @property(nonatomic, strong) NSMutableDictionary *locationMap;
 @property(nonatomic, strong) NSMutableDictionary *moveCountMap;
 @property(nonatomic, strong) NSSet *occupied;
@@ -29,6 +30,7 @@
 @synthesize pieces = _pieces;
 @synthesize moves = _moves;
 @synthesize locationMap = _locationMap;
+@synthesize pieceMap = _pieceMap;
 
 
 // Designated initializer
@@ -61,6 +63,7 @@
                                                           nil];
 
     self.locationMap = [NSMutableDictionary dictionaryWithObjects:theLocations forKeys:thePieces];
+    self.pieceMap = [NSMutableDictionary dictionaryWithObjects:thePieces forKeys:theLocations];
 
     self.moveCountMap = [NSMutableDictionary dictionaryWithCapacity:thePieces.count];
     for (SBPiece *p in thePieces) {
@@ -114,13 +117,7 @@
 }
 
 - (SBPiece *)pieceForLocation:(SBLocation *)loc {
-    return [[self.locationMap keysOfEntriesPassingTest:^(id key, id val, BOOL *stop) {
-        if ([loc isEqualToLocation:val]) {
-            *stop = YES;
-            return YES;
-        }
-        return NO;
-    }] anyObject];
+    return [self.pieceMap objectForKey:loc];
 }
 
 - (NSString *)description {
@@ -156,7 +153,6 @@
 #pragma mark model methods
 
 - (NSUInteger)movesLeftForPiece:(SBPiece *)piece {
-
     return [[_moveCountMap objectForKey:piece] unsignedIntegerValue];
 }
 
@@ -236,6 +232,9 @@
 
     SBPiece *piece = [self pieceForLocation:move.from];
     [self.locationMap setObject:move.to forKey:piece];
+
+    [self.pieceMap removeObjectForKey:move.from];
+    [self.pieceMap setObject:piece forKey:move.to];
 
     NSUInteger n = [self movesLeftForPiece:piece];
     [self.moveCountMap setObject:[NSNumber numberWithUnsignedInteger:n - 1] forKey:piece];
