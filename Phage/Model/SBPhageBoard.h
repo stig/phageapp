@@ -12,27 +12,27 @@
 @class SBLocation;
 @class SBMove;
 
-@interface SBState : NSObject <NSCopying>
+@interface SBPhageBoard : NSObject <NSCopying>
 
 @property(nonatomic, readonly) NSUInteger currentPlayer;
 @property(nonatomic, readonly) NSUInteger rows;
 @property(nonatomic, readonly) NSUInteger columns;
 @property(nonatomic, strong, readonly) NSArray *pieces;
-@property(nonatomic, strong, readonly) NSArray *moves;
+@property(nonatomic, strong, readonly) NSArray *moveHistory;
 
-+ (id)state;
-+ (id)stateWithMoves:(NSArray*)moves;
-- (id)initWithMoves:(NSArray *)moves;
++ (id)board;
++ (id)boardWithMoveHistory:(NSArray*)moveHistory;
+- (id)initWithMoveHistory:(NSArray *)moveHistory;
 
 - (NSNumber*)movesLeftForPiece:(SBPiece*)piece;
 - (SBLocation *)locationForPiece:(SBPiece*)piece;
 - (SBPiece *)pieceForLocation:(SBLocation *)loc;
 
-- (BOOL)isEqualToState:(SBState*)state;
+- (BOOL)isEqualToState:(SBPhageBoard *)state;
 
 - (BOOL)wasLocationOccupied:(SBLocation*)loc;
 
-- (SBState *)successorWithMove:(SBMove *)move;
+- (SBPhageBoard *)successorWithMove:(SBMove *)move;
 
 - (BOOL)isLegalMove:(SBMove*)move;
 

@@ -7,7 +7,7 @@
 #import <OCMock/OCMock.h>
 #import "SBTurnBasedMatch.h"
 #import "PhageModelHelper.h"
-#import "SBState.h"
+#import "SBPhageBoard.h"
 
 @interface PhageModelHelperTest : SenTestCase {
     PhageModelHelper *helper;
@@ -27,7 +27,7 @@
     otherParticipant = [OCMockObject mockForProtocol:@protocol(SBTurnBasedParticipant)];
 
     match = [OCMockObject mockForProtocol:@protocol(SBTurnBasedMatch)];
-    successor = [OCMockObject mockForClass:[SBState class]];
+    successor = [OCMockObject mockForClass:[SBPhageBoard class]];
 
     yes = YES;
     no = NO;

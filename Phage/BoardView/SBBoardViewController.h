@@ -10,7 +10,7 @@
 #import "SBTurnBasedMatchHelper.h"
 #import "SBBoardViewControllerState.h"
 
-@class SBState;
+@class SBPhageBoard;
 @class PhageModelHelper;
 
 @interface SBBoardViewController : UIViewController <SBTurnBasedMatchHelperDelegate, SBBoardViewDelegate, SBBoardViewControllerStateDelegate>

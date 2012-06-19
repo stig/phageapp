@@ -7,7 +7,7 @@
 
 #import "SBTurnBasedMatch.h"
 #import "SBAITurnBasedAdapter.h"
-#import "SBState.h"
+#import "SBPhageBoard.h"
 #import "SBAITurnBasedParticipant.h"
 #import "SBMovePicker.h"
 #import "SBMove.h"

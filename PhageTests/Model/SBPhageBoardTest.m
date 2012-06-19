@@ -7,33 +7,33 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "SBState.h"
+#import "SBPhageBoard.h"
 #import "SBLocation.h"
 #import "SBCirclePiece.h"
 #import "SBDiamondPiece.h"
 #import "SBMove.h"
 
-@interface SBStateTest : SenTestCase {
-    SBState *s;
+@interface SBPhageBoardTest : SenTestCase {
+    SBPhageBoard *s;
 }
 @end
 
-@implementation SBStateTest
+@implementation SBPhageBoardTest
 
 
 - (void)setUp {
-    s = [SBState state];
+    s = [SBPhageBoard board];
 }
 
 - (void)testEquals {
     STAssertEqualObjects(s, s, nil);
 
-    SBState *t = [SBState state];
+    SBPhageBoard *t = [SBPhageBoard board];
     STAssertEqualObjects(s, t, nil);
 }
 
 - (void)testHash {
-    SBState *t = [SBState state];
+    SBPhageBoard *t = [SBPhageBoard board];
     STAssertEquals([s hash], [t hash], nil);
 }
 
@@ -87,7 +87,7 @@
 }
 
 
-- (id)lastMoveForState:(SBState *)state {
+- (id)lastMoveForState:(SBPhageBoard *)state {
     __block id lastMove = nil;
     [state enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
         lastMove = move;
@@ -96,7 +96,7 @@
 }
 
 - (void)testSuccessor {
-    SBState *s1 = [s successorWithMove:[self lastMoveForState:s]];
+    SBPhageBoard *s1 = [s successorWithMove:[self lastMoveForState:s]];
     STAssertNotNil(s1, nil);
     STAssertFalse([s1 isEqual:s], nil);
 
@@ -118,8 +118,8 @@
 }
 
 - (void)testSuccessor2 {
-    SBState *s1 = [s successorWithMove:[self lastMoveForState:s]];
-    SBState *s2 = [s1 successorWithMove:[self lastMoveForState:s1]];
+    SBPhageBoard *s1 = [s successorWithMove:[self lastMoveForState:s]];
+    SBPhageBoard *s2 = [s1 successorWithMove:[self lastMoveForState:s1]];
 
     NSArray *expected = [NSArray arrayWithObjects:
             @"C:7 S:7 T:7 D:6 ",
@@ -139,18 +139,18 @@
 }
 
 - (void)testCoding {
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:s.moves];
-    SBState *s1 = [SBState stateWithMoves:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:s.moveHistory];
+    SBPhageBoard *s1 = [SBPhageBoard boardWithMoveHistory:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
     STAssertEqualObjects(s1, s, nil);
 }
 
 - (void)testCodingSize {
     for (;;) {
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:s.moves];
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:s.moveHistory];
         STAssertTrue(data.length < 3096u, @"Serialised state is less than 3K");
 
         NSArray *moves = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        SBState *copy = [SBState stateWithMoves:moves];
+        SBPhageBoard *copy = [SBPhageBoard boardWithMoveHistory:moves];
         STAssertEqualObjects(copy, s, nil);
 
         SBMove *move = [self lastMoveForState:s];

@@ -7,14 +7,14 @@
 
 #import <Foundation/Foundation.h>
 
-@class SBState;
+@class SBPhageBoard;
 @protocol SBTurnBasedMatch;
 @protocol SBTurnBasedParticipant;
 
 @interface PhageModelHelper : NSObject
 - (id<SBTurnBasedParticipant>)nextParticipantForMatch:(id<SBTurnBasedMatch>)match;
 
-- (void)endTurnOrMatch:(id <SBTurnBasedMatch>)match withMatchState:(SBState *)successor completionHandler:(void(^)(NSError *))completionHandler;
+- (void)endTurnOrMatch:(id <SBTurnBasedMatch>)match withMatchState:(SBPhageBoard *)successor completionHandler:(void(^)(NSError *))completionHandler;
 
 - (void)forfeitMatch:(id <SBTurnBasedMatch>)match inTurnWithCompletionHandler:(void (^)(NSError *))completionHandler;
 

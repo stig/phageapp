@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-@class SBState;
+@class SBPhageBoard;
 @class SBMove;
 @class SBLocation;
 @class SBPiece;
@@ -31,7 +31,7 @@
 
 @property(weak) IBOutlet id <SBBoardViewDelegate> delegate;
 
-- (void)layoutForState:(SBState *)state;
+- (void)layoutForState:(SBPhageBoard *)state;
 - (void)pickUpPiece:(SBPiece *)piece;
 - (void)putDownPiece:(SBPiece *)piece;
 - (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location;

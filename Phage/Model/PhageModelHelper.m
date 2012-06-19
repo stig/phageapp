@@ -7,7 +7,7 @@
 
 #import "PhageModelHelper.h"
 #import "SBTurnBasedMatch.h"
-#import "SBState.h"
+#import "SBPhageBoard.h"
 #import "SBTurnBasedParticipant.h"
 
 
@@ -19,7 +19,7 @@
     return [match.participants objectAtIndex:nextIdx];
 }
 
-- (void)endTurnOrMatch:(id <SBTurnBasedMatch>)match withMatchState:(SBState *)successor completionHandler:(void(^)(NSError *))completionHandler {
+- (void)endTurnOrMatch:(id <SBTurnBasedMatch>)match withMatchState:(SBPhageBoard *)successor completionHandler:(void(^)(NSError *))completionHandler {
     id<SBTurnBasedParticipant> opponent = [self nextParticipantForMatch:match];
 
     if ([successor isGameOver]) {

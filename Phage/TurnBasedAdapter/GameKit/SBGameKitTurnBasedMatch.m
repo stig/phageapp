@@ -7,7 +7,7 @@
 
 #import "SBGameKitTurnBasedMatch.h"
 #import "SBGameKitTurnBasedParticipant.h"
-#import "SBState.h"
+#import "SBPhageBoard.h"
 
 
 @implementation SBGameKitTurnBasedMatch
@@ -53,7 +53,7 @@
 
 - (id)matchState {
     if (_wrappedMatch.matchData.length)
-        return [SBState stateWithMoves:[NSKeyedUnarchiver unarchiveObjectWithData:_wrappedMatch.matchData]];
+        return [SBPhageBoard boardWithMoveHistory:[NSKeyedUnarchiver unarchiveObjectWithData:_wrappedMatch.matchData]];
     return nil;
 }
 
@@ -68,14 +68,14 @@
     TFLog(@"%s matchState = %@ nextParticipant = %@", __PRETTY_FUNCTION__, matchState, nextParticipant);
     SBGameKitTurnBasedParticipant *next = (SBGameKitTurnBasedParticipant *) nextParticipant;
     [_wrappedMatch endTurnWithNextParticipant:next.wrappedParticipant
-                                    matchData:[NSKeyedArchiver archivedDataWithRootObject:[matchState moves]]
+                                    matchData:[NSKeyedArchiver archivedDataWithRootObject:[matchState moveHistory]]
                             completionHandler:completionHandler];
 }
 
 
 - (void)endMatchInTurnWithMatchState:(id)matchState completionHandler:(void (^)(NSError *))completionHandler {
     TFLog(@"%s matchState = %@", __PRETTY_FUNCTION__, matchState);
-    [_wrappedMatch endMatchInTurnWithMatchData:[NSKeyedArchiver archivedDataWithRootObject:[matchState moves]]
+    [_wrappedMatch endMatchInTurnWithMatchData:[NSKeyedArchiver archivedDataWithRootObject:[matchState moveHistory]]
                              completionHandler:completionHandler];
 }
 
@@ -94,7 +94,7 @@
 
     [[self wrappedMatch] participantQuitInTurnWithOutcome:outcome
                                           nextParticipant:[participant wrappedParticipant]
-                                                matchData:[NSKeyedArchiver archivedDataWithRootObject:[matchState moves]]
+                                                matchData:[NSKeyedArchiver archivedDataWithRootObject:[matchState moveHistory]]
                                         completionHandler:block];
 }
 

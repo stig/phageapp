@@ -33,8 +33,8 @@
 		D76A45BB151DFD0E00E59146 /* SBSquarePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45BA151DFD0E00E59146 /* SBSquarePiece.m */; };
 		D76A45BE151DFD1A00E59146 /* SBTrianglePiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45BD151DFD1A00E59146 /* SBTrianglePiece.m */; };
 		D7BFA391151E48A000435C7F /* SBPiece.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA390151E48A000435C7F /* SBPiece.m */; };
-		D7BFA3AF151F108100435C7F /* SBState.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3AE151F108100435C7F /* SBState.m */; };
-		D7BFA3B2151F2AD300435C7F /* SBStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B1151F2AD300435C7F /* SBStateTest.m */; };
+		D7BFA3AF151F108100435C7F /* SBPhageBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3AE151F108100435C7F /* SBPhageBoard.m */; };
+		D7BFA3B2151F2AD300435C7F /* SBPhageBoardTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B1151F2AD300435C7F /* SBPhageBoardTest.m */; };
 		D7BFA3B2151F2AD300435C81 /* SBDirection.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C80 /* SBDirection.m */; };
 		D7BFA3B2151F2AD300435C84 /* SBDirectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */; };
 		D7BFA3B2151F2AD300435C89 /* SBMovePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C88 /* SBMovePicker.m */; };
@@ -166,9 +166,9 @@
 		D76A45BC151DFD1A00E59146 /* SBTrianglePiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBTrianglePiece.h; sourceTree = "<group>"; };
 		D76A45BD151DFD1A00E59146 /* SBTrianglePiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBTrianglePiece.m; sourceTree = "<group>"; };
 		D7BFA390151E48A000435C7F /* SBPiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPiece.m; sourceTree = "<group>"; };
-		D7BFA3AD151F108100435C7F /* SBState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBState.h; sourceTree = "<group>"; };
-		D7BFA3AE151F108100435C7F /* SBState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBState.m; sourceTree = "<group>"; };
-		D7BFA3B1151F2AD300435C7F /* SBStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBStateTest.m; sourceTree = "<group>"; };
+		D7BFA3AD151F108100435C7F /* SBPhageBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPhageBoard.h; sourceTree = "<group>"; };
+		D7BFA3AE151F108100435C7F /* SBPhageBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPhageBoard.m; sourceTree = "<group>"; };
+		D7BFA3B1151F2AD300435C7F /* SBPhageBoardTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPhageBoardTest.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C80 /* SBDirection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDirection.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C82 /* SBDirection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBDirection.h; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDirectionTest.m; sourceTree = "<group>"; };
@@ -270,8 +270,8 @@
 				FB89D43C154C7D27001A0B9B /* PhageModelHelper.m */,
 				D76A45BD151DFD1A00E59146 /* SBTrianglePiece.m */,
 				D76A45BC151DFD1A00E59146 /* SBTrianglePiece.h */,
-				D7BFA3AE151F108100435C7F /* SBState.m */,
-				D7BFA3AD151F108100435C7F /* SBState.h */,
+				D7BFA3AE151F108100435C7F /* SBPhageBoard.m */,
+				D7BFA3AD151F108100435C7F /* SBPhageBoard.h */,
 				D76A45BA151DFD0E00E59146 /* SBSquarePiece.m */,
 				D76A45B9151DFD0E00E59146 /* SBSquarePiece.h */,
 				D7BFA390151E48A000435C7F /* SBPiece.m */,
@@ -437,7 +437,7 @@
 				D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */,
 				D73965B1151FB10600118094 /* SBPieceTest.m */,
 				D76A45A7151DE43300E59146 /* SBMoveTest.m */,
-				D7BFA3B1151F2AD300435C7F /* SBStateTest.m */,
+				D7BFA3B1151F2AD300435C7F /* SBPhageBoardTest.m */,
 				D76A45A4151DE30600E59146 /* SBLocationTest.m */,
 				D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */,
 			);
@@ -630,7 +630,7 @@
 				D76A45BB151DFD0E00E59146 /* SBSquarePiece.m in Sources */,
 				D76A45BE151DFD1A00E59146 /* SBTrianglePiece.m in Sources */,
 				D7BFA391151E48A000435C7F /* SBPiece.m in Sources */,
-				D7BFA3AF151F108100435C7F /* SBState.m in Sources */,
+				D7BFA3AF151F108100435C7F /* SBPhageBoard.m in Sources */,
 				D7BFA3B2151F2AD300435C81 /* SBDirection.m in Sources */,
 				D7BFA3B2151F2AD300435C89 /* SBMovePicker.m in Sources */,
 				D7BFA3B2151F2AD300435C93 /* SBBoardView.m in Sources */,
@@ -663,7 +663,7 @@
 			files = (
 				D76A45A5151DE30600E59146 /* SBLocationTest.m in Sources */,
 				D76A45A8151DE43300E59146 /* SBMoveTest.m in Sources */,
-				D7BFA3B2151F2AD300435C7F /* SBStateTest.m in Sources */,
+				D7BFA3B2151F2AD300435C7F /* SBPhageBoardTest.m in Sources */,
 				D73965B2151FB10600118094 /* SBPieceTest.m in Sources */,
 				D7BFA3B2151F2AD300435C84 /* SBDirectionTest.m in Sources */,
 				D7BFA3B2151F2AD300435C8C /* SBMovePickerTest.m in Sources */,

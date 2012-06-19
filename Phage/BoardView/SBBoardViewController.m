@@ -7,7 +7,7 @@
 //
 
 #import "SBBoardViewController.h"
-#import "SBState.h"
+#import "SBPhageBoard.h"
 #import "SBMove.h"
 #import "SBTurnBasedParticipant.h"
 #import "PhageModelHelper.h"
@@ -18,8 +18,8 @@
 
 @interface SBBoardViewController () < UIActionSheetDelegate >
 @property(strong) UIActionSheet *forfeitActionSheet;
-- (SBState*)currentState;
-- (SBState*)stateForMatch:(id<SBTurnBasedMatch>)match;
+- (SBPhageBoard *)currentState;
+- (SBPhageBoard *)stateForMatch:(id<SBTurnBasedMatch>)match;
 @end
 
 @implementation SBBoardViewController
@@ -57,14 +57,14 @@
 
 #pragma mark Actions
 
-- (SBState*)stateForMatch:(id<SBTurnBasedMatch>)match {
+- (SBPhageBoard *)stateForMatch:(id<SBTurnBasedMatch>)match {
     if (nil == match.matchState) {
-        return [SBState state];
+        return [SBPhageBoard board];
     }
     return match.matchState;
 }
 
-- (SBState*)currentState {
+- (SBPhageBoard *)currentState {
     return [self stateForMatch:self.turnBasedMatchHelper.currentMatch];
 }
 
@@ -75,14 +75,14 @@
 }
 
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece {
-    SBState *state = [self currentState];
+    SBPhageBoard *state = [self currentState];
     NSUInteger playerTurn = state.currentPlayer;
     NSArray *pieces = [state.pieces objectAtIndex:playerTurn];
     return [pieces containsObject:piece];
 }
 
 - (BOOL)canMovePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
-    SBState *state = [self currentState];
+    SBPhageBoard *state = [self currentState];
     SBLocation *from = [state locationForPiece:piece];
     SBMove *move = [SBMove moveWithFrom:from to:location];
     return [state isLegalMove:move];
@@ -91,12 +91,12 @@
 - (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
     TFLog(@"%s move %@ to %@", __PRETTY_FUNCTION__, piece, location);
 
-    SBState *state = [self currentState];
+    SBPhageBoard *state = [self currentState];
     SBLocation *from = [state locationForPiece:piece];
     SBMove *move = [SBMove moveWithFrom:from to:location];
     NSParameterAssert([state isLegalMove:move]);
 
-    SBState *newState = [state successorWithMove:move];
+    SBPhageBoard *newState = [state successorWithMove:move];
 
     [self.modelHelper endTurnOrMatch:self.turnBasedMatchHelper.currentMatch withMatchState:newState completionHandler:^(NSError *error) {
         if (error) TFLog(@"There was an error performing the move: %@", error);
@@ -227,7 +227,7 @@
 }
 
 - (void)setLegalDestinationsForPiece:(SBPiece *)piece highlighted:(BOOL)highlighted {
-    SBState *state = self.currentState;
+    SBPhageBoard *state = self.currentState;
     [state enumerateLegalDestinationsForPiece:piece withBlock:^(SBLocation *location, BOOL *stop) {
         [self.gridView setCellHighlighted:highlighted atLocation:location];
     }];

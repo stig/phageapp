@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SBState.h"
+#import "SBPhageBoard.h"
 #import "SBCirclePiece.h"
 #import "SBDiamondPiece.h"
 #import "SBSquarePiece.h"
@@ -15,35 +15,35 @@
 #import "SBDirection.h"
 #import "SBMove.h"
 
-@interface SBState ()
+@interface SBPhageBoard ()
 @property(nonatomic, strong) NSArray *pieces;
-@property(nonatomic, strong) NSArray *moves;
+@property(nonatomic, strong) NSArray *moveHistory;
 @property(nonatomic, strong) NSMutableDictionary *pieceMap;
 @property(nonatomic, strong) NSMutableDictionary *locationMap;
 @property(nonatomic, strong) NSMutableDictionary *moveCountMap;
 @property(nonatomic, strong) NSSet *occupied;
 @end
 
-@implementation SBState
+@implementation SBPhageBoard
 @synthesize moveCountMap = _moveCountMap;
 @synthesize occupied = _occupied;
 @synthesize pieces = _pieces;
-@synthesize moves = _moves;
+@synthesize moveHistory = _moveHistory;
 @synthesize locationMap = _locationMap;
 @synthesize pieceMap = _pieceMap;
 
-+ (id)stateWithMoves:(NSArray *)moves {
-    return [[self alloc] initWithMoves:moves];
++ (id)boardWithMoveHistory:(NSArray *)moveHistory {
+    return [[self alloc] initWithMoveHistory:moveHistory];
 }
 
-- (id)initWithMoves:(NSArray*)moves {
+- (id)initWithMoveHistory:(NSArray*)moveHistory {
     self = [self init];
-    for (SBMove *move in moves)
+    for (SBMove *move in moveHistory)
         [self transformIntoSuccessorWithMove:move];
     return self;
 }
 
-+ (id)state {
++ (id)board {
     return [[self alloc] init];
 }
 
@@ -84,7 +84,7 @@
     }
 
     self.occupied = [NSSet set];
-    self.moves = [NSArray array];
+    self.moveHistory = [NSArray array];
 
     return self;
 }
@@ -92,7 +92,7 @@
 #pragma mark NSCopying
 
 - (id)copyWithZone:(NSZone*)zone {
-    SBState *copy = [[[self class] alloc] initWithMoves:self.moves];
+    SBPhageBoard *copy = [[[self class] alloc] initWithMoveHistory:self.moveHistory];
     return copy;
 }
 
@@ -106,15 +106,15 @@
     return [self isEqualToState:other];
 }
 
-- (BOOL)isEqualToState:(SBState *)other {
+- (BOOL)isEqualToState:(SBPhageBoard *)other {
     if (self == other)
         return YES;
 
-    return [self.moves isEqualToArray:other.moves];
+    return [self.moveHistory isEqualToArray:other.moveHistory];
 }
 
 - (NSUInteger)hash {
-    return [self.moves hash];
+    return [self.moveHistory hash];
 }
 
 #pragma mark description
@@ -230,7 +230,7 @@
 
 - (void)transformIntoSuccessorWithMove:(SBMove*)move {
     self.occupied = [self.occupied setByAddingObject:move.from];
-    self.moves = [self.moves arrayByAddingObject:move];
+    self.moveHistory = [self.moveHistory arrayByAddingObject:move];
 
     SBPiece *piece = [self pieceForLocation:move.from];
     [self.locationMap setObject:move.to forKey:piece];
@@ -242,8 +242,8 @@
     [self.moveCountMap setObject:[NSNumber numberWithUnsignedInteger:n - 1] forKey:piece];
 }
 
-- (SBState *)successorWithMove:(SBMove *)move {
-    SBState *copy = [self copy];
+- (SBPhageBoard *)successorWithMove:(SBMove *)move {
+    SBPhageBoard *copy = [self copy];
     [copy transformIntoSuccessorWithMove:move];
     return copy;
 }
@@ -283,7 +283,7 @@
 }
 
 - (NSUInteger)currentPlayer {
-    return self.moves.count % 2u;
+    return self.moveHistory.count % 2u;
 }
 
 - (NSUInteger)opponent {

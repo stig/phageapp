@@ -7,7 +7,7 @@
 //
 
 #import "SBBoardView.h"
-#import "SBState.h"
+#import "SBPhageBoard.h"
 #import "SBLocation.h"
 #import "SBPieceLayer.h"
 #import "SBCellLayer.h"
@@ -92,7 +92,7 @@
 
 #pragma mark -
 
-- (void)layoutForState:(SBState *)state {
+- (void)layoutForState:(SBPhageBoard *)state {
 
     [state enumerateLocationsUsingBlock:^(SBLocation *loc) {
         SBCellLayer *layer = [self.cells objectForKey:loc];
@@ -239,7 +239,7 @@
 
 - (void)createInitialBoardPieces {
     // TODO this is a nasty hack. It would be better to set it some other way. But it will suffice...
-    SBState *state = [SBState state];
+    SBPhageBoard *state = [SBPhageBoard board];
     for (NSArray *playerPieces in state.pieces) {
         for (SBPiece *piece in playerPieces) {
 

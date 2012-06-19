@@ -7,7 +7,7 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import "SBMovePicker.h"
-#import "SBState.h"
+#import "SBPhageBoard.h"
 #import "SBMove.h"
 #import "SBLocation.h"
 
@@ -18,7 +18,7 @@
 
 - (void)testInitialState {
     SBMovePicker *picker = [[SBMovePicker alloc] init];
-    SBState *state = [SBState state];
+    SBPhageBoard *state = [SBPhageBoard board];
 
     SBMove *move = [picker moveForState:state];
     STAssertNotNil(move, nil);
