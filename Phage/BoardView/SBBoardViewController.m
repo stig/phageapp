@@ -59,7 +59,7 @@
 
 - (SBState*)stateForMatch:(id<SBTurnBasedMatch>)match {
     if (nil == match.matchState) {
-        return [[SBState alloc] init];
+        return [SBState state];
     }
     return match.matchState;
 }

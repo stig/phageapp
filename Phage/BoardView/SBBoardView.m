@@ -243,7 +243,7 @@
 
 - (void)createInitialBoardPieces {
     // TODO this is a nasty hack. It would be better to set it some other way. But it will suffice...
-    SBState *state = [[SBState alloc] init];
+    SBState *state = [SBState state];
     for (NSArray *playerPieces in state.pieces) {
         for (SBPiece *piece in playerPieces) {
 

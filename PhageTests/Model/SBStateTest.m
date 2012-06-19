@@ -22,18 +22,18 @@
 
 
 - (void)setUp {
-    s = [[SBState alloc] init];
+    s = [SBState state];
 }
 
 - (void)testEquals {
     STAssertEqualObjects(s, s, nil);
 
-    SBState *t = [[SBState alloc] init];
+    SBState *t = [SBState state];
     STAssertEqualObjects(s, t, nil);
 }
 
 - (void)testHash {
-    SBState *t = [[SBState alloc] init];
+    SBState *t = [SBState state];
     STAssertEquals([s hash], [t hash], nil);
 }
 

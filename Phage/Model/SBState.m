@@ -32,8 +32,21 @@
 @synthesize locationMap = _locationMap;
 @synthesize pieceMap = _pieceMap;
 
++ (id)stateWithMoves:(NSArray *)moves {
+    return [[self alloc] initWithMoves:moves];
+}
 
-// Designated initializer
+- (id)initWithMoves:(NSArray*)moves {
+    self = [self init];
+    for (SBMove *move in moves)
+        [self transformIntoSuccessorWithMove:move];
+    return self;
+}
+
++ (id)state {
+    return [[self alloc] init];
+}
+
 - (id)init {
     self = [super init];
     if (!self) return nil;
@@ -79,9 +92,7 @@
 #pragma mark NSCopying
 
 - (id)copyWithZone:(NSZone*)zone {
-    SBState *copy = [[[self class] alloc] init];
-    for (SBMove *move in self.moves)
-        [copy transformIntoSuccessorWithMove:move];
+    SBState *copy = [[[self class] alloc] initWithMoves:self.moves];
     return copy;
 }
 
@@ -109,7 +120,7 @@
 #pragma mark description
 
 - (BOOL)wasLocationOccupied:(SBLocation *)loc {
-    return [_occupied containsObject:loc];
+    return [self.occupied containsObject:loc];
 }
 
 - (BOOL)isLocationOccupied:(SBLocation*)loc {

@@ -19,6 +19,11 @@
 @property(nonatomic, readonly) NSUInteger columns;
 @property(nonatomic, strong, readonly) NSArray *pieces;
 
++ (id)state;
++ (id)stateWithMoves:(NSArray*)moves;
+- (id)initWithMoves:(NSArray *)moves;
+
+
 - (NSUInteger)movesLeftForPiece:(SBPiece*)piece;
 - (SBLocation *)locationForPiece:(SBPiece*)piece;
 - (SBPiece *)pieceForLocation:(SBLocation *)loc;

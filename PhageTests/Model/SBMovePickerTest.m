@@ -18,7 +18,7 @@
 
 - (void)testInitialState {
     SBMovePicker *picker = [[SBMovePicker alloc] init];
-    SBState *state = [[SBState alloc] init];
+    SBState *state = [SBState state];
 
     SBMove *move = [picker moveForState:state];
     STAssertNotNil(move, nil);
