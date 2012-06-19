@@ -30,8 +30,6 @@
 
 - (BOOL)isEqualToState:(SBState*)state;
 
-- (NSArray *)piecesForPlayer:(BOOL)player;
-
 - (BOOL)wasLocationOccupied:(SBLocation*)loc;
 
 - (SBState *)successorWithMove:(SBMove *)move;

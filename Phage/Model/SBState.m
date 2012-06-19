@@ -134,7 +134,7 @@
 - (NSString *)description {
     NSMutableString *desc = [[NSMutableString alloc] initWithCapacity:self.rows * self.columns * 2u];
 
-    for (id p in [self piecesForPlayer:YES]) {
+    for (id p in [self.pieces objectAtIndex:0]) {
         [desc appendFormat:@"%@: %@\n", p, [self.moveCountMap objectForKey:p]];
     }
 
@@ -154,7 +154,7 @@
         [desc appendString:@"\n"];
     }
 
-    for (id p in [self piecesForPlayer:NO]) {
+    for (id p in [self.pieces objectAtIndex:1]) {
         [desc appendFormat:@"%@: %@\n", p, [self.moveCountMap objectForKey:p]];
     }
 
@@ -218,10 +218,6 @@
     [self enumerateLegalMovesForPlayer:self.currentPlayer withBlock:block];
 }
 
-- (NSArray *)piecesForPlayer:(BOOL)player {
-    return [self.pieces objectAtIndex:player ? 0 : 1];
-}
-
 - (BOOL)isLegalMove:(SBMove*)aMove {
     __block BOOL isLegalMove = NO;
     [self enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
@@ -231,10 +227,6 @@
         }
     }];
     return isLegalMove;
-}
-
-- (NSUInteger)opponent {
-    return 1 - [self currentPlayer];
 }
 
 - (void)transformIntoSuccessorWithMove:(SBMove*)move {
@@ -291,12 +283,12 @@
     }
 }
 
-- (BOOL)isPlayerOne {
-    return 0 == [self currentPlayer];
-}
-
 - (NSUInteger)currentPlayer {
     return self.moves.count % 2u;
+}
+
+- (NSUInteger)opponent {
+    return 1 - [self currentPlayer];
 }
 
 - (NSUInteger)columns {
