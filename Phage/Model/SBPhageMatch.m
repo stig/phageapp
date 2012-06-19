@@ -8,6 +8,7 @@
 #import "SBPhageMatch.h"
 #import "SBPhageBoard.h"
 #import "SBPlayer.h"
+#import "SBMove.h"
 
 @implementation SBPhageMatch
 @synthesize players = _players;
@@ -39,5 +40,22 @@
     return [self.players objectAtIndex:self.board.currentPlayer];
 }
 
+- (BOOL)isLegalMove:(SBMove*)aMove {
+    return [self.board isLegalMove:aMove];
+}
+
+- (void)transitionToSuccessorWithMove:(SBMove *)move {
+    _board = [self.board successorWithMove:move];
+}
+
+- (BOOL)isGameOver {
+    return [self.board isGameOver];
+}
+
+- (id <SBPlayer>)winner {
+    if ([self.board isDraw])
+        return nil;
+    return [self.players objectAtIndex:self.board.otherPlayer];
+}
 
 @end

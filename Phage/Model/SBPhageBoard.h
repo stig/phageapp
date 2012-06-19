@@ -39,6 +39,9 @@
 - (BOOL)isDraw;
 
 - (void)enumerateLocationsUsingBlock:(void (^)(SBLocation *location))block;
+
+- (NSUInteger)otherPlayer;
+
 - (void)enumerateLegalMovesWithBlock:(void(^)(SBMove *move, BOOL *stop))block;
 - (void)enumerateLegalDestinationsForPiece:(SBPiece*)piece withBlock:(void (^)(SBLocation *location, BOOL *stop))block;
 

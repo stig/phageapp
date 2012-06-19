@@ -267,7 +267,7 @@
 - (BOOL)isDraw {
     NSParameterAssert([self isGameOver]);
     __block BOOL isDraw = YES;
-    [self enumerateLegalMovesForPlayer:self.opponent withBlock:^(SBMove *move, BOOL *stop) {
+    [self enumerateLegalMovesForPlayer:self.otherPlayer withBlock:^(SBMove *move, BOOL *stop) {
         isDraw = NO;
         *stop = YES;
     }];
@@ -286,7 +286,7 @@
     return self.moveHistory.count % 2u;
 }
 
-- (NSUInteger)opponent {
+- (NSUInteger)otherPlayer {
     return 1 - [self currentPlayer];
 }
 

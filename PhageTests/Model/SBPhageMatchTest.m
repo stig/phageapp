@@ -47,4 +47,57 @@
     STAssertEqualObjects(match.board.moveHistory, history, nil);
 }
 
+- (void)testIsLegalMove {
+    [match.board enumerateLegalMovesWithBlock:^void(SBMove *move, BOOL *stop) {
+        STAssertTrue([match isLegalMove:move], nil);
+    }];
+}
+
+- (id)lastMoveForState:(SBPhageBoard *)state {
+    __block id lastMove = nil;
+    [state enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
+        lastMove = move;
+    }];
+    return lastMove;
+}
+
+- (id)firstMoveForState:(SBPhageBoard *)state {
+    __block id firstMove = nil;
+    [state enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
+        firstMove = move;
+        *stop = YES;
+    }];
+    return firstMove;
+}
+
+- (void)testIsGameOver_draw {
+    STAssertFalse([match isGameOver], nil);
+
+    for (;;) {
+        id move = [self lastMoveForState:match.board];
+        if (!move)
+            break;
+        [match transitionToSuccessorWithMove:move];
+    }
+
+    STAssertTrue([match isGameOver], nil);
+    STAssertNil([match winner], nil);
+}
+
+- (void)testIsGameOver_winner {
+    STAssertFalse([match isGameOver], nil);
+
+    for (;;) {
+        id move = [self firstMoveForState:match.board];
+        if (!move)
+            break;
+        [match transitionToSuccessorWithMove:move];
+    }
+
+    STAssertTrue([match isGameOver], nil);
+    STAssertEqualObjects([match winner], two, nil);
+}
+
+
+
 @end

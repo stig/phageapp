@@ -8,6 +8,7 @@
 
 @class SBPhageBoard;
 @protocol SBPlayer;
+@class SBMove;
 
 @interface SBPhageMatch : NSObject
 
@@ -20,5 +21,11 @@
 
 + (id)matchWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two moveHistory:(NSArray*)moveHistory;
 - (id)initWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two moveHistory:(NSArray*)moveHistory;
+
+- (BOOL)isLegalMove:(SBMove *)aMove;
+- (void)transitionToSuccessorWithMove:(SBMove*)move;
+
+- (BOOL)isGameOver;
+- (id<SBPlayer>)winner;
 
 @end

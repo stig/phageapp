@@ -161,22 +161,4 @@
     }
 }
 
-- (void)testIsGameOver {
-    STAssertFalse([s isGameOver], nil);
-    STAssertThrows([s isLoss], nil);
-    STAssertThrows([s isDraw], nil);
-
-    for (;;) {
-        id move = [self lastMoveForState:s];
-        if (!move)
-            break;
-        s = [s successorWithMove:move];
-    }
-
-    STAssertEquals(s.currentPlayer, 0u, nil);
-    STAssertTrue([s isGameOver], nil);
-    STAssertFalse([s isLoss], nil);
-    STAssertTrue([s isDraw], nil);
-}
-
 @end
