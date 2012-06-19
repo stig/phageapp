@@ -12,7 +12,7 @@
 #import "SBCirclePiece.h"
 
 @interface SBMoveTest : SenTestCase {
-    SBPiece *a;
+    SBLocation *a;
     SBLocation *b;
     SBMove *m;
 }
@@ -22,27 +22,27 @@
 @implementation SBMoveTest
 
 - (void)setUp {
-    a = [SBCirclePiece pieceWithOwner:0];
+    a = [SBLocation locationWithColumn:1 row:4];
     b = [SBLocation locationWithColumn:2 row:4];
-    m = [SBMove moveWithPiece:a to:b];
+    m = [SBMove moveWithFrom:a to:b];
 }
 
 - (void)testBasic {
     STAssertNotNil(m, nil);
 
-    STAssertEqualObjects(m.piece, a, nil);
+    STAssertEqualObjects(m.from, a, nil);
     STAssertEqualObjects(m.to, b, nil);
 }
 
 - (void)testEqual {
     STAssertEqualObjects(m, m, nil);
 
-    SBMove *g = [SBMove moveWithPiece:m.piece to:m.to];
+    SBMove *g = [SBMove moveWithFrom:a to:b];
     STAssertEqualObjects(m, g, nil);
 }
 
 - (void)testHash {
-    SBMove *g = [SBMove moveWithPiece:m.piece to:m.to];
+    SBMove *g = [SBMove moveWithFrom:a to:b];
     STAssertEquals([m hash], [g hash], nil);
 }
 

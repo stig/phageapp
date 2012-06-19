@@ -9,15 +9,17 @@
 #import <Foundation/Foundation.h>
 
 @class SBLocation;
-@class SBPiece;
 
 @interface SBMove : NSObject <NSCopying>
 
-@property (strong, readonly) SBPiece *piece;
+@property (strong, readonly) SBLocation *from;
 @property (strong, readonly) SBLocation *to;
 
-+ (id)moveWithPiece:(SBPiece*)piece to:(SBLocation*)location;
-- (id)initWithPiece:(SBPiece *)piece to:(SBLocation *)location;
+
++ (id)moveWithFrom:(SBLocation *)from to:(SBLocation *)to;
+
+- (id)initWithFrom:(SBLocation *)from to:(SBLocation *)to;
+
 
 // isEqual: delegates to this..
 - (BOOL)isEqualToMove:(SBMove*)move;

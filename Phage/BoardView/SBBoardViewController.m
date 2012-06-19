@@ -80,15 +80,18 @@
 }
 
 - (BOOL)canMovePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
-    SBMove *move = [SBMove moveWithPiece:piece to:location];
-    return [[self currentState] isLegalMove:move];
+    SBState *state = [self currentState];
+    SBLocation *from = [state locationForPiece:piece];
+    SBMove *move = [SBMove moveWithFrom:from to:location];
+    return [state isLegalMove:move];
 }
 
 - (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
     TFLog(@"%s move %@ to %@", __PRETTY_FUNCTION__, piece, location);
 
-    SBMove *move = [SBMove moveWithPiece:piece to:location];
     SBState *state = [self currentState];
+    SBLocation *from = [state locationForPiece:piece];
+    SBMove *move = [SBMove moveWithFrom:from to:location];
     NSParameterAssert([state isLegalMove:move]);
 
     SBState *newState = [state successorWithMove:move];

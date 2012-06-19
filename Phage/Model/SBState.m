@@ -234,9 +234,10 @@
 
 - (void)enumerateLegalMovesForPlayerOne:(BOOL)one withBlock:(void(^)(SBMove *move, BOOL *stop))block {
     for (SBPiece *piece in [self piecesForPlayer:one]) {
+        SBLocation *from = [self locationForPiece:piece];
         [self enumerateLegalDestinationsForPiece:piece
                                        withBlock:^(SBLocation *loc, BOOL *stop) {
-                                           block([SBMove moveWithPiece:piece to:loc], stop);
+                                           block([SBMove moveWithFrom:from to:loc], stop);
                                        }];
     }
 }
@@ -265,14 +266,16 @@
 }
 
 - (SBState *)successorWithMove:(SBMove *)move {
-    NSSet *newOccupiedSet = [_occupied setByAddingObject:[self locationForPiece:move.piece]];
 
+    NSSet *newOccupiedSet = [_occupied setByAddingObject:move.from];
+
+    SBPiece *piece = [self pieceForLocation:move.from];
     NSMutableDictionary *newLocations = [_pieceLocations mutableCopy];
-    [newLocations setObject:move.to forKey:move.piece];
+    [newLocations setObject:move.to forKey:piece];
 
     NSMutableDictionary *newMovesLeft = [_movesLeft mutableCopy];
-    NSUInteger moves = [self movesLeftForPiece:move.piece];
-    [newMovesLeft setObject:[NSNumber numberWithUnsignedInteger:moves - 1] forKey:move.piece];
+    NSUInteger moves = [self movesLeftForPiece:piece];
+    [newMovesLeft setObject:[NSNumber numberWithUnsignedInteger:moves - 1] forKey:piece];
 
     return [[[self class] alloc] initWithPlayerOneTurn:self.opponent playerOnePieces:[self piecesForPlayer:YES]
                                                                      playerTwoPieces:[self piecesForPlayer:NO] locations:[newLocations copy] movesLeft:[newMovesLeft copy] occupied:newOccupiedSet];

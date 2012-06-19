@@ -12,21 +12,22 @@
 
 @implementation SBMove
 
-@synthesize piece = _piece;
 @synthesize to = _to;
+@synthesize from = _from;
 
-+ (id)moveWithPiece:(SBPiece *)piece to:(SBLocation *)location {
-    return [[self alloc] initWithPiece:piece to:location];
++ (id)moveWithFrom:(SBLocation*)from to:(SBLocation*)to {
+    return [[self alloc] initWithFrom:from to:to];
 }
 
-- (id)initWithPiece:(SBPiece *)p to:(SBLocation *)t {
+- (id)initWithFrom:(SBLocation *)from to:(SBLocation *)to {
     self = [super init];
     if (self) {
-        _piece = p;
-        _to = t;
+        _from = from;
+        _to = to;
     }
     return self;
 }
+
 
 - (id)copyWithZone:(NSZone*)zone {
     return self;
@@ -43,7 +44,7 @@
 - (BOOL)isEqualToMove:(SBMove *)other {
     if (self == other)
         return YES;
-    if (![_piece isEqual:other.piece])
+    if (![_from isEqual:other.from])
         return NO;
     if (![_to isEqual:other.to])
         return NO;
@@ -51,11 +52,11 @@
 }
 
 - (NSUInteger)hash {
-    return 31u * [_piece hash] + [_to hash];
+    return 31u * [_from hash] + [_to hash];
 }
 
 - (NSString *)description {
-    return [[_piece description] stringByAppendingFormat:@":%@", [_to description]];
+    return [NSString stringWithFormat:@"%@@%@", self.from, self.to];
 }
 
 @end
