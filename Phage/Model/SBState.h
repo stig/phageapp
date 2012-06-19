@@ -18,6 +18,7 @@
 @property(nonatomic, readonly) NSUInteger rows;
 @property(nonatomic, readonly) NSUInteger columns;
 @property(nonatomic, strong, readonly) NSArray *pieces;
+@property(nonatomic, strong, readonly) NSArray *moves;
 
 + (id)state;
 + (id)stateWithMoves:(NSArray*)moves;

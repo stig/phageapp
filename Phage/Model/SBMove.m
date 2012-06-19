@@ -28,10 +28,24 @@
     return self;
 }
 
+#pragma mark NSCopying
 
 - (id)copyWithZone:(NSZone*)zone {
     return self;
 }
+
+#pragma mark NSCopying
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:_from forKey:@"SBFrom"];
+    [aCoder encodeObject:_to forKey:@"SBTo"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    return [self initWithFrom:[aDecoder decodeObjectForKey:@"SBFrom"] to:[aDecoder decodeObjectForKey:@"SBTo"]];
+}
+
+#pragma mark Hashable
 
 - (BOOL)isEqual:(id)other {
     if (other == self)
