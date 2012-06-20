@@ -7,7 +7,10 @@
 
 @protocol SBPlayer <NSObject>
 
-@property(nonatomic, readonly) NSString *playerId;
 @property(nonatomic, readonly) NSString *alias;
+@property(nonatomic, readonly) BOOL isLocalHuman;
+
++ (id)playerWithAlias:(NSString *)alias;
+- (id)initWithAlias:(NSString *)alias;
 
 @end

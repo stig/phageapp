@@ -75,6 +75,8 @@
 		FB89D43C154C7D27001A0BE5 /* SBBoardViewControllerStateDragged.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BE4 /* SBBoardViewControllerStateDragged.m */; };
 		FB89D43C154C7D27001A0BE9 /* SBPhageMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BE8 /* SBPhageMatch.m */; };
 		FB89D43C154C7D27001A0BEE /* SBPhageMatchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BEB /* SBPhageMatchTest.m */; };
+		FB89D43C154C7D27001A0BF0 /* SBHumanPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BEF /* SBHumanPlayer.m */; };
+		FB89D43C154C7D27001A0BF3 /* SBHumanPlayerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BF2 /* SBHumanPlayerTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -237,6 +239,9 @@
 		FB89D43C154C7D27001A0BE8 /* SBPhageMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPhageMatch.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BEA /* SBPhageMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPhageMatch.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BEB /* SBPhageMatchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPhageMatchTest.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BEF /* SBHumanPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBHumanPlayer.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BF1 /* SBHumanPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBHumanPlayer.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BF2 /* SBHumanPlayerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBHumanPlayerTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +277,8 @@
 		D755A4941532224C003BB704 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0BF1 /* SBHumanPlayer.h */,
+				FB89D43C154C7D27001A0BEF /* SBHumanPlayer.m */,
 				FB89D43C154C7D27001A0BEA /* SBPhageMatch.h */,
 				FB89D43C154C7D27001A0BE8 /* SBPhageMatch.m */,
 				FB89D43C154C7D27001A0BE7 /* SBPlayer.h */,
@@ -443,6 +450,7 @@
 		FB89D43C154C7D27001A0BA0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0BF2 /* SBHumanPlayerTest.m */,
 				FB89D43C154C7D27001A0BEB /* SBPhageMatchTest.m */,
 				D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */,
 				D73965B1151FB10600118094 /* SBPieceTest.m */,
@@ -665,6 +673,7 @@
 				FB89D43C154C7D27001A0BE2 /* SBBoardViewControllerStateHint.m in Sources */,
 				FB89D43C154C7D27001A0BE5 /* SBBoardViewControllerStateDragged.m in Sources */,
 				FB89D43C154C7D27001A0BE9 /* SBPhageMatch.m in Sources */,
+				FB89D43C154C7D27001A0BF0 /* SBHumanPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,6 +696,7 @@
 				FB89D43C154C7D27001A0B9A /* SBTurnBasedMatchHelperTest.m in Sources */,
 				FB89D43C154C7D27001A0B9F /* PhageModelHelperTest.m in Sources */,
 				FB89D43C154C7D27001A0BEE /* SBPhageMatchTest.m in Sources */,
+				FB89D43C154C7D27001A0BF3 /* SBHumanPlayerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
