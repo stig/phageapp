@@ -14,8 +14,6 @@
 + (id)pieceWithOwner:(NSUInteger)owner;
 - (id)initWithOwner:(NSUInteger)owner;
 
-- (BOOL)isEqualToPiece:(SBPiece*)piece;
-
 - (NSArray*)directions;
 
 - (CGPathRef)pathInRect:(CGRect)rect;

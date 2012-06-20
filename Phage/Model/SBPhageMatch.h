@@ -9,6 +9,7 @@
 @class SBPhageBoard;
 @protocol SBPlayer;
 @class SBMove;
+@class SBPiece;
 
 @interface SBPhageMatch : NSObject
 
@@ -27,5 +28,7 @@
 
 - (BOOL)isGameOver;
 - (id<SBPlayer>)winner;
+
+- (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece;
 
 @end

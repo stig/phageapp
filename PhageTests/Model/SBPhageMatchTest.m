@@ -105,5 +105,24 @@
     STAssertEqualObjects(match.board, successor, nil);
 }
 
+- (void)testCanCurrentPlayerMovePiece_false {
+    // Can't figure out how to do this with a mocked board; create a new match using a real board
+    match = [SBPhageMatch matchWithPlayerOne:one two:two];
+
+    // get one of the opponent's pieces
+    id piece = [[match.board.pieces objectAtIndex:1] objectAtIndex:0];
+
+    STAssertFalse([match canCurrentPlayerMovePiece:piece], nil);
+}
+
+- (void)testCanCurrentPlayerMovePiece_true {
+    // Can't figure out how to do this with a mocked board; create a new match using a real board
+    match = [SBPhageMatch matchWithPlayerOne:one two:two];
+
+    // Get one of our own pieces
+    id piece = [[match.board.pieces objectAtIndex:0] objectAtIndex:0];
+
+    STAssertTrue([match canCurrentPlayerMovePiece:piece], nil);
+}
 
 @end

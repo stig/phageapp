@@ -9,6 +9,7 @@
 #import "SBPhageBoard.h"
 #import "SBPlayer.h"
 #import "SBMove.h"
+#import "SBPiece.h"
 
 @implementation SBPhageMatch
 @synthesize players = _players;
@@ -57,5 +58,18 @@
         return nil;
     return [self.players objectAtIndex:self.board.otherPlayerIndex];
 }
+
+- (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece {
+    __block BOOL ret = NO;
+    [self.board enumerateLegalMovesWithBlock:^void(SBMove *move, BOOL *stop) {
+        SBPiece *p = [self.board pieceForLocation:move.from];
+        if ([piece isEqual:p]) {
+            ret = YES;
+            *stop = YES;
+        }
+    }];
+    return ret;
+}
+
 
 @end
