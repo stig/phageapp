@@ -214,7 +214,7 @@
 }
 
 - (void)enumerateLegalMovesWithBlock:(void(^)(SBMove *move, BOOL *stop))block {
-    [self enumerateLegalMovesForPlayer:self.currentPlayer withBlock:block];
+    [self enumerateLegalMovesForPlayer:self.currentPlayerIndex withBlock:block];
 }
 
 - (BOOL)isLegalMove:(SBMove*)aMove {
@@ -267,7 +267,7 @@
 - (BOOL)isDraw {
     NSParameterAssert([self isGameOver]);
     __block BOOL isDraw = YES;
-    [self enumerateLegalMovesForPlayer:self.otherPlayer withBlock:^(SBMove *move, BOOL *stop) {
+    [self enumerateLegalMovesForPlayer:self.otherPlayerIndex withBlock:^(SBMove *move, BOOL *stop) {
         isDraw = NO;
         *stop = YES;
     }];
@@ -282,12 +282,12 @@
     }
 }
 
-- (NSUInteger)currentPlayer {
+- (NSUInteger)currentPlayerIndex {
     return self.moveHistory.count % 2u;
 }
 
-- (NSUInteger)otherPlayer {
-    return 1 - [self currentPlayer];
+- (NSUInteger)otherPlayerIndex {
+    return 1 - [self currentPlayerIndex];
 }
 
 - (NSUInteger)columns {

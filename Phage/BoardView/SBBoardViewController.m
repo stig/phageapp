@@ -76,7 +76,7 @@
 
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece {
     SBPhageBoard *state = [self currentState];
-    NSUInteger playerTurn = state.currentPlayer;
+    NSUInteger playerTurn = state.currentPlayerIndex;
     NSArray *pieces = [state.pieces objectAtIndex:playerTurn];
     return [pieces containsObject:piece];
 }

@@ -14,7 +14,6 @@
 
 @interface SBPhageBoard : NSObject <NSCopying>
 
-@property(nonatomic, readonly) NSUInteger currentPlayer;
 @property(nonatomic, readonly) NSUInteger rows;
 @property(nonatomic, readonly) NSUInteger columns;
 @property(nonatomic, strong, readonly) NSArray *pieces;
@@ -40,7 +39,8 @@
 
 - (void)enumerateLocationsUsingBlock:(void (^)(SBLocation *location))block;
 
-- (NSUInteger)otherPlayer;
+- (NSUInteger)currentPlayerIndex;
+- (NSUInteger)otherPlayerIndex;
 
 - (void)enumerateLegalMovesWithBlock:(void(^)(SBMove *move, BOOL *stop))block;
 - (void)enumerateLegalDestinationsForPiece:(SBPiece*)piece withBlock:(void (^)(SBLocation *location, BOOL *stop))block;

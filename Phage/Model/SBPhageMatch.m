@@ -37,7 +37,7 @@
 }
 
 - (id<SBPlayer>)currentPlayer {
-    return [self.players objectAtIndex:self.board.currentPlayer];
+    return [self.players objectAtIndex:self.board.currentPlayerIndex];
 }
 
 - (BOOL)isLegalMove:(SBMove*)aMove {
@@ -55,7 +55,7 @@
 - (id <SBPlayer>)winner {
     if ([self.board isDraw])
         return nil;
-    return [self.players objectAtIndex:self.board.otherPlayer];
+    return [self.players objectAtIndex:self.board.otherPlayerIndex];
 }
 
 @end
