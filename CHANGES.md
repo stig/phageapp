@@ -1,6 +1,12 @@
 0.4 (2012-06-??)
 ================
 
+**BREAKING CHANGES**
+
+The way matches are stored in GameCenter has been changed, to be more efficient and in order to support some more advanced features. Make sure you finish all your current matches before you upgrade!
+
+Other changes / bug fixes:
+
 * Double-tap to show hints rather than the previous "tap twice" behaviour.
 * Long press pieces (tap and hold for 0.5s) to select before dragging.
 * Scale up selected/dragged pieces to suggest them being "picked up" off the board.
