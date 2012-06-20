@@ -23,7 +23,7 @@
 - (id)initWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two board:(SBPhageBoard *)board;
 
 - (BOOL)isLegalMove:(SBMove *)aMove;
-- (void)transitionToSuccessorWithMove:(SBMove*)move;
+- (void)performMove:(SBMove*)move;
 
 - (BOOL)isGameOver;
 - (id<SBPlayer>)winner;

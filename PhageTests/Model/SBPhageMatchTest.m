@@ -96,5 +96,14 @@
     STAssertNil([match winner], nil);
 }
 
+- (void)testPerformMove {
+    id move = [OCMockObject mockForClass:[SBMove class]];
+    id successor = [OCMockObject mockForClass:[SBPhageBoard class]];
+    [[[board stub] andReturn:successor] successorWithMove:move];
+
+    [match performMove:move];
+    STAssertEqualObjects(match.board, successor, nil);
+}
+
 
 @end

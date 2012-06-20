@@ -44,7 +44,7 @@
     return [self.board isLegalMove:aMove];
 }
 
-- (void)transitionToSuccessorWithMove:(SBMove *)move {
+- (void)performMove:(SBMove *)move {
     _board = [self.board successorWithMove:move];
 }
 
