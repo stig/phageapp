@@ -20,19 +20,19 @@
 }
 
 - (id)initWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two {
-    return [self initWithPlayerOne:one two:two moveHistory:[NSArray array]];
+    return [self initWithPlayerOne:one two:two board:[SBPhageBoard board]];
 }
 
-+ (id)matchWithPlayerOne:(id <SBPlayer>)one two:(id <SBPlayer>)two moveHistory:(NSArray *)moveHistory {
-    return [[self alloc] initWithPlayerOne:one two:two moveHistory:moveHistory];
++ (id)matchWithPlayerOne:(id <SBPlayer>)one two:(id <SBPlayer>)two board:(SBPhageBoard *)board {
+    return [[self alloc] initWithPlayerOne:one two:two board:board];
 }
 
-- (id)initWithPlayerOne:(id <SBPlayer>)one two:(id <SBPlayer>)two moveHistory:(NSArray *)moveHistory {
+- (id)initWithPlayerOne:(id <SBPlayer>)one two:(id <SBPlayer>)two board:(SBPhageBoard *)board {
     self = [super init];
     if (!self) return nil;
 
     _players = [NSArray arrayWithObjects:one, two, nil];
-    _board = [SBPhageBoard boardWithMoveHistory:moveHistory];
+    _board = board;
     return self;
 }
 

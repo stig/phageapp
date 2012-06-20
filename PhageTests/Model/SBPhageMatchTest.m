@@ -11,10 +11,10 @@
 #import "SBPlayer.h"
 #import "SBPhageBoard.h"
 #import "SBMove.h"
-#import "SBLocation.h"
 
 @interface SBPhageMatchTest : SenTestCase {
     SBPhageMatch *match;
+    id board;
     id one;
     id two;
 }
@@ -25,79 +25,76 @@
 - (void)setUp {
     one = [OCMockObject mockForProtocol:@protocol(SBPlayer)];
     two = [OCMockObject mockForProtocol:@protocol(SBPlayer)];
-    match = [SBPhageMatch matchWithPlayerOne:one two:two];
+    board = [OCMockObject mockForClass:[SBPhageBoard class]];
+    match = [SBPhageMatch matchWithPlayerOne:one two:two board:board];
 }
 
-- (void)testInit {
-    STAssertNotNil(match, nil);
-    STAssertEqualObjects(match.currentPlayer, one, nil);
-    STAssertEqualObjects(match.board, [SBPhageBoard board], nil);
+- (void)tearDown {
+    [one verify];
+    [two verify];
+    [board verify];
+}
+
+- (void)testPlayers {
     STAssertEqualObjects([match.players objectAtIndex:0], one, nil);
     STAssertEqualObjects([match.players objectAtIndex:1], two, nil);
 }
 
-- (void)testInitWithMoveHistory {
-    SBLocation *from = [SBLocation locationWithColumn:1 row:4];
-    SBLocation *to = [SBLocation locationWithColumn:1 row:5];
-    NSArray *history = [NSArray arrayWithObject:[SBMove moveWithFrom:from to:to]];
-    match = [SBPhageMatch matchWithPlayerOne:one two:two moveHistory:history];
+- (void)testInit {
     STAssertNotNil(match, nil);
+}
 
+- (void)testCurrentPlayer {
+    NSUInteger playerIndex = 0;
+    [[[board stub] andReturnValue:OCMOCK_VALUE(playerIndex)] currentPlayerIndex];
+    STAssertEqualObjects(match.currentPlayer, one, nil);
+}
+
+- (void)testCurrentPlayerAfterOneMove {
+    NSUInteger playerIndex = 1;
+    [[[board stub] andReturnValue:OCMOCK_VALUE(playerIndex)] currentPlayerIndex];
     STAssertEqualObjects(match.currentPlayer, two, nil);
-    STAssertEqualObjects(match.board.moveHistory, history, nil);
 }
 
 - (void)testIsLegalMove {
-    [match.board enumerateLegalMovesWithBlock:^void(SBMove *move, BOOL *stop) {
-        STAssertTrue([match isLegalMove:move], nil);
-    }];
+    id move = [OCMockObject mockForClass:[SBMove class]];
+    [[board expect] isLegalMove:move];
+    [match isLegalMove:move];
 }
 
-- (id)lastMoveForState:(SBPhageBoard *)state {
-    __block id lastMove = nil;
-    [state enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
-        lastMove = move;
-    }];
-    return lastMove;
-}
-
-- (id)firstMoveForState:(SBPhageBoard *)state {
-    __block id firstMove = nil;
-    [state enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
-        firstMove = move;
-        *stop = YES;
-    }];
-    return firstMove;
-}
-
-- (void)testIsGameOver_draw {
-    STAssertFalse([match isGameOver], nil);
-
-    for (;;) {
-        id move = [self lastMoveForState:match.board];
-        if (!move)
-            break;
-        [match transitionToSuccessorWithMove:move];
-    }
-
+- (void)testIsGameOver_true {
+    BOOL yes = YES;
+    [[[board stub] andReturnValue:OCMOCK_VALUE(yes)] isGameOver];
     STAssertTrue([match isGameOver], nil);
-    STAssertNil([match winner], nil);
 }
 
-- (void)testIsGameOver_winner {
+- (void)testIsGameOver_false {
+    BOOL no = NO;
+    [[[board stub] andReturnValue:OCMOCK_VALUE(no)] isGameOver];
     STAssertFalse([match isGameOver], nil);
+}
 
-    for (;;) {
-        id move = [self firstMoveForState:match.board];
-        if (!move)
-            break;
-        [match transitionToSuccessorWithMove:move];
-    }
+- (void)testWinner_one {
+    BOOL no = NO;
+    NSUInteger otherPlayerIndex = 0;
+    [[[board stub] andReturnValue:OCMOCK_VALUE(otherPlayerIndex)] otherPlayerIndex];
+    [[[board stub] andReturnValue:OCMOCK_VALUE(no)] isDraw];
+    STAssertEqualObjects([match winner], one, nil);
+}
 
-    STAssertTrue([match isGameOver], nil);
+- (void)testWinner_two {
+    BOOL no = NO;
+    NSUInteger otherPlayerIndex = 1;
+    [[[board stub] andReturnValue:OCMOCK_VALUE(otherPlayerIndex)] otherPlayerIndex];
+    [[[board stub] andReturnValue:OCMOCK_VALUE(no)] isDraw];
     STAssertEqualObjects([match winner], two, nil);
 }
 
+- (void)testWinner_draw {
+    BOOL yes = YES;
+    [[[board stub] andReturnValue:OCMOCK_VALUE(yes)] isDraw];
+    STAssertNil([match winner], nil);
+}
 
 
 @end

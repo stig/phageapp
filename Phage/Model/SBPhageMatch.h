@@ -19,8 +19,8 @@
 + (id)matchWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two;
 - (id)initWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two;
 
-+ (id)matchWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two moveHistory:(NSArray*)moveHistory;
-- (id)initWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two moveHistory:(NSArray*)moveHistory;
++ (id)matchWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two board:(SBPhageBoard *)board;
+- (id)initWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two board:(SBPhageBoard *)board;
 
 - (BOOL)isLegalMove:(SBMove *)aMove;
 - (void)transitionToSuccessorWithMove:(SBMove*)move;
