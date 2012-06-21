@@ -22,6 +22,7 @@
         SBPhageMatch *match = [SBPhageMatch matchWithPlayerOne:playerOne two:playerTwo];
 
         SBBoardViewController *vc = segue.destinationViewController;
+        vc.gameOverCheckPoint = @"FINISHED_PASS_TO_PLAY_MATCH";
         vc.phageMatch = match;
 
     } else if ([segue.identifier isEqualToString:@"OnePlayer"]) {

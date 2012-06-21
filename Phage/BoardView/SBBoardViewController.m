@@ -27,6 +27,7 @@
 @synthesize forfeitButton = _forfeitButton;
 @synthesize state = _state;
 @synthesize phageMatch = _phageMatch;
+@synthesize gameOverCheckPoint = _gameOverCheckPoint;
 
 
 - (void)viewDidLoad {
@@ -72,19 +73,26 @@
     TFLog(@"%s move %@ to %@", __PRETTY_FUNCTION__, piece, location);
 
     @synchronized (self) {
-        if ([self canMovePiece:piece toLocation:location])
+        if ([self canMovePiece:piece toLocation:location]) {
             [self.phageMatch performMove:[self moveWithPiece:piece location:location]];
+            if ([self.phageMatch isGameOver]) {
+                [self transitionToState:[SBBoardViewControllerStateGameOver state]];
+            } else {
+                [self transitionToState:[SBBoardViewControllerStateUnselected state]];
+            }
+        }
     }
 
     if ([self.phageMatch isGameOver]) {
-        [self transitionToState:[SBBoardViewControllerStateGameOver state]];
+        [TestFlight passCheckpoint:self.gameOverCheckPoint];
+
         id<SBPlayer> winner = self.phageMatch.winner;
         NSString *message = nil == winner ? @"It's a draw!" : [winner.alias stringByAppendingString:@" won!"];
         [[[UIAlertView alloc] initWithTitle:@"Game Over" message:message delegate:nil cancelButtonTitle:@"Great!" otherButtonTitles:nil] show];
-    } else {
-        [self.gridView layoutForState:self.phageMatch.board];
-        [self transitionToState:[SBBoardViewControllerStateUnselected state]];
     }
+
+    // TODO: We really should just move the piece and block off the previous destination, rather than redraw the entire board
+    [self.gridView layoutForState:self.phageMatch.board];
 }
 
 #pragma mark UIActionSheetDelegate

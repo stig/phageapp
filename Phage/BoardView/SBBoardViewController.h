@@ -19,6 +19,8 @@
 @property(nonatomic, weak) IBOutlet UIBarButtonItem *forfeitButton;
 @property(nonatomic, strong) IBOutlet SBBoardView *gridView;
 
+@property(nonatomic, copy) NSString *gameOverCheckPoint;
+
 - (IBAction)forfeit;
 
 @end
