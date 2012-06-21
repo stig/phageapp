@@ -10,6 +10,8 @@
 @implementation SBHumanPlayer
 
 @synthesize alias = _alias;
+@synthesize outcome = _outcome;
+
 
 + (id)playerWithAlias:(NSString *)alias {
     return [[self alloc] initWithAlias:alias];
@@ -19,6 +21,7 @@
     self = [super init];
     if (self) {
         _alias = alias;
+        self.outcome = SBPlayerOutcomeNone;
     }
     return self;
 }

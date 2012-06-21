@@ -63,47 +63,99 @@
 }
 
 - (void)testIsGameOver_true {
-    BOOL yes = YES;
-    [[[board stub] andReturnValue:OCMOCK_VALUE(yes)] isGameOver];
+    SBPlayerOutcome lost = SBPlayerOutcomeLost;
+
+    [[[one expect] andReturnValue:OCMOCK_VALUE(lost)] outcome];
     STAssertTrue([match isGameOver], nil);
 }
 
 - (void)testIsGameOver_false {
-    BOOL no = NO;
-    [[[board stub] andReturnValue:OCMOCK_VALUE(no)] isGameOver];
+    SBPlayerOutcome none = SBPlayerOutcomeNone;
+    [[[one expect] andReturnValue:OCMOCK_VALUE(none)] outcome];
+    [[[two expect] andReturnValue:OCMOCK_VALUE(none)] outcome];
     STAssertFalse([match isGameOver], nil);
 }
 
 - (void)testWinner_one {
-    BOOL no = NO;
-    NSUInteger otherPlayerIndex = 0;
-    [[[board stub] andReturnValue:OCMOCK_VALUE(otherPlayerIndex)] otherPlayerIndex];
-    [[[board stub] andReturnValue:OCMOCK_VALUE(no)] isDraw];
+    SBPlayerOutcome won = SBPlayerOutcomeWon;
+    [[[one expect] andReturnValue:OCMOCK_VALUE(won)] outcome];
     STAssertEqualObjects([match winner], one, nil);
 }
 
 - (void)testWinner_two {
-    BOOL no = NO;
-    NSUInteger otherPlayerIndex = 1;
-    [[[board stub] andReturnValue:OCMOCK_VALUE(otherPlayerIndex)] otherPlayerIndex];
-    [[[board stub] andReturnValue:OCMOCK_VALUE(no)] isDraw];
+    SBPlayerOutcome lost = SBPlayerOutcomeLost;
+    [[[one expect] andReturnValue:OCMOCK_VALUE(lost)] outcome];
+    SBPlayerOutcome won = SBPlayerOutcomeWon;
+    [[[two expect] andReturnValue:OCMOCK_VALUE(won)] outcome];
     STAssertEqualObjects([match winner], two, nil);
 }
 
 - (void)testWinner_draw {
-    BOOL yes = YES;
-    [[[board stub] andReturnValue:OCMOCK_VALUE(yes)] isDraw];
+    SBPlayerOutcome tied = SBPlayerOutcomeTied;
+    [[[one expect] andReturnValue:OCMOCK_VALUE(tied)] outcome];
+    [[[two expect] andReturnValue:OCMOCK_VALUE(tied)] outcome];
     STAssertNil([match winner], nil);
 }
 
 - (void)testPerformMove {
     id move = [OCMockObject mockForClass:[SBMove class]];
-    id successor = [OCMockObject mockForClass:[SBPhageBoard class]];
+    id successor = [OCMockObject niceMockForClass:[SBPhageBoard class]];
     [[[board stub] andReturn:successor] successorWithMove:move];
 
     [match performMove:move];
     STAssertEqualObjects(match.board, successor, nil);
 }
+
+- (void)testPerformMoveDoesNotSetPlayerOutcomeWhenGameNotOver {
+    id move = [OCMockObject mockForClass:[SBMove class]];
+    id successor = [OCMockObject niceMockForClass:[SBPhageBoard class]];
+    [[[successor stub] andReturn:successor] successorWithMove:move];
+    [[[board stub] andReturn:successor] successorWithMove:move];
+
+    [match performMove:move];
+
+    // -tearDown verifies no interactions on players..
+}
+
+- (void)testPerformMoveSetsPlayerOutcomeWhenGameOver {
+    BOOL no = NO;
+    BOOL yes = YES;
+    NSUInteger index = 0;
+
+    id successor = [OCMockObject mockForClass:[SBPhageBoard class]];
+    [[[successor expect] andReturnValue:OCMOCK_VALUE(yes)] isGameOver];
+    [[[successor expect] andReturnValue:OCMOCK_VALUE(index)] currentPlayerIndex];
+    [[[successor expect] andReturnValue:OCMOCK_VALUE(index)] currentPlayerIndex];
+    [[[successor expect] andReturnValue:OCMOCK_VALUE(no)] isDraw];
+
+    id move = [OCMockObject mockForClass:[SBMove class]];
+    [[[board stub] andReturn:successor] successorWithMove:move];
+
+    [[one expect] setOutcome:SBPlayerOutcomeLost];
+    [[two expect] setOutcome:SBPlayerOutcomeWon];
+
+    [match performMove:move];
+}
+
+- (void)testPerformMoveSetsPlayerOutcomeTiedWhenGameOver {
+    BOOL yes = YES;
+    NSUInteger index = 0;
+
+    id successor = [OCMockObject mockForClass:[SBPhageBoard class]];
+    [[[successor expect] andReturnValue:OCMOCK_VALUE(yes)] isGameOver];
+    [[[successor expect] andReturnValue:OCMOCK_VALUE(index)] currentPlayerIndex];
+    [[[successor expect] andReturnValue:OCMOCK_VALUE(index)] currentPlayerIndex];
+    [[[successor expect] andReturnValue:OCMOCK_VALUE(yes)] isDraw];
+
+    id move = [OCMockObject mockForClass:[SBMove class]];
+    [[[board stub] andReturn:successor] successorWithMove:move];
+
+    [[one expect] setOutcome:SBPlayerOutcomeTied];
+    [[two expect] setOutcome:SBPlayerOutcomeTied];
+
+    [match performMove:move];
+}
+
 
 - (void)testCanCurrentPlayerMovePiece_false {
     // Can't figure out how to do this with a mocked board; create a new match using a real board

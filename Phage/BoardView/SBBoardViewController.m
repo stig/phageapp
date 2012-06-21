@@ -70,11 +70,12 @@
 }
 
 - (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
-    TFLog(@"%s move %@ to %@", __PRETTY_FUNCTION__, piece, location);
-
     @synchronized (self) {
+        SBMove *move = [self moveWithPiece:piece location:location];
+        TFLog(@"%s move: %@", __PRETTY_FUNCTION__, move);
+
         if ([self canMovePiece:piece toLocation:location]) {
-            [self.phageMatch performMove:[self moveWithPiece:piece location:location]];
+            [self.phageMatch performMove:move];
             if ([self.phageMatch isGameOver]) {
                 [self transitionToState:[SBBoardViewControllerStateGameOver state]];
             } else {

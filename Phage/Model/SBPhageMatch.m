@@ -9,7 +9,6 @@
 #import "SBPhageBoard.h"
 #import "SBPlayer.h"
 #import "SBMove.h"
-#import "SBPiece.h"
 
 @implementation SBPhageMatch
 @synthesize board = _board;
@@ -43,22 +42,43 @@
     return 0 == self.board.currentPlayerIndex ? self.playerOne : self.playerTwo;
 }
 
+- (id<SBPlayer>)otherPlayer {
+    return [self.currentPlayer isEqual:self.playerOne] ? self.playerTwo : self.playerOne;
+}
+
 - (BOOL)isLegalMove:(SBMove*)aMove {
     return [self.board isLegalMove:aMove];
 }
 
 - (void)performMove:(SBMove *)move {
-    _board = [self.board successorWithMove:move];
+    @synchronized (self) {
+        _board = [self.board successorWithMove:move];
+        if (self.board.isGameOver) {
+            [self handleGameOver];
+        }
+    }
+}
+
+- (void)handleGameOver {
+    if (self.board.isDraw) {
+        self.playerOne.outcome = self.playerTwo.outcome = SBPlayerOutcomeTied;
+    } else {
+        self.currentPlayer.outcome = SBPlayerOutcomeLost;
+        self.otherPlayer.outcome = SBPlayerOutcomeWon;
+    }
 }
 
 - (BOOL)isGameOver {
-    return [self.board isGameOver];
+    return self.playerOne.outcome != SBPlayerOutcomeNone
+        || self.playerTwo.outcome != SBPlayerOutcomeNone;
 }
 
 - (id <SBPlayer>)winner {
-    if ([self.board isDraw])
-        return nil;
-    return 0 == self.board.otherPlayerIndex ? self.playerOne : self.playerTwo;
+    if (self.playerOne.outcome == SBPlayerOutcomeWon)
+        return self.playerOne;
+    else if (self.playerTwo.outcome == SBPlayerOutcomeWon)
+        return self.playerTwo;
+    return nil;
 }
 
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece {
