@@ -12,8 +12,9 @@
 #import "SBPiece.h"
 
 @implementation SBPhageMatch
-@synthesize players = _players;
 @synthesize board = _board;
+@synthesize playerOne = _playerOne;
+@synthesize playerTwo = _playerTwo;
 
 
 + (id)matchWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two {
@@ -32,13 +33,14 @@
     self = [super init];
     if (!self) return nil;
 
-    _players = [NSArray arrayWithObjects:one, two, nil];
+    _playerOne = one;
+    _playerTwo = two;
     _board = board;
     return self;
 }
 
 - (id<SBPlayer>)currentPlayer {
-    return [self.players objectAtIndex:self.board.currentPlayerIndex];
+    return 0 == self.board.currentPlayerIndex ? self.playerOne : self.playerTwo;
 }
 
 - (BOOL)isLegalMove:(SBMove*)aMove {
@@ -56,7 +58,7 @@
 - (id <SBPlayer>)winner {
     if ([self.board isDraw])
         return nil;
-    return [self.players objectAtIndex:self.board.otherPlayerIndex];
+    return 0 == self.board.otherPlayerIndex ? self.playerOne : self.playerTwo;
 }
 
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece {

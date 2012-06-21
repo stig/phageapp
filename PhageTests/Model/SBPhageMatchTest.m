@@ -36,8 +36,8 @@
 }
 
 - (void)testPlayers {
-    STAssertEqualObjects([match.players objectAtIndex:0], one, nil);
-    STAssertEqualObjects([match.players objectAtIndex:1], two, nil);
+    STAssertEqualObjects(match.playerOne, one, nil);
+    STAssertEqualObjects(match.playerTwo, two, nil);
 }
 
 - (void)testInit {

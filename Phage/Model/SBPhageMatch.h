@@ -16,7 +16,8 @@
 @property(nonatomic, readonly) BOOL isGameOver;
 @property(nonatomic, readonly) id<SBPlayer> winner;
 @property(nonatomic, readonly) id<SBPlayer> currentPlayer;
-@property(nonatomic, readonly) NSArray *players;
+@property(nonatomic, readonly) id<SBPlayer> playerOne;
+@property(nonatomic, readonly) id<SBPlayer> playerTwo;
 @property(nonatomic, readonly) SBPhageBoard *board;
 
 + (id)matchWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two;
