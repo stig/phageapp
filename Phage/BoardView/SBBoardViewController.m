@@ -9,8 +9,6 @@
 #import "SBBoardViewController.h"
 #import "SBPhageBoard.h"
 #import "SBMove.h"
-#import "SBTurnBasedParticipant.h"
-#import "PhageModelHelper.h"
 #import "SBBoardViewControllerStateUnselected.h"
 #import "SBBoardViewControllerStateReadonly.h"
 #import "SBBoardViewControllerStateGameOver.h"

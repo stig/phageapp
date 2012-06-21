@@ -7,7 +7,6 @@
 //
 
 #import "SBBoardView.h"
-#import "SBTurnBasedMatchHelper.h"
 #import "SBBoardViewControllerState.h"
 
 @class SBPhageMatch;
