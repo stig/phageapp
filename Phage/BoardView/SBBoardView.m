@@ -21,10 +21,6 @@
 @property(nonatomic, strong) NSMutableDictionary *pieces;
 @property(nonatomic) NSUInteger columns;
 @property(nonatomic) NSUInteger rows;
-
-
-- (void)createBoardCells;
-- (void)createInitialBoardPieces;
 @end
 
 @implementation SBBoardView
