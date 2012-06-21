@@ -156,6 +156,15 @@
     [match performMove:move];
 }
 
+- (void)testForfeit {
+    NSUInteger index = 0;
+    [[[board expect] andReturnValue:OCMOCK_VALUE(index)] currentPlayerIndex];
+    [[[board expect] andReturnValue:OCMOCK_VALUE(index)] currentPlayerIndex];
+    [[one expect] setOutcome:SBPlayerOutcomeQuit];
+    [[two expect] setOutcome:SBPlayerOutcomeWon];
+    [match forfeit];
+}
+
 
 - (void)testCanCurrentPlayerMovePiece_false {
     // Can't figure out how to do this with a mocked board; create a new match using a real board

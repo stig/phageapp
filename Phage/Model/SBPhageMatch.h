@@ -31,4 +31,6 @@
 
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece;
 
+- (void)forfeit;
+
 @end

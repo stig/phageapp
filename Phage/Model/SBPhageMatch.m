@@ -59,6 +59,11 @@
     }
 }
 
+- (void)forfeit {
+    self.currentPlayer.outcome = SBPlayerOutcomeQuit;
+    self.otherPlayer.outcome = SBPlayerOutcomeWon;
+}
+
 - (void)handleGameOver {
     if (self.board.isDraw) {
         self.playerOne.outcome = self.playerTwo.outcome = SBPlayerOutcomeTied;
