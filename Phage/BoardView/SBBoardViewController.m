@@ -69,6 +69,12 @@
     return [self.phageMatch isLegalMove:move];
 }
 
+- (void)handleNotifyGameOver {
+    id<SBPlayer> winner = self.phageMatch.winner;
+    NSString *message = nil == winner ? @"It's a draw!" : [winner.alias stringByAppendingString:@" won!"];
+    [[[UIAlertView alloc] initWithTitle:@"Game Over" message:message delegate:nil cancelButtonTitle:@"Great!" otherButtonTitles:nil] show];
+}
+
 - (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
     @synchronized (self) {
         SBMove *move = [self moveWithPiece:piece location:location];
@@ -86,10 +92,7 @@
 
     if ([self.phageMatch isGameOver]) {
         [TestFlight passCheckpoint:self.gameOverCheckPoint];
-
-        id<SBPlayer> winner = self.phageMatch.winner;
-        NSString *message = nil == winner ? @"It's a draw!" : [winner.alias stringByAppendingString:@" won!"];
-        [[[UIAlertView alloc] initWithTitle:@"Game Over" message:message delegate:nil cancelButtonTitle:@"Great!" otherButtonTitles:nil] show];
+        [self handleNotifyGameOver];
     }
 
     // TODO: We really should just move the piece and block off the previous destination, rather than redraw the entire board
@@ -101,7 +104,9 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if ([actionSheet isEqual:self.forfeitActionSheet]) {
         if ([actionSheet destructiveButtonIndex] == buttonIndex) {
-            @throw @"Unimplemented";
+            [self.phageMatch forfeit];
+            [self transitionToState:[SBBoardViewControllerStateGameOver state]];
+            [self handleNotifyGameOver];
         }
         self.forfeitActionSheet = nil;
     }
