@@ -6,13 +6,15 @@
 
 
 
-@class SBPhageBoard;
 @protocol SBPlayer;
+@class SBPhageBoard;
 @class SBMove;
 @class SBPiece;
 
 @interface SBPhageMatch : NSObject
 
+@property(nonatomic, readonly) BOOL isGameOver;
+@property(nonatomic, readonly) id<SBPlayer> winner;
 @property(nonatomic, readonly) id<SBPlayer> currentPlayer;
 @property(nonatomic, readonly) NSArray *players;
 @property(nonatomic, readonly) SBPhageBoard *board;
@@ -25,9 +27,6 @@
 
 - (BOOL)isLegalMove:(SBMove *)aMove;
 - (void)performMove:(SBMove*)move;
-
-- (BOOL)isGameOver;
-- (id<SBPlayer>)winner;
 
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece;
 
