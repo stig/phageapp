@@ -15,36 +15,27 @@
 #import "SBBoardViewControllerStateReadonly.h"
 #import "SBBoardViewControllerStateGameOver.h"
 #import "SBLocation.h"
+#import "SBPhageMatch.h"
+#import "SBPlayer.h"
 
 @interface SBBoardViewController () < UIActionSheetDelegate >
 @property(strong) UIActionSheet *forfeitActionSheet;
-- (SBPhageBoard *)currentState;
-- (SBPhageBoard *)stateForMatch:(id<SBTurnBasedMatch>)match;
 @end
 
 @implementation SBBoardViewController
 
-@synthesize turnBasedMatchHelper = _turnBasedMatchHelper;
 @synthesize gridView = _gridView;
-@synthesize modelHelper = _modelHelper;
 @synthesize forfeitActionSheet = _forfeitActionSheet;
 @synthesize forfeitButton = _forfeitButton;
 @synthesize state = _state;
+@synthesize phageMatch = _phageMatch;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.modelHelper = [[PhageModelHelper alloc] init];
-    self.state = [SBBoardViewControllerState state];
+    self.state = [SBBoardViewControllerStateUnselected state];
     self.state.delegate = self;
     self.state.gridView = self.gridView;
-    [self.turnBasedMatchHelper findMatch];
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
-    self.modelHelper = nil;
-    // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -57,117 +48,45 @@
 
 #pragma mark Actions
 
-- (SBPhageBoard *)stateForMatch:(id<SBTurnBasedMatch>)match {
-    if (nil == match.matchState) {
-        return [SBPhageBoard board];
-    }
-    return match.matchState;
-}
-
-- (SBPhageBoard *)currentState {
-    return [self stateForMatch:self.turnBasedMatchHelper.currentMatch];
-}
 
 - (IBAction)forfeit {
-    NSAssert([self.turnBasedMatchHelper isLocalPlayerTurn:self.turnBasedMatchHelper.currentMatch], @"Should be localPlayerTurn");
+    id<SBPlayer> player = self.phageMatch.currentPlayer;
+    NSAssert(player.isLocalHuman, @"Player should be local Human");
     self.forfeitActionSheet = [[UIActionSheet alloc] initWithTitle:@"Really forfeit match?" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
     [self.forfeitActionSheet showInView:self.view];
 }
 
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece {
-    SBPhageBoard *state = [self currentState];
-    NSUInteger playerTurn = state.currentPlayerIndex;
-    NSArray *pieces = [state.pieces objectAtIndex:playerTurn];
-    return [pieces containsObject:piece];
+    return [self.phageMatch canCurrentPlayerMovePiece:piece];
+}
+
+- (SBMove *)moveWithPiece:(SBPiece *)piece location:(SBLocation *)location {
+    SBLocation *locationOfPiece = [self.phageMatch.board locationForPiece:piece];
+    return [SBMove moveWithFrom:locationOfPiece to:location];
 }
 
 - (BOOL)canMovePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
-    SBPhageBoard *state = [self currentState];
-    SBLocation *from = [state locationForPiece:piece];
-    SBMove *move = [SBMove moveWithFrom:from to:location];
-    return [state isLegalMove:move];
+    SBMove *move = [self moveWithPiece:piece location:location];
+    return [self.phageMatch isLegalMove:move];
 }
 
 - (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
     TFLog(@"%s move %@ to %@", __PRETTY_FUNCTION__, piece, location);
 
-    SBPhageBoard *state = [self currentState];
-    SBLocation *from = [state locationForPiece:piece];
-    SBMove *move = [SBMove moveWithFrom:from to:location];
-    NSParameterAssert([state isLegalMove:move]);
-
-    SBPhageBoard *newState = [state successorWithMove:move];
-
-    [self.modelHelper endTurnOrMatch:self.turnBasedMatchHelper.currentMatch withMatchState:newState completionHandler:^(NSError *error) {
-        if (error) TFLog(@"There was an error performing the move: %@", error);
-    }];
-}
-
-#pragma mark Turn Based Match Helper Delegate
-
-- (id<SBTurnBasedParticipant>)nextParticipantForMatch:(id<SBTurnBasedMatch>)match {
-    return [self.modelHelper nextParticipantForMatch:match];
-}
-
-- (void)enterNewGame:(id<SBTurnBasedMatch>)match {
-    self.forfeitButton.enabled = NO;
-
-    id state = [self.turnBasedMatchHelper isLocalPlayerTurn:match]
-            ? [SBBoardViewControllerStateUnselected state]
-            : [SBBoardViewControllerStateReadonly state];
-
-    [self transitionToState:state];
-    [self.gridView layoutForState:[self stateForMatch:match]];
-}
-
-- (void)takeTurn:(id<SBTurnBasedMatch>)match {
-    self.forfeitButton.enabled = YES;
-    [self transitionToState:[SBBoardViewControllerStateUnselected state]];
-    [self.gridView layoutForState:match.matchState];
-}
-
-- (void)layoutMatch:(id <SBTurnBasedMatch>)match {
-    self.forfeitButton.enabled = NO;
-    [self transitionToState:[SBBoardViewControllerStateReadonly state]];
-    [self.gridView layoutForState:match.matchState];
-}
-
-- (void)sendTitle:(NSString*)title notice:(NSString *)notice forMatch:(id<SBTurnBasedMatch>)match {
-
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:title
-                                                 message:notice
-                                                delegate:self
-                                       cancelButtonTitle:@"Sweet!"
-                                       otherButtonTitles:nil];
-    [av show];
-}
-
-- (void)receiveEndGame:(id<SBTurnBasedMatch>)match {
-
-    [self transitionToState:[SBBoardViewControllerStateGameOver state]];
-
-    self.forfeitButton.enabled = NO;
-    [self.gridView layoutForState:match.matchState];
-
-    NSString *message;
-
-    switch ([[match localParticipant] matchOutcome]) {
-        case GKTurnBasedMatchOutcomeWon:
-            message = @"You won the match!";
-            break;
-        case GKTurnBasedMatchOutcomeTied:
-            message = @"You managed a tie!";
-            break;
-        default:
-            message = @"You lost the match... Better luck next time!";
+    @synchronized (self) {
+        if ([self canMovePiece:piece toLocation:location])
+            [self.phageMatch performMove:[self moveWithPiece:piece location:location]];
     }
 
-    [[[UIAlertView alloc] initWithTitle:@"Game Over"
-                                message:message
-                               delegate:self
-                      cancelButtonTitle:@"OK"
-                      otherButtonTitles:nil] show];
-
+    if ([self.phageMatch isGameOver]) {
+        [self transitionToState:[SBBoardViewControllerStateGameOver state]];
+        id<SBPlayer> winner = self.phageMatch.winner;
+        NSString *message = nil == winner ? @"It's a draw!" : [winner.alias stringByAppendingString:@" won!"];
+        [[[UIAlertView alloc] initWithTitle:@"Game Over" message:message delegate:nil cancelButtonTitle:@"Great!" otherButtonTitles:nil] show];
+    } else {
+        [self.gridView layoutForState:self.phageMatch.board];
+        [self transitionToState:[SBBoardViewControllerStateUnselected state]];
+    }
 }
 
 #pragma mark UIActionSheetDelegate
@@ -175,7 +94,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if ([actionSheet isEqual:self.forfeitActionSheet]) {
         if ([actionSheet destructiveButtonIndex] == buttonIndex) {
-            [self.modelHelper forfeitMatch:self.turnBasedMatchHelper.currentMatch inTurnWithCompletionHandler:^(NSError *error) {}];
+            @throw @"Unimplemented";
         }
         self.forfeitActionSheet = nil;
     }
@@ -223,12 +142,11 @@
 }
 
 - (SBLocation *)locationOfPiece:(SBPiece *)piece {
-    return [[self currentState] locationForPiece:piece];
+    return [self.phageMatch.board locationForPiece:piece];
 }
 
 - (void)setLegalDestinationsForPiece:(SBPiece *)piece highlighted:(BOOL)highlighted {
-    SBPhageBoard *state = self.currentState;
-    [state enumerateLegalDestinationsForPiece:piece withBlock:^(SBLocation *location, BOOL *stop) {
+    [self.phageMatch.board enumerateLegalDestinationsForPiece:piece withBlock:^(SBLocation *location, BOOL *stop) {
         [self.gridView setCellHighlighted:highlighted atLocation:location];
     }];
 }

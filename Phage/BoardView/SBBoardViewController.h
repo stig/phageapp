@@ -10,17 +10,15 @@
 #import "SBTurnBasedMatchHelper.h"
 #import "SBBoardViewControllerState.h"
 
-@class SBPhageBoard;
-@class PhageModelHelper;
+@class SBPhageMatch;
 
-@interface SBBoardViewController : UIViewController <SBTurnBasedMatchHelperDelegate, SBBoardViewDelegate, SBBoardViewControllerStateDelegate>
+@interface SBBoardViewController : UIViewController <SBBoardViewDelegate, SBBoardViewControllerStateDelegate>
 
-@property(strong) SBBoardViewControllerState *state;
+@property(strong) SBBoardViewControllerState *state; // intentionally atomic!
+@property(strong) SBPhageMatch *phageMatch; // intentionally atomic!
 
 @property(nonatomic, weak) IBOutlet UIBarButtonItem *forfeitButton;
-@property(strong) PhageModelHelper *modelHelper;
-@property(strong) SBTurnBasedMatchHelper *turnBasedMatchHelper;
-@property(strong) IBOutlet SBBoardView *gridView;
+@property(nonatomic, strong) IBOutlet SBBoardView *gridView;
 
 - (IBAction)forfeit;
 
