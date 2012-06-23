@@ -27,7 +27,7 @@
 @synthesize forfeitButton = _forfeitButton;
 @synthesize state = _state;
 @synthesize phageMatch = _phageMatch;
-@synthesize gameOverCheckPoint = _gameOverCheckPoint;
+@synthesize checkPointBaseName = _checkPointBaseName;
 
 
 - (void)viewDidLoad {
@@ -95,7 +95,7 @@
     }
 
     if ([self.phageMatch isGameOver]) {
-        [TestFlight passCheckpoint:self.gameOverCheckPoint];
+        [TestFlight passCheckpoint:[@"FINISHED_" stringByAppendingString:self.checkPointBaseName]];
         [self handleNotifyGameOver];
     }
 }
@@ -108,6 +108,8 @@
             [self.phageMatch forfeit];
             [self transitionToState:[SBBoardViewControllerStateGameOver state]];
             [self handleNotifyGameOver];
+            [TestFlight passCheckpoint:[@"FORFEITED_" stringByAppendingString:self.checkPointBaseName]];
+
         }
         self.forfeitActionSheet = nil;
     }
