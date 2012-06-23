@@ -31,6 +31,8 @@
 
 @property(weak) IBOutlet id <SBBoardViewDelegate> delegate;
 
+- (void)setLocation:(SBLocation *)loc blocked:(BOOL)blocked;
+
 - (void)layoutForState:(SBPhageBoard *)state;
 - (void)pickUpPiece:(SBPiece *)piece;
 - (void)putDownPiece:(SBPiece *)piece;

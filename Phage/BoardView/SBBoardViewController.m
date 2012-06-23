@@ -82,6 +82,10 @@
 
         if ([self canMovePiece:piece toLocation:location]) {
             [self.phageMatch performMove:move];
+            [self.gridView movePiece:piece toLocation:location];
+            [self.gridView setLocation:move.from blocked:YES];
+            [self.gridView putDownPiece:piece];
+
             if ([self.phageMatch isGameOver]) {
                 [self transitionToState:[SBBoardViewControllerStateGameOver state]];
             } else {
@@ -94,9 +98,6 @@
         [TestFlight passCheckpoint:self.gameOverCheckPoint];
         [self handleNotifyGameOver];
     }
-
-    // TODO: We really should just move the piece and block off the previous destination, rather than redraw the entire board
-    [self.gridView layoutForState:self.phageMatch.board];
 }
 
 #pragma mark UIActionSheetDelegate

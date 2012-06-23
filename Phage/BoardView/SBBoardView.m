@@ -88,11 +88,15 @@
 
 #pragma mark -
 
+- (void)setLocation:(SBLocation *)loc blocked:(BOOL)blocked {
+    SBCellLayer *layer = [self.cells objectForKey:loc];
+    layer.blocked = blocked;
+}
+
 - (void)layoutForState:(SBPhageBoard *)state {
 
     [state enumerateLocationsUsingBlock:^(SBLocation *loc) {
-        SBCellLayer *layer = [self.cells objectForKey:loc];
-        layer.blocked = [state wasLocationOccupied:loc];
+        [self setLocation:loc blocked:[state wasLocationOccupied:loc]];
     }];
 
     for (NSArray *playerPieces in state.pieces) {
