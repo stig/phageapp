@@ -11,7 +11,6 @@
 #import "SBLocation.h"
 #import "SBPieceLayer.h"
 #import "SBCellLayer.h"
-#import "SBAnimationHelper.h"
 
 @interface SBBoardView () < UIGestureRecognizerDelegate >
 @property(strong) CALayer *cellLayer;
@@ -121,14 +120,21 @@
     SBPieceLayer *layer = [self.pieces objectForKey:piece];
     layer.affineTransform = CGAffineTransformMakeScale(2.0, 2.0);
     layer.zPosition++;
-    [SBAnimationHelper addPulseAnimationToLayer:layer];
+    CABasicAnimation *theAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    theAnimation.duration = 1.0;
+    theAnimation.repeatCount = HUGE_VALF;
+    theAnimation.autoreverses = YES;
+    theAnimation.fromValue = [NSNumber numberWithFloat:1.0];
+    theAnimation.toValue = [NSNumber numberWithFloat:0.5];
+    theAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    [layer addAnimation:theAnimation forKey:@"opacityAnimation"];
 }
 
 - (void)putDownPiece:(SBPiece *)piece {
     SBPieceLayer *layer = [self.pieces objectForKey:piece];
     layer.affineTransform = CGAffineTransformMakeScale(1.0, 1.0);
     layer.zPosition--;
-    [SBAnimationHelper removePulseAnimationFromLayer:layer];
+    [layer removeAnimationForKey:@"opacityAnimation"];
 }
 
 - (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location {

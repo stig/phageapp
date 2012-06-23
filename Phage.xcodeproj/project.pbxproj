@@ -48,7 +48,6 @@
 		FB89D43C154C7D27001A0B94 /* PhageRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B93 /* PhageRootViewController.m */; };
 		FB89D43C154C7D27001A0BA2 /* SBPieceLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BA1 /* SBPieceLayer.m */; };
 		FB89D43C154C7D27001A0BA8 /* SBCellLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BA7 /* SBCellLayer.m */; };
-		FB89D43C154C7D27001A0BC0 /* SBAnimationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BBF /* SBAnimationHelper.m */; };
 		FB89D43C154C7D27001A0BD0 /* SBBoardViewControllerState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BCF /* SBBoardViewControllerState.m */; };
 		FB89D43C154C7D27001A0BD3 /* SBBoardViewControllerStateReadonly.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BD2 /* SBBoardViewControllerStateReadonly.m */; };
 		FB89D43C154C7D27001A0BD6 /* SBBoardViewControllerStateUnselected.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BD5 /* SBBoardViewControllerStateUnselected.m */; };
@@ -175,8 +174,6 @@
 		FB89D43C154C7D27001A0BA3 /* SBPieceLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPieceLayer.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BA7 /* SBCellLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCellLayer.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BA9 /* SBCellLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBCellLayer.h; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0BBF /* SBAnimationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAnimationHelper.m; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0BC1 /* SBAnimationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAnimationHelper.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BCF /* SBBoardViewControllerState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerState.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BD1 /* SBBoardViewControllerState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardViewControllerState.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BD2 /* SBBoardViewControllerStateReadonly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardViewControllerStateReadonly.m; sourceTree = "<group>"; };
@@ -389,8 +386,6 @@
 				FB89D43C154C7D27001A0BD2 /* SBBoardViewControllerStateReadonly.m */,
 				FB89D43C154C7D27001A0BD1 /* SBBoardViewControllerState.h */,
 				FB89D43C154C7D27001A0BCF /* SBBoardViewControllerState.m */,
-				FB89D43C154C7D27001A0BC1 /* SBAnimationHelper.h */,
-				FB89D43C154C7D27001A0BBF /* SBAnimationHelper.m */,
 				D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */,
 				D76A457E151DDC7500E59146 /* SBBoardViewController.m */,
 				D76A457D151DDC7500E59146 /* SBBoardViewController.h */,
@@ -563,7 +558,6 @@
 				FB89D43C154C7D27001A0B94 /* PhageRootViewController.m in Sources */,
 				FB89D43C154C7D27001A0BA2 /* SBPieceLayer.m in Sources */,
 				FB89D43C154C7D27001A0BA8 /* SBCellLayer.m in Sources */,
-				FB89D43C154C7D27001A0BC0 /* SBAnimationHelper.m in Sources */,
 				FB89D43C154C7D27001A0BD0 /* SBBoardViewControllerState.m in Sources */,
 				FB89D43C154C7D27001A0BD3 /* SBBoardViewControllerStateReadonly.m in Sources */,
 				FB89D43C154C7D27001A0BD6 /* SBBoardViewControllerStateUnselected.m in Sources */,
