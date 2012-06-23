@@ -153,7 +153,11 @@
     [[one expect] setOutcome:SBPlayerOutcomeTied];
     [[two expect] setOutcome:SBPlayerOutcomeTied];
 
+    STAssertNil(match.lastUpdated, nil);
+
     [match performMove:move];
+
+    STAssertEqualsWithAccuracy([match.lastUpdated timeIntervalSinceNow], 0.0, 1.0, nil);
 }
 
 - (void)testForfeit {
@@ -162,7 +166,12 @@
     [[[board expect] andReturnValue:OCMOCK_VALUE(index)] currentPlayerIndex];
     [[one expect] setOutcome:SBPlayerOutcomeQuit];
     [[two expect] setOutcome:SBPlayerOutcomeWon];
+
+    STAssertNil(match.lastUpdated, nil);
+
     [match forfeit];
+
+    STAssertEqualsWithAccuracy([match.lastUpdated timeIntervalSinceNow], 0.0, 1.0, nil);
 }
 
 

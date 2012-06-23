@@ -13,6 +13,7 @@
 
 @interface SBPhageMatch : NSObject
 
+@property(nonatomic, readonly) NSDate *lastUpdated;
 @property(nonatomic, readonly, getter=isGameOver) BOOL gameOver;
 @property(nonatomic, readonly) id<SBPlayer> winner;
 @property(nonatomic, readonly) id<SBPlayer> currentPlayer;

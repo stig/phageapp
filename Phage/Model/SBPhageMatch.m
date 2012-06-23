@@ -14,6 +14,7 @@
 @synthesize board = _board;
 @synthesize playerOne = _playerOne;
 @synthesize playerTwo = _playerTwo;
+@synthesize lastUpdated = _lastUpdated;
 
 
 + (id)matchWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two {
@@ -56,12 +57,16 @@
         if (self.board.isGameOver) {
             [self handleGameOver];
         }
+        _lastUpdated = [NSDate date];
     }
 }
 
 - (void)forfeit {
-    self.currentPlayer.outcome = SBPlayerOutcomeQuit;
-    self.otherPlayer.outcome = SBPlayerOutcomeWon;
+    @synchronized (self) {
+        self.currentPlayer.outcome = SBPlayerOutcomeQuit;
+        self.otherPlayer.outcome = SBPlayerOutcomeWon;
+        _lastUpdated = [NSDate date];
+    }
 }
 
 - (void)handleGameOver {
