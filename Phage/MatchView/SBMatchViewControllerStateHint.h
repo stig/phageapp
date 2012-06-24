@@ -6,7 +6,7 @@
 
 
 
-#import "SBBoardViewControllerStateSelected.h"
+#import "SBMatchViewControllerStateSelected.h"
 
-@interface SBBoardViewControllerStateHint : SBBoardViewControllerStateSelected
+@interface SBMatchViewControllerStateHint : SBMatchViewControllerStateSelected
 @end

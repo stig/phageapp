@@ -7,11 +7,11 @@
 
 
 @protocol SBPlayer;
-@class SBPhageBoard;
+@class SBBoard;
 @class SBMove;
 @class SBPiece;
 
-@interface SBPhageMatch : NSObject
+@interface SBMatch : NSObject
 
 @property(nonatomic, readonly) NSDate *lastUpdated;
 @property(nonatomic, readonly, getter=isGameOver) BOOL gameOver;
@@ -19,13 +19,13 @@
 @property(nonatomic, readonly) id<SBPlayer> currentPlayer;
 @property(nonatomic, readonly) id<SBPlayer> playerOne;
 @property(nonatomic, readonly) id<SBPlayer> playerTwo;
-@property(readonly) SBPhageBoard *board; // atomic
+@property(readonly) SBBoard *board; // atomic
 
 + (id)matchWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two;
 - (id)initWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two;
 
-+ (id)matchWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two board:(SBPhageBoard *)board;
-- (id)initWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two board:(SBPhageBoard *)board;
++ (id)matchWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two board:(SBBoard *)board;
+- (id)initWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two board:(SBBoard *)board;
 
 - (BOOL)isLegalMove:(SBMove *)aMove;
 - (void)performMove:(SBMove*)move;

@@ -6,7 +6,7 @@
 
 
 
-#import "SBBoardViewControllerState.h"
+#import "SBMatchViewControllerState.h"
 
-@interface SBBoardViewControllerStateUnselected : SBBoardViewControllerState
+@interface SBMatchViewControllerStateReadonly : SBMatchViewControllerState
 @end

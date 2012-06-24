@@ -8,12 +8,12 @@
 #import <Foundation/Foundation.h>
 #import "SBPiece.h"
 
-@class SBPhageBoard;
+@class SBBoard;
 @class SBMove;
 
 
 @interface SBOpponentMobilityMinimisingMovePicker : NSObject
 
-- (SBMove *)moveForState:(SBPhageBoard *)state;
+- (SBMove *)moveForState:(SBBoard *)state;
 
 @end

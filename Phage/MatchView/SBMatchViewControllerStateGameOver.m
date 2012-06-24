@@ -5,9 +5,9 @@
 //
 
 
-#import "SBBoardViewControllerStateGameOver.h"
+#import "SBMatchViewControllerStateGameOver.h"
 
-@implementation SBBoardViewControllerStateGameOver
+@implementation SBMatchViewControllerStateGameOver
 
 - (void)displayMessage {
     [[[UIAlertView alloc] initWithTitle:@"Game Over"

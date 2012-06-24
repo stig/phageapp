@@ -4,24 +4,24 @@
 // To change the template use AppCode | Preferences | File Templates.
 //
 
-#import "SBBoardView.h"
+#import "SBMatchView.h"
 
-@class SBBoardViewControllerState;
+@class SBMatchViewControllerState;
 @class SBPiece;
 
-@protocol SBBoardViewControllerStateDelegate
+@protocol SBMatchViewControllerStateDelegate
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece;
 - (BOOL)canMovePiece:(SBPiece *)piece toLocation:(SBLocation *)location;
 - (SBLocation*)locationOfPiece:(SBPiece *)piece;
 - (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location;
-- (void)transitionToState:(SBBoardViewControllerState*)state;
+- (void)transitionToState:(SBMatchViewControllerState *)state;
 - (void)setLegalDestinationsForPiece:(SBPiece *)piece highlighted:(BOOL)highlighted;
 @end
 
 
-@interface SBBoardViewControllerState : NSObject < SBBoardViewDelegate >
-@property(weak) SBBoardView *gridView;
-@property(weak) id<SBBoardViewControllerStateDelegate> delegate;
+@interface SBMatchViewControllerState : NSObject <SBMatchViewDelegate>
+@property(weak) SBMatchView *gridView;
+@property(weak) id<SBMatchViewControllerStateDelegate> delegate;
 
 + (id)state;
 

@@ -6,10 +6,10 @@
 
 
 
-#import "SBBoardViewControllerState.h"
+#import "SBMatchViewControllerState.h"
 
-@interface SBBoardViewControllerStateConfirm : SBBoardViewControllerState
-@property(nonatomic, strong) SBBoardViewControllerState *previousState;
+@interface SBMatchViewControllerStateConfirm : SBMatchViewControllerState
+@property(nonatomic, strong) SBMatchViewControllerState *previousState;
 @property(nonatomic, weak) SBPiece* selected;
 @property(nonatomic, weak) SBLocation* destination;
 @end

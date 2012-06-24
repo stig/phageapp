@@ -8,5 +8,5 @@
 
 #import "SBPlayer.h"
 
-@interface SBHumanPlayer : NSObject <SBPlayer>
+@interface SBHuman : NSObject <SBPlayer>
 @end

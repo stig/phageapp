@@ -5,11 +5,11 @@
 //
 
 
-#import "SBBoardViewControllerState.h"
+#import "SBMatchViewControllerState.h"
 #import "SBPiece.h"
 #import "SBLocation.h"
 
-@implementation SBBoardViewControllerState
+@implementation SBMatchViewControllerState
 
 @synthesize delegate = _delegate;
 @synthesize gridView = _gridView;

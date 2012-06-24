@@ -1,4 +1,4 @@
-# BoardView Behaviours
+# MatchView Behaviours
 
 ## When it is NOT my turn
 

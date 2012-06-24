@@ -4,9 +4,9 @@
 
 
 #import "PhageRootViewController.h"
-#import "SBBoardViewController.h"
-#import "SBHumanPlayer.h"
-#import "SBPhageMatch.h"
+#import "SBMatchViewController.h"
+#import "SBHuman.h"
+#import "SBMatch.h"
 
 @implementation PhageRootViewController
 
@@ -17,13 +17,13 @@
     if ([segue.identifier isEqual:@"TwoPlayer"]) {
         [TestFlight passCheckpoint:@"START_PASS_TO_PLAY_MATCH"];
 
-        SBHumanPlayer *playerOne = [SBHumanPlayer playerWithAlias:@"Player 1"];
-        SBHumanPlayer *playerTwo = [SBHumanPlayer playerWithAlias:@"Player 2"];
-        SBPhageMatch *match = [SBPhageMatch matchWithPlayerOne:playerOne two:playerTwo];
+        SBHuman *playerOne = [SBHuman playerWithAlias:@"Player 1"];
+        SBHuman *playerTwo = [SBHuman playerWithAlias:@"Player 2"];
+        SBMatch *match = [SBMatch matchWithPlayerOne:playerOne two:playerTwo];
 
-        SBBoardViewController *vc = segue.destinationViewController;
+        SBMatchViewController *vc = segue.destinationViewController;
         vc.checkPointBaseName = @"PASS_TO_PLAY_MATCH";
-        vc.phageMatch = match;
+        vc.match = match;
 
     } else if ([segue.identifier isEqualToString:@"OnePlayer"]) {
 

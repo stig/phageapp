@@ -7,26 +7,26 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import <OCMock/OCMock.h>
-#import "SBPhageMatch.h"
+#import "SBMatch.h"
 #import "SBPlayer.h"
-#import "SBPhageBoard.h"
+#import "SBBoard.h"
 #import "SBMove.h"
 
-@interface SBPhageMatchTest : SenTestCase {
-    SBPhageMatch *match;
+@interface SBMatchTest : SenTestCase {
+    SBMatch *match;
     id board;
     id one;
     id two;
 }
 @end
 
-@implementation SBPhageMatchTest
+@implementation SBMatchTest
 
 - (void)setUp {
     one = [OCMockObject mockForProtocol:@protocol(SBPlayer)];
     two = [OCMockObject mockForProtocol:@protocol(SBPlayer)];
-    board = [OCMockObject mockForClass:[SBPhageBoard class]];
-    match = [SBPhageMatch matchWithPlayerOne:one two:two board:board];
+    board = [OCMockObject mockForClass:[SBBoard class]];
+    match = [SBMatch matchWithPlayerOne:one two:two board:board];
 }
 
 - (void)tearDown {
@@ -99,7 +99,7 @@
 
 - (void)testPerformMove {
     id move = [OCMockObject mockForClass:[SBMove class]];
-    id successor = [OCMockObject niceMockForClass:[SBPhageBoard class]];
+    id successor = [OCMockObject niceMockForClass:[SBBoard class]];
     [[[board stub] andReturn:successor] successorWithMove:move];
 
     [match performMove:move];
@@ -108,7 +108,7 @@
 
 - (void)testPerformMoveDoesNotSetPlayerOutcomeWhenGameNotOver {
     id move = [OCMockObject mockForClass:[SBMove class]];
-    id successor = [OCMockObject niceMockForClass:[SBPhageBoard class]];
+    id successor = [OCMockObject niceMockForClass:[SBBoard class]];
     [[[successor stub] andReturn:successor] successorWithMove:move];
     [[[board stub] andReturn:successor] successorWithMove:move];
 
@@ -122,7 +122,7 @@
     BOOL yes = YES;
     NSUInteger index = 0;
 
-    id successor = [OCMockObject mockForClass:[SBPhageBoard class]];
+    id successor = [OCMockObject mockForClass:[SBBoard class]];
     [[[successor expect] andReturnValue:OCMOCK_VALUE(yes)] isGameOver];
     [[[successor expect] andReturnValue:OCMOCK_VALUE(index)] currentPlayerIndex];
     [[[successor expect] andReturnValue:OCMOCK_VALUE(index)] currentPlayerIndex];
@@ -141,7 +141,7 @@
     BOOL yes = YES;
     NSUInteger index = 0;
 
-    id successor = [OCMockObject mockForClass:[SBPhageBoard class]];
+    id successor = [OCMockObject mockForClass:[SBBoard class]];
     [[[successor expect] andReturnValue:OCMOCK_VALUE(yes)] isGameOver];
     [[[successor expect] andReturnValue:OCMOCK_VALUE(index)] currentPlayerIndex];
     [[[successor expect] andReturnValue:OCMOCK_VALUE(index)] currentPlayerIndex];
@@ -177,7 +177,7 @@
 
 - (void)testCanCurrentPlayerMovePiece_false {
     // Can't figure out how to do this with a mocked board; create a new match using a real board
-    match = [SBPhageMatch matchWithPlayerOne:one two:two];
+    match = [SBMatch matchWithPlayerOne:one two:two];
 
     // get one of the opponent's pieces
     id piece = [[match.board.pieces objectAtIndex:1] objectAtIndex:0];
@@ -187,7 +187,7 @@
 
 - (void)testCanCurrentPlayerMovePiece_true {
     // Can't figure out how to do this with a mocked board; create a new match using a real board
-    match = [SBPhageMatch matchWithPlayerOne:one two:two];
+    match = [SBMatch matchWithPlayerOne:one two:two];
 
     // Get one of our own pieces
     id piece = [[match.board.pieces objectAtIndex:0] objectAtIndex:0];

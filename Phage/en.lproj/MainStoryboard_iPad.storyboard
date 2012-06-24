@@ -111,7 +111,7 @@
         <scene sceneID="DuE-yU-SgM">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jHA-hv-6ak" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="63S-P2-daG" customClass="SBBoardViewController" sceneMemberID="viewController">
+                <viewController id="63S-P2-daG" customClass="SBMatchViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QDZ-Gm-jZr">
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -120,7 +120,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="768"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             </imageView>
-                            <view contentMode="scaleAspectFit" id="Lda-Hw-27O" customClass="SBBoardView">
+                            <view contentMode="scaleAspectFit" id="Lda-Hw-27O" customClass="SBMatchView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="768"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -157,18 +157,18 @@
                 <relationship kind="action" name="leaveFeedback"/>
             </relationships>
         </class>
-        <class className="SBBoardView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBBoardView.h"/>
+        <class className="SBMatchView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBMatchView.h"/>
             <relationships>
                 <relationship kind="outlet" name="delegate"/>
             </relationships>
         </class>
-        <class className="SBBoardViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBBoardViewController.h"/>
+        <class className="SBMatchViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBMatchViewController.h"/>
             <relationships>
                 <relationship kind="action" name="forfeit"/>
                 <relationship kind="outlet" name="forfeitButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="gridView" candidateClass="SBBoardView"/>
+                <relationship kind="outlet" name="gridView" candidateClass="SBMatchView"/>
             </relationships>
         </class>
     </classes>

@@ -7,16 +7,16 @@
 
 #import "SBOpponentMobilityMinimisingMovePicker.h"
 #import "SBMove.h"
-#import "SBPhageBoard.h"
+#import "SBBoard.h"
 
 @implementation SBOpponentMobilityMinimisingMovePicker
 
-- (SBMove *)moveForState:(SBPhageBoard *)state {
+- (SBMove *)moveForState:(SBBoard *)state {
     __block NSInteger minScore = INT_MAX;
     __block id bestMove = nil;
 
     [state enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
-        SBPhageBoard *successor = [state successorWithMove:move];
+        SBBoard *successor = [state successorWithMove:move];
         __block NSUInteger score = 0;
         [successor enumerateLegalMovesWithBlock:^(SBMove *move1, BOOL *stop1) {
             score++;

@@ -5,20 +5,20 @@
 //
 
 
-#import "SBBoardViewControllerStateUnselected.h"
-#import "SBBoardViewControllerStateSelected.h"
-#import "SBBoardViewControllerStateHint.h"
-#import "SBBoardViewControllerStateDragged.h"
+#import "SBMatchViewControllerStateUnselected.h"
+#import "SBMatchViewControllerStateSelected.h"
+#import "SBMatchViewControllerStateHint.h"
+#import "SBMatchViewControllerStateDragged.h"
 #import "SBPiece.h"
 #import "SBLocation.h"
 
-@implementation SBBoardViewControllerStateUnselected
+@implementation SBMatchViewControllerStateUnselected
 
 - (void)handleSingleTapWithPiece:(SBPiece *)piece {
     [super handleSingleTapWithPiece:piece];
 
     if ([self.delegate canCurrentPlayerMovePiece:piece]) {
-        SBBoardViewControllerStateSelected *state = [SBBoardViewControllerStateSelected state];
+        SBMatchViewControllerStateSelected *state = [SBMatchViewControllerStateSelected state];
         state.selected = piece;
         [self.delegate transitionToState:state];
     }
@@ -28,7 +28,7 @@
     [super handleDoubleTapWithPiece:piece];
 
     if ([self.delegate canCurrentPlayerMovePiece:piece]) {
-        SBBoardViewControllerStateHint *state = [SBBoardViewControllerStateHint state];
+        SBMatchViewControllerStateHint *state = [SBMatchViewControllerStateHint state];
         state.selected = piece;
         [self.delegate transitionToState:state];
     }
@@ -39,7 +39,7 @@
 }
 
 - (void)longPressStartedWithPiece:(SBPiece *)piece atLocation:(SBLocation *)location {
-    SBBoardViewControllerStateDragged *state = [SBBoardViewControllerStateDragged state];
+    SBMatchViewControllerStateDragged *state = [SBMatchViewControllerStateDragged state];
     state.dragged = piece;
     state.origin = location;
     [self.delegate transitionToState:state];

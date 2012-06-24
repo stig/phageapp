@@ -6,33 +6,33 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SBBoardViewController.h"
-#import "SBPhageBoard.h"
+#import "SBMatchViewController.h"
+#import "SBBoard.h"
 #import "SBMove.h"
-#import "SBBoardViewControllerStateUnselected.h"
-#import "SBBoardViewControllerStateReadonly.h"
-#import "SBBoardViewControllerStateGameOver.h"
+#import "SBMatchViewControllerStateUnselected.h"
+#import "SBMatchViewControllerStateReadonly.h"
+#import "SBMatchViewControllerStateGameOver.h"
 #import "SBLocation.h"
-#import "SBPhageMatch.h"
+#import "SBMatch.h"
 #import "SBPlayer.h"
 
-@interface SBBoardViewController () < UIActionSheetDelegate >
+@interface SBMatchViewController () < UIActionSheetDelegate >
 @property(strong) UIActionSheet *forfeitActionSheet;
 @end
 
-@implementation SBBoardViewController
+@implementation SBMatchViewController
 
 @synthesize gridView = _gridView;
 @synthesize forfeitActionSheet = _forfeitActionSheet;
 @synthesize forfeitButton = _forfeitButton;
 @synthesize state = _state;
-@synthesize phageMatch = _phageMatch;
+@synthesize match = _match;
 @synthesize checkPointBaseName = _checkPointBaseName;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.state = [SBBoardViewControllerStateUnselected state];
+    self.state = [SBMatchViewControllerStateUnselected state];
     self.state.delegate = self;
     self.state.gridView = self.gridView;
 }
@@ -49,28 +49,28 @@
 
 
 - (IBAction)forfeit {
-    id<SBPlayer> player = self.phageMatch.currentPlayer;
+    id<SBPlayer> player = self.match.currentPlayer;
     NSAssert(player.isLocalHuman, @"Player should be local Human");
     self.forfeitActionSheet = [[UIActionSheet alloc] initWithTitle:@"Really forfeit match?" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
     [self.forfeitActionSheet showInView:self.view];
 }
 
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece {
-    return [self.phageMatch canCurrentPlayerMovePiece:piece];
+    return [self.match canCurrentPlayerMovePiece:piece];
 }
 
 - (SBMove *)moveWithPiece:(SBPiece *)piece location:(SBLocation *)location {
-    SBLocation *locationOfPiece = [self.phageMatch.board locationForPiece:piece];
+    SBLocation *locationOfPiece = [self.match.board locationForPiece:piece];
     return [SBMove moveWithFrom:locationOfPiece to:location];
 }
 
 - (BOOL)canMovePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
     SBMove *move = [self moveWithPiece:piece location:location];
-    return [self.phageMatch isLegalMove:move];
+    return [self.match isLegalMove:move];
 }
 
 - (void)handleNotifyGameOver {
-    id<SBPlayer> winner = self.phageMatch.winner;
+    id<SBPlayer> winner = self.match.winner;
     NSString *message = nil == winner ? @"It's a draw!" : [winner.alias stringByAppendingString:@" won!"];
     [[[UIAlertView alloc] initWithTitle:@"Game Over" message:message delegate:nil cancelButtonTitle:@"Great!" otherButtonTitles:nil] show];
 }
@@ -81,20 +81,20 @@
         TFLog(@"%s move: %@", __PRETTY_FUNCTION__, move);
 
         if ([self canMovePiece:piece toLocation:location]) {
-            [self.phageMatch performMove:move];
+            [self.match performMove:move];
             [self.gridView movePiece:piece toLocation:location];
             [self.gridView setLocation:move.from blocked:YES];
             [self.gridView putDownPiece:piece];
 
-            if ([self.phageMatch isGameOver]) {
-                [self transitionToState:[SBBoardViewControllerStateGameOver state]];
+            if ([self.match isGameOver]) {
+                [self transitionToState:[SBMatchViewControllerStateGameOver state]];
             } else {
-                [self transitionToState:[SBBoardViewControllerStateUnselected state]];
+                [self transitionToState:[SBMatchViewControllerStateUnselected state]];
             }
         }
     }
 
-    if ([self.phageMatch isGameOver]) {
+    if ([self.match isGameOver]) {
         [TestFlight passCheckpoint:[@"FINISHED_" stringByAppendingString:self.checkPointBaseName]];
         [self handleNotifyGameOver];
     }
@@ -105,8 +105,8 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if ([actionSheet isEqual:self.forfeitActionSheet]) {
         if ([actionSheet destructiveButtonIndex] == buttonIndex) {
-            [self.phageMatch forfeit];
-            [self transitionToState:[SBBoardViewControllerStateGameOver state]];
+            [self.match forfeit];
+            [self transitionToState:[SBMatchViewControllerStateGameOver state]];
             [self handleNotifyGameOver];
             [TestFlight passCheckpoint:[@"FORFEITED_" stringByAppendingString:self.checkPointBaseName]];
 
@@ -147,7 +147,7 @@
 
 #pragma mark Board View Controller State Delegate
 
-- (void)transitionToState:(SBBoardViewControllerState *)state {
+- (void)transitionToState:(SBMatchViewControllerState *)state {
     @synchronized (self) {
         state.delegate = self.state.delegate;
         state.gridView = self.state.gridView;
@@ -157,11 +157,11 @@
 }
 
 - (SBLocation *)locationOfPiece:(SBPiece *)piece {
-    return [self.phageMatch.board locationForPiece:piece];
+    return [self.match.board locationForPiece:piece];
 }
 
 - (void)setLegalDestinationsForPiece:(SBPiece *)piece highlighted:(BOOL)highlighted {
-    [self.phageMatch.board enumerateLegalDestinationsForPiece:piece withBlock:^(SBLocation *location, BOOL *stop) {
+    [self.match.board enumerateLegalDestinationsForPiece:piece withBlock:^(SBLocation *location, BOOL *stop) {
         [self.gridView setCellHighlighted:highlighted atLocation:location];
     }];
 }

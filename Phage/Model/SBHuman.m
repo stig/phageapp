@@ -5,9 +5,9 @@
 //
 
 
-#import "SBHumanPlayer.h"
+#import "SBHuman.h"
 
-@implementation SBHumanPlayer
+@implementation SBHuman
 
 @synthesize alias = _alias;
 @synthesize outcome = _outcome;

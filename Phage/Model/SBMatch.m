@@ -5,12 +5,12 @@
 //
 
 
-#import "SBPhageMatch.h"
-#import "SBPhageBoard.h"
+#import "SBMatch.h"
+#import "SBBoard.h"
 #import "SBPlayer.h"
 #import "SBMove.h"
 
-@implementation SBPhageMatch
+@implementation SBMatch
 @synthesize board = _board;
 @synthesize playerOne = _playerOne;
 @synthesize playerTwo = _playerTwo;
@@ -22,14 +22,14 @@
 }
 
 - (id)initWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two {
-    return [self initWithPlayerOne:one two:two board:[SBPhageBoard board]];
+    return [self initWithPlayerOne:one two:two board:[SBBoard board]];
 }
 
-+ (id)matchWithPlayerOne:(id <SBPlayer>)one two:(id <SBPlayer>)two board:(SBPhageBoard *)board {
++ (id)matchWithPlayerOne:(id <SBPlayer>)one two:(id <SBPlayer>)two board:(SBBoard *)board {
     return [[self alloc] initWithPlayerOne:one two:two board:board];
 }
 
-- (id)initWithPlayerOne:(id <SBPlayer>)one two:(id <SBPlayer>)two board:(SBPhageBoard *)board {
+- (id)initWithPlayerOne:(id <SBPlayer>)one two:(id <SBPlayer>)two board:(SBBoard *)board {
     self = [super init];
     if (!self) return nil;
 

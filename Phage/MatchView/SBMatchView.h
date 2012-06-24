@@ -6,14 +6,14 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-@class SBPhageBoard;
+@class SBBoard;
 @class SBMove;
 @class SBLocation;
 @class SBPiece;
 @class SBCellLayer;
 @class SBPieceLayer;
 
-@protocol SBBoardViewDelegate
+@protocol SBMatchViewDelegate
 - (void)handleSingleTapWithPiece:(SBPiece *)piece;
 - (void)handleSingleTapWithLocation:(SBLocation *)location;
 
@@ -27,13 +27,13 @@
 - (void)longPressEndedAtLocation:(SBLocation *)location;
 @end
 
-@interface SBBoardView : UIView
+@interface SBMatchView : UIView
 
-@property(weak) IBOutlet id <SBBoardViewDelegate> delegate;
+@property(weak) IBOutlet id <SBMatchViewDelegate> delegate;
 
 - (void)setLocation:(SBLocation *)loc blocked:(BOOL)blocked;
 
-- (void)layoutForState:(SBPhageBoard *)state;
+- (void)layoutForBoard:(SBBoard *)state;
 - (void)pickUpPiece:(SBPiece *)piece;
 - (void)putDownPiece:(SBPiece *)piece;
 - (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location;

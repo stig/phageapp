@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SBPhageBoard.h"
+#import "SBBoard.h"
 #import "SBCircle.h"
 #import "SBDiamond.h"
 #import "SBSquare.h"
@@ -15,7 +15,7 @@
 #import "SBDirection.h"
 #import "SBMove.h"
 
-@interface SBPhageBoard ()
+@interface SBBoard ()
 @property(nonatomic, strong) NSArray *pieces;
 @property(nonatomic, strong) NSArray *moveHistory;
 @property(nonatomic, strong) NSMutableDictionary *pieceMap;
@@ -24,7 +24,7 @@
 @property(nonatomic, strong) NSSet *occupied;
 @end
 
-@implementation SBPhageBoard
+@implementation SBBoard
 @synthesize pieceTurnCountMap = _pieceTurnCountMap;
 @synthesize occupied = _occupied;
 @synthesize pieces = _pieces;
@@ -92,7 +92,7 @@
 #pragma mark NSCopying
 
 - (id)copyWithZone:(NSZone*)zone {
-    SBPhageBoard *copy = [[[self class] alloc] initWithMoveHistory:self.moveHistory];
+    SBBoard *copy = [[[self class] alloc] initWithMoveHistory:self.moveHistory];
     return copy;
 }
 
@@ -106,7 +106,7 @@
     return [self isEqualToState:other];
 }
 
-- (BOOL)isEqualToState:(SBPhageBoard *)other {
+- (BOOL)isEqualToState:(SBBoard *)other {
     if (self == other)
         return YES;
 
@@ -242,8 +242,8 @@
     [self.pieceTurnCountMap setObject:[NSNumber numberWithUnsignedInteger:n - 1] forKey:piece];
 }
 
-- (SBPhageBoard *)successorWithMove:(SBMove *)move {
-    SBPhageBoard *copy = [self copy];
+- (SBBoard *)successorWithMove:(SBMove *)move {
+    SBBoard *copy = [self copy];
     [copy transformIntoSuccessorWithMove:move];
     return copy;
 }

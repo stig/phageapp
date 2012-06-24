@@ -12,7 +12,7 @@
 @class SBLocation;
 @class SBMove;
 
-@interface SBPhageBoard : NSObject <NSCopying>
+@interface SBBoard : NSObject <NSCopying>
 
 @property(nonatomic, readonly) NSUInteger rows;
 @property(nonatomic, readonly) NSUInteger columns;
@@ -29,7 +29,7 @@
 
 - (BOOL)wasLocationOccupied:(SBLocation*)loc;
 
-- (SBPhageBoard *)successorWithMove:(SBMove *)move;
+- (SBBoard *)successorWithMove:(SBMove *)move;
 
 - (BOOL)isLegalMove:(SBMove*)move;
 

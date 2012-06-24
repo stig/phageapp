@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SBBoardView.h"
-#import "SBPhageBoard.h"
+#import "SBMatchView.h"
+#import "SBBoard.h"
 #import "SBLocation.h"
 #import "SBPieceLayer.h"
 #import "SBCellLayer.h"
 
-@interface SBBoardView () < UIGestureRecognizerDelegate >
+@interface SBMatchView () < UIGestureRecognizerDelegate >
 @property(strong) CALayer *cellLayer;
 @property(strong) CALayer *pieceLayer;
 @property(nonatomic, strong) SBPieceLayer *longPressPieceLayer;
@@ -22,7 +22,7 @@
 @property(nonatomic) NSUInteger rows;
 @end
 
-@implementation SBBoardView
+@implementation SBMatchView
 
 @synthesize delegate = _delegate;
 @synthesize cellLayer = _cellLayer;
@@ -92,7 +92,7 @@
     layer.blocked = blocked;
 }
 
-- (void)layoutForState:(SBPhageBoard *)state {
+- (void)layoutForBoard:(SBBoard *)state {
 
     [state enumerateLocationsUsingBlock:^(SBLocation *loc) {
         [self setLocation:loc blocked:[state wasLocationOccupied:loc]];
@@ -245,7 +245,7 @@
 
 - (void)createInitialBoardPieces {
     // TODO this is a nasty hack. It would be better to set it some other way. But it will suffice...
-    SBPhageBoard *state = [SBPhageBoard board];
+    SBBoard *state = [SBBoard board];
     for (NSArray *playerPieces in state.pieces) {
         for (SBPiece *piece in playerPieces) {
 

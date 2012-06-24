@@ -6,9 +6,9 @@
 
 
 
-#import "SBBoardViewControllerState.h"
+#import "SBMatchViewControllerState.h"
 
-@interface SBBoardViewControllerStateDragged : SBBoardViewControllerState
+@interface SBMatchViewControllerStateDragged : SBMatchViewControllerState
 @property(nonatomic, strong) SBPiece* dragged;
 @property(nonatomic, strong) SBLocation* origin;
 @end
