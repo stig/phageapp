@@ -12,7 +12,7 @@
 @class SBMove;
 
 
-@interface SBMovePicker : NSObject
+@interface SBOpponentMobilityMinimisingMovePicker : NSObject
 
 - (SBMove *)moveForState:(SBPhageBoard *)state;
 

@@ -5,11 +5,11 @@
 //
 
 
-#import "SBMovePicker.h"
+#import "SBOpponentMobilityMinimisingMovePicker.h"
 #import "SBMove.h"
 #import "SBPhageBoard.h"
 
-@implementation SBMovePicker
+@implementation SBOpponentMobilityMinimisingMovePicker
 
 - (SBMove *)moveForState:(SBPhageBoard *)state {
     __block NSInteger minScore = INT_MAX;

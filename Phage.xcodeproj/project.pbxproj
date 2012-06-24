@@ -37,8 +37,8 @@
 		D7BFA3B2151F2AD300435C7F /* SBPhageBoardTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B1151F2AD300435C7F /* SBPhageBoardTest.m */; };
 		D7BFA3B2151F2AD300435C81 /* SBDirection.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C80 /* SBDirection.m */; };
 		D7BFA3B2151F2AD300435C84 /* SBDirectionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */; };
-		D7BFA3B2151F2AD300435C89 /* SBMovePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C88 /* SBMovePicker.m */; };
-		D7BFA3B2151F2AD300435C8C /* SBMovePickerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */; };
+		D7BFA3B2151F2AD300435C89 /* SBOpponentMobilityMinimisingMovePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */; };
+		D7BFA3B2151F2AD300435C8C /* SBOpponentMobilityMinimisingMovePickerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C8B /* SBOpponentMobilityMinimisingMovePickerTest.m */; };
 		D7BFA3B2151F2AD300435C93 /* SBBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C92 /* SBBoardView.m */; };
 		D7BFA3B2151F2AD300435C95 /* chess-640x640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */; };
 		D7FDA3A2156DAA4700E65C5E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FDA3A1156DAA4700E65C5E /* libz.dylib */; };
@@ -159,9 +159,9 @@
 		D7BFA3B2151F2AD300435C80 /* SBDirection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDirection.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C82 /* SBDirection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBDirection.h; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDirectionTest.m; sourceTree = "<group>"; };
-		D7BFA3B2151F2AD300435C88 /* SBMovePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMovePicker.m; sourceTree = "<group>"; };
-		D7BFA3B2151F2AD300435C8A /* SBMovePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMovePicker.h; sourceTree = "<group>"; };
-		D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMovePickerTest.m; sourceTree = "<group>"; };
+		D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBOpponentMobilityMinimisingMovePicker.m; sourceTree = "<group>"; };
+		D7BFA3B2151F2AD300435C8A /* SBOpponentMobilityMinimisingMovePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBOpponentMobilityMinimisingMovePicker.h; sourceTree = "<group>"; };
+		D7BFA3B2151F2AD300435C8B /* SBOpponentMobilityMinimisingMovePickerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBOpponentMobilityMinimisingMovePickerTest.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C91 /* SBBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardView.h; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C92 /* SBBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardView.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "chess-640x640.jpg"; sourceTree = "<group>"; };
@@ -249,8 +249,6 @@
 				D76A45B3151DFC4700E59146 /* SBCircle.h */,
 				D7BFA3AE151F108100435C7F /* SBPhageBoard.m */,
 				D7BFA3AD151F108100435C7F /* SBPhageBoard.h */,
-				D7BFA3B2151F2AD300435C88 /* SBMovePicker.m */,
-				D7BFA3B2151F2AD300435C8A /* SBMovePicker.h */,
 				D76A459E151DE13700E59146 /* SBMove.m */,
 				D76A459D151DE13700E59146 /* SBMove.h */,
 				D76A45A1151DE19300E59146 /* SBLocation.m */,
@@ -299,6 +297,8 @@
 		D76A456B151DDC7500E59146 /* Phage */ = {
 			isa = PBXGroup;
 			children = (
+				D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */,
+				D7BFA3B2151F2AD300435C8A /* SBOpponentMobilityMinimisingMovePicker.h */,
 				FB89D43C154C7D27001A0B95 /* PhageRootViewController.h */,
 				FB89D43C154C7D27001A0B93 /* PhageRootViewController.m */,
 				D76A4574151DDC7500E59146 /* SBAppDelegate.h */,
@@ -327,6 +327,7 @@
 		D76A458C151DDC7500E59146 /* PhageTests */ = {
 			isa = PBXGroup;
 			children = (
+				D7BFA3B2151F2AD300435C8B /* SBOpponentMobilityMinimisingMovePickerTest.m */,
 				D76A458D151DDC7500E59146 /* Supporting Files */,
 				FB89D43C154C7D27001A0BA0 /* Model */,
 			);
@@ -357,7 +358,6 @@
 			children = (
 				FB89D43C154C7D27001A0BF2 /* SBHumanPlayerTest.m */,
 				FB89D43C154C7D27001A0BEB /* SBPhageMatchTest.m */,
-				D7BFA3B2151F2AD300435C8B /* SBMovePickerTest.m */,
 				D73965B1151FB10600118094 /* SBPieceTest.m */,
 				D76A45A7151DE43300E59146 /* SBMoveTest.m */,
 				D7BFA3B1151F2AD300435C7F /* SBPhageBoardTest.m */,
@@ -553,7 +553,7 @@
 				D7BFA391151E48A000435C7F /* SBPiece.m in Sources */,
 				D7BFA3AF151F108100435C7F /* SBPhageBoard.m in Sources */,
 				D7BFA3B2151F2AD300435C81 /* SBDirection.m in Sources */,
-				D7BFA3B2151F2AD300435C89 /* SBMovePicker.m in Sources */,
+				D7BFA3B2151F2AD300435C89 /* SBOpponentMobilityMinimisingMovePicker.m in Sources */,
 				D7BFA3B2151F2AD300435C93 /* SBBoardView.m in Sources */,
 				FB89D43C154C7D27001A0B94 /* PhageRootViewController.m in Sources */,
 				FB89D43C154C7D27001A0BA2 /* SBPieceLayer.m in Sources */,
@@ -580,7 +580,7 @@
 				D7BFA3B2151F2AD300435C7F /* SBPhageBoardTest.m in Sources */,
 				D73965B2151FB10600118094 /* SBPieceTest.m in Sources */,
 				D7BFA3B2151F2AD300435C84 /* SBDirectionTest.m in Sources */,
-				D7BFA3B2151F2AD300435C8C /* SBMovePickerTest.m in Sources */,
+				D7BFA3B2151F2AD300435C8C /* SBOpponentMobilityMinimisingMovePickerTest.m in Sources */,
 				FB89D43C154C7D27001A0BEE /* SBPhageMatchTest.m in Sources */,
 				FB89D43C154C7D27001A0BF3 /* SBHumanPlayerTest.m in Sources */,
 			);

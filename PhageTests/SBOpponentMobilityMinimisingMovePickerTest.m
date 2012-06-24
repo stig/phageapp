@@ -6,18 +6,18 @@
 
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "SBMovePicker.h"
+#import "SBOpponentMobilityMinimisingMovePicker.h"
 #import "SBPhageBoard.h"
 #import "SBMove.h"
 #import "SBLocation.h"
 
-@interface SBMovePickerTest : SenTestCase
+@interface SBOpponentMobilityMinimisingMovePickerTest : SenTestCase
 @end
 
-@implementation SBMovePickerTest
+@implementation SBOpponentMobilityMinimisingMovePickerTest
 
 - (void)testInitialState {
-    SBMovePicker *picker = [[SBMovePicker alloc] init];
+    SBOpponentMobilityMinimisingMovePicker *picker = [[SBOpponentMobilityMinimisingMovePicker alloc] init];
     SBPhageBoard *state = [SBPhageBoard board];
 
     SBMove *move = [picker moveForState:state];
