@@ -22,7 +22,8 @@ static NSString *const kSBPhageConfirmKey = @"SBPhageConfirmKey";
 - (void)transitionIn {
     [super transitionIn];
 
-    [self.gridView movePiece:self.selected toLocation:self.destination];
+    [self.gridView movePiece:self.selected toLocation:self.destination completionHandler:^void(NSError *error) {
+    }];
 
     if (![[NSUserDefaults standardUserDefaults] boolForKey:kSBPhageConfirmKey]) {
         UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"Perform this move?"
@@ -38,7 +39,8 @@ static NSString *const kSBPhageConfirmKey = @"SBPhageConfirmKey";
 }
 
 - (void)transitionOut {
-    [self.gridView movePiece:self.selected toLocation:[self.delegate locationOfPiece:self.selected]];
+    [self.gridView movePiece:self.selected toLocation:[self.delegate locationOfPiece:self.selected] completionHandler:^void(NSError *error) {
+    }];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {

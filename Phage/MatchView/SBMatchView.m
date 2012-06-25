@@ -137,10 +137,11 @@
     [layer removeAnimationForKey:@"opacityAnimation"];
 }
 
-- (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
+- (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location completionHandler:(void (^)(NSError *error))block {
     SBPieceLayer *pieceLayer = [self.pieces objectForKey:piece];
     SBCellLayer *cellLayer = [self.cells objectForKey:location];
     pieceLayer.position = cellLayer.position;
+    if (block) block(nil);
 }
 
 - (void)setCellHighlighted:(BOOL)highlighted atLocation:(SBLocation *)location {

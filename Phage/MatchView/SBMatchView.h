@@ -36,7 +36,8 @@
 - (void)layoutForBoard:(SBBoard *)state;
 - (void)pickUpPiece:(SBPiece *)piece;
 - (void)putDownPiece:(SBPiece *)piece;
-- (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location;
+
+- (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location completionHandler:(void (^)(NSError *error))block;
 - (void)setCellHighlighted:(BOOL)highlighted atLocation:(SBLocation*)location;
 
 @end

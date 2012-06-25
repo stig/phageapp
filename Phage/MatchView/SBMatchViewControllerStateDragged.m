@@ -31,7 +31,8 @@
         [self.delegate movePiece:self.dragged toLocation:location];
 
     } else {
-        [self.gridView movePiece:self.dragged toLocation:self.origin];
+        [self.gridView movePiece:self.dragged toLocation:self.origin completionHandler:^void(NSError *error) {
+        }];
         [self.delegate transitionToState:[SBMatchViewControllerStateUnselected state]];
 
         [[[UIAlertView alloc] initWithTitle:@"Illegal Move"

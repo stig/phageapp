@@ -84,9 +84,11 @@
             return;
         }
 
-        [self.gridView movePiece:piece toLocation:location];
-        [self.gridView setLocation:move.from blocked:YES];
-        [self.gridView putDownPiece:piece];
+        [self.gridView movePiece:piece toLocation:location completionHandler:^(NSError *error2) {
+            if (nil != error2) @throw error2;
+            [self.gridView setLocation:move.from blocked:YES];
+            [self.gridView putDownPiece:piece];
+        }];
 
         if ([self.match isGameOver]) {
             [self transitionToState:[SBMatchViewControllerStateGameOver state]];
