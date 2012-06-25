@@ -78,6 +78,7 @@
 - (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
     SBMove *move = [self moveWithPiece:piece location:location];
     TFLog(@"%s move: %@", __PRETTY_FUNCTION__, move);
+
     [self.match performMove:move completionHandler:^void(NSError *error) {
         if (error) {
             TFLog(@"%s move: %@ failed to apply to board: %@", __PRETTY_FUNCTION__, move, self.match.board);
@@ -165,5 +166,10 @@
         [self.gridView setCellHighlighted:highlighted atLocation:location];
     }];
 }
+
+- (NSString *)turnsLeftForPiece:(SBPiece *)piece {
+    return [[self.match.board turnsLeftForPiece:piece] stringValue];
+}
+
 
 @end

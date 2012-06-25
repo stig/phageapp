@@ -101,16 +101,7 @@
 
     for (NSArray *playerPieces in state.pieces) {
         for (SBPiece *piece in playerPieces) {
-
-            // Animate the piece to its new position
-            [CATransaction begin];
-            [CATransaction setAnimationDuration:1.0f];
-
-            SBPieceLayer *layer = [self.pieces objectForKey:piece];
-            layer.movesLeftLayer.string = [[state turnsLeftForPiece:piece] stringValue];
-            layer.position = [self cellPositionForLocation:[state locationForPiece:piece]];
-
-            [CATransaction commit];
+            [self movePiece:piece toLocation:[state locationForPiece:piece] completionHandler:nil];
         }
     }
 
@@ -143,7 +134,14 @@
     SBCellLayer *cellLayer = [self.cells objectForKey:location];
 
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
-    animation.delegate = [SBAnimationCompletionHandler animationCompletionHandlerWithBlock:block];
+    animation.delegate = [SBAnimationCompletionHandler animationCompletionHandlerWithBlock:^(NSError *error2) {
+        if (error2) @throw error2;
+
+        SBPieceLayer *layer = [self.pieces objectForKey:piece];
+        layer.movesLeftLayer.string = [self.delegate turnsLeftForPiece:piece];
+
+        if (block) block(error2);
+    }];
     pieceLayer.position = cellLayer.position;
     [pieceLayer addAnimation:animation forKey:@"position"];
 }

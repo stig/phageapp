@@ -25,6 +25,8 @@
 - (void)longPressStartedWithPiece:(SBPiece *)piece atLocation:(SBLocation *)location;
 
 - (void)longPressEndedAtLocation:(SBLocation *)location;
+
+- (NSString*)turnsLeftForPiece:(SBPiece*)piece;
 @end
 
 @interface SBMatchView : UIView
