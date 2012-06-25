@@ -26,6 +26,7 @@
 
 - (void)longPressEndedAtLocation:(SBLocation *)location;
 
+@optional
 - (NSString*)turnsLeftForPiece:(SBPiece*)piece;
 @end
 

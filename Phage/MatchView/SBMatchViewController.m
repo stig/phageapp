@@ -28,11 +28,12 @@
 @synthesize state = _state;
 @synthesize match = _match;
 @synthesize checkPointSuffix = _checkPointSuffix;
+@synthesize delegate = _strategy;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.state = [SBMatchViewControllerStateUnselected state];
+    self.state = [SBMatchViewControllerStateReadonly state];
     self.state.delegate = self;
     self.state.gridView = self.gridView;
 }
@@ -50,6 +51,7 @@
     SBMatch *match = self.match;
     [self transitionToStateForMatch:match];
     [self.gridView layoutForBoard:match.board];
+    [self.delegate handleTurnEventForMatch:self.match viewController:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -68,6 +70,7 @@
     NSAssert(player.isLocalHuman, @"Player should be local Human");
     self.forfeitActionSheet = [[UIActionSheet alloc] initWithTitle:@"Really forfeit match?" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
     [self.forfeitActionSheet showInView:self.view];
+    [self.delegate handleTurnEventForMatch:self.match viewController:self];
 }
 
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece {
@@ -91,6 +94,7 @@
 }
 
 - (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
+    NSLog(@"%s %@/%@", __PRETTY_FUNCTION__, piece, location);
     SBMove *move = [self moveWithPiece:piece location:location];
     TFLog(@"%s move: %@", __PRETTY_FUNCTION__, move);
 
@@ -100,18 +104,20 @@
             return;
         }
 
-        [self.gridView movePiece:piece toLocation:location completionHandler:^(NSError *error2) {
-            if (nil != error2) @throw error2;
-            [self.gridView setLocation:move.from blocked:YES];
-            [self.gridView putDownPiece:piece];
-        }];
-
         [self transitionToStateForMatch:self.match];
 
         if ([self.match isGameOver]) {
             [self handleNotifyGameOver];
             [TestFlight passCheckpoint:[@"FINISHED" stringByAppendingString:self.checkPointSuffix]];
         }
+
+        [self.gridView movePiece:piece toLocation:location completionHandler:^(NSError *error2) {
+            if (nil != error2) @throw error2;
+            [self.gridView setLocation:move.from blocked:YES];
+            [self.gridView putDownPiece:piece];
+            [self.delegate handleTurnEventForMatch:self.match viewController:self];
+        }];
+
     }];
 }
 

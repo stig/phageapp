@@ -61,6 +61,8 @@
 		FB89D43C154C7D27001A0BF0 /* SBHuman.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BEF /* SBHuman.m */; };
 		FB89D43C154C7D27001A0BF3 /* SBHumanTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BF2 /* SBHumanTest.m */; };
 		FB89D43C154C7D27001A0BF5 /* SBAnimationCompletionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BF4 /* SBAnimationCompletionHandler.m */; };
+		FB89D43C154C7D27001A0BF9 /* SBBot.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BF8 /* SBBot.m */; };
+		FB89D43C154C7D27001A0BFC /* SBBotTurnEventHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BFB /* SBBotTurnEventHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -200,6 +202,10 @@
 		FB89D43C154C7D27001A0BF2 /* SBHumanTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBHumanTest.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BF4 /* SBAnimationCompletionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAnimationCompletionHandler.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BF6 /* SBAnimationCompletionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAnimationCompletionHandler.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BF7 /* SBBot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBot.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BF8 /* SBBot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBot.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BFA /* SBBotTurnEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBotTurnEventHandler.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BFB /* SBBotTurnEventHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBotTurnEventHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +306,10 @@
 		D76A456B151DDC7500E59146 /* Phage */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0BFB /* SBBotTurnEventHandler.m */,
+				FB89D43C154C7D27001A0BFA /* SBBotTurnEventHandler.h */,
+				FB89D43C154C7D27001A0BF8 /* SBBot.m */,
+				FB89D43C154C7D27001A0BF7 /* SBBot.h */,
 				FB89D43C154C7D27001A0BF6 /* SBAnimationCompletionHandler.h */,
 				FB89D43C154C7D27001A0BF4 /* SBAnimationCompletionHandler.m */,
 				D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */,
@@ -574,6 +584,8 @@
 				FB89D43C154C7D27001A0BE9 /* SBMatch.m in Sources */,
 				FB89D43C154C7D27001A0BF0 /* SBHuman.m in Sources */,
 				FB89D43C154C7D27001A0BF5 /* SBAnimationCompletionHandler.m in Sources */,
+				FB89D43C154C7D27001A0BF9 /* SBBot.m in Sources */,
+				FB89D43C154C7D27001A0BFC /* SBBotTurnEventHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,6 +20,5 @@ typedef enum {
 @property(nonatomic, readonly) BOOL isLocalHuman;
 
 + (id)playerWithAlias:(NSString *)alias;
-- (id)initWithAlias:(NSString *)alias;
 
 @end

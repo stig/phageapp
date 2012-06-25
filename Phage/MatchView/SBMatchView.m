@@ -143,6 +143,7 @@
         if (block) block(error2);
     }];
     pieceLayer.position = cellLayer.position;
+    animation.duration = 0.7f;
     [pieceLayer addAnimation:animation forKey:@"position"];
 }
 

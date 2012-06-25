@@ -9,9 +9,17 @@
 #import "SBMatchView.h"
 #import "SBMatchViewControllerState.h"
 
+
 @class SBMatch;
+@class SBMatchViewController;
+
+@protocol SBMatchViewControllerDelegate < NSObject >
+- (void)handleTurnEventForMatch:(SBMatch *)match viewController:(SBMatchViewController *)mvc;
+@end
 
 @interface SBMatchViewController : UIViewController <SBMatchViewDelegate, SBMatchViewControllerStateDelegate>
+
+@property(strong) id<SBMatchViewControllerDelegate> delegate;
 
 @property(strong) SBMatchViewControllerState *state; // intentionally atomic!
 @property(strong) SBMatch *match; // intentionally atomic!
@@ -22,5 +30,8 @@
 @property(nonatomic, copy) NSString *checkPointSuffix;
 
 - (IBAction)forfeit;
+
+- (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location;
+
 
 @end
