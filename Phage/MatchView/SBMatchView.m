@@ -11,6 +11,7 @@
 #import "SBLocation.h"
 #import "SBPieceLayer.h"
 #import "SBCellLayer.h"
+#import "SBAnimationCompletionHandler.h"
 
 @interface SBMatchView () < UIGestureRecognizerDelegate >
 @property(strong) CALayer *cellLayer;
@@ -140,8 +141,11 @@
 - (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location completionHandler:(void (^)(NSError *error))block {
     SBPieceLayer *pieceLayer = [self.pieces objectForKey:piece];
     SBCellLayer *cellLayer = [self.cells objectForKey:location];
+
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
+    animation.delegate = [SBAnimationCompletionHandler animationCompletionHandlerWithBlock:block];
     pieceLayer.position = cellLayer.position;
-    if (block) block(nil);
+    [pieceLayer addAnimation:animation forKey:@"position"];
 }
 
 - (void)setCellHighlighted:(BOOL)highlighted atLocation:(SBLocation *)location {

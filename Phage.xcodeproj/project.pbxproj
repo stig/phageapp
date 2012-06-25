@@ -60,6 +60,7 @@
 		FB89D43C154C7D27001A0BEE /* SBMatchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BEB /* SBMatchTest.m */; };
 		FB89D43C154C7D27001A0BF0 /* SBHuman.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BEF /* SBHuman.m */; };
 		FB89D43C154C7D27001A0BF3 /* SBHumanTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BF2 /* SBHumanTest.m */; };
+		FB89D43C154C7D27001A0BF5 /* SBAnimationCompletionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BF4 /* SBAnimationCompletionHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -197,6 +198,8 @@
 		FB89D43C154C7D27001A0BEF /* SBHuman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBHuman.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BF1 /* SBHuman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBHuman.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BF2 /* SBHumanTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBHumanTest.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BF4 /* SBAnimationCompletionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAnimationCompletionHandler.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BF6 /* SBAnimationCompletionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAnimationCompletionHandler.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +300,8 @@
 		D76A456B151DDC7500E59146 /* Phage */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0BF6 /* SBAnimationCompletionHandler.h */,
+				FB89D43C154C7D27001A0BF4 /* SBAnimationCompletionHandler.m */,
 				D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */,
 				D7BFA3B2151F2AD300435C8A /* SBOpponentMobilityMinimisingMovePicker.h */,
 				FB89D43C154C7D27001A0B95 /* PhageRootViewController.h */,
@@ -568,6 +573,7 @@
 				FB89D43C154C7D27001A0BE5 /* SBMatchViewControllerStateDragged.m in Sources */,
 				FB89D43C154C7D27001A0BE9 /* SBMatch.m in Sources */,
 				FB89D43C154C7D27001A0BF0 /* SBHuman.m in Sources */,
+				FB89D43C154C7D27001A0BF5 /* SBAnimationCompletionHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
