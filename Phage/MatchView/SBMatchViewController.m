@@ -76,28 +76,26 @@
 }
 
 - (void)movePiece:(SBPiece *)piece toLocation:(SBLocation *)location {
-    @synchronized (self) {
-        SBMove *move = [self moveWithPiece:piece location:location];
-        TFLog(@"%s move: %@", __PRETTY_FUNCTION__, move);
-
-        if ([self canMovePiece:piece toLocation:location]) {
-            [self.match performMove:move];
-            [self.gridView movePiece:piece toLocation:location];
-            [self.gridView setLocation:move.from blocked:YES];
-            [self.gridView putDownPiece:piece];
-
-            if ([self.match isGameOver]) {
-                [self transitionToState:[SBMatchViewControllerStateGameOver state]];
-            } else {
-                [self transitionToState:[SBMatchViewControllerStateUnselected state]];
-            }
+    SBMove *move = [self moveWithPiece:piece location:location];
+    TFLog(@"%s move: %@", __PRETTY_FUNCTION__, move);
+    [self.match performMove:move completionHandler:^void(NSError *error) {
+        if (error) {
+            TFLog(@"%s move: %@ failed to apply to board: %@", __PRETTY_FUNCTION__, move, self.match.board);
+            return;
         }
-    }
 
-    if ([self.match isGameOver]) {
-        [TestFlight passCheckpoint:[@"FINISHED_" stringByAppendingString:self.checkPointBaseName]];
-        [self handleNotifyGameOver];
-    }
+        [self.gridView movePiece:piece toLocation:location];
+        [self.gridView setLocation:move.from blocked:YES];
+        [self.gridView putDownPiece:piece];
+
+        if ([self.match isGameOver]) {
+            [self transitionToState:[SBMatchViewControllerStateGameOver state]];
+            [self handleNotifyGameOver];
+            [TestFlight passCheckpoint:[@"FINISHED_" stringByAppendingString:self.checkPointBaseName]];
+        } else {
+            [self transitionToState:[SBMatchViewControllerStateUnselected state]];
+        }
+    }];
 }
 
 #pragma mark UIActionSheetDelegate

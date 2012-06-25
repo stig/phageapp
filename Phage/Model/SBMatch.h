@@ -28,7 +28,8 @@
 - (id)initWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two board:(SBBoard *)board;
 
 - (BOOL)isLegalMove:(SBMove *)aMove;
-- (void)performMove:(SBMove*)move;
+
+- (void)performMove:(SBMove *)move completionHandler:(void (^)(NSError *))completionHandler;
 
 - (BOOL)canCurrentPlayerMovePiece:(SBPiece *)piece;
 

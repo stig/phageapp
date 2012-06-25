@@ -51,13 +51,21 @@
     return [self.board isLegalMove:aMove];
 }
 
-- (void)performMove:(SBMove *)move {
+- (void)performMove:(SBMove *)move completionHandler:(void (^)(NSError *))completionHandler {
     @synchronized (self) {
-        _board = [self.board successorWithMove:move];
-        if (self.board.isGameOver) {
-            [self handleGameOver];
+        NSError *error = nil;
+        if ([self isLegalMove:move]) {
+            _board = [self.board successorWithMove:move];
+            if (self.board.isGameOver) {
+                [self handleGameOver];
+            }
+            _lastUpdated = [NSDate date];
+        } else {
+            error = [NSError errorWithDomain:@"org.brautaset.Phage" code:1
+                                    userInfo:@{ NSLocalizedDescriptionKey : @"Illegal move attempted"}];
         }
-        _lastUpdated = [NSDate date];
+
+        if (completionHandler) completionHandler(error);
     }
 }
 

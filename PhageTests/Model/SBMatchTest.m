@@ -102,8 +102,61 @@
     id successor = [OCMockObject niceMockForClass:[SBBoard class]];
     [[[board stub] andReturn:successor] successorWithMove:move];
 
-    [match performMove:move];
+    BOOL yes = YES;
+    [[[board expect] andReturnValue:OCMOCK_VALUE(yes)] isLegalMove:move];
+
+    [match performMove:move completionHandler:nil];
+
     STAssertEqualObjects(match.board, successor, nil);
+}
+
+- (void)testPerformMoveRunsCompletionHandler {
+    id move = [OCMockObject mockForClass:[SBMove class]];
+    id successor = [OCMockObject niceMockForClass:[SBBoard class]];
+    [[[board stub] andReturn:successor] successorWithMove:move];
+
+    BOOL yes = YES;
+    [[[board expect] andReturnValue:OCMOCK_VALUE(yes)] isLegalMove:move];
+
+    __block BOOL ranHandler = NO;
+    [match performMove:move completionHandler:^(NSError *error) {
+        ranHandler = YES;
+        STAssertNil(error, nil);
+    }];
+
+    STAssertTrue(ranHandler, nil);
+}
+
+- (void)testPerformMoveRunsCompletionHandler_error {
+    id move = [OCMockObject mockForClass:[SBMove class]];
+    id successor = [OCMockObject niceMockForClass:[SBBoard class]];
+    [[[board stub] andReturn:successor] successorWithMove:move];
+
+    BOOL no = NO;
+    [[[board expect] andReturnValue:OCMOCK_VALUE(no)] isLegalMove:move];
+
+    __block BOOL ranHandler = NO;
+    [match performMove:move completionHandler:^(NSError *error) {
+        ranHandler = YES;
+        STAssertNotNil(error, nil);
+    }];
+
+    STAssertTrue(ranHandler, nil);
+}
+
+- (void)testPerformMoveSetsLastUpdated {
+    id move = [OCMockObject mockForClass:[SBMove class]];
+    id successor = [OCMockObject niceMockForClass:[SBBoard class]];
+    [[[board stub] andReturn:successor] successorWithMove:move];
+
+    STAssertNil(match.lastUpdated, nil);
+
+    BOOL yes = YES;
+    [[[board expect] andReturnValue:OCMOCK_VALUE(yes)] isLegalMove:move];
+
+    [match performMove:move completionHandler:nil];
+
+    STAssertEqualsWithAccuracy([match.lastUpdated timeIntervalSinceNow], 0.0, 1.0, nil);
 }
 
 - (void)testPerformMoveDoesNotSetPlayerOutcomeWhenGameNotOver {
@@ -112,7 +165,10 @@
     [[[successor stub] andReturn:successor] successorWithMove:move];
     [[[board stub] andReturn:successor] successorWithMove:move];
 
-    [match performMove:move];
+    BOOL yes = YES;
+    [[[board expect] andReturnValue:OCMOCK_VALUE(yes)] isLegalMove:move];
+
+    [match performMove:move completionHandler:nil];
 
     // -tearDown verifies no interactions on players..
 }
@@ -134,7 +190,9 @@
     [[one expect] setOutcome:SBPlayerOutcomeLost];
     [[two expect] setOutcome:SBPlayerOutcomeWon];
 
-    [match performMove:move];
+    [[[board expect] andReturnValue:OCMOCK_VALUE(yes)] isLegalMove:move];
+
+    [match performMove:move completionHandler:nil];
 }
 
 - (void)testPerformMoveSetsPlayerOutcomeTiedWhenGameOver {
@@ -153,11 +211,9 @@
     [[one expect] setOutcome:SBPlayerOutcomeTied];
     [[two expect] setOutcome:SBPlayerOutcomeTied];
 
-    STAssertNil(match.lastUpdated, nil);
+    [[[board expect] andReturnValue:OCMOCK_VALUE(yes)] isLegalMove:move];
 
-    [match performMove:move];
-
-    STAssertEqualsWithAccuracy([match.lastUpdated timeIntervalSinceNow], 0.0, 1.0, nil);
+    [match performMove:move completionHandler:nil];
 }
 
 - (void)testForfeit {
