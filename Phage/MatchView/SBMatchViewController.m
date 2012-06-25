@@ -37,6 +37,21 @@
     self.state.gridView = self.gridView;
 }
 
+- (void)transitionToStateForMatch:(SBMatch *)match {
+    if (match.isGameOver)
+        [self transitionToState:[SBMatchViewControllerStateGameOver state]];
+    else if (match.currentPlayer.isLocalHuman)
+        [self transitionToState:[SBMatchViewControllerStateUnselected state]];
+    else
+        [self transitionToState:[SBMatchViewControllerStateReadonly state]];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    SBMatch *match = self.match;
+    [self transitionToStateForMatch:match];
+    [self.gridView layoutForBoard:match.board];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
@@ -91,12 +106,11 @@
             [self.gridView putDownPiece:piece];
         }];
 
+        [self transitionToStateForMatch:self.match];
+
         if ([self.match isGameOver]) {
-            [self transitionToState:[SBMatchViewControllerStateGameOver state]];
             [self handleNotifyGameOver];
             [TestFlight passCheckpoint:[@"FINISHED" stringByAppendingString:self.checkPointSuffix]];
-        } else {
-            [self transitionToState:[SBMatchViewControllerStateUnselected state]];
         }
     }];
 }
