@@ -19,7 +19,7 @@
 @property(nonatomic, weak) IBOutlet UIBarButtonItem *forfeitButton;
 @property(nonatomic, strong) IBOutlet SBMatchView *gridView;
 
-@property(nonatomic, copy) NSString *checkPointBaseName;
+@property(nonatomic, copy) NSString *checkPointSuffix;
 
 - (IBAction)forfeit;
 

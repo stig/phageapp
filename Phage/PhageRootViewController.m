@@ -15,14 +15,15 @@
     [super prepareForSegue:segue sender:sender];
 
     if ([segue.identifier isEqual:@"TwoPlayer"]) {
-        [TestFlight passCheckpoint:@"START_PASS_TO_PLAY_MATCH"];
+        NSString *suffix = @"_PASS_TO_PLAY_MATCH";
+        [TestFlight passCheckpoint:[@"START" stringByAppendingString:suffix]];
 
         SBHuman *playerOne = [SBHuman playerWithAlias:@"Player 1"];
         SBHuman *playerTwo = [SBHuman playerWithAlias:@"Player 2"];
         SBMatch *match = [SBMatch matchWithPlayerOne:playerOne two:playerTwo];
 
         SBMatchViewController *vc = segue.destinationViewController;
-        vc.checkPointBaseName = @"PASS_TO_PLAY_MATCH";
+        vc.checkPointSuffix = suffix;
         vc.match = match;
 
     } else if ([segue.identifier isEqualToString:@"OnePlayer"]) {

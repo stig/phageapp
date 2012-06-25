@@ -27,7 +27,7 @@
 @synthesize forfeitButton = _forfeitButton;
 @synthesize state = _state;
 @synthesize match = _match;
-@synthesize checkPointBaseName = _checkPointBaseName;
+@synthesize checkPointSuffix = _checkPointSuffix;
 
 
 - (void)viewDidLoad {
@@ -91,7 +91,7 @@
         if ([self.match isGameOver]) {
             [self transitionToState:[SBMatchViewControllerStateGameOver state]];
             [self handleNotifyGameOver];
-            [TestFlight passCheckpoint:[@"FINISHED_" stringByAppendingString:self.checkPointBaseName]];
+            [TestFlight passCheckpoint:[@"FINISHED" stringByAppendingString:self.checkPointSuffix]];
         } else {
             [self transitionToState:[SBMatchViewControllerStateUnselected state]];
         }
@@ -106,7 +106,7 @@
             [self.match forfeit];
             [self transitionToState:[SBMatchViewControllerStateGameOver state]];
             [self handleNotifyGameOver];
-            [TestFlight passCheckpoint:[@"FORFEITED_" stringByAppendingString:self.checkPointBaseName]];
+            [TestFlight passCheckpoint:[@"FORFEITED" stringByAppendingString:self.checkPointSuffix]];
 
         }
         self.forfeitActionSheet = nil;
