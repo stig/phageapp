@@ -1,15 +1,18 @@
 //
-// Created by SuperPappi on 25/06/2012.
+// Created by SuperPappi on 20/06/2012.
 //
 // To change the template use AppCode | Preferences | File Templates.
 //
 
 
-#import "SBBot.h"
+#import "SBPlayer.h"
 
-@implementation SBBot
-@synthesize outcome = _outcome;
+@implementation SBPlayer
+
 @synthesize alias = _alias;
+@synthesize outcome = _outcome;
+@synthesize localHuman = _localHuman;
+
 
 + (id)playerWithAlias:(NSString *)alias {
     return [[self alloc] initWithAlias:alias];
@@ -19,13 +22,9 @@
     self = [super init];
     if (self) {
         _alias = alias;
+        self.outcome = SBPlayerOutcomeNone;
     }
     return self;
 }
-
-- (BOOL)isLocalHuman {
-    return NO;
-}
-
 
 @end

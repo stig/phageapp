@@ -66,7 +66,7 @@
 
 
 - (IBAction)forfeit {
-    id<SBPlayer> player = self.match.currentPlayer;
+    SBPlayer *player = self.match.currentPlayer;
     NSAssert(player.isLocalHuman, @"Player should be local Human");
     self.forfeitActionSheet = [[UIActionSheet alloc] initWithTitle:@"Really forfeit match?" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
     [self.forfeitActionSheet showInView:self.view];
@@ -88,7 +88,7 @@
 }
 
 - (void)handleNotifyGameOver {
-    id<SBPlayer> winner = self.match.winner;
+    SBPlayer *winner = self.match.winner;
     NSString *message = nil == winner ? @"It's a draw!" : [winner.alias stringByAppendingString:@" won!"];
     [[[UIAlertView alloc] initWithTitle:@"Game Over" message:message delegate:nil cancelButtonTitle:@"Great!" otherButtonTitles:nil] show];
 }

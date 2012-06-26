@@ -6,9 +6,9 @@
 
 
 #import "SBBotTurnEventHandler.h"
-#import "SBPlayer.h"
 #import "SBMatch.h"
 #import "SBOpponentMobilityMinimisingMovePicker.h"
+#import "SBPlayer.h"
 #import "SBBoard.h"
 #import "SBMove.h"
 

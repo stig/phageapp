@@ -1,8 +1,10 @@
 //
-// Created by SuperPappi on 19/06/2012.
+// Created by SuperPappi on 20/06/2012.
 //
 // To change the template use AppCode | Preferences | File Templates.
 //
+
+
 
 typedef enum {
     SBPlayerOutcomeNone = 0u,
@@ -13,11 +15,11 @@ typedef enum {
 } SBPlayerOutcome;
 
 
-@protocol SBPlayer <NSObject>
+@interface SBPlayer : NSObject
 
 @property(nonatomic) SBPlayerOutcome outcome;
 @property(nonatomic, readonly) NSString *alias;
-@property(nonatomic, readonly) BOOL isLocalHuman;
+@property(nonatomic, getter=isLocalHuman) BOOL localHuman;
 
 + (id)playerWithAlias:(NSString *)alias;
 

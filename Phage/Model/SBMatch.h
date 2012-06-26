@@ -4,9 +4,7 @@
 // To change the template use AppCode | Preferences | File Templates.
 //
 
-
-
-@protocol SBPlayer;
+@class SBPlayer;
 @class SBBoard;
 @class SBMove;
 @class SBPiece;
@@ -15,17 +13,17 @@
 
 @property(nonatomic, readonly) NSDate *lastUpdated;
 @property(nonatomic, readonly, getter=isGameOver) BOOL gameOver;
-@property(nonatomic, readonly) id<SBPlayer> winner;
-@property(nonatomic, readonly) id<SBPlayer> currentPlayer;
-@property(nonatomic, readonly) id<SBPlayer> playerOne;
-@property(nonatomic, readonly) id<SBPlayer> playerTwo;
+@property(nonatomic, readonly) SBPlayer *winner;
+@property(nonatomic, readonly) SBPlayer *currentPlayer;
+@property(nonatomic, readonly) SBPlayer *playerOne;
+@property(nonatomic, readonly) SBPlayer *playerTwo;
 @property(readonly) SBBoard *board; // atomic
 
-+ (id)matchWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two;
-- (id)initWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two;
++ (id)matchWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two;
+- (id)initWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two;
 
-+ (id)matchWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two board:(SBBoard *)board;
-- (id)initWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two board:(SBBoard *)board;
++ (id)matchWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two board:(SBBoard *)board;
+- (id)initWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two board:(SBBoard *)board;
 
 - (BOOL)isLegalMove:(SBMove *)aMove;
 

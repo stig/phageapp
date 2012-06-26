@@ -23,8 +23,8 @@
 @implementation SBMatchTest
 
 - (void)setUp {
-    one = [OCMockObject mockForProtocol:@protocol(SBPlayer)];
-    two = [OCMockObject mockForProtocol:@protocol(SBPlayer)];
+    one = [OCMockObject mockForClass:[SBPlayer class]];
+    two = [OCMockObject mockForClass:[SBPlayer class]];
     board = [OCMockObject mockForClass:[SBBoard class]];
     match = [SBMatch matchWithPlayerOne:one two:two board:board];
 }

@@ -7,17 +7,17 @@
 
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "SBHuman.h"
+#import "SBPlayer.h"
 
-@interface SBHumanTest : SenTestCase {
-    SBHuman *player;
+@interface SBPlayerTest : SenTestCase {
+    SBPlayer *player;
 }
 @end
 
-@implementation SBHumanTest
+@implementation SBPlayerTest
 
 - (void)setUp {
-    player = [SBHuman playerWithAlias:@"Foo"];
+    player = [SBPlayer playerWithAlias:@"Foo"];
 }
 
 - (void)testAlias {

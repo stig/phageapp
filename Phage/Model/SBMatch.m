@@ -17,19 +17,19 @@
 @synthesize lastUpdated = _lastUpdated;
 
 
-+ (id)matchWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two {
++ (id)matchWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two {
     return [[self alloc] initWithPlayerOne:one two:two];
 }
 
-- (id)initWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two {
+- (id)initWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two {
     return [self initWithPlayerOne:one two:two board:[SBBoard board]];
 }
 
-+ (id)matchWithPlayerOne:(id <SBPlayer>)one two:(id <SBPlayer>)two board:(SBBoard *)board {
++ (id)matchWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two board:(SBBoard *)board {
     return [[self alloc] initWithPlayerOne:one two:two board:board];
 }
 
-- (id)initWithPlayerOne:(id <SBPlayer>)one two:(id <SBPlayer>)two board:(SBBoard *)board {
+- (id)initWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two board:(SBBoard *)board {
     self = [super init];
     if (!self) return nil;
 
@@ -39,11 +39,11 @@
     return self;
 }
 
-- (id<SBPlayer>)currentPlayer {
+- (SBPlayer *)currentPlayer {
     return 0 == self.board.currentPlayerIndex ? self.playerOne : self.playerTwo;
 }
 
-- (id<SBPlayer>)otherPlayer {
+- (SBPlayer *)otherPlayer {
     return [self.currentPlayer isEqual:self.playerOne] ? self.playerTwo : self.playerOne;
 }
 
@@ -91,7 +91,7 @@
         || self.playerTwo.outcome != SBPlayerOutcomeNone;
 }
 
-- (id <SBPlayer>)winner {
+- (SBPlayer *)winner {
     if (self.playerOne.outcome == SBPlayerOutcomeWon)
         return self.playerOne;
     else if (self.playerTwo.outcome == SBPlayerOutcomeWon)

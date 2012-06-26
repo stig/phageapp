@@ -5,9 +5,8 @@
 
 #import "PhageRootViewController.h"
 #import "SBMatchViewController.h"
-#import "SBHuman.h"
+#import "SBPlayer.h"
 #import "SBMatch.h"
-#import "SBBot.h"
 #import "SBBotTurnEventHandler.h"
 
 @implementation PhageRootViewController
@@ -20,8 +19,10 @@
         NSString *suffix = @"_ONE_PLAYER_MATCH";
         [TestFlight passCheckpoint:[@"START" stringByAppendingString:suffix]];
 
-        id<SBPlayer> playerOne = [SBHuman playerWithAlias:@"Human"];
-        id<SBPlayer> playerTwo = [SBBot playerWithAlias:@"Bot"];
+        SBPlayer *playerOne = [SBPlayer playerWithAlias:@"Human"];
+        playerOne.localHuman = YES;
+
+        SBPlayer *playerTwo = [SBPlayer playerWithAlias:@"Bot"];
         SBMatch *match = [SBMatch matchWithPlayerOne:playerOne two:playerTwo];
 
         SBMatchViewController *vc = segue.destinationViewController;
@@ -33,8 +34,10 @@
         NSString *suffix = @"_PASS_TO_PLAY_MATCH";
         [TestFlight passCheckpoint:[@"START" stringByAppendingString:suffix]];
 
-        id<SBPlayer> playerOne = [SBHuman playerWithAlias:@"Player 1"];
-        id<SBPlayer> playerTwo = [SBHuman playerWithAlias:@"Player 2"];
+        SBPlayer *playerOne = [SBPlayer playerWithAlias:@"Player 1"];
+        SBPlayer *playerTwo = [SBPlayer playerWithAlias:@"Player 2"];
+        playerOne.localHuman = playerTwo.localHuman = YES;
+
         SBMatch *match = [SBMatch matchWithPlayerOne:playerOne two:playerTwo];
 
         SBMatchViewController *vc = segue.destinationViewController;
