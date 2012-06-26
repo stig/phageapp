@@ -36,7 +36,8 @@
 
         SBPlayer *playerOne = [SBPlayer playerWithAlias:@"Player 1"];
         SBPlayer *playerTwo = [SBPlayer playerWithAlias:@"Player 2"];
-        playerOne.localHuman = playerTwo.localHuman = YES;
+        playerOne.localHuman = YES;
+        playerTwo.localHuman = YES;
 
         SBMatch *match = [SBMatch matchWithPlayerOne:playerOne two:playerTwo];
 

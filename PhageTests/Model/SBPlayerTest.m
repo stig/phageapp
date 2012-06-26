@@ -25,7 +25,7 @@
 }
 
 - (void)testIsLocalHuman {
-    STAssertTrue(player.isLocalHuman, nil);
+    STAssertFalse(player.isLocalHuman, nil);
 }
 
 @end

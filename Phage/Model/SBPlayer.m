@@ -12,6 +12,8 @@
 @synthesize alias = _alias;
 @synthesize outcome = _outcome;
 @synthesize localHuman = _localHuman;
+@synthesize eloScore = _eloScore;
+@synthesize matchCount = _matchCount;
 
 
 + (id)playerWithAlias:(NSString *)alias {
