@@ -9,7 +9,7 @@
 @class SBMove;
 @class SBPiece;
 
-@interface SBMatch : NSObject
+@interface SBMatch : NSObject <NSCoding>
 
 @property(nonatomic, readonly) NSDate *lastUpdated;
 @property(nonatomic, readonly, getter=isGameOver) BOOL gameOver;

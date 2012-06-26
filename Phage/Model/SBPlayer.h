@@ -15,7 +15,7 @@ typedef enum {
 } SBPlayerOutcome;
 
 
-@interface SBPlayer : NSObject
+@interface SBPlayer : NSObject < NSCoding >
 
 @property(nonatomic) NSUInteger eloScore;
 @property(nonatomic) NSUInteger matchCount;

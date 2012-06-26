@@ -251,4 +251,28 @@
     STAssertTrue([match canCurrentPlayerMovePiece:piece], nil);
 }
 
+- (void)testCoding {
+
+    SBPlayer *p1 = [SBPlayer playerWithAlias:@"foo"];
+    SBPlayer *p2 = [SBPlayer playerWithAlias:@"bar"];
+    SBMatch *m1 = [SBMatch matchWithPlayerOne:p1 two:p2];
+
+    __block id move;
+    [m1.board enumerateLegalMovesWithBlock:^(SBMove *m, BOOL *stop){
+        move = m;
+        *stop = YES;
+    }];
+    [m1 performMove:move completionHandler:nil];
+
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:m1];
+    STAssertTrue(data.length < 3e3, nil);
+
+    SBMatch *copy = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    STAssertEqualObjects(copy.playerOne.alias, @"foo", nil);
+    STAssertEqualObjects(copy.playerTwo.alias, @"bar", nil);
+
+    STAssertEquals(copy.board.moveHistory.count, 1u, nil);
+    STAssertEqualObjects([copy.board.moveHistory lastObject], move, nil);
+}
+
 @end

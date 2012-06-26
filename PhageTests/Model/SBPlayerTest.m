@@ -29,4 +29,21 @@
     STAssertFalse(player.isLocalHuman, nil);
 }
 
+- (void)testCoder {
+    SBPlayer *player = [SBPlayer playerWithAlias:@"foo"];
+    player.eloScore = 1230;
+    player.matchCount = 23;
+    player.localHuman = YES;
+    player.outcome = SBPlayerOutcomeLost;
+
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:player];
+    SBPlayer *other = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+
+    STAssertEquals(other.eloScore, 1230u, nil);
+    STAssertEquals(other.matchCount, 23u, nil);
+    STAssertTrue(other.isLocalHuman, nil);
+    STAssertEquals(other.outcome, SBPlayerOutcomeLost, nil);
+    STAssertEqualObjects(other.alias, @"foo", nil);
+}
+
 @end

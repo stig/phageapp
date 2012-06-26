@@ -10,11 +10,44 @@
 #import "SBPlayer.h"
 #import "SBMove.h"
 
+static NSInteger MatchVersion = 3;
+static NSString *MatchVersionKey = @"v";
+static NSString *PlayerOneKey = @"1";
+static NSString *PlayerTwoKey = @"2";
+static NSString *MoveHistoryKey = @"m";
+
+
 @implementation SBMatch
 @synthesize board = _board;
 @synthesize playerOne = _playerOne;
 @synthesize playerTwo = _playerTwo;
 @synthesize lastUpdated = _lastUpdated;
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeInteger:MatchVersion forKey:MatchVersionKey];
+    [coder encodeObject:self.playerOne forKey:PlayerOneKey];
+    [coder encodeObject:self.playerTwo forKey:PlayerTwoKey];
+    [coder encodeObject:self.board.moveHistory forKey:MoveHistoryKey];
+}
+
+- (id)initWithCoder:(NSCoder *)coder {
+    if (![coder containsValueForKey:MatchVersionKey]) {
+        NSLog(@"Unsupported match format");
+        return nil;
+    }
+
+    NSInteger version = [coder decodeIntegerForKey:MatchVersionKey];
+    if (version > MatchVersion) {
+        NSLog(@"Unsupported match format; please upgrade your version of Phage!");
+        return nil;
+    }
+
+    SBPlayer *one = [coder decodeObjectForKey:PlayerOneKey];
+    SBPlayer *two = [coder decodeObjectForKey:PlayerTwoKey];
+    SBBoard *board = [SBBoard boardWithMoveHistory:[coder decodeObjectForKey:MoveHistoryKey]];
+
+    return [self initWithPlayerOne:one two:two board:board];
+}
 
 
 + (id)matchWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two {
