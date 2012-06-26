@@ -306,14 +306,6 @@
 		D76A456B151DDC7500E59146 /* Phage */ = {
 			isa = PBXGroup;
 			children = (
-				FB89D43C154C7D27001A0BFB /* SBBotTurnEventHandler.m */,
-				FB89D43C154C7D27001A0BFA /* SBBotTurnEventHandler.h */,
-				FB89D43C154C7D27001A0BF8 /* SBBot.m */,
-				FB89D43C154C7D27001A0BF7 /* SBBot.h */,
-				FB89D43C154C7D27001A0BF6 /* SBAnimationCompletionHandler.h */,
-				FB89D43C154C7D27001A0BF4 /* SBAnimationCompletionHandler.m */,
-				D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */,
-				D7BFA3B2151F2AD300435C8A /* SBOpponentMobilityMinimisingMovePicker.h */,
 				FB89D43C154C7D27001A0B95 /* PhageRootViewController.h */,
 				FB89D43C154C7D27001A0B93 /* PhageRootViewController.m */,
 				D76A4574151DDC7500E59146 /* SBAppDelegate.h */,
@@ -323,6 +315,7 @@
 				D76A456C151DDC7500E59146 /* Supporting Files */,
 				D755A4941532224C003BB704 /* Model */,
 				FB89D43C154C7D27001A0BAA /* MatchView */,
+				FB89D43C154C7D27001A0BFD /* Bots */,
 			);
 			path = Phage;
 			sourceTree = "<group>";
@@ -385,6 +378,8 @@
 		FB89D43C154C7D27001A0BAA /* MatchView */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0BF4 /* SBAnimationCompletionHandler.m */,
+				FB89D43C154C7D27001A0BF6 /* SBAnimationCompletionHandler.h */,
 				FB89D43C154C7D27001A0BE6 /* SBMatchViewControllerStateDragged.h */,
 				FB89D43C154C7D27001A0BE4 /* SBMatchViewControllerStateDragged.m */,
 				FB89D43C154C7D27001A0BE3 /* SBMatchViewControllerStateHint.h */,
@@ -412,6 +407,19 @@
 				FB89D43C154C7D27001A0BA9 /* SBCellLayer.h */,
 			);
 			path = MatchView;
+			sourceTree = "<group>";
+		};
+		FB89D43C154C7D27001A0BFD /* Bots */ = {
+			isa = PBXGroup;
+			children = (
+				D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */,
+				D7BFA3B2151F2AD300435C8A /* SBOpponentMobilityMinimisingMovePicker.h */,
+				FB89D43C154C7D27001A0BFB /* SBBotTurnEventHandler.m */,
+				FB89D43C154C7D27001A0BFA /* SBBotTurnEventHandler.h */,
+				FB89D43C154C7D27001A0BF8 /* SBBot.m */,
+				FB89D43C154C7D27001A0BF7 /* SBBot.h */,
+			);
+			path = Bots;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
