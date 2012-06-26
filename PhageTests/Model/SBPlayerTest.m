@@ -9,22 +9,23 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "SBPlayer.h"
 
-@interface SBPlayerTest : SenTestCase {
-    SBPlayer *player;
-}
+@interface SBPlayerTest : SenTestCase
 @end
 
 @implementation SBPlayerTest
 
-- (void)setUp {
-    player = [SBPlayer playerWithAlias:@"Foo"];
+- (void)testPlayer {
+    SBPlayer *player = [SBPlayer player];
+    STAssertNil(player.alias, nil);
 }
 
-- (void)testAlias {
+- (void)testPlayerWithAlias {
+    SBPlayer *player = [SBPlayer playerWithAlias:@"Foo"];
     STAssertEqualObjects(player.alias, @"Foo", nil);
 }
 
 - (void)testIsLocalHuman {
+    SBPlayer *player = [SBPlayer player];
     STAssertFalse(player.isLocalHuman, nil);
 }
 

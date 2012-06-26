@@ -20,9 +20,10 @@ typedef enum {
 @property(nonatomic) NSUInteger eloScore;
 @property(nonatomic) NSUInteger matchCount;
 @property(nonatomic) SBPlayerOutcome outcome;
-@property(nonatomic, readonly) NSString *alias;
+@property(nonatomic) NSString *alias;
 @property(nonatomic, getter=isLocalHuman) BOOL localHuman;
 
++ (id)player;
 + (id)playerWithAlias:(NSString *)alias;
 
 @end

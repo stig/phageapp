@@ -15,17 +15,27 @@
 @synthesize eloScore = _eloScore;
 @synthesize matchCount = _matchCount;
 
-
 + (id)playerWithAlias:(NSString *)alias {
     return [[self alloc] initWithAlias:alias];
 }
 
 - (id)initWithAlias:(NSString *)alias {
+    self = [self init];
+    if (!self) return nil;
+
+    self.alias = alias;
+    return self;
+}
+
++ (id)player {
+    return [[self alloc] init];
+}
+
+- (id)init {
     self = [super init];
-    if (self) {
-        _alias = alias;
-        self.outcome = SBPlayerOutcomeNone;
-    }
+    if (!self) return nil;
+
+    self.outcome = SBPlayerOutcomeNone;
     return self;
 }
 
