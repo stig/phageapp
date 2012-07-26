@@ -51,40 +51,37 @@
     self = [super init];
     if (!self) return nil;
 
-    NSArray *thePieces = [NSArray arrayWithObjects:[SBCircle pieceWithOwner:0],
+    NSArray *thePieces = @[[SBCircle pieceWithOwner:0],
                                                    [SBSquare pieceWithOwner:0],
                                                    [SBTriangle pieceWithOwner:0],
                                                    [SBDiamond pieceWithOwner:0],
                                                    [SBCircle pieceWithOwner:1],
                                                    [SBSquare pieceWithOwner:1],
                                                    [SBTriangle pieceWithOwner:1],
-                                                   [SBDiamond pieceWithOwner:1],
-                                                   nil];
+                                                   [SBDiamond pieceWithOwner:1]];
 
-    self.pieces = [NSArray arrayWithObjects:[thePieces subarrayWithRange:NSMakeRange(0, 4)],
-                                            [thePieces subarrayWithRange:NSMakeRange(4, 4)],
-                                            nil];
+    self.pieces = @[[thePieces subarrayWithRange:NSMakeRange(0, 4)],
+                                            [thePieces subarrayWithRange:NSMakeRange(4, 4)]];
 
-    NSArray *theLocations = [NSArray arrayWithObjects:[SBLocation locationWithColumn:1 row:4],
+    NSArray *theLocations = @[[SBLocation locationWithColumn:1 row:4],
                                                           [SBLocation locationWithColumn:3 row:5],
                                                           [SBLocation locationWithColumn:5 row:6],
                                                           [SBLocation locationWithColumn:7 row:7],
                                                           [SBLocation locationWithColumn:6 row:3],
                                                           [SBLocation locationWithColumn:4 row:2],
                                                           [SBLocation locationWithColumn:2 row:1],
-                                                          [SBLocation locationWithColumn:0 row:0],
-                                                          nil];
+                                                          [SBLocation locationWithColumn:0 row:0]];
 
     self.locationMap = [NSMutableDictionary dictionaryWithObjects:theLocations forKeys:thePieces];
     self.pieceMap = [NSMutableDictionary dictionaryWithObjects:thePieces forKeys:theLocations];
 
     self.pieceTurnCountMap = [NSMutableDictionary dictionaryWithCapacity:thePieces.count];
     for (SBPiece *p in thePieces) {
-        [self.pieceTurnCountMap setObject:[NSNumber numberWithUnsignedInteger:7u] forKey:p];
+        [self.pieceTurnCountMap setObject:@7u forKey:p];
     }
 
     self.occupied = [NSSet set];
-    self.moveHistory = [NSArray array];
+    self.moveHistory = @[];
 
     return self;
 }
@@ -175,7 +172,7 @@
 }
 
 - (void)enumerateLegalDestinationsForPiece:(SBPiece *)piece withBlock:(void (^)(SBLocation *loc, BOOL *stop))block {
-    if ([[NSNumber numberWithUnsignedInteger:0] isEqualToNumber:[self turnsLeftForPiece:piece]])
+    if ([@0U isEqualToNumber:[self turnsLeftForPiece:piece]])
         return;
 
     for (SBDirection *d in piece.directions) {
@@ -239,7 +236,7 @@
     [self.pieceMap setObject:piece forKey:move.to];
 
     NSUInteger n = [[self turnsLeftForPiece:piece] unsignedIntegerValue];
-    [self.pieceTurnCountMap setObject:[NSNumber numberWithUnsignedInteger:n - 1] forKey:piece];
+    [self.pieceTurnCountMap setObject:@(n - 1) forKey:piece];
 }
 
 - (SBBoard *)successorWithMove:(SBMove *)move {

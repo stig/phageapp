@@ -38,8 +38,7 @@
 }
 
 - (void)testDescription {
-    NSArray *expected = [NSArray arrayWithObjects:
-            @"C:7 S:7 T:7 D:7 ",
+    NSArray *expected = @[@"C:7 S:7 T:7 D:7 ",
             @"c:7 s:7 t:7 d:7 ",
             @".......D",
             @".....T..",
@@ -49,8 +48,7 @@
             @"....s...",
             @"..t.....",
             @"d.......",
-            @"",
-            nil];
+            @""];
 
     STAssertEqualObjects([s description], [expected componentsJoinedByString:@"\n"], nil);
 }
@@ -72,7 +70,7 @@
     for (NSArray* pp in s.pieces) {
         STAssertEquals(pp.count, 4u, nil);
         for (SBPiece *p in pp) {
-            STAssertEqualObjects([s turnsLeftForPiece:p], [NSNumber numberWithUnsignedInteger:7u], nil);
+            STAssertEqualObjects([s turnsLeftForPiece:p], @7u, nil);
         }
     }
 }
@@ -100,8 +98,7 @@
     STAssertNotNil(s1, nil);
     STAssertFalse([s1 isEqual:s], nil);
 
-    NSArray *expected = [NSArray arrayWithObjects:
-            @"C:7 S:7 T:7 D:6 ",
+    NSArray *expected = @[@"C:7 S:7 T:7 D:6 ",
             @"c:7 s:7 t:7 d:7 ",
             @".......*",
             @".....T..",
@@ -111,8 +108,7 @@
             @"....s...",
             @"..t.....",
             @"d......D",
-            @"",
-            nil];
+            @""];
 
     STAssertEqualObjects([s1 description], [expected componentsJoinedByString:@"\n"], nil);
 }
@@ -121,8 +117,7 @@
     SBBoard *s1 = [s successorWithMove:[self lastMoveForState:s]];
     SBBoard *s2 = [s1 successorWithMove:[self lastMoveForState:s1]];
 
-    NSArray *expected = [NSArray arrayWithObjects:
-            @"C:7 S:7 T:7 D:6 ",
+    NSArray *expected = @[@"C:7 S:7 T:7 D:6 ",
             @"c:7 s:7 t:7 d:6 ",
             @"d......*",
             @".....T..",
@@ -132,8 +127,7 @@
             @"....s...",
             @"..t.....",
             @"*......D",
-            @"",
-            nil];
+            @""];
 
     STAssertEqualObjects([s2 description], [expected componentsJoinedByString:@"\n"], nil);
 }

@@ -116,8 +116,8 @@
     theAnimation.duration = 1.0;
     theAnimation.repeatCount = HUGE_VALF;
     theAnimation.autoreverses = YES;
-    theAnimation.fromValue = [NSNumber numberWithFloat:1.0];
-    theAnimation.toValue = [NSNumber numberWithFloat:0.5];
+    theAnimation.fromValue = @1.0f;
+    theAnimation.toValue = @0.5f;
     theAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     [layer addAnimation:theAnimation forKey:@"opacityAnimation"];
 }

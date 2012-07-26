@@ -50,7 +50,7 @@
 }
 
 - (NSArray *)directions {
-    return [NSArray array];
+    return @[];
 }
 
 - (NSUInteger)hash {

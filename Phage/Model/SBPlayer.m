@@ -28,8 +28,8 @@ static NSString *MatchCountKey = @"mc";
     [coder encodeObject:self.alias forKey:AliasKey];
     [coder encodeInteger:self.outcome forKey:OutcomeKey];
     [coder encodeBool:self.isLocalHuman forKey:LocalHumanKey];
-    [coder encodeObject:[NSNumber numberWithUnsignedInteger:self.eloScore] forKey:EloScoreKey];
-    [coder encodeObject:[NSNumber numberWithUnsignedInteger:self.matchCount] forKey:MatchCountKey];
+    [coder encodeObject:@(self.eloScore) forKey:EloScoreKey];
+    [coder encodeObject:@(self.matchCount) forKey:MatchCountKey];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {

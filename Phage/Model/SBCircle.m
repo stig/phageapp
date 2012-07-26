@@ -12,16 +12,14 @@
 @implementation SBCircle
 
 - (NSArray *)directions {
-    return [NSArray arrayWithObjects:
-            [SBDirection directionWithColumn:-1 row:-1],
+    return @[[SBDirection directionWithColumn:-1 row:-1],
             [SBDirection directionWithColumn:1 row:-1],
             [SBDirection directionWithColumn:-1 row:1],
             [SBDirection directionWithColumn:1 row:1],
             [SBDirection directionWithColumn:-1 row:0],
             [SBDirection directionWithColumn:1 row:0],
             [SBDirection directionWithColumn:0 row:-1],
-            [SBDirection directionWithColumn:0 row:1],
-            nil];
+            [SBDirection directionWithColumn:0 row:1]];
 }
 
 - (CGPathRef)pathInRect:(CGRect)rect {

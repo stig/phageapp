@@ -12,13 +12,11 @@
 @implementation SBTriangle
 
 - (NSArray *)directions {
-    return [NSArray arrayWithObjects:
-            [SBDirection directionWithColumn:1 row:0],
+    return @[[SBDirection directionWithColumn:1 row:0],
             [SBDirection directionWithColumn:-1 row:0],
             self.owner == 0
                     ? [SBDirection directionWithColumn:0 row:-1]
-                    : [SBDirection directionWithColumn:0 row:1],
-            nil];
+                    : [SBDirection directionWithColumn:0 row:1]];
 }
 
 - (CGPathRef)createPathInRect:(CGRect)rect {
