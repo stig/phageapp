@@ -16,5 +16,4 @@
 
 - (NSArray*)directions;
 
-- (CGPathRef)pathInRect:(CGRect)rect;
 @end

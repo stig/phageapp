@@ -57,10 +57,5 @@
     return 31u * _owner + [NSStringFromClass([self class]) hash];
 }
 
-- (CGPathRef)pathInRect:(CGRect)rect {
-    [self doesNotRecognizeSelector:_cmd];
-    @throw @"Cannot get here";
-}
-
 
 @end

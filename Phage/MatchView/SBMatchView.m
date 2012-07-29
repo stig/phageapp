@@ -12,6 +12,7 @@
 #import "SBPieceLayer.h"
 #import "SBCellLayer.h"
 #import "SBAnimationCompletionHandler.h"
+#import "SBPiece+Drawing.h"
 
 @interface SBMatchView () < UIGestureRecognizerDelegate >
 @property(strong) CALayer *cellLayer;

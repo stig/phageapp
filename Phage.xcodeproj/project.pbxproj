@@ -62,6 +62,11 @@
 		FB89D43C154C7D27001A0BF3 /* SBPlayerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BF2 /* SBPlayerTest.m */; };
 		FB89D43C154C7D27001A0BF5 /* SBAnimationCompletionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BF4 /* SBAnimationCompletionHandler.m */; };
 		FB89D43C154C7D27001A0BFC /* SBBotTurnEventHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BFB /* SBBotTurnEventHandler.m */; };
+		FB89D43C154C7D27001A0BFF /* SBPiece+Drawing.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BFE /* SBPiece+Drawing.m */; };
+		FB89D43C154C7D27001A0C07 /* SBCircle+Drawing.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C06 /* SBCircle+Drawing.m */; };
+		FB89D43C154C7D27001A0C09 /* SBDiamond+Drawing.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C08 /* SBDiamond+Drawing.m */; };
+		FB89D43C154C7D27001A0C0B /* SBSquare+Drawing.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C0A /* SBSquare+Drawing.m */; };
+		FB89D43C154C7D27001A0C0D /* SBTriangle+Drawing.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C0C /* SBTriangle+Drawing.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -202,6 +207,12 @@
 		FB89D43C154C7D27001A0BF6 /* SBAnimationCompletionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAnimationCompletionHandler.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BFA /* SBBotTurnEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBotTurnEventHandler.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BFB /* SBBotTurnEventHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBotTurnEventHandler.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0BFE /* SBPiece+Drawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SBPiece+Drawing.m"; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0C00 /* SBPiece+Drawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SBPiece+Drawing.h"; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0C06 /* SBCircle+Drawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SBCircle+Drawing.m"; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0C08 /* SBDiamond+Drawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SBDiamond+Drawing.m"; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0C0A /* SBSquare+Drawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SBSquare+Drawing.m"; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0C0C /* SBTriangle+Drawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SBTriangle+Drawing.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -373,6 +384,12 @@
 		FB89D43C154C7D27001A0BAA /* MatchView */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0C08 /* SBDiamond+Drawing.m */,
+				FB89D43C154C7D27001A0C0A /* SBSquare+Drawing.m */,
+				FB89D43C154C7D27001A0C0C /* SBTriangle+Drawing.m */,
+				FB89D43C154C7D27001A0C06 /* SBCircle+Drawing.m */,
+				FB89D43C154C7D27001A0BFE /* SBPiece+Drawing.m */,
+				FB89D43C154C7D27001A0C00 /* SBPiece+Drawing.h */,
 				FB89D43C154C7D27001A0BF4 /* SBAnimationCompletionHandler.m */,
 				FB89D43C154C7D27001A0BF6 /* SBAnimationCompletionHandler.h */,
 				FB89D43C154C7D27001A0BE6 /* SBMatchViewControllerStateDragged.h */,
@@ -586,6 +603,11 @@
 				FB89D43C154C7D27001A0BF0 /* SBPlayer.m in Sources */,
 				FB89D43C154C7D27001A0BF5 /* SBAnimationCompletionHandler.m in Sources */,
 				FB89D43C154C7D27001A0BFC /* SBBotTurnEventHandler.m in Sources */,
+				FB89D43C154C7D27001A0BFF /* SBPiece+Drawing.m in Sources */,
+				FB89D43C154C7D27001A0C07 /* SBCircle+Drawing.m in Sources */,
+				FB89D43C154C7D27001A0C09 /* SBDiamond+Drawing.m in Sources */,
+				FB89D43C154C7D27001A0C0B /* SBSquare+Drawing.m in Sources */,
+				FB89D43C154C7D27001A0C0D /* SBTriangle+Drawing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,11 +22,4 @@
             [SBDirection directionWithColumn:0 row:1]];
 }
 
-- (CGPathRef)pathInRect:(CGRect)rect {
-    static CGPathRef path = nil;
-    if (!path) path = CGPathCreateWithEllipseInRect(CGRectInset(rect, 5.0, 5.0), nil);
-    return path;
-}
-
-
 @end

@@ -18,11 +18,5 @@
             [SBDirection directionWithColumn:1 row:1]];
 }
 
-- (CGPathRef)pathInRect:(CGRect)rect {
-    static CGPathRef path = nil;
-    if (!path) path = CGPathCreateWithRect(CGRectInset(rect, 6.0, 6.0), nil);
-    return path;
-}
-
 
 @end
