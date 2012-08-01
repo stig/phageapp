@@ -2,21 +2,21 @@ How To Play
 ===========
 
 Phage is a two-player abstract strategy game with some similarities to
-chess. Each player take turn moving one of their pieces until they run
+Chess. Each player take turn moving one of their pieces until they run
 out of moves. The player that can perform the most moves wins. Draws are
 possible.
 
-Each player has four pieces: Circle, Square, Diamond & Triangle. Each
-piece can only be moved seven times. Thus, games tend to be short. There
-are no pass moves. The pieces move in different ways:
+Each player has four pieces: Circle, Square, Diamond & Triangle. These
+moves similarly to Queens, Bishops and Rooks. (Triangle has no direct
+equivalent piece in Chess.) Each piece can only be moved seven times.
+Thus, games tend to be short. There are no pass moves. The pieces move
+in different ways:
 
 - Circle moves horizontally, vertically and diagonally in any direction.
-  (Like Queens in Chess.)
-- Square moves diagonally in any direction. (Like Bishops in Chess.)
-- Diamond moves horizontally and vertically in any direction. (Like
-  Rooks in Chess.)
+- Square moves diagonally in any direction.
+- Diamond moves horizontally and vertically in any direction.
 - Triangle moves horizontally in any direction, and vertically *in the
-  direction of its point*. (This piece has no direct equivalent in Chess.)
+  direction it points*.
 
 A cell which has been previously occupied by a piece is blocked. It
 cannot be occupied again, nor can any piece be moved *across* it in any
