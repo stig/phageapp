@@ -14,7 +14,7 @@
 #import "SBLocation.h"
 #import "SBMatch.h"
 #import "SBMove.h"
-#import SBPiece.h"
+#import "SBPiece.h"
 #import "SBPlayer.h"
 #import "SBSquare.h"
 #import "SBTriangle.h"
