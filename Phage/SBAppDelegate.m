@@ -2,33 +2,22 @@
 //  SBAppDelegate.m
 //  Phage
 //
-//  Created by Stig Brautaset on 24/3/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Stig Brautaset on 31/07/2012.
+//
 //
 
 #import "SBAppDelegate.h"
 
 @implementation SBAppDelegate
 
-@synthesize window = _window;
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [TestFlight takeOff:@"b15ebf354cbefc8afa12b65ca5ae3799_OTA1MDgyMDEyLTA1LTE5IDA4OjMwOjQ1LjQ2NzUwNQ"];
+
 #define TESTING 1
 #ifdef TESTING
     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
 #endif
-
-    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
-
-    [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
-        TFLog(@"%s localPlayer.isAuthenticated = %@", __PRETTY_FUNCTION__, localPlayer.isAuthenticated ? @"YES" : @"NO");
-
-        if (error) {
-            TFLog(@"%s error = %@", __PRETTY_FUNCTION__, error);
-        }
-    }];
 
     return YES;
 }

@@ -39,7 +39,6 @@
 		D7FDA3A2156DAA4700E65C5E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FDA3A1156DAA4700E65C5E /* libz.dylib */; };
 		D7FDA3A4156DAA8F00E65C5E /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FDA3A3156DAA8F00E65C5E /* libTestFlight.a */; };
 		FB89D43C154C7D27001A0B38 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D755A48A15320B53003BB704 /* GameKit.framework */; };
-		FB89D43C154C7D27001A0B94 /* PhageRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0B93 /* PhageRootViewController.m */; };
 		FB89D43C154C7D27001A0BA2 /* SBPieceLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BA1 /* SBPieceLayer.m */; };
 		FB89D43C154C7D27001A0BA8 /* SBCellLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BA7 /* SBCellLayer.m */; };
 		FB89D43C154C7D27001A0BD0 /* SBMatchViewControllerState.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BCF /* SBMatchViewControllerState.m */; };
@@ -75,6 +74,9 @@
 		FB89D43C154C7D27001A0C1D /* SBMoveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45A7151DE43300E59146 /* SBMoveTest.m */; };
 		FB89D43C154C7D27001A0C1E /* SBPieceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D73965B1151FB10600118094 /* SBPieceTest.m */; };
 		FB89D43C154C7D27001A0C1F /* SBPlayerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BF2 /* SBPlayerTest.m */; };
+		FB89D43C154C7D27001A0C22 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C21 /* Localizable.strings */; };
+		FB89D43C154C7D27001A0C25 /* SBFlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C24 /* SBFlipsideViewController.m */; };
+		FB89D43C154C7D27001A0C28 /* SBMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C27 /* SBMainViewController.m */; };
 		FB89D43C154C7D27001A0C2C /* SBAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C2B /* SBAlertView.m */; };
 /* End PBXBuildFile section */
 
@@ -217,8 +219,6 @@
 		D7BFA3B2151F2AD300435C96 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = libs/ocmock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
 		D7FDA3A1156DAA4700E65C5E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D7FDA3A3156DAA8F00E65C5E /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTestFlight.a; path = libs/TestFlight/libTestFlight.a; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0B93 /* PhageRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhageRootViewController.m; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0B95 /* PhageRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhageRootViewController.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BA1 /* SBPieceLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPieceLayer.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BA3 /* SBPieceLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPieceLayer.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BA7 /* SBCellLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCellLayer.m; sourceTree = "<group>"; };
@@ -255,6 +255,11 @@
 		FB89D43C154C7D27001A0C08 /* SBDiamond+Drawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SBDiamond+Drawing.m"; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0C0A /* SBSquare+Drawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SBSquare+Drawing.m"; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0C0C /* SBTriangle+Drawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SBTriangle+Drawing.m"; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0C20 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0C23 /* SBFlipsideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBFlipsideViewController.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0C24 /* SBFlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBFlipsideViewController.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0C26 /* SBMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMainViewController.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0C27 /* SBMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMainViewController.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0C2A /* SBAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAlertView.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0C2B /* SBAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAlertView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -414,8 +419,10 @@
 		D76A456B151DDC7500E59146 /* Phage */ = {
 			isa = PBXGroup;
 			children = (
-				FB89D43C154C7D27001A0B95 /* PhageRootViewController.h */,
-				FB89D43C154C7D27001A0B93 /* PhageRootViewController.m */,
+				FB89D43C154C7D27001A0C27 /* SBMainViewController.m */,
+				FB89D43C154C7D27001A0C26 /* SBMainViewController.h */,
+				FB89D43C154C7D27001A0C24 /* SBFlipsideViewController.m */,
+				FB89D43C154C7D27001A0C23 /* SBFlipsideViewController.h */,
 				D76A4574151DDC7500E59146 /* SBAppDelegate.h */,
 				D76A4575151DDC7500E59146 /* SBAppDelegate.m */,
 				D76A4577151DDC7500E59146 /* MainStoryboard_iPhone.storyboard */,
@@ -431,6 +438,7 @@
 		D76A456C151DDC7500E59146 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0C21 /* Localizable.strings */,
 				D719864D155D78BB00349052 /* HowToPlay.md */,
 				D76A456D151DDC7500E59146 /* Phage-Info.plist */,
 				D76A456E151DDC7500E59146 /* InfoPlist.strings */,
@@ -683,6 +691,7 @@
 				D76A457C151DDC7500E59146 /* MainStoryboard_iPad.storyboard in Resources */,
 				D7BFA3B2151F2AD300435C95 /* chess-640x640.jpg in Resources */,
 				D719864F155D78BB00349052 /* HowToPlay.md in Resources */,
+				FB89D43C154C7D27001A0C22 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,7 +776,6 @@
 				D76A457F151DDC7500E59146 /* SBMatchViewController.m in Sources */,
 				D7BFA3B2151F2AD300435C89 /* SBOpponentMobilityMinimisingMovePicker.m in Sources */,
 				D7BFA3B2151F2AD300435C93 /* SBMatchView.m in Sources */,
-				FB89D43C154C7D27001A0B94 /* PhageRootViewController.m in Sources */,
 				FB89D43C154C7D27001A0BA2 /* SBPieceLayer.m in Sources */,
 				FB89D43C154C7D27001A0BA8 /* SBCellLayer.m in Sources */,
 				FB89D43C154C7D27001A0BD0 /* SBMatchViewControllerState.m in Sources */,
@@ -785,6 +793,8 @@
 				FB89D43C154C7D27001A0C09 /* SBDiamond+Drawing.m in Sources */,
 				FB89D43C154C7D27001A0C0B /* SBSquare+Drawing.m in Sources */,
 				FB89D43C154C7D27001A0C0D /* SBTriangle+Drawing.m in Sources */,
+				FB89D43C154C7D27001A0C25 /* SBFlipsideViewController.m in Sources */,
+				FB89D43C154C7D27001A0C28 /* SBMainViewController.m in Sources */,
 				FB89D43C154C7D27001A0C2C /* SBAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -869,6 +879,14 @@
 				D76A4590151DDC7500E59146 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FB89D43C154C7D27001A0C21 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB89D43C154C7D27001A0C20 /* Localizable.strings */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
