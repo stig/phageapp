@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, SBBoardDimensions) {
+    ROWS = 8u,
+    COLUMNS = 8u,
+};
+
 @class SBDirection;
 
 @interface SBLocation : NSObject <NSCopying, NSCoding>

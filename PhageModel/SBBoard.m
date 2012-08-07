@@ -167,10 +167,6 @@
     return [self.locationMap objectForKey:piece];
 }
 
-- (BOOL)isGridLocation:(SBLocation*)loc {
-    return loc.column >= 0 && loc.column < self.columns && loc.row >= 0 && loc.row < self.rows;
-}
-
 - (void)enumerateLegalDestinationsForPiece:(SBPiece *)piece withBlock:(void (^)(SBLocation *loc, BOOL *stop))block {
     if ([@0U isEqualToNumber:[self turnsLeftForPiece:piece]])
         return;
@@ -181,7 +177,7 @@
             loc = [loc locationByMovingInDirection:d];
 
             // Is the location not on the grid?
-            if (![self isGridLocation:loc])
+            if (!loc)
                 break;
 
             // Or was already occupied?
@@ -288,11 +284,11 @@
 }
 
 - (NSUInteger)columns {
-    return 8u;
+    return COLUMNS;
 }
 
 - (NSUInteger)rows {
-    return 8u;
+    return ROWS;
 }
 
 @end

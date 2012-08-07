@@ -73,7 +73,10 @@
 }
 
 - (SBLocation *)locationByMovingInDirection:(SBDirection *)direction {
-    return [SBLocation locationWithColumn:self.column + direction.column
-                                          row:self.row + direction.row];
+    NSInteger c = self.column + direction.column;
+    NSInteger r = self.row + direction.row;
+    if (c < 0 || r < 0 || c >= COLUMNS || r >= ROWS)
+        return nil;
+    return [SBLocation locationWithColumn:(NSUInteger)c row:(NSUInteger)r];
 }
 @end
