@@ -23,8 +23,8 @@
 - (void)testBasic {
     STAssertNotNil(loc, nil);
     
-    STAssertEquals(loc.column, 1, nil);
-    STAssertEquals(loc.row, 3, nil);
+    STAssertEquals(loc.column, 1u, nil);
+    STAssertEquals(loc.row, 3u, nil);
 }
 
 - (void)testEqual {

@@ -14,11 +14,11 @@
 @synthesize column = _column;
 @synthesize row = _row;
 
-+ (id)locationWithColumn:(NSInteger)column row:(NSInteger)row {
++ (id)locationWithColumn:(NSUInteger)column row:(NSUInteger)row {
     return [[self alloc] initWithColumn:column row:row];
 }
 
-- (id)initWithColumn:(NSInteger)c row:(NSInteger)r {
+- (id)initWithColumn:(NSUInteger)c row:(NSUInteger)r {
     self = [super init];
     if (self) {
         _column = c;
@@ -30,13 +30,13 @@
 #pragma mark NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeInteger:_column forKey:@"SBColumn"];
-    [coder encodeInteger:_row forKey:@"SBRow"];
+    [coder encodeInteger:(NSInteger)_column forKey:@"SBColumn"];
+    [coder encodeInteger:(NSInteger)_row forKey:@"SBRow"];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
-    return [self initWithColumn:[coder decodeIntegerForKey:@"SBColumn"]
-                            row:[coder decodeIntegerForKey:@"SBRow"]];
+    return [self initWithColumn:(NSUInteger)[coder decodeIntegerForKey:@"SBColumn"]
+                            row:(NSUInteger)[coder decodeIntegerForKey:@"SBRow"]];
 }
 
 #pragma mark NSCopying
@@ -64,7 +64,7 @@
 }
 
 - (NSUInteger)hash {
-    return 31u * (NSUInteger)_column + (NSUInteger)_row;
+    return 31u * _column + _row;
 }
 
 - (NSString*)description {

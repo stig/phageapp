@@ -17,11 +17,11 @@ typedef NS_ENUM(NSUInteger, SBBoardDimensions) {
 
 @interface SBLocation : NSObject <NSCopying, NSCoding>
 
-@property (readonly) NSInteger column;
-@property (readonly) NSInteger row;
+@property (readonly) NSUInteger column;
+@property (readonly) NSUInteger row;
 
-+ (id)locationWithColumn:(NSInteger)c row:(NSInteger)r;
-- (id)initWithColumn:(NSInteger)c row:(NSInteger)r;
++ (id)locationWithColumn:(NSUInteger)column row:(NSUInteger)row;
+- (id)initWithColumn:(NSUInteger)c row:(NSUInteger)r;
 
 // isEqual: delegates to this..
 - (BOOL)isEqualToLocation:(SBLocation *)point;
