@@ -44,6 +44,11 @@
     STAssertNotNil(match, nil);
 }
 
+- (void)testMatchID {
+    STAssertNotNil(match.matchID, nil);
+    STAssertEquals(match.matchID.length, 36U, nil);
+}
+
 - (void)testCurrentPlayer {
     NSUInteger playerIndex = 0;
     [[[board stub] andReturnValue:OCMOCK_VALUE(playerIndex)] currentPlayerIndex];

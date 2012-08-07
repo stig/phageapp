@@ -11,6 +11,7 @@
 
 @interface SBMatch : NSObject <NSCoding>
 
+@property(nonatomic, readonly) NSString *matchID;
 @property(nonatomic, readonly) NSDate *lastUpdated;
 @property(nonatomic, readonly, getter=isGameOver) BOOL gameOver;
 @property(nonatomic, readonly) SBPlayer *winner;

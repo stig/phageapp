@@ -18,6 +18,7 @@ static NSString *MoveHistoryKey = @"m";
 
 
 @implementation SBMatch
+@synthesize matchID = _matchID;
 @synthesize board = _board;
 @synthesize playerOne = _playerOne;
 @synthesize playerTwo = _playerTwo;
@@ -66,6 +67,7 @@ static NSString *MoveHistoryKey = @"m";
     self = [super init];
     if (!self) return nil;
 
+    _matchID = (__bridge NSString *) CFUUIDCreateString(NULL, CFUUIDCreate(NULL));
     _playerOne = one;
     _playerTwo = two;
     _board = board;
@@ -142,6 +144,10 @@ static NSString *MoveHistoryKey = @"m";
         }
     }];
     return ret;
+}
+
+- (NSString*)description {
+    return [NSString stringWithFormat:@"%@ vs %@ (%u moves in)", self.playerOne.alias, self.playerTwo.alias, self.board.moveHistory.count];
 }
 
 

@@ -78,6 +78,8 @@
 		FB89D43C154C7D27001A0C25 /* SBFlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C24 /* SBFlipsideViewController.m */; };
 		FB89D43C154C7D27001A0C28 /* SBMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C27 /* SBMainViewController.m */; };
 		FB89D43C154C7D27001A0C2C /* SBAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C2B /* SBAlertView.m */; };
+		FB89D43C154C7D27001A0C2E /* SBMatchService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C2D /* SBMatchService.m */; };
+		FB89D43C154C7D27001A0C31 /* SBMatchServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C30 /* SBMatchServiceTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -262,6 +264,9 @@
 		FB89D43C154C7D27001A0C27 /* SBMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMainViewController.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0C2A /* SBAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAlertView.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0C2B /* SBAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAlertView.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0C2D /* SBMatchService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMatchService.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0C2F /* SBMatchService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMatchService.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0C30 /* SBMatchServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMatchServiceTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +322,8 @@
 		D72F239A15C5F248006EFE0D /* PhageModel */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0C2F /* SBMatchService.h */,
+				FB89D43C154C7D27001A0C2D /* SBMatchService.m */,
 				D76A45BD151DFD1A00E59146 /* SBTriangle.m */,
 				D76A45BC151DFD1A00E59146 /* SBTriangle.h */,
 				D76A45BA151DFD0E00E59146 /* SBSquare.m */,
@@ -356,6 +363,7 @@
 		D72F23AD15C5F248006EFE0D /* PhageModelTests */ = {
 			isa = PBXGroup;
 			children = (
+				FB89D43C154C7D27001A0C30 /* SBMatchServiceTest.m */,
 				FB89D43C154C7D27001A0BF2 /* SBPlayerTest.m */,
 				D73965B1151FB10600118094 /* SBPieceTest.m */,
 				D76A45A7151DE43300E59146 /* SBMoveTest.m */,
@@ -750,6 +758,7 @@
 				FB89D43C154C7D27001A0C16 /* SBPlayer.m in Sources */,
 				FB89D43C154C7D27001A0C17 /* SBSquare.m in Sources */,
 				FB89D43C154C7D27001A0C18 /* SBTriangle.m in Sources */,
+				FB89D43C154C7D27001A0C2E /* SBMatchService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -764,6 +773,7 @@
 				FB89D43C154C7D27001A0C1D /* SBMoveTest.m in Sources */,
 				FB89D43C154C7D27001A0C1E /* SBPieceTest.m in Sources */,
 				FB89D43C154C7D27001A0C1F /* SBPlayerTest.m in Sources */,
+				FB89D43C154C7D27001A0C31 /* SBMatchServiceTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
