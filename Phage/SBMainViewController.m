@@ -125,13 +125,9 @@
 }
 
 - (void)layoutMatch {
-
     self.playerOne.text = self.match.playerOne.alias;
     self.playerTwo.text = self.match.playerTwo.alias;
-
     self.message.text = [self.match.currentPlayer.alias stringByAppendingFormat:@", it is your turn!"];
-
-    NSLog(@"%@", self.match);
 }
 
 @end
