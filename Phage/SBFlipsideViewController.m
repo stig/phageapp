@@ -10,6 +10,8 @@
 
 @interface SBFlipsideViewController ()
 
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+
 @end
 
 @implementation SBFlipsideViewController
@@ -23,11 +25,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+	NSString *path = [[NSBundle mainBundle] pathForResource:@"HowToPlay" ofType:@"html"];
+	NSURL *url = [[NSURL alloc] initFileURLWithPath:path];
+	NSURLRequest *request = [NSURLRequest requestWithURL:url];
+	
+	[self.webView loadRequest:request];
+
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)viewDidUnload
 {
+    [self setWebView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
