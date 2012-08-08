@@ -10,7 +10,6 @@
 #import "SBMatchService.h"
 #import "SBMatch.h"
 #import "SBPlayer.h"
-#import "SBBoard.h"
 
 @interface SBMatchServiceTest : SenTestCase {
 	SBMatchService *service;
@@ -21,13 +20,17 @@
 
 @implementation SBMatchServiceTest
 
-- (void)setUp {
-    SBPlayer *foo = [SBPlayer playerWithAlias:@"Foo"];
-    SBPlayer *bar = [SBPlayer playerWithAlias:@"Bar"];
+SBMatch *match(NSString *a, NSString *b) {
+    SBPlayer *foo = [SBPlayer playerWithAlias:a];
+    SBPlayer *bar = [SBPlayer playerWithAlias:b];
+    return [SBMatch matchWithPlayerOne:foo two:bar];
+}
 
-    match1 = ([SBMatch matchWithPlayerOne:foo two:bar]);
-    match2 = ([SBMatch matchWithPlayerOne:bar two:foo]); [match2 forfeit];
-    match3 = ([SBMatch matchWithPlayerOne:foo two:foo]);
+
+- (void)setUp {
+    match1 = match(@"Foo", @"Bar");
+    match2 = match(@"Bar", @"Foo"); [match2 forfeit];
+    match3 = match(@"Baz", @"Quux");
 
     service = [SBMatchService new];
 
@@ -61,6 +64,13 @@ NSArray *desc(NSArray *array) {
     [service saveMatch:match1];
     [service saveMatch:match2];
     STAssertEqualObjects(desc(@[match3, match2, match1]), desc([service allMatches]), nil);
+}
+
+- (void)testActiveMatchesContainsTwoMatches {
+    [service saveMatch:match3];
+    [service saveMatch:match1];
+    [service saveMatch:match2];
+    STAssertEqualObjects(desc([service activeMatches]), desc(@[match3, match1]), nil);
 }
 
 @end

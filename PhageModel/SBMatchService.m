@@ -61,4 +61,11 @@
     return matches;
 }
 
+- (NSArray *)activeMatches {
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id m, NSDictionary *bindings) {
+        return ![(SBMatch *)m isGameOver];
+    }];
+    return [[self allMatches] filteredArrayUsingPredicate:predicate];
+}
+
 @end
