@@ -21,11 +21,11 @@
 @end
 
 @implementation SBMainViewController
-@synthesize playerOne;
-@synthesize playerTwo;
-@synthesize message;
-@synthesize match;
-@synthesize board;
+@synthesize playerOne = _playerOne;
+@synthesize playerTwo = _playerTwo;
+@synthesize message = _message;
+@synthesize match = _match;
+@synthesize board = _board;
 
 - (void)viewDidLoad
 {
@@ -110,23 +110,30 @@
 
 - (void)ensureMatch {
     if (nil == self.match) {
-        self.match = [self matchWithBotNamed:@"Sgt Pepper" andHumanNamed:@"Player 1"];
+        NSArray *savedMatches = [[SBMatchService new] activeMatches];
+        if (savedMatches.count > 0) {
+            self.match = [savedMatches objectAtIndex:0];
 
-        SBAlertView *av = [[SBAlertView alloc]
-                initWithTitle:NSLocalizedString(@"NEW_1P_MATCH_ALERT.TITLE", @"I created a match for you...")
-                      message:NSLocalizedString(@"NEW_1P_MATCH_ALERT.MESSAGE", @"I created a match for you...")
-                   completion:nil
-            cancelButtonTitle:NSLocalizedString(@"NEW_1P_MATCH_ALERT.BUTTON", @"Okay")
-            otherButtonTitles:nil];
-        [av show];
+        } else {
+            self.match = [self matchWithBotNamed:@"Sgt Pepper" andHumanNamed:@"Player 1"];
+            SBAlertView *av = [[SBAlertView alloc]
+                    initWithTitle:NSLocalizedString(@"NEW_1P_MATCH_ALERT.TITLE", @"I created a match for you...")
+                          message:NSLocalizedString(@"NEW_1P_MATCH_ALERT.MESSAGE", @"I created a match for you...")
+                       completion:nil cancelButtonTitle:NSLocalizedString(@"NEW_1P_MATCH_ALERT.BUTTON", @"Okay")
+                otherButtonTitles:nil];
+            [av show];
+        }
     }
+}
 
+- (void)setMatch:(SBMatch*)match {
+    _match = match;
+    self.playerOne.text = self.match.playerOne.alias;
+    self.playerTwo.text = self.match.playerTwo.alias;
     [self layoutMatch];
 }
 
 - (void)layoutMatch {
-    self.playerOne.text = self.match.playerOne.alias;
-    self.playerTwo.text = self.match.playerTwo.alias;
     self.message.text = [self.match.currentPlayer.alias stringByAppendingFormat:@", it is your turn!"];
 }
 
