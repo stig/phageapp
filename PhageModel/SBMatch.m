@@ -76,7 +76,7 @@ static NSString *LastUpdatedKey = @"l";
                                two:two
                              board:board
                            matchID:(__bridge NSString *) CFUUIDCreateString(NULL, CFUUIDCreate(NULL))
-                       lastUpdated:nil];
+                       lastUpdated:[NSDate date]];
 }
 
 - (id)initWithPlayerOne:(SBPlayer*)one two:(SBPlayer *)two board:(SBBoard*)board matchID:(NSString *)matchID lastUpdated:(NSDate *)lastUpdated {

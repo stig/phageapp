@@ -50,7 +50,8 @@
 }
 
 - (void)testLastUpdated {
-    STAssertNil(match.lastUpdated, nil);
+    NSDate *date = match.lastUpdated;
+    STAssertNotNil(date, nil);
 
     BOOL yes = YES;
     [[[board expect] andReturnValue:OCMOCK_VALUE(yes)] isLegalMove:nil];
@@ -59,7 +60,7 @@
     [[[board expect] andReturnValue:OCMOCK_VALUE(no)] isGameOver];
 
     [match performMove:nil completionHandler:nil];
-    STAssertNotNil(match.lastUpdated, nil);
+    STAssertFalse([match.lastUpdated isEqualToDate:date], nil);
 }
 
 - (void)testCurrentPlayer {
@@ -167,14 +168,15 @@
     id successor = [OCMockObject niceMockForClass:[SBBoard class]];
     [[[board stub] andReturn:successor] successorWithMove:move];
 
-    STAssertNil(match.lastUpdated, nil);
+
+    NSDate *date = match.lastUpdated;
 
     BOOL yes = YES;
     [[[board expect] andReturnValue:OCMOCK_VALUE(yes)] isLegalMove:move];
 
     [match performMove:move completionHandler:nil];
 
-    STAssertEqualsWithAccuracy([match.lastUpdated timeIntervalSinceNow], 0.0, 1.0, nil);
+    STAssertFalse([match.lastUpdated isEqualToDate:date], nil);
 }
 
 - (void)testPerformMoveDoesNotSetPlayerOutcomeWhenGameNotOver {
@@ -241,11 +243,11 @@
     [[one expect] setOutcome:SBPlayerOutcomeQuit];
     [[two expect] setOutcome:SBPlayerOutcomeWon];
 
-    STAssertNil(match.lastUpdated, nil);
+    NSDate *date = match.lastUpdated;
 
     [match forfeit];
 
-    STAssertEqualsWithAccuracy([match.lastUpdated timeIntervalSinceNow], 0.0, 1.0, nil);
+    STAssertFalse([match.lastUpdated isEqualToDate:date], nil);
 }
 
 

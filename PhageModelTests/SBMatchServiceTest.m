@@ -10,6 +10,7 @@
 #import "SBMatchService.h"
 #import "SBMatch.h"
 #import "SBPlayer.h"
+#import "SBBoard.h"
 
 @interface SBMatchServiceTest : SenTestCase {
 	SBMatchService *service;
@@ -24,9 +25,9 @@
     SBPlayer *foo = [SBPlayer playerWithAlias:@"Foo"];
     SBPlayer *bar = [SBPlayer playerWithAlias:@"Bar"];
 
-    match1 = [SBMatch matchWithPlayerOne:foo two:bar];
-    match2 = [SBMatch matchWithPlayerOne:bar two:foo];
-    match3 = [SBMatch matchWithPlayerOne:foo two:foo];
+    match1 = ([SBMatch matchWithPlayerOne:foo two:bar]);
+    match2 = ([SBMatch matchWithPlayerOne:bar two:foo]); [match2 forfeit];
+    match3 = ([SBMatch matchWithPlayerOne:foo two:foo]);
 
     service = [SBMatchService new];
 
