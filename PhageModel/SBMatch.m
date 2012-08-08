@@ -15,6 +15,8 @@ static NSString *MatchVersionKey = @"v";
 static NSString *PlayerOneKey = @"1";
 static NSString *PlayerTwoKey = @"2";
 static NSString *MoveHistoryKey = @"m";
+static NSString *MatchIDKey = @"i";
+static NSString *LastUpdatedKey = @"l";
 
 
 @implementation SBMatch
@@ -24,11 +26,15 @@ static NSString *MoveHistoryKey = @"m";
 @synthesize playerTwo = _playerTwo;
 @synthesize lastUpdated = _lastUpdated;
 
+
+
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeInteger:MatchVersion forKey:MatchVersionKey];
+    [coder encodeObject:self.matchID forKey:MatchIDKey];
     [coder encodeObject:self.playerOne forKey:PlayerOneKey];
     [coder encodeObject:self.playerTwo forKey:PlayerTwoKey];
     [coder encodeObject:self.board.moveHistory forKey:MoveHistoryKey];
+    [coder encodeObject:self.lastUpdated forKey:LastUpdatedKey];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
@@ -46,8 +52,10 @@ static NSString *MoveHistoryKey = @"m";
     SBPlayer *one = [coder decodeObjectForKey:PlayerOneKey];
     SBPlayer *two = [coder decodeObjectForKey:PlayerTwoKey];
     SBBoard *board = [SBBoard boardWithMoveHistory:[coder decodeObjectForKey:MoveHistoryKey]];
+    NSString *matchID = [coder decodeObjectForKey:MatchIDKey];
+    NSDate *lastUpdated = [coder decodeObjectForKey:LastUpdatedKey];
 
-    return [self initWithPlayerOne:one two:two board:board];
+    return  [self initWithPlayerOne:one two:two board:board matchID:matchID lastUpdated:lastUpdated];
 }
 
 
@@ -64,13 +72,22 @@ static NSString *MoveHistoryKey = @"m";
 }
 
 - (id)initWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two board:(SBBoard *)board {
-    self = [super init];
-    if (!self) return nil;
+    return [self initWithPlayerOne:one
+                               two:two
+                             board:board
+                           matchID:(__bridge NSString *) CFUUIDCreateString(NULL, CFUUIDCreate(NULL))
+                       lastUpdated:nil];
+}
 
-    _matchID = (__bridge NSString *) CFUUIDCreateString(NULL, CFUUIDCreate(NULL));
-    _playerOne = one;
-    _playerTwo = two;
-    _board = board;
+- (id)initWithPlayerOne:(SBPlayer*)one two:(SBPlayer *)two board:(SBBoard*)board matchID:(NSString *)matchID lastUpdated:(NSDate *)lastUpdated {
+    self = [super init];
+    if (self) {
+        _matchID = matchID;
+        _playerOne = one;
+        _playerTwo = two;
+        _board = board;
+        _lastUpdated = lastUpdated;
+    }
     return self;
 }
 

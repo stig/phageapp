@@ -49,6 +49,19 @@
     STAssertEquals(match.matchID.length, 36U, nil);
 }
 
+- (void)testLastUpdated {
+    STAssertNil(match.lastUpdated, nil);
+
+    BOOL yes = YES;
+    [[[board expect] andReturnValue:OCMOCK_VALUE(yes)] isLegalMove:nil];
+    [[[board expect] andReturn:board] successorWithMove:nil];
+    BOOL no = NO;
+    [[[board expect] andReturnValue:OCMOCK_VALUE(no)] isGameOver];
+
+    [match performMove:nil completionHandler:nil];
+    STAssertNotNil(match.lastUpdated, nil);
+}
+
 - (void)testCurrentPlayer {
     NSUInteger playerIndex = 0;
     [[[board stub] andReturnValue:OCMOCK_VALUE(playerIndex)] currentPlayerIndex];
@@ -275,6 +288,8 @@
     SBMatch *copy = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     STAssertEqualObjects(copy.playerOne.alias, @"foo", nil);
     STAssertEqualObjects(copy.playerTwo.alias, @"bar", nil);
+    STAssertEqualObjects(copy.matchID, m1.matchID, nil);
+    STAssertEqualObjects(copy.lastUpdated, m1.lastUpdated, nil);
 
     STAssertEquals(copy.board.moveHistory.count, 1u, nil);
     STAssertEqualObjects([copy.board.moveHistory lastObject], move, nil);
