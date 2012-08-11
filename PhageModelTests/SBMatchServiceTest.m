@@ -73,4 +73,19 @@ NSArray *desc(NSArray *array) {
     STAssertEqualObjects(desc([service activeMatches]), desc(@[match3, match1]), nil);
 }
 
+- (void)testDeleteMatchInProgressThrows {
+    STAssertThrows([service deleteMatch:match1], nil);
+}
+
+- (void)testDeleteUnsavedMatchDoesNotThrow {
+    STAssertNoThrow([service deleteMatch:match2], nil);
+}
+
+- (void)testDeleteMatchRemovesFromAllMatches {
+    [service saveMatch:match2];
+    STAssertNoThrow([service deleteMatch:match2], nil);
+    STAssertEqualObjects(@[], [service allMatches], nil);
+}
+
+
 @end

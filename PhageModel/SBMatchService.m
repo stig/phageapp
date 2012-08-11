@@ -5,6 +5,7 @@
 //
 
 
+#import <UIKit/UIKit.h>
 #import "SBMatchService.h"
 #import "SBMatch.h"
 
@@ -28,10 +29,27 @@
 
 - (void)saveMatch:(SBMatch *)match {
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:match];
-    NSString *path = [[self savedMatchesPath] stringByAppendingPathComponent:match.matchID];
-    NSString *file = [path stringByAppendingPathExtension:SUFFIX];
+    NSString *file = [self savedMatchPath:match];
     [data writeToFile:file atomically:YES];
 }
+
+- (NSString *)savedMatchPath:(SBMatch *)match {
+    NSString *path = [[self savedMatchesPath] stringByAppendingPathComponent:match.matchID];
+    return [path stringByAppendingPathExtension:SUFFIX];
+}
+
+- (void)deleteMatch:(SBMatch *)match {
+    if (!match.isGameOver)
+        @throw @"Can only delete matches that are finished";
+
+    NSString *file = [self savedMatchPath:match];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:file]) {
+        NSError *error;
+        if (![[NSFileManager defaultManager] removeItemAtPath:file error:&error])
+            @throw error;
+    }
+}
+
 
 - (NSArray *)allMatches {
 
