@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) UIPopoverController *flipsidePopoverController;
 
+- (IBAction)trashMatch:(id)sender;
+
 @end

@@ -18,7 +18,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Phage" id="QrH-5N-hMi">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="jZp-jg-Gyo"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="jZp-jg-Gyo">
+                                            <connections>
+                                                <action selector="trashMatch:" destination="2" id="HgL-2e-uaJ"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hng-6K-G3G"/>
                                     </navigationItem>
                                 </items>
@@ -131,6 +135,8 @@
         <class className="SBMainViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SBMainViewController.h"/>
             <relationships>
+                <relationship kind="action" name="togglePopover:"/>
+                <relationship kind="action" name="trashMatch:"/>
                 <relationship kind="outlet" name="board" candidateClass="UIView"/>
                 <relationship kind="outlet" name="message" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="playerOne" candidateClass="UILabel"/>

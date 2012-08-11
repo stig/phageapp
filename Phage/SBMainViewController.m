@@ -134,7 +134,45 @@
 }
 
 - (void)layoutMatch {
-    self.message.text = [self.match.currentPlayer.alias stringByAppendingFormat:@", it is your turn!"];
+    if (self.match.isGameOver) {
+        SBPlayer *winner = self.match.winner;
+        if (nil == winner) {
+            self.message.text = @"This match ended in a draw";
+        } else {
+            self.message.text = [NSString stringWithFormat:@"This match was won by %@", winner.alias];
+        }
+    } else {
+        self.message.text = [self.match.currentPlayer.alias stringByAppendingFormat:@", it is your turn!"];
+    }
+}
+
+- (IBAction)trashMatch:(id)sender {
+    SBAlertView *av;
+    if (self.match.isGameOver) {
+        av = [[SBAlertView alloc] initWithTitle:@"Delete Match"
+                                        message:@"Really delete this match?"
+                                     completion:^(NSInteger buttonIndex) {
+                                         [[SBMatchService new] deleteMatch:self.match];
+                                         self.match = nil;
+                                         [self performSelector:@selector(ensureMatch) withObject:nil afterDelay:0.5];
+                                     }
+                              cancelButtonTitle:@"Yes"
+                              otherButtonTitles:@"No", nil];
+
+    } else {
+        av = [[SBAlertView alloc] initWithTitle:@"Forfeit Match"
+                                                     message:@"Do you really want to forfeit this match?"
+                                                  completion:^(NSInteger buttonIndex) {
+                                                      if (0 == buttonIndex) {
+                                                          [self.match forfeit];
+                                                          [[SBMatchService new] saveMatch:self.match];
+                                                          [self layoutMatch];
+                                                      }
+                                                  }
+                                           cancelButtonTitle:@"Yes"
+                                           otherButtonTitles:@"No", nil];
+    }
+    [av show];
 }
 
 @end
