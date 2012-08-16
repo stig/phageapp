@@ -6,12 +6,6 @@
 //
 //
 
-#import "SBFlipsideViewController.h"
 
-@interface SBMainViewController : UIViewController <SBFlipsideViewControllerDelegate, UIPopoverControllerDelegate>
-
-@property (strong, nonatomic) UIPopoverController *flipsidePopoverController;
-
-- (IBAction)trashMatch:(id)sender;
-
+@interface SBMainViewController : UIViewController
 @end

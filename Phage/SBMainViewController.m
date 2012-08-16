@@ -9,14 +9,21 @@
 #import "SBMainViewController.h"
 #import "PhageModel.h"
 #import "SBAlertView.h"
+#import "SBFlipsideViewController.h"
 
-@interface SBMainViewController ()
 
-@property (strong, nonatomic) SBMatch *match;
+
+@interface SBMainViewController () <SBFlipsideViewControllerDelegate, UIPopoverControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UIView *board;
 @property (weak, nonatomic) IBOutlet UILabel *playerOne;
 @property (weak, nonatomic) IBOutlet UILabel *playerTwo;
 @property (weak, nonatomic) IBOutlet UILabel *message;
+
+@property (strong, nonatomic) UIPopoverController *flipsidePopoverController;
+@property (strong, nonatomic) SBMatch *match;
+
+- (IBAction)trashMatch:(id)sender;
 
 @end
 
