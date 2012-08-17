@@ -17,5 +17,6 @@ static NSString *const SUFFIX = @"match";
 - (void)deleteMatch:(SBMatch *)match;
 - (NSArray*)allMatches;
 - (NSArray*)activeMatches;
+- (NSArray*)inactiveMatches;
 
 @end
