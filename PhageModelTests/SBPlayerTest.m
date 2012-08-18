@@ -26,18 +26,15 @@
 
 - (void)testIsLocalHuman {
     SBPlayer *player = [SBPlayer player];
-    STAssertFalse(player.isLocalHuman, nil);
+    STAssertFalse(player.isHuman, nil);
 }
 
 - (void)testCoder {
-    SBPlayer *player = [SBPlayer playerWithAlias:@"foo"];
-    player.localHuman = YES;
-    player.outcome = SBPlayerOutcomeLost;
-
+    SBPlayer *player = [[SBPlayer playerWithAlias:@"foo" human:YES] playerWithOutcome:SBPlayerOutcomeLost];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:player];
     SBPlayer *other = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 
-    STAssertTrue(other.isLocalHuman, nil);
+    STAssertTrue(other.isHuman, nil);
     STAssertEquals(other.outcome, SBPlayerOutcomeLost, nil);
     STAssertEqualObjects(other.alias, @"foo", nil);
 }

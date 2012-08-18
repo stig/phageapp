@@ -121,20 +121,29 @@ static NSString *LastUpdatedKey = @"l";
     }
 }
 
+- (void)setCurrentPlayerOutcome:(SBPlayerOutcome)cpo otherPlayerOutcome:(SBPlayerOutcome)opo {
+    if ([self.currentPlayer isEqual:self.playerOne]) {
+        _playerOne = [_playerOne playerWithOutcome:cpo];
+        _playerTwo = [_playerTwo playerWithOutcome:opo];
+    } else {
+        _playerOne = [_playerOne playerWithOutcome:opo];
+        _playerTwo = [_playerTwo playerWithOutcome:cpo];
+    }
+}
+
+
 - (void)forfeit {
     @synchronized (self) {
-        self.currentPlayer.outcome = SBPlayerOutcomeQuit;
-        self.otherPlayer.outcome = SBPlayerOutcomeWon;
+        [self setCurrentPlayerOutcome:SBPlayerOutcomeQuit otherPlayerOutcome:SBPlayerOutcomeWon];
         _lastUpdated = [NSDate date];
     }
 }
 
 - (void)handleGameOver {
     if (self.board.isDraw) {
-        self.playerOne.outcome = self.playerTwo.outcome = SBPlayerOutcomeTied;
+        [self setCurrentPlayerOutcome:SBPlayerOutcomeTied otherPlayerOutcome:SBPlayerOutcomeTied];
     } else {
-        self.currentPlayer.outcome = SBPlayerOutcomeLost;
-        self.otherPlayer.outcome = SBPlayerOutcomeWon;
+        [self setCurrentPlayerOutcome:SBPlayerOutcomeLost otherPlayerOutcome:SBPlayerOutcomeWon];
     }
 }
 

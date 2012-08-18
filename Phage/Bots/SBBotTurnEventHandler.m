@@ -19,7 +19,7 @@
     if (match.isGameOver)
         return;
 
-    if (match.currentPlayer.isLocalHuman)
+    if (match.currentPlayer.isHuman)
         return;
 
     SBOpponentMobilityMinimisingMovePicker *movePicker = [[SBOpponentMobilityMinimisingMovePicker alloc] init];

@@ -207,8 +207,8 @@
     id move = [OCMockObject mockForClass:[SBMove class]];
     [[[board stub] andReturn:successor] successorWithMove:move];
 
-    [[one expect] setOutcome:SBPlayerOutcomeLost];
-    [[two expect] setOutcome:SBPlayerOutcomeWon];
+    [[one expect] playerWithOutcome:SBPlayerOutcomeLost];
+    [[two expect] playerWithOutcome:SBPlayerOutcomeWon];
 
     [[[board expect] andReturnValue:OCMOCK_VALUE(yes)] isLegalMove:move];
 
@@ -228,8 +228,8 @@
     id move = [OCMockObject mockForClass:[SBMove class]];
     [[[board stub] andReturn:successor] successorWithMove:move];
 
-    [[one expect] setOutcome:SBPlayerOutcomeTied];
-    [[two expect] setOutcome:SBPlayerOutcomeTied];
+    [[one expect] playerWithOutcome:SBPlayerOutcomeTied];
+    [[two expect] playerWithOutcome:SBPlayerOutcomeTied];
 
     [[[board expect] andReturnValue:OCMOCK_VALUE(yes)] isLegalMove:move];
 
@@ -239,9 +239,8 @@
 - (void)testForfeit {
     NSUInteger index = 0;
     [[[board expect] andReturnValue:OCMOCK_VALUE(index)] currentPlayerIndex];
-    [[[board expect] andReturnValue:OCMOCK_VALUE(index)] currentPlayerIndex];
-    [[one expect] setOutcome:SBPlayerOutcomeQuit];
-    [[two expect] setOutcome:SBPlayerOutcomeWon];
+    [[one expect] playerWithOutcome:SBPlayerOutcomeQuit];
+    [[two expect] playerWithOutcome:SBPlayerOutcomeWon];
 
     NSDate *date = match.lastUpdated;
 

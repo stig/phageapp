@@ -41,7 +41,7 @@
 - (void)transitionToStateForMatch:(SBMatch *)match {
     if (match.isGameOver)
         [self transitionToState:[SBMatchViewControllerStateGameOver state]];
-    else if (match.currentPlayer.isLocalHuman)
+    else if (match.currentPlayer.isHuman)
         [self transitionToState:[SBMatchViewControllerStateUnselected state]];
     else
         [self transitionToState:[SBMatchViewControllerStateReadonly state]];
@@ -67,7 +67,7 @@
 
 - (IBAction)forfeit {
     SBPlayer *player = self.match.currentPlayer;
-    NSAssert(player.isLocalHuman, @"Player should be local Human");
+    NSAssert(player.isHuman, @"Player should be local Human");
     self.forfeitActionSheet = [[UIActionSheet alloc] initWithTitle:@"Really forfeit match?" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
     [self.forfeitActionSheet showInView:self.view];
     [self.delegate handleTurnEventForMatch:self.match viewController:self];

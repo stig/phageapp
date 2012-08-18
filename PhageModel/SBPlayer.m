@@ -15,15 +15,45 @@ static NSString *LocalHumanKey = @"lh";
 
 @implementation SBPlayer
 
-@synthesize alias = _alias;
-@synthesize outcome = _outcome;
-@synthesize localHuman = _localHuman;
+- (id)initWithAlias:(NSString *)alias human:(BOOL)human outcome:(SBPlayerOutcome)outcome {
+    self = [super init];
+    if (self) {
+        _alias = alias;
+        _human = human;
+        _outcome = outcome;
+    }
+    return self;
+}
+
++ (id)playerWithAlias:(NSString *)alias human:(BOOL)human outcome:(SBPlayerOutcome)outcome {
+    return [[SBPlayer alloc] initWithAlias:alias human:human outcome:outcome];
+}
+
++ (id)playerWithAlias:(NSString *)alias human:(BOOL)human {
+    return [self playerWithAlias:alias human:human outcome:SBPlayerOutcomeNone];
+}
+
++ (id)playerWithAlias:(NSString *)alias {
+    return [self playerWithAlias:alias human:NO];
+}
+
++ (id)player {
+    return [self playerWithAlias:nil];
+}
+
+#pragma mark - methods
+
+- (id)playerWithOutcome:(SBPlayerOutcome)outcome {
+    return [[self class] playerWithAlias:self.alias human:self.isHuman outcome:outcome];
+}
+
+#pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeInteger:PlayerVersion forKey:PlayerVersionKey];
     [coder encodeObject:self.alias forKey:AliasKey];
     [coder encodeInteger:self.outcome forKey:OutcomeKey];
-    [coder encodeBool:self.isLocalHuman forKey:LocalHumanKey];
+    [coder encodeBool:self.isHuman forKey:LocalHumanKey];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
@@ -37,35 +67,11 @@ static NSString *LocalHumanKey = @"lh";
         return nil;
     }
 
-    SBPlayer *player = [SBPlayer playerWithAlias:[coder decodeObjectForKey:AliasKey]];
-    player.outcome = [coder decodeIntegerForKey:OutcomeKey];
-    player.localHuman = [coder decodeBoolForKey:LocalHumanKey];
-    return player;
+    return [self initWithAlias:[coder decodeObjectForKey:AliasKey]
+                         human:[coder decodeBoolForKey:LocalHumanKey]
+                       outcome:(SBPlayerOutcome)[coder decodeIntegerForKey:OutcomeKey]];
 }
 
 
-+ (id)playerWithAlias:(NSString *)alias {
-    return [[self alloc] initWithAlias:alias];
-}
-
-- (id)initWithAlias:(NSString *)alias {
-    self = [self init];
-    if (!self) return nil;
-
-    self.alias = alias;
-    return self;
-}
-
-+ (id)player {
-    return [[self alloc] init];
-}
-
-- (id)init {
-    self = [super init];
-    if (!self) return nil;
-
-    self.outcome = SBPlayerOutcomeNone;
-    return self;
-}
 
 @end

@@ -17,11 +17,18 @@ typedef enum {
 
 @interface SBPlayer : NSObject < NSCoding >
 
-@property(nonatomic) SBPlayerOutcome outcome;
-@property(nonatomic) NSString *alias;
-@property(nonatomic, getter=isLocalHuman) BOOL localHuman;
+@property(nonatomic, readonly) NSString *alias;
+@property(nonatomic, readonly, getter=isHuman) BOOL human;
+@property(nonatomic, readonly) SBPlayerOutcome outcome;
 
-+ (id)player;
+
++ (id)playerWithAlias:(NSString *)alias human:(BOOL)human outcome:(SBPlayerOutcome)outcome;
+- (id)initWithAlias:(NSString *)alias human:(BOOL)human outcome:(SBPlayerOutcome)outcome;
+
++ (id)playerWithAlias:(NSString *)alias human:(BOOL)human;
 + (id)playerWithAlias:(NSString *)alias;
++ (id)player;
+
+- (id)playerWithOutcome:(SBPlayerOutcome)outcome;
 
 @end
