@@ -7,11 +7,10 @@
 
 #import "SBPlayer.h"
 
-static NSInteger PlayerVersion = 1;
-static NSString *PlayerVersionKey = @"v";
-static NSString *AliasKey = @"a";
-static NSString *OutcomeKey = @"o";
-static NSString *LocalHumanKey = @"lh";
+static NSString *VERSION = @"v";
+static NSString *ALIAS = @"a";
+static NSString *HUMAN = @"h";
+static NSString *OUTCOME = @"o";
 
 @implementation SBPlayer
 
@@ -47,31 +46,25 @@ static NSString *LocalHumanKey = @"lh";
     return [[self class] playerWithAlias:self.alias human:self.isHuman outcome:outcome];
 }
 
-#pragma mark - NSCoding
+#pragma mark - !NSCoding
 
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeInteger:PlayerVersion forKey:PlayerVersionKey];
-    [coder encodeObject:self.alias forKey:AliasKey];
-    [coder encodeInteger:self.outcome forKey:OutcomeKey];
-    [coder encodeBool:self.isHuman forKey:LocalHumanKey];
+- (NSDictionary *)asDictionary {
+    return @{
+        VERSION:    @1,
+        ALIAS:      self.alias,
+        HUMAN:      @(self.human),
+        OUTCOME:    @(self.outcome)
+    };
 }
 
-- (id)initWithCoder:(NSCoder *)coder {
-    if (![coder containsValueForKey:PlayerVersionKey]) {
-        NSLog(@"Unsupported version: null");
-        return nil;
-    }
++ (id)playerWithDictionary:(NSDictionary *)dict {
+    if ([dict[VERSION] compare:@1] > 0)
+        @throw @"Unsupported version; please upgrade Phage!";
 
-    if ([coder decodeIntegerForKey:PlayerVersionKey] > PlayerVersion) {
-        NSLog(@"Unsupported version; please upgrade Phage!");
-        return nil;
-    }
-
-    return [self initWithAlias:[coder decodeObjectForKey:AliasKey]
-                         human:[coder decodeBoolForKey:LocalHumanKey]
-                       outcome:(SBPlayerOutcome)[coder decodeIntegerForKey:OutcomeKey]];
+    return [[self class] playerWithAlias:dict[ALIAS]
+                                   human:[dict[HUMAN] boolValue]
+                                 outcome:(SBPlayerOutcome) [dict[OUTCOME] integerValue]];
 }
-
 
 
 @end

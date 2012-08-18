@@ -29,10 +29,9 @@
     STAssertFalse(player.isHuman, nil);
 }
 
-- (void)testCoder {
+- (void)testViaDictionary {
     SBPlayer *player = [[SBPlayer playerWithAlias:@"foo" human:YES] playerWithOutcome:SBPlayerOutcomeLost];
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:player];
-    SBPlayer *other = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    SBPlayer *other = [SBPlayer playerWithDictionary:[player asDictionary]];
 
     STAssertTrue(other.isHuman, nil);
     STAssertEquals(other.outcome, SBPlayerOutcomeLost, nil);

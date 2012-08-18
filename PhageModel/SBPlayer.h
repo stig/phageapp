@@ -15,12 +15,11 @@ typedef enum {
 } SBPlayerOutcome;
 
 
-@interface SBPlayer : NSObject < NSCoding >
+@interface SBPlayer : NSObject
 
 @property(nonatomic, readonly) NSString *alias;
 @property(nonatomic, readonly, getter=isHuman) BOOL human;
 @property(nonatomic, readonly) SBPlayerOutcome outcome;
-
 
 + (id)playerWithAlias:(NSString *)alias human:(BOOL)human outcome:(SBPlayerOutcome)outcome;
 - (id)initWithAlias:(NSString *)alias human:(BOOL)human outcome:(SBPlayerOutcome)outcome;
@@ -29,6 +28,10 @@ typedef enum {
 + (id)playerWithAlias:(NSString *)alias;
 + (id)player;
 
++ (id)playerWithDictionary:(NSDictionary *)dict;
+- (NSDictionary *)asDictionary;
+
 - (id)playerWithOutcome:(SBPlayerOutcome)outcome;
+
 
 @end

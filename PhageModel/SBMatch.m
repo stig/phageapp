@@ -31,8 +31,8 @@ static NSString *LastUpdatedKey = @"l";
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeInteger:MatchVersion forKey:MatchVersionKey];
     [coder encodeObject:self.matchID forKey:MatchIDKey];
-    [coder encodeObject:self.playerOne forKey:PlayerOneKey];
-    [coder encodeObject:self.playerTwo forKey:PlayerTwoKey];
+    [coder encodeObject:[self.playerOne asDictionary] forKey:PlayerOneKey];
+    [coder encodeObject:[self.playerTwo asDictionary] forKey:PlayerTwoKey];
     [coder encodeObject:self.board.moveHistory forKey:MoveHistoryKey];
     [coder encodeObject:self.lastUpdated forKey:LastUpdatedKey];
 }
@@ -49,8 +49,8 @@ static NSString *LastUpdatedKey = @"l";
         return nil;
     }
 
-    SBPlayer *one = [coder decodeObjectForKey:PlayerOneKey];
-    SBPlayer *two = [coder decodeObjectForKey:PlayerTwoKey];
+    SBPlayer *one = [SBPlayer playerWithDictionary:[coder decodeObjectForKey:PlayerOneKey]];
+    SBPlayer *two = [SBPlayer playerWithDictionary:[coder decodeObjectForKey:PlayerTwoKey]];
     SBBoard *board = [SBBoard boardWithMoveHistory:[coder decodeObjectForKey:MoveHistoryKey]];
     NSString *matchID = [coder decodeObjectForKey:MatchIDKey];
     NSDate *lastUpdated = [coder decodeObjectForKey:LastUpdatedKey];
