@@ -11,6 +11,8 @@ static NSString *const SUFFIX = @"match";
 
 @interface SBMatchService : NSObject
 
++ (id)matchService;
+
 - (NSString *)savedMatchesPath;
 
 - (void)saveMatch:(SBMatch *)match;

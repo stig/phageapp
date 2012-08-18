@@ -32,7 +32,7 @@ SBMatch *match(NSString *a, NSString *b) {
     match2 = match(@"Bar", @"Foo"); [match2 forfeit];
     match3 = match(@"Baz", @"Quux");
 
-    service = [SBMatchService new];
+    service = [SBMatchService matchService];
 
     NSError *error;
     if (![[NSFileManager defaultManager] removeItemAtPath:[service savedMatchesPath] error:&error])

@@ -11,6 +11,10 @@
 
 @implementation SBMatchService
 
++ (id)matchService {
+    return [[self alloc] init];
+}
+
 - (NSString *)savedMatchesPath {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
