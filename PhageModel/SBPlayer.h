@@ -17,8 +17,6 @@ typedef enum {
 
 @interface SBPlayer : NSObject < NSCoding >
 
-@property(nonatomic) NSUInteger eloScore;
-@property(nonatomic) NSUInteger matchCount;
 @property(nonatomic) SBPlayerOutcome outcome;
 @property(nonatomic) NSString *alias;
 @property(nonatomic, getter=isLocalHuman) BOOL localHuman;

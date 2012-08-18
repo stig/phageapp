@@ -12,24 +12,18 @@ static NSString *PlayerVersionKey = @"v";
 static NSString *AliasKey = @"a";
 static NSString *OutcomeKey = @"o";
 static NSString *LocalHumanKey = @"lh";
-static NSString *EloScoreKey = @"es";
-static NSString *MatchCountKey = @"mc";
 
 @implementation SBPlayer
 
 @synthesize alias = _alias;
 @synthesize outcome = _outcome;
 @synthesize localHuman = _localHuman;
-@synthesize eloScore = _eloScore;
-@synthesize matchCount = _matchCount;
 
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeInteger:PlayerVersion forKey:PlayerVersionKey];
     [coder encodeObject:self.alias forKey:AliasKey];
     [coder encodeInteger:self.outcome forKey:OutcomeKey];
     [coder encodeBool:self.isLocalHuman forKey:LocalHumanKey];
-    [coder encodeObject:@(self.eloScore) forKey:EloScoreKey];
-    [coder encodeObject:@(self.matchCount) forKey:MatchCountKey];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
@@ -46,8 +40,6 @@ static NSString *MatchCountKey = @"mc";
     SBPlayer *player = [SBPlayer playerWithAlias:[coder decodeObjectForKey:AliasKey]];
     player.outcome = [coder decodeIntegerForKey:OutcomeKey];
     player.localHuman = [coder decodeBoolForKey:LocalHumanKey];
-    player.eloScore = [[coder decodeObjectForKey:EloScoreKey] unsignedIntegerValue];
-    player.matchCount = [[coder decodeObjectForKey:MatchCountKey] unsignedIntegerValue];
     return player;
 }
 
