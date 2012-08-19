@@ -106,12 +106,8 @@
 }
 
 - (SBMatch *)matchWithBotNamed:(NSString *)botName andHumanNamed:(NSString *)playerName {
-    SBPlayer *bot = [SBPlayer playerWithAlias:botName];
-    bot.isHuman = NO;
-
-    SBPlayer *human = [SBPlayer playerWithAlias:playerName];
-    human.isHuman = YES;
-
+    SBPlayer *bot = [SBPlayer playerWithAlias:botName human:NO];
+    SBPlayer *human = [SBPlayer playerWithAlias:playerName human:YES];
     return [SBMatch matchWithPlayerOne:human two:bot];
 }
 
