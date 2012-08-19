@@ -55,7 +55,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="IFW-S2-H6U"/>
-                                    <barButtonItem systemItem="add" id="hng-6K-G3G"/>
+                                    <barButtonItem systemItem="add" id="hng-6K-G3G">
+                                        <connections>
+                                            <segue destination="Spl-1V-GpP" kind="modal" identifier="showMatchMaker" id="fHb-ib-RcQ"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -71,6 +75,99 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-51" y="182"/>
+        </scene>
+        <!--Match Maker View Controller-->
+        <scene sceneID="j8r-Kc-JGR">
+            <objects>
+                <viewController id="Spl-1V-GpP" customClass="SBMatchMakerViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XZq-gh-4R1">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MrX-WZ-dBp">
+                                <rect key="frame" x="20" y="397" width="280" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="New Two Player Match">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startTwoPlayerMatch:" destination="Spl-1V-GpP" eventType="touchUpInside" id="oWN-0O-HdV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OBu-sp-cVy">
+                                <rect key="frame" x="20" y="346" width="280" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="New One Player Match">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startOnePlayerMatch:" destination="Spl-1V-GpP" eventType="touchUpInside" id="tpA-e0-w5y"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="E7N-rN-HXJ">
+                                <rect key="frame" x="0.0" y="44" width="320" height="294"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SavedMatchCell" textLabel="zCV-Ag-3tG" detailTextLabel="TF6-yS-xCo" style="IBUITableViewCellStyleSubtitle" id="buS-Ai-ktQ">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Title" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="zCV-Ag-3tG">
+                                                    <rect key="frame" x="10" y="2" width="38" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Subtitle" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="TF6-yS-xCo">
+                                                    <rect key="frame" x="10" y="24" width="47" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Spl-1V-GpP" id="YMH-GX-xNa"/>
+                                    <outlet property="delegate" destination="Spl-1V-GpP" id="TTo-Mh-M4t"/>
+                                </connections>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="U1V-Dj-j75">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem systemItem="cancel" id="nIo-Un-cpl">
+                                        <connections>
+                                            <action selector="done:" destination="Spl-1V-GpP" id="rgX-OR-W0r"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fqP-D8-Oll" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="523" y="-404"/>
         </scene>
         <!--Flipside View Controller-->
         <scene sceneID="9">
@@ -111,7 +208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="368" y="182"/>
+            <point key="canvasLocation" x="523" y="182"/>
         </scene>
     </scenes>
     <classes>
@@ -130,6 +227,13 @@
                 <relationship kind="outlet" name="message" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="playerOne" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="playerTwo" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SBMatchMakerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBMatchMakerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="startOnePlayerMatch:"/>
+                <relationship kind="action" name="startTwoPlayerMatch:"/>
             </relationships>
         </class>
     </classes>

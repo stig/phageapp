@@ -10,10 +10,9 @@
 #import "PhageModel.h"
 #import "SBAlertView.h"
 #import "SBFlipsideViewController.h"
+#import "SBMatchMakerViewController.h"
 
-
-
-@interface SBMainViewController () <SBFlipsideViewControllerDelegate, UIPopoverControllerDelegate>
+@interface SBMainViewController () <SBMatchMakerViewControllerDelegate, SBFlipsideViewControllerDelegate, UIPopoverControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *board;
 @property (weak, nonatomic) IBOutlet UILabel *playerOne;
@@ -65,6 +64,26 @@
     }
 }
 
+#pragma mark - Match Maker View Controller
+
+- (void)matchMakerViewController:(SBMatchMakerViewController *)controller didFindMatch:(SBMatch *)match {
+    [self matchMakerViewControllerDidFinish:controller];
+    [[SBMatchService matchService] saveMatch:self.match];
+    self.match = match;
+}
+
+
+- (void)matchMakerViewControllerDidFinish:(SBMatchMakerViewController *)controller
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        [self dismissModalViewControllerAnimated:YES];
+/*    } else {
+        [self.flipsidePopoverController dismissPopoverAnimated:YES];
+        self.flipsidePopoverController = nil;
+ */
+    }
+}
+
 #pragma mark - Flipside View Controller
 
 - (void)flipsideViewControllerDidFinish:(SBFlipsideViewController *)controller
@@ -92,7 +111,19 @@
             self.flipsidePopoverController = popoverController;
             popoverController.delegate = self;
         }
+
+    } else if ([[segue identifier] isEqualToString:@"showMatchMaker"]) {
+        [[segue destinationViewController] setDelegate:self];
+
+        /*
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            UIPopoverController *popoverController = [(UIStoryboardPopoverSegue *)segue popoverController];
+            self.flipsidePopoverController = popoverController;
+            popoverController.delegate = self;
+        }
+         */
     }
+
 }
 
 - (IBAction)togglePopover:(id)sender
@@ -105,12 +136,6 @@
     }
 }
 
-- (SBMatch *)matchWithBotNamed:(NSString *)botName andHumanNamed:(NSString *)playerName {
-    SBPlayer *bot = [SBPlayer playerWithAlias:botName human:NO];
-    SBPlayer *human = [SBPlayer playerWithAlias:playerName human:YES];
-    return [SBMatch matchWithPlayerOne:human two:bot];
-}
-
 - (void)ensureMatch {
     if (nil == self.match) {
         NSArray *savedMatches = [[SBMatchService new] activeMatches];
@@ -118,13 +143,9 @@
             self.match = [savedMatches objectAtIndex:0];
 
         } else {
-            self.match = [self matchWithBotNamed:@"Sgt Pepper" andHumanNamed:@"Player 1"];
-            SBAlertView *av = [[SBAlertView alloc]
-                    initWithTitle:NSLocalizedString(@"NEW_1P_MATCH_ALERT.TITLE", @"I created a match for you...")
-                          message:NSLocalizedString(@"NEW_1P_MATCH_ALERT.MESSAGE", @"I created a match for you...")
-                       completion:nil cancelButtonTitle:NSLocalizedString(@"NEW_1P_MATCH_ALERT.BUTTON", @"Okay")
-                otherButtonTitles:nil];
-            [av show];
+            SBPlayer *bot = [SBPlayer playerWithAlias:@"Sgt Pepper" human:NO];
+            SBPlayer *human = [SBPlayer playerWithAlias:@"Player 1" human:YES];
+            self.match = [SBMatch matchWithPlayerOne:human two:bot];
         }
     }
 }
