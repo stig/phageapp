@@ -39,6 +39,7 @@
 		D7BFA3B2151F2AD300435C95 /* chess-640x640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */; };
 		D7FDA3A2156DAA4700E65C5E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FDA3A1156DAA4700E65C5E /* libz.dylib */; };
 		D7FDA3A4156DAA8F00E65C5E /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FDA3A3156DAA8F00E65C5E /* libTestFlight.a */; };
+		F8D041AEA9425524156B3DEC /* SBMatchLookupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D049E7B11F27F102F6CBDE /* SBMatchLookupViewController.m */; };
 		FB89D43C154C7D27001A0B38 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D755A48A15320B53003BB704 /* GameKit.framework */; };
 		FB89D43C154C7D27001A0BA2 /* SBPieceLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BA1 /* SBPieceLayer.m */; };
 		FB89D43C154C7D27001A0BA8 /* SBCellLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BA7 /* SBCellLayer.m */; };
@@ -224,6 +225,8 @@
 		D7BFA3B2151F2AD300435C96 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = libs/ocmock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
 		D7FDA3A1156DAA4700E65C5E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D7FDA3A3156DAA8F00E65C5E /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTestFlight.a; path = libs/TestFlight/libTestFlight.a; sourceTree = "<group>"; };
+		F8D049E7B11F27F102F6CBDE /* SBMatchLookupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMatchLookupViewController.m; sourceTree = "<group>"; };
+		F8D04A5E3FC58C124F077A44 /* SBMatchLookupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMatchLookupViewController.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BA1 /* SBPieceLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPieceLayer.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BA3 /* SBPieceLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPieceLayer.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BA7 /* SBCellLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCellLayer.m; sourceTree = "<group>"; };
@@ -430,6 +433,8 @@
 		D76A456B151DDC7500E59146 /* Phage */ = {
 			isa = PBXGroup;
 			children = (
+				F8D049E7B11F27F102F6CBDE /* SBMatchLookupViewController.m */,
+				F8D04A5E3FC58C124F077A44 /* SBMatchLookupViewController.h */,
 				FB89D43C154C7D27001A0C27 /* SBMainViewController.m */,
 				FB89D43C154C7D27001A0C26 /* SBMainViewController.h */,
 				FB89D43C154C7D27001A0C24 /* SBFlipsideViewController.m */,
@@ -812,6 +817,7 @@
 				FB89D43C154C7D27001A0C28 /* SBMainViewController.m in Sources */,
 				FB89D43C154C7D27001A0C2C /* SBAlertView.m in Sources */,
 				D77E0C8415DD88430004EFAF /* SBMatchMakerViewController.m in Sources */,
+				F8D041AEA9425524156B3DEC /* SBMatchLookupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

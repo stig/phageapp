@@ -11,8 +11,9 @@
 #import "SBAlertView.h"
 #import "SBFlipsideViewController.h"
 #import "SBMatchMakerViewController.h"
+#import "SBMatchLookupViewController.h"
 
-@interface SBMainViewController () <SBMatchMakerViewControllerDelegate, SBFlipsideViewControllerDelegate, UIPopoverControllerDelegate>
+@interface SBMainViewController () < SBMatchLookupViewControllerDelegate, SBMatchMakerViewControllerDelegate, SBFlipsideViewControllerDelegate, UIPopoverControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *board;
 @property (weak, nonatomic) IBOutlet UILabel *playerOne;
@@ -64,6 +65,22 @@
     }
 }
 
+#pragma mark - Match Lookup View Controller
+
+
+- (void)matchLookupViewControllerDidFinish:(SBMatchLookupViewController *)controller {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        [self dismissModalViewControllerAnimated:YES];
+    }
+}
+
+- (void)matchLookupViewController:(SBMatchLookupViewController *)controller didFindMatch:(SBMatch *)match {
+    [self matchMakerViewControllerDidFinish:controller];
+    [[SBMatchService matchService] saveMatch:self.match];
+    self.match = match;
+}
+
+
 #pragma mark - Match Maker View Controller
 
 - (void)matchMakerViewController:(SBMatchMakerViewController *)controller didFindMatch:(SBMatch *)match {
@@ -77,10 +94,6 @@
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         [self dismissModalViewControllerAnimated:YES];
-/*    } else {
-        [self.flipsidePopoverController dismissPopoverAnimated:YES];
-        self.flipsidePopoverController = nil;
- */
     }
 }
 
@@ -115,13 +128,9 @@
     } else if ([[segue identifier] isEqualToString:@"showMatchMaker"]) {
         [[segue destinationViewController] setDelegate:self];
 
-        /*
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-            UIPopoverController *popoverController = [(UIStoryboardPopoverSegue *)segue popoverController];
-            self.flipsidePopoverController = popoverController;
-            popoverController.delegate = self;
-        }
-         */
+    } else if ([[segue identifier] isEqualToString:@"showMatchLookup"]) {
+        [[segue destinationViewController] setDelegate:self];
+
     }
 
 }
