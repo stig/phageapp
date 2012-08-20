@@ -75,7 +75,7 @@
 }
 
 - (void)matchLookupViewController:(SBMatchLookupViewController *)controller didFindMatch:(SBMatch *)match {
-    [self matchMakerViewControllerDidFinish:controller];
+    [self matchLookupViewControllerDidFinish:controller];
     [[SBMatchService matchService] saveMatch:self.match];
     self.match = match;
 }

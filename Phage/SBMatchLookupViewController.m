@@ -46,7 +46,7 @@
 
     if (inactive.count) {
         [matches addObject:inactive];
-        [titles addObject:@"Inactive Matches"];
+        [titles addObject:@"Finished Matches"];
     }
 
     self.sections = matches;
