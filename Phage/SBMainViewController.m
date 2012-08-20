@@ -42,7 +42,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     // Called any time the view appears
-    
+
     [self ensureMatch];
 }
 
@@ -118,7 +118,7 @@
 {
     if ([[segue identifier] isEqualToString:@"showAlternate"]) {
         [[segue destinationViewController] setDelegate:self];
-        
+
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
             UIPopoverController *popoverController = [(UIStoryboardPopoverSegue *)segue popoverController];
             self.flipsidePopoverController = popoverController;
@@ -194,16 +194,16 @@
 
     } else {
         av = [[SBAlertView alloc] initWithTitle:@"Forfeit Match"
-                                                     message:@"Do you really want to forfeit this match?"
-                                                  completion:^(NSInteger buttonIndex) {
-                                                      if (0 == buttonIndex) {
-                                                          [self.match forfeit];
-                                                          [[SBMatchService new] saveMatch:self.match];
-                                                          [self layoutMatch];
-                                                      }
-                                                  }
-                                           cancelButtonTitle:@"Yes"
-                                           otherButtonTitles:@"No", nil];
+                                        message:@"Do you really want to forfeit this match?"
+                                     completion:^(NSInteger buttonIndex) {
+                                         if (0 == buttonIndex) {
+                                             [self.match forfeit];
+                                             [[SBMatchService new] saveMatch:self.match];
+                                             [self layoutMatch];
+                                         }
+                                     }
+                              cancelButtonTitle:@"Yes"
+                              otherButtonTitles:@"No", nil];
     }
     [av show];
 }
