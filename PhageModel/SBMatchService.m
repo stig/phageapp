@@ -74,10 +74,10 @@
                 if (match)
                     [matches addObject:match];
                 else
-                    TFLog(@"Failed to inflate match from path: %@", path);
+                    NSLog(@"Failed to inflate match from path: %@", path);
             }
             @catch (NSException *e) {
-                TFLog(@"Caught exception: %@", e);
+                NSLog(@"Caught exception: %@", e);
             }
         }
     }
