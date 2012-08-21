@@ -17,6 +17,7 @@
 		D72F23AC15C5F248006EFE0D /* libPhageModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D72F239815C5F248006EFE0D /* libPhageModel.a */; };
 		D72F23B215C5F248006EFE0D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D72F23B015C5F248006EFE0D /* InfoPlist.strings */; };
 		D72F242115C5F750006EFE0D /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C9D /* libOCMock.a */; };
+		D74D65BF15E3128300A69FC0 /* libUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EA254B15E2EE02006081A4 /* libUtils.a */; };
 		D755A48B15320B53003BB704 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D755A48A15320B53003BB704 /* GameKit.framework */; };
 		D76A4566151DDC7500E59146 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4565151DDC7500E59146 /* UIKit.framework */; };
 		D76A4568151DDC7500E59146 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4567151DDC7500E59146 /* Foundation.framework */; };
@@ -122,6 +123,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 030EF0DB14632FF700B04273;
 			remoteInfo = OCMockLib;
+		};
+		D74D65BD15E3127D00A69FC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D76A4558151DDC7500E59146 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D7EA255815E2EE02006081A4;
+			remoteInfo = UtilsTests;
 		};
 		D76A458A151DDC7500E59146 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -343,6 +351,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D74D65BF15E3128300A69FC0 /* libUtils.a in Frameworks */,
 				D7AE134815C7538400B8349B /* libPhageModel.a in Frameworks */,
 				D7FDA3A4156DAA8F00E65C5E /* libTestFlight.a in Frameworks */,
 				D7FDA3A2156DAA4700E65C5E /* libz.dylib in Frameworks */,
@@ -709,6 +718,7 @@
 				D7198649155D726500349052 /* PBXBuildRule */,
 			);
 			dependencies = (
+				D74D65BE15E3127D00A69FC0 /* PBXTargetDependency */,
 				D7AE134715C7537800B8349B /* PBXTargetDependency */,
 			);
 			name = Phage;
@@ -1020,6 +1030,11 @@
 			name = OCMockLib;
 			targetProxy = D72F243815C5F854006EFE0D /* PBXContainerItemProxy */;
 		};
+		D74D65BE15E3127D00A69FC0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D7EA255815E2EE02006081A4 /* UtilsTests */;
+			targetProxy = D74D65BD15E3127D00A69FC0 /* PBXContainerItemProxy */;
+		};
 		D76A458B151DDC7500E59146 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D76A4560151DDC7500E59146 /* Phage */;
@@ -1248,6 +1263,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/libs/TestFlight\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1264,6 +1280,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/libs/TestFlight\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
