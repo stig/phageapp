@@ -38,6 +38,7 @@
 		D7BFA3B2151F2AD300435C8C /* SBOpponentMobilityMinimisingMovePickerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C8B /* SBOpponentMobilityMinimisingMovePickerTest.m */; };
 		D7BFA3B2151F2AD300435C93 /* SBMatchView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C92 /* SBMatchView.m */; };
 		D7BFA3B2151F2AD300435C95 /* chess-640x640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */; };
+		D7DD0D2B15E4475100103EE4 /* SBBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DD0D2A15E4475100103EE4 /* SBBoardView.m */; };
 		D7EA254C15E2EE02006081A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4567151DDC7500E59146 /* Foundation.framework */; };
 		D7EA255A15E2EE02006081A4 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4586151DDC7500E59146 /* SenTestingKit.framework */; };
 		D7EA255B15E2EE02006081A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4565151DDC7500E59146 /* UIKit.framework */; };
@@ -274,6 +275,8 @@
 		D7BFA3B2151F2AD300435C92 /* SBMatchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMatchView.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C94 /* chess-640x640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "chess-640x640.jpg"; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C96 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = libs/ocmock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
+		D7DD0D2915E4475100103EE4 /* SBBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardView.h; sourceTree = "<group>"; };
+		D7DD0D2A15E4475100103EE4 /* SBBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardView.m; sourceTree = "<group>"; };
 		D7EA254B15E2EE02006081A4 /* libUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7EA254F15E2EE02006081A4 /* Utils-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Utils-Prefix.pch"; sourceTree = "<group>"; };
 		D7EA255915E2EE02006081A4 /* UtilsTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UtilsTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -526,6 +529,8 @@
 		D76A456B151DDC7500E59146 /* Phage */ = {
 			isa = PBXGroup;
 			children = (
+				D7DD0D2915E4475100103EE4 /* SBBoardView.h */,
+				D7DD0D2A15E4475100103EE4 /* SBBoardView.m */,
 				F8D049E7B11F27F102F6CBDE /* SBMatchLookupViewController.m */,
 				F8D04A5E3FC58C124F077A44 /* SBMatchLookupViewController.h */,
 				FB89D43C154C7D27001A0C27 /* SBMainViewController.m */,
@@ -1043,6 +1048,7 @@
 				FB89D43C154C7D27001A0C2C /* SBAlertView.m in Sources */,
 				D77E0C8415DD88430004EFAF /* SBMatchMakerViewController.m in Sources */,
 				F8D041AEA9425524156B3DEC /* SBMatchLookupViewController.m in Sources */,
+				D7DD0D2B15E4475100103EE4 /* SBBoardView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

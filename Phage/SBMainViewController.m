@@ -12,10 +12,11 @@
 #import "SBFlipsideViewController.h"
 #import "SBMatchMakerViewController.h"
 #import "SBMatchLookupViewController.h"
+#import "SBBoardView.h"
 
 @interface SBMainViewController () < SBMatchLookupViewControllerDelegate, SBMatchMakerViewControllerDelegate, SBFlipsideViewControllerDelegate, UIPopoverControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *board;
+@property (weak, nonatomic) IBOutlet SBBoardView *board;
 @property (weak, nonatomic) IBOutlet UILabel *playerOne;
 @property (weak, nonatomic) IBOutlet UILabel *playerTwo;
 @property (weak, nonatomic) IBOutlet UILabel *message;
@@ -167,6 +168,8 @@
 }
 
 - (void)layoutMatch {
+    [self.board layoutBoard:self.match.board];
+
     if (self.match.isGameOver) {
         SBPlayer *winner = self.match.winner;
         if (nil == winner) {

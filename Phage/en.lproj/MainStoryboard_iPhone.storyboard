@@ -27,7 +27,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             </label>
-                            <view contentMode="scaleToFill" id="clW-EF-f5C" userLabel="Grid">
+                            <view contentMode="scaleToFill" id="clW-EF-f5C" userLabel="Grid" customClass="SBBoardView">
                                 <rect key="frame" x="0.0" y="73" width="320" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -295,6 +295,9 @@
         </scene>
     </scenes>
     <classes>
+        <class className="SBBoardView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBBoardView.h"/>
+        </class>
         <class className="SBFlipsideViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SBFlipsideViewController.h"/>
             <relationships>
@@ -306,7 +309,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SBMainViewController.h"/>
             <relationships>
                 <relationship kind="action" name="trashMatch:"/>
-                <relationship kind="outlet" name="board" candidateClass="UIView"/>
+                <relationship kind="outlet" name="board" candidateClass="SBBoardView"/>
                 <relationship kind="outlet" name="message" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="playerOne" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="playerTwo" candidateClass="UILabel"/>
@@ -318,7 +321,6 @@
         <class className="SBMatchMakerViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SBMatchMakerViewController.h"/>
             <relationships>
-                <relationship kind="action" name="done:"/>
                 <relationship kind="action" name="startOnePlayerMatch:"/>
                 <relationship kind="action" name="startTwoPlayerMatch:"/>
                 <relationship kind="outlet" name="onePlayer" candidateClass="UITextField"/>
