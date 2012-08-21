@@ -13,7 +13,7 @@
 
 @interface SBMatchLookupViewController () < UITableViewDataSource, UITableViewDelegate >
 @property (strong, nonatomic) NSArray *sections;
-@property (strong, nonatomic) NSArray *sectionTitles;
+@property (strong, nonatomic) NSArray *titles;
 @end
 
 @implementation SBMatchLookupViewController
@@ -21,6 +21,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.titles = @[
+        NSLocalizedString(@"Active Matches", @"Table Vie Group Title"),
+        NSLocalizedString(@"Finished Matches", @"Table View Group Title")
+    ];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -33,24 +38,11 @@
     [super viewWillAppear:animated];
 
     SBMatchService *service = [SBMatchService matchService];
-    NSArray *active = [service activeMatches];
-    NSArray *inactive = [service inactiveMatches];
 
-    NSMutableArray *matches = [NSMutableArray array];
-    NSMutableArray *titles = [NSMutableArray array];
-
-    if (active.count) {
-        [matches addObject:active];
-        [titles addObject:@"Active Matches"];
-    }
-
-    if (inactive.count) {
-        [matches addObject:inactive];
-        [titles addObject:@"Finished Matches"];
-    }
-
-    self.sections = matches;
-    self.sectionTitles = titles;
+    self.sections = @[
+        [service activeMatches],
+        [service inactiveMatches]
+    ];
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,7 +61,7 @@
 #pragma mark - Table view data source
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return self.sectionTitles[section];
+    return self.titles[section];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
