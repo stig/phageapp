@@ -16,8 +16,7 @@
 }
 
 - (NSString *)savedMatchesPath {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSString *savedMatchesPath = [documentsDirectory stringByAppendingPathComponent:@"Saved Matches"];
 
     NSError *error = nil;
@@ -32,7 +31,8 @@
 }
 
 - (void)saveMatch:(SBMatch *)match {
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:match];
+    NSDictionary *plist = [match toPropertyList];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:plist options:0 error:nil];
     NSString *file = [self savedMatchPath:match];
     [data writeToFile:file atomically:YES];
 }
@@ -65,11 +65,19 @@
         if ([[file pathExtension] isEqualToString:SUFFIX]) {
             @try {
                 NSString *path = [savedMatchesPath stringByAppendingPathComponent:file];
-                SBMatch *match = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-                [matches addObject:match];
+                NSData *data = [NSData dataWithContentsOfFile:path];
+                NSDictionary *plist = [NSJSONSerialization JSONObjectWithData:data
+                                                                      options:0
+                                                                        error:nil];
+
+                SBMatch *match = [SBMatch matchWithPropertyList:plist];
+                if (match)
+                    [matches addObject:match];
+                else
+                    TFLog(@"Failed to inflate match from path: %@", path);
             }
             @catch (NSException *e) {
-                NSLog(@"Caught exception: %@", e);
+                TFLog(@"Caught exception: %@", e);
             }
         }
     }

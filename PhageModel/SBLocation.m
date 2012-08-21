@@ -27,16 +27,14 @@
     return self;
 }
 
-#pragma mark NSCoding
+#pragma mark SBCoding
 
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeInteger:(NSInteger)_column forKey:@"SBColumn"];
-    [coder encodeInteger:(NSInteger)_row forKey:@"SBRow"];
+- (NSArray *)toPropertyList {
+    return @[ @(_column), @(_row) ];
 }
 
-- (id)initWithCoder:(NSCoder *)coder {
-    return [self initWithColumn:(NSUInteger)[coder decodeIntegerForKey:@"SBColumn"]
-                            row:(NSUInteger)[coder decodeIntegerForKey:@"SBRow"]];
++ (id)locationFromPropertyList:(NSArray *)plist {
+    return [self locationWithColumn:[plist[0] unsignedIntegerValue] row:[plist[1] unsignedIntegerValue]];
 }
 
 #pragma mark NSCopying

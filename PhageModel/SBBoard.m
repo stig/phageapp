@@ -14,6 +14,7 @@
 #import "SBLocation.h"
 #import "SBDirection.h"
 #import "SBMove.h"
+#import "NSArray+Utils.h"
 
 @interface SBBoard ()
 @property(nonatomic, strong) NSArray *pieces;
@@ -34,6 +35,18 @@
 
 + (id)boardWithMoveHistory:(NSArray *)moveHistory {
     return [[self alloc] initWithMoveHistory:moveHistory];
+}
+
++ (id)boardFromPropertyList:(NSArray *)array {
+    return [SBBoard boardWithMoveHistory:[array applyBlock:^id(id o) {
+        return [SBMove moveFromPropertyList:o];
+    }]];
+}
+
+- (NSArray *)toPropertyList {
+    return [self.moveHistory applyBlock:^id(id o) {
+        return [o toPropertyList];
+    }];
 }
 
 - (id)initWithMoveHistory:(NSArray*)moveHistory {

@@ -283,14 +283,15 @@
     }];
     [m1 performMove:move completionHandler:nil];
 
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:m1];
-    STAssertTrue(data.length < 3e3, nil);
+    NSData *data = [NSJSONSerialization dataWithJSONObject:[m1 toPropertyList] options:0 error:nil];
+    STAssertTrue(data.length < 1024u, nil);
 
-    SBMatch *copy = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    SBMatch *copy = [SBMatch matchWithPropertyList:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+
     STAssertEqualObjects(copy.playerOne.alias, @"foo", nil);
     STAssertEqualObjects(copy.playerTwo.alias, @"bar", nil);
     STAssertEqualObjects(copy.matchID, m1.matchID, nil);
-    STAssertEqualObjects(copy.lastUpdated, m1.lastUpdated, nil);
+    STAssertEqualObjects([copy.lastUpdated description], [m1.lastUpdated description], nil);
 
     STAssertEquals(copy.board.moveHistory.count, 1u, nil);
     STAssertEqualObjects([copy.board.moveHistory lastObject], move, nil);

@@ -31,7 +31,7 @@
 
 - (void)testViaDictionary {
     SBPlayer *player = [[SBPlayer playerWithAlias:@"foo" human:YES] playerWithOutcome:SBPlayerOutcomeLost];
-    SBPlayer *other = [SBPlayer playerWithDictionary:[player asDictionary]];
+    SBPlayer *other = [SBPlayer playerFromPropertyList:[player toPropertyList]];
 
     STAssertTrue(other.isHuman, nil);
     STAssertEquals(other.outcome, SBPlayerOutcomeLost, nil);

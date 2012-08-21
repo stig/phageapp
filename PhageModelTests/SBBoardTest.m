@@ -12,6 +12,7 @@
 #import "SBCircle.h"
 #import "SBDiamond.h"
 #import "SBMove.h"
+#import "NSArray+Utils.h"
 
 @interface SBBoardTest : SenTestCase {
     SBBoard *s;
@@ -140,11 +141,17 @@
 
 - (void)testCodingSize {
     for (;;) {
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:s.moveHistory];
-        STAssertTrue(data.length < 3096u, @"Serialised state is less than 3K");
+        NSData *data = [NSJSONSerialization dataWithJSONObject:[s toPropertyList]
+                                                       options:0
+                                                         error:nil];
+        STAssertTrue(data.length < 1024u, @"Serialised move history is less than 1K");
 
-        NSArray *moves = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        SBBoard *copy = [SBBoard boardWithMoveHistory:moves];
+        NSArray *moves = [NSJSONSerialization JSONObjectWithData:data
+                                                         options:0
+                                                           error:nil];
+
+        SBBoard *copy = [SBBoard boardFromPropertyList:moves];
+
         STAssertEqualObjects(copy, s, nil);
 
         SBMove *move = [self lastMoveForState:s];

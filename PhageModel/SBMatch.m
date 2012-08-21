@@ -10,14 +10,12 @@
 #import "SBPlayer.h"
 #import "SBMove.h"
 
-static NSInteger MatchVersion = 3;
-static NSString *MatchVersionKey = @"v";
-static NSString *PlayerOneKey = @"1";
-static NSString *PlayerTwoKey = @"2";
-static NSString *MoveHistoryKey = @"m";
-static NSString *MatchIDKey = @"i";
-static NSString *LastUpdatedKey = @"l";
-
+static NSString *const VERSION = @"Version";
+static NSString *const MATCH_ID = @"MatchID";
+static NSString *const PLAYER1 = @"Player1";
+static NSString *const PLAYER2 = @"Player2";
+static NSString *const BOARD = @"Board";
+static NSString *const LAST_UPDATED = @"LastUpdated";
 
 @implementation SBMatch
 @synthesize matchID = _matchID;
@@ -26,37 +24,6 @@ static NSString *LastUpdatedKey = @"l";
 @synthesize playerTwo = _playerTwo;
 @synthesize lastUpdated = _lastUpdated;
 
-
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeInteger:MatchVersion forKey:MatchVersionKey];
-    [coder encodeObject:self.matchID forKey:MatchIDKey];
-    [coder encodeObject:[self.playerOne asDictionary] forKey:PlayerOneKey];
-    [coder encodeObject:[self.playerTwo asDictionary] forKey:PlayerTwoKey];
-    [coder encodeObject:self.board.moveHistory forKey:MoveHistoryKey];
-    [coder encodeObject:self.lastUpdated forKey:LastUpdatedKey];
-}
-
-- (id)initWithCoder:(NSCoder *)coder {
-    if (![coder containsValueForKey:MatchVersionKey]) {
-        NSLog(@"Unsupported match format");
-        return nil;
-    }
-
-    NSInteger version = [coder decodeIntegerForKey:MatchVersionKey];
-    if (version > MatchVersion) {
-        NSLog(@"Unsupported match format; please upgrade your version of Phage!");
-        return nil;
-    }
-
-    SBPlayer *one = [SBPlayer playerWithDictionary:[coder decodeObjectForKey:PlayerOneKey]];
-    SBPlayer *two = [SBPlayer playerWithDictionary:[coder decodeObjectForKey:PlayerTwoKey]];
-    SBBoard *board = [SBBoard boardWithMoveHistory:[coder decodeObjectForKey:MoveHistoryKey]];
-    NSString *matchID = [coder decodeObjectForKey:MatchIDKey];
-    NSDate *lastUpdated = [coder decodeObjectForKey:LastUpdatedKey];
-
-    return  [self initWithPlayerOne:one two:two board:board matchID:matchID lastUpdated:lastUpdated];
-}
 
 
 + (id)matchWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two {
@@ -70,6 +37,31 @@ static NSString *LastUpdatedKey = @"l";
 + (id)matchWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two board:(SBBoard *)board {
     return [[self alloc] initWithPlayerOne:one two:two board:board];
 }
+
++ (id)matchWithPropertyList:(NSDictionary *)plist {
+    if (![plist[VERSION] isEqual:@1])
+        return nil;
+
+    SBPlayer *one = [SBPlayer playerFromPropertyList:plist[PLAYER1]];
+    SBPlayer *two = [SBPlayer playerFromPropertyList:plist[PLAYER2]];
+    SBBoard *board = [SBBoard boardFromPropertyList:plist[BOARD]];
+    NSString *matchID = plist[MATCH_ID];
+    NSDate *lastUpdated = [NSDate dateWithTimeIntervalSince1970:[plist[LAST_UPDATED] doubleValue]];
+    
+    return [[self alloc] initWithPlayerOne:one two:two board:board matchID:matchID lastUpdated:lastUpdated];
+}
+
+- (NSDictionary *)toPropertyList {
+    return @{
+        VERSION: @1,
+        MATCH_ID: self.matchID,
+        PLAYER1: [self.playerOne toPropertyList],
+        PLAYER2: [self.playerTwo toPropertyList],
+        BOARD: [self.board toPropertyList],
+        LAST_UPDATED: @(self.lastUpdated.timeIntervalSince1970)
+    };
+}
+
 
 - (id)initWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two board:(SBBoard *)board {
     return [self initWithPlayerOne:one

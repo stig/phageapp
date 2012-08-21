@@ -9,7 +9,7 @@
 @class SBMove;
 @class SBPiece;
 
-@interface SBMatch : NSObject <NSCoding>
+@interface SBMatch : NSObject
 
 @property(nonatomic, readonly) NSString *matchID;
 @property(nonatomic, readonly) NSDate *lastUpdated;
@@ -21,10 +21,10 @@
 @property(readonly) SBBoard *board; // atomic
 
 + (id)matchWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two;
-- (id)initWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two;
-
 + (id)matchWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two board:(SBBoard *)board;
-- (id)initWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two board:(SBBoard *)board;
+
++ (id)matchWithPropertyList:(NSDictionary *)plist;
+- (NSDictionary *)toPropertyList;
 
 - (BOOL)isLegalMove:(SBMove *)aMove;
 

@@ -33,6 +33,11 @@
     STAssertEqualObjects(m.to, b, nil);
 }
 
+- (void)testViaDictionary {
+    SBMove *m2 = [SBMove moveFromPropertyList:[m toPropertyList]];
+    STAssertEqualObjects(m2, m, nil);
+}
+
 - (void)testEqual {
     STAssertEqualObjects(m, m, nil);
 

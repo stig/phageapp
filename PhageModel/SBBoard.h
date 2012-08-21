@@ -21,7 +21,9 @@
 
 + (id)board;
 + (id)boardWithMoveHistory:(NSArray*)moveHistory;
-- (id)initWithMoveHistory:(NSArray *)moveHistory;
+
++ (id)boardFromPropertyList:(NSArray *)array;
+- (id)toPropertyList;
 
 - (NSNumber*)turnsLeftForPiece:(SBPiece*)piece;
 - (SBLocation *)locationForPiece:(SBPiece*)piece;

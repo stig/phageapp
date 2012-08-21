@@ -18,6 +18,16 @@
     return [[self alloc] initWithFrom:from to:to];
 }
 
++ (id)moveFromPropertyList:(NSArray *)plist {
+    return [self moveWithFrom:[SBLocation locationFromPropertyList:plist[0]]
+                           to:[SBLocation locationFromPropertyList:plist[1]]];
+}
+
+- (NSArray *)toPropertyList {
+    return @[ [self.from toPropertyList], [self.to toPropertyList] ];
+}
+
+
 - (id)initWithFrom:(SBLocation *)from to:(SBLocation *)to {
     self = [super init];
     if (self) {
@@ -31,17 +41,6 @@
 
 - (id)copyWithZone:(NSZone*)zone {
     return self;
-}
-
-#pragma mark NSCopying
-
-- (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:_from forKey:@"SBFrom"];
-    [aCoder encodeObject:_to forKey:@"SBTo"];
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    return [self initWithFrom:[aDecoder decodeObjectForKey:@"SBFrom"] to:[aDecoder decodeObjectForKey:@"SBTo"]];
 }
 
 #pragma mark Hashable

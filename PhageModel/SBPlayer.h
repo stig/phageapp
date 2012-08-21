@@ -28,8 +28,8 @@ typedef enum {
 + (id)playerWithAlias:(NSString *)alias;
 + (id)player;
 
-+ (id)playerWithDictionary:(NSDictionary *)dict;
-- (NSDictionary *)asDictionary;
++ (id)playerFromPropertyList:(NSDictionary *)dict;
+- (NSDictionary *)toPropertyList;
 
 - (id)playerWithOutcome:(SBPlayerOutcome)outcome;
 

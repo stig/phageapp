@@ -15,13 +15,15 @@ typedef NS_ENUM(NSUInteger, SBBoardDimensions) {
 
 @class SBDirection;
 
-@interface SBLocation : NSObject <NSCopying, NSCoding>
+@interface SBLocation : NSObject <NSCopying>
 
 @property (readonly) NSUInteger column;
 @property (readonly) NSUInteger row;
 
 + (id)locationWithColumn:(NSUInteger)column row:(NSUInteger)row;
-- (id)initWithColumn:(NSUInteger)c row:(NSUInteger)r;
+
++ (id)locationFromPropertyList:(NSArray *)plist;
+- (NSArray *)toPropertyList;
 
 // isEqual: delegates to this..
 - (BOOL)isEqualToLocation:(SBLocation *)point;

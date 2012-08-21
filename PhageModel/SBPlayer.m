@@ -48,17 +48,17 @@ static NSString *OUTCOME = @"o";
 
 #pragma mark - !NSCoding
 
-- (NSDictionary *)asDictionary {
+- (NSDictionary *)toPropertyList {
     return @{
-        VERSION:    @1,
+    @"v":    @1,
         ALIAS:      self.alias,
         HUMAN:      @(self.human),
         OUTCOME:    @(self.outcome)
     };
 }
 
-+ (id)playerWithDictionary:(NSDictionary *)dict {
-    if ([dict[VERSION] compare:@1] > 0)
++ (id)playerFromPropertyList:(NSDictionary *)dict {
+    if ([dict[@"v"] compare:@1] > 0)
         @throw @"Unsupported version; please upgrade Phage!";
 
     return [[self class] playerWithAlias:dict[ALIAS]

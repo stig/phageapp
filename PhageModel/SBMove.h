@@ -10,15 +10,19 @@
 
 @class SBLocation;
 
-@interface SBMove : NSObject <NSCopying, NSCoding>
+@interface SBMove : NSObject <NSCopying>
 
 @property (strong, readonly) SBLocation *from;
 @property (strong, readonly) SBLocation *to;
 
 + (id)moveWithFrom:(SBLocation *)from to:(SBLocation *)to;
-- (id)initWithFrom:(SBLocation *)from to:(SBLocation *)to;
+
++ (id)moveFromPropertyList:(NSArray *)plist;
+- (NSArray *)toPropertyList;
 
 // isEqual: delegates to this..
 - (BOOL)isEqualToMove:(SBMove*)move;
+
+
 
 @end

@@ -44,4 +44,10 @@
     STAssertEqualObjects(@"b4", [loc description], nil);
 }
 
+- (void)testAsDictionary {
+    SBLocation *loc2 = [SBLocation locationFromPropertyList:[loc toPropertyList]];
+    STAssertEquals(loc2.column, loc.column, nil);
+    STAssertEquals(loc2.row, loc.row, nil);
+}
+
 @end
