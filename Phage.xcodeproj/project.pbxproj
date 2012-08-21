@@ -48,9 +48,18 @@
 		D7EA257415E2EEE9006081A4 /* libUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EA254B15E2EE02006081A4 /* libUtils.a */; };
 		D7FDA3A2156DAA4700E65C5E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FDA3A1156DAA4700E65C5E /* libz.dylib */; };
 		D7FDA3A4156DAA8F00E65C5E /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FDA3A3156DAA8F00E65C5E /* libTestFlight.a */; };
+		F8D04027C7A00D5717B08DD6 /* SouthDiamond.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D045227BFF000469526CE1 /* SouthDiamond.png */; };
 		F8D041AEA9425524156B3DEC /* SBMatchLookupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D049E7B11F27F102F6CBDE /* SBMatchLookupViewController.m */; };
+		F8D0445D2BD787D044459010 /* NorthCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04DB6B26461C4B5A120AB /* NorthCircle.png */; };
+		F8D0449FC5E399655B54BD9D /* NorthTriangle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04C837D03B145DB351D2F /* NorthTriangle.png */; };
+		F8D0458F0826F3A197156CD7 /* NorthDiamond.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04F5489774187AD134A8F /* NorthDiamond.png */; };
 		F8D049201306801F4FC99BA2 /* NSArray+Utils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8D04E9A1DE46C44EEFEEE7D /* NSArray+Utils.h */; };
+		F8D04945DD27D4D6780F6654 /* SouthTriangle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D041465C485CAD621B1C32 /* SouthTriangle.png */; };
+		F8D04D437301EC2C4190B824 /* Blocked.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D0485D2A145F89AE4B1F8F /* Blocked.png */; };
+		F8D04D95863A93B8C25D8980 /* NorthSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04D7C9C0ACA6769F30D6F /* NorthSquare.png */; };
+		F8D04F02D027342A4E9D981E /* SouthSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D047EC9CA8AF7E7320B150 /* SouthSquare.png */; };
 		F8D04F131B438B0F27297F54 /* NSArray+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D04C00F2FECB24B1334BB5 /* NSArray+Utils.m */; };
+		F8D04FCA15C230B8C399A63B /* SouthCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D0436A282EB47C819143D8 /* SouthCircle.png */; };
 		FB89D43C154C7D27001A0B38 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D755A48A15320B53003BB704 /* GameKit.framework */; };
 		FB89D43C154C7D27001A0BA2 /* SBPieceLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BA1 /* SBPieceLayer.m */; };
 		FB89D43C154C7D27001A0BA8 /* SBCellLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BA7 /* SBCellLayer.m */; };
@@ -273,10 +282,19 @@
 		D7EA256715E2EE02006081A4 /* NSArrayUtilsTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSArrayUtilsTest.m; sourceTree = "<group>"; };
 		D7FDA3A1156DAA4700E65C5E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D7FDA3A3156DAA8F00E65C5E /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTestFlight.a; path = libs/TestFlight/libTestFlight.a; sourceTree = "<group>"; };
+		F8D041465C485CAD621B1C32 /* SouthTriangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SouthTriangle.png; sourceTree = "<group>"; };
+		F8D0436A282EB47C819143D8 /* SouthCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SouthCircle.png; sourceTree = "<group>"; };
+		F8D045227BFF000469526CE1 /* SouthDiamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SouthDiamond.png; sourceTree = "<group>"; };
+		F8D047EC9CA8AF7E7320B150 /* SouthSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SouthSquare.png; sourceTree = "<group>"; };
+		F8D0485D2A145F89AE4B1F8F /* Blocked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blocked.png; sourceTree = "<group>"; };
 		F8D049E7B11F27F102F6CBDE /* SBMatchLookupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMatchLookupViewController.m; sourceTree = "<group>"; };
 		F8D04A5E3FC58C124F077A44 /* SBMatchLookupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMatchLookupViewController.h; sourceTree = "<group>"; };
 		F8D04C00F2FECB24B1334BB5 /* NSArray+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Utils.m"; sourceTree = "<group>"; };
+		F8D04C837D03B145DB351D2F /* NorthTriangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NorthTriangle.png; sourceTree = "<group>"; };
+		F8D04D7C9C0ACA6769F30D6F /* NorthSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NorthSquare.png; sourceTree = "<group>"; };
+		F8D04DB6B26461C4B5A120AB /* NorthCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NorthCircle.png; sourceTree = "<group>"; };
 		F8D04E9A1DE46C44EEFEEE7D /* NSArray+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Utils.h"; sourceTree = "<group>"; };
+		F8D04F5489774187AD134A8F /* NorthDiamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NorthDiamond.png; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BA1 /* SBPieceLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPieceLayer.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BA3 /* SBPieceLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPieceLayer.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BA7 /* SBCellLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCellLayer.m; sourceTree = "<group>"; };
@@ -524,6 +542,7 @@
 				FB89D43C154C7D27001A0BAA /* MatchView */,
 				FB89D43C154C7D27001A0BFD /* Bots */,
 				FB89D43C154C7D27001A0C29 /* Utils */,
+				F8D04D3552AE5D8FC2A43E1B /* Themes */,
 			);
 			path = Phage;
 			sourceTree = "<group>";
@@ -603,6 +622,31 @@
 				D7EA256315E2EE02006081A4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F8D04C0748688A6A7033B9E0 /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				F8D041465C485CAD621B1C32 /* SouthTriangle.png */,
+				F8D047EC9CA8AF7E7320B150 /* SouthSquare.png */,
+				F8D045227BFF000469526CE1 /* SouthDiamond.png */,
+				F8D0436A282EB47C819143D8 /* SouthCircle.png */,
+				F8D04C837D03B145DB351D2F /* NorthTriangle.png */,
+				F8D04D7C9C0ACA6769F30D6F /* NorthSquare.png */,
+				F8D04F5489774187AD134A8F /* NorthDiamond.png */,
+				F8D04DB6B26461C4B5A120AB /* NorthCircle.png */,
+				F8D0485D2A145F89AE4B1F8F /* Blocked.png */,
+			);
+			path = Default;
+			sourceTree = "<group>";
+		};
+		F8D04D3552AE5D8FC2A43E1B /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				F8D04C0748688A6A7033B9E0 /* Default */,
+			);
+			lastKnownFileType = text;
+			path = Themes;
 			sourceTree = "<group>";
 		};
 		FB89D43C154C7D27001A0BAA /* MatchView */ = {
@@ -861,6 +905,15 @@
 				D7BFA3B2151F2AD300435C95 /* chess-640x640.jpg in Resources */,
 				D719864F155D78BB00349052 /* HowToPlay.md in Resources */,
 				FB89D43C154C7D27001A0C22 /* Localizable.strings in Resources */,
+				F8D04FCA15C230B8C399A63B /* SouthCircle.png in Resources */,
+				F8D04027C7A00D5717B08DD6 /* SouthDiamond.png in Resources */,
+				F8D04F02D027342A4E9D981E /* SouthSquare.png in Resources */,
+				F8D04945DD27D4D6780F6654 /* SouthTriangle.png in Resources */,
+				F8D0445D2BD787D044459010 /* NorthCircle.png in Resources */,
+				F8D0458F0826F3A197156CD7 /* NorthDiamond.png in Resources */,
+				F8D04D95863A93B8C25D8980 /* NorthSquare.png in Resources */,
+				F8D0449FC5E399655B54BD9D /* NorthTriangle.png in Resources */,
+				F8D04D437301EC2C4190B824 /* Blocked.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
