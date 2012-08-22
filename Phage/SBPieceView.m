@@ -46,7 +46,8 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     [super touchesEnded:touches withEvent:event];
 
-    [self toggleSelected];
+    if ([self.delegate canSelectPiece:self.piece])
+        [self toggleSelected];
 }
 
 - (void)toggleSelected {

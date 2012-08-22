@@ -10,7 +10,7 @@
 #import "PhageModel.h"
 #import "SBPieceView.h"
 
-@interface SBBoardView ()
+@interface SBBoardView () < SBPieceViewDelegate >
 
 @property (copy, nonatomic) SBBoard *board;
 @property (copy, nonatomic) NSArray *pieces;
@@ -38,10 +38,11 @@
     for (NSArray *pp in self.board.pieces) {
         for (SBPiece *p in pp) {
 
-            SBPieceView *iv = [SBPieceView objectWithPiece:p];
-            [pieces addObject:iv];
+            SBPieceView *pieceView = [SBPieceView objectWithPiece:p];
+            pieceView.delegate = self;
 
-            [self addSubview:iv];
+            [pieces addObject:pieceView];
+            [self addSubview:pieceView];
         }
     }
 
@@ -74,5 +75,10 @@
         p.center = [self.locs[loc] CGPointValue];
     }
 }
+
+- (BOOL)canSelectPiece:(SBPiece *)piece {
+    return self.board.currentPlayerIndex == piece.owner;
+}
+
 
 @end

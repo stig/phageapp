@@ -5,10 +5,17 @@
 //
 
 
-
 @class SBPiece;
 
+@protocol SBPieceViewDelegate
+
+- (BOOL)canSelectPiece:(SBPiece*)piece;
+
+@end
+
 @interface SBPieceView : UIImageView
+
+@property (weak) id<SBPieceViewDelegate> delegate;
 
 @property (readonly, nonatomic) SBPiece *piece;
 
