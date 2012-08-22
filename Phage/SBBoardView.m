@@ -8,6 +8,7 @@
 
 #import "SBBoardView.h"
 #import "PhageModel.h"
+#import "SBPieceView.h"
 
 @interface SBBoardView ()
 
@@ -39,7 +40,7 @@
             NSString *suffix = [NSStringFromClass([p class]) substringFromIndex:2];
             UIImage *img = [UIImage imageNamed:[prefix stringByAppendingString:suffix]];
 
-            UIImageView *iv = [[UIImageView alloc] initWithImage:img];
+            SBPieceView *iv = [[SBPieceView alloc] initWithImage:img];
             self.pieces[p] = iv;
 
             [self addSubview:iv];
