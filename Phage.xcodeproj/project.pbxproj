@@ -655,7 +655,6 @@
 			children = (
 				F8D04C0748688A6A7033B9E0 /* Default */,
 			);
-			lastKnownFileType = text;
 			path = Themes;
 			sourceTree = "<group>";
 		};
