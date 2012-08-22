@@ -9,15 +9,17 @@
 #import "SBBoardView.h"
 #import "PhageModel.h"
 #import "SBPieceView.h"
+#import "SBCellView.h"
 
-@interface SBBoardView () < SBPieceViewDelegate >
+@interface SBBoardView () < SBPieceViewDelegate, SBCellViewDelegate >
 
 @property (nonatomic) CGSize cellSize;
 @property (weak, nonatomic) SBPieceView *selected;
 
+
+@property (strong, nonatomic) NSDictionary *cells;
 @property (copy, nonatomic) SBBoard *board;
 @property (copy, nonatomic) NSArray *pieces;
-@property (copy, nonatomic) NSDictionary *locations;
 
 @end
 
@@ -27,7 +29,7 @@
 - (id)awakeAfterUsingCoder:(NSCoder *)aDecoder {
     self.board = [SBBoard board];
 
-    [self setupLocations];
+    [self setupCells];
     [self setupPieces];
 
     [self setNeedsLayout];
@@ -52,17 +54,24 @@
     self.pieces = pieces;
 }
 
-- (void)setupLocations {
+- (void)setupCells {
     self.cellSize = CGSizeMake(self.bounds.size.width / 8.0, self.bounds.size.height / 8.0);
 
-    NSMutableDictionary *locations = [NSMutableDictionary dictionary];
+    NSMutableDictionary *cells = [NSMutableDictionary dictionary];
 
     [self.board enumerateLocationsUsingBlock:^(SBLocation *loc) {
         CGPoint p = CGPointMake((0.5 + loc.column) * self.cellSize.width, (0.5 + loc.row) * self.cellSize.height);
-        [locations setObject:[NSValue valueWithCGPoint:p] forKey:loc];
+
+        SBCellView *cellView = [SBCellView objectWithLocation:loc];
+        cellView.delegate = self;
+        cellView.center = p;
+        [self addSubview:cellView];
+
+        [cells setObject:cellView forKey:loc];
+
     }];
 
-    self.locations = locations;
+    self.cells = cells;
 }
 
 - (void)layoutBoard:(SBBoard*)board {
@@ -74,10 +83,17 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    for (SBPieceView *p in self.pieces) {
-        SBLocation *loc = [self.board locationForPiece:p.piece];
-        p.center = [self.locations[loc] CGPointValue];
+    for (SBPieceView *pieceView in self.pieces) {
+        SBLocation *loc = [self.board locationForPiece:pieceView.piece];
+        SBCellView *cell = self.cells[loc];
+        pieceView.center = cell.center;
     }
+
+    [self.board enumerateLocationsUsingBlock:^(SBLocation *loc) {
+        SBCellView *cellView = self.cells[loc];
+        cellView.highlighted = [self.board wasLocationOccupied:loc];
+    }];
+
 }
 
 - (BOOL)canSelectPieceView:(SBPieceView *)pieceView {
@@ -95,30 +111,19 @@
 
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [super touchesEnded:touches withEvent:event];
-
+- (void)touchEndedInCellView:(SBCellView *)cellView {
     if (!self.selected) {
         NSLog(@"Touches ended but no piece selected; nothing to do");
         return;
     }
 
-    UITouch *touch = [touches anyObject];
-    CGPoint point = [touch locationInView:self];
-    SBLocation *destination = [self locationInGridFromPoint:point];
-
     SBLocation *source = [self.board locationForPiece:self.selected.piece];
+    SBLocation *destination = cellView.location;
     SBMove *move = [SBMove moveWithFrom:source to:destination];
 
     if ([self.board isLegalMove:move]) {
         [self.delegate performMove:move];
     }
-}
-
-- (SBLocation *)locationInGridFromPoint:(CGPoint)point {
-    NSUInteger col = (NSUInteger)(point.x / self.cellSize.width);
-    NSUInteger row = (NSUInteger)(point.y / self.cellSize.height);
-    return [SBLocation locationWithColumn:col row:row];
 }
 
 @end
