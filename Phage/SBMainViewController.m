@@ -14,7 +14,7 @@
 #import "SBMatchLookupViewController.h"
 #import "SBBoardView.h"
 
-@interface SBMainViewController () < SBMatchLookupViewControllerDelegate, SBMatchMakerViewControllerDelegate, SBFlipsideViewControllerDelegate, UIPopoverControllerDelegate>
+@interface SBMainViewController () < SBBoardViewDelegate, SBMatchLookupViewControllerDelegate, SBMatchMakerViewControllerDelegate, SBFlipsideViewControllerDelegate, UIPopoverControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet SBBoardView *board;
 @property (weak, nonatomic) IBOutlet UILabel *playerOne;

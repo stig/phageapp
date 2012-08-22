@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SBBoardViewDelegate
+@end
+
 @class SBBoard;
 
 @interface SBBoardView : UIView
+
+@property (weak) IBOutlet id<SBBoardViewDelegate> delegate;
 
 - (void)layoutBoard:(SBBoard*)board;
 

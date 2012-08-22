@@ -31,6 +31,9 @@
                                 <rect key="frame" x="0.0" y="73" width="320" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2" id="xfy-IU-yfa"/>
+                                </connections>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" text="It is your turn now!" textAlignment="center" autoshrinkMode="minimumFontSize" id="8d5-1H-i20">
                                 <rect key="frame" x="20" y="419" width="280" height="21"/>
@@ -297,6 +300,9 @@
     <classes>
         <class className="SBBoardView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SBBoardView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
         </class>
         <class className="SBFlipsideViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SBFlipsideViewController.h"/>
