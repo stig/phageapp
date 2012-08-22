@@ -97,6 +97,8 @@
 }
 
 - (BOOL)canSelectPieceView:(SBPieceView *)pieceView {
+    if (self.board.isGameOver)
+        return NO;
     return self.board.currentPlayerIndex == pieceView.piece.owner;
 }
 
