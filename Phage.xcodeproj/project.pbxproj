@@ -33,8 +33,6 @@
 		D76A4591151DDC7500E59146 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D76A458F151DDC7500E59146 /* InfoPlist.strings */; };
 		D77E0C8415DD88430004EFAF /* SBMatchMakerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D77E0C8315DD88430004EFAF /* SBMatchMakerViewController.m */; };
 		D7AE134815C7538400B8349B /* libPhageModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D72F239815C5F248006EFE0D /* libPhageModel.a */; };
-		D7BFA3B2151F2AD300435C89 /* SBOpponentMobilityMinimisingMovePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */; };
-		D7BFA3B2151F2AD300435C8C /* SBOpponentMobilityMinimisingMovePickerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C8B /* SBOpponentMobilityMinimisingMovePickerTest.m */; };
 		D7DD0D2B15E4475100103EE4 /* SBBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DD0D2A15E4475100103EE4 /* SBBoardView.m */; };
 		D7EA254C15E2EE02006081A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4567151DDC7500E59146 /* Foundation.framework */; };
 		D7EA255A15E2EE02006081A4 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4586151DDC7500E59146 /* SenTestingKit.framework */; };
@@ -54,14 +52,15 @@
 		F8D0458F0826F3A197156CD7 /* NorthDiamond.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04F5489774187AD134A8F /* NorthDiamond.png */; };
 		F8D049201306801F4FC99BA2 /* NSArray+Utils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8D04E9A1DE46C44EEFEEE7D /* NSArray+Utils.h */; };
 		F8D04945DD27D4D6780F6654 /* SouthTriangle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D041465C485CAD621B1C32 /* SouthTriangle.png */; };
+		F8D049FEF38D41389F177CB7 /* SBOpponentMobilityMinimisingMovePickerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C8B /* SBOpponentMobilityMinimisingMovePickerTest.m */; };
 		F8D04B71CF3EA739192B4BA9 /* SBCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D04440E13E946BC7E8DEC2 /* SBCellView.m */; };
 		F8D04D437301EC2C4190B824 /* Blocked.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D0485D2A145F89AE4B1F8F /* Blocked.png */; };
 		F8D04D95863A93B8C25D8980 /* NorthSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04D7C9C0ACA6769F30D6F /* NorthSquare.png */; };
+		F8D04DEEE68C46E1C918CE64 /* SBOpponentMobilityMinimisingMovePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */; };
 		F8D04F02D027342A4E9D981E /* SouthSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D047EC9CA8AF7E7320B150 /* SouthSquare.png */; };
 		F8D04F131B438B0F27297F54 /* NSArray+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D04C00F2FECB24B1334BB5 /* NSArray+Utils.m */; };
 		F8D04FCA15C230B8C399A63B /* SouthCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D0436A282EB47C819143D8 /* SouthCircle.png */; };
 		FB89D43C154C7D27001A0B38 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D755A48A15320B53003BB704 /* GameKit.framework */; };
-		FB89D43C154C7D27001A0BFC /* SBBotTurnEventHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BFB /* SBBotTurnEventHandler.m */; };
 		FB89D43C154C7D27001A0C0E /* SBBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3AE151F108100435C7F /* SBBoard.m */; };
 		FB89D43C154C7D27001A0C0F /* SBCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45B4151DFC4700E59146 /* SBCircle.m */; };
 		FB89D43C154C7D27001A0C10 /* SBDiamond.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45B7151DFD0000E59146 /* SBDiamond.m */; };
@@ -286,8 +285,6 @@
 		FB89D43C154C7D27001A0BEF /* SBPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPlayer.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BF1 /* SBPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPlayer.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BF2 /* SBPlayerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPlayerTest.m; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0BFA /* SBBotTurnEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBotTurnEventHandler.h; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0BFB /* SBBotTurnEventHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBotTurnEventHandler.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0C20 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0C23 /* SBFlipsideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBFlipsideViewController.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0C24 /* SBFlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBFlipsideViewController.m; sourceTree = "<group>"; };
@@ -374,6 +371,8 @@
 		D72F239A15C5F248006EFE0D /* PhageModel */ = {
 			isa = PBXGroup;
 			children = (
+				D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */,
+				D7BFA3B2151F2AD300435C8A /* SBOpponentMobilityMinimisingMovePicker.h */,
 				FB89D43C154C7D27001A0C2F /* SBMatchService.h */,
 				FB89D43C154C7D27001A0C2D /* SBMatchService.m */,
 				D76A45BD151DFD1A00E59146 /* SBTriangle.m */,
@@ -415,6 +414,7 @@
 		D72F23AD15C5F248006EFE0D /* PhageModelTests */ = {
 			isa = PBXGroup;
 			children = (
+				D7BFA3B2151F2AD300435C8B /* SBOpponentMobilityMinimisingMovePickerTest.m */,
 				FB89D43C154C7D27001A0C30 /* SBMatchServiceTest.m */,
 				FB89D43C154C7D27001A0BF2 /* SBPlayerTest.m */,
 				D73965B1151FB10600118094 /* SBPieceTest.m */,
@@ -502,7 +502,6 @@
 				D76A4577151DDC7500E59146 /* MainStoryboard_iPhone.storyboard */,
 				D76A457A151DDC7500E59146 /* MainStoryboard_iPad.storyboard */,
 				D76A456C151DDC7500E59146 /* Supporting Files */,
-				FB89D43C154C7D27001A0BFD /* Bots */,
 				FB89D43C154C7D27001A0C29 /* Utils */,
 				F8D04D3552AE5D8FC2A43E1B /* Themes */,
 			);
@@ -525,7 +524,6 @@
 		D76A458C151DDC7500E59146 /* PhageTests */ = {
 			isa = PBXGroup;
 			children = (
-				D7BFA3B2151F2AD300435C8B /* SBOpponentMobilityMinimisingMovePickerTest.m */,
 				D76A458D151DDC7500E59146 /* Supporting Files */,
 			);
 			path = PhageTests;
@@ -608,17 +606,6 @@
 				F8D04C0748688A6A7033B9E0 /* Default */,
 			);
 			path = Themes;
-			sourceTree = "<group>";
-		};
-		FB89D43C154C7D27001A0BFD /* Bots */ = {
-			isa = PBXGroup;
-			children = (
-				D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */,
-				D7BFA3B2151F2AD300435C8A /* SBOpponentMobilityMinimisingMovePicker.h */,
-				FB89D43C154C7D27001A0BFB /* SBBotTurnEventHandler.m */,
-				FB89D43C154C7D27001A0BFA /* SBBotTurnEventHandler.h */,
-			);
-			path = Bots;
 			sourceTree = "<group>";
 		};
 		FB89D43C154C7D27001A0C29 /* Utils */ = {
@@ -914,6 +901,7 @@
 				FB89D43C154C7D27001A0C17 /* SBSquare.m in Sources */,
 				FB89D43C154C7D27001A0C18 /* SBTriangle.m in Sources */,
 				FB89D43C154C7D27001A0C2E /* SBMatchService.m in Sources */,
+				F8D04DEEE68C46E1C918CE64 /* SBOpponentMobilityMinimisingMovePicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -929,6 +917,7 @@
 				FB89D43C154C7D27001A0C1E /* SBPieceTest.m in Sources */,
 				FB89D43C154C7D27001A0C1F /* SBPlayerTest.m in Sources */,
 				FB89D43C154C7D27001A0C31 /* SBMatchServiceTest.m in Sources */,
+				F8D049FEF38D41389F177CB7 /* SBOpponentMobilityMinimisingMovePickerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -938,8 +927,6 @@
 			files = (
 				D76A4572151DDC7500E59146 /* main.m in Sources */,
 				D76A4576151DDC7500E59146 /* SBAppDelegate.m in Sources */,
-				D7BFA3B2151F2AD300435C89 /* SBOpponentMobilityMinimisingMovePicker.m in Sources */,
-				FB89D43C154C7D27001A0BFC /* SBBotTurnEventHandler.m in Sources */,
 				FB89D43C154C7D27001A0C25 /* SBFlipsideViewController.m in Sources */,
 				FB89D43C154C7D27001A0C28 /* SBMainViewController.m in Sources */,
 				FB89D43C154C7D27001A0C2C /* SBAlertView.m in Sources */,
@@ -955,7 +942,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7BFA3B2151F2AD300435C8C /* SBOpponentMobilityMinimisingMovePickerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,3 +19,4 @@
 #import "SBSquare.h"
 #import "SBTriangle.h"
 #import "SBMatchService.h"
+#import "SBOpponentMobilityMinimisingMovePicker.h"
