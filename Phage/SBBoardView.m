@@ -16,7 +16,7 @@
 
 @property (copy, nonatomic) SBBoard *board;
 @property (copy, nonatomic) NSArray *pieces;
-@property (copy, nonatomic) NSDictionary *locs;
+@property (copy, nonatomic) NSDictionary *locations;
 
 @end
 
@@ -54,14 +54,14 @@
 - (void)setupLocations {
     CGSize sz = CGSizeMake(self.bounds.size.width / 8.0, self.bounds.size.height / 8.0);
 
-    NSMutableDictionary *locs = [NSMutableDictionary dictionary];
+    NSMutableDictionary *locations = [NSMutableDictionary dictionary];
 
     [self.board enumerateLocationsUsingBlock:^(SBLocation *loc) {
         CGPoint p = CGPointMake((0.5 + loc.column) * sz.width, (0.5 + loc.row) * sz.height);
-        [locs setObject:[NSValue valueWithCGPoint:p] forKey:loc];
+        [locations setObject:[NSValue valueWithCGPoint:p] forKey:loc];
     }];
 
-    self.locs = locs;
+    self.locations = locations;
 }
 
 - (void)layoutBoard:(SBBoard*)board {
@@ -74,7 +74,7 @@
 
     for (SBPieceView *p in self.pieces) {
         SBLocation *loc = [self.board locationForPiece:p.piece];
-        p.center = [self.locs[loc] CGPointValue];
+        p.center = [self.locations[loc] CGPointValue];
     }
 }
 
