@@ -6,10 +6,12 @@
 
 
 @class SBPiece;
+@class SBPieceView;
 
 @protocol SBPieceViewDelegate
 
-- (BOOL)canSelectPiece:(SBPiece*)piece;
+- (BOOL)canSelectPieceView:(SBPieceView *)pieceView;
+- (void)didSelectPieceView:(SBPieceView *)pieceView;
 
 @end
 

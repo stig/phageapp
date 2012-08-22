@@ -9,9 +9,6 @@
 #import "SBPiece.h"
 
 @interface SBPieceView ()
-
-@property (nonatomic) BOOL selected;
-
 @end
 
 @implementation SBPieceView
@@ -46,17 +43,14 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     [super touchesEnded:touches withEvent:event];
 
-    if ([self.delegate canSelectPiece:self.piece])
-        [self toggleSelected];
+    if ([self.delegate canSelectPieceView:self]) {
+        [self.delegate didSelectPieceView:self];
+    }
 }
 
-- (void)toggleSelected {
-    self.selected = !self.selected;
-}
-
-- (void)setSelected:(BOOL)selected {
-    _selected = selected;
-    self.backgroundColor = selected ? [UIColor redColor] : [UIColor clearColor];
+- (void)setHighlighted:(BOOL)highlighted {
+    [super setHighlighted:highlighted];
+    self.backgroundColor = highlighted ? [UIColor redColor] : [UIColor clearColor];
 }
 
 

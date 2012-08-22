@@ -12,6 +12,8 @@
 
 @interface SBBoardView () < SBPieceViewDelegate >
 
+@property (weak, nonatomic) SBPieceView *selected;
+
 @property (copy, nonatomic) SBBoard *board;
 @property (copy, nonatomic) NSArray *pieces;
 @property (copy, nonatomic) NSDictionary *locs;
@@ -76,8 +78,16 @@
     }
 }
 
-- (BOOL)canSelectPiece:(SBPiece *)piece {
-    return self.board.currentPlayerIndex == piece.owner;
+- (BOOL)canSelectPieceView:(SBPieceView *)pieceView {
+    return self.board.currentPlayerIndex == pieceView.piece.owner;
+}
+
+- (void)didSelectPieceView:(SBPieceView *)pieceView {
+    if (self.selected)
+        self.selected.highlighted = NO;
+
+    self.selected = pieceView;
+    self.selected.highlighted = YES;
 }
 
 
