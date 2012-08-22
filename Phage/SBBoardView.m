@@ -12,9 +12,9 @@
 
 @interface SBBoardView ()
 
-@property (strong, nonatomic) SBBoard *board;
-@property (strong, nonatomic) NSMutableDictionary *pieces;
-@property (strong, nonatomic) NSMutableDictionary *locs;
+@property (copy, nonatomic) SBBoard *board;
+@property (copy, nonatomic) NSArray *pieces;
+@property (copy, nonatomic) NSDictionary *locs;
 
 @end
 
@@ -24,32 +24,41 @@
 - (id)awakeAfterUsingCoder:(NSCoder *)aDecoder {
     self.board = [SBBoard board];
 
-    CGSize sz = CGSizeMake(self.bounds.size.width / 8.0, self.bounds.size.height / 8.0);
+    [self setupLocations];
+    [self setupPieces];
 
-    self.locs = [NSMutableDictionary dictionary];
-    [self.board enumerateLocationsUsingBlock:^(SBLocation *loc) {
-        CGPoint p = CGPointMake((0.5 + loc.column) * sz.width, (0.5 + loc.row) * sz.height);
-        [self.locs setObject:[NSValue valueWithCGPoint:p] forKey:loc];
-    }];
+    [self setNeedsLayout];
 
-    self.pieces = [NSMutableDictionary dictionary];
+    return [super awakeAfterUsingCoder:aDecoder];
+}
+
+- (void)setupPieces {
+    NSMutableArray *pieces = [NSMutableArray array];
 
     for (NSArray *pp in self.board.pieces) {
         for (SBPiece *p in pp) {
-            NSString *prefix = p.owner == 0 ? @"South" : @"North";
-            NSString *suffix = [NSStringFromClass([p class]) substringFromIndex:2];
-            UIImage *img = [UIImage imageNamed:[prefix stringByAppendingString:suffix]];
 
-            SBPieceView *iv = [[SBPieceView alloc] initWithImage:img];
-            self.pieces[p] = iv;
+            SBPieceView *iv = [SBPieceView objectWithPiece:p];
+            [pieces addObject:iv];
 
             [self addSubview:iv];
         }
     }
-    
-    [self setNeedsLayout];
 
-    return [super awakeAfterUsingCoder:aDecoder];
+    self.pieces = pieces;
+}
+
+- (void)setupLocations {
+    CGSize sz = CGSizeMake(self.bounds.size.width / 8.0, self.bounds.size.height / 8.0);
+
+    NSMutableDictionary *locs = [NSMutableDictionary dictionary];
+
+    [self.board enumerateLocationsUsingBlock:^(SBLocation *loc) {
+        CGPoint p = CGPointMake((0.5 + loc.column) * sz.width, (0.5 + loc.row) * sz.height);
+        [locs setObject:[NSValue valueWithCGPoint:p] forKey:loc];
+    }];
+
+    self.locs = locs;
 }
 
 - (void)layoutBoard:(SBBoard*)board {
@@ -60,10 +69,9 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    for (SBPiece *p in self.pieces) {
-        SBLocation *loc = [self.board locationForPiece:p];
-        UIImageView *iv = self.pieces[p];
-        iv.center = [self.locs[loc] CGPointValue];
+    for (SBPieceView *p in self.pieces) {
+        SBLocation *loc = [self.board locationForPiece:p.piece];
+        p.center = [self.locs[loc] CGPointValue];
     }
 }
 

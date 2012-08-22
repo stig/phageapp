@@ -6,5 +6,12 @@
 
 
 
+@class SBPiece;
+
 @interface SBPieceView : UIImageView
+
+@property (readonly, nonatomic) SBPiece *piece;
+
++ (id)objectWithPiece:(SBPiece *)piece;
+
 @end

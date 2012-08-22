@@ -6,6 +6,7 @@
 
 
 #import "SBPieceView.h"
+#import "SBPiece.h"
 
 @interface SBPieceView ()
 
@@ -14,6 +15,25 @@
 @end
 
 @implementation SBPieceView
+
+- (id)initWithPiece:(SBPiece *)piece {
+    NSParameterAssert(piece);
+
+    NSString *prefix = piece.owner == 0 ? @"South" : @"North";
+    NSString *suffix = [NSStringFromClass([piece class]) substringFromIndex:2];
+    UIImage *img = [UIImage imageNamed:[prefix stringByAppendingString:suffix]];
+
+    self = [self initWithImage:img];
+    if (self) {
+        _piece = piece;
+    }
+    return self;
+}
+
++ (id)objectWithPiece:(SBPiece *)piece {
+    return [[SBPieceView alloc] initWithPiece:piece];
+}
+
 
 - (id)initWithImage:(UIImage *)image {
     self = [super initWithImage:image];
