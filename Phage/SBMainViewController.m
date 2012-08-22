@@ -211,4 +211,11 @@
     [av show];
 }
 
+- (void)performMove:(SBMove *)move {
+    [self.match performMove:move completionHandler:^(NSError *error) {
+        [self layoutMatch];
+    }];
+}
+
+
 @end

@@ -6,9 +6,12 @@
 //
 //
 
-#import <UIKit/UIKit.h>
+@class SBMove;
 
 @protocol SBBoardViewDelegate
+
+- (void)performMove:(SBMove*)move;
+
 @end
 
 @class SBBoard;

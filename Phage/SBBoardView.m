@@ -67,6 +67,7 @@
 
 - (void)layoutBoard:(SBBoard*)board {
     self.board = board;
+    self.selected = nil;
     [self setNeedsLayout];
 }
 
@@ -84,11 +85,14 @@
 }
 
 - (void)didSelectPieceView:(SBPieceView *)pieceView {
-    if (self.selected)
-        self.selected.highlighted = NO;
-
     self.selected = pieceView;
-    self.selected.highlighted = YES;
+}
+
+- (void)setSelected:(SBPieceView *)selected {
+    if (_selected) _selected.highlighted = NO;
+    _selected = selected;
+    if (_selected) _selected.highlighted = YES;
+
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -101,10 +105,14 @@
 
     UITouch *touch = [touches anyObject];
     CGPoint point = [touch locationInView:self];
-    SBLocation *location = [self locationInGridFromPoint:point];
+    SBLocation *destination = [self locationInGridFromPoint:point];
 
-    NSLog(@"location = %@", location);
+    SBLocation *source = [self.board locationForPiece:self.selected.piece];
+    SBMove *move = [SBMove moveWithFrom:source to:destination];
 
+    if ([self.board isLegalMove:move]) {
+        [self.delegate performMove:move];
+    }
 }
 
 - (SBLocation *)locationInGridFromPoint:(CGPoint)point {
