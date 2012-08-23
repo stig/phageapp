@@ -32,7 +32,7 @@
 	
 	[self.webView loadRequest:request];
 
-    
+    [TestFlight passCheckpoint:@"VIEW_HOW_TO"];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

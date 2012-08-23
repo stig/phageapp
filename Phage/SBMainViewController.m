@@ -235,6 +235,9 @@
         [self.matchService saveMatch:self.match];
         [self layoutMatch];
     }];
+
+    if (self.match.isGameOver) [TestFlight passCheckpoint:@"GAME_OVER"];
+
 }
 
 - (BOOL)shouldAcceptUserInput {
