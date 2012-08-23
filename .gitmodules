@@ -1,3 +1,6 @@
 [submodule "libs/ocmock"]
 	path = libs/ocmock
 	url = git@github.com:stig/ocmock.git
+[submodule "libs/MBProgressHUD"]
+	path = libs/MBProgressHUD
+	url = git@github.com:stig/MBProgressHUD.git
