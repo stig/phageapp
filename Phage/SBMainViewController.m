@@ -123,7 +123,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showAlternate"]) {
+    if ([[segue identifier] isEqualToString:@"showHowto"]) {
         [[segue destinationViewController] setDelegate:self];
 
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
@@ -148,7 +148,7 @@
         [self.howtoPopoverController dismissPopoverAnimated:YES];
         self.howtoPopoverController = nil;
     } else {
-        [self performSegueWithIdentifier:@"showAlternate" sender:sender];
+        [self performSegueWithIdentifier:@"showHowto" sender:sender];
     }
 }
 

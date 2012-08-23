@@ -54,7 +54,7 @@
                                 <items>
                                     <barButtonItem systemItem="search" id="L00-D6-46p">
                                         <connections>
-                                            <segue destination="6" kind="modal" identifier="showAlternate" modalTransitionStyle="flipHorizontal" id="Op4-L8-Z9O"/>
+                                            <segue destination="6" kind="modal" identifier="showHowto" modalTransitionStyle="flipHorizontal" id="Op4-L8-Z9O"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="pbw-uC-ncD"/>
