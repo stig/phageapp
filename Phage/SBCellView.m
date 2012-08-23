@@ -11,8 +11,9 @@
 @implementation SBCellView
 
 - (id)initWithLocation:(SBLocation *)location {
-    UIImage *img = [UIImage imageNamed:@"Blocked"];
-    self = [self initWithImage:nil highlightedImage:img];
+    UIImage *clear = [UIImage imageNamed:@"CellClear"];
+    UIImage *blocked = [UIImage imageNamed:@"CellBlocked"];
+    self = [self initWithImage:clear highlightedImage:blocked];
     if (self) {
         self.userInteractionEnabled = YES;
         _location = location;
