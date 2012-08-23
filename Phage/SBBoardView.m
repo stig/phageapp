@@ -104,11 +104,23 @@
 }
 
 - (BOOL)canSelectPieceView:(SBPieceView *)pieceView {
+    if (self.board.currentPlayerIndex != pieceView.piece.owner)
+        return NO;
+
     if (![self.delegate shouldAcceptUserInput])
         return NO;
+
     if (self.board.isGameOver)
         return NO;
-    return self.board.currentPlayerIndex == pieceView.piece.owner;
+
+    __block BOOL canMove = NO;
+    [self.board enumerateLegalDestinationsForPiece:pieceView.piece
+                                         withBlock:^(SBLocation *location, BOOL *stop) {
+                                             canMove = YES;
+                                             *stop = YES;
+                                         }];
+
+    return canMove;
 }
 
 - (void)didSelectPieceView:(SBPieceView *)pieceView {
