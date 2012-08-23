@@ -16,10 +16,9 @@
 @property (nonatomic) CGSize cellSize;
 @property (weak, nonatomic) SBPieceView *selected;
 
-
 @property (strong, nonatomic) NSDictionary *cells;
-@property (copy, nonatomic) SBBoard *board;
-@property (copy, nonatomic) NSArray *pieces;
+@property (strong, nonatomic) SBBoard *board;
+@property (strong, nonatomic) NSArray *pieces;
 
 @end
 
@@ -67,8 +66,7 @@
         cellView.center = p;
         [self addSubview:cellView];
 
-        [cells setObject:cellView forKey:loc];
-
+        cells[loc] = cellView;
     }];
 
     self.cells = cells;
@@ -91,14 +89,14 @@
             pieceView.center = cell.center;
         }
 
-        [self.board enumerateLocationsUsingBlock:^(SBLocation *loc) {
-            SBCellView *cellView = self.cells[loc];
-            cellView.blocked = [self.board wasLocationOccupied:loc];
-        }];
-
     }                completion:^(BOOL finished) {
         if (finished)
             [self.delegate didLayoutBoard];
+    }];
+
+    [self.board enumerateLocationsUsingBlock:^(SBLocation *loc) {
+        SBCellView *cellView = self.cells[loc];
+        cellView.blocked = [self.board wasLocationOccupied:loc];
     }];
 
 }
