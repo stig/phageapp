@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *playerTwo;
 @property (weak, nonatomic) IBOutlet UILabel *message;
 
+@property (strong, nonatomic) SBMatchService *matchService;
 @property (strong, nonatomic) UIPopoverController *flipsidePopoverController;
 @property (strong, nonatomic) SBMatch *match;
 
@@ -39,11 +40,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.matchService = [SBMatchService matchService];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     // Called any time the view appears
-
     [self ensureMatch];
 }
 
@@ -77,7 +78,7 @@
 
 - (void)matchLookupViewController:(SBMatchLookupViewController *)controller didFindMatch:(SBMatch *)match {
     [self matchLookupViewControllerDidFinish:controller];
-    [[SBMatchService matchService] saveMatch:self.match];
+    [self.matchService saveMatch:self.match];
     self.match = match;
 }
 
@@ -86,7 +87,7 @@
 
 - (void)matchMakerViewController:(SBMatchMakerViewController *)controller didFindMatch:(SBMatch *)match {
     [self matchMakerViewControllerDidFinish:controller];
-    [[SBMatchService matchService] saveMatch:self.match];
+    [self.matchService saveMatch:self.match];
     self.match = match;
 }
 
@@ -148,7 +149,7 @@
 
 - (void)ensureMatch {
     if (nil == self.match) {
-        NSArray *savedMatches = [[SBMatchService new] activeMatches];
+        NSArray *savedMatches = [self.matchService activeMatches];
         if (savedMatches.count > 0) {
             self.match = [savedMatches objectAtIndex:0];
 
@@ -188,9 +189,9 @@
         av = [[SBAlertView alloc] initWithTitle:@"Delete Match"
                                         message:@"Really delete this match?"
                                      completion:^(NSInteger buttonIndex) {
-                                         [[SBMatchService new] deleteMatch:self.match];
+                                         [self.matchService deleteMatch:self.match];
                                          self.match = nil;
-                                         [self performSelector:@selector(ensureMatch) withObject:nil afterDelay:0.5];
+                                         [self performSelector:@selector(ensureMatch) withObject:nil afterDelay:0.0];
                                      }
                               cancelButtonTitle:@"Yes"
                               otherButtonTitles:@"No", nil];
@@ -201,7 +202,7 @@
                                      completion:^(NSInteger buttonIndex) {
                                          if (0 == buttonIndex) {
                                              [self.match forfeit];
-                                             [[SBMatchService new] saveMatch:self.match];
+                                             [self.matchService saveMatch:self.match];
                                              [self layoutMatch];
                                          }
                                      }
@@ -213,6 +214,7 @@
 
 - (void)performMove:(SBMove *)move {
     [self.match performMove:move completionHandler:^(NSError *error) {
+        [self.matchService saveMatch:self.match];
         [self layoutMatch];
     }];
 }
