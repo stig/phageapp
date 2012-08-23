@@ -46,7 +46,10 @@
 
 - (void)setBlocked:(BOOL)blocked {
     _blocked = blocked;
-    self.foreground.alpha = blocked ? 1.0 : 0.0;
+
+    [UIView animateWithDuration:ANIM_DURATION animations:^{
+        self.foreground.alpha = blocked ? 1.0 : 0.0;
+    }];
 }
 
 

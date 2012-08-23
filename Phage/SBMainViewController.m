@@ -185,7 +185,7 @@
 
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         NSLog(@"Sleeping a bit..");
-        [NSThread sleepForTimeInterval:3.0];
+        [NSThread sleepForTimeInterval: 2 * ANIM_DURATION];
 
         SBOpponentMobilityMinimisingMovePicker *pm = [[SBOpponentMobilityMinimisingMovePicker alloc] init];
         SBMove *move = [pm moveForState:board];

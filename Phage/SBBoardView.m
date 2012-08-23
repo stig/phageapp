@@ -83,7 +83,8 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    [UIView animateWithDuration:0.7 animations:^{
+    [UIView animateWithDuration:ANIM_DURATION
+                     animations:^{
         for (SBPieceView *pieceView in self.pieces) {
             SBLocation *loc = [self.board locationForPiece:pieceView.piece];
             SBCellView *cell = self.cells[loc];
@@ -95,7 +96,7 @@
             cellView.blocked = [self.board wasLocationOccupied:loc];
         }];
 
-    } completion:^(BOOL finished) {
+    }                completion:^(BOOL finished) {
         if (finished)
             [self.delegate didLayoutBoard];
     }];
