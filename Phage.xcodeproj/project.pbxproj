@@ -18,7 +18,6 @@
 		D72F23B215C5F248006EFE0D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D72F23B015C5F248006EFE0D /* InfoPlist.strings */; };
 		D72F242115C5F750006EFE0D /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C9D /* libOCMock.a */; };
 		D74D65BF15E3128300A69FC0 /* libUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EA254B15E2EE02006081A4 /* libUtils.a */; };
-		D755A48B15320B53003BB704 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D755A48A15320B53003BB704 /* GameKit.framework */; };
 		D76A4566151DDC7500E59146 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4565151DDC7500E59146 /* UIKit.framework */; };
 		D76A4568151DDC7500E59146 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4567151DDC7500E59146 /* Foundation.framework */; };
 		D76A456A151DDC7500E59146 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4569151DDC7500E59146 /* CoreGraphics.framework */; };
@@ -61,7 +60,6 @@
 		F8D04F02D027342A4E9D981E /* SouthSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D047EC9CA8AF7E7320B150 /* SouthSquare.png */; };
 		F8D04F131B438B0F27297F54 /* NSArray+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D04C00F2FECB24B1334BB5 /* NSArray+Utils.m */; };
 		F8D04FCA15C230B8C399A63B /* SouthCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D0436A282EB47C819143D8 /* SouthCircle.png */; };
-		FB89D43C154C7D27001A0B38 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D755A48A15320B53003BB704 /* GameKit.framework */; };
 		FB89D43C154C7D27001A0C0E /* SBBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3AE151F108100435C7F /* SBBoard.m */; };
 		FB89D43C154C7D27001A0C0F /* SBCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45B4151DFC4700E59146 /* SBCircle.m */; };
 		FB89D43C154C7D27001A0C10 /* SBDiamond.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45B7151DFD0000E59146 /* SBDiamond.m */; };
@@ -81,7 +79,7 @@
 		FB89D43C154C7D27001A0C1E /* SBPieceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D73965B1151FB10600118094 /* SBPieceTest.m */; };
 		FB89D43C154C7D27001A0C1F /* SBPlayerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BF2 /* SBPlayerTest.m */; };
 		FB89D43C154C7D27001A0C22 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C21 /* Localizable.strings */; };
-		FB89D43C154C7D27001A0C25 /* SBFlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C24 /* SBFlipsideViewController.m */; };
+		FB89D43C154C7D27001A0C25 /* SBHowtoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C24 /* SBHowtoViewController.m */; };
 		FB89D43C154C7D27001A0C28 /* SBMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C27 /* SBMainViewController.m */; };
 		FB89D43C154C7D27001A0C2C /* SBAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C2B /* SBAlertView.m */; };
 		FB89D43C154C7D27001A0C2E /* SBMatchService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C2D /* SBMatchService.m */; };
@@ -208,7 +206,6 @@
 		D72F23AF15C5F248006EFE0D /* PhageModelTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PhageModelTests-Info.plist"; sourceTree = "<group>"; };
 		D72F23B115C5F248006EFE0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D73965B1151FB10600118094 /* SBPieceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPieceTest.m; sourceTree = "<group>"; };
-		D755A48A15320B53003BB704 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		D76A4561151DDC7500E59146 /* Phage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Phage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D76A4565151DDC7500E59146 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D76A4567151DDC7500E59146 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -288,8 +285,8 @@
 		FB89D43C154C7D27001A0BF1 /* SBPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPlayer.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BF2 /* SBPlayerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPlayerTest.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0C20 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0C23 /* SBFlipsideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBFlipsideViewController.h; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0C24 /* SBFlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBFlipsideViewController.m; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0C23 /* SBHowtoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBHowtoViewController.h; sourceTree = "<group>"; };
+		FB89D43C154C7D27001A0C24 /* SBHowtoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBHowtoViewController.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0C26 /* SBMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMainViewController.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0C27 /* SBMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMainViewController.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0C2A /* SBAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAlertView.h; sourceTree = "<group>"; };
@@ -330,7 +327,6 @@
 				D7FDA3A4156DAA8F00E65C5E /* libTestFlight.a in Frameworks */,
 				D7FDA3A2156DAA4700E65C5E /* libz.dylib in Frameworks */,
 				536BE854153E17F000750F54 /* QuartzCore.framework in Frameworks */,
-				D755A48B15320B53003BB704 /* GameKit.framework in Frameworks */,
 				D76A4566151DDC7500E59146 /* UIKit.framework in Frameworks */,
 				D76A4568151DDC7500E59146 /* Foundation.framework in Frameworks */,
 				D76A456A151DDC7500E59146 /* CoreGraphics.framework in Frameworks */,
@@ -344,7 +340,6 @@
 				D76A4587151DDC7500E59146 /* SenTestingKit.framework in Frameworks */,
 				D76A4588151DDC7500E59146 /* UIKit.framework in Frameworks */,
 				D76A4589151DDC7500E59146 /* Foundation.framework in Frameworks */,
-				FB89D43C154C7D27001A0B38 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,7 +468,6 @@
 				D7FDA3A1156DAA4700E65C5E /* libz.dylib */,
 				D7BFA3B2151F2AD300435C96 /* OCMock.xcodeproj */,
 				536BE853153E17F000750F54 /* QuartzCore.framework */,
-				D755A48A15320B53003BB704 /* GameKit.framework */,
 				D76A4565151DDC7500E59146 /* UIKit.framework */,
 				D76A4567151DDC7500E59146 /* Foundation.framework */,
 				D76A4569151DDC7500E59146 /* CoreGraphics.framework */,
@@ -495,8 +489,8 @@
 				F8D04A5E3FC58C124F077A44 /* SBMatchLookupViewController.h */,
 				FB89D43C154C7D27001A0C27 /* SBMainViewController.m */,
 				FB89D43C154C7D27001A0C26 /* SBMainViewController.h */,
-				FB89D43C154C7D27001A0C24 /* SBFlipsideViewController.m */,
-				FB89D43C154C7D27001A0C23 /* SBFlipsideViewController.h */,
+				FB89D43C154C7D27001A0C24 /* SBHowtoViewController.m */,
+				FB89D43C154C7D27001A0C23 /* SBHowtoViewController.h */,
 				D77E0C8215DD88430004EFAF /* SBMatchMakerViewController.h */,
 				D77E0C8315DD88430004EFAF /* SBMatchMakerViewController.m */,
 				D76A4574151DDC7500E59146 /* SBAppDelegate.h */,
@@ -931,7 +925,7 @@
 			files = (
 				D76A4572151DDC7500E59146 /* main.m in Sources */,
 				D76A4576151DDC7500E59146 /* SBAppDelegate.m in Sources */,
-				FB89D43C154C7D27001A0C25 /* SBFlipsideViewController.m in Sources */,
+				FB89D43C154C7D27001A0C25 /* SBHowtoViewController.m in Sources */,
 				FB89D43C154C7D27001A0C28 /* SBMainViewController.m in Sources */,
 				FB89D43C154C7D27001A0C2C /* SBAlertView.m in Sources */,
 				D77E0C8415DD88430004EFAF /* SBMatchMakerViewController.m in Sources */,

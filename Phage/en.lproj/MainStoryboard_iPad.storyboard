@@ -29,7 +29,7 @@
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="5" kind="popover" identifier="showAlternate" popoverAnchorBarButtonItem="15" id="22">
+                        <segue destination="5" kind="popover" identifier="showHowto" popoverAnchorBarButtonItem="15" id="22">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                             <popoverPassthroughViews/>
                         </segue>
@@ -41,7 +41,7 @@
         <scene sceneID="7">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6" sceneMemberID="firstResponder"/>
-                <viewController id="5" customClass="SBFlipsideViewController" sceneMemberID="viewController">
+                <viewController id="5" customClass="SBHowtoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,8 +69,8 @@
         </scene>
     </scenes>
     <classes>
-        <class className="SBFlipsideViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBFlipsideViewController.h"/>
+        <class className="SBHowtoViewController+" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBHowtoViewController+.h"/>
             <relationships>
                 <relationship kind="action" name="done:"/>
                 <relationship kind="outlet" name="delegate"/>

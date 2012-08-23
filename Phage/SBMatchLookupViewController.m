@@ -14,6 +14,7 @@
 @interface SBMatchLookupViewController () < UITableViewDataSource, UITableViewDelegate >
 @property (strong, nonatomic) NSArray *sections;
 @property (strong, nonatomic) NSArray *titles;
+@property (strong, nonatomic) NSArray *checkpoints;
 @end
 
 @implementation SBMatchLookupViewController
@@ -25,6 +26,11 @@
     self.titles = @[
         NSLocalizedString(@"Active Matches", @"Table Vie Group Title"),
         NSLocalizedString(@"Finished Matches", @"Table View Group Title")
+    ];
+
+    self.checkpoints = @[
+        @"LOAD_ACTIVE_MATCH",
+        @"LOAD_FINISHED_MATCH"
     ];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -113,6 +119,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [TestFlight passCheckpoint:[self.checkpoints objectAtIndex:indexPath.section]];
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     SBMatch *match = [[self.sections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     [self.delegate matchLookupViewController:self didFindMatch:match];

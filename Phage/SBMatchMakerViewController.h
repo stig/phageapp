@@ -11,6 +11,9 @@
 @class SBMatchMakerViewController;
 @class SBMatch;
 
+static NSString *const CREATE_ONE_PLAYER_MATCH = @"CREATE_ONE_PLAYER_MATCH";
+static NSString *const CREATE_TWO_PLAYER_MATCH = @"CREATE_TWO_PLAYER_MATCH";
+
 @protocol SBMatchMakerViewControllerDelegate
 - (void)matchMakerViewControllerDidFinish:(SBMatchMakerViewController *)controller;
 - (void)matchMakerViewController:(SBMatchMakerViewController *)controller didFindMatch:(SBMatch*)match;

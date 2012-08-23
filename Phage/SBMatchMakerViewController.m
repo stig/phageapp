@@ -44,6 +44,8 @@
 }
 
 - (IBAction)startOnePlayerMatch:(id)sender {
+    [TestFlight passCheckpoint:CREATE_ONE_PLAYER_MATCH];
+
     SBPlayer *bot = [SBPlayer playerWithAlias:@"Sgt Pepper" human:NO];
     SBPlayer *human = [SBPlayer playerWithAlias:self.soloPlayer.text human:YES];
     SBMatch *match = 1 == self.soloPlayerStarts.selectedSegmentIndex
@@ -53,6 +55,8 @@
 }
 
 - (IBAction)startTwoPlayerMatch:(id)sender {
+    [TestFlight passCheckpoint:CREATE_TWO_PLAYER_MATCH];
+
     SBPlayer *two = [SBPlayer playerWithAlias:self.twoPlayer.text human:YES];
     SBPlayer *one = [SBPlayer playerWithAlias:self.onePlayer.text human:YES];
     SBMatch *match = [SBMatch matchWithPlayerOne:one two:two];
