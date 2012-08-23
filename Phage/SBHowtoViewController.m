@@ -1,20 +1,20 @@
 //
-//  SBFlipsideViewController.m
+//  SBHowtoViewController+.m
 //  Phage
 //
 //  Created by Stig Brautaset on 31/07/2012.
 //
 //
 
-#import "SBFlipsideViewController.h"
+#import "SBHowtoViewController.h"
 
-@interface SBFlipsideViewController ()
+@interface SBHowtoViewController ()
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
-@implementation SBFlipsideViewController
+@implementation SBHowtoViewController
 
 - (void)awakeFromNib
 {
@@ -56,7 +56,7 @@
 
 - (IBAction)done:(id)sender
 {
-    [self.delegate flipsideViewControllerDidFinish:self];
+    [self.delegate howtoViewControllerDidFinish:self];
 }
 
 @end

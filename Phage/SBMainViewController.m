@@ -9,12 +9,12 @@
 #import "SBMainViewController.h"
 #import "PhageModel.h"
 #import "SBAlertView.h"
-#import "SBFlipsideViewController.h"
+#import "SBHowtoViewController.h"
 #import "SBMatchMakerViewController.h"
 #import "SBMatchLookupViewController.h"
 #import "SBBoardView.h"
 
-@interface SBMainViewController () < SBBoardViewDelegate, SBMatchLookupViewControllerDelegate, SBMatchMakerViewControllerDelegate, SBFlipsideViewControllerDelegate, UIPopoverControllerDelegate>
+@interface SBMainViewController () < SBBoardViewDelegate, SBMatchLookupViewControllerDelegate, SBMatchMakerViewControllerDelegate, SBHowtoViewControllerDelegate, UIPopoverControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet SBBoardView *board;
 @property (weak, nonatomic) IBOutlet UILabel *playerOne;
@@ -23,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 @property (strong, nonatomic) SBMatchService *matchService;
-@property (strong, nonatomic) UIPopoverController *flipsidePopoverController;
+@property (strong, nonatomic) UIPopoverController *howtoPopoverController;
 @property (strong, nonatomic) SBMatch *match;
 
 - (IBAction)trashMatch:(id)sender;
@@ -102,21 +102,21 @@
     }
 }
 
-#pragma mark - Flipside View Controller
+#pragma mark - Howto View Controller
 
-- (void)flipsideViewControllerDidFinish:(SBFlipsideViewController *)controller
+- (void)howtoViewControllerDidFinish:(SBHowtoViewController *)controller
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         [self dismissModalViewControllerAnimated:YES];
     } else {
-        [self.flipsidePopoverController dismissPopoverAnimated:YES];
-        self.flipsidePopoverController = nil;
+        [self.howtoPopoverController dismissPopoverAnimated:YES];
+        self.howtoPopoverController = nil;
     }
 }
 
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+- (void)howtoControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
-    self.flipsidePopoverController = nil;
+    self.howtoPopoverController = nil;
 }
 
 #pragma mark - Our Methods
@@ -128,7 +128,7 @@
 
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
             UIPopoverController *popoverController = [(UIStoryboardPopoverSegue *)segue popoverController];
-            self.flipsidePopoverController = popoverController;
+            self.howtoPopoverController = popoverController;
             popoverController.delegate = self;
         }
 
@@ -144,9 +144,9 @@
 
 - (IBAction)togglePopover:(id)sender
 {
-    if (self.flipsidePopoverController) {
-        [self.flipsidePopoverController dismissPopoverAnimated:YES];
-        self.flipsidePopoverController = nil;
+    if (self.howtoPopoverController) {
+        [self.howtoPopoverController dismissPopoverAnimated:YES];
+        self.howtoPopoverController = nil;
     } else {
         [self performSegueWithIdentifier:@"showAlternate" sender:sender];
     }
