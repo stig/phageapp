@@ -116,6 +116,8 @@
     self.flipsidePopoverController = nil;
 }
 
+#pragma mark - Our Methods
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showAlternate"]) {
@@ -212,11 +214,17 @@
     [av show];
 }
 
+#pragma mark - Board View Delegate
+
 - (void)performMove:(SBMove *)move {
     [self.match performMove:move completionHandler:^(NSError *error) {
         [self.matchService saveMatch:self.match];
         [self layoutMatch];
     }];
+}
+
+- (BOOL)shouldAcceptUserInput {
+    return self.match.currentPlayer.isHuman;
 }
 
 
