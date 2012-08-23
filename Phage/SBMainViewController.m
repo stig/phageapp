@@ -180,9 +180,30 @@
         } else {
             self.message.text = [NSString stringWithFormat:@"This match was won by %@", winner.alias];
         }
-    } else {
+    } else if (self.match.currentPlayer.isHuman) {
         self.message.text = [self.match.currentPlayer.alias stringByAppendingFormat:@", it is your turn!"];
+    } else {
+        self.message.text = [NSString stringWithFormat:@"Waiting for %@..", self.match.currentPlayer.alias];
+        [self performBotMove];
     }
+}
+
+// It is assumed that this will not be called if the match is finished..
+- (void)performBotMove {
+    SBBoard *board = [self.match.board copy];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSLog(@"Sleeping a bit..");
+        [NSThread sleepForTimeInterval:3.0];
+
+        SBOpponentMobilityMinimisingMovePicker *pm = [[SBOpponentMobilityMinimisingMovePicker alloc] init];
+        SBMove *move = [pm moveForState:board];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([self.match isLegalMove:move]) {
+                [self performMove:move];
+            }
+        });
+    });
 }
 
 - (IBAction)trashMatch:(id)sender {
