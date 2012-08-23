@@ -175,21 +175,8 @@
 
 - (void)layoutMatch {
     [self.board layoutBoard:self.match.board];
-
-    if (self.match.isGameOver) {
-        SBPlayer *winner = self.match.winner;
-        if (nil == winner) {
-            self.message.text = @"This match ended in a draw";
-        } else {
-            self.message.text = [NSString stringWithFormat:@"This match was won by %@", winner.alias];
-        }
-    } else if (self.match.currentPlayer.isHuman) {
-        self.message.text = [self.match.currentPlayer.alias stringByAppendingFormat:@", it is your turn!"];
-    } else {
-        self.message.text = [NSString stringWithFormat:@"Waiting for %@..", self.match.currentPlayer.alias];
-        [self performBotMove];
-    }
 }
+
 
 // It is assumed that this will not be called if the match is finished..
 - (void)performBotMove {
@@ -252,6 +239,22 @@
 
 - (BOOL)shouldAcceptUserInput {
     return self.match.currentPlayer.isHuman;
+}
+
+- (void)didLayoutBoard {
+    if (self.match.isGameOver) {
+        SBPlayer *winner = self.match.winner;
+        if (nil == winner) {
+            self.message.text = @"This match ended in a draw";
+        } else {
+            self.message.text = [NSString stringWithFormat:@"This match was won by %@", winner.alias];
+        }
+    } else if (self.match.currentPlayer.isHuman) {
+        self.message.text = [self.match.currentPlayer.alias stringByAppendingFormat:@", it is your turn!"];
+    } else {
+        self.message.text = [NSString stringWithFormat:@"Waiting for %@..", self.match.currentPlayer.alias];
+        [self performBotMove];
+    }
 }
 
 

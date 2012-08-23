@@ -10,6 +10,7 @@
 
 @protocol SBBoardViewDelegate
 
+- (void)didLayoutBoard;
 - (BOOL)shouldAcceptUserInput;
 - (void)performMove:(SBMove*)move;
 

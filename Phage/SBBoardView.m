@@ -95,6 +95,9 @@
             cellView.blocked = [self.board wasLocationOccupied:loc];
         }];
 
+    } completion:^(BOOL finished) {
+        if (finished)
+            [self.delegate didLayoutBoard];
     }];
 
 }
