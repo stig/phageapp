@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSUInteger, SBBoardDimensions) {
+typedef enum {
     ROWS = 8u,
     COLUMNS = 8u,
-};
+} SBBoardDimensions;
 
 @class SBDirection;
 

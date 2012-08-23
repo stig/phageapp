@@ -87,12 +87,12 @@
                      animations:^{
         for (SBPieceView *pieceView in self.pieces) {
             SBLocation *loc = [self.board locationForPiece:pieceView.piece];
-            SBCellView *cell = self.cells[loc];
+            SBCellView *cell = [self.cells objectForKey:loc];
             pieceView.center = cell.center;
         }
 
         [self.board enumerateLocationsUsingBlock:^(SBLocation *loc) {
-            SBCellView *cellView = self.cells[loc];
+            SBCellView *cellView = [self.cells objectForKey:loc];
             cellView.blocked = [self.board wasLocationOccupied:loc];
         }];
 

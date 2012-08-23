@@ -39,14 +39,14 @@ static NSString *const LAST_UPDATED = @"LastUpdated";
 }
 
 + (id)matchWithPropertyList:(NSDictionary *)plist {
-    if (![plist[VERSION] isEqual:@1])
+    if (![[plist objectForKey:VERSION] isEqual:@1])
         return nil;
 
-    SBPlayer *one = [SBPlayer playerFromPropertyList:plist[PLAYER1]];
-    SBPlayer *two = [SBPlayer playerFromPropertyList:plist[PLAYER2]];
-    SBBoard *board = [SBBoard boardFromPropertyList:plist[BOARD]];
-    NSString *matchID = plist[MATCH_ID];
-    NSDate *lastUpdated = [NSDate dateWithTimeIntervalSince1970:[plist[LAST_UPDATED] doubleValue]];
+    SBPlayer *one = [SBPlayer playerFromPropertyList:[plist objectForKey:PLAYER1]];
+    SBPlayer *two = [SBPlayer playerFromPropertyList:[plist objectForKey:PLAYER2]];
+    SBBoard *board = [SBBoard boardFromPropertyList:[plist objectForKey:BOARD]];
+    NSString *matchID = [plist objectForKey:MATCH_ID];
+    NSDate *lastUpdated = [NSDate dateWithTimeIntervalSince1970:[[plist objectForKey:LAST_UPDATED] doubleValue]];
     
     return [[self alloc] initWithPlayerOne:one two:two board:board matchID:matchID lastUpdated:lastUpdated];
 }

@@ -34,7 +34,7 @@
 }
 
 + (id)locationFromPropertyList:(NSArray *)plist {
-    return [self locationWithColumn:[plist[0] unsignedIntegerValue] row:[plist[1] unsignedIntegerValue]];
+    return [self locationWithColumn:[[plist objectAtIndex:0] unsignedIntegerValue] row:[[plist objectAtIndex:1] unsignedIntegerValue]];
 }
 
 #pragma mark NSCopying

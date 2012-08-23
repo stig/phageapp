@@ -16,7 +16,7 @@
 }
 
 - (NSString *)savedMatchesPath {
-    NSString *documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *savedMatchesPath = [documentsDirectory stringByAppendingPathComponent:@"Saved Matches"];
 
     NSError *error = nil;

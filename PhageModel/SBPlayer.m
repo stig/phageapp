@@ -58,12 +58,12 @@ static NSString *OUTCOME = @"o";
 }
 
 + (id)playerFromPropertyList:(NSDictionary *)dict {
-    if ([dict[@"v"] compare:@1] > 0)
+    if ([[dict objectForKey:@"v"] compare:@1] > 0)
         @throw @"Unsupported version; please upgrade Phage!";
 
-    return [[self class] playerWithAlias:dict[ALIAS]
-                                   human:[dict[HUMAN] boolValue]
-                                 outcome:(SBPlayerOutcome) [dict[OUTCOME] integerValue]];
+    return [[self class] playerWithAlias:[dict objectForKey:ALIAS]
+                                   human:[[dict objectForKey:HUMAN] boolValue]
+                                 outcome:(SBPlayerOutcome) [[dict objectForKey:OUTCOME] integerValue]];
 }
 
 

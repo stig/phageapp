@@ -19,8 +19,8 @@
 }
 
 + (id)moveFromPropertyList:(NSArray *)plist {
-    return [self moveWithFrom:[SBLocation locationFromPropertyList:plist[0]]
-                           to:[SBLocation locationFromPropertyList:plist[1]]];
+    return [self moveWithFrom:[SBLocation locationFromPropertyList:[plist objectAtIndex:0]]
+                           to:[SBLocation locationFromPropertyList:[plist objectAtIndex:1]]];
 }
 
 - (NSArray *)toPropertyList {
