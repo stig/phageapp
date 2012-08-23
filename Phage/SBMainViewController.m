@@ -13,6 +13,7 @@
 #import "SBMatchMakerViewController.h"
 #import "SBMatchLookupViewController.h"
 #import "SBBoardView.h"
+#import "MBProgressHUD.h"
 
 @interface SBMainViewController () < SBBoardViewDelegate, SBMatchLookupViewControllerDelegate, SBMatchMakerViewControllerDelegate, SBHowtoViewControllerDelegate, UIPopoverControllerDelegate>
 
@@ -20,7 +21,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *playerOne;
 @property (weak, nonatomic) IBOutlet UILabel *playerTwo;
 @property (weak, nonatomic) IBOutlet UILabel *message;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 @property (strong, nonatomic) SBMatchService *matchService;
 @property (strong, nonatomic) UIPopoverController *howtoPopoverController;
@@ -37,7 +37,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.matchService = [SBMatchService matchService];
-    self.spinner.hidesWhenStopped = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -51,7 +50,6 @@
     [self setPlayerTwo:nil];
     [self setMessage:nil];
     [self setBoard:nil];
-    [self setSpinner:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -176,17 +174,18 @@
 // It is assumed that this will not be called if the match is finished..
 - (void)performBotMove {
     SBBoard *board = [self.match.board copy];
-    [self.spinner startAnimating];
 
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSLog(@"Sleeping a bit..");
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.dimBackground = YES;
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         [NSThread sleepForTimeInterval: 2 * ANIM_DURATION];
 
         SBOpponentMobilityMinimisingMovePicker *pm = [[SBOpponentMobilityMinimisingMovePicker alloc] init];
         SBMove *move = [pm moveForState:board];
 
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.spinner stopAnimating];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             if ([self.match isLegalMove:move]) {
                 [self performMove:move];
             }
