@@ -11,9 +11,6 @@
 
 @implementation SBMove
 
-@synthesize to = _to;
-@synthesize from = _from;
-
 + (id)moveWithFrom:(SBLocation*)from to:(SBLocation*)to {
     return [[self alloc] initWithFrom:from to:to];
 }

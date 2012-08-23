@@ -18,13 +18,6 @@ static NSString *const BOARD = @"Board";
 static NSString *const LAST_UPDATED = @"LastUpdated";
 
 @implementation SBMatch
-@synthesize matchID = _matchID;
-@synthesize board = _board;
-@synthesize playerOne = _playerOne;
-@synthesize playerTwo = _playerTwo;
-@synthesize lastUpdated = _lastUpdated;
-
-
 
 + (id)matchWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two {
     return [[self alloc] initWithPlayerOne:one two:two];

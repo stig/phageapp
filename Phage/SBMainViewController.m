@@ -31,11 +31,6 @@
 @end
 
 @implementation SBMainViewController
-@synthesize playerOne = _playerOne;
-@synthesize playerTwo = _playerTwo;
-@synthesize message = _message;
-@synthesize match = _match;
-@synthesize board = _board;
 
 - (void)viewDidLoad
 {

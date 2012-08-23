@@ -9,9 +9,6 @@
 
 @implementation SBDirection
 
-@synthesize column = _column;
-@synthesize row = _row;
-
 + (id)directionWithColumn:(NSInteger)column row:(NSInteger)row {
     return [[self alloc] initWithColumn:column row:row];
 }

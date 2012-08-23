@@ -12,7 +12,6 @@
 @end
 
 @implementation SBAlertView
-@synthesize completion;
 
 - (id)initWithTitle:(NSString *)title message:(NSString *)message completion:(void (^)(NSInteger buttonIndex))theCompletion cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... {
     self.completion = theCompletion;

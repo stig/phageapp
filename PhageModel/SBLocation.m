@@ -11,9 +11,6 @@
 
 @implementation SBLocation
 
-@synthesize column = _column;
-@synthesize row = _row;
-
 + (id)locationWithColumn:(NSUInteger)column row:(NSUInteger)row {
     return [[self alloc] initWithColumn:column row:row];
 }

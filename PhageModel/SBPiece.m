@@ -10,8 +10,6 @@
 
 @implementation SBPiece
 
-@synthesize owner = _owner;
-
 + (id)pieceWithOwner:(NSUInteger)owner {
     return [[self alloc] initWithOwner:owner];
 }

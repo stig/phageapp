@@ -26,12 +26,6 @@
 @end
 
 @implementation SBBoard
-@synthesize pieceTurnCountMap = _pieceTurnCountMap;
-@synthesize occupied = _occupied;
-@synthesize pieces = _pieces;
-@synthesize moveHistory = _moveHistory;
-@synthesize locationMap = _locationMap;
-@synthesize pieceMap = _pieceMap;
 
 + (id)boardWithMoveHistory:(NSArray *)moveHistory {
     return [[self alloc] initWithMoveHistory:moveHistory];
