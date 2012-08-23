@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *playerOne;
 @property (weak, nonatomic) IBOutlet UILabel *playerTwo;
 @property (weak, nonatomic) IBOutlet UILabel *message;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 @property (strong, nonatomic) SBMatchService *matchService;
 @property (strong, nonatomic) UIPopoverController *flipsidePopoverController;
@@ -41,6 +42,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.matchService = [SBMatchService matchService];
+    self.spinner.hidesWhenStopped = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -54,6 +56,7 @@
     [self setPlayerTwo:nil];
     [self setMessage:nil];
     [self setBoard:nil];
+    [self setSpinner:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -191,6 +194,8 @@
 // It is assumed that this will not be called if the match is finished..
 - (void)performBotMove {
     SBBoard *board = [self.match.board copy];
+    [self.spinner startAnimating];
+
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         NSLog(@"Sleeping a bit..");
         [NSThread sleepForTimeInterval:3.0];
@@ -199,6 +204,7 @@
         SBMove *move = [pm moveForState:board];
 
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self.spinner stopAnimating];
             if ([self.match isLegalMove:move]) {
                 [self performMove:move];
             }
