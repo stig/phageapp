@@ -16,11 +16,12 @@
 @end
 
 
-@interface SBCellView : UIImageView
+@interface SBCellView : UIView
 
 @property (weak, nonatomic) id<SBCellViewDelegate> delegate;
 
 @property (readonly, nonatomic) SBLocation *location;
+@property (nonatomic) BOOL blocked;
 
 + (id)objectWithLocation:(SBLocation *)location;
 

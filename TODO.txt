@@ -1,7 +1,5 @@
 - Ensure version is correct
 - TestFlight checkpoints
-- Animate board changes!
 - 5-second confirm move HUD?
 - Write release notes
 - Ensure TODOs are done
-- Add progress indicator while waiting for non-human moves

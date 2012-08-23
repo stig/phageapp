@@ -83,15 +83,18 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    for (SBPieceView *pieceView in self.pieces) {
-        SBLocation *loc = [self.board locationForPiece:pieceView.piece];
-        SBCellView *cell = self.cells[loc];
-        pieceView.center = cell.center;
-    }
+    [UIView animateWithDuration:0.7 animations:^{
+        for (SBPieceView *pieceView in self.pieces) {
+            SBLocation *loc = [self.board locationForPiece:pieceView.piece];
+            SBCellView *cell = self.cells[loc];
+            pieceView.center = cell.center;
+        }
 
-    [self.board enumerateLocationsUsingBlock:^(SBLocation *loc) {
-        SBCellView *cellView = self.cells[loc];
-        cellView.highlighted = [self.board wasLocationOccupied:loc];
+        [self.board enumerateLocationsUsingBlock:^(SBLocation *loc) {
+            SBCellView *cellView = self.cells[loc];
+            cellView.blocked = [self.board wasLocationOccupied:loc];
+        }];
+
     }];
 
 }

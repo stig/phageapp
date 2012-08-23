@@ -8,15 +8,28 @@
 #import "SBCellView.h"
 #import "SBLocation.h"
 
+@interface SBCellView ()
+
+@property (strong, nonatomic) UIImageView *background;
+@property (strong, nonatomic) UIImageView *foreground;
+
+@end
+
+
 @implementation SBCellView
 
 - (id)initWithLocation:(SBLocation *)location {
-    UIImage *clear = [UIImage imageNamed:@"CellClear"];
-    UIImage *blocked = [UIImage imageNamed:@"CellBlocked"];
-    self = [self initWithImage:clear highlightedImage:blocked];
+    UIImage *clear = [UIImage imageNamed:@"cell-background.png"];
+    UIImage *blocked = [UIImage imageNamed:@"cell-blocked.png"];
+    CGRect frame = CGRectMake(0, 0, clear.size.width, clear.size.height);
+
+    self = [super initWithFrame:frame];
     if (self) {
-        self.userInteractionEnabled = YES;
         _location = location;
+        self.background = [[UIImageView alloc] initWithImage:clear];
+        self.foreground = [[UIImageView alloc] initWithImage:blocked];
+        [self addSubview:self.background];
+        [self addSubview:self.foreground];
     }
     return self;
 }
@@ -29,6 +42,11 @@
     [super touchesEnded:touches withEvent:event];
 
     [self.delegate touchEndedInCellView:self];
+}
+
+- (void)setBlocked:(BOOL)blocked {
+    _blocked = blocked;
+    self.foreground.alpha = blocked ? 1.0 : 0.0;
 }
 
 
