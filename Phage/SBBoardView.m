@@ -28,15 +28,17 @@
 - (id)awakeAfterUsingCoder:(NSCoder *)aDecoder {
     self.board = [SBBoard board];
 
-    [self setupCells];
-    [self setupPieces];
+    self.cellSize = CGSizeMake(self.bounds.size.width / 8.0, self.bounds.size.height / 8.0);
+
+    self.cells = [self setupCells];
+    self.pieces = [self setupPieces];
 
     [self setNeedsLayout];
 
     return [super awakeAfterUsingCoder:aDecoder];
 }
 
-- (void)setupPieces {
+- (NSArray *)setupPieces {
     NSMutableArray *pieces = [NSMutableArray array];
 
     for (NSArray *pp in self.board.pieces) {
@@ -50,12 +52,10 @@
         }
     }
 
-    self.pieces = pieces;
+    return pieces;
 }
 
-- (void)setupCells {
-    self.cellSize = CGSizeMake(self.bounds.size.width / 8.0, self.bounds.size.height / 8.0);
-
+- (NSDictionary *)setupCells {
     NSMutableDictionary *cells = [NSMutableDictionary dictionary];
 
     [self.board enumerateLocationsUsingBlock:^(SBLocation *loc) {
@@ -64,12 +64,12 @@
         SBCellView *cellView = [SBCellView objectWithLocation:loc];
         cellView.delegate = self;
         cellView.center = p;
-        [self addSubview:cellView];
 
         [cells setObject:cellView forKey:loc];
+        [self addSubview:cellView];
     }];
 
-    self.cells = cells;
+    return cells;
 }
 
 - (void)layoutBoard:(SBBoard*)board {
