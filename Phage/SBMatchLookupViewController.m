@@ -12,6 +12,7 @@
 #import "PhageModel.h"
 
 @interface SBMatchLookupViewController () < UITableViewDataSource, UITableViewDelegate >
+@property (strong, nonatomic) NSDateFormatter *formatter;
 @property (strong, nonatomic) NSArray *sections;
 @property (strong, nonatomic) NSArray *titles;
 @property (strong, nonatomic) NSArray *checkpoints;
@@ -22,6 +23,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+
+    self.formatter = [[NSDateFormatter alloc] init];
+    self.formatter.dateStyle = NSDateFormatterMediumStyle;
+    self.formatter.timeStyle = NSDateFormatterShortStyle;
+    self.formatter.doesRelativeDateFormatting = YES;
 
     self.titles = @[
         NSLocalizedString(@"Active Matches", @"Table Vie Group Title"),
@@ -87,7 +94,7 @@
 
     SBMatch *match = [[self.sections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ vs %@", match.playerOne.alias, match.playerTwo.alias];
-    cell.detailTextLabel.text = [match.lastUpdated description];
+    cell.detailTextLabel.text = [self.formatter stringFromDate:match.lastUpdated];
 
     return cell;
 }
