@@ -9,6 +9,7 @@
 #import "SBPiece.h"
 
 @interface SBPieceView ()
+@property (weak, nonatomic) CATextLayer *movesLeftLayer;
 @end
 
 @implementation SBPieceView
@@ -23,6 +24,17 @@
     self = [self initWithImage:img];
     if (self) {
         _piece = piece;
+
+        CGRect offsetRect = CGRectOffset(self.bounds, self.bounds.size.width / 1.67, -self.bounds.size.height / 1.67);
+
+        CATextLayer *mll= [CATextLayer layer];
+        mll.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.7].CGColor;
+        mll.frame = CGRectIntersection(self.bounds, offsetRect);
+        mll.cornerRadius = mll.frame.size.height / 2.0;
+        mll.fontSize = (CGFloat)floor(mll.frame.size.height);
+
+        self.movesLeftLayer = mll;
+        [self.layer addSublayer:self.movesLeftLayer];
     }
     return self;
 }
@@ -53,5 +65,9 @@
     self.backgroundColor = highlighted ? [UIColor redColor] : [UIColor clearColor];
 }
 
+
+- (void)setMovesLeft:(NSUInteger)movesLeft {
+    self.movesLeftLayer.string = [NSString stringWithFormat:@"%u", movesLeft];
+}
 
 @end

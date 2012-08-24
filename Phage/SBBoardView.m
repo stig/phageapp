@@ -87,6 +87,7 @@
             SBLocation *loc = [self.board locationForPiece:pieceView.piece];
             SBCellView *cell = [self.cells objectForKey:loc];
             pieceView.center = cell.center;
+            pieceView.movesLeft = [[self.board turnsLeftForPiece:pieceView.piece] unsignedIntegerValue];
         }
 
     }                completion:^(BOOL finished) {

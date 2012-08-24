@@ -17,7 +17,9 @@
 
 @interface SBPieceView : UIImageView
 
-@property (weak) id<SBPieceViewDelegate> delegate;
+@property (assign, nonatomic) NSUInteger movesLeft;
+
+@property (weak, nonatomic) id<SBPieceViewDelegate> delegate;
 
 @property (readonly, nonatomic) SBPiece *piece;
 
