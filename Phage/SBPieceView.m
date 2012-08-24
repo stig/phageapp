@@ -31,7 +31,8 @@
         mll.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.7].CGColor;
         mll.frame = CGRectIntersection(self.bounds, offsetRect);
         mll.cornerRadius = mll.frame.size.height / 2.0;
-        mll.fontSize = (CGFloat)floor(mll.frame.size.height);
+        mll.alignmentMode = @"center";
+        mll.fontSize = (CGFloat)floor(mll.frame.size.height / 1.1);
 
         self.movesLeftLayer = mll;
         [self.layer addSublayer:self.movesLeftLayer];
