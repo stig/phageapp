@@ -152,8 +152,8 @@
             self.match = [savedMatches objectAtIndex:0];
 
         } else {
-            SBPlayer *bot = [SBPlayer playerWithAlias:@"Sgt Pepper" human:NO];
-            SBPlayer *human = [SBPlayer playerWithAlias:@"Player 1" human:YES];
+            SBPlayer *bot = [SBPlayer playerWithAlias:NSLocalizedString(@"Sgt Pepper", @"Default AI Name") human:NO];
+            SBPlayer *human = [SBPlayer playerWithAlias:NSLocalizedString(@"Player 1", @"Default Human Name") human:YES];
             self.match = [SBMatch matchWithPlayerOne:human two:bot];
         }
     }
@@ -196,28 +196,31 @@
 - (IBAction)trashMatch:(id)sender {
     SBAlertView *av;
     if (self.match.isGameOver) {
-        av = [[SBAlertView alloc] initWithTitle:@"Delete Match"
-                                        message:@"Really delete this match?"
+        av = [[SBAlertView alloc] initWithTitle:NSLocalizedString(@"Delete Match", @"Delete dialog title")
+                                        message:NSLocalizedString(@"Really delete this match?", @"Delete dialog message")
                                      completion:^(NSInteger buttonIndex) {
-                                         [self.matchService deleteMatch:self.match];
-                                         self.match = nil;
-                                         [self performSelector:@selector(ensureMatch) withObject:nil afterDelay:0.0];
+                                         if (1 == buttonIndex) {
+                                             [self.matchService deleteMatch:self.match];
+                                             self.match = nil;
+                                             [self performSelector:@selector(ensureMatch) withObject:nil
+                                                        afterDelay:0.0];
+                                         }
                                      }
-                              cancelButtonTitle:@"Yes"
-                              otherButtonTitles:@"No", nil];
+                              cancelButtonTitle:NSLocalizedString(@"Keep", @"Delete dialog negative button")
+                              otherButtonTitles:NSLocalizedString(@"Delete", @"Delete dialog affirmative button"), nil];
 
     } else {
-        av = [[SBAlertView alloc] initWithTitle:@"Forfeit Match"
-                                        message:@"Do you really want to forfeit this match?"
+        av = [[SBAlertView alloc] initWithTitle:NSLocalizedString(@"Forfeit Match", @"Forfeit dialog title")
+                                        message:NSLocalizedString(@"Do you really want to forfeit this match?", @"Forfeit dialog message")
                                      completion:^(NSInteger buttonIndex) {
-                                         if (0 == buttonIndex) {
+                                         if (1 == buttonIndex) {
                                              [self.match forfeit];
                                              [self.matchService saveMatch:self.match];
                                              [self layoutMatch];
                                          }
                                      }
-                              cancelButtonTitle:@"Yes"
-                              otherButtonTitles:@"No", nil];
+                              cancelButtonTitle:NSLocalizedString(@"Continue", @"Forfeit dialog negative button")
+                              otherButtonTitles:NSLocalizedString(@"Forfeit", @"Forfeit dialog affirmative button"), nil];
     }
     [av show];
 }
@@ -242,14 +245,14 @@
     if (self.match.isGameOver) {
         SBPlayer *winner = self.match.winner;
         if (nil == winner) {
-            self.message.text = @"This match ended in a draw";
+            self.message.text = NSLocalizedString(@"This match ended in a draw", @"Game Over message");
         } else {
-            self.message.text = [NSString stringWithFormat:@"This match was won by %@", winner.alias];
+            self.message.text = [NSString stringWithFormat:NSLocalizedString(@"This match was won by %@", @"Game Over message"), winner.alias];
         }
     } else if (self.match.currentPlayer.isHuman) {
-        self.message.text = [self.match.currentPlayer.alias stringByAppendingFormat:@", it is your turn!"];
+        self.message.text = [NSString stringWithFormat:NSLocalizedString(@"%@, it is your turn!", @"Take Turn message"), self.match.currentPlayer.alias];
     } else {
-        self.message.text = [NSString stringWithFormat:@"Waiting for %@..", self.match.currentPlayer.alias];
+        self.message.text = [NSString stringWithFormat:NSLocalizedString(@"Waiting for %@", @"Take Turn message"), self.match.currentPlayer.alias];
         [self performBotMove];
     }
 }

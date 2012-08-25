@@ -46,7 +46,7 @@
 - (IBAction)startOnePlayerMatch:(id)sender {
     [TestFlight passCheckpoint:CREATE_ONE_PLAYER_MATCH];
 
-    SBPlayer *bot = [SBPlayer playerWithAlias:@"Sgt Pepper" human:NO];
+    SBPlayer *bot = [SBPlayer playerWithAlias:NSLocalizedString(@"Sgt Pepper", @"Default AI Name") human:NO];
     SBPlayer *human = [SBPlayer playerWithAlias:self.soloPlayer.text human:YES];
     SBMatch *match = 1 == self.soloPlayerStarts.selectedSegmentIndex
             ? [SBMatch matchWithPlayerOne:bot two:human]
