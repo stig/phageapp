@@ -12,10 +12,11 @@
 #import "SBHowtoViewController.h"
 #import "SBMatchMakerViewController.h"
 #import "SBMatchLookupViewController.h"
+#import "SBSettingsViewController.h"
 #import "SBBoardView.h"
 #import "MBProgressHUD.h"
 
-@interface SBMainViewController () < SBBoardViewDelegate, SBMatchLookupViewControllerDelegate, SBMatchMakerViewControllerDelegate, SBHowtoViewControllerDelegate, UIPopoverControllerDelegate>
+@interface SBMainViewController () < SBSettingsViewControllerDelegate, SBBoardViewDelegate, SBMatchLookupViewControllerDelegate, SBMatchMakerViewControllerDelegate, SBHowtoViewControllerDelegate, UIPopoverControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet SBBoardView *board;
 @property (weak, nonatomic) IBOutlet UILabel *playerOne;
@@ -61,6 +62,14 @@
     } else {
         return YES;
     }
+}
+
+#pragma mark - Settings View Controller
+
+- (void)settingsViewControllerDidFinish:(SBSettingsViewController *)controller {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        [self dismissModalViewControllerAnimated:YES];
+    }    
 }
 
 #pragma mark - Match Lookup View Controller
@@ -116,21 +125,15 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    [[segue destinationViewController] setDelegate:self];
+
     if ([[segue identifier] isEqualToString:@"showHowto"]) {
-        [[segue destinationViewController] setDelegate:self];
 
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
             UIPopoverController *popoverController = [(UIStoryboardPopoverSegue *)segue popoverController];
             self.howtoPopoverController = popoverController;
             popoverController.delegate = self;
         }
-
-    } else if ([[segue identifier] isEqualToString:@"showMatchMaker"]) {
-        [[segue destinationViewController] setDelegate:self];
-
-    } else if ([[segue identifier] isEqualToString:@"showMatchLookup"]) {
-        [[segue destinationViewController] setDelegate:self];
-
     }
 
 }

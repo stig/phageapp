@@ -1,4 +1,6 @@
-- Ensure version is correct
 - 5-second confirm move HUD?
 - Write release notes
 - Ensure TODOs are done
+
+
+* Uses the MBProgressHUD class by Matej Bukowski

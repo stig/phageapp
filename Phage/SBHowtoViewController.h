@@ -18,6 +18,4 @@
 
 @property (weak, nonatomic) id <SBHowtoViewControllerDelegate> delegate;
 
-- (IBAction)done:(id)sender;
-
 @end

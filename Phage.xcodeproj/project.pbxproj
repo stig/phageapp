@@ -18,6 +18,7 @@
 		D72F23B215C5F248006EFE0D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D72F23B015C5F248006EFE0D /* InfoPlist.strings */; };
 		D72F242115C5F750006EFE0D /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C9D /* libOCMock.a */; };
 		D74D65BF15E3128300A69FC0 /* libUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EA254B15E2EE02006081A4 /* libUtils.a */; };
+		D74EC46315E9362900505EEE /* SBSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D74EC46215E9362900505EEE /* SBSettingsViewController.m */; };
 		D76A4566151DDC7500E59146 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4565151DDC7500E59146 /* UIKit.framework */; };
 		D76A4568151DDC7500E59146 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4567151DDC7500E59146 /* Foundation.framework */; };
 		D76A456A151DDC7500E59146 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4569151DDC7500E59146 /* CoreGraphics.framework */; };
@@ -221,6 +222,8 @@
 		D72F23AF15C5F248006EFE0D /* PhageModelTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PhageModelTests-Info.plist"; sourceTree = "<group>"; };
 		D72F23B115C5F248006EFE0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D73965B1151FB10600118094 /* SBPieceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPieceTest.m; sourceTree = "<group>"; };
+		D74EC46115E9362900505EEE /* SBSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBSettingsViewController.h; sourceTree = "<group>"; };
+		D74EC46215E9362900505EEE /* SBSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBSettingsViewController.m; sourceTree = "<group>"; };
 		D76A4561151DDC7500E59146 /* Phage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Phage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D76A4565151DDC7500E59146 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D76A4567151DDC7500E59146 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -509,6 +512,8 @@
 				FB89D43C154C7D27001A0C26 /* SBMainViewController.h */,
 				FB89D43C154C7D27001A0C24 /* SBHowtoViewController.m */,
 				FB89D43C154C7D27001A0C23 /* SBHowtoViewController.h */,
+				D74EC46115E9362900505EEE /* SBSettingsViewController.h */,
+				D74EC46215E9362900505EEE /* SBSettingsViewController.m */,
 				D77E0C8215DD88430004EFAF /* SBMatchMakerViewController.h */,
 				D77E0C8315DD88430004EFAF /* SBMatchMakerViewController.m */,
 				D76A4574151DDC7500E59146 /* SBAppDelegate.h */,
@@ -971,6 +976,7 @@
 				D7DD0D2B15E4475100103EE4 /* SBBoardView.m in Sources */,
 				F8D040786DB3C287CFAFE611 /* SBPieceView.m in Sources */,
 				F8D04B71CF3EA739192B4BA9 /* SBCellView.m in Sources */,
+				D74EC46315E9362900505EEE /* SBSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
