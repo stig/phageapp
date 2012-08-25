@@ -93,7 +93,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     SBMatch *match = [[self.sections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ vs %@", match.playerOne.alias, match.playerTwo.alias];
+    NSString *fmt = NSLocalizedString(@"%@ vs %@", @"Match Lookup Label Text - player1 vs player2");
+
+    cell.textLabel.text = [NSString stringWithFormat:fmt, match.playerOne.alias, match.playerTwo.alias];
     cell.detailTextLabel.text = [self.formatter stringFromDate:match.lastUpdated];
 
     return cell;
