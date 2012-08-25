@@ -198,8 +198,8 @@
     if (self.match.isGameOver) {
         av = [[SBAlertView alloc] initWithTitle:NSLocalizedString(@"Delete Match", @"Delete dialog title")
                                         message:NSLocalizedString(@"Really delete this match?", @"Delete dialog message")
-                                     completion:^(NSInteger buttonIndex) {
-                                         if (1 == buttonIndex) {
+                                     completion:^(SBAlertView* alertView, NSInteger buttonIndex) {
+                                         if (alertView.cancelButtonIndex != buttonIndex) {
                                              [self.matchService deleteMatch:self.match];
                                              self.match = nil;
                                              [self performSelector:@selector(ensureMatch) withObject:nil
@@ -212,8 +212,8 @@
     } else {
         av = [[SBAlertView alloc] initWithTitle:NSLocalizedString(@"Forfeit Match", @"Forfeit dialog title")
                                         message:NSLocalizedString(@"Do you really want to forfeit this match?", @"Forfeit dialog message")
-                                     completion:^(NSInteger buttonIndex) {
-                                         if (1 == buttonIndex) {
+                                     completion:^(SBAlertView* alertView, NSInteger buttonIndex) {
+                                         if (alertView.cancelButtonIndex != buttonIndex) {
                                              [self.match forfeit];
                                              [self.matchService saveMatch:self.match];
                                              [self layoutMatch];
