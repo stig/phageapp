@@ -178,8 +178,7 @@
 - (void)performBotMove {
     SBBoard *board = [self.match.board copy];
 
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.dimBackground = YES;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         [NSThread sleepForTimeInterval: 2 * ANIM_DURATION];
