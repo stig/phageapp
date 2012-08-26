@@ -1,19 +1,21 @@
-0.4 (2012-06-??)
+0.4 (2012-08-26)
 ================
 
-**BREAKING CHANGES**
+*Important Note*
 
-The way matches are stored in GameCenter has been changed, to be more efficient and in order to support some more advanced features. Make sure you finish all your current matches before you upgrade!
+In the interest of getting the game out the door I've decided to cut
+networking (i.e. Game Center), high scores and achievements from the
+initial version. If you're in the middle of a networked match you may
+want to finish it before upgrading to this version.
 
-Other changes / bug fixes:
+Improvements:
 
-* Double-tap to show hints rather than the previous "tap twice" behaviour.
-* Long press pieces (tap and hold for 0.5s) to select before dragging.
-* Scale up selected/dragged pieces to suggest them being "picked up" off the board.
-* Send logs to TestFlight to aid debugging.
-* Add TestFlight Checkpoints.
-* Should no longer be able to perform moves after GAME OVER.
-* On iPhone / iPod Touch only support portrait orientation.
+* We now allow multiple matches against the AI to go on at the same time, as well as multiple matches against another human opponent.
+* Now display player alias
+* Simplified a lot of the drawing code, by using higher-level APIs. This should hopefully result in fixing the bug that allowed moves after GAME OVER.
+* Show version and build number in the app enhancement
+* Add TestFlight checkpoints in sensible places
+* There is now some explanatory text at GAME OVER
 
 0.3.1 (2012-06-01)
 ==================
