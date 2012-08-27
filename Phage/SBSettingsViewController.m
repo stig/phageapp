@@ -41,7 +41,7 @@
 
 - (IBAction)done:(id)sender
 {
-    [self.delegate settingsViewControllerDidFinish:self];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewDidUnload {

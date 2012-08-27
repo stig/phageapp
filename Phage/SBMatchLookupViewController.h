@@ -17,7 +17,7 @@
 @end
 
 
-@interface SBMatchLookupViewController : UIViewController
+@interface SBMatchLookupViewController : UITableViewController
 
 @property (weak, nonatomic) id <SBMatchLookupViewControllerDelegate> delegate;
 
