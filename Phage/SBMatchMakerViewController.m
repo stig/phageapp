@@ -44,7 +44,7 @@
 }
 
 - (IBAction)startOnePlayerMatch:(id)sender {
-    [TestFlight passCheckpoint:CREATE_ONE_PLAYER_MATCH];
+    [TestFlight passCheckpoint:@"CREATE_ONE_PLAYER_MATCH"];
 
     SBPlayer *bot = [SBPlayer playerWithAlias:NSLocalizedString(@"Sgt Pepper", @"Default AI Name") human:NO];
     SBPlayer *human = [SBPlayer playerWithAlias:self.soloPlayer.text human:YES];
@@ -55,7 +55,7 @@
 }
 
 - (IBAction)startTwoPlayerMatch:(id)sender {
-    [TestFlight passCheckpoint:CREATE_TWO_PLAYER_MATCH];
+    [TestFlight passCheckpoint:@"CREATE_TWO_PLAYER_MATCH"];
 
     SBPlayer *two = [SBPlayer playerWithAlias:self.twoPlayer.text human:YES];
     SBPlayer *one = [SBPlayer playerWithAlias:self.onePlayer.text human:YES];
