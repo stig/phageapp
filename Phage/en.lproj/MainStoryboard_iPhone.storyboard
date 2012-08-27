@@ -40,14 +40,10 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="2" kind="push" id="lCX-cU-KZ9"/>
+                                    <segue destination="2" kind="push" identifier="showMatch" id="lCX-cU-KZ9"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="rh1-vb-1PQ" id="TMz-MQ-15w"/>
-                            <outlet property="delegate" destination="rh1-vb-1PQ" id="EhL-Bn-akz"/>
-                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Matches" id="KYv-sJ-C9X">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="PHB-vt-q0J">
@@ -357,9 +353,6 @@
         </class>
         <class className="SBMatchLookupViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SBMatchLookupViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="done:"/>
-            </relationships>
         </class>
         <class className="SBMatchMakerViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SBMatchMakerViewController.h"/>

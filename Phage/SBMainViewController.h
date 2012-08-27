@@ -6,6 +6,8 @@
 //
 //
 
+@class SBMatch;
 
 @interface SBMainViewController : UIViewController
+@property (weak, nonatomic) SBMatch *match;
 @end

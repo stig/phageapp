@@ -10,12 +10,15 @@
 #import "SBMatch.h"
 #import "SBPlayer.h"
 #import "PhageModel.h"
+#import "SBMainViewController.h"
 
-@interface SBMatchLookupViewController () < UITableViewDataSource, UITableViewDelegate >
+@interface SBMatchLookupViewController ()
 @property (strong, nonatomic) NSDateFormatter *formatter;
 @property (strong, nonatomic) NSArray *sections;
 @property (strong, nonatomic) NSArray *titles;
 @property (strong, nonatomic) NSArray *checkpoints;
+@property (strong, nonatomic) SBMatch *currentMatch;
+@property (strong, nonatomic) SBMatchService *matchService;
 @end
 
 @implementation SBMatchLookupViewController
@@ -24,6 +27,7 @@
 {
     [super viewDidLoad];
 
+    self.matchService = [SBMatchService matchService];
 
     self.formatter = [[NSDateFormatter alloc] init];
     self.formatter.dateStyle = NSDateFormatterMediumStyle;
@@ -45,31 +49,30 @@
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-
-    SBMatchService *service = [SBMatchService matchService];
 
     self.sections = @[
-        [service activeMatches],
-        [service inactiveMatches]
+        [self.matchService activeMatches],
+        [self.matchService inactiveMatches]
     ];
+
+    [super viewWillAppear:animated];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showMatch"]) {
+        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+        self.currentMatch = [[self.sections objectAtIndex:path.section] objectAtIndex:path.row];
+        [segue.destinationViewController setMatch:self.currentMatch];
+
+        [TestFlight passCheckpoint:[self.checkpoints objectAtIndex:path.section]];
+    }
 }
-
-
-- (IBAction)done:(id)sender
-{
-    [self.delegate matchLookupViewControllerDidFinish:self];
-}
-
 
 #pragma mark - Table view data source
 
@@ -77,19 +80,17 @@
     return [self.titles objectAtIndex:section];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.sections.count;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [[self.sections objectAtIndex:section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"SavedMatchCell";
+    static NSString *CellIdentifier = @"MatchCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     SBMatch *match = [[self.sections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
@@ -125,14 +126,5 @@
 */
 
 #pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [TestFlight passCheckpoint:[self.checkpoints objectAtIndex:indexPath.section]];
-
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    SBMatch *match = [[self.sections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    [self.delegate matchLookupViewController:self didFindMatch:match];
-}
 
 @end

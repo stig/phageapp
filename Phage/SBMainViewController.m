@@ -16,7 +16,7 @@
 #import "SBBoardView.h"
 #import "MBProgressHUD.h"
 
-@interface SBMainViewController () < SBSettingsViewControllerDelegate, SBBoardViewDelegate, SBMatchLookupViewControllerDelegate, SBMatchMakerViewControllerDelegate, SBHowtoViewControllerDelegate, UIPopoverControllerDelegate>
+@interface SBMainViewController () < SBSettingsViewControllerDelegate, SBBoardViewDelegate, SBMatchMakerViewControllerDelegate, SBHowtoViewControllerDelegate, UIPopoverControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet SBBoardView *board;
 @property (weak, nonatomic) IBOutlet UILabel *playerOne;
@@ -25,7 +25,6 @@
 
 @property (strong, nonatomic) SBMatchService *matchService;
 @property (strong, nonatomic) UIPopoverController *howtoPopoverController;
-@property (strong, nonatomic) SBMatch *match;
 
 - (IBAction)trashMatch:(id)sender;
 
