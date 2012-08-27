@@ -1,24 +1,24 @@
 //
-//  SBMatchMakerViewController.m
+//  SBCreateMatchViewController.m
 //  Phage
 //
 //  Created by Stig Brautaset on 16/08/2012.
 //
 //
 
-#import "SBMatchMakerViewController.h"
+#import "SBCreateMatchViewController.h"
 #import "SBMatch.h"
 #import "SBPlayer.h"
 #import "PhageModel.h"
 
-@interface SBMatchMakerViewController () < UITextFieldDelegate >
+@interface SBCreateMatchViewController () < UITextFieldDelegate >
 @property (weak, nonatomic) IBOutlet UITextField *soloPlayer;
 @property (weak, nonatomic) IBOutlet UITextField *onePlayer;
 @property (weak, nonatomic) IBOutlet UITextField *twoPlayer;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *soloPlayerStarts;
 @end
 
-@implementation SBMatchMakerViewController
+@implementation SBCreateMatchViewController
 
 - (void)viewDidLoad
 {
@@ -40,7 +40,7 @@
 
 - (IBAction)done:(id)sender
 {
-    [self.delegate matchMakerViewControllerDidFinish:self];
+    [self.delegate createMatchViewControllerDidFinish:self];
 }
 
 - (IBAction)startOnePlayerMatch:(id)sender {
@@ -51,7 +51,7 @@
     SBMatch *match = 1 == self.soloPlayerStarts.selectedSegmentIndex
             ? [SBMatch matchWithPlayerOne:bot two:human]
             : [SBMatch matchWithPlayerOne:human two:bot];
-    [self.delegate matchMakerViewController:self didFindMatch:match];
+    [self.delegate createMatchViewController:self didCreateMatch:match];
 }
 
 - (IBAction)startTwoPlayerMatch:(id)sender {
@@ -60,7 +60,7 @@
     SBPlayer *two = [SBPlayer playerWithAlias:self.twoPlayer.text human:YES];
     SBPlayer *one = [SBPlayer playerWithAlias:self.onePlayer.text human:YES];
     SBMatch *match = [SBMatch matchWithPlayerOne:one two:two];
-    [self.delegate matchMakerViewController:self didFindMatch:match];
+    [self.delegate createMatchViewController:self didCreateMatch:match];
 }
 
 - (void)viewDidUnload {

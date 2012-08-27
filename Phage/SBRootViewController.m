@@ -1,18 +1,18 @@
 //
-//  SBMatchLookupViewController.m
+//  SBRootViewController.m
 //  Phage
 //
 //  Created by Stig Brautaset on 16/08/2012.
 //
 //
 
-#import "SBMatchLookupViewController.h"
+#import "SBRootViewController.h"
 #import "SBMatch.h"
 #import "SBPlayer.h"
 #import "PhageModel.h"
-#import "SBMainViewController.h"
+#import "SBMatchViewController.h"
 
-@interface SBMatchLookupViewController ()
+@interface SBRootViewController ()
 @property (strong, nonatomic) NSDateFormatter *formatter;
 @property (strong, nonatomic) NSArray *sections;
 @property (strong, nonatomic) NSArray *titles;
@@ -21,7 +21,7 @@
 @property (strong, nonatomic) SBMatchService *matchService;
 @end
 
-@implementation SBMatchLookupViewController
+@implementation SBRootViewController
 
 - (void)viewDidLoad
 {

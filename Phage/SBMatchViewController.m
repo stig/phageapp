@@ -1,22 +1,22 @@
 //
-//  SBMainViewController.m
+//  SBMatchViewController.m
 //  Phage
 //
 //  Created by Stig Brautaset on 31/07/2012.
 //
 //
 
-#import "SBMainViewController.h"
+#import "SBMatchViewController.h"
 #import "PhageModel.h"
 #import "SBAlertView.h"
 #import "SBHowtoViewController.h"
-#import "SBMatchMakerViewController.h"
-#import "SBMatchLookupViewController.h"
+#import "SBCreateMatchViewController.h"
+#import "SBRootViewController.h"
 #import "SBSettingsViewController.h"
 #import "SBBoardView.h"
 #import "MBProgressHUD.h"
 
-@interface SBMainViewController () < SBSettingsViewControllerDelegate, SBBoardViewDelegate, SBMatchMakerViewControllerDelegate, SBHowtoViewControllerDelegate, UIPopoverControllerDelegate>
+@interface SBMatchViewController () < SBSettingsViewControllerDelegate, SBBoardViewDelegate, SBCreateMatchViewControllerDelegate, SBHowtoViewControllerDelegate, UIPopoverControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet SBBoardView *board;
 @property (weak, nonatomic) IBOutlet UILabel *playerOne;
@@ -30,7 +30,7 @@
 
 @end
 
-@implementation SBMainViewController
+@implementation SBMatchViewController
 
 - (void)viewDidLoad
 {
@@ -74,13 +74,13 @@
 #pragma mark - Match Lookup View Controller
 
 
-- (void)matchLookupViewControllerDidFinish:(SBMatchLookupViewController *)controller {
+- (void)matchLookupViewControllerDidFinish:(SBRootViewController *)controller {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         [self dismissModalViewControllerAnimated:YES];
     }
 }
 
-- (void)matchLookupViewController:(SBMatchLookupViewController *)controller didFindMatch:(SBMatch *)match {
+- (void)matchLookupViewController:(SBRootViewController *)controller didFindMatch:(SBMatch *)match {
     [self matchLookupViewControllerDidFinish:controller];
     [self.matchService saveMatch:self.match];
     self.match = match;
@@ -89,14 +89,14 @@
 
 #pragma mark - Match Maker View Controller
 
-- (void)matchMakerViewController:(SBMatchMakerViewController *)controller didFindMatch:(SBMatch *)match {
-    [self matchMakerViewControllerDidFinish:controller];
+- (void)createMatchViewController:(SBCreateMatchViewController *)controller didCreateMatch:(SBMatch *)match {
+    [self createMatchViewControllerDidFinish:controller];
     [self.matchService saveMatch:self.match];
     self.match = match;
 }
 
 
-- (void)matchMakerViewControllerDidFinish:(SBMatchMakerViewController *)controller
+- (void)createMatchViewControllerDidFinish:(SBCreateMatchViewController *)controller
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         [self dismissModalViewControllerAnimated:YES];
