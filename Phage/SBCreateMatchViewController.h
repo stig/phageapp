@@ -12,16 +12,12 @@
 @class SBMatch;
 
 @protocol SBCreateMatchViewControllerDelegate
-- (void)createMatchViewControllerDidFinish:(SBCreateMatchViewController *)controller;
 - (void)createMatchViewController:(SBCreateMatchViewController *)controller didCreateMatch:(SBMatch*)match;
 @end
 
 
-@interface SBCreateMatchViewController : UIViewController
+@interface SBCreateMatchViewController : UITableViewController
 
 @property (weak, nonatomic) id <SBCreateMatchViewControllerDelegate> delegate;
-
-- (IBAction)startOnePlayerMatch:(id)sender;
-- (IBAction)startTwoPlayerMatch:(id)sender;
 
 @end

@@ -11,19 +11,14 @@
 #import "SBAlertView.h"
 #import "SBHowtoViewController.h"
 #import "SBCreateMatchViewController.h"
-#import "SBRootViewController.h"
 #import "SBSettingsViewController.h"
 #import "SBBoardView.h"
 #import "MBProgressHUD.h"
 
-@interface SBMatchViewController () < SBSettingsViewControllerDelegate, SBBoardViewDelegate, SBCreateMatchViewControllerDelegate, SBHowtoViewControllerDelegate, UIPopoverControllerDelegate>
+@interface SBMatchViewController () < SBBoardViewDelegate, SBHowtoViewControllerDelegate, UIPopoverControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet SBBoardView *board;
-@property (weak, nonatomic) IBOutlet UILabel *playerOne;
-@property (weak, nonatomic) IBOutlet UILabel *playerTwo;
-@property (weak, nonatomic) IBOutlet UILabel *message;
 
-@property (strong, nonatomic) SBMatchService *matchService;
 @property (strong, nonatomic) UIPopoverController *howtoPopoverController;
 
 - (IBAction)trashMatch:(id)sender;
@@ -32,27 +27,11 @@
 
 @implementation SBMatchViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    self.matchService = [SBMatchService matchService];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self layoutMatch];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    // Called any time the view appears
-    [self ensureMatch];
-}
-
-- (void)viewDidUnload
-{
-    [self setPlayerOne:nil];
-    [self setPlayerTwo:nil];
-    [self setMessage:nil];
-    [self setBoard:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -60,46 +39,6 @@
         return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
     } else {
         return YES;
-    }
-}
-
-#pragma mark - Settings View Controller
-
-- (void)settingsViewControllerDidFinish:(SBSettingsViewController *)controller {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        [self dismissModalViewControllerAnimated:YES];
-    }    
-}
-
-#pragma mark - Match Lookup View Controller
-
-
-- (void)matchLookupViewControllerDidFinish:(SBRootViewController *)controller {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        [self dismissModalViewControllerAnimated:YES];
-    }
-}
-
-- (void)matchLookupViewController:(SBRootViewController *)controller didFindMatch:(SBMatch *)match {
-    [self matchLookupViewControllerDidFinish:controller];
-    [self.matchService saveMatch:self.match];
-    self.match = match;
-}
-
-
-#pragma mark - Match Maker View Controller
-
-- (void)createMatchViewController:(SBCreateMatchViewController *)controller didCreateMatch:(SBMatch *)match {
-    [self createMatchViewControllerDidFinish:controller];
-    [self.matchService saveMatch:self.match];
-    self.match = match;
-}
-
-
-- (void)createMatchViewControllerDidFinish:(SBCreateMatchViewController *)controller
-{
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        [self dismissModalViewControllerAnimated:YES];
     }
 }
 
@@ -119,6 +58,7 @@
 {
     self.howtoPopoverController = nil;
 }
+
 
 #pragma mark - Our Methods
 
@@ -145,27 +85,6 @@
     } else {
         [self performSegueWithIdentifier:@"showHowto" sender:sender];
     }
-}
-
-- (void)ensureMatch {
-    if (nil == self.match) {
-        NSArray *savedMatches = [self.matchService activeMatches];
-        if (savedMatches.count > 0) {
-            self.match = [savedMatches objectAtIndex:0];
-
-        } else {
-            SBPlayer *bot = [SBPlayer playerWithAlias:NSLocalizedString(@"Sgt Pepper", @"Default AI Name") human:NO];
-            SBPlayer *human = [SBPlayer playerWithAlias:NSLocalizedString(@"Player 1", @"Default Human Name") human:YES];
-            self.match = [SBMatch matchWithPlayerOne:human two:bot];
-        }
-    }
-}
-
-- (void)setMatch:(SBMatch*)match {
-    _match = match;
-    self.playerOne.text = self.match.playerOne.alias;
-    self.playerTwo.text = self.match.playerTwo.alias;
-    [self layoutMatch];
 }
 
 - (void)layoutMatch {
@@ -201,10 +120,7 @@
                                         message:NSLocalizedString(@"Really delete this match?", @"Delete dialog message")
                                      completion:^(SBAlertView* alertView, NSInteger buttonIndex) {
                                          if (alertView.cancelButtonIndex != buttonIndex) {
-                                             [self.matchService deleteMatch:self.match];
-                                             self.match = nil;
-                                             [self performSelector:@selector(ensureMatch) withObject:nil
-                                                        afterDelay:0.0];
+                                             [self.delegate matchViewController:self didDeleteMatch:self.match];
                                          }
                                      }
                               cancelButtonTitle:NSLocalizedString(@"Keep", @"Delete dialog negative button")
@@ -216,7 +132,7 @@
                                      completion:^(SBAlertView* alertView, NSInteger buttonIndex) {
                                          if (alertView.cancelButtonIndex != buttonIndex) {
                                              [self.match forfeit];
-                                             [self.matchService saveMatch:self.match];
+                                             [self.delegate matchViewController:self didChangeMatch:self.match];
                                              [self layoutMatch];
                                          }
                                      }
@@ -230,7 +146,7 @@
 
 - (void)performMove:(SBMove *)move {
     [self.match performMove:move completionHandler:^(NSError *error) {
-        [self.matchService saveMatch:self.match];
+        [self.delegate matchViewController:self didChangeMatch:self.match];
         [self layoutMatch];
     }];
 
@@ -246,17 +162,24 @@
 
 - (void)didLayoutBoard {
     if (self.match.isGameOver) {
+        self.navigationItem.title = NSLocalizedString(@"Game Over", @"Game Over Title");
+
         SBPlayer *winner = self.match.winner;
         if (nil == winner) {
-            self.message.text = NSLocalizedString(@"This match ended in a draw", @"Game Over message");
+            self.navigationItem.prompt = NSLocalizedString(@"This match ended in a draw", @"Game Over message");
         } else {
-            self.message.text = [NSString stringWithFormat:NSLocalizedString(@"This match was won by %@", @"Game Over message"), winner.alias];
+            self.navigationItem.prompt = [NSString stringWithFormat:NSLocalizedString(@"This match was won by %@", @"Game Over message"), winner.alias];
         }
-    } else if (self.match.currentPlayer.isHuman) {
-        self.message.text = [NSString stringWithFormat:NSLocalizedString(@"%@, it is your turn!", @"Take Turn message"), self.match.currentPlayer.alias];
+
     } else {
-        self.message.text = [NSString stringWithFormat:NSLocalizedString(@"Waiting for %@", @"Take Turn message"), self.match.currentPlayer.alias];
-        [self performBotMove];
+        self.navigationItem.title = @"Match";
+
+        if (self.match.currentPlayer.isHuman) {
+            self.navigationItem.prompt = [NSString stringWithFormat:NSLocalizedString(@"%@, it is your turn!", @"Take Turn message"), self.match.currentPlayer.alias];
+        } else {
+            self.navigationItem.prompt = [NSString stringWithFormat:NSLocalizedString(@"Waiting for %@", @"Take Turn message"), self.match.currentPlayer.alias];
+            [self performBotMove];
+        }
     }
 }
 

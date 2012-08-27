@@ -10,70 +10,93 @@
 #import "SBMatch.h"
 #import "SBPlayer.h"
 #import "PhageModel.h"
+#import "SBAlertView.h"
 
-@interface SBCreateMatchViewController () < UITextFieldDelegate >
-@property (weak, nonatomic) IBOutlet UITextField *soloPlayer;
-@property (weak, nonatomic) IBOutlet UITextField *onePlayer;
-@property (weak, nonatomic) IBOutlet UITextField *twoPlayer;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *soloPlayerStarts;
+@interface SBCreateMatchViewController ()
+@property (strong, nonatomic) NSArray *titles;
+@property (strong, nonatomic) NSArray *playerNames;
 @end
 
 @implementation SBCreateMatchViewController
 
-- (void)viewDidLoad
-{
+
+- (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
+    self.titles = @[
+        NSLocalizedString(@"1 Player Match", @"Create Match Table Section Title"),
+        NSLocalizedString(@"2 Player Match", @"Create Match Table Section Title")
+    ];
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.playerNames = @[
+        [@[
+            NSLocalizedString(@"Player 1", @"Human Player Name"),
+            NSLocalizedString(@"Sgt Pepper", @"AI Player Name")
+        ] mutableCopy],
+        [@[
+            NSLocalizedString(@"Player 1", @"Human Player Name"),
+            NSLocalizedString(@"Player 2", @"Human Player Name")
+        ] mutableCopy]
+    ];
 }
-
 
 - (IBAction)done:(id)sender
 {
-    [self.delegate createMatchViewControllerDidFinish:self];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
-- (IBAction)startOnePlayerMatch:(id)sender {
-    [TestFlight passCheckpoint:@"CREATE_ONE_PLAYER_MATCH"];
+#pragma mark - Data Source
 
-    SBPlayer *bot = [SBPlayer playerWithAlias:NSLocalizedString(@"Sgt Pepper", @"Default AI Name") human:NO];
-    SBPlayer *human = [SBPlayer playerWithAlias:self.soloPlayer.text human:YES];
-    SBMatch *match = 1 == self.soloPlayerStarts.selectedSegmentIndex
-            ? [SBMatch matchWithPlayerOne:bot two:human]
-            : [SBMatch matchWithPlayerOne:human two:bot];
-    [self.delegate createMatchViewController:self didCreateMatch:match];
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self.titles objectAtIndex:section];
 }
 
-- (IBAction)startTwoPlayerMatch:(id)sender {
-    [TestFlight passCheckpoint:@"CREATE_TWO_PLAYER_MATCH"];
-
-    SBPlayer *two = [SBPlayer playerWithAlias:self.twoPlayer.text human:YES];
-    SBPlayer *one = [SBPlayer playerWithAlias:self.onePlayer.text human:YES];
-    SBMatch *match = [SBMatch matchWithPlayerOne:one two:two];
-    [self.delegate createMatchViewController:self didCreateMatch:match];
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.titles.count;
 }
 
-- (void)viewDidUnload {
-    [self setSoloPlayer:nil];
-    [self setOnePlayer:nil];
-    [self setTwoPlayer:nil];
-    [self setSoloPlayerStarts:nil];
-    [super viewDidUnload];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 3;
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return YES;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    UITableViewCell *cell = nil;
+    NSArray *names = [self.playerNames objectAtIndex:indexPath.section];
+
+    if (indexPath.row < names.count) {
+        NSString *fmt = NSLocalizedString(@"Player %u", @"Player Number Indicator");
+        cell = [tableView dequeueReusableCellWithIdentifier:@"PlayerNameCell"];
+        cell.textLabel.text = [NSString stringWithFormat:fmt, indexPath.row + 1];
+        cell.detailTextLabel.text = [names objectAtIndex:indexPath.row];
+
+    } else {
+        NSString *fmt = NSLocalizedString(@"Create %u-Player match", @"Create Match Button");
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ButtonCell"];
+        cell.textLabel.text = [NSString stringWithFormat:fmt, indexPath.section + 1];
+    }
+
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSArray *names = [self.playerNames objectAtIndex:indexPath.section];
+    if (indexPath.row < names.count) {
+        [[[SBAlertView alloc] initWithTitle:@"Unimplemented"
+                                   message:@"Eventually you'll be able to edit player names, but for now you can't."
+                                completion:nil
+                         cancelButtonTitle:@"OK"
+                         otherButtonTitles:nil] show];
+
+        // TODO: push view controller to edit names
+    } else {
+        SBPlayer *one = [SBPlayer playerWithAlias:[names objectAtIndex:0] human:YES];
+        SBPlayer *two = [SBPlayer playerWithAlias:[names objectAtIndex:1] human:!!indexPath.section];
+        SBMatch *match = [SBMatch matchWithPlayerOne:one two:two];
+        [self.delegate createMatchViewController:self didCreateMatch:match];
+    }
+
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 

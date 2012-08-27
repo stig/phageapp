@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
-        <!--Match Lookup View Controller - Matches-->
+        <!--Root View Controller - Matches-->
         <scene sceneID="aIe-he-6qz">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5HD-nW-3B7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -53,7 +53,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="yAX-sv-tip">
                             <connections>
-                                <segue destination="zKE-qo-Z2o" kind="modal" identifier="showAdd" id="VSY-ZW-TzI"/>
+                                <segue destination="kN9-hO-1tK" kind="modal" identifier="showAdd" id="yXs-Oc-nDo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -66,7 +66,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hUy-Vz-8a5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="4lb-lr-azF" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="h1g-nX-p5p">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="h1g-nX-p5p">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -76,12 +76,88 @@
             </objects>
             <point key="canvasLocation" x="-1511" y="236"/>
         </scene>
-        <!--Main View Controller - Player 1 vs Sgt Pepper-->
+        <!--Create Match View Controller - Create Match-->
+        <scene sceneID="dQJ-QX-guS">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fyo-pe-Taq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController title="Create Match" id="kN9-hO-1tK" customClass="SBCreateMatchViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="01n-HS-rf0">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="jhi-bJ-nK2">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Title" id="lhF-5O-Pmg">
+                                    <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hld-qD-cbg">
+                                        <connections>
+                                            <action selector="done:" destination="kN9-hO-1tK" id="nGb-ab-G3E"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlayerNameCell" textLabel="RwE-Kh-DXh" detailTextLabel="BhK-63-wKT" style="IBUITableViewCellStyleValue2" id="GB6-JX-JrX">
+                                <rect key="frame" x="0.0" y="80" width="320" height="45"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RwE-Kh-DXh">
+                                            <rect key="frame" x="10" y="15" width="67" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                            <color key="textColor" red="0.32156862745098042" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BhK-63-wKT">
+                                            <rect key="frame" x="83" y="12" width="41" height="19"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ButtonCell" textLabel="GEA-sX-bNi" style="IBUITableViewCellStyleDefault" id="k6O-rN-MhL">
+                                <rect key="frame" x="0.0" y="125" width="320" height="45"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GEA-sX-bNi">
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kN9-hO-1tK" id="grW-3J-R2V"/>
+                            <outlet property="delegate" destination="kN9-hO-1tK" id="xtj-EI-uLB"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="-396" y="-363"/>
+        </scene>
+        <!--Match View Controller - Phage-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="SBMatchViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="94" width="320" height="386"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="clW-EF-f5C" userLabel="Grid" customClass="SBBoardView">
@@ -92,26 +168,22 @@
                                     <outlet property="delegate" destination="2" id="xfy-IU-yfa"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="0TY-pO-XQM">
-                                <rect key="frame" x="282" y="347" width="18" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="6" kind="push" id="2mb-ZD-t47"/>
-                                </connections>
-                            </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="OHt-2f-E7Y">
+                                <rect key="frame" x="0.0" y="372" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="How To Play" id="5et-cd-kFw">
+                                        <connections>
+                                            <segue destination="6" kind="push" identifier="showHowto" id="4EP-7S-mzn"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Player 1 vs Sgt Pepper" prompt="Hurry up and move!" id="gFt-hw-xtC">
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="0eX-jY-cIL">
+                    <navigationItem key="navigationItem" title="Phage" id="gFt-hw-xtC">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="0eX-jY-cIL">
                             <connections>
                                 <action selector="trashMatch:" destination="2" id="vZo-uF-xjR"/>
                             </connections>
@@ -124,113 +196,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-396" y="236"/>
-        </scene>
-        <!--Match Maker View Controller-->
-        <scene sceneID="RGp-JC-1EM">
-            <objects>
-                <viewController id="zKE-qo-Z2o" customClass="SBCreateMatchViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Q5v-OI-nvF">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AWl-4H-PcM">
-                                <rect key="frame" x="20" y="321" width="280" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="New Two Player Match">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="startTwoPlayerMatch:" destination="zKE-qo-Z2o" eventType="touchUpInside" id="zIj-OH-o5s"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hRa-om-cSB">
-                                <rect key="frame" x="20" y="128" width="280" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="New One Player Match">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="startOnePlayerMatch:" destination="zKE-qo-Z2o" eventType="touchUpInside" id="eT4-1x-r5H"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Human" borderStyle="roundedRect" minimumFontSize="17" id="AO1-Me-Dux">
-                                <rect key="frame" x="20" y="53" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                <connections>
-                                    <outlet property="delegate" destination="zKE-qo-Z2o" id="UsL-j1-Q2X"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Player 1" borderStyle="roundedRect" minimumFontSize="17" id="Ehy-O0-VZr">
-                                <rect key="frame" x="20" y="245" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                <connections>
-                                    <outlet property="delegate" destination="zKE-qo-Z2o" id="eBD-04-Sph"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Player 2" borderStyle="roundedRect" minimumFontSize="17" id="0xD-vy-9IJ">
-                                <rect key="frame" x="20" y="283" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                <connections>
-                                    <outlet property="delegate" destination="zKE-qo-Z2o" id="gje-6p-Jzq"/>
-                                </connections>
-                            </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="hG2-2J-Pki">
-                                <rect key="frame" x="108" y="91" width="192" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Human"/>
-                                    <segment title="Computer"/>
-                                </segments>
-                            </segmentedControl>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Player 1 is:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DSM-tv-G0I">
-                                <rect key="frame" x="20" y="93" width="85" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <navigationBar contentMode="scaleToFill" id="BA4-qN-ZwS">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Add Match" id="gSE-36-H6D">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JFo-ee-yAK">
-                                            <connections>
-                                                <action selector="done:" destination="zKE-qo-Z2o" id="Htq-Jm-eX9"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="onePlayer" destination="Ehy-O0-VZr" id="ucb-KB-CET"/>
-                        <outlet property="soloPlayer" destination="AO1-Me-Dux" id="NLB-sC-Kpf"/>
-                        <outlet property="soloPlayerStarts" destination="hG2-2J-Pki" id="q8h-0M-hig"/>
-                        <outlet property="twoPlayer" destination="0xD-vy-9IJ" id="Psw-gv-UPL"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hyz-xc-1Z5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-396" y="-379"/>
         </scene>
         <!--Howto View Controller - How To Play-->
         <scene sceneID="9">
@@ -335,6 +300,9 @@
                 <relationship kind="outlet" name="delegate"/>
             </relationships>
         </class>
+        <class className="SBCreateMatchViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBCreateMatchViewController.h"/>
+        </class>
         <class className="SBHowtoViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SBHowtoViewController.h"/>
             <relationships>
@@ -346,24 +314,11 @@
             <relationships>
                 <relationship kind="action" name="trashMatch:"/>
                 <relationship kind="outlet" name="board" candidateClass="SBBoardView"/>
-                <relationship kind="outlet" name="message" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="playerOne" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="playerTwo" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="delegate"/>
             </relationships>
         </class>
         <class className="SBRootViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SBRootViewController.h"/>
-        </class>
-        <class className="SBCreateMatchViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBCreateMatchViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="startOnePlayerMatch:"/>
-                <relationship kind="action" name="startTwoPlayerMatch:"/>
-                <relationship kind="outlet" name="onePlayer" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="soloPlayer" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="soloPlayerStarts" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="twoPlayer" candidateClass="UITextField"/>
-            </relationships>
         </class>
         <class className="SBSettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SBSettingsViewController.h"/>

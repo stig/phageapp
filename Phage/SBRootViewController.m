@@ -11,8 +11,9 @@
 #import "SBPlayer.h"
 #import "PhageModel.h"
 #import "SBMatchViewController.h"
+#import "SBCreateMatchViewController.h"
 
-@interface SBRootViewController ()
+@interface SBRootViewController () < SBMatchViewControllerDelegate, SBCreateMatchViewControllerDelegate >
 @property (strong, nonatomic) NSDateFormatter *formatter;
 @property (strong, nonatomic) NSArray *sections;
 @property (strong, nonatomic) NSArray *titles;
@@ -52,13 +53,16 @@
 
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-
+- (void)reloadSections {
     self.sections = @[
         [self.matchService activeMatches],
         [self.matchService inactiveMatches]
     ];
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self reloadSections];
+    [self.tableView reloadData];
     [super viewWillAppear:animated];
 }
 
@@ -69,8 +73,12 @@
         NSIndexPath *path = [self.tableView indexPathForSelectedRow];
         self.currentMatch = [[self.sections objectAtIndex:path.section] objectAtIndex:path.row];
         [segue.destinationViewController setMatch:self.currentMatch];
+        [segue.destinationViewController setDelegate:self];
 
         [TestFlight passCheckpoint:[self.checkpoints objectAtIndex:path.section]];
+    } else if ([segue.identifier isEqualToString:@"showAdd"]) {
+        [segue.destinationViewController setDelegate:self];
+        
     }
 }
 
@@ -125,6 +133,35 @@
 }
 */
 
-#pragma mark - Table view delegate
+#pragma mark - Match View Controller Delegate
+
+- (void)matchViewController:(SBMatchViewController *)matchViewController didChangeMatch:(SBMatch *)match {
+    [self.matchService saveMatch:match];
+}
+
+- (void)matchViewController:(SBMatchViewController *)matchViewController didDeleteMatch:(SBMatch *)match {
+    [self.matchService deleteMatch:match];
+    [self reloadSections];
+
+    [self.navigationController popViewControllerAnimated:YES];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+
+#pragma mark - Create Match View Controller Delegate
+
+- (void)createMatchViewController:(SBCreateMatchViewController *)controller didCreateMatch:(SBMatch *)match {
+    [self.matchService saveMatch:match];
+    [self reloadSections];
+
+    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView selectRowAtIndexPath:path animated:NO scrollPosition:UITableViewScrollPositionNone];
+
+    [controller dismissViewControllerAnimated:YES completion:^{
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionTop];
+        [self performSegueWithIdentifier:@"showMatch" sender:nil];
+    }];
+}
 
 @end
