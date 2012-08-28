@@ -240,7 +240,9 @@
 }
 
 - (BOOL)shouldAcceptUserInput {
-    return self.match.currentPlayer.isHuman;
+    if (!self.match.currentPlayer.isHuman)
+        return NO;
+    return !self.match.isGameOver;
 }
 
 - (void)didLayoutBoard {

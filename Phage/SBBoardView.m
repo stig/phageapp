@@ -109,9 +109,10 @@
     if (![self.delegate shouldAcceptUserInput])
         return NO;
 
-    if (self.board.isGameOver)
-        return NO;
-
+    // OK, so it's the current player's piece;
+    // The match is not over;
+    // The current player is a human;
+    // But does _this_ piece have any legal moves?
     __block BOOL canMove = NO;
     [self.board enumerateLegalDestinationsForPiece:pieceView.piece
                                          withBlock:^(SBLocation *location, BOOL *stop) {
