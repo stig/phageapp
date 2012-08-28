@@ -500,16 +500,8 @@
 		D76A456B151DDC7500E59146 /* Phage */ = {
 			isa = PBXGroup;
 			children = (
-				F8D04072CA6DA6FF14E35B40 /* SBCellView.h */,
-				F8D04440E13E946BC7E8DEC2 /* SBCellView.m */,
-				F8D0469ABCAA9ECE9023B1F9 /* SBPieceView.h */,
-				F8D04129838B653D03F76144 /* SBPieceView.m */,
-				D7DD0D2915E4475100103EE4 /* SBBoardView.h */,
-				D7DD0D2A15E4475100103EE4 /* SBBoardView.m */,
 				F8D04A5E3FC58C124F077A44 /* SBRootViewController.h */,
 				F8D049E7B11F27F102F6CBDE /* SBRootViewController.m */,
-				FB89D43C154C7D27001A0C27 /* SBMatchViewController.m */,
-				FB89D43C154C7D27001A0C26 /* SBMatchViewController.h */,
 				FB89D43C154C7D27001A0C24 /* SBHowtoViewController.m */,
 				FB89D43C154C7D27001A0C23 /* SBHowtoViewController.h */,
 				D74EC46115E9362900505EEE /* SBSettingsViewController.h */,
@@ -523,6 +515,7 @@
 				D76A456C151DDC7500E59146 /* Supporting Files */,
 				FB89D43C154C7D27001A0C29 /* Utils */,
 				F8D04D3552AE5D8FC2A43E1B /* Themes */,
+				F8D0474D23B61FF6DC78C790 /* Match View */,
 			);
 			path = Phage;
 			sourceTree = "<group>";
@@ -601,6 +594,21 @@
 				D7EA256315E2EE02006081A4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F8D0474D23B61FF6DC78C790 /* Match View */ = {
+			isa = PBXGroup;
+			children = (
+				FB89D43C154C7D27001A0C26 /* SBMatchViewController.h */,
+				FB89D43C154C7D27001A0C27 /* SBMatchViewController.m */,
+				F8D04129838B653D03F76144 /* SBPieceView.m */,
+				F8D0469ABCAA9ECE9023B1F9 /* SBPieceView.h */,
+				F8D04440E13E946BC7E8DEC2 /* SBCellView.m */,
+				F8D04072CA6DA6FF14E35B40 /* SBCellView.h */,
+				D7DD0D2A15E4475100103EE4 /* SBBoardView.m */,
+				D7DD0D2915E4475100103EE4 /* SBBoardView.h */,
+			);
+			name = "Match View";
 			sourceTree = "<group>";
 		};
 		F8D04840C6347FCAA0AF4E80 /* Products */ = {
