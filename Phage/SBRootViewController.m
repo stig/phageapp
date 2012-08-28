@@ -58,12 +58,22 @@
         [self.matchService activeMatches],
         [self.matchService inactiveMatches]
     ];
+    [self.tableView reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self reloadSections];
-    [self.tableView reloadData];
     [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    if (![[self.matchService allMatches] count]) {
+        SBPlayer *one = [SBPlayer playerWithAlias:NSLocalizedString(@"Player 1", @"Human Player Name") human:YES];
+        SBPlayer *two = [SBPlayer playerWithAlias:NSLocalizedString(@"Sgt Pepper", @"AI Player Name") human:NO];
+        [self.matchService saveMatch: [SBMatch matchWithPlayerOne:one two:two]];
+        [self reloadSections];
+        [self showMostRecentlyCreatedActiveMatch];
+    }
 }
 
 #pragma mark - Segues
@@ -76,6 +86,7 @@
         [segue.destinationViewController setDelegate:self];
 
         [TestFlight passCheckpoint:[self.checkpoints objectAtIndex:path.section]];
+
     } else if ([segue.identifier isEqualToString:@"showAdd"]) {
         [segue.destinationViewController setDelegate:self];
         
@@ -144,7 +155,6 @@
     [self reloadSections];
 
     [self.navigationController popViewControllerAnimated:YES];
-    [self.tableView reloadData];
 }
 
 
@@ -152,16 +162,18 @@
 
 - (void)createMatchViewController:(SBCreateMatchViewController *)controller didCreateMatch:(SBMatch *)match {
     [self.matchService saveMatch:match];
-    [self reloadSections];
-
-    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView selectRowAtIndexPath:path animated:NO scrollPosition:UITableViewScrollPositionNone];
 
     [controller dismissViewControllerAnimated:YES completion:^{
-        [self.tableView reloadData];
-        [self.tableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionTop];
-        [self performSegueWithIdentifier:@"showMatch" sender:nil];
+        [self reloadSections];
+        [self showMostRecentlyCreatedActiveMatch];
     }];
+}
+
+- (void)showMostRecentlyCreatedActiveMatch {
+    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionTop];
+
+    [self performSelector:@selector(performSegueWithIdentifier:sender:) withObject:@"showMatch" afterDelay:0.25];
 }
 
 @end
