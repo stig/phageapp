@@ -33,6 +33,7 @@
 		D76A4591151DDC7500E59146 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D76A458F151DDC7500E59146 /* InfoPlist.strings */; };
 		D77E0C8415DD88430004EFAF /* SBCreateMatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D77E0C8315DD88430004EFAF /* SBCreateMatchViewController.m */; };
 		D785320F15E6E61000A687BF /* libMBProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8D04D5CB6B2F9A4669C4760 /* libMBProgressHUD.a */; };
+		D791504B15ED65B3005B9FCF /* SBPlayerAliasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D791504A15ED65B3005B9FCF /* SBPlayerAliasViewController.m */; };
 		D7AE134815C7538400B8349B /* libPhageModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D72F239815C5F248006EFE0D /* libPhageModel.a */; };
 		D7DD0D2B15E4475100103EE4 /* SBBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DD0D2A15E4475100103EE4 /* SBBoardView.m */; };
 		D7EA254C15E2EE02006081A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4567151DDC7500E59146 /* Foundation.framework */; };
@@ -257,6 +258,8 @@
 		D76A45BD151DFD1A00E59146 /* SBTriangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBTriangle.m; sourceTree = "<group>"; };
 		D77E0C8215DD88430004EFAF /* SBCreateMatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBCreateMatchViewController.h; sourceTree = "<group>"; };
 		D77E0C8315DD88430004EFAF /* SBCreateMatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCreateMatchViewController.m; sourceTree = "<group>"; };
+		D791504915ED65B3005B9FCF /* SBPlayerAliasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPlayerAliasViewController.h; sourceTree = "<group>"; };
+		D791504A15ED65B3005B9FCF /* SBPlayerAliasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPlayerAliasViewController.m; sourceTree = "<group>"; };
 		D7BFA390151E48A000435C7F /* SBPiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPiece.m; sourceTree = "<group>"; };
 		D7BFA3AD151F108100435C7F /* SBBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoard.h; sourceTree = "<group>"; };
 		D7BFA3AE151F108100435C7F /* SBBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoard.m; sourceTree = "<group>"; };
@@ -512,6 +515,8 @@
 				D76A4575151DDC7500E59146 /* SBAppDelegate.m */,
 				D76A4577151DDC7500E59146 /* MainStoryboard_iPhone.storyboard */,
 				D76A457A151DDC7500E59146 /* MainStoryboard_iPad.storyboard */,
+				D791504915ED65B3005B9FCF /* SBPlayerAliasViewController.h */,
+				D791504A15ED65B3005B9FCF /* SBPlayerAliasViewController.m */,
 				D76A456C151DDC7500E59146 /* Supporting Files */,
 				FB89D43C154C7D27001A0C29 /* Utils */,
 				F8D04D3552AE5D8FC2A43E1B /* Themes */,
@@ -985,6 +990,7 @@
 				F8D040786DB3C287CFAFE611 /* SBPieceView.m in Sources */,
 				F8D04B71CF3EA739192B4BA9 /* SBCellView.m in Sources */,
 				D74EC46315E9362900505EEE /* SBSettingsViewController.m in Sources */,
+				D791504B15ED65B3005B9FCF /* SBPlayerAliasViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

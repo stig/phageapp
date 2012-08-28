@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSArray *checkpoints;
 @property (strong, nonatomic) SBMatch *currentMatch;
 @property (strong, nonatomic) SBMatchService *matchService;
+@property (nonatomic) BOOL shouldShowMostRecentlyCreatedActiveMatch;
 @end
 
 @implementation SBRootViewController
@@ -67,7 +68,14 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    if (![[self.matchService allMatches] count]) {
+    [super viewDidAppear:animated];
+
+    if (self.shouldShowMostRecentlyCreatedActiveMatch) {
+        self.shouldShowMostRecentlyCreatedActiveMatch = NO;
+        [self showMostRecentlyCreatedActiveMatch];
+
+
+    } else if (![[self.matchService allMatches] count]) {
         SBPlayer *one = [SBPlayer playerWithAlias:NSLocalizedString(@"Player 1", @"Human Player Name") human:YES];
         SBPlayer *two = [SBPlayer playerWithAlias:NSLocalizedString(@"Sgt Pepper", @"AI Player Name") human:NO];
         [self.matchService saveMatch: [SBMatch matchWithPlayerOne:one two:two]];
@@ -89,7 +97,7 @@
 
     } else if ([segue.identifier isEqualToString:@"showAdd"]) {
         [segue.destinationViewController setDelegate:self];
-        
+
     }
 }
 
@@ -163,17 +171,19 @@
 - (void)createMatchViewController:(SBCreateMatchViewController *)controller didCreateMatch:(SBMatch *)match {
     [self.matchService saveMatch:match];
 
-    [controller dismissViewControllerAnimated:YES completion:^{
-        [self reloadSections];
-        [self showMostRecentlyCreatedActiveMatch];
-    }];
+
+
+    [self.navigationController popViewControllerAnimated:YES];
+
+    [self reloadSections];
+    self.shouldShowMostRecentlyCreatedActiveMatch = YES;
 }
 
 - (void)showMostRecentlyCreatedActiveMatch {
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionTop];
 
-    [self performSelector:@selector(performSegueWithIdentifier:sender:) withObject:@"showMatch" afterDelay:0.25];
+    [self performSelector:@selector(performSegueWithIdentifier:sender:) withObject:@"showMatch" afterDelay:0.5];
 }
 
 @end

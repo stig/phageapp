@@ -9,10 +9,9 @@
 #import "SBCreateMatchViewController.h"
 #import "SBMatch.h"
 #import "SBPlayer.h"
-#import "PhageModel.h"
-#import "SBAlertView.h"
+#import "SBPlayerAliasViewController.h"
 
-@interface SBCreateMatchViewController ()
+@interface SBCreateMatchViewController () < SBPlayerAliasViewControllerDelegate >
 @property (strong, nonatomic) NSArray *titles;
 @property (strong, nonatomic) NSArray *playerNames;
 @end
@@ -82,21 +81,42 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSArray *names = [self.playerNames objectAtIndex:indexPath.section];
     if (indexPath.row < names.count) {
-        [[[SBAlertView alloc] initWithTitle:@"Unimplemented"
-                                   message:@"Eventually you'll be able to edit player names, but for now you can't."
-                                completion:nil
-                         cancelButtonTitle:@"OK"
-                         otherButtonTitles:nil] show];
+        if (indexPath.section || !indexPath.row) {
+            [self performSegueWithIdentifier:@"showPlayerAlias" sender:nil];
+        } else {
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
 
-        // TODO: push view controller to edit names
     } else {
         SBPlayer *one = [SBPlayer playerWithAlias:[names objectAtIndex:0] human:YES];
         SBPlayer *two = [SBPlayer playerWithAlias:[names objectAtIndex:1] human:!!indexPath.section];
         SBMatch *match = [SBMatch matchWithPlayerOne:one two:two];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self.delegate createMatchViewController:self didCreateMatch:match];
     }
 
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSLog(@"segue.identifier = %@", segue.identifier);
+
+    [segue.destinationViewController setDelegate:self];
+
+    [super prepareForSegue:segue sender:sender];
+}
+
+- (void)playerAliasViewController:(SBPlayerAliasViewController *)aliasViewController didChangeAlias:(NSString *)alias {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"self.tableView.indexPathForSelectedRow = %@", self.tableView.indexPathForSelectedRow);
+
+    NSIndexPath *path = self.tableView.indexPathForSelectedRow;
+    if (nil != path) {
+        [[self.playerNames objectAtIndex:path.section] replaceObjectAtIndex:path.row withObject:alias];
+        [self.tableView reloadData];
+    }
+
+    [aliasViewController.navigationController popViewControllerAnimated:YES];
 }
 
 
