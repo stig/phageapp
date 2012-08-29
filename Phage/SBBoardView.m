@@ -47,6 +47,9 @@
             SBPieceView *pieceView = [SBPieceView objectWithPiece:p];
             pieceView.delegate = self;
 
+            SBCellView *cell = [self.cells objectForKey:[self.board locationForPiece:p]];
+            pieceView.center = cell.center;
+
             [pieces addObject:pieceView];
             [self addSubview:pieceView];
         }
