@@ -28,6 +28,10 @@
         _location = location;
         self.background = [[UIImageView alloc] initWithImage:clear];
         self.foreground = [[UIImageView alloc] initWithImage:blocked];
+
+        // Set this to avoid blocked image showing up on first load of the board
+        self.foreground.alpha = 0.0;
+
         [self addSubview:self.background];
         [self addSubview:self.foreground];
     }
