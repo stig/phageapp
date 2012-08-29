@@ -112,8 +112,8 @@
 }
 
 - (void)deleteMatch {
-    [[[SBAlertView alloc] initWithTitle:NSLocalizedString(@"Delete Match", @"Delete dialog title")
-                                message:NSLocalizedString(@"Really delete this match?", @"Delete dialog message")
+    [[[SBAlertView alloc] initWithTitle:NSLocalizedString(@"Delete Match?", @"Delete dialog title")
+                                message:NSLocalizedString(@"This cannot be undone.", @"Delete dialog message")
                              completion:^(SBAlertView *alertView, NSInteger buttonIndex) {
                                  if (alertView.cancelButtonIndex != buttonIndex) {
                                      [self.delegate matchViewController:self didDeleteMatch:self.match];
@@ -124,8 +124,8 @@
 }
 
 - (void)forfeitMatch {
-    [[[SBAlertView alloc] initWithTitle:NSLocalizedString(@"Forfeit Match", @"Forfeit dialog title")
-                                message:NSLocalizedString(@"Do you really want to forfeit this match?", @"Forfeit dialog message")
+    [[[SBAlertView alloc] initWithTitle:NSLocalizedString(@"Forfeit Match?", @"Forfeit dialog title")
+                          message:NSLocalizedString(@"This cannot be undone.", @"Forfeit dialog message")
                              completion:^(SBAlertView *alertView, NSInteger buttonIndex) {
                                  if (alertView.cancelButtonIndex != buttonIndex) {
                                      [self.match forfeit];
@@ -178,10 +178,8 @@
                                      target:self
                                      action:@selector(forfeitMatch)];
 
-        if (self.match.currentPlayer.isHuman) {
-            self.navigationItem.prompt = [NSString stringWithFormat:NSLocalizedString(@"%@, it is your turn!", @"Take Turn message"), self.match.currentPlayer.alias];
-        } else {
-            self.navigationItem.prompt = [NSString stringWithFormat:NSLocalizedString(@"Waiting for %@", @"Take Turn message"), self.match.currentPlayer.alias];
+        self.navigationItem.prompt = [NSString stringWithFormat:NSLocalizedString(@"Waiting for %@...", @"Take Turn message"), self.match.currentPlayer.alias];
+        if (!self.match.currentPlayer.isHuman) {
             [self performBotMove];
         }
     }
