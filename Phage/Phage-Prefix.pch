@@ -3,6 +3,7 @@
 //
 
 
+// Used for duration of animation for moving pieces across the board
 #define ANIM_DURATION 0.7
 
 #import <Availability.h>
@@ -17,4 +18,10 @@
     #import <GameKit/GameKit.h>
     #import <QuartzCore/QuartzCore.h>
     #import "TestFlight.h"
+
+    // For user defaults
+    static NSString *const PLAYER_ONE_ALIAS = @"PLAYER_ONE_ALIAS";
+    static NSString *const PLAYER_TWO_ALIAS = @"PLAYER_TWO_ALIAS";
+    static NSString *const SGT_PEPPER_ALIAS = @"SGT_PEPPER_ALIAS";
+
 #endif

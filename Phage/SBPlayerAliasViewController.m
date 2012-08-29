@@ -14,20 +14,11 @@
 
 @implementation SBPlayerAliasViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+- (void)viewDidLoad {
+    [super viewDidLoad];
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.aliasTextField.text = self.alias;
+    self.aliasTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:self.aliasKey];
 }
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -35,10 +26,9 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-    self.alias = textField.text;
+    [[NSUserDefaults standardUserDefaults] setObject:textField.text forKey:self.aliasKey];
     [textField resignFirstResponder];
-    [self.delegate playerAliasViewController:self didChangeAlias:textField.text];
+    [self.navigationController popViewControllerAnimated:YES];
     return NO;
 }
 

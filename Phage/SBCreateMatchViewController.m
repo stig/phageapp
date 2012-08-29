@@ -13,7 +13,7 @@
 
 @interface SBCreateMatchViewController () < SBPlayerAliasViewControllerDelegate >
 @property (strong, nonatomic) NSArray *titles;
-@property (strong, nonatomic) NSArray *playerNames;
+@property (strong, nonatomic) NSArray *players;
 @end
 
 @implementation SBCreateMatchViewController
@@ -27,21 +27,21 @@
         NSLocalizedString(@"2 Player Match", @"Create Match Table Section Title")
     ];
 
-    self.playerNames = @[
-        [@[
-            NSLocalizedString(@"Player 1", @"Human Player Name"),
-            NSLocalizedString(@"Sgt Pepper", @"AI Player Name")
-        ] mutableCopy],
-        [@[
-            NSLocalizedString(@"Player 1", @"Human Player Name"),
-            NSLocalizedString(@"Player 2", @"Human Player Name")
-        ] mutableCopy]
+    self.players = @[
+    @[
+    @{ @"aliasKey": PLAYER_ONE_ALIAS, @"human": @(YES) },
+    @{ @"aliasKey": SGT_PEPPER_ALIAS, @"human": @(NO) }
+    ],
+    @[
+    @{ @"aliasKey": PLAYER_ONE_ALIAS, @"human": @(YES) },
+    @{ @"aliasKey": PLAYER_TWO_ALIAS, @"human": @(YES) }
+    ]
     ];
 }
 
-- (IBAction)done:(id)sender
-{
-    [self dismissModalViewControllerAnimated:YES];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Data Source
@@ -61,13 +61,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     UITableViewCell *cell = nil;
-    NSArray *names = [self.playerNames objectAtIndex:indexPath.section];
+    NSArray *players = [self.players objectAtIndex:indexPath.section];
 
-    if (indexPath.row < names.count) {
+    if (indexPath.row < players.count) {
         NSString *fmt = NSLocalizedString(@"Player %u", @"Player Number Indicator");
         cell = [tableView dequeueReusableCellWithIdentifier:@"PlayerNameCell"];
         cell.textLabel.text = [NSString stringWithFormat:fmt, indexPath.row + 1];
-        cell.detailTextLabel.text = [names objectAtIndex:indexPath.row];
+
+        NSString *aliasKey = [[players objectAtIndex:indexPath.row] objectForKey:@"aliasKey"];
+        NSString *alias = [[NSUserDefaults standardUserDefaults] objectForKey:aliasKey];
+
+        cell.detailTextLabel.text = alias;
 
     } else {
         NSString *fmt = NSLocalizedString(@"Create %u-Player match", @"Create Match Button");
@@ -79,17 +83,18 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSArray *names = [self.playerNames objectAtIndex:indexPath.section];
-    if (indexPath.row < names.count) {
-        if (indexPath.section || !indexPath.row) {
+    NSArray *players = [self.players objectAtIndex:indexPath.section];
+    if (indexPath.row < players.count) {
+        NSDictionary *player = [players objectAtIndex:indexPath.row];
+        if ([[player objectForKey:@"human"] boolValue]) {
             [self performSegueWithIdentifier:@"showPlayerAlias" sender:nil];
         } else {
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
         }
 
     } else {
-        SBPlayer *one = [SBPlayer playerWithAlias:[names objectAtIndex:0] human:YES];
-        SBPlayer *two = [SBPlayer playerWithAlias:[names objectAtIndex:1] human:!!indexPath.section];
+        SBPlayer *one = [self createPlayer:[players objectAtIndex:0]];
+        SBPlayer *two = [self createPlayer:[players objectAtIndex:1]];
         SBMatch *match = [SBMatch matchWithPlayerOne:one two:two];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self.delegate createMatchViewController:self didCreateMatch:match];
@@ -97,26 +102,25 @@
 
 }
 
+- (SBPlayer *)createPlayer:(NSDictionary *)dict {
+    NSString *aliasKey = [dict objectForKey:@"aliasKey"];
+    NSString *alias = [[NSUserDefaults standardUserDefaults] objectForKey:aliasKey];
+    return [SBPlayer playerWithAlias:alias human:[[dict objectForKey:@"human"] boolValue]];
+}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
     NSIndexPath *path = self.tableView.indexPathForSelectedRow;
-    NSString *alias = [[self.playerNames objectAtIndex:path.section] objectAtIndex:path.row];
+    NSString *aliasKey = [[[self.players objectAtIndex:path.section] objectAtIndex:path.row] objectForKey:@"aliasKey"];
 
     [segue.destinationViewController setDelegate:self];
-    [segue.destinationViewController setAlias:alias];
+    [segue.destinationViewController setAliasKey:aliasKey];
 
     [super prepareForSegue:segue sender:sender];
 }
 
-- (void)playerAliasViewController:(SBPlayerAliasViewController *)aliasViewController didChangeAlias:(NSString *)alias {
-
-    NSIndexPath *path = self.tableView.indexPathForSelectedRow;
-    if (nil != path) {
-        [[self.playerNames objectAtIndex:path.section] replaceObjectAtIndex:path.row withObject:alias];
-        [self.tableView reloadData];
-    }
-
+- (void)playerAliasViewControllerDidUpdateAlias:(SBPlayerAliasViewController *)aliasViewController {
     [aliasViewController.navigationController popViewControllerAnimated:YES];
 }
 

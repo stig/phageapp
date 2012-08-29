@@ -19,6 +19,16 @@
     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
 #endif
 
+
+    NSDictionary *defaults = @{
+        PLAYER_ONE_ALIAS: NSLocalizedString(@"Player 1", @"Human Player Name"),
+        PLAYER_TWO_ALIAS: NSLocalizedString(@"Player 2", @"Human Player Name"),
+        SGT_PEPPER_ALIAS: NSLocalizedString(@"Sgt Pepper", @"AI Player Name")
+    };
+
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
+
+
     return YES;
 }
 							

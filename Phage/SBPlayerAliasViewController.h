@@ -11,12 +11,12 @@
 @class SBPlayerAliasViewController;
 
 @protocol SBPlayerAliasViewControllerDelegate
-- (void)playerAliasViewController:(SBPlayerAliasViewController *)aliasViewController didChangeAlias:(NSString *)alias;
+- (void)playerAliasViewControllerDidUpdateAlias:(SBPlayerAliasViewController *)aliasViewController;
 @end
 
 @interface SBPlayerAliasViewController : UIViewController
 
-@property (copy, nonatomic) NSString *alias;
+@property (copy, nonatomic) NSString *aliasKey;
 @property (weak, nonatomic) id<SBPlayerAliasViewControllerDelegate> delegate;
 
 @end
