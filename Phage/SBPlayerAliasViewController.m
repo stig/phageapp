@@ -9,8 +9,7 @@
 #import "SBPlayerAliasViewController.h"
 
 @interface SBPlayerAliasViewController () < UITextFieldDelegate >
-@property (weak, nonatomic) IBOutlet UITextField *alias;
-
+@property (weak, nonatomic) IBOutlet UITextField *aliasTextField;
 @end
 
 @implementation SBPlayerAliasViewController
@@ -24,18 +23,11 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.aliasTextField.text = self.alias;
 }
 
-- (void)viewDidUnload
-{
-    [self setAlias:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -44,6 +36,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     NSLog(@"%s", __PRETTY_FUNCTION__);
+    self.alias = textField.text;
     [textField resignFirstResponder];
     [self.delegate playerAliasViewController:self didChangeAlias:textField.text];
     return NO;

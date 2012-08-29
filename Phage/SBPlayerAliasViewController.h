@@ -16,6 +16,7 @@
 
 @interface SBPlayerAliasViewController : UIViewController
 
+@property (copy, nonatomic) NSString *alias;
 @property (weak, nonatomic) id<SBPlayerAliasViewControllerDelegate> delegate;
 
 @end

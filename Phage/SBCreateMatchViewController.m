@@ -99,16 +99,17 @@
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSLog(@"segue.identifier = %@", segue.identifier);
+
+    NSIndexPath *path = self.tableView.indexPathForSelectedRow;
+    NSString *alias = [[self.playerNames objectAtIndex:path.section] objectAtIndex:path.row];
 
     [segue.destinationViewController setDelegate:self];
+    [segue.destinationViewController setAlias:alias];
 
     [super prepareForSegue:segue sender:sender];
 }
 
 - (void)playerAliasViewController:(SBPlayerAliasViewController *)aliasViewController didChangeAlias:(NSString *)alias {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-    NSLog(@"self.tableView.indexPathForSelectedRow = %@", self.tableView.indexPathForSelectedRow);
 
     NSIndexPath *path = self.tableView.indexPathForSelectedRow;
     if (nil != path) {

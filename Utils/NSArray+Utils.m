@@ -8,6 +8,7 @@
 #import "NSArray+Utils.h"
 
 @implementation NSArray (Utils)
+
 - (NSArray *)applyBlock:(id (^)(id))block {
     NSMutableArray *res = [NSMutableArray arrayWithCapacity:self.count];
     for (id o in self) {

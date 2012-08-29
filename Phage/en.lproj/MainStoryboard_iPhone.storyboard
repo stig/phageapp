@@ -163,7 +163,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="hM9-df-LS4"/>
                     <connections>
-                        <outlet property="alias" destination="LgL-RK-N78" id="p1P-mU-4XG"/>
+                        <outlet property="aliasTextField" destination="LgL-RK-N78" id="p1P-mU-4XG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ec2-be-edb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -338,7 +338,7 @@
         <class className="SBPlayerAliasViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SBPlayerAliasViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="alias" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="aliasTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="SBRootViewController" superclassName="UITableViewController">
