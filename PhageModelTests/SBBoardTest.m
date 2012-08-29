@@ -12,7 +12,6 @@
 #import "SBCircle.h"
 #import "SBDiamond.h"
 #import "SBMove.h"
-#import "NSArray+Utils.h"
 
 @interface SBBoardTest : SenTestCase {
     SBBoard *s;
