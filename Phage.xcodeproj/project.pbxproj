@@ -37,21 +37,21 @@
 		D7DD0D2B15E4475100103EE4 /* SBBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DD0D2A15E4475100103EE4 /* SBBoardView.m */; };
 		D7FDA3A2156DAA4700E65C5E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FDA3A1156DAA4700E65C5E /* libz.dylib */; };
 		D7FDA3A4156DAA8F00E65C5E /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FDA3A3156DAA8F00E65C5E /* libTestFlight.a */; };
-		F8D04027C7A00D5717B08DD6 /* SouthDiamond.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D045227BFF000469526CE1 /* SouthDiamond.png */; };
+		F8D04027C7A00D5717B08DD6 /* piece-south-diamond.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D045227BFF000469526CE1 /* piece-south-diamond.png */; };
 		F8D040786DB3C287CFAFE611 /* SBPieceView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D04129838B653D03F76144 /* SBPieceView.m */; };
 		F8D041AEA9425524156B3DEC /* SBRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D049E7B11F27F102F6CBDE /* SBRootViewController.m */; };
 		F8D043304018A5D985297145 /* cell-background.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D040B854DB8C80EEE9D7FC /* cell-background.png */; };
-		F8D0445D2BD787D044459010 /* NorthCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04DB6B26461C4B5A120AB /* NorthCircle.png */; };
-		F8D0449FC5E399655B54BD9D /* NorthTriangle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04C837D03B145DB351D2F /* NorthTriangle.png */; };
-		F8D0458F0826F3A197156CD7 /* NorthDiamond.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04F5489774187AD134A8F /* NorthDiamond.png */; };
-		F8D04945DD27D4D6780F6654 /* SouthTriangle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D041465C485CAD621B1C32 /* SouthTriangle.png */; };
+		F8D0445D2BD787D044459010 /* piece-north-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04DB6B26461C4B5A120AB /* piece-north-circle.png */; };
+		F8D0449FC5E399655B54BD9D /* piece-north-triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04C837D03B145DB351D2F /* piece-north-triangle.png */; };
+		F8D0458F0826F3A197156CD7 /* piece-north-diamond.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04F5489774187AD134A8F /* piece-north-diamond.png */; };
+		F8D04945DD27D4D6780F6654 /* piece-south-triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D041465C485CAD621B1C32 /* piece-south-triangle.png */; };
 		F8D049FEF38D41389F177CB7 /* SBOpponentMobilityMinimisingMovePickerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C8B /* SBOpponentMobilityMinimisingMovePickerTest.m */; };
 		F8D04B71CF3EA739192B4BA9 /* SBCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D04440E13E946BC7E8DEC2 /* SBCellView.m */; };
 		F8D04D437301EC2C4190B824 /* cell-blocked.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D0485D2A145F89AE4B1F8F /* cell-blocked.png */; };
-		F8D04D95863A93B8C25D8980 /* NorthSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04D7C9C0ACA6769F30D6F /* NorthSquare.png */; };
+		F8D04D95863A93B8C25D8980 /* piece-north-square.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04D7C9C0ACA6769F30D6F /* piece-north-square.png */; };
 		F8D04DEEE68C46E1C918CE64 /* SBOpponentMobilityMinimisingMovePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */; };
-		F8D04F02D027342A4E9D981E /* SouthSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D047EC9CA8AF7E7320B150 /* SouthSquare.png */; };
-		F8D04FCA15C230B8C399A63B /* SouthCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D0436A282EB47C819143D8 /* SouthCircle.png */; };
+		F8D04F02D027342A4E9D981E /* piece-south-square.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D047EC9CA8AF7E7320B150 /* piece-south-square.png */; };
+		F8D04FCA15C230B8C399A63B /* piece-south-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D0436A282EB47C819143D8 /* piece-south-circle.png */; };
 		FB89D43C154C7D27001A0C0E /* SBBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3AE151F108100435C7F /* SBBoard.m */; };
 		FB89D43C154C7D27001A0C0F /* SBCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45B4151DFC4700E59146 /* SBCircle.m */; };
 		FB89D43C154C7D27001A0C10 /* SBDiamond.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45B7151DFD0000E59146 /* SBDiamond.m */; };
@@ -236,20 +236,20 @@
 		F8D04072CA6DA6FF14E35B40 /* SBCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBCellView.h; sourceTree = "<group>"; };
 		F8D040B854DB8C80EEE9D7FC /* cell-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-background.png"; sourceTree = "<group>"; };
 		F8D04129838B653D03F76144 /* SBPieceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPieceView.m; sourceTree = "<group>"; };
-		F8D041465C485CAD621B1C32 /* SouthTriangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SouthTriangle.png; sourceTree = "<group>"; };
-		F8D0436A282EB47C819143D8 /* SouthCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SouthCircle.png; sourceTree = "<group>"; };
+		F8D041465C485CAD621B1C32 /* piece-south-triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-triangle.png"; sourceTree = "<group>"; };
+		F8D0436A282EB47C819143D8 /* piece-south-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-circle.png"; sourceTree = "<group>"; };
 		F8D04427A0D29D971D13E425 /* MBProgressHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MBProgressHUD.xcodeproj; path = libs/MBProgressHUD/MBProgressHUD.xcodeproj; sourceTree = "<group>"; };
 		F8D04440E13E946BC7E8DEC2 /* SBCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCellView.m; sourceTree = "<group>"; };
-		F8D045227BFF000469526CE1 /* SouthDiamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SouthDiamond.png; sourceTree = "<group>"; };
+		F8D045227BFF000469526CE1 /* piece-south-diamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-diamond.png"; sourceTree = "<group>"; };
 		F8D0469ABCAA9ECE9023B1F9 /* SBPieceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPieceView.h; sourceTree = "<group>"; };
-		F8D047EC9CA8AF7E7320B150 /* SouthSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SouthSquare.png; sourceTree = "<group>"; };
+		F8D047EC9CA8AF7E7320B150 /* piece-south-square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-square.png"; sourceTree = "<group>"; };
 		F8D0485D2A145F89AE4B1F8F /* cell-blocked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-blocked.png"; sourceTree = "<group>"; };
 		F8D049E7B11F27F102F6CBDE /* SBRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRootViewController.m; sourceTree = "<group>"; };
 		F8D04A5E3FC58C124F077A44 /* SBRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRootViewController.h; sourceTree = "<group>"; };
-		F8D04C837D03B145DB351D2F /* NorthTriangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NorthTriangle.png; sourceTree = "<group>"; };
-		F8D04D7C9C0ACA6769F30D6F /* NorthSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NorthSquare.png; sourceTree = "<group>"; };
-		F8D04DB6B26461C4B5A120AB /* NorthCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NorthCircle.png; sourceTree = "<group>"; };
-		F8D04F5489774187AD134A8F /* NorthDiamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NorthDiamond.png; sourceTree = "<group>"; };
+		F8D04C837D03B145DB351D2F /* piece-north-triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-north-triangle.png"; sourceTree = "<group>"; };
+		F8D04D7C9C0ACA6769F30D6F /* piece-north-square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-north-square.png"; sourceTree = "<group>"; };
+		F8D04DB6B26461C4B5A120AB /* piece-north-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-north-circle.png"; sourceTree = "<group>"; };
+		F8D04F5489774187AD134A8F /* piece-north-diamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-north-diamond.png"; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BE8 /* SBMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMatch.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BEA /* SBMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMatch.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BEB /* SBMatchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMatchTest.m; sourceTree = "<group>"; };
@@ -517,14 +517,14 @@
 			isa = PBXGroup;
 			children = (
 				F8D040B854DB8C80EEE9D7FC /* cell-background.png */,
-				F8D041465C485CAD621B1C32 /* SouthTriangle.png */,
-				F8D047EC9CA8AF7E7320B150 /* SouthSquare.png */,
-				F8D045227BFF000469526CE1 /* SouthDiamond.png */,
-				F8D0436A282EB47C819143D8 /* SouthCircle.png */,
-				F8D04C837D03B145DB351D2F /* NorthTriangle.png */,
-				F8D04D7C9C0ACA6769F30D6F /* NorthSquare.png */,
-				F8D04F5489774187AD134A8F /* NorthDiamond.png */,
-				F8D04DB6B26461C4B5A120AB /* NorthCircle.png */,
+				F8D041465C485CAD621B1C32 /* piece-south-triangle.png */,
+				F8D047EC9CA8AF7E7320B150 /* piece-south-square.png */,
+				F8D045227BFF000469526CE1 /* piece-south-diamond.png */,
+				F8D0436A282EB47C819143D8 /* piece-south-circle.png */,
+				F8D04C837D03B145DB351D2F /* piece-north-triangle.png */,
+				F8D04D7C9C0ACA6769F30D6F /* piece-north-square.png */,
+				F8D04F5489774187AD134A8F /* piece-north-diamond.png */,
+				F8D04DB6B26461C4B5A120AB /* piece-north-circle.png */,
 				F8D0485D2A145F89AE4B1F8F /* cell-blocked.png */,
 			);
 			path = Default;
@@ -714,14 +714,14 @@
 				D76A457C151DDC7500E59146 /* MainStoryboard_iPad.storyboard in Resources */,
 				D719864F155D78BB00349052 /* HowToPlay.md in Resources */,
 				FB89D43C154C7D27001A0C22 /* Localizable.strings in Resources */,
-				F8D04FCA15C230B8C399A63B /* SouthCircle.png in Resources */,
-				F8D04027C7A00D5717B08DD6 /* SouthDiamond.png in Resources */,
-				F8D04F02D027342A4E9D981E /* SouthSquare.png in Resources */,
-				F8D04945DD27D4D6780F6654 /* SouthTriangle.png in Resources */,
-				F8D0445D2BD787D044459010 /* NorthCircle.png in Resources */,
-				F8D0458F0826F3A197156CD7 /* NorthDiamond.png in Resources */,
-				F8D04D95863A93B8C25D8980 /* NorthSquare.png in Resources */,
-				F8D0449FC5E399655B54BD9D /* NorthTriangle.png in Resources */,
+				F8D04FCA15C230B8C399A63B /* piece-south-circle.png in Resources */,
+				F8D04027C7A00D5717B08DD6 /* piece-south-diamond.png in Resources */,
+				F8D04F02D027342A4E9D981E /* piece-south-square.png in Resources */,
+				F8D04945DD27D4D6780F6654 /* piece-south-triangle.png in Resources */,
+				F8D0445D2BD787D044459010 /* piece-north-circle.png in Resources */,
+				F8D0458F0826F3A197156CD7 /* piece-north-diamond.png in Resources */,
+				F8D04D95863A93B8C25D8980 /* piece-north-square.png in Resources */,
+				F8D0449FC5E399655B54BD9D /* piece-north-triangle.png in Resources */,
 				F8D04D437301EC2C4190B824 /* cell-blocked.png in Resources */,
 				F8D043304018A5D985297145 /* cell-background.png in Resources */,
 			);

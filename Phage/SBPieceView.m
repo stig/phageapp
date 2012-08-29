@@ -17,9 +17,9 @@
 - (id)initWithPiece:(SBPiece *)piece {
     NSParameterAssert(piece);
 
-    NSString *prefix = piece.owner == 0 ? @"South" : @"North";
+    NSString *prefix = piece.owner == 0 ? @"south" : @"north";
     NSString *suffix = [NSStringFromClass([piece class]) substringFromIndex:2];
-    UIImage *img = [UIImage imageNamed:[prefix stringByAppendingString:suffix]];
+    UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:@"piece-%@-%@", prefix, [suffix lowercaseString]]];
 
     self = [self initWithImage:img];
     if (self) {
