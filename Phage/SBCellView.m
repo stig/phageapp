@@ -10,7 +10,6 @@
 
 @interface SBCellView ()
 
-@property (strong, nonatomic) UIImageView *background;
 @property (strong, nonatomic) UIImageView *foreground;
 
 @end
@@ -19,20 +18,17 @@
 @implementation SBCellView
 
 - (id)initWithLocation:(SBLocation *)location {
-    UIImage *clear = [UIImage imageNamed:@"cell-background.png"];
     UIImage *blocked = [UIImage imageNamed:@"cell-blocked.png"];
-    CGRect frame = CGRectMake(0, 0, clear.size.width, clear.size.height);
+    CGRect frame = CGRectMake(0, 0, blocked.size.width, blocked.size.height);
 
     self = [super initWithFrame:frame];
     if (self) {
         _location = location;
-        self.background = [[UIImageView alloc] initWithImage:clear];
         self.foreground = [[UIImageView alloc] initWithImage:blocked];
 
         // Set this to avoid blocked image showing up on first load of the board
         self.foreground.alpha = 0.0;
 
-        [self addSubview:self.background];
         [self addSubview:self.foreground];
     }
     return self;

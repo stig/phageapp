@@ -28,12 +28,19 @@
 - (id)awakeAfterUsingCoder:(NSCoder *)aDecoder {
     self.board = [SBBoard board];
 
+    UIImage *grid = [UIImage imageNamed:@"board"];
+    UIImageView *background = [[UIImageView alloc] initWithImage:grid];
+    [self addSubview:background];
+
     self.cellSize = CGSizeMake(self.bounds.size.width / 8.0, self.bounds.size.height / 8.0);
 
     self.cells = [self setupCells];
     self.pieces = [self setupPieces];
 
     [self setNeedsLayout];
+
+
+
 
     return [super awakeAfterUsingCoder:aDecoder];
 }
