@@ -43,10 +43,14 @@
 		F8D041AEA9425524156B3DEC /* SBRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D049E7B11F27F102F6CBDE /* SBRootViewController.m */; };
 		F8D0445D2BD787D044459010 /* piece-north-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04DB6B26461C4B5A120AB /* piece-north-circle.png */; };
 		F8D0449FC5E399655B54BD9D /* piece-north-triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04C837D03B145DB351D2F /* piece-north-triangle.png */; };
+		F8D044E7CA093633B965FEBF /* Triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04B20A6522E5DA9F8BA80 /* Triangle.png */; };
 		F8D0458F0826F3A197156CD7 /* piece-north-diamond.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04F5489774187AD134A8F /* piece-north-diamond.png */; };
+		F8D045EA0DF84CE309B3BF1D /* Diamond.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D0458C1CC3A9A2E06F0F99 /* Diamond.png */; };
 		F8D04945DD27D4D6780F6654 /* piece-south-triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D041465C485CAD621B1C32 /* piece-south-triangle.png */; };
 		F8D049FEF38D41389F177CB7 /* SBOpponentMobilityMinimisingMovePickerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C8B /* SBOpponentMobilityMinimisingMovePickerTest.m */; };
+		F8D04A78B7076931B813A0FB /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04FDCE71A27D8F7FC96AD /* Circle.png */; };
 		F8D04B71CF3EA739192B4BA9 /* SBCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D04440E13E946BC7E8DEC2 /* SBCellView.m */; };
+		F8D04B72A86A4DB73F4A1909 /* Square.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D0482D178A845001C31C67 /* Square.png */; };
 		F8D04D437301EC2C4190B824 /* cell-blocked.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D0485D2A145F89AE4B1F8F /* cell-blocked.png */; };
 		F8D04D95863A93B8C25D8980 /* piece-north-square.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04D7C9C0ACA6769F30D6F /* piece-north-square.png */; };
 		F8D04DEEE68C46E1C918CE64 /* SBOpponentMobilityMinimisingMovePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */; };
@@ -237,6 +241,7 @@
 		F8D04129838B653D03F76144 /* SBPieceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPieceView.m; sourceTree = "<group>"; };
 		F8D041465C485CAD621B1C32 /* piece-south-triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-triangle.png"; sourceTree = "<group>"; };
 		F8D041D660C3EE7E8AE87035 /* board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = board.png; sourceTree = "<group>"; };
+		F8D04318503047EBAD8B2505 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/Square.png; sourceTree = "<group>"; };
 		F8D0436A282EB47C819143D8 /* piece-south-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-circle.png"; sourceTree = "<group>"; };
 		F8D04427A0D29D971D13E425 /* MBProgressHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MBProgressHUD.xcodeproj; path = libs/MBProgressHUD/MBProgressHUD.xcodeproj; sourceTree = "<group>"; };
 		F8D04440E13E946BC7E8DEC2 /* SBCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCellView.m; sourceTree = "<group>"; };
@@ -246,10 +251,13 @@
 		F8D0485D2A145F89AE4B1F8F /* cell-blocked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-blocked.png"; sourceTree = "<group>"; };
 		F8D049E7B11F27F102F6CBDE /* SBRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRootViewController.m; sourceTree = "<group>"; };
 		F8D04A5E3FC58C124F077A44 /* SBRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRootViewController.h; sourceTree = "<group>"; };
+		F8D04C1897BD89A518274DF3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/Circle.png; sourceTree = "<group>"; };
 		F8D04C837D03B145DB351D2F /* piece-north-triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-north-triangle.png"; sourceTree = "<group>"; };
+		F8D04D549871E4713E7BE0CD /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/Triangle.png; sourceTree = "<group>"; };
 		F8D04D7C9C0ACA6769F30D6F /* piece-north-square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-north-square.png"; sourceTree = "<group>"; };
 		F8D04DB6B26461C4B5A120AB /* piece-north-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-north-circle.png"; sourceTree = "<group>"; };
 		F8D04F5489774187AD134A8F /* piece-north-diamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-north-diamond.png"; sourceTree = "<group>"; };
+		F8D04FE9CD8C53A5EA0088FC /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/Diamond.png; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BE8 /* SBMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMatch.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BEA /* SBMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMatch.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BEB /* SBMatchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMatchTest.m; sourceTree = "<group>"; };
@@ -454,11 +462,11 @@
 			isa = PBXGroup;
 			children = (
 				FB89D43C154C7D27001A0C21 /* Localizable.strings */,
-				D719864D155D78BB00349052 /* HowToPlay.md */,
 				D76A456D151DDC7500E59146 /* Phage-Info.plist */,
 				D76A456E151DDC7500E59146 /* InfoPlist.strings */,
 				D76A4571151DDC7500E59146 /* main.m */,
 				D76A4573151DDC7500E59146 /* Phage-Prefix.pch */,
+				F8D04AB3DC61722FA2D30B5F /* How To Play */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -511,6 +519,18 @@
 				F8D04D5CB6B2F9A4669C4760 /* libMBProgressHUD.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F8D04AB3DC61722FA2D30B5F /* How To Play */ = {
+			isa = PBXGroup;
+			children = (
+				D719864D155D78BB00349052 /* HowToPlay.md */,
+				F8D04B20A6522E5DA9F8BA80 /* Triangle.png */,
+				F8D0482D178A845001C31C67 /* Square.png */,
+				F8D0458C1CC3A9A2E06F0F99 /* Diamond.png */,
+				F8D04FDCE71A27D8F7FC96AD /* Circle.png */,
+			);
+			name = "How To Play";
 			sourceTree = "<group>";
 		};
 		F8D04C0748688A6A7033B9E0 /* Default */ = {
@@ -724,6 +744,10 @@
 				F8D0449FC5E399655B54BD9D /* piece-north-triangle.png in Resources */,
 				F8D04D437301EC2C4190B824 /* cell-blocked.png in Resources */,
 				F8D041A9261C23CF17A30785 /* board.png in Resources */,
+				F8D04A78B7076931B813A0FB /* Circle.png in Resources */,
+				F8D045EA0DF84CE309B3BF1D /* Diamond.png in Resources */,
+				F8D04B72A86A4DB73F4A1909 /* Square.png in Resources */,
+				F8D044E7CA093633B965FEBF /* Triangle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -906,6 +930,38 @@
 				D76A4590151DDC7500E59146 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F8D0458C1CC3A9A2E06F0F99 /* Diamond.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F8D04FE9CD8C53A5EA0088FC /* en */,
+			);
+			name = Diamond.png;
+			sourceTree = "<group>";
+		};
+		F8D0482D178A845001C31C67 /* Square.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F8D04318503047EBAD8B2505 /* en */,
+			);
+			name = Square.png;
+			sourceTree = "<group>";
+		};
+		F8D04B20A6522E5DA9F8BA80 /* Triangle.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F8D04D549871E4713E7BE0CD /* en */,
+			);
+			name = Triangle.png;
+			sourceTree = "<group>";
+		};
+		F8D04FDCE71A27D8F7FC96AD /* Circle.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F8D04C1897BD89A518274DF3 /* en */,
+			);
+			name = Circle.png;
 			sourceTree = "<group>";
 		};
 		FB89D43C154C7D27001A0C21 /* Localizable.strings */ = {
