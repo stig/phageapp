@@ -21,8 +21,6 @@
 
 @property (strong, nonatomic) UIPopoverController *howtoPopoverController;
 
-- (IBAction)trashMatch:(id)sender;
-
 @end
 
 @implementation SBMatchViewController
@@ -113,33 +111,30 @@
     });
 }
 
-- (IBAction)trashMatch:(id)sender {
-    SBAlertView *av;
-    if (self.match.isGameOver) {
-        av = [[SBAlertView alloc] initWithTitle:NSLocalizedString(@"Delete Match", @"Delete dialog title")
-                                        message:NSLocalizedString(@"Really delete this match?", @"Delete dialog message")
-                                     completion:^(SBAlertView* alertView, NSInteger buttonIndex) {
-                                         if (alertView.cancelButtonIndex != buttonIndex) {
-                                             [self.delegate matchViewController:self didDeleteMatch:self.match];
-                                         }
-                                     }
-                              cancelButtonTitle:NSLocalizedString(@"Keep", @"Delete dialog negative button")
-                              otherButtonTitles:NSLocalizedString(@"Delete", @"Delete dialog affirmative button"), nil];
+- (void)deleteMatch {
+    [[[SBAlertView alloc] initWithTitle:NSLocalizedString(@"Delete Match", @"Delete dialog title")
+                                message:NSLocalizedString(@"Really delete this match?", @"Delete dialog message")
+                             completion:^(SBAlertView *alertView, NSInteger buttonIndex) {
+                                 if (alertView.cancelButtonIndex != buttonIndex) {
+                                     [self.delegate matchViewController:self didDeleteMatch:self.match];
+                                 }
+                             }
+                      cancelButtonTitle:NSLocalizedString(@"Keep", @"Delete dialog negative button")
+                      otherButtonTitles:NSLocalizedString(@"Delete", @"Delete dialog affirmative button"), nil] show];
+}
 
-    } else {
-        av = [[SBAlertView alloc] initWithTitle:NSLocalizedString(@"Forfeit Match", @"Forfeit dialog title")
-                                        message:NSLocalizedString(@"Do you really want to forfeit this match?", @"Forfeit dialog message")
-                                     completion:^(SBAlertView* alertView, NSInteger buttonIndex) {
-                                         if (alertView.cancelButtonIndex != buttonIndex) {
-                                             [self.match forfeit];
-                                             [self.delegate matchViewController:self didChangeMatch:self.match];
-                                             [self layoutMatch];
-                                         }
-                                     }
-                              cancelButtonTitle:NSLocalizedString(@"Continue", @"Forfeit dialog negative button")
-                              otherButtonTitles:NSLocalizedString(@"Forfeit", @"Forfeit dialog affirmative button"), nil];
-    }
-    [av show];
+- (void)forfeitMatch {
+    [[[SBAlertView alloc] initWithTitle:NSLocalizedString(@"Forfeit Match", @"Forfeit dialog title")
+                                message:NSLocalizedString(@"Do you really want to forfeit this match?", @"Forfeit dialog message")
+                             completion:^(SBAlertView *alertView, NSInteger buttonIndex) {
+                                 if (alertView.cancelButtonIndex != buttonIndex) {
+                                     [self.match forfeit];
+                                     [self.delegate matchViewController:self didChangeMatch:self.match];
+                                     [self layoutMatch];
+                                 }
+                             }
+                      cancelButtonTitle:NSLocalizedString(@"Continue", @"Forfeit dialog negative button")
+                      otherButtonTitles:NSLocalizedString(@"Forfeit", @"Forfeit dialog affirmative button"), nil] show];
 }
 
 #pragma mark - Board View Delegate
@@ -162,6 +157,11 @@
 
 - (void)didLayoutBoard {
     if (self.match.isGameOver) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
+                                     target:self
+                                     action:@selector(deleteMatch)];
+
         self.navigationItem.title = NSLocalizedString(@"Game Over", @"Game Over Title");
 
         SBPlayer *winner = self.match.winner;
@@ -173,6 +173,10 @@
 
     } else {
         self.navigationItem.title = @"Match";
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                initWithBarButtonSystemItem:UIBarButtonSystemItemStop
+                                     target:self
+                                     action:@selector(forfeitMatch)];
 
         if (self.match.currentPlayer.isHuman) {
             self.navigationItem.prompt = [NSString stringWithFormat:NSLocalizedString(@"%@, it is your turn!", @"Take Turn message"), self.match.currentPlayer.alias];
