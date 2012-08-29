@@ -64,9 +64,12 @@
     NSArray *players = [self.players objectAtIndex:indexPath.section];
 
     if (indexPath.row < players.count) {
-        NSString *fmt = NSLocalizedString(@"Player %u", @"Player Number Indicator");
         cell = [tableView dequeueReusableCellWithIdentifier:@"PlayerNameCell"];
-        cell.textLabel.text = [NSString stringWithFormat:fmt, indexPath.row + 1];
+
+        cell.textLabel.text = !indexPath.row
+            ? NSLocalizedString(@"Player 1", @"Player Number Indicator")
+            : NSLocalizedString(@"Player 2", @"Player Number Indicator");
+
 
         NSString *aliasKey = [[players objectAtIndex:indexPath.row] objectForKey:@"aliasKey"];
         NSString *alias = [[NSUserDefaults standardUserDefaults] objectForKey:aliasKey];
@@ -74,9 +77,12 @@
         cell.detailTextLabel.text = alias;
 
     } else {
-        NSString *fmt = NSLocalizedString(@"Create %u-Player match", @"Create Match Button");
         cell = [tableView dequeueReusableCellWithIdentifier:@"ButtonCell"];
-        cell.textLabel.text = [NSString stringWithFormat:fmt, indexPath.section + 1];
+
+        cell.textLabel.text = !indexPath.section
+                ? NSLocalizedString(@"Create 1-player match", @"Create Match Button")
+                : NSLocalizedString(@"Create 2-player match", @"Create Match Button");
+
     }
 
     return cell;
