@@ -63,7 +63,11 @@
 
 - (void)setHighlighted:(BOOL)highlighted {
     [super setHighlighted:highlighted];
-    self.backgroundColor = highlighted ? [UIColor redColor] : [UIColor clearColor];
+    [UIView animateWithDuration:ANIM_DURATION / 2.0 animations:^{
+        self.transform = highlighted
+                ? CGAffineTransformMakeScale(1.5, 1.5)
+                : CGAffineTransformIdentity;
+    }];
 }
 
 
