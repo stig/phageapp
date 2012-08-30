@@ -171,19 +171,20 @@
 - (void)createMatchViewController:(SBCreateMatchViewController *)controller didCreateMatch:(SBMatch *)match {
     [self.matchService saveMatch:match];
 
-
+    self.shouldShowMostRecentlyCreatedActiveMatch = YES;
 
     [self.navigationController popViewControllerAnimated:YES];
-
-    [self reloadSections];
-    self.shouldShowMostRecentlyCreatedActiveMatch = YES;
 }
 
 - (void)showMostRecentlyCreatedActiveMatch {
     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionTop];
 
-    [self performSelector:@selector(performSegueWithIdentifier:sender:) withObject:@"showMatch" afterDelay:0.5];
+    [self performSelector:@selector(performSegueWithIdentifier:) withObject:@"showMatch" afterDelay:0.5];
+}
+
+- (void)performSegueWithIdentifier:(NSString*)identifier {
+    [self performSegueWithIdentifier:identifier sender:nil];
 }
 
 @end
