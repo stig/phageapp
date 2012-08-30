@@ -30,16 +30,6 @@
     [self layoutMatch];
 }
 
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else {
-        return YES;
-    }
-}
-
 #pragma mark - Howto View Controller
 
 - (void)howtoViewControllerDidFinish:(SBHowtoViewController *)controller
