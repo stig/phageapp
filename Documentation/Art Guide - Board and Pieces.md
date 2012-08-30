@@ -55,4 +55,4 @@ Additionally we support the *optional* **selected** counterparts:
 	piece-south-square-selected.png
 	piece-south-triangle-selected.png
 
-If this is not present we'll just show some ugly red background to indicate selected state.
+If this is not present we'll just scale up the piece to indicate selected state.

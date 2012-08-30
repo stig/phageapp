@@ -39,9 +39,6 @@
 
     [self setNeedsLayout];
 
-
-
-
     return [super awakeAfterUsingCoder:aDecoder];
 }
 
@@ -134,7 +131,8 @@
 }
 
 - (void)didSelectPieceView:(SBPieceView *)pieceView {
-    self.selected = pieceView;
+    if (self.selected != pieceView)
+        self.selected = pieceView;
 }
 
 - (void)setSelected:(SBPieceView *)selected {
