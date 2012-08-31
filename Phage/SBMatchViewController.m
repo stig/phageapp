@@ -18,6 +18,7 @@
 @interface SBMatchViewController () < SBBoardViewDelegate, SBHowtoViewControllerDelegate, UIPopoverControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet SBBoardView *board;
+@property (weak, nonatomic) IBOutlet UILabel *turnLabel;
 
 @property (strong, nonatomic) UIPopoverController *howtoPopoverController;
 
@@ -156,9 +157,9 @@
 
         SBPlayer *winner = self.match.winner;
         if (nil == winner) {
-            self.navigationItem.prompt = NSLocalizedString(@"This match ended in a draw", @"Game Over message");
+            self.turnLabel.text = NSLocalizedString(@"This match ended in a draw", @"Game Over message");
         } else {
-            self.navigationItem.prompt = [NSString stringWithFormat:NSLocalizedString(@"This match was won by %@", @"Game Over message"), winner.alias];
+            self.turnLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%@ won", @"Game Over message"), winner.alias];
         }
 
     } else {
@@ -168,7 +169,7 @@
                                      target:self
                                      action:@selector(forfeitMatch)];
 
-        self.navigationItem.prompt = [NSString stringWithFormat:NSLocalizedString(@"Waiting for %@...", @"Take Turn message"), self.match.currentPlayer.alias];
+        self.turnLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Waiting for %@...", @"Take Turn message"), self.match.currentPlayer.alias];
         if (!self.match.currentPlayer.isHuman) {
             [self performBotMove];
         }
@@ -176,4 +177,8 @@
 }
 
 
+- (void)viewDidUnload {
+    [self setTurnLabel:nil];
+    [super viewDidUnload];
+}
 @end
