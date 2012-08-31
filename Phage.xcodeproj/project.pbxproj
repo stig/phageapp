@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		536BE854153E17F000750F54 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536BE853153E17F000750F54 /* QuartzCore.framework */; };
 		D719864F155D78BB00349052 /* HowToPlay.md in Resources */ = {isa = PBXBuildFile; fileRef = D719864D155D78BB00349052 /* HowToPlay.md */; };
+		D72CC3AC15F1425B00FB7154 /* SBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72CC3AB15F1425B00FB7154 /* SBWebViewController.m */; };
+		D72CC3BE15F17BEB00FB7154 /* About.md in Resources */ = {isa = PBXBuildFile; fileRef = D72CC3C015F17BEB00FB7154 /* About.md */; };
 		D72F239915C5F248006EFE0D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4567151DDC7500E59146 /* Foundation.framework */; };
 		D72F239E15C5F248006EFE0D /* PhageModel.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D72F239D15C5F248006EFE0D /* PhageModel.h */; };
 		D72F23A715C5F248006EFE0D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4586151DDC7500E59146 /* SenTestingKit.framework */; };
@@ -75,7 +77,6 @@
 		FB89D43C154C7D27001A0C1E /* SBPieceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D73965B1151FB10600118094 /* SBPieceTest.m */; };
 		FB89D43C154C7D27001A0C1F /* SBPlayerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0BF2 /* SBPlayerTest.m */; };
 		FB89D43C154C7D27001A0C22 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C21 /* Localizable.strings */; };
-		FB89D43C154C7D27001A0C25 /* SBHowtoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C24 /* SBHowtoViewController.m */; };
 		FB89D43C154C7D27001A0C28 /* SBMatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C27 /* SBMatchViewController.m */; };
 		FB89D43C154C7D27001A0C2C /* SBAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C2B /* SBAlertView.m */; };
 		FB89D43C154C7D27001A0C2E /* SBMatchService.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89D43C154C7D27001A0C2D /* SBMatchService.m */; };
@@ -178,6 +179,9 @@
 /* Begin PBXFileReference section */
 		536BE853153E17F000750F54 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D719864E155D78BB00349052 /* HowToPlay.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = HowToPlay.md; path = en.lproj/HowToPlay.md; sourceTree = "<group>"; };
+		D72CC3AA15F1425B00FB7154 /* SBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBWebViewController.h; sourceTree = "<group>"; };
+		D72CC3AB15F1425B00FB7154 /* SBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBWebViewController.m; sourceTree = "<group>"; };
+		D72CC3BF15F17BEB00FB7154 /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/About.md; sourceTree = "<group>"; };
 		D72F239815C5F248006EFE0D /* libPhageModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPhageModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D72F239C15C5F248006EFE0D /* PhageModel-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhageModel-Prefix.pch"; sourceTree = "<group>"; };
 		D72F239D15C5F248006EFE0D /* PhageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhageModel.h; sourceTree = "<group>"; };
@@ -265,8 +269,6 @@
 		FB89D43C154C7D27001A0BF1 /* SBPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPlayer.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BF2 /* SBPlayerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPlayerTest.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0C20 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0C23 /* SBHowtoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBHowtoViewController.h; sourceTree = "<group>"; };
-		FB89D43C154C7D27001A0C24 /* SBHowtoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBHowtoViewController.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0C26 /* SBMatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMatchViewController.h; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0C27 /* SBMatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMatchViewController.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0C2A /* SBAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAlertView.h; sourceTree = "<group>"; };
@@ -438,12 +440,12 @@
 			children = (
 				F8D04A5E3FC58C124F077A44 /* SBRootViewController.h */,
 				F8D049E7B11F27F102F6CBDE /* SBRootViewController.m */,
-				FB89D43C154C7D27001A0C24 /* SBHowtoViewController.m */,
-				FB89D43C154C7D27001A0C23 /* SBHowtoViewController.h */,
 				D74EC46115E9362900505EEE /* SBSettingsViewController.h */,
 				D74EC46215E9362900505EEE /* SBSettingsViewController.m */,
 				D77E0C8215DD88430004EFAF /* SBCreateMatchViewController.h */,
 				D77E0C8315DD88430004EFAF /* SBCreateMatchViewController.m */,
+				D72CC3AA15F1425B00FB7154 /* SBWebViewController.h */,
+				D72CC3AB15F1425B00FB7154 /* SBWebViewController.m */,
 				D76A4574151DDC7500E59146 /* SBAppDelegate.h */,
 				D76A4575151DDC7500E59146 /* SBAppDelegate.m */,
 				D76A4577151DDC7500E59146 /* MainStoryboard_iPhone.storyboard */,
@@ -461,6 +463,7 @@
 		D76A456C151DDC7500E59146 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D72CC3C015F17BEB00FB7154 /* About.md */,
 				FB89D43C154C7D27001A0C21 /* Localizable.strings */,
 				D76A456D151DDC7500E59146 /* Phage-Info.plist */,
 				D76A456E151DDC7500E59146 /* InfoPlist.strings */,
@@ -748,6 +751,7 @@
 				F8D045EA0DF84CE309B3BF1D /* Diamond.png in Resources */,
 				F8D04B72A86A4DB73F4A1909 /* Square.png in Resources */,
 				F8D044E7CA093633B965FEBF /* Triangle.png in Resources */,
+				D72CC3BE15F17BEB00FB7154 /* About.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -833,7 +837,6 @@
 			files = (
 				D76A4572151DDC7500E59146 /* main.m in Sources */,
 				D76A4576151DDC7500E59146 /* SBAppDelegate.m in Sources */,
-				FB89D43C154C7D27001A0C25 /* SBHowtoViewController.m in Sources */,
 				FB89D43C154C7D27001A0C28 /* SBMatchViewController.m in Sources */,
 				FB89D43C154C7D27001A0C2C /* SBAlertView.m in Sources */,
 				D77E0C8415DD88430004EFAF /* SBCreateMatchViewController.m in Sources */,
@@ -843,6 +846,7 @@
 				F8D04B71CF3EA739192B4BA9 /* SBCellView.m in Sources */,
 				D74EC46315E9362900505EEE /* SBSettingsViewController.m in Sources */,
 				D791504B15ED65B3005B9FCF /* SBPlayerAliasViewController.m in Sources */,
+				D72CC3AC15F1425B00FB7154 /* SBWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -890,6 +894,14 @@
 				D719864E155D78BB00349052 /* HowToPlay.md */,
 			);
 			name = HowToPlay.md;
+			sourceTree = "<group>";
+		};
+		D72CC3C015F17BEB00FB7154 /* About.md */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D72CC3BF15F17BEB00FB7154 /* en */,
+			);
+			name = About.md;
 			sourceTree = "<group>";
 		};
 		D72F23B015C5F248006EFE0D /* InfoPlist.strings */ = {

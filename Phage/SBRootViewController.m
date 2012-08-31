@@ -88,6 +88,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showMatch"]) {
+
         NSIndexPath *path = [self.tableView indexPathForSelectedRow];
         self.currentMatch = [[self.sections objectAtIndex:path.section] objectAtIndex:path.row];
         [segue.destinationViewController setMatch:self.currentMatch];
@@ -97,6 +98,10 @@
 
     } else if ([segue.identifier isEqualToString:@"showAdd"]) {
         [segue.destinationViewController setDelegate:self];
+        [TestFlight passCheckpoint:@"SHOW_CREATE"];
+
+    } else if ([segue.identifier isEqualToString:@"showSettings"]) {
+        [TestFlight passCheckpoint:@"SHOW_SETTINGS"];
 
     }
 }

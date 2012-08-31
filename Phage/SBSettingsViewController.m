@@ -7,49 +7,14 @@
 //
 
 #import "SBSettingsViewController.h"
+#import "SBWebViewController.h"
 
-@interface SBSettingsViewController () < UITableViewDataSource, UITableViewDelegate >
+@interface SBSettingsViewController ()
 @end
 
 @implementation SBSettingsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    [TestFlight passCheckpoint:@"VIEW_SETTINGS"];
-
-	// Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Actions
-
-- (IBAction)done:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
-}
-
-
-
 
 - (NSString *)versionNumberDisplayString {
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
@@ -63,22 +28,47 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"SettingCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
-    cell.textLabel.text = NSLocalizedString(@"Version", @"Setting title");
-    cell.detailTextLabel.text = [self versionNumberDisplayString];
+    switch (indexPath.section) {
+        case 0: {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AboutCell"];
+            cell.textLabel.text = NSLocalizedString(@"About", @"Setting title");
+            return cell;
+        }
 
-    return cell;
+        case 1: {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RightDetailCell"];
+            cell.textLabel.text = NSLocalizedString(@"Version", @"Setting title");
+            cell.detailTextLabel.text = [self versionNumberDisplayString];
+            return cell;
+        }
+
+    }
+
+    return nil;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
+    if (0 == indexPath.section)
+        [self performSegueWithIdentifier:@"showAbout" sender:nil];
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+    [super prepareForSegue:segue sender:sender];
+
+    if ([segue.identifier isEqualToString:@"showAbout"]) {
+        [segue.destinationViewController setDocumentName:@"About.html"];
+        [TestFlight passCheckpoint:@"SHOW_ABOUT"];
+
+    }
 }
 
 

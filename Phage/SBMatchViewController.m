@@ -9,13 +9,13 @@
 #import "SBMatchViewController.h"
 #import "PhageModel.h"
 #import "SBAlertView.h"
-#import "SBHowtoViewController.h"
 #import "SBCreateMatchViewController.h"
 #import "SBSettingsViewController.h"
 #import "SBBoardView.h"
 #import "MBProgressHUD.h"
+#import "SBWebViewController.h"
 
-@interface SBMatchViewController () < SBBoardViewDelegate, SBHowtoViewControllerDelegate, UIPopoverControllerDelegate>
+@interface SBMatchViewController () < SBBoardViewDelegate, UIPopoverControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet SBBoardView *board;
 @property (weak, nonatomic) IBOutlet UILabel *turnLabel;
@@ -31,31 +31,14 @@
     [self layoutMatch];
 }
 
-#pragma mark - Howto View Controller
-
-- (void)howtoViewControllerDidFinish:(SBHowtoViewController *)controller
-{
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        [self dismissModalViewControllerAnimated:YES];
-    } else {
-        [self.howtoPopoverController dismissPopoverAnimated:YES];
-        self.howtoPopoverController = nil;
-    }
-}
-
-- (void)howtoControllerDidDismissPopover:(UIPopoverController *)popoverController
-{
-    self.howtoPopoverController = nil;
-}
-
-
 #pragma mark - Our Methods
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [[segue destinationViewController] setDelegate:self];
-
     if ([[segue identifier] isEqualToString:@"showHowto"]) {
+        [segue.destinationViewController setDocumentName:@"HowToPlay.html"];
+        [TestFlight passCheckpoint:@"SHOW_HOWTO"];
+
 
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
             UIPopoverController *popoverController = [(UIStoryboardPopoverSegue *)segue popoverController];

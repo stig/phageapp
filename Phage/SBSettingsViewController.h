@@ -8,13 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class SBSettingsViewController;
 
-@protocol SBSettingsViewControllerDelegate
-- (void)settingsViewControllerDidFinish:(SBSettingsViewController *)controller;
-@end
-
-
-@interface SBSettingsViewController : UIViewController
-@property (weak, nonatomic) id <SBSettingsViewControllerDelegate> delegate;
+@interface SBSettingsViewController : UITableViewController
 @end
