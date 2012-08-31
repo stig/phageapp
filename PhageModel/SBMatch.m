@@ -60,8 +60,15 @@ static NSString *const LAST_UPDATED = @"LastUpdated";
     return [self initWithPlayerOne:one
                                two:two
                              board:board
-                           matchID:(__bridge NSString *) CFUUIDCreateString(NULL, CFUUIDCreate(NULL))
+                           matchID:[self createUUID]
                        lastUpdated:[NSDate date]];
+}
+
+- (NSString *)createUUID {
+    CFUUIDRef uuid = CFUUIDCreate(NULL);
+    NSString *uuidStr = (__bridge_transfer NSString*)CFUUIDCreateString(NULL, uuid);
+    CFRelease((CFTypeRef)uuid);
+    return uuidStr;
 }
 
 - (id)initWithPlayerOne:(SBPlayer*)one two:(SBPlayer *)two board:(SBBoard*)board matchID:(NSString *)matchID lastUpdated:(NSDate *)lastUpdated {
