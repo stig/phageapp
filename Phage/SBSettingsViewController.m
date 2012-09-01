@@ -26,8 +26,26 @@
     return [NSString stringWithFormat:@"%@ (%@)", majorVersion, minorVersion];
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    switch (section) {
+        case 2:
+            return NSLocalizedString(@"Need help?", @"Settings section heading");
+        default:
+            return nil;
+    }
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    switch (section) {
+        case 2:
+            return 2;
+        default:
+            return 1;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -46,13 +64,21 @@
             return cell;
         }
 
+        case 2: {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RightDetailCell"];
+            if (0 == indexPath.row) {
+                cell.textLabel.text = NSLocalizedString(@"Twitter", @"Setting title");
+                cell.detailTextLabel.text = @"@phageapp";
+            } else {
+                cell.textLabel.text = NSLocalizedString(@"Email", @"Setting title");
+                cell.detailTextLabel.text = @"support@phageapp.info";
+            }
+            return cell;
+        }
+
     }
 
     return nil;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
