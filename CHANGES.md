@@ -1,4 +1,5 @@
 0.5 (2012-08-31)
+================
 
 The main focus of this release has been on making the UI "less busy", i.e. removing the clutter of buttons on the main screen. However, there are several other fixes and improvements too:
 
