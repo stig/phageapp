@@ -8,13 +8,13 @@ The main focus of this release has been on making the UI "less busy", i.e. remov
 * Update the "How to Play" guide with images, and remove obsolete references.
 * Improve the forfeit and delete match dialogs, and use different buttons for these actions based on whether the game is in Game Over state or not.
 * Turn off rotations in Board Game view as it would obscure part of the board.
-* Disable iPad as it has no interface
+* Disable iPad as it has no interface. (Will use pixel doubling instead.)
 * Avoid flashing a big cross in each cell on initial match launch.
 * When the board appears the pieces glide to their current state from their initial positions, rather than from the top left corner of the board.
 * The keyboard no longer obscures editing of player alias.
 * Player aliases changes are remembered between launches of the app.
 * Do not show finished match section if it is empty.
-* Show About screen with acknowledgements (available from Settings)
+* Show About screen with acknowledgements (available from Settings).
 
 
 0.4 (2012-08-26)
