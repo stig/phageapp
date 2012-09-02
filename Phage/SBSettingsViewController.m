@@ -6,8 +6,11 @@
 //
 //
 
+#import <Twitter/Twitter.h>
+#import <MessageUI/MessageUI.h>
 #import "SBSettingsViewController.h"
 #import "SBWebViewController.h"
+#import "MBProgressHUD.h"
 
 @interface SBSettingsViewController ()
 @end
@@ -83,9 +86,49 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSLog(@"indexPath = %@", indexPath);
 
-    if (0 == indexPath.section)
-        [self performSegueWithIdentifier:@"showAbout" sender:nil];
+    switch (indexPath.section) {
+        case 0:
+            [self performSegueWithIdentifier:@"showAbout" sender:nil];
+            break;
+        case 2:
+            switch (indexPath.row) {
+                case 0: {
+                    if (![TWTweetComposeViewController canSendTweet]) {
+                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
+                        hud.labelText = NSLocalizedString(@"Cannot send tweet", @"Error message");
+                        hud.detailsLabelText = NSLocalizedString(@"No Twitter accounts available.", @"Error message detail");
+                        hud.mode = MBProgressHUDModeText;
+                        [hud hide:YES afterDelay:2.0];
+                    } else {
+                        TWTweetComposeViewController *tcvc = [[TWTweetComposeViewController alloc] init];
+                        [tcvc setInitialText:@"@phageapp "];
+                        [self presentViewController:tcvc
+                                           animated:YES
+                                         completion:nil];
+                    }
+                }
+                break;
+                case 1: {
+                    if (![MFMailComposeViewController canSendMail]) {
+                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
+                        hud.labelText = NSLocalizedString(@"Cannot send mail", @"Error message");
+                        hud.detailsLabelText = NSLocalizedString(@"No Mail accounts set up.", @"Error message detail");
+                        hud.mode = MBProgressHUDModeText;
+                        [hud hide:YES afterDelay:2.0];
+                    } else {
+                        MFMailComposeViewController *ctrl = [[MFMailComposeViewController alloc] init];
+                        [ctrl setToRecipients:@[ @"support@phageapp.com"]];
+                        [ctrl setMessageBody:@"fi fo fa fum" isHTML:NO];
+                        [self presentViewController:ctrl
+                                           animated:YES
+                                         completion:nil];
+                    }
+                }
+                break;
+            }
+    }
 }
 
 

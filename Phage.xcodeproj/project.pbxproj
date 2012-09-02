@@ -37,6 +37,8 @@
 		D791504B15ED65B3005B9FCF /* SBPlayerAliasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D791504A15ED65B3005B9FCF /* SBPlayerAliasViewController.m */; };
 		D7AE134815C7538400B8349B /* libPhageModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D72F239815C5F248006EFE0D /* libPhageModel.a */; };
 		D7DD0D2B15E4475100103EE4 /* SBBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DD0D2A15E4475100103EE4 /* SBBoardView.m */; };
+		D7FC87A915F411540034F4C5 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FC87A815F411540034F4C5 /* Twitter.framework */; };
+		D7FC87BA15F48E4C0034F4C5 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FC87B915F48E4C0034F4C5 /* MessageUI.framework */; };
 		D7FDA3A2156DAA4700E65C5E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FDA3A1156DAA4700E65C5E /* libz.dylib */; };
 		D7FDA3A4156DAA8F00E65C5E /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FDA3A3156DAA8F00E65C5E /* libTestFlight.a */; };
 		F8D04027C7A00D5717B08DD6 /* piece-south-diamond.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D045227BFF000469526CE1 /* piece-south-diamond.png */; };
@@ -239,6 +241,8 @@
 		D7BFA3B2151F2AD300435C96 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = libs/ocmock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
 		D7DD0D2915E4475100103EE4 /* SBBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardView.h; sourceTree = "<group>"; };
 		D7DD0D2A15E4475100103EE4 /* SBBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardView.m; sourceTree = "<group>"; };
+		D7FC87A815F411540034F4C5 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		D7FC87B915F48E4C0034F4C5 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		D7FDA3A1156DAA4700E65C5E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D7FDA3A3156DAA8F00E65C5E /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTestFlight.a; path = libs/TestFlight/libTestFlight.a; sourceTree = "<group>"; };
 		F8D04072CA6DA6FF14E35B40 /* SBCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBCellView.h; sourceTree = "<group>"; };
@@ -303,6 +307,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7FC87BA15F48E4C0034F4C5 /* MessageUI.framework in Frameworks */,
+				D7FC87A915F411540034F4C5 /* Twitter.framework in Frameworks */,
 				D785320F15E6E61000A687BF /* libMBProgressHUD.a in Frameworks */,
 				D7AE134815C7538400B8349B /* libPhageModel.a in Frameworks */,
 				D7FDA3A4156DAA8F00E65C5E /* libTestFlight.a in Frameworks */,
@@ -422,6 +428,8 @@
 		D76A4564151DDC7500E59146 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D7FC87B915F48E4C0034F4C5 /* MessageUI.framework */,
+				D7FC87A815F411540034F4C5 /* Twitter.framework */,
 				D7FDA3A3156DAA8F00E65C5E /* libTestFlight.a */,
 				D7FDA3A1156DAA4700E65C5E /* libz.dylib */,
 				F8D04427A0D29D971D13E425 /* MBProgressHUD.xcodeproj */,
