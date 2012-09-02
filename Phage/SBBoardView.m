@@ -82,24 +82,20 @@
 - (void)layoutBoard:(SBBoard*)board {
     self.board = board;
     self.selected = nil;
-    [self setNeedsLayout];
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
 
     [UIView animateWithDuration:ANIM_DURATION
-                     animations:^{
-        for (SBPieceView *pieceView in self.pieces) {
-            SBLocation *loc = [self.board locationForPiece:pieceView.piece];
-            SBCellView *cell = [self.cells objectForKey:loc];
-            pieceView.center = cell.center;
-            pieceView.movesLeft = [[self.board turnsLeftForPiece:pieceView.piece] unsignedIntegerValue];
-        }
+            animations:^{
+                for (SBPieceView *pieceView in self.pieces) {
+                    SBLocation *loc = [self.board locationForPiece:pieceView.piece];
+                    SBCellView *cell = [self.cells objectForKey:loc];
+                    pieceView.center = cell.center;
+                    pieceView.movesLeft = [[self.board turnsLeftForPiece:pieceView.piece] unsignedIntegerValue];
+                }
 
-    }                completion:^(BOOL finished) {
-        if (finished)
+            }                completion:^(BOOL finished) {
+        if (finished) {
             [self.delegate didLayoutBoard];
+        }
     }];
 
     [self.board enumerateLocationsUsingBlock:^(SBLocation *loc) {
@@ -108,6 +104,7 @@
     }];
 
 }
+
 
 - (BOOL)canSelectPieceView:(SBPieceView *)pieceView {
     if (self.board.currentPlayerIndex != pieceView.piece.owner)
