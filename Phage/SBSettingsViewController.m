@@ -12,7 +12,7 @@
 #import "SBWebViewController.h"
 #import "MBProgressHUD.h"
 
-@interface SBSettingsViewController ()
+@interface SBSettingsViewController () < MFMailComposeViewControllerDelegate >
 @end
 
 @implementation SBSettingsViewController
@@ -86,7 +86,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"indexPath = %@", indexPath);
 
     switch (indexPath.section) {
         case 0:
@@ -102,11 +101,9 @@
                         hud.mode = MBProgressHUDModeText;
                         [hud hide:YES afterDelay:2.0];
                     } else {
-                        TWTweetComposeViewController *tcvc = [[TWTweetComposeViewController alloc] init];
-                        [tcvc setInitialText:@"@phageapp "];
-                        [self presentViewController:tcvc
-                                           animated:YES
-                                         completion:nil];
+                        TWTweetComposeViewController *ctrl = [[TWTweetComposeViewController alloc] init];
+                        [ctrl setInitialText:@"@phageapp "];
+                        [self presentViewController:ctrl animated:YES completion:nil];
                     }
                 }
                 break;
@@ -118,17 +115,27 @@
                         hud.mode = MBProgressHUDModeText;
                         [hud hide:YES afterDelay:2.0];
                     } else {
+
                         MFMailComposeViewController *ctrl = [[MFMailComposeViewController alloc] init];
-                        [ctrl setToRecipients:@[ @"support@phageapp.com"]];
-                        [ctrl setMessageBody:@"fi fo fa fum" isHTML:NO];
-                        [self presentViewController:ctrl
-                                           animated:YES
-                                         completion:nil];
+                        ctrl.mailComposeDelegate = self;
+                        [ctrl setToRecipients:@[ @"support@phageapp.com"] ];
+                        [ctrl setMessageBody:[self createMailBody] isHTML:NO];
+                        [self presentViewController:ctrl animated:YES completion:nil];
                     }
                 }
                 break;
             }
     }
+}
+
+- (NSString *)createMailBody {
+    NSString *delim = @"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
+    NSMutableString *body = [NSMutableString string];
+    [body appendFormat:@"\n\n%@\n", delim];
+    [body appendString:NSLocalizedString(@"Compose your mail above this section. The below information may help us help you better.", @"Support email text")];
+    [body appendFormat:@"\n%@\n\n", delim];
+    [body appendFormat:@"Phage Version: %@", [self versionNumberDisplayString]];
+    return [body copy];
 }
 
 
@@ -141,6 +148,12 @@
         [TestFlight passCheckpoint:@"SHOW_ABOUT"];
 
     }
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError *)error {
+    [controller dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 
