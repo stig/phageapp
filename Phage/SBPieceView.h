@@ -25,4 +25,7 @@
 
 + (id)objectWithPiece:(SBPiece *)piece;
 
+- (void)bounceWithDuration:(NSNumber *)duration;
+
+
 @end

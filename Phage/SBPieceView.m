@@ -61,6 +61,16 @@
     }
 }
 
+- (void)bounceWithDuration:(NSNumber *)duration {
+
+    CAKeyframeAnimation *bounceAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
+    bounceAnimation.duration = [duration doubleValue];
+    bounceAnimation.values = @[ @1.3, @0.8, @1.1, @1];
+
+    [self.layer addAnimation:bounceAnimation forKey:@"bounce"];
+}
+
+
 - (void)setHighlighted:(BOOL)highlighted {
     [super setHighlighted:highlighted];
     [UIView animateWithDuration:ANIM_DURATION / 2.0 animations:^{

@@ -24,4 +24,7 @@
 
 - (void)layoutBoard:(SBBoard*)board;
 
+- (void)brieflyHighlightPiecesForCurrentPlayer;
+
+
 @end

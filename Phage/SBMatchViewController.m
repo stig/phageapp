@@ -153,7 +153,9 @@
                                      action:@selector(forfeitMatch)];
 
         self.turnLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Waiting for %@...", @"Take Turn message"), self.match.currentPlayer.alias];
-        if (!self.match.currentPlayer.isHuman) {
+        if (self.match.currentPlayer.isHuman) {
+            [self.board brieflyHighlightPiecesForCurrentPlayer];
+        } else {
             [self performBotMove];
         }
     }

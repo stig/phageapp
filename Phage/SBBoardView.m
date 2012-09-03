@@ -105,7 +105,6 @@
 
 }
 
-
 - (BOOL)canSelectPieceView:(SBPieceView *)pieceView {
     if (self.board.currentPlayerIndex != pieceView.piece.owner)
         return NO;
@@ -153,5 +152,19 @@
         [self.delegate performMove:move];
     }
 }
+
+- (void)brieflyHighlightPiecesForCurrentPlayer {
+    NSTimeInterval duration = ANIM_DURATION;
+    NSTimeInterval delay = 0;
+    NSTimeInterval delayIncrement = duration / 8.0;
+
+    for (SBPieceView *pv in self.pieces) {
+        if (pv.piece.owner == self.board.currentPlayerIndex) {
+            [pv performSelector:@selector(bounceWithDuration:) withObject:@(duration) afterDelay:delay];
+            delay += delayIncrement;
+        }
+    }
+}
+
 
 @end
