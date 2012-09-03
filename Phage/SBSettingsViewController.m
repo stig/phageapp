@@ -12,7 +12,7 @@
 #import "SBWebViewController.h"
 #import "MBProgressHUD.h"
 
-@interface SBSettingsViewController () < MFMailComposeViewControllerDelegate >
+@interface SBSettingsViewController () <MFMailComposeViewControllerDelegate>
 @end
 
 @implementation SBSettingsViewController
@@ -53,6 +53,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
+        case 0:
         case 2:
             return 2;
         default:
@@ -65,7 +66,9 @@
     switch (indexPath.section) {
         case 0: {
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AboutCell"];
-            cell.textLabel.text = NSLocalizedString(@"About", @"Setting title");
+            cell.textLabel.text = 0 == indexPath.row
+                    ? NSLocalizedString(@"About", @"Setting title")
+                    : NSLocalizedString(@"Legal", @"Setting title");
             return cell;
         }
 
@@ -97,8 +100,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     switch (indexPath.section) {
-        case 0:
-            [self performSegueWithIdentifier:@"showAbout" sender:nil];
+        case 0: {
+            NSString *identifier = 0 == indexPath.row ? @"showAbout" : @"showLegal";
+            [self performSegueWithIdentifier:identifier sender:nil];
+        }
             break;
         case 2:
             switch (indexPath.row) {
@@ -115,7 +120,7 @@
                         [self presentViewController:ctrl animated:YES completion:nil];
                     }
                 }
-                break;
+                    break;
                 case 1: {
                     if (![MFMailComposeViewController canSendMail]) {
                         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
@@ -127,12 +132,12 @@
 
                         MFMailComposeViewController *ctrl = [[MFMailComposeViewController alloc] init];
                         ctrl.mailComposeDelegate = self;
-                        [ctrl setToRecipients:@[ @"support@phageapp.com"] ];
+                        [ctrl setToRecipients:@[ @"support@phageapp.com"]];
                         [ctrl setMessageBody:[self createMailBody] isHTML:NO];
                         [self presentViewController:ctrl animated:YES completion:nil];
                     }
                 }
-                break;
+                    break;
             }
     }
 }
@@ -149,12 +154,11 @@
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
     [super prepareForSegue:segue sender:sender];
+    [TestFlight passCheckpoint:[@"Settings-" stringByAppendingString: segue.identifier]];
 
-    if ([segue.identifier isEqualToString:@"showAbout"]) {
-        [segue.destinationViewController setDocumentName:@"About.html"];
-        [TestFlight passCheckpoint:@"SHOW_ABOUT"];
+    if ([segue.identifier isEqualToString:@"showLegal"]) {
+        [segue.destinationViewController setDocumentName:@"Legal.html"];
 
     }
 }

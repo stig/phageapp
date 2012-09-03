@@ -305,14 +305,54 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="eOo-Ob-1nj"/>
                     <connections>
-                        <segue destination="E4c-dw-dBf" kind="push" identifier="showAbout" id="irS-dO-qqk"/>
+                        <segue destination="E4c-dw-dBf" kind="push" identifier="showLegal" id="irS-dO-qqk"/>
+                        <segue destination="8i1-cy-4Ua" kind="push" identifier="showAbout" id="8IJ-Y1-Sgi"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UC5-Dd-Cbn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-396" y="849"/>
         </scene>
-        <!--Web View Controller - About-->
+        <!--About View Controller - About-->
+        <scene sceneID="FwH-30-z3i">
+            <objects>
+                <tableViewController id="8i1-cy-4Ua" customClass="SBAboutViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Jgi-4e-iTC">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NameCell" textLabel="8gV-YU-5V0" style="IBUITableViewCellStyleDefault" id="oOV-Pu-sW6">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Title" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="8gV-YU-5V0">
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="8i1-cy-4Ua" id="Xl1-IU-iXA"/>
+                            <outlet property="delegate" destination="8i1-cy-4Ua" id="E6l-5Y-o6P"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="About" id="xZN-eG-82S"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jcp-fV-Fi0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="113" y="849"/>
+        </scene>
+        <!--Web View Controller - Legal-->
         <scene sceneID="Zwm-rU-C36">
             <objects>
                 <viewController id="E4c-dw-dBf" customClass="SBWebViewController" sceneMemberID="viewController">
@@ -328,17 +368,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="About" id="Iug-ek-2iK"/>
+                    <navigationItem key="navigationItem" title="Legal" id="Iug-ek-2iK"/>
                     <connections>
-                        <outlet property="webView" destination="x2Y-gn-Gga" id="R14-Hq-F28"/>
+                        <outlet property="webView" destination="x2Y-gn-Gga" id="CQR-jE-D4C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4C-2f-sy5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="113" y="849"/>
+            <point key="canvasLocation" x="113" y="1451"/>
         </scene>
     </scenes>
     <classes>
+        <class className="SBAboutViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBAboutViewController.h"/>
+        </class>
         <class className="SBBoardView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SBBoardView.h"/>
             <relationships>

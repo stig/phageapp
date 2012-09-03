@@ -1,14 +1,6 @@
-Phage is lovingly made in the United Kingdom.
+Phage is built on the shoulders of giants:
 
-* Stig Brautaset&mdash;*programming*
-* Steve Gardener&mdash;*game design*
-
-# Software Libraries
-
-Phage is built on the shoulders of giants. Phage uses the following
-libraries:
-
-## MBProgressHUD
+# MBProgressHUD
 
 Copyright (c) 2011 Matej Bukovinski
 
@@ -30,7 +22,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-## OCMock
+# OCMock
 
 Copyright (c) 2004-2012 by Mulle Kybernetik. All rights reserved.
 
@@ -47,6 +39,6 @@ SERIOUS CONSEQUENCES. THE COPYRIGHT HOLDER ALLOWS FREE USE OF THIS SOFTWARE IN I
 DAMAGES WHATSOEVER RESULTING DIRECTLY OR INDIRECTLY FROM THE USE OF THIS SOFTWARE
 OR OF ANY DERIVATIVE WORK.
 
-## TestFlight
+# TestFlight
 
 Copyright 2011 TestFlight. All rights reserved.

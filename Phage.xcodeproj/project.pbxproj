@@ -10,7 +10,7 @@
 		536BE854153E17F000750F54 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536BE853153E17F000750F54 /* QuartzCore.framework */; };
 		D719864F155D78BB00349052 /* HowToPlay.md in Resources */ = {isa = PBXBuildFile; fileRef = D719864D155D78BB00349052 /* HowToPlay.md */; };
 		D72CC3AC15F1425B00FB7154 /* SBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72CC3AB15F1425B00FB7154 /* SBWebViewController.m */; };
-		D72CC3BE15F17BEB00FB7154 /* About.md in Resources */ = {isa = PBXBuildFile; fileRef = D72CC3C015F17BEB00FB7154 /* About.md */; };
+		D72CC3BE15F17BEB00FB7154 /* Legal.md in Resources */ = {isa = PBXBuildFile; fileRef = D72CC3C015F17BEB00FB7154 /* Legal.md */; };
 		D72F239915C5F248006EFE0D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4567151DDC7500E59146 /* Foundation.framework */; };
 		D72F239E15C5F248006EFE0D /* PhageModel.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D72F239D15C5F248006EFE0D /* PhageModel.h */; };
 		D72F23A715C5F248006EFE0D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4586151DDC7500E59146 /* SenTestingKit.framework */; };
@@ -59,6 +59,7 @@
 		F8D04D95863A93B8C25D8980 /* piece-north-square.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04D7C9C0ACA6769F30D6F /* piece-north-square.png */; };
 		F8D04DEEE68C46E1C918CE64 /* SBOpponentMobilityMinimisingMovePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */; };
 		F8D04F02D027342A4E9D981E /* piece-south-square.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D047EC9CA8AF7E7320B150 /* piece-south-square.png */; };
+		F8D04F8E8AD14112ED8F34BF /* SBAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D0496ADD10FCC8E86ACDA3 /* SBAboutViewController.m */; };
 		F8D04FCA15C230B8C399A63B /* piece-south-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D0436A282EB47C819143D8 /* piece-south-circle.png */; };
 		FB89D43C154C7D27001A0C0E /* SBBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3AE151F108100435C7F /* SBBoard.m */; };
 		FB89D43C154C7D27001A0C0F /* SBCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = D76A45B4151DFC4700E59146 /* SBCircle.m */; };
@@ -183,7 +184,7 @@
 		D719864E155D78BB00349052 /* HowToPlay.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = HowToPlay.md; path = en.lproj/HowToPlay.md; sourceTree = "<group>"; };
 		D72CC3AA15F1425B00FB7154 /* SBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBWebViewController.h; sourceTree = "<group>"; };
 		D72CC3AB15F1425B00FB7154 /* SBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBWebViewController.m; sourceTree = "<group>"; };
-		D72CC3BF15F17BEB00FB7154 /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/About.md; sourceTree = "<group>"; };
+		D72CC3BF15F17BEB00FB7154 /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/Legal.md; sourceTree = "<group>"; };
 		D72F239815C5F248006EFE0D /* libPhageModel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPhageModel.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D72F239C15C5F248006EFE0D /* PhageModel-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhageModel-Prefix.pch"; sourceTree = "<group>"; };
 		D72F239D15C5F248006EFE0D /* PhageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhageModel.h; sourceTree = "<group>"; };
@@ -257,6 +258,8 @@
 		F8D0469ABCAA9ECE9023B1F9 /* SBPieceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPieceView.h; sourceTree = "<group>"; };
 		F8D047EC9CA8AF7E7320B150 /* piece-south-square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-square.png"; sourceTree = "<group>"; };
 		F8D0485D2A145F89AE4B1F8F /* cell-blocked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-blocked.png"; sourceTree = "<group>"; };
+		F8D0496ADD10FCC8E86ACDA3 /* SBAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAboutViewController.m; sourceTree = "<group>"; };
+		F8D049A778AE4777A0FF86B3 /* SBAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAboutViewController.h; sourceTree = "<group>"; };
 		F8D049E7B11F27F102F6CBDE /* SBRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRootViewController.m; sourceTree = "<group>"; };
 		F8D04A5E3FC58C124F077A44 /* SBRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRootViewController.h; sourceTree = "<group>"; };
 		F8D04C1897BD89A518274DF3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/Circle.png; sourceTree = "<group>"; };
@@ -446,6 +449,8 @@
 		D76A456B151DDC7500E59146 /* Phage */ = {
 			isa = PBXGroup;
 			children = (
+				F8D049A778AE4777A0FF86B3 /* SBAboutViewController.h */,
+				F8D0496ADD10FCC8E86ACDA3 /* SBAboutViewController.m */,
 				F8D04A5E3FC58C124F077A44 /* SBRootViewController.h */,
 				F8D049E7B11F27F102F6CBDE /* SBRootViewController.m */,
 				D74EC46115E9362900505EEE /* SBSettingsViewController.h */,
@@ -471,7 +476,7 @@
 		D76A456C151DDC7500E59146 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D72CC3C015F17BEB00FB7154 /* About.md */,
+				D72CC3C015F17BEB00FB7154 /* Legal.md */,
 				FB89D43C154C7D27001A0C21 /* Localizable.strings */,
 				D76A456D151DDC7500E59146 /* Phage-Info.plist */,
 				D76A456E151DDC7500E59146 /* InfoPlist.strings */,
@@ -759,7 +764,7 @@
 				F8D045EA0DF84CE309B3BF1D /* Diamond.png in Resources */,
 				F8D04B72A86A4DB73F4A1909 /* Square.png in Resources */,
 				F8D044E7CA093633B965FEBF /* Triangle.png in Resources */,
-				D72CC3BE15F17BEB00FB7154 /* About.md in Resources */,
+				D72CC3BE15F17BEB00FB7154 /* Legal.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -855,6 +860,7 @@
 				D74EC46315E9362900505EEE /* SBSettingsViewController.m in Sources */,
 				D791504B15ED65B3005B9FCF /* SBPlayerAliasViewController.m in Sources */,
 				D72CC3AC15F1425B00FB7154 /* SBWebViewController.m in Sources */,
+				F8D04F8E8AD14112ED8F34BF /* SBAboutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -904,12 +910,12 @@
 			name = HowToPlay.md;
 			sourceTree = "<group>";
 		};
-		D72CC3C015F17BEB00FB7154 /* About.md */ = {
+		D72CC3C015F17BEB00FB7154 /* Legal.md */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D72CC3BF15F17BEB00FB7154 /* en */,
 			);
-			name = About.md;
+			name = Legal.md;
 			sourceTree = "<group>";
 		};
 		D72F23B015C5F248006EFE0D /* InfoPlist.strings */ = {

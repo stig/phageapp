@@ -13,6 +13,8 @@ cat <<HEADER > $DSTFILE
 <html>
 <head>
 <style type="text/css">
+h1 { font-size: 1.2em }
+h2 { font-size: 1.1em }
 body { font-family: sans-serif; }
 </style>
 </head>
