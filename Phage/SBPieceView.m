@@ -58,6 +58,8 @@
 
     if ([self.delegate canSelectPieceView:self]) {
         [self.delegate didSelectPieceView:self];
+    } else {
+        [self shudder];
     }
 }
 
@@ -68,6 +70,20 @@
     bounceAnimation.values = @[ @1.3, @0.8, @1.1, @1];
 
     [self.layer addAnimation:bounceAnimation forKey:@"bounce"];
+}
+
+- (void)shudder {
+
+    CAKeyframeAnimation *animation = [ CAKeyframeAnimation animationWithKeyPath:@"transform" ];
+    animation.values = @[
+        [NSValue valueWithCATransform3D:CATransform3DMakeTranslation(-10.0f, 0.0f, 0.0f)],
+        [NSValue valueWithCATransform3D:CATransform3DMakeTranslation(10.0f, 0.0f, 0.0f)]
+    ];
+    animation.autoreverses = YES;
+    animation.repeatCount = 2.0f;
+    animation.duration = 0.07f;
+
+    [self.layer addAnimation:animation forKey:nil];
 }
 
 
