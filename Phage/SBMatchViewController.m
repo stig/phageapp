@@ -66,7 +66,7 @@
 - (void)performBotMove {
     SBBoard *board = [self.match.board copy];
 
-    [MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.board animated:YES];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         [NSThread sleepForTimeInterval: ANIM_DURATION];
@@ -75,7 +75,7 @@
         SBMove *move = [pm moveForState:board];
 
         dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUDForView:self.view.window animated:YES];
+            [MBProgressHUD hideHUDForView:self.board animated:YES];
             if ([self.match isLegalMove:move]) {
                 [self performMove:move];
             }
