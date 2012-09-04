@@ -29,6 +29,10 @@
         // Set this to avoid blocked image showing up on first load of the board
         self.foreground.alpha = 0.0;
 
+        UIImage *available = [UIImage imageNamed:@"cell-available.png"];
+        if (available)
+            [self addSubview:[[UIImageView alloc] initWithImage:available]];
+
         [self addSubview:self.foreground];
     }
     return self;
