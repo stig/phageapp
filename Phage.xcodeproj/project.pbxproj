@@ -52,6 +52,7 @@
 		F8D045EA0DF84CE309B3BF1D /* Diamond.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D0458C1CC3A9A2E06F0F99 /* Diamond.png */; };
 		F8D04945DD27D4D6780F6654 /* piece-south-triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D041465C485CAD621B1C32 /* piece-south-triangle.png */; };
 		F8D049FEF38D41389F177CB7 /* SBOpponentMobilityMinimisingMovePickerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C8B /* SBOpponentMobilityMinimisingMovePickerTest.m */; };
+		F8D04A42E98A62D9C0DBBD26 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D044993B30C3D3230597CA /* icon.png */; };
 		F8D04A78B7076931B813A0FB /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04FDCE71A27D8F7FC96AD /* Circle.png */; };
 		F8D04B71CF3EA739192B4BA9 /* SBCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D04440E13E946BC7E8DEC2 /* SBCellView.m */; };
 		F8D04B72A86A4DB73F4A1909 /* Square.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D0482D178A845001C31C67 /* Square.png */; };
@@ -59,6 +60,7 @@
 		F8D04D95863A93B8C25D8980 /* piece-north-square.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04D7C9C0ACA6769F30D6F /* piece-north-square.png */; };
 		F8D04DEEE68C46E1C918CE64 /* SBOpponentMobilityMinimisingMovePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */; };
 		F8D04F02D027342A4E9D981E /* piece-south-square.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D047EC9CA8AF7E7320B150 /* piece-south-square.png */; };
+		F8D04F4BF7175222BB9BFB22 /* cell-available.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04ABF7EBABB168C48D0CA /* cell-available.png */; };
 		F8D04F8E8AD14112ED8F34BF /* SBAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D0496ADD10FCC8E86ACDA3 /* SBAboutViewController.m */; };
 		F8D04FCA15C230B8C399A63B /* piece-south-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D0436A282EB47C819143D8 /* piece-south-circle.png */; };
 		FB89D43C154C7D27001A0C0E /* SBBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3AE151F108100435C7F /* SBBoard.m */; };
@@ -254,6 +256,7 @@
 		F8D0436A282EB47C819143D8 /* piece-south-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-circle.png"; sourceTree = "<group>"; };
 		F8D04427A0D29D971D13E425 /* MBProgressHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MBProgressHUD.xcodeproj; path = libs/MBProgressHUD/MBProgressHUD.xcodeproj; sourceTree = "<group>"; };
 		F8D04440E13E946BC7E8DEC2 /* SBCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCellView.m; sourceTree = "<group>"; };
+		F8D044993B30C3D3230597CA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		F8D045227BFF000469526CE1 /* piece-south-diamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-diamond.png"; sourceTree = "<group>"; };
 		F8D0469ABCAA9ECE9023B1F9 /* SBPieceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPieceView.h; sourceTree = "<group>"; };
 		F8D047EC9CA8AF7E7320B150 /* piece-south-square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-square.png"; sourceTree = "<group>"; };
@@ -262,6 +265,7 @@
 		F8D049A778AE4777A0FF86B3 /* SBAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAboutViewController.h; sourceTree = "<group>"; };
 		F8D049E7B11F27F102F6CBDE /* SBRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRootViewController.m; sourceTree = "<group>"; };
 		F8D04A5E3FC58C124F077A44 /* SBRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRootViewController.h; sourceTree = "<group>"; };
+		F8D04ABF7EBABB168C48D0CA /* cell-available.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-available.png"; sourceTree = "<group>"; };
 		F8D04C1897BD89A518274DF3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/Circle.png; sourceTree = "<group>"; };
 		F8D04C837D03B145DB351D2F /* piece-north-triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-north-triangle.png"; sourceTree = "<group>"; };
 		F8D04D549871E4713E7BE0CD /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/Triangle.png; sourceTree = "<group>"; };
@@ -408,6 +412,7 @@
 		D76A4556151DDC7500E59146 = {
 			isa = PBXGroup;
 			children = (
+				F8D044993B30C3D3230597CA /* icon.png */,
 				D76A456B151DDC7500E59146 /* Phage */,
 				D76A458C151DDC7500E59146 /* PhageTests */,
 				D72F239A15C5F248006EFE0D /* PhageModel */,
@@ -552,6 +557,7 @@
 		F8D04C0748688A6A7033B9E0 /* Default */ = {
 			isa = PBXGroup;
 			children = (
+				F8D04ABF7EBABB168C48D0CA /* cell-available.png */,
 				F8D041D660C3EE7E8AE87035 /* board.png */,
 				F8D041465C485CAD621B1C32 /* piece-south-triangle.png */,
 				F8D047EC9CA8AF7E7320B150 /* piece-south-square.png */,
@@ -765,6 +771,8 @@
 				F8D04B72A86A4DB73F4A1909 /* Square.png in Resources */,
 				F8D044E7CA093633B965FEBF /* Triangle.png in Resources */,
 				D72CC3BE15F17BEB00FB7154 /* Legal.md in Resources */,
+				F8D04F4BF7175222BB9BFB22 /* cell-available.png in Resources */,
+				F8D04A42E98A62D9C0DBBD26 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
