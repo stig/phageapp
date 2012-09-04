@@ -11,7 +11,6 @@
 @class SBPlayerAliasViewController;
 
 @protocol SBPlayerAliasViewControllerDelegate
-- (void)playerAliasViewControllerDidUpdateAlias:(SBPlayerAliasViewController *)aliasViewController;
 @end
 
 @interface SBPlayerAliasViewController : UIViewController

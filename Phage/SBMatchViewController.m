@@ -9,8 +9,6 @@
 #import "SBMatchViewController.h"
 #import "PhageModel.h"
 #import "SBAlertView.h"
-#import "SBCreateMatchViewController.h"
-#import "SBSettingsViewController.h"
 #import "SBBoardView.h"
 #import "MBProgressHUD.h"
 #import "SBWebViewController.h"

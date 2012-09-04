@@ -87,10 +87,6 @@ static NSString *const LAST_UPDATED = @"LastUpdated";
     return 0 == self.board.currentPlayerIndex ? self.playerOne : self.playerTwo;
 }
 
-- (SBPlayer *)otherPlayer {
-    return [self.currentPlayer isEqual:self.playerOne] ? self.playerTwo : self.playerOne;
-}
-
 - (BOOL)isLegalMove:(SBMove*)aMove {
     return [self.board isLegalMove:aMove];
 }

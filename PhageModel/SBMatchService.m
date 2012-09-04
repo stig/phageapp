@@ -5,7 +5,6 @@
 //
 
 
-#import <UIKit/UIKit.h>
 #import "SBMatchService.h"
 #import "SBMatch.h"
 
@@ -32,7 +31,7 @@
 
 - (void)saveMatch:(SBMatch *)match {
     NSDictionary *plist = [match toPropertyList];
-    NSData *data = [NSJSONSerialization dataWithJSONObject:plist options:0 error:nil];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:plist options:(NSJSONWritingOptions) 0 error:nil];
     NSString *file = [self savedMatchPath:match];
     [data writeToFile:file atomically:YES];
 }
@@ -67,7 +66,7 @@
                 NSString *path = [savedMatchesPath stringByAppendingPathComponent:file];
                 NSData *data = [NSData dataWithContentsOfFile:path];
                 NSDictionary *plist = [NSJSONSerialization JSONObjectWithData:data
-                                                                      options:0
+                                                                      options:(NSJSONReadingOptions) 0
                                                                         error:nil];
 
                 SBMatch *match = [SBMatch matchWithPropertyList:plist];

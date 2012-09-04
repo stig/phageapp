@@ -141,12 +141,12 @@
 - (void)testCodingSize {
     for (;;) {
         NSData *data = [NSJSONSerialization dataWithJSONObject:[s toPropertyList]
-                                                       options:0
+                                                       options:(NSJSONWritingOptions)0
                                                          error:nil];
         STAssertTrue(data.length < 1024u, @"Serialised move history is less than 1K");
 
         NSArray *moves = [NSJSONSerialization JSONObjectWithData:data
-                                                         options:0
+                                                         options:(NSJSONReadingOptions) 0
                                                            error:nil];
 
         SBBoard *copy = [SBBoard boardFromPropertyList:moves];

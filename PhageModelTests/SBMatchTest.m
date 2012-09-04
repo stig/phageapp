@@ -283,10 +283,13 @@
     }];
     [m1 performMove:move completionHandler:nil];
 
-    NSData *data = [NSJSONSerialization dataWithJSONObject:[m1 toPropertyList] options:0 error:nil];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:[m1 toPropertyList] options:(NSJSONWritingOptions) 0
+                                                     error:nil];
     STAssertTrue(data.length < 1024u, nil);
 
-    SBMatch *copy = [SBMatch matchWithPropertyList:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil]];
+    SBMatch *copy = [SBMatch matchWithPropertyList:[NSJSONSerialization JSONObjectWithData:data
+                                                                                   options:(NSJSONReadingOptions) 0
+                                                                                     error:nil]];
 
     STAssertEqualObjects(copy.playerOne.alias, @"foo", nil);
     STAssertEqualObjects(copy.playerTwo.alias, @"bar", nil);

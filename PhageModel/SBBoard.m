@@ -154,9 +154,9 @@
         [desc appendString:@"\n"];
     }
 
-    for (int r = self.rows - 1; r >= 0; r--) {
-        for (int c = 0; c < self.columns; c++) {
-            SBLocation *loc = [SBLocation locationWithColumn:c row:r];
+    for (NSInteger r = self.rows - 1; r >= 0; r--) {
+        for (NSUInteger c = 0; c < self.columns; c++) {
+            SBLocation *loc = [SBLocation locationWithColumn:c row:(NSUInteger)r];
 
             SBPiece *p = [self pieceForLocation:loc];
             if (p) {
@@ -264,13 +264,6 @@
         *stop = YES;
     }];
     return isGameOver;
-}
-
-// The game is over when the current player can't perform any moves.
-// Therefore the current player cannot be the winner; they can only achieve draw or loss.
-- (BOOL)isLoss {
-    NSParameterAssert([self isGameOver]);
-    return ![self isDraw];
 }
 
 - (BOOL)isDraw {

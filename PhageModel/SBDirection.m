@@ -24,12 +24,6 @@
     return self;
 }
 
-#pragma mark NSCopying
-
-- (id)copyWithZone:(NSZone*)zone {
-    return self;
-}
-
 - (BOOL)isEqual:(id)other {
     if (other == self)
         return YES;

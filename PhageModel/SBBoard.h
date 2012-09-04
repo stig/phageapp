@@ -36,7 +36,7 @@
 - (BOOL)isLegalMove:(SBMove*)move;
 
 - (BOOL)isGameOver;
-- (BOOL)isLoss;
+
 - (BOOL)isDraw;
 
 - (void)enumerateLocationsUsingBlock:(void (^)(SBLocation *location))block;

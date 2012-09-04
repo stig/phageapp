@@ -7,10 +7,9 @@
 
 #import "SBPlayer.h"
 
-static NSString *VERSION = @"v";
-static NSString *ALIAS = @"a";
-static NSString *HUMAN = @"h";
-static NSString *OUTCOME = @"o";
+static NSString *const ALIAS = @"a";
+static NSString *const HUMAN = @"h";
+static NSString *const OUTCOME = @"o";
 
 @implementation SBPlayer
 

@@ -126,9 +126,5 @@
     [super prepareForSegue:segue sender:sender];
 }
 
-- (void)playerAliasViewControllerDidUpdateAlias:(SBPlayerAliasViewController *)aliasViewController {
-    [aliasViewController.navigationController popViewControllerAnimated:YES];
-}
-
 
 @end
