@@ -69,7 +69,7 @@
     [MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        [NSThread sleepForTimeInterval: 2 * ANIM_DURATION];
+        [NSThread sleepForTimeInterval: ANIM_DURATION];
 
         SBOpponentMobilityMinimisingMovePicker *pm = [[SBOpponentMobilityMinimisingMovePicker alloc] init];
         SBMove *move = [pm moveForState:board];
