@@ -8,14 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class SBPlayerAliasViewController;
-
-@protocol SBPlayerAliasViewControllerDelegate
-@end
-
 @interface SBPlayerAliasViewController : UIViewController
 
 @property (copy, nonatomic) NSString *aliasKey;
-@property (weak, nonatomic) id<SBPlayerAliasViewControllerDelegate> delegate;
 
 @end

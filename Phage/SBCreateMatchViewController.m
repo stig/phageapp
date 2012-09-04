@@ -11,7 +11,7 @@
 #import "SBPlayer.h"
 #import "SBPlayerAliasViewController.h"
 
-@interface SBCreateMatchViewController () < SBPlayerAliasViewControllerDelegate >
+@interface SBCreateMatchViewController ()
 @property (strong, nonatomic) NSArray *titles;
 @property (strong, nonatomic) NSArray *players;
 @end
@@ -120,7 +120,6 @@
     NSIndexPath *path = self.tableView.indexPathForSelectedRow;
     NSString *aliasKey = [[[self.players objectAtIndex:path.section] objectAtIndex:path.row] objectForKey:@"aliasKey"];
 
-    [segue.destinationViewController setDelegate:self];
     [segue.destinationViewController setAliasKey:aliasKey];
 
     [super prepareForSegue:segue sender:sender];
