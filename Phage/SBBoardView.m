@@ -158,11 +158,22 @@
     NSTimeInterval delay = 0;
     NSTimeInterval delayIncrement = duration / 8.0;
 
-    for (SBPieceView *pv in self.pieces) {
-        if (pv.piece.owner == self.board.currentPlayerIndex) {
-            [pv performSelector:@selector(bounceWithDuration:) withObject:@(duration) afterDelay:delay];
-            delay += delayIncrement;
-        }
+
+    NSArray *currentPlayerPieces = [self.pieces filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject piece].owner == self.board.currentPlayerIndex;
+    }]];
+
+    currentPlayerPieces = [currentPlayerPieces sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        CGPoint p1 = [obj1 center];
+        CGPoint p2 = [obj2 center];
+        if (p1.x == p2.x)
+            return (NSComparisonResult)(int)(p1.y - p2.y);
+        return (NSComparisonResult)(int)(p1.x - p2.x);
+    }];
+
+    for (SBPieceView *pv in currentPlayerPieces) {
+        [pv performSelector:@selector(bounceWithDuration:) withObject:@(duration) afterDelay:delay];
+        delay += delayIncrement;
     }
 }
 
