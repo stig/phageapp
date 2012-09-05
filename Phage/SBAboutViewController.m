@@ -28,6 +28,10 @@ static NSString *const rows = @"rows";
         @{
             title: NSLocalizedString(@"Game Design", @"About section header"),
             rows: @[ @"Steve Gardner" ]
+        },
+        @{
+            title: NSLocalizedString(@"Graphics", @"About section header"),
+            rows: @[ @"Nadia Ho Brautaset" ]
         }
     ];
 }
