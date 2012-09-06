@@ -7,7 +7,8 @@
 
 #import "SBAboutViewController.h"
 
-static NSString *const title = @"title";
+static NSString *const header = @"title";
+static NSString *const footer = @"footer";
 static NSString *const rows = @"rows";
 
 
@@ -22,17 +23,29 @@ static NSString *const rows = @"rows";
     
     self.dataSource = @[
         @{
-            title: NSLocalizedString(@"Programming", @"About section header"),
+            header: NSLocalizedString(@"Programming", @"About section header"),
             rows: @[ @"Stig Brautaset" ]
         },
         @{
-            title: NSLocalizedString(@"Game Design", @"About section header"),
+            header: NSLocalizedString(@"Game Design", @"About section header"),
             rows: @[ @"Steve Gardner" ]
         },
         @{
-            title: NSLocalizedString(@"Graphics", @"About section header"),
+            header: NSLocalizedString(@"Graphics", @"About section header"),
             rows: @[ @"Nadia Ho Brautaset" ]
+        },
+        @{
+            header: NSLocalizedString(@"Acknowledgements", @"About section header"),
+            rows: @[
+                @"Avon Ho",
+                @"Emilio Vacca",
+                @"Gareth Potter",
+                @"Lee Daffen",
+                @"Sam Dean"
+            ],
+            footer: NSLocalizedString(@"Names are in alphabetical order", @"About section footer")
         }
+
     ];
 }
 
@@ -41,7 +54,11 @@ static NSString *const rows = @"rows";
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[self.dataSource objectAtIndex:section] objectForKey:title];
+    return [[self.dataSource objectAtIndex:section] objectForKey:header];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    return [[self.dataSource objectAtIndex:section] objectForKey:footer];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
