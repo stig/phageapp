@@ -69,7 +69,7 @@
     bounceAnimation.duration = [duration doubleValue];
     bounceAnimation.values = @[ @1.3, @0.8, @1.1, @1];
 
-    [self.layer addAnimation:bounceAnimation forKey:@"bounce"];
+    [self.layer addAnimation:bounceAnimation forKey:nil];
 }
 
 - (void)shudder {
@@ -89,11 +89,20 @@
 
 - (void)setHighlighted:(BOOL)highlighted {
     [super setHighlighted:highlighted];
-    [UIView animateWithDuration:ANIM_DURATION / 2.0 animations:^{
-        self.transform = highlighted
-                ? CGAffineTransformMakeScale(1.5, 1.5)
-                : CGAffineTransformIdentity;
-    }];
+
+    if (highlighted) {
+        CAKeyframeAnimation *pulse = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
+        pulse.values = @[ @1.1, @0.9 ];
+        pulse.duration = ANIM_DURATION;
+        pulse.beginTime = ANIM_DURATION / 2.0;
+        pulse.repeatCount = 1e99;
+        pulse.autoreverses = YES;
+        pulse.timingFunction = [CAMediaTimingFunction functionWithName:@"easeInEaseOut"];
+
+        [self.layer addAnimation:pulse forKey:@"pulse"];
+    } else {
+        [self.layer removeAnimationForKey:@"pulse"];
+    }
 }
 
 
