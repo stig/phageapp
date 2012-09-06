@@ -45,7 +45,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     switch (section) {
         case 2:
-            return NSLocalizedString(@"We aim to respond in 24 hours.", @"Settings section footer");
+            return NSLocalizedString(@"We aim to respond in 24 hours", @"Settings section footer");
         default:
             return nil;
     }
