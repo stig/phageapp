@@ -256,7 +256,7 @@
 		F8D0436A282EB47C819143D8 /* piece-south-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-circle.png"; sourceTree = "<group>"; };
 		F8D04427A0D29D971D13E425 /* MBProgressHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MBProgressHUD.xcodeproj; path = libs/MBProgressHUD/MBProgressHUD.xcodeproj; sourceTree = "<group>"; };
 		F8D04440E13E946BC7E8DEC2 /* SBCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCellView.m; sourceTree = "<group>"; };
-		F8D044993B30C3D3230597CA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = icon.png; sourceTree = "<group>"; };
+		F8D044993B30C3D3230597CA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		F8D045227BFF000469526CE1 /* piece-south-diamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-diamond.png"; sourceTree = "<group>"; };
 		F8D0469ABCAA9ECE9023B1F9 /* SBPieceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPieceView.h; sourceTree = "<group>"; };
 		F8D047EC9CA8AF7E7320B150 /* piece-south-square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-square.png"; sourceTree = "<group>"; };

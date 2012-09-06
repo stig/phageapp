@@ -1,3 +1,14 @@
+0.6 (2012-09-06)
+================
+
+* Pulse pieces when they are selected rather than scale them up.
+* First cut at some nice graphics & icon from The Wife!
+* Shorten the time the AI takes to move.
+* Indicate by "shuddering" piece when you click a piece that cannot be moved.
+* Bounce human player's pieces to indicate which ones can be moved when it's their turn.
+* Display support details in settings screen; click to tweet/email.
+
+
 0.5 (2012-08-31)
 ================
 
