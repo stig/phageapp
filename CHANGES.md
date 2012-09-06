@@ -1,3 +1,15 @@
+0.6 (2012-09-06)
+================
+
+This release has been mostly about adding polish. Most importantly, it includes the first iteration of some nice graphics from my lovely and talented wife. Other changes include:
+
+* Bounce human player's pieces to indicate which ones can be moved when it's their turn.
+* Indicate by "shuddering" piece when you click a piece that cannot be moved.
+* Pulse pieces when they are selected rather than scale them up.
+* Display support details in settings screen; click to tweet/email.
+* Shorten the time the AI takes to move.
+
+
 0.5 (2012-08-31)
 ================
 
