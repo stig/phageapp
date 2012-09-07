@@ -17,9 +17,10 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>Phage App</h1>
-        <p>A 2-player strategy game not entirely unlike chess</p>
-        <p class="view"><a href="https://github.com/stig/phageapp">View the Project on GitHub <small>stig/phageapp</small></a></p>
+        <h1>{{ page.header }}</h1>
+        <p>{{ page.tagline }}</p>
+        <p class="view">
+        <a href="https://github.com/stig/phageapp">View the Project on GitHub <small>stig/phageapp</small></a></p>
         <ul>
           <li><a href="https://github.com/stig/phageapp/zipball/master">Download <strong>ZIP File</strong></a></li>
           <li><a href="https://github.com/stig/phageapp/tarball/master">Download <strong>TAR Ball</strong></a></li>
@@ -28,7 +29,7 @@
       </header>
       <section>
 
-{{ page.content }}
+		{{ page.content | markdownify }}
 
       </section>
     </div>
