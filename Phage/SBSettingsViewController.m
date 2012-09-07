@@ -132,7 +132,7 @@
 
                         MFMailComposeViewController *ctrl = [[MFMailComposeViewController alloc] init];
                         ctrl.mailComposeDelegate = self;
-                        [ctrl setToRecipients:@[ @"support@phageapp.com"]];
+                        [ctrl setToRecipients:@[ [self supportEmailAddress]]];
                         [ctrl setMessageBody:[self createMailBody] isHTML:NO];
                         [self presentViewController:ctrl animated:YES completion:nil];
                     }
@@ -140,6 +140,10 @@
                     break;
             }
     }
+}
+
+- (NSString *)supportEmailAddress {
+    return @"support@phageapp.info";
 }
 
 - (NSString *)createMailBody {
