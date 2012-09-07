@@ -1147,6 +1147,7 @@
 		D76A4598151DDC7500E59146 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Phage/Phage-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/libs/TestFlight";
@@ -1157,6 +1158,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/libs/MBProgressHUD\"/**";
 				WRAPPER_EXTENSION = app;
