@@ -164,9 +164,4 @@
     }
 }
 
-
-- (void)viewDidUnload {
-    [self setTurnLabel:nil];
-    [super viewDidUnload];
-}
 @end
