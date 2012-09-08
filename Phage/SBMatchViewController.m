@@ -6,6 +6,7 @@
 //
 //
 
+#import <iAd/iAd.h>
 #import "SBMatchViewController.h"
 #import "PhageModel.h"
 #import "SBAlertView.h"
@@ -13,7 +14,7 @@
 #import "MBProgressHUD.h"
 #import "SBWebViewController.h"
 
-@interface SBMatchViewController () < SBBoardViewDelegate, UIPopoverControllerDelegate>
+@interface SBMatchViewController () < SBBoardViewDelegate, UIPopoverControllerDelegate, ADBannerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet SBBoardView *board;
 @property (weak, nonatomic) IBOutlet UILabel *turnLabel;
@@ -162,6 +163,27 @@
             [self performBotMove];
         }
     }
+}
+
+- (void)bannerViewWillLoadAd:(ADBannerView *)banner {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    return NO;
+}
+
+- (void)bannerViewActionDidFinish:(ADBannerView *)banner {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 @end

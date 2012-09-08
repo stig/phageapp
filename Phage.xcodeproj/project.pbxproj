@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		536BE854153E17F000750F54 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536BE853153E17F000750F54 /* QuartzCore.framework */; };
 		D719864F155D78BB00349052 /* HowToPlay.md in Resources */ = {isa = PBXBuildFile; fileRef = D719864D155D78BB00349052 /* HowToPlay.md */; };
+		D725C41215FBD68700E30ADC /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D725C41115FBD68700E30ADC /* iAd.framework */; };
 		D72CC3AC15F1425B00FB7154 /* SBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72CC3AB15F1425B00FB7154 /* SBWebViewController.m */; };
 		D72CC3BE15F17BEB00FB7154 /* Legal.md in Resources */ = {isa = PBXBuildFile; fileRef = D72CC3C015F17BEB00FB7154 /* Legal.md */; };
 		D72F239915C5F248006EFE0D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76A4567151DDC7500E59146 /* Foundation.framework */; };
@@ -198,6 +199,7 @@
 /* Begin PBXFileReference section */
 		536BE853153E17F000750F54 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D719864E155D78BB00349052 /* HowToPlay.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = HowToPlay.md; path = en.lproj/HowToPlay.md; sourceTree = "<group>"; };
+		D725C41115FBD68700E30ADC /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		D72CC3AA15F1425B00FB7154 /* SBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBWebViewController.h; sourceTree = "<group>"; };
 		D72CC3AB15F1425B00FB7154 /* SBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBWebViewController.m; sourceTree = "<group>"; };
 		D72CC3BF15F17BEB00FB7154 /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/Legal.md; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D725C41215FBD68700E30ADC /* iAd.framework in Frameworks */,
 				D7FC87BA15F48E4C0034F4C5 /* MessageUI.framework in Frameworks */,
 				D7FC87A915F411540034F4C5 /* Twitter.framework in Frameworks */,
 				D785320F15E6E61000A687BF /* libMBProgressHUD.a in Frameworks */,
@@ -464,6 +467,7 @@
 		D76A4564151DDC7500E59146 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D725C41115FBD68700E30ADC /* iAd.framework */,
 				D7FC87B915F48E4C0034F4C5 /* MessageUI.framework */,
 				D7FC87A815F411540034F4C5 /* Twitter.framework */,
 				D7FDA3A3156DAA8F00E65C5E /* libTestFlight.a */,
