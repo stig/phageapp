@@ -26,8 +26,13 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.turnLabel.text = @"";
+}
+
+- (void)viewDidAppear:(BOOL)animated {
     [self layoutMatch];
 }
+
 
 #pragma mark - Our Methods
 
