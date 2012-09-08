@@ -27,12 +27,12 @@ static NSString *const rows = @"rows";
             rows: @[ @"Stig Brautaset" ]
         },
         @{
-            header: NSLocalizedString(@"Game Design", @"About section header"),
-            rows: @[ @"Steve Gardner" ]
-        },
-        @{
             header: NSLocalizedString(@"Graphics", @"About section header"),
             rows: @[ @"Nadia Ho Brautaset" ]
+        },
+        @{
+            header: NSLocalizedString(@"Game Design", @"About section header"),
+            rows: @[ @"Steve Gardner" ]
         },
         @{
             header: NSLocalizedString(@"Acknowledgements", @"About section header"),
