@@ -1,3 +1,10 @@
+0.6.2 (2012-09-08)
+
+* Added retina display graphics.
+* Fixed bug causing support mails going to the wrong address address.
+* Fixed a potential memory leak.
+
+
 0.6 (2012-09-06)
 ================
 
