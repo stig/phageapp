@@ -1,4 +1,11 @@
+0.7 (2012-09-08)
+================
+
+* Change to use black menus, and black background on the board view.
+* Add iAd, unobtrusively, to hopefully recover github account fees.
+
 0.6.2 (2012-09-08)
+==================
 
 * Added retina display graphics.
 * Fixed bug causing support mails going to the wrong address address.
