@@ -28,7 +28,7 @@ static NSString *const rows = @"rows";
         },
         @{
             header: NSLocalizedString(@"Graphics", @"About section header"),
-            rows: @[ @"Nadia Ho Brautaset" ]
+            rows: @[ @"Nadia Brautaset" ]
         },
         @{
             header: NSLocalizedString(@"Game Design", @"About section header"),
