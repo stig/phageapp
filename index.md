@@ -4,6 +4,7 @@ title: Phage for iOS &mdash; by Stig Brautaset
 header: Phage
 ---
 
+
 Phage is an abstract strategy game for two players. Draws are possible,
 and matches tend to be short. At the moment Phage supports:
 
@@ -15,6 +16,8 @@ Each player takes turn moving one of their four pieces. Each piece can
 be moved seven times, and there are no pass moves. A cell which has been
 previously occupied by a piece is blocked; it cannot be occupied again,
 nor can any piece be moved *across* it in any direction.
+
+![Screen Shot](/images/screenshot.png)
 
 [![Available on the App Store](/images/available.png)](http://itunes.com/)
 
