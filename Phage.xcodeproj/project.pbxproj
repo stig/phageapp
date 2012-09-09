@@ -504,7 +504,6 @@
 				D791504A15ED65B3005B9FCF /* SBPlayerAliasViewController.m */,
 				D76A456C151DDC7500E59146 /* Supporting Files */,
 				FB89D43C154C7D27001A0C29 /* Utils */,
-				F8D04D3552AE5D8FC2A43E1B /* Themes */,
 				F8D0474D23B61FF6DC78C790 /* Match View */,
 			);
 			path = Phage;
@@ -554,6 +553,7 @@
 		F8D041A7F775079A80F90AD4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F8D04D3552AE5D8FC2A43E1B /* Themes */,
 				F8D044993B30C3D3230597CA /* icon.png */,
 				D7BFD53215FA717E00704DCC /* Default@2x.png */,
 				D7BFD53515FA737C00704DCC /* icon@2x.png */,
