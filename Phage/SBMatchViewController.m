@@ -171,10 +171,12 @@
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner {
     NSLog(@"%s", __PRETTY_FUNCTION__);
+    banner.alpha = 1.0;
 }
 
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
     NSLog(@"%s", __PRETTY_FUNCTION__);
+    banner.alpha = 0.0;
 }
 
 - (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave {
