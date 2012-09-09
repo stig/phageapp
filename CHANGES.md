@@ -1,3 +1,11 @@
+0.7.2 (2012-09-09)
+==================
+
+* Hide Ad view when we fail to retrieve ads.
+* Slight update to theme (make the pieces bolder).
+* Update attributions in About page.
+
+
 0.7 (2012-09-08)
 ================
 
