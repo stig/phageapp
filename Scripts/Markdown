@@ -16,6 +16,8 @@ cat <<HEADER > $DSTFILE
 h1 { font-size: 1.2em }
 h2 { font-size: 1.1em }
 body { font-family: sans-serif; }
+table { margin-left: auto; margin-right: auto; }
+td { text-align: center }
 </style>
 </head>
 <body>
