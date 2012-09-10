@@ -1,3 +1,11 @@
+0.7.3 (2012-09-10)
+==================
+
+* Remove TestFlight identification, since it doesn't seem to work anyway (and we can't ship with it).
+* Make sure ad banner is not shown when the match view loads, but is shown as a result of ads loading. This should avoid the white rectangle at the bottom of the screen.
+* Updated Howto with much better graphics, derived from the pieces in play.
+
+
 0.7.2 (2012-09-09)
 ==================
 
