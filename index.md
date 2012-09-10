@@ -16,8 +16,6 @@ all matches are auto-saved.
 
 > Fusce aliquam ipsum tortor, at congue massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. **&mdash;Jane Doe**
 
-### foo bar quux
-
 Don't just take their word for it; find out for yourself! Phage is
 available for free from the App Store:
 
