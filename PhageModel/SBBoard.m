@@ -268,12 +268,17 @@
 
 - (BOOL)isDraw {
     NSParameterAssert([self isGameOver]);
-    __block BOOL isDraw = YES;
+
+    __block BOOL canOpponentMove = NO;
     [self enumerateLegalMovesForPlayer:self.otherPlayerIndex withBlock:^(SBMove *move, BOOL *stop) {
-        isDraw = NO;
+        canOpponentMove = YES;
         *stop = YES;
     }];
-    return isDraw;
+
+    if (canOpponentMove)
+        return NO;
+
+    return 0 == self.currentPlayerIndex;
 }
 
 - (void)enumerateLocationsUsingBlock:(void (^)(SBLocation*location))block {
