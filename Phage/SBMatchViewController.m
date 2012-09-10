@@ -18,16 +18,20 @@
 
 @property (weak, nonatomic) IBOutlet SBBoardView *board;
 @property (weak, nonatomic) IBOutlet UILabel *turnLabel;
+@property (weak, nonatomic) IBOutlet ADBannerView *banner;
 
 @property (strong, nonatomic) UIPopoverController *howtoPopoverController;
 
 @end
 
 @implementation SBMatchViewController
+@synthesize banner = _banner;
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
     self.turnLabel.text = @"";
+    self.banner.alpha = 0.0;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -188,4 +192,8 @@
     NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
+- (void)viewDidUnload {
+    [self setBanner:nil];
+    [super viewDidUnload];
+}
 @end
