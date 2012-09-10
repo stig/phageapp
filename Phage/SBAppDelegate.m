@@ -14,12 +14,6 @@
 {
     [TestFlight takeOff:@"b15ebf354cbefc8afa12b65ca5ae3799_OTA1MDgyMDEyLTA1LTE5IDA4OjMwOjQ1LjQ2NzUwNQ"];
 
-#define TESTING 1
-#ifdef TESTING
-    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
-#endif
-
-
     NSDictionary *defaults = @{
         PLAYER_ONE_ALIAS: NSLocalizedString(@"Player 1", @"Human Player Name"),
         PLAYER_TWO_ALIAS: NSLocalizedString(@"Player 2", @"Human Player Name"),
@@ -27,7 +21,6 @@
     };
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
-
 
     return YES;
 }
