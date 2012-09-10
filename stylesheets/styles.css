@@ -254,14 +254,18 @@ li pre {
 }
 
 table {
-  width: 100%;
   border-collapse: collapse;
 }
 
+table.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 th, td {
-  text-align: left;
+  text-align: center;
   padding: 5px 10px;
-  border-bottom: 1px solid #aaa;
+
 }
 
 dt {
@@ -271,6 +275,12 @@ dt {
 
 th {
   color: #222;
+}
+
+section img.screenshot {
+	float: right;
+	padding-left: 1em;
+
 }
 
 small {
@@ -348,6 +358,12 @@ footer p + p {
   header p {
     width: 100%;
   }
+
+  section img.screenshot {
+  	float: none;
+  	padding: none;
+  }
+
 }
 @media print {
   header p.view a small:before {

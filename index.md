@@ -5,44 +5,38 @@ header: Phage
 tagline: A two-player abstract strategy game for iOS
 ---
 
+<img class="screenshot" src="/images/screenshot.png" alt="Phage iOS Screenshot" />
 
-![Screen Shot](/images/screenshot.png)
+Phage is an addictive and unique new iOS game: play against friends, or
+challenge the AI if no-one is around. Matches tend to be short, but if
+you run out of time you can always just quit the app and resume later;
+all matches are auto-saved.
 
-Phage is an abstract strategy game for two players. Draws are possible,
-and matches tend to be short. At the moment Phage supports:
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tempor dolor, ac mollis ante congue id. Donec dui ipsum, accumsan tempor dapibus viverra, malesuada et urna. **&mdash;Joe Bloggs**
 
-* 1-player mode against an AI
-* 2-player mode for two humans passing a device between them
-* Matches are auto-saved so you can quit at any time and come back to finish matches later
+> Fusce aliquam ipsum tortor, at congue massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. **&mdash;Jane Doe**
 
-Each player takes turn moving one of their four pieces. Each piece can
-be moved seven times, and there are no pass moves. A cell which has been
-previously occupied by a piece is blocked; it cannot be occupied again,
-nor can any piece be moved *across* it in any direction.
+### foo bar quux
 
-[![Available on the App Store](/images/available.png)](http://itunes.com/)
+Don't just take their word for it; find out for yourself! Phage is
+available for free from the App Store:
 
-# How to Play
+[![Get it on the App Store](/images/available.png)](http://itunes.com/)
 
-Phage is a two-player abstract strategy game. Matches tend to be
-short, and draws are possible.
 
-**To play, simply tap one of your pieces to select it; then tap the
-location you want to move it to.**
+How To Play
+-----------
 
-Each player takes turn moving one of their four pieces. Each piece can
-be moved a maximum of seven times. There are no pass moves.
+Phage is a two-player game. Each player has four pieces and takes turn
+moving any one of these. Each piece can be moved seven times, and there
+are no pass moves. A cell which has been previously occupied by a piece
+is blocked; it cannot be occupied again, nor can any piece be moved
+*across* it in any direction. All pieces can move across any number of
+clear cells, but not all pieces can move in all directions.
 
-A cell which has been previously occupied by a piece is blocked; it
-cannot be occupied again, nor can any piece be moved *across* it in any
-direction.
+Circle moves horizontally, vertically, or diagonally in any direction:
 
-The pieces can move across any number of blank cells, but they move in
-different ways:
-
-**Circle** moves horizontally, vertically, or diagonally in any direction.
-
-<table>
+<table class="center">
 <tr>
   <td><img src="/images/arrow-north-west.png" alt="arrow north west" /></td>
   <td><img src="/images/arrow-north.png" alt="arrow north" /></td>
@@ -60,9 +54,9 @@ different ways:
 </tr>
 </table>
 
-**Square** moves diagonally in any direction.
+Square moves diagonally in any direction:
 
-<table>
+<table class="center">
 <tr>
   <td><img src="/images/arrow-north-west.png" alt="arrow north west" /></td>
   <td>&nbsp;</td>
@@ -80,9 +74,9 @@ different ways:
 </tr>
 </table>
 
-**Diamond** moves horizontally and vertically in any direction.
+Diamond moves horizontally and vertically in any direction:
 
-<table>
+<table class="center">
 <tr>
   <td>&nbsp;</td>
   <td><img src="/images/arrow-north.png" alt="arrow north" /></td>
@@ -100,9 +94,10 @@ different ways:
 </tr>
 </table>
 
-**Triangle** moves horizontally in any direction, and vertically *in the direction it points*.
+Triangle moves horizontally in any direction, and vertically *in the
+direction it points*:
 
-<table>
+<table class="center">
 <tr>
   <td>&nbsp;</td>
   <td><img src="/images/arrow-north.png" alt="arrow north" /></td>
@@ -132,7 +127,10 @@ different ways:
 </tr>
 </table>
 
-# Support
+
+
+Support
+-------
 
 You can contact support sending a public message to
 [@phageapp](http://twitter.com/phageapp) on Twitter, or or send an email
