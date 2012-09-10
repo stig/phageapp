@@ -1,3 +1,8 @@
+0.7.4 (2012-09-10)
+==================
+
+* Fixed issue where match could erroneously be reported as a draw, when it was actually won by player 1. (Reported by Avon Ho.)
+
 0.7.3 (2012-09-10)
 ==================
 
