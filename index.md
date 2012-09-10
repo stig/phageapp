@@ -5,12 +5,12 @@ header: Phage
 tagline: A two-player abstract strategy game for iOS
 ---
 
-<img class="screenshot" src="/images/screenshot.png" alt="Phage iOS Screenshot" />
-
 Phage is an addictive and unique new iOS game: play against friends, or
 challenge the AI if no-one is around. Matches tend to be short, but if
 you run out of time you can always just quit the app and resume later;
 all matches are auto-saved.
+
+<img class="screenshot" src="/images/screenshot.png" alt="Phage iOS Screenshot" />
 
 > Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tempor dolor, ac mollis ante congue id. Donec dui ipsum, accumsan tempor dapibus viverra, malesuada et urna. **&mdash;Joe Bloggs**
 
