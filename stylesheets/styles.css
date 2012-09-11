@@ -359,11 +359,6 @@ footer p + p {
     width: 100%;
   }
 
-  section img.screenshot {
-  	float: none;
-  	padding: 1em;
-  }
-
 }
 @media print {
   header p.view a small:before {

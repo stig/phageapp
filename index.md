@@ -5,10 +5,12 @@ header: Phage
 tagline: A two-player abstract strategy game for iOS
 ---
 
-Phage is an addictive and unique new iOS game: play against friends, or
-challenge the AI if no-one is around. Matches tend to be short, but if
-you run out of time you can always just quit the app and resume later;
-all matches are auto-saved.
+Phage is an addictive new two-player abstract strategy game where the
+objective is to outmanoeuvre your opponent. If they have no legal moves
+left but you do, you win the match. Play against friends, or challenge
+the AI if no-one is around. Matches tend to be short, but if you run out
+of time you can always just quit the app and resume later&mdash;all
+matches are auto-saved.
 
 <img class="screenshot" src="/images/screenshot.png" alt="Phage iOS Screenshot" />
 
@@ -25,12 +27,13 @@ available for free from the App Store:
 How To Play
 -----------
 
-Phage is a two-player game. Each player has four pieces and takes turn
-moving any one of these. Each piece can be moved seven times, and there
-are no pass moves. A cell which has been previously occupied by a piece
-is blocked; it cannot be occupied again, nor can any piece be moved
-*across* it in any direction. All pieces can move across any number of
-clear cells, but not all pieces can move in all directions.
+Each player has four pieces and takes turns moving any one of these.
+Each piece can be moved seven times; there are no pass moves. A cell
+which has been previously occupied by a piece is blocked; it cannot be
+occupied again, nor can any piece be moved *across* it in any direction.
+
+All pieces can move across any number of clear cells, but not all pieces
+can move in all directions.
 
 Circle moves horizontally, vertically, or diagonally in any direction:
 
@@ -138,3 +141,9 @@ to <support@phageapp.info>.
 Who made this thing?
 --------------------
 
+Phage was brought to you by Stig Brautaset (author of [SBJson][]), with
+graphics by Nadia Brautaset. The original game design is by Steve
+Gardner.
+
+
+[sbjson]: http://sbjson.org
