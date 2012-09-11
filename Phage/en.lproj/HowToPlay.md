@@ -1,18 +1,20 @@
-Phage is a two-player abstract strategy game. Matches tend to be
-short, and draws are possible.
+Phage is a two-player abstract strategy game where the objective is to
+outmanoeuvre your opponent. If they have no legal moves left but you do,
+you win the match.
+
+Matches tend to be short, but if you run out of time you can always just
+quit the app and resume later&mdash;all matches are auto-saved.
 
 **To play, simply tap one of your pieces to select it; then tap the
 location you want to move it to.**
 
-Each player takes turn moving one of their four pieces. Each piece can
-be moved a maximum of seven times. There are no pass moves.
+Each player has four pieces and takes turns moving any one of these.
+Each piece can be moved seven times; there are no pass moves. A cell
+which has been previously occupied by a piece is blocked; it cannot be
+occupied again, nor can any piece be moved *across* it in any direction.
 
-A cell which has been previously occupied by a piece is blocked; it
-cannot be occupied again, nor can any piece be moved *across* it in any
-direction.
-
-The pieces can move across any number of blank cells, but they move in
-different ways:
+All pieces can move across any number of clear cells, but not all pieces
+can move in all directions.
 
 **Circle** moves horizontally, vertically, or diagonally in any direction.
 
