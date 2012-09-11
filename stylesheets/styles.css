@@ -361,7 +361,7 @@ footer p + p {
 
   section img.screenshot {
   	float: none;
-  	padding: none;
+  	padding: 1em;
   }
 
 }
