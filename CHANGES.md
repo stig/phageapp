@@ -1,3 +1,10 @@
+0.7.5 (2012-09-12)
+==================
+
+* Improved the "How To Play" screen, notably by getting the objective of the game into it.
+* Remove optional ADBannerViewDelegate methods + allow banner view to take over screen.
+* Tweaking graphics elements to dim some elements and make others brighter.
+
 0.7.4 (2012-09-10)
 ==================
 
