@@ -5,7 +5,7 @@ you win the match.
 Matches tend to be short, but if you run out of time you can always just
 quit the app and resume later&mdash;all matches are auto-saved.
 
-**To play, simply tap one of your pieces to select it; then tap the
+**To play, simply tap one of your pieces to select it, then tap the
 location you want to move it to.**
 
 Each player has four pieces and takes turns moving any one of these.
