@@ -21,8 +21,7 @@ matches are auto-saved.
 Don't just take their word for it; find out for yourself! Phage is
 available for free from the App Store:
 
-[![Get it on the App Store](/images/available.png)](http://itunes.com/)
-
+[![Get it on the App Store](/images/available.png)](http://itunes.com/apps/phage)
 
 How To Play
 -----------
