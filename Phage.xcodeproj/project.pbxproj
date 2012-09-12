@@ -44,6 +44,7 @@
 		D7BFD53415FA717E00704DCC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7BFD53215FA717E00704DCC /* Default@2x.png */; };
 		D7BFD53615FA737C00704DCC /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7BFD53515FA737C00704DCC /* icon@2x.png */; };
 		D7DD0D2B15E4475100103EE4 /* SBBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DD0D2A15E4475100103EE4 /* SBBoardView.m */; };
+		D7F09B2216013370006ABE03 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7F09B2116013370006ABE03 /* Default-568h@2x.png */; };
 		D7FC87A915F411540034F4C5 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FC87A815F411540034F4C5 /* Twitter.framework */; };
 		D7FC87BA15F48E4C0034F4C5 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FC87B915F48E4C0034F4C5 /* MessageUI.framework */; };
 		D7FDA3A2156DAA4700E65C5E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FDA3A1156DAA4700E65C5E /* libz.dylib */; };
@@ -271,6 +272,7 @@
 		D7BFD53515FA737C00704DCC /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		D7DD0D2915E4475100103EE4 /* SBBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardView.h; sourceTree = "<group>"; };
 		D7DD0D2A15E4475100103EE4 /* SBBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardView.m; sourceTree = "<group>"; };
+		D7F09B2116013370006ABE03 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D7FC87A815F411540034F4C5 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		D7FC87B915F48E4C0034F4C5 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		D7FDA3A1156DAA4700E65C5E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -566,9 +568,10 @@
 			children = (
 				F8D04D3552AE5D8FC2A43E1B /* Themes */,
 				F8D044993B30C3D3230597CA /* icon.png */,
-				D7BFD53215FA717E00704DCC /* Default@2x.png */,
 				D7BFD53515FA737C00704DCC /* icon@2x.png */,
 				D7BFD53115FA717E00704DCC /* Default.png */,
+				D7BFD53215FA717E00704DCC /* Default@2x.png */,
+				D7F09B2116013370006ABE03 /* Default-568h@2x.png */,
 				F8D047711DEFE23111FDED73 /* Arrows */,
 			);
 			path = Resources;
@@ -860,6 +863,7 @@
 				F8D040E2059AFF4C68C22BAE /* arrow-south-west.png in Resources */,
 				F8D0424AED4DE6C1C51B3A3B /* arrow-south.png in Resources */,
 				F8D04B17AA76E57DFC0DDA75 /* arrow-west.png in Resources */,
+				D7F09B2216013370006ABE03 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
