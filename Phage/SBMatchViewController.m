@@ -160,7 +160,7 @@
                                      target:self
                                      action:@selector(forfeitMatch)];
 
-        self.turnLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Waiting for %@...", @"Take Turn message"), self.match.currentPlayer.alias];
+        self.turnLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Waiting for %@", @"Take Turn message"), self.match.currentPlayer.alias];
         if (self.match.currentPlayer.isHuman) {
             [self.board brieflyHighlightPiecesForCurrentPlayer];
         } else {
@@ -169,31 +169,14 @@
     }
 }
 
-- (void)bannerViewWillLoadAd:(ADBannerView *)banner {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-}
+#pragma mark Banner View Delegate
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
     banner.alpha = 1.0;
 }
 
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
     banner.alpha = 0.0;
 }
 
-- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-    return NO;
-}
-
-- (void)bannerViewActionDidFinish:(ADBannerView *)banner {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-}
-
-- (void)viewDidUnload {
-    [self setBanner:nil];
-    [super viewDidUnload];
-}
 @end
