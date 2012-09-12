@@ -94,29 +94,33 @@
 }
 
 - (void)deleteMatch {
-    [[[SBAlertView alloc] initWithTitle:NSLocalizedString(@"Delete Match?", @"Delete dialog title")
-                                message:NSLocalizedString(@"This cannot be undone.", @"Delete dialog message")
-                             completion:^(SBAlertView *alertView, NSInteger buttonIndex) {
-                                 if (alertView.cancelButtonIndex != buttonIndex) {
-                                     [self.delegate matchViewController:self didDeleteMatch:self.match];
-                                 }
-                             }
-                      cancelButtonTitle:NSLocalizedString(@"Keep", @"Delete dialog negative button")
-                      otherButtonTitles:NSLocalizedString(@"Delete", @"Delete dialog affirmative button"), nil] show];
+    [[[SBAlertView alloc]
+            initWithTitle:NSLocalizedString(@"Delete Match?", @"Delete dialog title") message:[self cannotUndoMessage]
+               completion:^(SBAlertView *alertView, NSInteger buttonIndex) {
+                   if (alertView.cancelButtonIndex != buttonIndex) {
+                       [self.delegate matchViewController:self didDeleteMatch:self.match];
+                   }
+               }
+        cancelButtonTitle:NSLocalizedString(@"Keep", @"Delete dialog negative button")
+        otherButtonTitles:NSLocalizedString(@"Delete", @"Delete dialog affirmative button"), nil] show];
 }
 
 - (void)forfeitMatch {
-    [[[SBAlertView alloc] initWithTitle:NSLocalizedString(@"Forfeit Match?", @"Forfeit dialog title")
-                          message:NSLocalizedString(@"This cannot be undone.", @"Forfeit dialog message")
-                             completion:^(SBAlertView *alertView, NSInteger buttonIndex) {
-                                 if (alertView.cancelButtonIndex != buttonIndex) {
-                                     [self.match forfeit];
-                                     [self.delegate matchViewController:self didChangeMatch:self.match];
-                                     [self layoutMatch];
-                                 }
-                             }
-                      cancelButtonTitle:NSLocalizedString(@"Continue", @"Forfeit dialog negative button")
-                      otherButtonTitles:NSLocalizedString(@"Forfeit", @"Forfeit dialog affirmative button"), nil] show];
+    [[[SBAlertView alloc]
+            initWithTitle:NSLocalizedString(@"Forfeit Match?", @"Forfeit dialog title") message:[self cannotUndoMessage]
+               completion:^(SBAlertView *alertView, NSInteger buttonIndex) {
+                   if (alertView.cancelButtonIndex != buttonIndex) {
+                       [self.match forfeit];
+                       [self.delegate matchViewController:self didChangeMatch:self.match];
+                       [self layoutMatch];
+                   }
+               }
+        cancelButtonTitle:NSLocalizedString(@"Continue", @"Forfeit dialog negative button")
+        otherButtonTitles:NSLocalizedString(@"Forfeit", @"Forfeit dialog affirmative button"), nil] show];
+}
+
+- (NSString *)cannotUndoMessage {
+    return NSLocalizedString(@"This cannot be undone.", @"Dialog message");
 }
 
 #pragma mark - Board View Delegate
