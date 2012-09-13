@@ -1,3 +1,11 @@
+1.0 beta1 (2012-09-13)
+======================
+
+* iPhone 5 support!
+* Tweak graphics; fix some grid alignment issues.
+* Squashed minor infrastructure issues.
+
+
 0.7.5 (2012-09-12)
 ==================
 
