@@ -131,7 +131,23 @@
         [self layoutMatch];
     }];
 
-    if (self.match.isGameOver) [TestFlight passCheckpoint:@"GAME_OVER"];
+    if (self.match.isGameOver) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.board animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        [hud hide:YES afterDelay:3.0];
+
+        SBPlayer *winner = self.match.winner;
+        if (nil == winner) {
+            [TestFlight passCheckpoint:@"GAME_OVER_DRAW"];
+            hud.labelText = NSLocalizedString(@"It's a draw!", @"It's a draw!");
+            hud.detailsLabelText = NSLocalizedString(@"How about a rematch?", @"Game over popup message - draw");
+        } else {
+            [TestFlight passCheckpoint:@"GAME_OVER"];
+            hud.labelText = NSLocalizedString(@"Game Over!", @"Game Over!");
+            hud.detailsLabelText = [NSString stringWithFormat:NSLocalizedString(@"%@ won!", @"Game Over popup message - win"), winner.alias];
+        }
+
+    }
 
 }
 
