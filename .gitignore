@@ -17,3 +17,5 @@ DerivedData
 .idea/
 .DS_Store
 Resources/Default-568h.png
+QuickLook/
+*.zip
