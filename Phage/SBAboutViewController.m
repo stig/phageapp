@@ -41,6 +41,7 @@ static NSString *const rows = @"rows";
                 @"Emilio Vacca",
                 @"Gareth Potter",
                 @"Lee Daffen",
+                @"Rufus Cable",
                 @"Sam Dean"
             ],
             footer: NSLocalizedString(@"Names are in alphabetical order", @"About section footer")
