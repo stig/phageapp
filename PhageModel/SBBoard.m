@@ -222,6 +222,15 @@
     }
 }
 
+- (NSSet *)legalDestinationsForPiece:(SBPiece *)piece {
+    NSMutableSet *legalDestinations = [NSMutableSet set];
+    [self enumerateLegalDestinationsForPiece:piece withBlock:^(SBLocation *location, BOOL *stop) {
+        [legalDestinations addObject:location];
+    }];
+    return [legalDestinations copy];
+}
+
+
 - (void)enumerateLegalMovesWithBlock:(void(^)(SBMove *move, BOOL *stop))block {
     [self enumerateLegalMovesForPlayer:self.currentPlayerIndex withBlock:block];
 }

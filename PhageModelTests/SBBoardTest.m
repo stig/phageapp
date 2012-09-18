@@ -12,6 +12,7 @@
 #import "SBCircle.h"
 #import "SBDiamond.h"
 #import "SBMove.h"
+#import "SBTriangle.h"
 
 @interface SBBoardTest : SenTestCase {
     SBBoard *s;
@@ -51,6 +52,12 @@
             @""];
 
     STAssertEqualObjects([s description], [expected componentsJoinedByString:@"\n"], nil);
+}
+
+- (void)testLegalDestinationsForTriangle {
+    SBPiece *triangle = [SBTriangle pieceWithOwner:0];
+    NSSet *destinations = [s legalDestinationsForPiece:triangle];
+    STAssertEquals(13u, destinations.count, nil);
 }
 
 - (void)testLocationForPiece {

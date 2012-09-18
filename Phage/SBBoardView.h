@@ -24,6 +24,8 @@
 
 - (void)layoutBoard:(SBBoard*)board;
 
+- (void)dimUnmoveablePieces;
+
 - (void)brieflyHighlightPiecesForCurrentPlayer;
 
 

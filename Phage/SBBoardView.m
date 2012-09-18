@@ -90,6 +90,7 @@
                     SBCellView *cell = [self.cells objectForKey:loc];
                     pieceView.center = cell.center;
                     pieceView.movesLeft = [[self.board turnsLeftForPiece:pieceView.piece] unsignedIntegerValue];
+                    pieceView.alpha = 1.0; // cancel effect of any dimming out of piece that can't be moved
                 }
 
             }                completion:^(BOOL finished) {
@@ -153,25 +154,37 @@
     }
 }
 
+- (void)dimUnmoveablePieces {
+    NSArray *currentPlayerUnmovablePieces = [self.pieces filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        if ([evaluatedObject piece].owner != self.board.currentPlayerIndex)
+            return YES;
+        return 0 == [self.board legalDestinationsForPiece:[evaluatedObject piece]].count;
+    }]];
+
+    for (SBPieceView *pv in currentPlayerUnmovablePieces)
+        pv.alpha = 0.4;
+}
+
 - (void)brieflyHighlightPiecesForCurrentPlayer {
     NSTimeInterval duration = ANIM_DURATION;
     NSTimeInterval delay = 0;
     NSTimeInterval delayIncrement = duration / 8.0;
 
-
-    NSArray *currentPlayerPieces = [self.pieces filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject piece].owner == self.board.currentPlayerIndex;
+    NSArray *currentPlayerMovablePieces = [self.pieces filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        if ([evaluatedObject piece].owner != self.board.currentPlayerIndex)
+            return NO;
+        return 0 != [self.board legalDestinationsForPiece:[evaluatedObject piece]].count;
     }]];
 
-    currentPlayerPieces = [currentPlayerPieces sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+    currentPlayerMovablePieces = [currentPlayerMovablePieces sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         CGPoint p1 = [obj1 center];
         CGPoint p2 = [obj2 center];
         if (p1.x == p2.x)
-            return (NSComparisonResult)(int)(p1.y - p2.y);
-        return (NSComparisonResult)(int)(p1.x - p2.x);
+            return (NSComparisonResult) (int) (p1.y - p2.y);
+        return (NSComparisonResult) (int) (p1.x - p2.x);
     }];
 
-    for (SBPieceView *pv in currentPlayerPieces) {
+    for (SBPieceView *pv in currentPlayerMovablePieces) {
         [pv performSelector:@selector(bounceWithDuration:) withObject:@(duration) afterDelay:delay];
         delay += delayIncrement;
     }
