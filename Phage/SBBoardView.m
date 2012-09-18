@@ -102,6 +102,7 @@
     [self.board enumerateLocationsUsingBlock:^(SBLocation *loc) {
         SBCellView *cellView = [self.cells objectForKey:loc];
         cellView.blocked = [self.board wasLocationOccupied:loc];
+        cellView.showAsValidDestination = NO;
     }];
 
 }
@@ -128,9 +129,27 @@
 }
 
 - (void)didSelectPieceView:(SBPieceView *)pieceView {
-    if (self.selected != pieceView)
+    if (self.selected != pieceView) {
+        if (self.selected) {
+            NSSet *dst = [self.board legalDestinationsForPiece:self.selected.piece];
+            for (SBLocation *loc in dst) {
+                SBCellView *cellView = [self.cells objectForKey:loc];
+                cellView.showAsValidDestination = NO;
+            }
+        }
+
         self.selected = pieceView;
+    }
 }
+
+- (void)didSelectPieceViewAgain:(SBPieceView *)view {
+    NSSet *dst = [self.board legalDestinationsForPiece:view.piece];
+    for (SBLocation *loc in dst) {
+        SBCellView *cellView = [self.cells objectForKey:loc];
+        cellView.showAsValidDestination = YES;
+    }
+}
+
 
 - (void)setSelected:(SBPieceView *)selected {
     if (_selected) _selected.highlighted = NO;

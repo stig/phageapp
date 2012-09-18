@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) UIImageView *blockedImage;
 @property (strong, nonatomic) UIImageView *availableImage;
+@property (strong, nonatomic) CAShapeLayer *validDestinationLayer;
 
 @end
 
@@ -38,6 +39,16 @@
         }
 
         [self addSubview:self.blockedImage];
+
+        CAShapeLayer *layer = [CAShapeLayer layer];
+        layer.path = CGPathCreateWithEllipseInRect(CGRectMake(10, 10, 20, 20), &CGAffineTransformIdentity);
+        layer.fillColor = [UIColor clearColor].CGColor;
+        layer.strokeColor = [UIColor colorWithWhite:1.0 alpha:0.3].CGColor;
+        layer.lineWidth = 2.0f;
+        layer.strokeStart = layer.strokeEnd = 0.0;
+        self.validDestinationLayer = layer;
+
+        [self.layer addSublayer:self.validDestinationLayer];
     }
     return self;
 }
@@ -59,6 +70,12 @@
         self.blockedImage.alpha = blocked ? 1.0 : 0.0;
         self.availableImage.alpha = blocked ? 0.0 : 1.0;
     }];
+}
+
+- (void)setShowAsValidDestination:(BOOL)showAsValidDestination {
+    _showAsValidDestination = showAsValidDestination;
+
+    self.validDestinationLayer.strokeEnd = showAsValidDestination ? 1.0f : 0.0f;
 }
 
 

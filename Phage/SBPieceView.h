@@ -12,6 +12,7 @@
 
 - (BOOL)canSelectPieceView:(SBPieceView *)pieceView;
 - (void)didSelectPieceView:(SBPieceView *)pieceView;
+- (void)didSelectPieceViewAgain:(SBPieceView *)view;
 
 @end
 

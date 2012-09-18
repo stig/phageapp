@@ -22,6 +22,7 @@
 
 @property (readonly, nonatomic) SBLocation *location;
 @property (nonatomic) BOOL blocked;
+@property (nonatomic) BOOL showAsValidDestination;
 
 + (id)objectWithLocation:(SBLocation *)location;
 

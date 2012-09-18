@@ -58,7 +58,12 @@
     [super touchesEnded:touches withEvent:event];
 
     if ([self.delegate canSelectPieceView:self]) {
-        [self.delegate didSelectPieceView:self];
+
+        if (self.isHighlighted) {
+            [self.delegate didSelectPieceViewAgain:self];
+        } else {
+            [self.delegate didSelectPieceView:self];
+        }
     } else {
         [self shudder];
     }
