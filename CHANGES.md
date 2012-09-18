@@ -1,3 +1,17 @@
+1.0 beta2 (2012-09-18)
+======================
+
+* Highlight possible moves when tapping piece twice.
+* Dim the grid a bit to make it less jarring.
+* Make the numbers of moves left badge on pieces less pixelated.
+* When it's a human's turn:
+  a) Only bounce moveable pieces
+  b) Dim unmovable pieces
+* Update acknowledgements in About screen.
+* Add a game over message when a match end as a result of a move being performed.
+* Added missing reflections on splash screen and game board.
+
+
 1.0 beta1 (2012-09-13)
 ======================
 
