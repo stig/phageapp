@@ -33,6 +33,7 @@
         mll.cornerRadius = mll.frame.size.height / 2.0;
         mll.alignmentMode = @"center";
         mll.fontSize = (CGFloat)floor(mll.frame.size.height / 1.1);
+        mll.contentsScale = [[UIScreen mainScreen] scale];
 
         self.movesLeftLayer = mll;
         [self.layer addSublayer:self.movesLeftLayer];
