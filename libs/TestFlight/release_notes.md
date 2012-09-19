@@ -1,4 +1,9 @@
-1.1 BETA 3 - September 12, 2012
+##1.1 - September 13, 2012
+
+* armv7s and iOS 6 support
+* Updated for general release
+
+##1.1 BETA 3 - September 12, 2012
 
 * armv7s slice added to library
 * fixed typo for in application updates, inAppUdates changed to inAppUpdates
