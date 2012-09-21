@@ -708,6 +708,7 @@
 				D76A455D151DDC7500E59146 /* Sources */,
 				D76A455E151DDC7500E59146 /* Frameworks */,
 				D76A455F151DDC7500E59146 /* Resources */,
+				D73B4A73160CEE05005CE411 /* ShellScript */,
 			);
 			buildRules = (
 				D7198649155D726500349052 /* PBXBuildRule */,
@@ -890,6 +891,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		D73B4A73160CEE05005CE411 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = Scripts/GitVersionHook;
 		};
 		D76A4583151DDC7500E59146 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

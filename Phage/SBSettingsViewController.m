@@ -23,9 +23,6 @@
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *majorVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
     NSString *minorVersion = [infoDictionary objectForKey:@"CFBundleVersion"];
-    if (1.0 == [minorVersion doubleValue]) {
-        return majorVersion;
-    }
     return [NSString stringWithFormat:@"%@ (%@)", majorVersion, minorVersion];
 }
 
