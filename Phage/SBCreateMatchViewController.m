@@ -67,8 +67,8 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"PlayerNameCell"];
 
         cell.textLabel.text = !indexPath.row
-            ? NSLocalizedString(@"First player", @"Player Number Indicator")
-            : NSLocalizedString(@"Second player", @"Player Number Indicator");
+            ? NSLocalizedString(@"Player 1", @"Player Number Indicator")
+            : NSLocalizedString(@"Player 2", @"Player Number Indicator");
 
 
         NSString *aliasKey = [[players objectAtIndex:indexPath.row] objectForKey:@"aliasKey"];
