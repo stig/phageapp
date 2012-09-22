@@ -25,7 +25,6 @@
 @end
 
 @implementation SBMatchViewController
-@synthesize banner = _banner;
 
 
 - (void)viewDidLoad {
