@@ -76,6 +76,10 @@
 
         cell.detailTextLabel.text = alias;
 
+        cell.accessoryType = 0 == indexPath.section && 1 == indexPath.row
+                ? UITableViewCellAccessoryNone
+                : UITableViewCellAccessoryDisclosureIndicator;
+
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"ButtonCell"];
 
