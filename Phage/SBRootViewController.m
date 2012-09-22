@@ -76,8 +76,9 @@
 
 
     } else if (![[self.matchService allMatches] count]) {
-        SBPlayer *one = [SBPlayer playerWithAlias:NSLocalizedString(@"Player 1", @"Human Player Name") human:YES];
-        SBPlayer *two = [SBPlayer playerWithAlias:NSLocalizedString(@"Sgt Pepper", @"AI Player Name") human:NO];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        SBPlayer *one = [SBPlayer playerWithAlias:[defaults objectForKey:PLAYER_ONE_ALIAS] human:YES];
+        SBPlayer *two = [SBPlayer playerWithAlias:[defaults objectForKey:SGT_PEPPER_ALIAS] human:NO];
         [self.matchService saveMatch: [SBMatch matchWithPlayerOne:one two:two]];
         [self reloadSections];
         [self showMostRecentlyCreatedActiveMatch];

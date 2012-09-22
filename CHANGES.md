@@ -1,6 +1,7 @@
-1.0 (2012-09-20)
+1.0 (2012-09-21)
 ================
 
+* Fix bug where newly created match would not use player's chosen name.
 * Fix label text that was too long for the labels in the create match screen.
 * Don't show disclosure indicator for Sgt Pepper in the create match screen.
 * Set the version and build numbers from a build script phase. This lets me identify the actual commit that was built.
