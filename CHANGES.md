@@ -1,6 +1,8 @@
 1.0 (2012-09-20)
 ================
 
+* Fix label text that was too long for the labels in the create match screen.
+* Don't show disclosure indicator for Sgt Pepper in the create match screen.
 * Set the version and build numbers from a build script phase. This lets me identify the actual commit that was built.
 * Add note about the legal move disclosure you can activate by tapping a piece twice.
 * Updated TestFlight to 1.1 rather than beta3
