@@ -7,12 +7,14 @@
 
 #import "SBCellView.h"
 #import "SBLocation.h"
+#import "SBPieceView.h"
 
 @interface SBCellView ()
 
 @property (strong, nonatomic) UIImageView *blockedImage;
 @property (strong, nonatomic) UIImageView *availableImage;
-@property (strong, nonatomic) CAShapeLayer *validDestinationLayer;
+@property (strong, nonatomic) CALayer *maskLayer;
+@property (strong, nonatomic) CALayer *outlineLayer;
 
 @end
 
@@ -40,15 +42,16 @@
 
         [self addSubview:self.blockedImage];
 
-        CAShapeLayer *layer = [CAShapeLayer layer];
-        layer.path = CGPathCreateWithEllipseInRect(CGRectMake(10, 10, 20, 20), &CGAffineTransformIdentity);
-        layer.fillColor = [UIColor clearColor].CGColor;
-        layer.strokeColor = [UIColor colorWithWhite:1.0 alpha:0.3].CGColor;
-        layer.lineWidth = 2.0f;
-        layer.strokeStart = layer.strokeEnd = 0.0;
-        self.validDestinationLayer = layer;
+        CALayer *mask = [CALayer layer];
+        mask.frame = CGRectInset(self.bounds, 10, 10);
+        self.maskLayer = mask;
 
-        [self.layer addSublayer:self.validDestinationLayer];
+        CALayer *outline = [CALayer layer];
+        outline.mask = self.maskLayer;
+        outline.frame = self.bounds;
+        self.outlineLayer = outline;
+
+        [self.layer addSublayer:outline];
     }
     return self;
 }
@@ -72,11 +75,16 @@
     }];
 }
 
-- (void)setShowAsValidDestination:(BOOL)showAsValidDestination {
-    _showAsValidDestination = showAsValidDestination;
+- (void)showAsValidDestinationForPiece:(SBPieceView *)pieceView {
+    if (pieceView) {
+        self.maskLayer.contents = (id) pieceView.image.CGImage;
+        self.outlineLayer.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.3].CGColor;
 
-    self.validDestinationLayer.strokeEnd = showAsValidDestination ? 1.0f : 0.0f;
+    } else {
+        self.outlineLayer.backgroundColor = [UIColor clearColor].CGColor;
+    }
 }
+
 
 
 @end

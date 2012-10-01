@@ -8,6 +8,7 @@
 
 @class SBLocation;
 @class SBCellView;
+@class SBPieceView;
 
 @protocol SBCellViewDelegate
 
@@ -22,9 +23,10 @@
 
 @property (readonly, nonatomic) SBLocation *location;
 @property (nonatomic) BOOL blocked;
-@property (nonatomic) BOOL showAsValidDestination;
 
 + (id)objectWithLocation:(SBLocation *)location;
+
+- (void)showAsValidDestinationForPiece:(SBPieceView *)pieceView;
 
 
 @end
