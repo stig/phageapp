@@ -131,6 +131,4 @@ The Makers
 Phage was brought to you by Stig Brautaset (author of [SBJson][]), with
 graphics by Nadia Brautaset. The original game design is by Steve Gardner.
 
-Site design by Emilio Vacca.
-
 [sbjson]: http://sbjson.org
