@@ -49,7 +49,9 @@
         CALayer *outline = [CALayer layer];
         outline.mask = self.maskLayer;
         outline.frame = self.bounds;
+        outline.backgroundColor = [UIColor whiteColor].CGColor;
         self.outlineLayer = outline;
+
 
         [self.layer addSublayer:outline];
     }
@@ -77,11 +79,16 @@
 
 - (void)showAsValidDestinationForPiece:(SBPieceView *)pieceView {
     if (pieceView) {
-        self.maskLayer.contents = (id) pieceView.image.CGImage;
-        self.outlineLayer.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.3].CGColor;
+        [UIView animateWithDuration:0 animations:^{
+            self.maskLayer.contents = (id) pieceView.image.CGImage;
+        }];
+
+        [UIView animateWithDuration:ANIM_DURATION animations:^{
+            self.outlineLayer.opacity = 0.2;
+        }];
 
     } else {
-        self.outlineLayer.backgroundColor = [UIColor clearColor].CGColor;
+        self.outlineLayer.opacity = 0.0;
     }
 }
 
