@@ -8,7 +8,7 @@
 #import "SBPieceView.h"
 #import "SBPiece.h"
 
-@interface SBPieceView ()
+@interface SBPieceView () < UIGestureRecognizerDelegate >
 @property (weak, nonatomic) CATextLayer *movesLeftLayer;
 @end
 
@@ -37,6 +37,17 @@
 
         self.movesLeftLayer = mll;
         [self.layer addSublayer:self.movesLeftLayer];
+
+
+        UITapGestureRecognizer *dt = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap)];
+        dt.numberOfTapsRequired = 2;
+
+        UITapGestureRecognizer *st = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap)];
+        [st requireGestureRecognizerToFail:dt];
+
+        [self addGestureRecognizer:st];
+        [self addGestureRecognizer:dt];
+
     }
     return self;
 }
@@ -54,9 +65,7 @@
     return self;
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [super touchesEnded:touches withEvent:event];
-
+- (void)singleTap {
     if ([self.delegate canSelectPieceView:self]) {
 
         if (self.isHighlighted) {
@@ -67,6 +76,11 @@
     } else {
         [self shudder];
     }
+}
+
+- (void)doubleTap {
+    [self singleTap];
+    [self singleTap];
 }
 
 - (void)bounceWithDuration:(NSNumber *)duration {
