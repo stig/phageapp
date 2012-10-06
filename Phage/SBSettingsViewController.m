@@ -21,9 +21,11 @@
 
 - (NSString *)versionNumberDisplayString {
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    NSString *majorVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-    NSString *minorVersion = [infoDictionary objectForKey:@"CFBundleVersion"];
-    return [NSString stringWithFormat:@"%@ (%@)", majorVersion, minorVersion];
+    NSString *version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    NSString *versionMod = [infoDictionary objectForKey:@"SBBundleShortVersionStringSuffix"];
+
+    NSString *build = [infoDictionary objectForKey:@"CFBundleVersion"];
+    return [NSString stringWithFormat:@"%@%@ (%@)", version, versionMod, build];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

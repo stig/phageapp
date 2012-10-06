@@ -20,7 +20,7 @@
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>org.brautaset.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>org.brautaset.${PRODUCT_NAME:rfc1034identifier}${BUNDLE_IDENTIFIER_SUFFIX}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -29,6 +29,8 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>LAST_GIT_TAG</string>
+	<key>SBBundleShortVersionStringSuffix</key>
+	<string>${BUNDLE_DISPLAY_NAME_SUFFIX}</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
