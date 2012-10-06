@@ -8,6 +8,8 @@
 
 #import "SBPlayerAliasViewController.h"
 
+#define MAXLENGTH 25
+
 @interface SBPlayerAliasViewController () < UITextFieldDelegate >
 @property (weak, nonatomic) IBOutlet UITextField *aliasTextField;
 @end
@@ -30,6 +32,14 @@
     [textField resignFirstResponder];
     [self.navigationController popViewControllerAnimated:YES];
     return NO;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if ([textField.text length] > MAXLENGTH) {
+        textField.text = [textField.text substringToIndex:MAXLENGTH];
+        return NO;
+    }
+    return YES;
 }
 
 
