@@ -18,6 +18,7 @@
     #import <GameKit/GameKit.h>
     #import <QuartzCore/QuartzCore.h>
     #import "TestFlight.h"
+    #import "Flurry.h"
 
     // For user defaults
     static NSString *const PLAYER_ONE_ALIAS = @"PLAYER_ONE_ALIAS";

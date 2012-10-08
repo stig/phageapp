@@ -43,6 +43,7 @@
 		D7BFD53315FA717E00704DCC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D7BFD53115FA717E00704DCC /* Default.png */; };
 		D7BFD53415FA717E00704DCC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7BFD53215FA717E00704DCC /* Default@2x.png */; };
 		D7BFD53615FA737C00704DCC /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7BFD53515FA737C00704DCC /* icon@2x.png */; };
+		D7C506281622DBC000FEC069 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7C506271622DBC000FEC069 /* libFlurry.a */; };
 		D7DD0D2B15E4475100103EE4 /* SBBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DD0D2A15E4475100103EE4 /* SBBoardView.m */; };
 		D7F09B2216013370006ABE03 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7F09B2116013370006ABE03 /* Default-568h@2x.png */; };
 		D7FC87A915F411540034F4C5 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FC87A815F411540034F4C5 /* Twitter.framework */; };
@@ -50,6 +51,7 @@
 		D7FDA3A2156DAA4700E65C5E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FDA3A1156DAA4700E65C5E /* libz.dylib */; };
 		D7FDA3A4156DAA8F00E65C5E /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7FDA3A3156DAA8F00E65C5E /* libTestFlight.a */; };
 		F8D04027C7A00D5717B08DD6 /* piece-south-diamond.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D045227BFF000469526CE1 /* piece-south-diamond.png */; };
+		F8D04027F3488DF11C3CC32A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8D0499AD0E25D9FF9B15B38 /* SystemConfiguration.framework */; };
 		F8D040599C41BC0336D594E6 /* piece-north-triangle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D0427890469C0C65708AE5 /* piece-north-triangle@2x.png */; };
 		F8D040786DB3C287CFAFE611 /* SBPieceView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D04129838B653D03F76144 /* SBPieceView.m */; };
 		F8D040E2059AFF4C68C22BAE /* arrow-south-west.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D0434EC26F564E538777E9 /* arrow-south-west.png */; };
@@ -270,6 +272,7 @@
 		D7BFD53115FA717E00704DCC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		D7BFD53215FA717E00704DCC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		D7BFD53515FA737C00704DCC /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		D7C506271622DBC000FEC069 /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry.a; path = libs/Flurry/libFlurry.a; sourceTree = "<group>"; };
 		D7DD0D2915E4475100103EE4 /* SBBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBoardView.h; sourceTree = "<group>"; };
 		D7DD0D2A15E4475100103EE4 /* SBBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBoardView.m; sourceTree = "<group>"; };
 		D7F09B2116013370006ABE03 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -301,6 +304,7 @@
 		F8D048101EE1DBECE70B4A28 /* piece-south-square@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-square@2x.png"; sourceTree = "<group>"; };
 		F8D0485D2A145F89AE4B1F8F /* cell-blocked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-blocked.png"; sourceTree = "<group>"; };
 		F8D0496ADD10FCC8E86ACDA3 /* SBAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAboutViewController.m; sourceTree = "<group>"; };
+		F8D0499AD0E25D9FF9B15B38 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F8D049A778AE4777A0FF86B3 /* SBAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAboutViewController.h; sourceTree = "<group>"; };
 		F8D049E7B11F27F102F6CBDE /* SBRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRootViewController.m; sourceTree = "<group>"; };
 		F8D04A5E3FC58C124F077A44 /* SBRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRootViewController.h; sourceTree = "<group>"; };
@@ -367,6 +371,8 @@
 				D76A4566151DDC7500E59146 /* UIKit.framework in Frameworks */,
 				D76A4568151DDC7500E59146 /* Foundation.framework in Frameworks */,
 				D76A456A151DDC7500E59146 /* CoreGraphics.framework in Frameworks */,
+				D7C506281622DBC000FEC069 /* libFlurry.a in Frameworks */,
+				F8D04027F3488DF11C3CC32A /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +486,8 @@
 		D76A4564151DDC7500E59146 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F8D0499AD0E25D9FF9B15B38 /* SystemConfiguration.framework */,
+				D7C506271622DBC000FEC069 /* libFlurry.a */,
 				D725C41115FBD68700E30ADC /* iAd.framework */,
 				D7FC87B915F48E4C0034F4C5 /* MessageUI.framework */,
 				D7FC87A815F411540034F4C5 /* Twitter.framework */,
@@ -1216,11 +1224,15 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Phage/Phage-Prefix.pch";
-				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/libs/TestFlight";
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/libs/TestFlight",
+					"${PROJECT_DIR}/libs/Flurry",
+				);
 				INFOPLIST_FILE = "Phage/Phage-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/libs/TestFlight\"",
+					"\"$(SRCROOT)/libs/Flurry\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1239,11 +1251,15 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Phage/Phage-Prefix.pch";
-				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/libs/TestFlight";
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/libs/TestFlight",
+					"${PROJECT_DIR}/libs/Flurry",
+				);
 				INFOPLIST_FILE = "Phage/Phage-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/libs/TestFlight\"",
+					"\"$(SRCROOT)/libs/Flurry\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
