@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# This script automatically sets the version and short version string of
-# an Xcode project from the Git repository containing the project.
+# This script automatically sets the version and short version string of an
+# Xcode project from the Git repository containing the project.
 #
 # To use this script in Xcode 4, add the contents to a "Run Script" build
 # phase for your application target.
@@ -13,14 +13,16 @@ INFO_PLIST="${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Info"
 
 # Use the latest version tag for CFBundleShortVersionString. I tag releases
 # in Git using the format 0.0.0; this assumes you're doing the same.
-SHORT_VERSION=$(git --git-dir="${PROJECT_DIR}/.git" --work-tree="${PROJECT_DIR}" describe --abbrev=0)
+MARKETING_VERSION=$(git --git-dir="${PROJECT_DIR}/.git" --work-tree="${PROJECT_DIR}" describe --abbrev=0)
 
-# I'd like to use the Git commit hash for CFBundleVersion.
-# VERSION=$(git --git-dir="${PROJECT_DIR}/.git" --work-tree="${PROJECT_DIR}" rev-parse --short HEAD)
+# I'd like to use the Git commit hash for CFBundleVersion..
+GIT_HASH=$(git --git-dir="${PROJECT_DIR}/.git" --work-tree="${PROJECT_DIR}" rev-parse --short HEAD)
 
 # ..but Apple wants this value to be a monotonically increasing integer, so
-# instead use the number of commits since the tag.
-VERSION=$(git --git-dir="${PROJECT_DIR}/.git" --work-tree="${PROJECT_DIR}" rev-list "${SHORT_VERSION}.." | wc -l)
+# instead use the number of commits on master.
+VERSION=$(git --git-dir="${PROJECT_DIR}/.git" --work-tree="${PROJECT_DIR}" rev-list master | wc -l)
 
-defaults write $INFO_PLIST CFBundleShortVersionString $SHORT_VERSION
+
+defaults write $INFO_PLIST CFBundleShortVersionString $MARKETING_VERSION
 defaults write $INFO_PLIST CFBundleVersion $VERSION
+defaults write $INFO_PLIST SBGitHash $GIT_HASH
