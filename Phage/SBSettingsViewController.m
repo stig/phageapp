@@ -23,7 +23,7 @@
 - (NSString *)versionNumberDisplayString {
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-    NSString *versionMod = [infoDictionary objectForKey:@"SBBundleShortVersionStringSuffix"];
+    NSString *versionMod = [infoDictionary objectForKey:@"SBBundleShortVersionSuffix"];
 
     NSString *build = [infoDictionary objectForKey:@"CFBundleVersion"];
     return [NSString stringWithFormat:@"%@%@ (%@)", version, versionMod, build];

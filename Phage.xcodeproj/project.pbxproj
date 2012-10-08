@@ -1225,8 +1225,9 @@
 		D76A4598151DDC7500E59146 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_DISPLAY_NAME_SUFFIX = beta;
 				BUNDLE_IDENTIFIER_SUFFIX = .dev;
+				BUNDLE_NAME_SUFFIX = " Beta";
+				BUNDLE_SHORT_VERSION_SUFFIX = beta;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Phage/Phage-Prefix.pch";
@@ -1252,8 +1253,9 @@
 		D76A4599151DDC7500E59146 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_DISPLAY_NAME_SUFFIX = "";
 				BUNDLE_IDENTIFIER_SUFFIX = "";
+				BUNDLE_NAME_SUFFIX = "";
+				BUNDLE_SHORT_VERSION_SUFFIX = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Phage/Phage-Prefix.pch";
