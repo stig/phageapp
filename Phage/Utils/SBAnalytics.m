@@ -26,10 +26,9 @@
 }
 
 + (void)logEvent:(NSString *)event withParameters:(NSDictionary *)params {
-    NSString *p = [self stringifyDict:params];
-    NSLog(@"event = %@, params = %@", event, p);
+    NSLog(@"event = %@, params = %@", event, params);
     [Flurry logEvent:event withParameters:params];
-    [TestFlight passCheckpoint:[event stringByAppendingFormat:@"_%@", p]];
+    [TestFlight passCheckpoint:[event stringByAppendingFormat:@"_%@", [self stringifyDict:params]]];
 }
 
 
