@@ -181,6 +181,12 @@
     self.shouldShowMostRecentlyCreatedActiveMatch = YES;
 
     [self.navigationController popViewControllerAnimated:YES];
+
+    [SBAnalytics logEvent:@"CREATE_MATCH" withParameters:@{
+        @"PLAYER1": match.playerOne.isHuman ? @"HUMAN" : @"SGT_PEPPER",
+        @"PLAYER2": match.playerTwo.isHuman ? @"HUMAN" : @"SGT_PEPPER"
+    }];
+
 }
 
 - (void)showMostRecentlyCreatedActiveMatch {
