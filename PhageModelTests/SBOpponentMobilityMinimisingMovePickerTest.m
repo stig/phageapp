@@ -16,7 +16,7 @@
 
 @implementation SBOpponentMobilityMinimisingMovePickerTest
 
-- (void)testInitialState {
+- (void)test {
     SBOpponentMobilityMinimisingMovePicker *picker = [[SBOpponentMobilityMinimisingMovePicker alloc] init];
     SBBoard *state = [SBBoard board];
 

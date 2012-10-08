@@ -6,11 +6,13 @@
 
 
 #import "SBOpponentMobilityMinimisingMovePicker.h"
-#import "SBMove.h"
 #import "SBBoard.h"
 
 @implementation SBOpponentMobilityMinimisingMovePicker
 
+// Sgt Pepper tries to minimise his opponent's mobility
+// The approach is sound, but his poor mental faculty only allows him to
+// apply the methodology for the next step, which means he misses a lot
 - (SBMove *)moveForState:(SBBoard *)state {
     __block NSInteger minScore = INT_MAX;
     __block id bestMove = nil;

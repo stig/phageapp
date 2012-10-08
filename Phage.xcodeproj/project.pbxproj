@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		536BE854153E17F000750F54 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536BE853153E17F000750F54 /* QuartzCore.framework */; };
+		D70F135E16234955008E8FD7 /* SBRandomMovePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D70F135D16234955008E8FD7 /* SBRandomMovePicker.m */; };
+		D70F136016234964008E8FD7 /* SBRandomMovePickerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D70F135F16234964008E8FD7 /* SBRandomMovePickerTest.m */; };
 		D719864F155D78BB00349052 /* HowToPlay.md in Resources */ = {isa = PBXBuildFile; fileRef = D719864D155D78BB00349052 /* HowToPlay.md */; };
 		D725C41215FBD68700E30ADC /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D725C41115FBD68700E30ADC /* iAd.framework */; };
 		D72CC3AC15F1425B00FB7154 /* SBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72CC3AB15F1425B00FB7154 /* SBWebViewController.m */; };
@@ -207,6 +209,9 @@
 
 /* Begin PBXFileReference section */
 		536BE853153E17F000750F54 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D70F135C16234955008E8FD7 /* SBRandomMovePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRandomMovePicker.h; sourceTree = "<group>"; };
+		D70F135D16234955008E8FD7 /* SBRandomMovePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRandomMovePicker.m; sourceTree = "<group>"; };
+		D70F135F16234964008E8FD7 /* SBRandomMovePickerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRandomMovePickerTest.m; sourceTree = "<group>"; };
 		D719864E155D78BB00349052 /* HowToPlay.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = HowToPlay.md; path = en.lproj/HowToPlay.md; sourceTree = "<group>"; };
 		D725C41115FBD68700E30ADC /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		D72CC3AA15F1425B00FB7154 /* SBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBWebViewController.h; sourceTree = "<group>"; };
@@ -321,6 +326,7 @@
 		F8D04F17554236A1544CF2A4 /* SBAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAnalytics.m; sourceTree = "<group>"; };
 		F8D04F4D68C1FA2F496E5965 /* piece-south-triangle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-triangle@2x.png"; sourceTree = "<group>"; };
 		F8D04F5489774187AD134A8F /* piece-north-diamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-north-diamond.png"; sourceTree = "<group>"; };
+		F8D04F605C2C197702E421B0 /* SBMovePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMovePicker.h; sourceTree = "<group>"; };
 		F8D04FD03E7DF1466D92D0F7 /* arrow-north.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-north.png"; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BE8 /* SBMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMatch.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BEA /* SBMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMatch.h; sourceTree = "<group>"; };
@@ -395,8 +401,6 @@
 		D72F239A15C5F248006EFE0D /* PhageModel */ = {
 			isa = PBXGroup;
 			children = (
-				D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */,
-				D7BFA3B2151F2AD300435C8A /* SBOpponentMobilityMinimisingMovePicker.h */,
 				FB89D43C154C7D27001A0C2F /* SBMatchService.h */,
 				FB89D43C154C7D27001A0C2D /* SBMatchService.m */,
 				D76A45BD151DFD1A00E59146 /* SBTriangle.m */,
@@ -423,6 +427,7 @@
 				D7BFA3AD151F108100435C7F /* SBBoard.h */,
 				D72F239D15C5F248006EFE0D /* PhageModel.h */,
 				D72F239B15C5F248006EFE0D /* Supporting Files */,
+				F8D043DD45BAC77EE648EE03 /* Move Pickers */,
 			);
 			path = PhageModel;
 			sourceTree = "<group>";
@@ -438,6 +443,7 @@
 		D72F23AD15C5F248006EFE0D /* PhageModelTests */ = {
 			isa = PBXGroup;
 			children = (
+				D70F135F16234964008E8FD7 /* SBRandomMovePickerTest.m */,
 				F8D04DF107FC3B606EF8DB4C /* SBMatchIntegrationTest.m */,
 				D7BFA3B2151F2AD300435C8B /* SBOpponentMobilityMinimisingMovePickerTest.m */,
 				FB89D43C154C7D27001A0C30 /* SBMatchServiceTest.m */,
@@ -586,6 +592,19 @@
 				F8D047711DEFE23111FDED73 /* Arrows */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		F8D043DD45BAC77EE648EE03 /* Move Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				D70F135C16234955008E8FD7 /* SBRandomMovePicker.h */,
+				D70F135D16234955008E8FD7 /* SBRandomMovePicker.m */,
+				F8D04F605C2C197702E421B0 /* SBMovePicker.h */,
+				D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */,
+				D7BFA3B2151F2AD300435C8A /* SBOpponentMobilityMinimisingMovePicker.h */,
+			);
+			lastKnownFileType = text;
+			path = "Move Pickers";
 			sourceTree = "<group>";
 		};
 		F8D0474D23B61FF6DC78C790 /* Match View */ = {
@@ -951,6 +970,7 @@
 				FB89D43C154C7D27001A0C18 /* SBTriangle.m in Sources */,
 				FB89D43C154C7D27001A0C2E /* SBMatchService.m in Sources */,
 				F8D04DEEE68C46E1C918CE64 /* SBOpponentMobilityMinimisingMovePicker.m in Sources */,
+				D70F135E16234955008E8FD7 /* SBRandomMovePicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -968,6 +988,7 @@
 				FB89D43C154C7D27001A0C31 /* SBMatchServiceTest.m in Sources */,
 				F8D049FEF38D41389F177CB7 /* SBOpponentMobilityMinimisingMovePickerTest.m in Sources */,
 				F8D046173F193995AE743CE5 /* SBMatchIntegrationTest.m in Sources */,
+				D70F136016234964008E8FD7 /* SBRandomMovePickerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

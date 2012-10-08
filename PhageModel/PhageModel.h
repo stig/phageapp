@@ -20,3 +20,5 @@
 #import "SBTriangle.h"
 #import "SBMatchService.h"
 #import "SBOpponentMobilityMinimisingMovePicker.h"
+#import "SBRandomMovePicker.h"
+#import "SBMovePicker.h"

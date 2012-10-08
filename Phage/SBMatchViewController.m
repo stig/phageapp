@@ -80,7 +80,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         [NSThread sleepForTimeInterval: ANIM_DURATION];
 
-        SBOpponentMobilityMinimisingMovePicker *pm = [[SBOpponentMobilityMinimisingMovePicker alloc] init];
+        id<SBMovePicker> pm = [[SBOpponentMobilityMinimisingMovePicker alloc] init];
         SBMove *move = [pm moveForState:board];
 
         dispatch_async(dispatch_get_main_queue(), ^{
