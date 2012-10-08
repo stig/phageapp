@@ -7,6 +7,7 @@
 //
 
 #import "SBPlayerAliasViewController.h"
+#import "SBAnalytics.h"
 
 #define MAXLENGTH 25
 
@@ -28,6 +29,7 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [SBAnalytics logEvent:[NSString stringWithFormat:@"CHANGE_%@", self.aliasKey]];
     [[NSUserDefaults standardUserDefaults] setObject:textField.text forKey:self.aliasKey];
     [textField resignFirstResponder];
     [self.navigationController popViewControllerAnimated:YES];

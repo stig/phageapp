@@ -58,6 +58,7 @@
 		F8D041A9261C23CF17A30785 /* board.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D041D660C3EE7E8AE87035 /* board.png */; };
 		F8D041AEA9425524156B3DEC /* SBRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D049E7B11F27F102F6CBDE /* SBRootViewController.m */; };
 		F8D0424AED4DE6C1C51B3A3B /* arrow-south.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04E772C8C2415B46F9778 /* arrow-south.png */; };
+		F8D042EDC3CB083A1D1693DD /* SBAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D04F17554236A1544CF2A4 /* SBAnalytics.m */; };
 		F8D04410AB84C76EACD689DB /* arrow-north.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04FD03E7DF1466D92D0F7 /* arrow-north.png */; };
 		F8D0445D2BD787D044459010 /* piece-north-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04DB6B26461C4B5A120AB /* piece-north-circle.png */; };
 		F8D0449FC5E399655B54BD9D /* piece-north-triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04C837D03B145DB351D2F /* piece-north-triangle.png */; };
@@ -287,6 +288,7 @@
 		F8D041465C485CAD621B1C32 /* piece-south-triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-triangle.png"; sourceTree = "<group>"; };
 		F8D04149ED52B9B8D24C4027 /* piece-south-circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-circle@2x.png"; sourceTree = "<group>"; };
 		F8D04161D4ADF998FC691722 /* piece-north-circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-north-circle@2x.png"; sourceTree = "<group>"; };
+		F8D0418D9F6E2D8684DFB364 /* SBAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAnalytics.h; sourceTree = "<group>"; };
 		F8D041D660C3EE7E8AE87035 /* board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = board.png; sourceTree = "<group>"; };
 		F8D0427890469C0C65708AE5 /* piece-north-triangle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-north-triangle@2x.png"; sourceTree = "<group>"; };
 		F8D0434EC26F564E538777E9 /* arrow-south-west.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-south-west.png"; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 		F8D04DF107FC3B606EF8DB4C /* SBMatchIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMatchIntegrationTest.m; sourceTree = "<group>"; };
 		F8D04E772C8C2415B46F9778 /* arrow-south.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-south.png"; sourceTree = "<group>"; };
 		F8D04E8D86A6E6EE9B215C2C /* arrow-north-east.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-north-east.png"; sourceTree = "<group>"; };
+		F8D04F17554236A1544CF2A4 /* SBAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAnalytics.m; sourceTree = "<group>"; };
 		F8D04F4D68C1FA2F496E5965 /* piece-south-triangle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-triangle@2x.png"; sourceTree = "<group>"; };
 		F8D04F5489774187AD134A8F /* piece-north-diamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-north-diamond.png"; sourceTree = "<group>"; };
 		F8D04FD03E7DF1466D92D0F7 /* arrow-north.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-north.png"; sourceTree = "<group>"; };
@@ -663,6 +666,8 @@
 		FB89D43C154C7D27001A0C29 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				F8D0418D9F6E2D8684DFB364 /* SBAnalytics.h */,
+				F8D04F17554236A1544CF2A4 /* SBAnalytics.m */,
 				FB89D43C154C7D27001A0C2B /* SBAlertView.m */,
 				FB89D43C154C7D27001A0C2A /* SBAlertView.h */,
 			);
@@ -983,6 +988,7 @@
 				D791504B15ED65B3005B9FCF /* SBPlayerAliasViewController.m in Sources */,
 				D72CC3AC15F1425B00FB7154 /* SBWebViewController.m in Sources */,
 				F8D04F8E8AD14112ED8F34BF /* SBAboutViewController.m in Sources */,
+				F8D042EDC3CB083A1D1693DD /* SBAnalytics.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,7 @@
 #import "SBSettingsViewController.h"
 #import "SBWebViewController.h"
 #import "MBProgressHUD.h"
+#import "SBAnalytics.h"
 
 @interface SBSettingsViewController () <MFMailComposeViewControllerDelegate>
 @end
@@ -107,7 +108,9 @@
         case 2:
             switch (indexPath.row) {
                 case 0: {
+                    BOOL canSend = YES;
                     if (![TWTweetComposeViewController canSendTweet]) {
+                        canSend = NO;
                         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
                         hud.labelText = NSLocalizedString(@"Cannot send tweet", @"Error message");
                         hud.detailsLabelText = NSLocalizedString(@"No Twitter accounts available.", @"Error message detail");
@@ -118,23 +121,26 @@
                         [ctrl setInitialText:@"@phageapp "];
                         [self presentViewController:ctrl animated:YES completion:nil];
                     }
+                    [SBAnalytics logEvent:@"INITIATE_TWEET_TO_SUPPORT" withParameters:@{ @"CAN_SEND": canSend ? @"YES": @"NO" }];
                 }
                     break;
                 case 1: {
+                    BOOL canSend = YES;
                     if (![MFMailComposeViewController canSendMail]) {
+                        canSend = YES;
                         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
                         hud.labelText = NSLocalizedString(@"Cannot send mail", @"Error message");
                         hud.detailsLabelText = NSLocalizedString(@"No Mail accounts set up.", @"Error message detail");
                         hud.mode = MBProgressHUDModeText;
                         [hud hide:YES afterDelay:2.0];
                     } else {
-
                         MFMailComposeViewController *ctrl = [[MFMailComposeViewController alloc] init];
                         ctrl.mailComposeDelegate = self;
                         [ctrl setToRecipients:@[ [self supportEmailAddress]]];
                         [ctrl setMessageBody:[self createMailBody] isHTML:NO];
                         [self presentViewController:ctrl animated:YES completion:nil];
                     }
+                    [SBAnalytics logEvent:@"INITIATE_MAIL_TO_SUPPORT" withParameters:@{ @"CAN_SEND": canSend ? @"YES": @"NO" }];
                 }
                     break;
             }
@@ -158,7 +164,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
-    [TestFlight passCheckpoint:[@"Settings-" stringByAppendingString: segue.identifier]];
+
+    [SBAnalytics logEvent:[[segue.identifier stringByReplacingOccurrencesOfString:@"show" withString:@"SHOW_"] uppercaseString]];
 
     if ([segue.identifier isEqualToString:@"showLegal"]) {
         [segue.destinationViewController setDocumentName:@"Legal.html"];

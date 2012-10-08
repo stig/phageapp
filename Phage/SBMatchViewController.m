@@ -13,6 +13,7 @@
 #import "SBBoardView.h"
 #import "MBProgressHUD.h"
 #import "SBWebViewController.h"
+#import "SBAnalytics.h"
 
 @interface SBMatchViewController () < SBBoardViewDelegate, UIPopoverControllerDelegate, ADBannerViewDelegate>
 
@@ -44,8 +45,7 @@
 {
     if ([[segue identifier] isEqualToString:@"showHowto"]) {
         [segue.destinationViewController setDocumentName:@"HowToPlay.html"];
-        [TestFlight passCheckpoint:@"SHOW_HOWTO"];
-
+        [SBAnalytics logEvent:@"SHOW_HOWTO"];
 
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
             UIPopoverController *popoverController = [(UIStoryboardPopoverSegue *)segue popoverController];
@@ -98,6 +98,7 @@
                completion:^(SBAlertView *alertView, NSInteger buttonIndex) {
                    if (alertView.cancelButtonIndex != buttonIndex) {
                        [self.delegate matchViewController:self didDeleteMatch:self.match];
+                       [SBAnalytics logEvent:@"DELETE_MATCH"];
                    }
                }
         cancelButtonTitle:NSLocalizedString(@"Keep", @"Delete dialog negative button")
@@ -112,6 +113,10 @@
                        [self.match forfeit];
                        [self.delegate matchViewController:self didChangeMatch:self.match];
                        [self layoutMatch];
+                       [SBAnalytics logEvent:@"FORFEIT_MATCH" withParameters:@{
+                           @"PLAYER1": self.match.playerOne.isHuman ? @"HUMAN" : @"SGT_PEPPER",
+                           @"PLAYER2": self.match.playerTwo.isHuman ? @"HUMAN" : @"SGT_PEPPER",
+                       }];
                    }
                }
         cancelButtonTitle:NSLocalizedString(@"Continue", @"Forfeit dialog negative button")
@@ -135,16 +140,24 @@
         hud.mode = MBProgressHUDModeText;
         [hud hide:YES afterDelay:3.0];
 
+        NSString *outcome = nil;
         SBPlayer *winner = self.match.winner;
         if (nil == winner) {
-            [TestFlight passCheckpoint:@"GAME_OVER_DRAW"];
+            outcome = @"DRAW";
             hud.labelText = NSLocalizedString(@"It's a draw!", @"It's a draw!");
             hud.detailsLabelText = NSLocalizedString(@"How about a rematch?", @"Game over popup message - draw");
         } else {
-            [TestFlight passCheckpoint:@"GAME_OVER"];
+            outcome = [self.match.playerOne isEqual:winner] ? @"PLAYER1" : @"PLAYER2";
             hud.labelText = NSLocalizedString(@"Game Over!", @"Game Over!");
             hud.detailsLabelText = [NSString stringWithFormat:NSLocalizedString(@"%@ won!", @"Game Over popup message - win"), winner.alias];
         }
+
+        // TODO: fix to not hardcode AI when we have multiple AIs
+        [SBAnalytics logEvent:@"FINISH_MATCH" withParameters:@{
+            @"PLAYER1": self.match.playerOne.isHuman ? @"HUMAN" : @"SGT_PEPPER",
+            @"PLAYER2": self.match.playerTwo.isHuman ? @"HUMAN" : @"SGT_PEPPER",
+            @"RESULT": outcome
+        }];
 
     }
 

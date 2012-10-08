@@ -12,6 +12,7 @@
 #import "PhageModel.h"
 #import "SBMatchViewController.h"
 #import "SBCreateMatchViewController.h"
+#import "SBAnalytics.h"
 
 @interface SBRootViewController () < SBMatchViewControllerDelegate, SBCreateMatchViewControllerDelegate >
 @property (strong, nonatomic) NSDateFormatter *formatter;
@@ -95,14 +96,14 @@
         [segue.destinationViewController setMatch:self.currentMatch];
         [segue.destinationViewController setDelegate:self];
 
-        [TestFlight passCheckpoint:[self.checkpoints objectAtIndex:path.section]];
+        [SBAnalytics logEvent:[self.checkpoints objectAtIndex:path.section]];
 
     } else if ([segue.identifier isEqualToString:@"showAdd"]) {
         [segue.destinationViewController setDelegate:self];
-        [TestFlight passCheckpoint:@"SHOW_CREATE"];
+        [SBAnalytics logEvent:@"SHOW_CREATE"];
 
     } else if ([segue.identifier isEqualToString:@"showSettings"]) {
-        [TestFlight passCheckpoint:@"SHOW_SETTINGS"];
+        [SBAnalytics logEvent:@"SHOW_SETTINGS"];
 
     }
 }
