@@ -66,7 +66,6 @@
     for (NSArray *move in moveHistory) {
         STAssertFalse(match.isGameOver, nil);
         [match performMove:[SBMove moveFromPropertyList:move] completionHandler:nil];
-        NSLog(@"%@", match);
     }
 
     STAssertTrue(match.isGameOver, nil);
