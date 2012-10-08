@@ -8,7 +8,7 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import "SBMatch.h"
-#import "SBPlayer.h"
+#import "SBHuman.h"
 #import "SBMove.h"
 
 @interface SBMatchIntegrationTest : SenTestCase
@@ -16,13 +16,13 @@
 
 @implementation SBMatchIntegrationTest {
     SBMatch *match;
-    SBPlayer *one;
-    SBPlayer *two;
+    id<SBPlayer> one;
+    id<SBPlayer> two;
 }
 
 - (void)setUp {
-    one = [SBPlayer playerWithAlias:@"one"];
-    two = [SBPlayer playerWithAlias:@"two"];
+    one = [SBHuman humanWithAlias:@"one"];
+    two = [SBHuman humanWithAlias:@"two"];
     match = [SBMatch matchWithPlayerOne:one two:two];
 }
 

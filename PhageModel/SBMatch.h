@@ -4,24 +4,24 @@
 // To change the template use AppCode | Preferences | File Templates.
 //
 
-@class SBPlayer;
 @class SBBoard;
 @class SBMove;
 @class SBPiece;
+@protocol SBPlayer;
 
 @interface SBMatch : NSObject
 
 @property(nonatomic, readonly) NSString *matchID;
 @property(nonatomic, readonly) NSDate *lastUpdated;
 @property(nonatomic, readonly, getter=isGameOver) BOOL gameOver;
-@property(nonatomic, readonly) SBPlayer *winner;
-@property(nonatomic, readonly) SBPlayer *currentPlayer;
-@property(nonatomic, readonly) SBPlayer *playerOne;
-@property(nonatomic, readonly) SBPlayer *playerTwo;
+@property(nonatomic, readonly) id<SBPlayer> winner;
+@property(nonatomic, readonly) id<SBPlayer> currentPlayer;
+@property(nonatomic, readonly) id<SBPlayer> playerOne;
+@property(nonatomic, readonly) id<SBPlayer> playerTwo;
 @property(readonly) SBBoard *board; // atomic
 
-+ (id)matchWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two;
-+ (id)matchWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two board:(SBBoard *)board;
++ (id)matchWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two;
++ (id)matchWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two board:(SBBoard *)board;
 
 + (id)matchWithPropertyList:(NSDictionary *)plist;
 - (NSDictionary *)toPropertyList;

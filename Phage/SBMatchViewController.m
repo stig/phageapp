@@ -8,12 +8,15 @@
 
 #import <iAd/iAd.h>
 #import "SBMatchViewController.h"
-#import "PhageModel.h"
 #import "SBAlertView.h"
 #import "SBBoardView.h"
 #import "MBProgressHUD.h"
 #import "SBWebViewController.h"
 #import "SBAnalytics.h"
+#import "SBMatch.h"
+#import "SBBoard.h"
+#import "SBMovePicker.h"
+#import "SBPlayer.h"
 
 @interface SBMatchViewController () < SBBoardViewDelegate, UIPopoverControllerDelegate, ADBannerViewDelegate>
 
@@ -80,7 +83,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         [NSThread sleepForTimeInterval: ANIM_DURATION];
 
-        id<SBMovePicker> pm = [[SBOpponentMobilityMinimisingMovePicker alloc] init];
+        id<SBMovePicker> pm = [self.match.currentPlayer movePicker];
         SBMove *move = [pm moveForState:board];
 
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -114,8 +117,8 @@
                        [self.delegate matchViewController:self didChangeMatch:self.match];
                        [self layoutMatch];
                        [SBAnalytics logEvent:@"FORFEIT_MATCH" withParameters:@{
-                           @"PLAYER1": self.match.playerOne.isHuman ? @"HUMAN" : @"SGT_PEPPER",
-                           @"PLAYER2": self.match.playerTwo.isHuman ? @"HUMAN" : @"SGT_PEPPER",
+                           @"PLAYER1": NSStringFromClass(self.match.playerOne.class),
+                           @"PLAYER2": NSStringFromClass(self.match.playerTwo.class)
                        }];
                    }
                }
@@ -141,7 +144,7 @@
         [hud hide:YES afterDelay:3.0];
 
         NSString *outcome = nil;
-        SBPlayer *winner = self.match.winner;
+        id<SBPlayer> winner = self.match.winner;
         if (nil == winner) {
             outcome = @"DRAW";
             hud.labelText = NSLocalizedString(@"It's a draw!", @"It's a draw!");
@@ -154,8 +157,8 @@
 
         // TODO: fix to not hardcode AI when we have multiple AIs
         [SBAnalytics logEvent:@"FINISH_MATCH" withParameters:@{
-            @"PLAYER1": self.match.playerOne.isHuman ? @"HUMAN" : @"SGT_PEPPER",
-            @"PLAYER2": self.match.playerTwo.isHuman ? @"HUMAN" : @"SGT_PEPPER",
+            @"PLAYER1": NSStringFromClass(self.match.playerOne.class),
+            @"PLAYER2": NSStringFromClass(self.match.playerTwo.class),
             @"RESULT": outcome
         }];
 
@@ -178,7 +181,7 @@
 
         self.navigationItem.title = NSLocalizedString(@"Game Over", @"Game Over Title");
 
-        SBPlayer *winner = self.match.winner;
+        id<SBPlayer> winner = self.match.winner;
         if (nil == winner) {
             self.turnLabel.text = NSLocalizedString(@"This match ended in a draw", @"Game Over message");
         } else {

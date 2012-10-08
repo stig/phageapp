@@ -9,6 +9,7 @@
 #import <Flurry.h>
 #import <TestFlight.h>
 #import "SBAppDelegate.h"
+#import "SBPlayerHelper.h"
 
 @implementation SBAppDelegate
 
@@ -17,10 +18,11 @@
     [Flurry startSession:@"ZHPWYZ8JCY4V5S5MMM73"];
     [TestFlight takeOff:@"b15ebf354cbefc8afa12b65ca5ae3799_OTA1MDgyMDEyLTA1LTE5IDA4OjMwOjQ1LjQ2NzUwNQ"];
 
+    SBPlayerHelper *helper = [SBPlayerHelper helper];
     NSDictionary *defaults = @{
         PLAYER_ONE_ALIAS: NSLocalizedString(@"Player 1", @"Human Player Name"),
         PLAYER_TWO_ALIAS: NSLocalizedString(@"Player 2", @"Human Player Name"),
-        SGT_PEPPER_ALIAS: NSLocalizedString(@"Sgt Pepper", @"AI Player Name")
+        DEFAULT_BOT: [helper toPropertyList:[helper pepperBot]]
     };
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];

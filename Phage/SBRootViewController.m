@@ -8,11 +8,12 @@
 
 #import "SBRootViewController.h"
 #import "SBMatch.h"
-#import "SBPlayer.h"
-#import "PhageModel.h"
+#import "SBHuman.h"
 #import "SBMatchViewController.h"
 #import "SBCreateMatchViewController.h"
 #import "SBAnalytics.h"
+#import "SBPlayerHelper.h"
+#import "SBMatchService.h"
 
 @interface SBRootViewController () < SBMatchViewControllerDelegate, SBCreateMatchViewControllerDelegate >
 @property (strong, nonatomic) NSDateFormatter *formatter;
@@ -78,8 +79,9 @@
 
     } else if (![[self.matchService allMatches] count]) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        SBPlayer *one = [SBPlayer playerWithAlias:[defaults objectForKey:PLAYER_ONE_ALIAS] human:YES];
-        SBPlayer *two = [SBPlayer playerWithAlias:[defaults objectForKey:SGT_PEPPER_ALIAS] human:NO];
+        SBPlayerHelper *helper = [SBPlayerHelper helper];
+        id<SBPlayer> one = [helper humanWithAlias:[defaults objectForKey:PLAYER_ONE_ALIAS]];
+        id<SBPlayer> two = [helper defaultBot];
         [self.matchService saveMatch: [SBMatch matchWithPlayerOne:one two:two]];
         [self reloadSections];
         [self showMostRecentlyCreatedActiveMatch];
@@ -183,8 +185,8 @@
     [self.navigationController popViewControllerAnimated:YES];
 
     [SBAnalytics logEvent:@"CREATE_MATCH" withParameters:@{
-        @"PLAYER1": match.playerOne.isHuman ? @"HUMAN" : @"SGT_PEPPER",
-        @"PLAYER2": match.playerTwo.isHuman ? @"HUMAN" : @"SGT_PEPPER"
+        @"PLAYER1": NSStringFromClass(match.playerOne.class),
+        @"PLAYER2": NSStringFromClass(match.playerTwo.class)
     }];
 
 }

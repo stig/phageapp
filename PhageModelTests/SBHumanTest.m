@@ -7,31 +7,34 @@
 
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "SBPlayer.h"
+#import "SBHuman.h"
+#import "SBPlayerHelper.h"
 
-@interface SBPlayerTest : SenTestCase
+@interface SBHumanTest : SenTestCase
 @end
 
-@implementation SBPlayerTest
+@implementation SBHumanTest
 
 - (void)testPlayer {
-    SBPlayer *player = [SBPlayer player];
+    SBHuman *player = [SBHuman humanWithAlias:@""];
     STAssertNil(player.alias, nil);
 }
 
 - (void)testPlayerWithAlias {
-    SBPlayer *player = [SBPlayer playerWithAlias:@"Foo"];
+    SBHuman *player = [SBHuman humanWithAlias:@"Foo"];
     STAssertEqualObjects(player.alias, @"Foo", nil);
 }
 
 - (void)testIsLocalHuman {
-    SBPlayer *player = [SBPlayer player];
+    SBHuman *player = [SBHuman humanWithAlias:@""];
     STAssertFalse(player.isHuman, nil);
 }
 
 - (void)testViaDictionary {
-    SBPlayer *player = [[SBPlayer playerWithAlias:@"foo" human:YES] playerWithOutcome:SBPlayerOutcomeLost];
-    SBPlayer *other = [SBPlayer playerFromPropertyList:[player toPropertyList]];
+    SBHuman *player = [[SBHuman humanWithAlias:@"foo"] withOutcome:SBPlayerOutcomeLost];
+
+    SBPlayerHelper *helper = [SBPlayerHelper helper];
+    id<SBPlayer> other = [helper fromPropertyList:[helper toPropertyList:player]];
 
     STAssertTrue(other.isHuman, nil);
     STAssertEquals(other.outcome, SBPlayerOutcomeLost, nil);

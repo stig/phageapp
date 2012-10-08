@@ -7,15 +7,6 @@
 
 #import "SBAboutViewController.h"
 
-static NSString *const header = @"title";
-static NSString *const footer = @"footer";
-static NSString *const rows = @"rows";
-
-
-@interface SBAboutViewController ()
-@property (nonatomic, copy) NSArray *dataSource;
-@end
-
 @implementation SBAboutViewController
 
 - (void)viewDidLoad {
@@ -50,35 +41,14 @@ static NSString *const rows = @"rows";
     ];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.dataSource.count;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[self.dataSource objectAtIndex:section] objectForKey:header];
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    return [[self.dataSource objectAtIndex:section] objectForKey:footer];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self rowsInSection:section].count;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NameCell"];
-    cell.textLabel.text = [[self rowsInSection:indexPath.section] objectAtIndex:indexPath.row];
+    cell.textLabel.text = [self itemAtIndexPath:indexPath];
     return cell;
-}
-
-- (NSArray *)rowsInSection:(NSInteger)section {
-    return [[self.dataSource objectAtIndex:section] objectForKey:rows];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
 
 @end

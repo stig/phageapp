@@ -7,8 +7,10 @@
 
 #import "SBMatch.h"
 #import "SBBoard.h"
-#import "SBPlayer.h"
+#import "SBHuman.h"
 #import "SBMove.h"
+#import "SBPlayer.h"
+#import "SBPlayerHelper.h"
 
 static NSString *const VERSION = @"Version";
 static NSString *const MATCH_ID = @"MatchID";
@@ -19,15 +21,15 @@ static NSString *const LAST_UPDATED = @"LastUpdated";
 
 @implementation SBMatch
 
-+ (id)matchWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two {
++ (id)matchWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two {
     return [[self alloc] initWithPlayerOne:one two:two];
 }
 
-- (id)initWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two {
+- (id)initWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two {
     return [self initWithPlayerOne:one two:two board:[SBBoard board]];
 }
 
-+ (id)matchWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two board:(SBBoard *)board {
++ (id)matchWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two board:(SBBoard *)board {
     return [[self alloc] initWithPlayerOne:one two:two board:board];
 }
 
@@ -35,8 +37,9 @@ static NSString *const LAST_UPDATED = @"LastUpdated";
     if (![[plist objectForKey:VERSION] isEqual:@1])
         return nil;
 
-    SBPlayer *one = [SBPlayer playerFromPropertyList:[plist objectForKey:PLAYER1]];
-    SBPlayer *two = [SBPlayer playerFromPropertyList:[plist objectForKey:PLAYER2]];
+    SBPlayerHelper *helper = [SBPlayerHelper helper];
+    id<SBPlayer> one = [helper fromPropertyList:[plist objectForKey:PLAYER1]];
+    id<SBPlayer> two = [helper fromPropertyList:[plist objectForKey:PLAYER2]];
     SBBoard *board = [SBBoard boardFromPropertyList:[plist objectForKey:BOARD]];
     NSString *matchID = [plist objectForKey:MATCH_ID];
     NSDate *lastUpdated = [NSDate dateWithTimeIntervalSince1970:[[plist objectForKey:LAST_UPDATED] doubleValue]];
@@ -45,18 +48,19 @@ static NSString *const LAST_UPDATED = @"LastUpdated";
 }
 
 - (NSDictionary *)toPropertyList {
+    SBPlayerHelper *helper = [SBPlayerHelper helper];
     return @{
         VERSION: @1,
         MATCH_ID: self.matchID,
-        PLAYER1: [self.playerOne toPropertyList],
-        PLAYER2: [self.playerTwo toPropertyList],
+        PLAYER1: [helper toPropertyList: self.playerOne],
+        PLAYER2: [helper toPropertyList: self.playerTwo],
         BOARD: [self.board toPropertyList],
         LAST_UPDATED: @(self.lastUpdated.timeIntervalSince1970)
     };
 }
 
 
-- (id)initWithPlayerOne:(SBPlayer *)one two:(SBPlayer *)two board:(SBBoard *)board {
+- (id)initWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two board:(SBBoard *)board {
     return [self initWithPlayerOne:one
                                two:two
                              board:board
@@ -71,7 +75,7 @@ static NSString *const LAST_UPDATED = @"LastUpdated";
     return uuidStr;
 }
 
-- (id)initWithPlayerOne:(SBPlayer*)one two:(SBPlayer *)two board:(SBBoard*)board matchID:(NSString *)matchID lastUpdated:(NSDate *)lastUpdated {
+- (id)initWithPlayerOne:(id<SBPlayer>)one two:(id<SBPlayer>)two board:(SBBoard*)board matchID:(NSString *)matchID lastUpdated:(NSDate *)lastUpdated {
     self = [super init];
     if (self) {
         _matchID = matchID;
@@ -83,7 +87,7 @@ static NSString *const LAST_UPDATED = @"LastUpdated";
     return self;
 }
 
-- (SBPlayer *)currentPlayer {
+- (id<SBPlayer>)currentPlayer {
     return 0 == self.board.currentPlayerIndex ? self.playerOne : self.playerTwo;
 }
 
@@ -111,11 +115,11 @@ static NSString *const LAST_UPDATED = @"LastUpdated";
 
 - (void)setCurrentPlayerOutcome:(SBPlayerOutcome)cpo otherPlayerOutcome:(SBPlayerOutcome)opo {
     if ([self.currentPlayer isEqual:self.playerOne]) {
-        _playerOne = [_playerOne playerWithOutcome:cpo];
-        _playerTwo = [_playerTwo playerWithOutcome:opo];
+        _playerOne = [_playerOne withOutcome:cpo];
+        _playerTwo = [_playerTwo withOutcome:opo];
     } else {
-        _playerOne = [_playerOne playerWithOutcome:opo];
-        _playerTwo = [_playerTwo playerWithOutcome:cpo];
+        _playerOne = [_playerOne withOutcome:opo];
+        _playerTwo = [_playerTwo withOutcome:cpo];
     }
 }
 
@@ -140,7 +144,7 @@ static NSString *const LAST_UPDATED = @"LastUpdated";
         || self.playerTwo.outcome != SBPlayerOutcomeNone;
 }
 
-- (SBPlayer *)winner {
+- (id<SBPlayer>)winner {
     if (self.playerOne.outcome == SBPlayerOutcomeWon)
         return self.playerOne;
     else if (self.playerTwo.outcome == SBPlayerOutcomeWon)

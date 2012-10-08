@@ -9,7 +9,7 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "SBMatchService.h"
 #import "SBMatch.h"
-#import "SBPlayer.h"
+#import "SBHuman.h"
 
 @interface SBMatchServiceTest : SenTestCase {
 	SBMatchService *service;
@@ -21,8 +21,8 @@
 @implementation SBMatchServiceTest
 
 SBMatch *match(NSString *a, NSString *b) {
-    SBPlayer *foo = [SBPlayer playerWithAlias:a];
-    SBPlayer *bar = [SBPlayer playerWithAlias:b];
+    id<SBPlayer> foo = [SBHuman humanWithAlias:a];
+    id<SBPlayer> bar = [SBHuman humanWithAlias:b];
     return [SBMatch matchWithPlayerOne:foo two:bar];
 }
 

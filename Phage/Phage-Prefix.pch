@@ -21,6 +21,5 @@
     // For user defaults
     static NSString *const PLAYER_ONE_ALIAS = @"PLAYER_ONE_ALIAS";
     static NSString *const PLAYER_TWO_ALIAS = @"PLAYER_TWO_ALIAS";
-    static NSString *const SGT_PEPPER_ALIAS = @"SGT_PEPPER_ALIAS";
 
 #endif

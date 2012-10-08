@@ -8,7 +8,7 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import <OCMock/OCMock.h>
 #import "SBMatch.h"
-#import "SBPlayer.h"
+#import "SBHuman.h"
 #import "SBBoard.h"
 #import "SBMove.h"
 
@@ -23,8 +23,8 @@
 @implementation SBMatchTest
 
 - (void)setUp {
-    one = [OCMockObject mockForClass:[SBPlayer class]];
-    two = [OCMockObject mockForClass:[SBPlayer class]];
+    one = [OCMockObject mockForProtocol:@protocol(SBPlayer)];
+    two = [OCMockObject mockForProtocol:@protocol(SBPlayer)];
     board = [OCMockObject mockForClass:[SBBoard class]];
     match = [SBMatch matchWithPlayerOne:one two:two board:board];
 }
@@ -207,8 +207,8 @@
     id move = [OCMockObject mockForClass:[SBMove class]];
     [[[board stub] andReturn:successor] successorWithMove:move];
 
-    [[one expect] playerWithOutcome:SBPlayerOutcomeLost];
-    [[two expect] playerWithOutcome:SBPlayerOutcomeWon];
+    [[one expect] withOutcome:SBPlayerOutcomeLost];
+    [[two expect] withOutcome:SBPlayerOutcomeWon];
 
     [[[board expect] andReturnValue:OCMOCK_VALUE(yes)] isLegalMove:move];
 
@@ -228,8 +228,8 @@
     id move = [OCMockObject mockForClass:[SBMove class]];
     [[[board stub] andReturn:successor] successorWithMove:move];
 
-    [[one expect] playerWithOutcome:SBPlayerOutcomeTied];
-    [[two expect] playerWithOutcome:SBPlayerOutcomeTied];
+    [[one expect] withOutcome:SBPlayerOutcomeTied];
+    [[two expect] withOutcome:SBPlayerOutcomeTied];
 
     [[[board expect] andReturnValue:OCMOCK_VALUE(yes)] isLegalMove:move];
 
@@ -239,8 +239,8 @@
 - (void)testForfeit {
     NSUInteger index = 0;
     [[[board expect] andReturnValue:OCMOCK_VALUE(index)] currentPlayerIndex];
-    [[one expect] playerWithOutcome:SBPlayerOutcomeQuit];
-    [[two expect] playerWithOutcome:SBPlayerOutcomeWon];
+    [[one expect] withOutcome:SBPlayerOutcomeQuit];
+    [[two expect] withOutcome:SBPlayerOutcomeWon];
 
     NSDate *date = match.lastUpdated;
 
@@ -272,8 +272,8 @@
 
 - (void)testCoding {
 
-    SBPlayer *p1 = [SBPlayer playerWithAlias:@"foo"];
-    SBPlayer *p2 = [SBPlayer playerWithAlias:@"bar"];
+    SBHuman *p1 = [SBHuman humanWithAlias:@"foo"];
+    SBHuman *p2 = [SBHuman humanWithAlias:@"bar"];
     SBMatch *m1 = [SBMatch matchWithPlayerOne:p1 two:p2];
 
     __block id move;

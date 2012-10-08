@@ -8,8 +8,9 @@
 
 #import "SBCreateMatchViewController.h"
 #import "SBMatch.h"
-#import "SBPlayer.h"
+#import "SBHuman.h"
 #import "SBPlayerAliasViewController.h"
+#import "SBPlayerHelper.h"
 
 @interface SBCreateMatchViewController ()
 @property (strong, nonatomic) NSArray *titles;
@@ -26,21 +27,24 @@
         NSLocalizedString(@"1 Player Match", @"Create Match Table Section Title"),
         NSLocalizedString(@"2 Player Match", @"Create Match Table Section Title")
     ];
-
-    self.players = @[
-    @[
-    @{ @"aliasKey": PLAYER_ONE_ALIAS, @"human": @(YES) },
-    @{ @"aliasKey": SGT_PEPPER_ALIAS, @"human": @(NO) }
-    ],
-    @[
-    @{ @"aliasKey": PLAYER_ONE_ALIAS, @"human": @(YES) },
-    @{ @"aliasKey": PLAYER_TWO_ALIAS, @"human": @(YES) }
-    ]
-    ];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    SBPlayerHelper *helper = [SBPlayerHelper helper];
+    self.players = @[
+        @[
+            [helper humanWithAlias:[defaults objectForKey:PLAYER_ONE_ALIAS]],
+            [helper defaultBot]
+        ],
+        @[
+            [helper humanWithAlias:[defaults objectForKey:PLAYER_ONE_ALIAS]],
+            [helper humanWithAlias:[defaults objectForKey:PLAYER_TWO_ALIAS]]
+        ]
+    ];
+
     [self.tableView reloadData];
 }
 
@@ -70,15 +74,7 @@
             ? NSLocalizedString(@"Player 1", @"Player Number Indicator")
             : NSLocalizedString(@"Player 2", @"Player Number Indicator");
 
-
-        NSString *aliasKey = [[players objectAtIndex:indexPath.row] objectForKey:@"aliasKey"];
-        NSString *alias = [[NSUserDefaults standardUserDefaults] objectForKey:aliasKey];
-
-        cell.detailTextLabel.text = alias;
-
-        cell.accessoryType = 0 == indexPath.section && 1 == indexPath.row
-                ? UITableViewCellAccessoryNone
-                : UITableViewCellAccessoryDisclosureIndicator;
+        cell.detailTextLabel.text = [players[indexPath.row] alias];
 
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"ButtonCell"];
@@ -95,16 +91,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSArray *players = [self.players objectAtIndex:indexPath.section];
     if (indexPath.row < players.count) {
-        NSDictionary *player = [players objectAtIndex:indexPath.row];
-        if ([[player objectForKey:@"human"] boolValue]) {
+        id<SBPlayer> player = [players objectAtIndex:indexPath.row];
+        if (player.isHuman) {
             [self performSegueWithIdentifier:@"showPlayerAlias" sender:nil];
         } else {
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            [self performSegueWithIdentifier:@"showAiSelector" sender:nil];
         }
 
     } else {
-        SBPlayer *one = [self createPlayer:[players objectAtIndex:0]];
-        SBPlayer *two = [self createPlayer:[players objectAtIndex:1]];
+        id<SBPlayer> one = [players objectAtIndex:0];
+        id<SBPlayer> two = [players objectAtIndex:1];
         SBMatch *match = [SBMatch matchWithPlayerOne:one two:two];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self.delegate createMatchViewController:self didCreateMatch:match];
@@ -112,19 +108,13 @@
 
 }
 
-- (SBPlayer *)createPlayer:(NSDictionary *)dict {
-    NSString *aliasKey = [dict objectForKey:@"aliasKey"];
-    NSString *alias = [[NSUserDefaults standardUserDefaults] objectForKey:aliasKey];
-    return [SBPlayer playerWithAlias:alias human:[[dict objectForKey:@"human"] boolValue]];
-}
-
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
     NSIndexPath *path = self.tableView.indexPathForSelectedRow;
-    NSString *aliasKey = [[[self.players objectAtIndex:path.section] objectAtIndex:path.row] objectForKey:@"aliasKey"];
-
-    [segue.destinationViewController setAliasKey:aliasKey];
+    if ([segue.identifier isEqualToString:@"showPlayerAlias"]) {
+        NSString *aliasKey = [[[self.players objectAtIndex:path.section] objectAtIndex:path.row] objectForKey:@"aliasKey"];
+        [segue.destinationViewController setAliasKey:aliasKey];
+    }
 
     [super prepareForSegue:segue sender:sender];
 }

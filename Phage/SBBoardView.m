@@ -7,9 +7,11 @@
 //
 
 #import "SBBoardView.h"
-#import "PhageModel.h"
 #import "SBPieceView.h"
 #import "SBCellView.h"
+#import "SBBoard.h"
+#import "SBLocation.h"
+#import "SBMove.h"
 
 @interface SBBoardView () < SBPieceViewDelegate, SBCellViewDelegate >
 
