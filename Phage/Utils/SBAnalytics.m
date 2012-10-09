@@ -13,22 +13,31 @@
 @implementation SBAnalytics
 
 + (void)logEvent:(NSString *)event {
-    NSLog(@"event = %@", event);
-    [Flurry logEvent:event];
-    [TestFlight passCheckpoint:event];
-}
-
-+ (NSString *)stringifyDict:(NSDictionary *)dict {
-    NSMutableArray *kv = [NSMutableArray array];
-    for (id k in [[dict allKeys] sortedArrayUsingSelector:@selector(compare:)])
-        [kv addObject:[NSString stringWithFormat:@"%@=%@", k, [dict objectForKey:k]]];
-    return [kv componentsJoinedByString:@";"];
+    [self logEvent:event withParameters:nil];
 }
 
 + (void)logEvent:(NSString *)event withParameters:(NSDictionary *)params {
-    NSLog(@"event = %@, params = %@", event, params);
-    [Flurry logEvent:event withParameters:params];
-    [TestFlight passCheckpoint:[event stringByAppendingFormat:@"_%@", [self stringifyDict:params]]];
+    [self logEvent:event withParameters:params timed:NO];
+}
+
++ (void)logEvent:(NSString *)event withParameters:(NSDictionary *)params timed:(BOOL)timed {
+    NSLog(@"event = %@, timed: %@, params = %@", event, @(timed), params);
+    [Flurry logEvent:event withParameters:params timed:timed];
+
+    // TestFlight doesn't take arguments, so we have to hack it a bit.
+    NSMutableArray *kv = [NSMutableArray array];
+    for (id k in [[params allKeys] sortedArrayUsingSelector:@selector(compare:)])
+        [kv addObject:[NSString stringWithFormat:@"%@=%@", k, [params objectForKey:k]]];
+    [TestFlight passCheckpoint:[event stringByAppendingFormat:@"_%@", [kv componentsJoinedByString:@";"]]];
+}
+
++ (void)endTimedEvent:(NSString *)event {
+    [self endTimedEvent:event withParameters:nil];
+}
+
++ (void)endTimedEvent:(NSString *)event withParameters:(NSDictionary *)params {
+    NSLog(@"event = %@, params = %@ ended", event, params);
+    [Flurry endTimedEvent:event withParameters:params];
 }
 
 

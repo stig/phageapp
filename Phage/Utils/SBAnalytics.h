@@ -11,4 +11,11 @@
 + (void)logEvent:(NSString *)event;
 + (void)logEvent:(NSString *)event withParameters:(NSDictionary *)params;
 
++ (void)logEvent:(NSString *)event withParameters:(NSDictionary *)params timed:(BOOL)timed;
+
++ (void)endTimedEvent:(NSString *)event;
+
++ (void)endTimedEvent:(NSString *)event withParameters:(NSDictionary *)params;
+
+
 @end
