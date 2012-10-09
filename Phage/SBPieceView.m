@@ -7,6 +7,7 @@
 
 #import "SBPieceView.h"
 #import "SBPiece.h"
+#import "SBAnalytics.h"
 
 @interface SBPieceView () < UIGestureRecognizerDelegate >
 @property (weak, nonatomic) CATextLayer *movesLeftLayer;
@@ -79,6 +80,7 @@
 }
 
 - (void)doubleTap {
+    [SBAnalytics logEvent:@"DOUBLE_TAP_PIECE"];
     [self singleTap];
     [self singleTap];
 }
