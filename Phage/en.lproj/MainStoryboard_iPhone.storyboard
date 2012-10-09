@@ -146,7 +146,7 @@
             </objects>
             <point key="canvasLocation" x="-396" y="-363"/>
         </scene>
-        <!--Ai Selector View Controller - Select AI-->
+        <!--Bot Selector View Controller - Select AI-->
         <scene sceneID="rXq-LM-vDR">
             <objects>
                 <tableViewController id="VaK-Zh-5yf" customClass="SBBotSelectorViewController" sceneMemberID="viewController">
@@ -270,10 +270,10 @@
             </objects>
             <point key="canvasLocation" x="-396" y="236"/>
         </scene>
-        <!--Web View Controller - How To Play-->
+        <!--Howto View Controller - How To Play-->
         <scene sceneID="9">
             <objects>
-                <viewController id="6" customClass="SBWebViewController" sceneMemberID="viewController">
+                <viewController id="6" customClass="SBHowtoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7" userLabel="Background">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -403,10 +403,10 @@
             </objects>
             <point key="canvasLocation" x="113" y="849"/>
         </scene>
-        <!--Web View Controller - Legal-->
+        <!--Legal View Controller - Legal-->
         <scene sceneID="Zwm-rU-C36">
             <objects>
-                <viewController id="E4c-dw-dBf" customClass="SBWebViewController" sceneMemberID="viewController">
+                <viewController id="E4c-dw-dBf" customClass="SBLegalViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ObI-MA-bg2">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -431,11 +431,8 @@
         </scene>
     </scenes>
     <classes>
-        <class className="SBAboutViewController" superclassName="UITableViewController">
+        <class className="SBAboutViewController" superclassName="SBTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SBAboutViewController.h"/>
-        </class>
-        <class className="SBBotSelectorViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBBotSelectorViewController.h"/>
         </class>
         <class className="SBBoardView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SBBoardView.h"/>
@@ -443,8 +440,17 @@
                 <relationship kind="outlet" name="delegate"/>
             </relationships>
         </class>
+        <class className="SBBotSelectorViewController" superclassName="SBTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBBotSelectorViewController.h"/>
+        </class>
         <class className="SBCreateMatchViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SBCreateMatchViewController.h"/>
+        </class>
+        <class className="SBHowtoViewController" superclassName="SBWebViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBHowtoViewController.h"/>
+        </class>
+        <class className="SBLegalViewController" superclassName="SBWebViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBLegalViewController.h"/>
         </class>
         <class className="SBMatchViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SBMatchViewController.h"/>
@@ -466,6 +472,9 @@
         </class>
         <class className="SBSettingsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SBSettingsViewController.h"/>
+        </class>
+        <class className="SBTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBTableViewController.h"/>
         </class>
         <class className="SBWebViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SBWebViewController.h"/>

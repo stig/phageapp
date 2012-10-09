@@ -14,9 +14,7 @@
 
 @implementation SBWebViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
+- (void)viewWillAppear:(BOOL)animated {
     NSString *path = [[NSBundle mainBundle] pathForResource:self.documentName ofType:nil];
     NSURL *url = [NSURL fileURLWithPath:path];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

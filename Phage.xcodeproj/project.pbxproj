@@ -71,6 +71,7 @@
 		F8D044E3B182A8BFEBD46836 /* SBBot.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D04ED9A4A687D163F7CBBA /* SBBot.m */; };
 		F8D04528EDA4F41EA12C0EEB /* SBPartsBot.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D0419F8AF7D25B6B06F652 /* SBPartsBot.m */; };
 		F8D045406EAB61421DEDF1B2 /* piece-south-diamond@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04537F0BE75A9A4578310 /* piece-south-diamond@2x.png */; };
+		F8D0454397ECD056ADAD019E /* SBLegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D0443299BF07AFB6DCDCFB /* SBLegalViewController.m */; };
 		F8D0458F0826F3A197156CD7 /* piece-north-diamond.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04F5489774187AD134A8F /* piece-north-diamond.png */; };
 		F8D046173F193995AE743CE5 /* SBMatchIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D04DF107FC3B606EF8DB4C /* SBMatchIntegrationTest.m */; };
 		F8D0469CCC0DFA2DD17245EE /* arrow-north-west.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04AC93C41EAF24F1E1D50 /* arrow-north-west.png */; };
@@ -82,6 +83,7 @@
 		F8D048E4F6F1063C437396E6 /* piece-south-triangle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04F4D68C1FA2F496E5965 /* piece-south-triangle@2x.png */; };
 		F8D048EEB4FB3E770BCE66A8 /* SBBot.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8D04C4581A44A211C205AEA /* SBBot.h */; };
 		F8D04945DD27D4D6780F6654 /* piece-south-triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D041465C485CAD621B1C32 /* piece-south-triangle.png */; };
+		F8D0498B9AE8789A6AB52645 /* SBHowtoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D04F86906968EE117D5681 /* SBHowtoViewController.m */; };
 		F8D049E0266262B921BB7564 /* piece-north-circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04161D4ADF998FC691722 /* piece-north-circle@2x.png */; };
 		F8D049FEF38D41389F177CB7 /* SBOpponentMobilityMinimisingMovePickerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C8B /* SBOpponentMobilityMinimisingMovePickerTest.m */; };
 		F8D04A1E9EA4FFED5B1028E5 /* piece-south-circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04149ED52B9B8D24C4027 /* piece-south-circle@2x.png */; };
@@ -320,12 +322,14 @@
 		F8D0436A282EB47C819143D8 /* piece-south-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-circle.png"; sourceTree = "<group>"; };
 		F8D043B609D0835BB2096A82 /* piece-north-square@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-north-square@2x.png"; sourceTree = "<group>"; };
 		F8D04427A0D29D971D13E425 /* MBProgressHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MBProgressHUD.xcodeproj; path = libs/MBProgressHUD/MBProgressHUD.xcodeproj; sourceTree = "<group>"; };
+		F8D0443299BF07AFB6DCDCFB /* SBLegalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBLegalViewController.m; sourceTree = "<group>"; };
 		F8D04440E13E946BC7E8DEC2 /* SBCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCellView.m; sourceTree = "<group>"; };
 		F8D044993B30C3D3230597CA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		F8D045227BFF000469526CE1 /* piece-south-diamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-diamond.png"; sourceTree = "<group>"; };
 		F8D04537F0BE75A9A4578310 /* piece-south-diamond@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-diamond@2x.png"; sourceTree = "<group>"; };
 		F8D0469ABCAA9ECE9023B1F9 /* SBPieceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPieceView.h; sourceTree = "<group>"; };
 		F8D046A8E9648B0895E50084 /* SBHuman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBHuman.m; sourceTree = "<group>"; };
+		F8D046CAED9986E230E5C0C1 /* SBLegalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBLegalViewController.h; sourceTree = "<group>"; };
 		F8D046F787E8BB2E49D5C8A7 /* piece-north-diamond@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-north-diamond@2x.png"; sourceTree = "<group>"; };
 		F8D047CFF9FF3A2C00C033DE /* arrow-south-east.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-south-east.png"; sourceTree = "<group>"; };
 		F8D047EC9CA8AF7E7320B150 /* piece-south-square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-square.png"; sourceTree = "<group>"; };
@@ -354,6 +358,8 @@
 		F8D04F5489774187AD134A8F /* piece-north-diamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-north-diamond.png"; sourceTree = "<group>"; };
 		F8D04F605C2C197702E421B0 /* SBMovePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMovePicker.h; sourceTree = "<group>"; };
 		F8D04F6638188C73DB16F213 /* SBPartsBot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPartsBot.h; sourceTree = "<group>"; };
+		F8D04F690B8CF18952F19CC4 /* SBHowtoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBHowtoViewController.h; sourceTree = "<group>"; };
+		F8D04F86906968EE117D5681 /* SBHowtoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBHowtoViewController.m; sourceTree = "<group>"; };
 		F8D04FD03E7DF1466D92D0F7 /* arrow-north.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-north.png"; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BE8 /* SBMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMatch.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BEA /* SBMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMatch.h; sourceTree = "<group>"; };
@@ -531,6 +537,10 @@
 		D76A456B151DDC7500E59146 /* Phage */ = {
 			isa = PBXGroup;
 			children = (
+				F8D04F690B8CF18952F19CC4 /* SBHowtoViewController.h */,
+				F8D04F86906968EE117D5681 /* SBHowtoViewController.m */,
+				F8D046CAED9986E230E5C0C1 /* SBLegalViewController.h */,
+				F8D0443299BF07AFB6DCDCFB /* SBLegalViewController.m */,
 				D70F137016234AEB008E8FD7 /* SBBotSelectorViewController.h */,
 				D70F137116234AEB008E8FD7 /* SBBotSelectorViewController.m */,
 				F8D049A778AE4777A0FF86B3 /* SBAboutViewController.h */,
@@ -541,8 +551,6 @@
 				D74EC46215E9362900505EEE /* SBSettingsViewController.m */,
 				D77E0C8215DD88430004EFAF /* SBCreateMatchViewController.h */,
 				D77E0C8315DD88430004EFAF /* SBCreateMatchViewController.m */,
-				D72CC3AA15F1425B00FB7154 /* SBWebViewController.h */,
-				D72CC3AB15F1425B00FB7154 /* SBWebViewController.m */,
 				D76A4574151DDC7500E59146 /* SBAppDelegate.h */,
 				D76A4575151DDC7500E59146 /* SBAppDelegate.m */,
 				D76A4577151DDC7500E59146 /* MainStoryboard_iPhone.storyboard */,
@@ -736,6 +744,8 @@
 		FB89D43C154C7D27001A0C29 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D72CC3AB15F1425B00FB7154 /* SBWebViewController.m */,
+				D72CC3AA15F1425B00FB7154 /* SBWebViewController.h */,
 				D762AF5D16239442005F50E0 /* SBTableViewController.m */,
 				D762AF5C16239442005F50E0 /* SBTableViewController.h */,
 				F8D0418D9F6E2D8684DFB364 /* SBAnalytics.h */,
@@ -1069,6 +1079,8 @@
 				F8D042EDC3CB083A1D1693DD /* SBAnalytics.m in Sources */,
 				D70F137216234AEB008E8FD7 /* SBBotSelectorViewController.m in Sources */,
 				D762AF5E16239442005F50E0 /* SBTableViewController.m in Sources */,
+				F8D0454397ECD056ADAD019E /* SBLegalViewController.m in Sources */,
+				F8D0498B9AE8789A6AB52645 /* SBHowtoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

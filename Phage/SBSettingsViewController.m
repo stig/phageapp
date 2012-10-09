@@ -18,6 +18,10 @@
 
 @implementation SBSettingsViewController
 
+- (void)viewDidLoad {
+    [SBAnalytics logEvent:@"SHOW_SETTINGS"];
+}
+
 #pragma mark - Actions
 
 - (NSString *)versionNumberDisplayString {
@@ -159,18 +163,6 @@
     [body appendFormat:@"\n%@\n\n", delim];
     [body appendFormat:@"Phage Version: %@", [self versionNumberDisplayString]];
     return [body copy];
-}
-
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    [super prepareForSegue:segue sender:sender];
-
-    [SBAnalytics logEvent:[[segue.identifier stringByReplacingOccurrencesOfString:@"show" withString:@"SHOW_"] uppercaseString]];
-
-    if ([segue.identifier isEqualToString:@"showLegal"]) {
-        [segue.destinationViewController setDocumentName:@"Legal.html"];
-
-    }
 }
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result

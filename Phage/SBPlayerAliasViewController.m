@@ -21,6 +21,8 @@
     [super viewDidLoad];
 
     self.aliasTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:self.aliasKey];
+
+    [SBAnalytics logEvent:[NSString stringWithFormat:@"SHOW_%@", self.aliasKey]];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -38,6 +40,7 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     if ([textField.text length] > MAXLENGTH) {
+        [SBAnalytics logEvent:@"ALIAS_TOO_LONG"];
         textField.text = [textField.text substringToIndex:MAXLENGTH];
         return NO;
     }

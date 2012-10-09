@@ -11,6 +11,7 @@
 #import "SBHuman.h"
 #import "SBPlayerAliasViewController.h"
 #import "SBPlayerHelper.h"
+#import "SBAnalytics.h"
 
 @interface SBCreateMatchViewController ()
 @property (strong, nonatomic) NSArray *titles;
@@ -27,6 +28,8 @@
         NSLocalizedString(@"1 Player Match", @"Create Match Table Section Title"),
         NSLocalizedString(@"2 Player Match", @"Create Match Table Section Title")
     ];
+
+    [SBAnalytics logEvent:@"SHOW_CREATE"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

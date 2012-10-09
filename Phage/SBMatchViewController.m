@@ -35,29 +35,24 @@
     [super viewDidLoad];
     self.turnLabel.text = @"";
     self.banner.alpha = 0.0;
+
+    NSString *state = nil;
+    if (self.match.isGameOver) state = @"GAME_OVER";
+    else if (self.match.board.moveHistory.count > 0) state = @"IN_PROCESS";
+    else state = @"STARTING";
+    [SBAnalytics logEvent:@"SHOW_MATCH" withParameters:@{ @"STATE": state } timed:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [self layoutMatch];
 }
 
+- (void)dealloc {
+    [SBAnalytics endTimedEvent:@"SHOW_MATCH"];
+}
+
 
 #pragma mark - Our Methods
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"showHowto"]) {
-        [segue.destinationViewController setDocumentName:@"HowToPlay.html"];
-        [SBAnalytics logEvent:@"SHOW_HOWTO"];
-
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-            UIPopoverController *popoverController = [(UIStoryboardPopoverSegue *)segue popoverController];
-            self.howtoPopoverController = popoverController;
-            popoverController.delegate = self;
-        }
-    }
-
-}
 
 - (IBAction)togglePopover:(id)sender
 {

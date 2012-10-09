@@ -6,12 +6,15 @@
 
 
 #import "SBAboutViewController.h"
+#import "SBAnalytics.h"
 
 @implementation SBAboutViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    [SBAnalytics logEvent:@"SHOW_ABOUT"];
+
     self.dataSource = @[
         @{
             header: NSLocalizedString(@"Programming", @"About section header"),

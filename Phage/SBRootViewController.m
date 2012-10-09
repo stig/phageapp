@@ -19,7 +19,6 @@
 @property (strong, nonatomic) NSDateFormatter *formatter;
 @property (strong, nonatomic) NSArray *sections;
 @property (strong, nonatomic) NSArray *titles;
-@property (strong, nonatomic) NSArray *checkpoints;
 @property (strong, nonatomic) SBMatch *currentMatch;
 @property (strong, nonatomic) SBMatchService *matchService;
 @property (nonatomic) BOOL shouldShowMostRecentlyCreatedActiveMatch;
@@ -41,11 +40,6 @@
     self.titles = @[
         NSLocalizedString(@"Active Matches", @"Table Vie Group Title"),
         NSLocalizedString(@"Finished Matches", @"Table View Group Title")
-    ];
-
-    self.checkpoints = @[
-        @"LOAD_ACTIVE_MATCH",
-        @"LOAD_FINISHED_MATCH"
     ];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -98,15 +92,8 @@
         [segue.destinationViewController setMatch:self.currentMatch];
         [segue.destinationViewController setDelegate:self];
 
-        [SBAnalytics logEvent:[self.checkpoints objectAtIndex:path.section]];
-
     } else if ([segue.identifier isEqualToString:@"showAdd"]) {
         [segue.destinationViewController setDelegate:self];
-        [SBAnalytics logEvent:@"SHOW_CREATE"];
-
-    } else if ([segue.identifier isEqualToString:@"showSettings"]) {
-        [SBAnalytics logEvent:@"SHOW_SETTINGS"];
-
     }
 }
 
