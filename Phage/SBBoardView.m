@@ -12,6 +12,7 @@
 #import "SBBoard.h"
 #import "SBLocation.h"
 #import "SBMove.h"
+#import "SBAnalytics.h"
 
 @interface SBBoardView () < SBPieceViewDelegate, SBCellViewDelegate >
 
@@ -145,6 +146,8 @@
 }
 
 - (void)didSelectPieceViewAgain:(SBPieceView *)view {
+    [SBAnalytics logEvent:@"HIGHLIGHT_LEGAL_MOVES" withParameters:@{ @"PIECE": NSStringFromClass(view.piece.class)}];
+
     NSSet *dst = [self.board legalDestinationsForPiece:view.piece];
     for (SBLocation *loc in dst) {
         SBCellView *cellView = [self.cells objectForKey:loc];
