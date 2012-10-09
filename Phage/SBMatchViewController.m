@@ -155,7 +155,6 @@
             hud.detailsLabelText = [NSString stringWithFormat:NSLocalizedString(@"%@ won!", @"Game Over popup message - win"), winner.alias];
         }
 
-        // TODO: fix to not hardcode AI when we have multiple AIs
         [SBAnalytics logEvent:@"FINISH_MATCH" withParameters:@{
             @"PLAYER1": NSStringFromClass(self.match.playerOne.class),
             @"PLAYER2": NSStringFromClass(self.match.playerTwo.class),
