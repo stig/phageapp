@@ -427,16 +427,6 @@
 		D72F239A15C5F248006EFE0D /* PhageModel */ = {
 			isa = PBXGroup;
 			children = (
-				D76A45BD151DFD1A00E59146 /* SBTriangle.m */,
-				D76A45BC151DFD1A00E59146 /* SBTriangle.h */,
-				D76A45BA151DFD0E00E59146 /* SBSquare.m */,
-				D76A45B9151DFD0E00E59146 /* SBSquare.h */,
-				D7BFA390151E48A000435C7F /* SBPiece.m */,
-				D76A45B2151DFC2B00E59146 /* SBPiece.h */,
-				D76A45B7151DFD0000E59146 /* SBDiamond.m */,
-				D76A45B6151DFD0000E59146 /* SBDiamond.h */,
-				D76A45B4151DFC4700E59146 /* SBCircle.m */,
-				D76A45B3151DFC4700E59146 /* SBCircle.h */,
 				FB89D43C154C7D27001A0C2F /* SBMatchService.h */,
 				FB89D43C154C7D27001A0C2D /* SBMatchService.m */,
 				D76A459E151DE13700E59146 /* SBMove.m */,
@@ -452,6 +442,7 @@
 				D72F239B15C5F248006EFE0D /* Supporting Files */,
 				F8D043DD45BAC77EE648EE03 /* Move Pickers */,
 				F8D041D7C2420FF5DA4A3BFB /* Player */,
+				F8D04494476687B4ED082149 /* Piece */,
 			);
 			path = PhageModel;
 			sourceTree = "<group>";
@@ -648,6 +639,23 @@
 				D7BFA3B2151F2AD300435C8A /* SBOpponentMobilityMinimisingMovePicker.h */,
 			);
 			path = "Move Pickers";
+			sourceTree = "<group>";
+		};
+		F8D04494476687B4ED082149 /* Piece */ = {
+			isa = PBXGroup;
+			children = (
+				D7BFA390151E48A000435C7F /* SBPiece.m */,
+				D76A45B2151DFC2B00E59146 /* SBPiece.h */,
+				D76A45BC151DFD1A00E59146 /* SBTriangle.h */,
+				D76A45BA151DFD0E00E59146 /* SBSquare.m */,
+				D76A45B9151DFD0E00E59146 /* SBSquare.h */,
+				D76A45B3151DFC4700E59146 /* SBCircle.h */,
+				D76A45B7151DFD0000E59146 /* SBDiamond.m */,
+				D76A45B4151DFC4700E59146 /* SBCircle.m */,
+				D76A45B6151DFD0000E59146 /* SBDiamond.h */,
+				D76A45BD151DFD1A00E59146 /* SBTriangle.m */,
+			);
+			path = Piece;
 			sourceTree = "<group>";
 		};
 		F8D0474D23B61FF6DC78C790 /* Match View */ = {
