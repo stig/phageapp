@@ -25,6 +25,19 @@
     return [[self alloc] initWithAlias:alias outcome:SBPlayerOutcomeNone];
 }
 
+- (BOOL)isEqual:(id)object {
+    return [self class] == [object class] && [self.alias isEqualToString:[object alias]];
+}
+
+- (NSUInteger)hash {
+    return [self.alias hash];
+}
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"<SBHuman=%@>", self.alias];
+}
+
+
 #pragma mark - methods
 
 - (id)withOutcome:(SBPlayerOutcome)outcome {

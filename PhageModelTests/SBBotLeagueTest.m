@@ -38,7 +38,7 @@
 
     // Everyone has played everyone else both as player 1 and player 2;
     // time to tally up the scores.
-    STAssertTrue([outcomes countForObject:pepper.alias] > [outcomes countForObject:parts.alias], @"%@", outcomes);
+    STAssertTrue([outcomes countForObject:pepper] > [outcomes countForObject:parts], @"%@", outcomes);
 }
 
 - (void)playA:(id)a andB:(id)b result:(NSCountedSet*)outcomes {
@@ -48,7 +48,7 @@
         [match performMove:move completionHandler:nil];
     } while (!match.isGameOver);
     if (match.winner)
-        [outcomes addObject:match.winner.alias];
+        [outcomes addObject:match.winner];
 }
 
 @end

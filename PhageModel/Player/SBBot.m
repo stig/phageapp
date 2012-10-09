@@ -29,6 +29,18 @@
     @throw [NSException exceptionWithName:@"unimplemented" reason:@"Must be implemented in subclass" userInfo:nil];
 }
 
+- (BOOL)isEqual:(id)object {
+    return [self class] == [object class] && [self.alias isEqualToString:[object alias]];
+}
+
+- (NSUInteger)hash {
+    return [self.alias hash];
+}
+
+- (NSString *)description {
+    return [NSStringFromClass(self.class) substringFromIndex:2];
+}
+
 #pragma mark - methods
 
 - (id)withOutcome:(SBPlayerOutcome)outcome {
