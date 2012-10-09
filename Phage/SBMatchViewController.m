@@ -94,10 +94,13 @@
     [[[SBAlertView alloc]
             initWithTitle:NSLocalizedString(@"Delete Match?", @"Delete dialog title") message:[self cannotUndoMessage]
                completion:^(SBAlertView *alertView, NSInteger buttonIndex) {
+                   NSString *status = @"DELETE";
                    if (alertView.cancelButtonIndex != buttonIndex) {
                        [self.delegate matchViewController:self didDeleteMatch:self.match];
-                       [SBAnalytics logEvent:@"DELETE_MATCH"];
+                   } else {
+                       status = @"KEEP";
                    }
+                   [SBAnalytics logEvent:@"DELETE_MATCH" withParameters:@{ @"BUTTON": status }];
                }
         cancelButtonTitle:NSLocalizedString(@"Keep", @"Delete dialog negative button")
         otherButtonTitles:NSLocalizedString(@"Delete", @"Delete dialog affirmative button"), nil] show];
@@ -107,15 +110,15 @@
     [[[SBAlertView alloc]
             initWithTitle:NSLocalizedString(@"Forfeit Match?", @"Forfeit dialog title") message:[self cannotUndoMessage]
                completion:^(SBAlertView *alertView, NSInteger buttonIndex) {
+                   NSString *status = @"FORFEIT";
                    if (alertView.cancelButtonIndex != buttonIndex) {
                        [self.match forfeit];
                        [self.delegate matchViewController:self didChangeMatch:self.match];
                        [self layoutMatch];
-                       [SBAnalytics logEvent:@"FORFEIT_MATCH" withParameters:@{
-                           @"PLAYER1": NSStringFromClass(self.match.playerOne.class),
-                           @"PLAYER2": NSStringFromClass(self.match.playerTwo.class)
-                       }];
+                   } else {
+                       status = @"CONTINUE";
                    }
+                   [SBAnalytics logEvent:@"FORFEIT_MATCH" withParameters:@{ @"BUTTON" : status }];
                }
         cancelButtonTitle:NSLocalizedString(@"Continue", @"Forfeit dialog negative button")
         otherButtonTitles:NSLocalizedString(@"Forfeit", @"Forfeit dialog affirmative button"), nil] show];
