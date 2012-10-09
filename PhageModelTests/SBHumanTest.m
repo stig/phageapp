@@ -16,7 +16,7 @@
 @implementation SBHumanTest
 
 - (void)testPlayer {
-    SBHuman *player = [SBHuman humanWithAlias:@""];
+    SBHuman *player = [SBHuman humanWithAlias:nil];
     STAssertNil(player.alias, nil);
 }
 
@@ -27,7 +27,7 @@
 
 - (void)testIsLocalHuman {
     SBHuman *player = [SBHuman humanWithAlias:@""];
-    STAssertFalse(player.isHuman, nil);
+    STAssertTrue(player.isHuman, nil);
 }
 
 - (void)testViaDictionary {
