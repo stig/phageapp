@@ -1,0 +1,540 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA747D9F0F9514B9006C5449 /* Scrutor_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* Scrutor_Prefix.pch */; };
+		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		BC72D5E410DD633F0066B1B8 /* SBRandomSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = BC72D5E210DD633F0066B1B8 /* SBRandomSearch.h */; };
+		BC72D5E510DD633F0066B1B8 /* SBRandomSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = BC72D5E310DD633F0066B1B8 /* SBRandomSearch.m */; };
+		BC72D5F410DD63830066B1B8 /* libScrutor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libScrutor.a */; };
+		BC72D60F10DD647B0066B1B8 /* AbstractStub.m in Sources */ = {isa = PBXBuildFile; fileRef = BC72D60E10DD647B0066B1B8 /* AbstractStub.m */; };
+		BC72D61B10DD65750066B1B8 /* NegamaxStub.m in Sources */ = {isa = PBXBuildFile; fileRef = BC72D61A10DD65750066B1B8 /* NegamaxStub.m */; };
+		BC72D61E10DD66640066B1B8 /* RandomStub.m in Sources */ = {isa = PBXBuildFile; fileRef = BC72D61D10DD66640066B1B8 /* RandomStub.m */; };
+		BC72D62D10DD67E90066B1B8 /* RandomSearchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BC72D62C10DD67E90066B1B8 /* RandomSearchTest.m */; };
+		BC72D64510DD6F930066B1B8 /* SBNegamaxSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = BC72D64310DD6F930066B1B8 /* SBNegamaxSearch.h */; };
+		BC72D64610DD6F930066B1B8 /* SBNegamaxSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = BC72D64410DD6F930066B1B8 /* SBNegamaxSearch.m */; };
+		BC72D65010DD70C60066B1B8 /* NegamaxSearchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BC72D64F10DD70C60066B1B8 /* NegamaxSearchTest.m */; };
+		BC72D68410DD76200066B1B8 /* AlphabetaSearchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BC72D68310DD76200066B1B8 /* AlphabetaSearchTest.m */; };
+		BC72D68C10DD768C0066B1B8 /* SBAlphabetaSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = BC72D68A10DD768C0066B1B8 /* SBAlphabetaSearch.h */; };
+		BC72D68D10DD768C0066B1B8 /* SBAlphabetaSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = BC72D68B10DD768C0066B1B8 /* SBAlphabetaSearch.m */; };
+		BC72D6B410DD8DEC0066B1B8 /* IterativeStub.m in Sources */ = {isa = PBXBuildFile; fileRef = BC72D6B310DD8DEC0066B1B8 /* IterativeStub.m */; };
+		BC72D6BF10DD8F350066B1B8 /* IterativeAlphabetaSearchStrategyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BC72D6BE10DD8F350066B1B8 /* IterativeAlphabetaSearchStrategyTest.m */; };
+		BC72D6C210DD8F4B0066B1B8 /* IterativeAlphabetaSearchStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = BC72D6C010DD8F4B0066B1B8 /* IterativeAlphabetaSearchStrategy.h */; };
+		BC72D6C310DD8F4B0066B1B8 /* IterativeAlphabetaSearchStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC72D6C110DD8F4B0066B1B8 /* IterativeAlphabetaSearchStrategy.m */; };
+		BC72D8B610DE519F0066B1B8 /* SingleMoveOptimisationDecorator.h in Headers */ = {isa = PBXBuildFile; fileRef = BC72D8B410DE519F0066B1B8 /* SingleMoveOptimisationDecorator.h */; };
+		BC72D8B710DE519F0066B1B8 /* SingleMoveOptimisationDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC72D8B510DE519F0066B1B8 /* SingleMoveOptimisationDecorator.m */; };
+		BC72D8BA10DE53280066B1B8 /* SingleMoveOptimisationDecoratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BC72D8B910DE53280066B1B8 /* SingleMoveOptimisationDecoratorTest.m */; };
+		BC72D8F610DE57AE0066B1B8 /* AbstractDecorator.h in Headers */ = {isa = PBXBuildFile; fileRef = BC72D8F510DE57AE0066B1B8 /* AbstractDecorator.h */; };
+		BC72D8F810DE57AE0066B1B8 /* AbstractDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC72D8F710DE57AE0066B1B8 /* AbstractDecorator.m */; };
+		BC72D91010DE632C0066B1B8 /* CopyStateDecorator.h in Headers */ = {isa = PBXBuildFile; fileRef = BC72D90E10DE632C0066B1B8 /* CopyStateDecorator.h */; };
+		BC72D91110DE632C0066B1B8 /* CopyStateDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC72D90F10DE632C0066B1B8 /* CopyStateDecorator.m */; };
+		BC72D91610DE6C350066B1B8 /* CopyStateDecoratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BC72D91510DE6C350066B1B8 /* CopyStateDecoratorTest.m */; };
+		BC72D92C10DE70540066B1B8 /* SingleMoveStub.m in Sources */ = {isa = PBXBuildFile; fileRef = BC72D92B10DE70540066B1B8 /* SingleMoveStub.m */; };
+		BC886BD210EACE7000FAA90D /* SBGameTreeSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = BC886BD110EACE7000FAA90D /* SBGameTreeSearch.h */; };
+		BC886BD410EACE7900FAA90D /* SBGameTreeNode.h in Headers */ = {isa = PBXBuildFile; fileRef = BC886BD310EACE7900FAA90D /* SBGameTreeNode.h */; };
+		BC9ABB6410DF614500E03758 /* Scrutor.h in Headers */ = {isa = PBXBuildFile; fileRef = BC9ABB6310DF614500E03758 /* Scrutor.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BC72D5F210DD637F0066B1B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = Scrutor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AA747D9E0F9514B9006C5449 /* Scrutor_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scrutor_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BC72D5E210DD633F0066B1B8 /* SBRandomSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRandomSearch.h; sourceTree = "<group>"; };
+		BC72D5E310DD633F0066B1B8 /* SBRandomSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRandomSearch.m; sourceTree = "<group>"; };
+		BC72D5ED10DD63780066B1B8 /* Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC72D5EE10DD63780066B1B8 /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
+		BC72D60D10DD647B0066B1B8 /* AbstractStub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractStub.h; sourceTree = "<group>"; };
+		BC72D60E10DD647B0066B1B8 /* AbstractStub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractStub.m; sourceTree = "<group>"; };
+		BC72D61910DD65750066B1B8 /* NegamaxStub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NegamaxStub.h; sourceTree = "<group>"; };
+		BC72D61A10DD65750066B1B8 /* NegamaxStub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NegamaxStub.m; sourceTree = "<group>"; };
+		BC72D61C10DD66640066B1B8 /* RandomStub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomStub.h; sourceTree = "<group>"; };
+		BC72D61D10DD66640066B1B8 /* RandomStub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomStub.m; sourceTree = "<group>"; };
+		BC72D62B10DD67E90066B1B8 /* RandomSearchTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomSearchTest.h; sourceTree = "<group>"; };
+		BC72D62C10DD67E90066B1B8 /* RandomSearchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomSearchTest.m; sourceTree = "<group>"; };
+		BC72D64310DD6F930066B1B8 /* SBNegamaxSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNegamaxSearch.h; sourceTree = "<group>"; };
+		BC72D64410DD6F930066B1B8 /* SBNegamaxSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBNegamaxSearch.m; sourceTree = "<group>"; };
+		BC72D64E10DD70C60066B1B8 /* NegamaxSearchTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NegamaxSearchTest.h; sourceTree = "<group>"; };
+		BC72D64F10DD70C60066B1B8 /* NegamaxSearchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NegamaxSearchTest.m; sourceTree = "<group>"; };
+		BC72D68210DD76200066B1B8 /* AlphabetaSearchTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphabetaSearchTest.h; sourceTree = "<group>"; };
+		BC72D68310DD76200066B1B8 /* AlphabetaSearchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlphabetaSearchTest.m; sourceTree = "<group>"; };
+		BC72D68A10DD768C0066B1B8 /* SBAlphabetaSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAlphabetaSearch.h; sourceTree = "<group>"; };
+		BC72D68B10DD768C0066B1B8 /* SBAlphabetaSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAlphabetaSearch.m; sourceTree = "<group>"; };
+		BC72D6B210DD8DEC0066B1B8 /* IterativeStub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IterativeStub.h; sourceTree = "<group>"; };
+		BC72D6B310DD8DEC0066B1B8 /* IterativeStub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IterativeStub.m; sourceTree = "<group>"; };
+		BC72D6BD10DD8F350066B1B8 /* IterativeAlphabetaSearchStrategyTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IterativeAlphabetaSearchStrategyTest.h; sourceTree = "<group>"; };
+		BC72D6BE10DD8F350066B1B8 /* IterativeAlphabetaSearchStrategyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IterativeAlphabetaSearchStrategyTest.m; sourceTree = "<group>"; };
+		BC72D6C010DD8F4B0066B1B8 /* IterativeAlphabetaSearchStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IterativeAlphabetaSearchStrategy.h; sourceTree = "<group>"; };
+		BC72D6C110DD8F4B0066B1B8 /* IterativeAlphabetaSearchStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IterativeAlphabetaSearchStrategy.m; sourceTree = "<group>"; };
+		BC72D8B410DE519F0066B1B8 /* SingleMoveOptimisationDecorator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleMoveOptimisationDecorator.h; sourceTree = "<group>"; };
+		BC72D8B510DE519F0066B1B8 /* SingleMoveOptimisationDecorator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleMoveOptimisationDecorator.m; sourceTree = "<group>"; };
+		BC72D8B810DE53280066B1B8 /* SingleMoveOptimisationDecoratorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleMoveOptimisationDecoratorTest.h; sourceTree = "<group>"; };
+		BC72D8B910DE53280066B1B8 /* SingleMoveOptimisationDecoratorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleMoveOptimisationDecoratorTest.m; sourceTree = "<group>"; };
+		BC72D8F510DE57AE0066B1B8 /* AbstractDecorator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractDecorator.h; sourceTree = "<group>"; };
+		BC72D8F710DE57AE0066B1B8 /* AbstractDecorator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractDecorator.m; sourceTree = "<group>"; };
+		BC72D90E10DE632C0066B1B8 /* CopyStateDecorator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyStateDecorator.h; sourceTree = "<group>"; };
+		BC72D90F10DE632C0066B1B8 /* CopyStateDecorator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyStateDecorator.m; sourceTree = "<group>"; };
+		BC72D91410DE6C350066B1B8 /* CopyStateDecoratorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyStateDecoratorTest.h; sourceTree = "<group>"; };
+		BC72D91510DE6C350066B1B8 /* CopyStateDecoratorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyStateDecoratorTest.m; sourceTree = "<group>"; };
+		BC72D92A10DE70540066B1B8 /* SingleMoveStub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleMoveStub.h; sourceTree = "<group>"; };
+		BC72D92B10DE70540066B1B8 /* SingleMoveStub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleMoveStub.m; sourceTree = "<group>"; };
+		BC886BD110EACE7000FAA90D /* SBGameTreeSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGameTreeSearch.h; sourceTree = "<group>"; };
+		BC886BD310EACE7900FAA90D /* SBGameTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGameTreeNode.h; sourceTree = "<group>"; };
+		BC886CEC10EADF9E00FAA90D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		BC9ABB6310DF614500E03758 /* Scrutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scrutor.h; sourceTree = "<group>"; };
+		D2AAC07E0554694100DB518D /* libScrutor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libScrutor.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BC72D5EA10DD63780066B1B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC72D5F410DD63830066B1B8 /* libScrutor.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2AAC07C0554694100DB518D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC07E0554694100DB518D /* libScrutor.a */,
+				BC72D5ED10DD63780066B1B8 /* Tests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* Scrutor */ = {
+			isa = PBXGroup;
+			children = (
+				BC72D5CB10DD60D80066B1B8 /* Tests */,
+				08FB77AEFE84172EC02AAC07 /* Classes */,
+				32C88DFF0371C24200C91783 /* Other Sources */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
+				034768DFFF38A50411DB9C8B /* Products */,
+				BC72D5EE10DD63780066B1B8 /* Tests-Info.plist */,
+				BC886CEC10EADF9E00FAA90D /* README.md */,
+			);
+			name = Scrutor;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		08FB77AEFE84172EC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BC9ABB6310DF614500E03758 /* Scrutor.h */,
+				BC886BD310EACE7900FAA90D /* SBGameTreeNode.h */,
+				BC886BD110EACE7000FAA90D /* SBGameTreeSearch.h */,
+				BC72D94610DE757C0066B1B8 /* Decorator */,
+				BC886C7F10EADA3E00FAA90D /* Fixed Ply Search */,
+				BC72D6C010DD8F4B0066B1B8 /* IterativeAlphabetaSearchStrategy.h */,
+				BC72D6C110DD8F4B0066B1B8 /* IterativeAlphabetaSearchStrategy.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		32C88DFF0371C24200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AA747D9E0F9514B9006C5449 /* Scrutor_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		BC72D5CB10DD60D80066B1B8 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				BC72D92910DE702D0066B1B8 /* Stubs */,
+				BC72D62B10DD67E90066B1B8 /* RandomSearchTest.h */,
+				BC72D62C10DD67E90066B1B8 /* RandomSearchTest.m */,
+				BC72D64E10DD70C60066B1B8 /* NegamaxSearchTest.h */,
+				BC72D64F10DD70C60066B1B8 /* NegamaxSearchTest.m */,
+				BC72D68210DD76200066B1B8 /* AlphabetaSearchTest.h */,
+				BC72D68310DD76200066B1B8 /* AlphabetaSearchTest.m */,
+				BC72D6BD10DD8F350066B1B8 /* IterativeAlphabetaSearchStrategyTest.h */,
+				BC72D6BE10DD8F350066B1B8 /* IterativeAlphabetaSearchStrategyTest.m */,
+				BC72D8B810DE53280066B1B8 /* SingleMoveOptimisationDecoratorTest.h */,
+				BC72D8B910DE53280066B1B8 /* SingleMoveOptimisationDecoratorTest.m */,
+				BC72D91410DE6C350066B1B8 /* CopyStateDecoratorTest.h */,
+				BC72D91510DE6C350066B1B8 /* CopyStateDecoratorTest.m */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		BC72D92910DE702D0066B1B8 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				BC72D60D10DD647B0066B1B8 /* AbstractStub.h */,
+				BC72D60E10DD647B0066B1B8 /* AbstractStub.m */,
+				BC72D61C10DD66640066B1B8 /* RandomStub.h */,
+				BC72D61D10DD66640066B1B8 /* RandomStub.m */,
+				BC72D61910DD65750066B1B8 /* NegamaxStub.h */,
+				BC72D61A10DD65750066B1B8 /* NegamaxStub.m */,
+				BC72D6B210DD8DEC0066B1B8 /* IterativeStub.h */,
+				BC72D6B310DD8DEC0066B1B8 /* IterativeStub.m */,
+				BC72D92A10DE70540066B1B8 /* SingleMoveStub.h */,
+				BC72D92B10DE70540066B1B8 /* SingleMoveStub.m */,
+			);
+			name = Stubs;
+			sourceTree = "<group>";
+		};
+		BC72D94610DE757C0066B1B8 /* Decorator */ = {
+			isa = PBXGroup;
+			children = (
+				BC72D8F510DE57AE0066B1B8 /* AbstractDecorator.h */,
+				BC72D8F710DE57AE0066B1B8 /* AbstractDecorator.m */,
+				BC72D8B410DE519F0066B1B8 /* SingleMoveOptimisationDecorator.h */,
+				BC72D8B510DE519F0066B1B8 /* SingleMoveOptimisationDecorator.m */,
+				BC72D90E10DE632C0066B1B8 /* CopyStateDecorator.h */,
+				BC72D90F10DE632C0066B1B8 /* CopyStateDecorator.m */,
+			);
+			name = Decorator;
+			sourceTree = "<group>";
+		};
+		BC886C7F10EADA3E00FAA90D /* Fixed Ply Search */ = {
+			isa = PBXGroup;
+			children = (
+				BC72D5E210DD633F0066B1B8 /* SBRandomSearch.h */,
+				BC72D5E310DD633F0066B1B8 /* SBRandomSearch.m */,
+				BC72D64310DD6F930066B1B8 /* SBNegamaxSearch.h */,
+				BC72D64410DD6F930066B1B8 /* SBNegamaxSearch.m */,
+				BC72D68A10DD768C0066B1B8 /* SBAlphabetaSearch.h */,
+				BC72D68B10DD768C0066B1B8 /* SBAlphabetaSearch.m */,
+			);
+			name = "Fixed Ply Search";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC07A0554694100DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA747D9F0F9514B9006C5449 /* Scrutor_Prefix.pch in Headers */,
+				BC72D5E410DD633F0066B1B8 /* SBRandomSearch.h in Headers */,
+				BC72D64510DD6F930066B1B8 /* SBNegamaxSearch.h in Headers */,
+				BC72D68C10DD768C0066B1B8 /* SBAlphabetaSearch.h in Headers */,
+				BC72D6C210DD8F4B0066B1B8 /* IterativeAlphabetaSearchStrategy.h in Headers */,
+				BC72D8B610DE519F0066B1B8 /* SingleMoveOptimisationDecorator.h in Headers */,
+				BC72D8F610DE57AE0066B1B8 /* AbstractDecorator.h in Headers */,
+				BC72D91010DE632C0066B1B8 /* CopyStateDecorator.h in Headers */,
+				BC9ABB6410DF614500E03758 /* Scrutor.h in Headers */,
+				BC886BD210EACE7000FAA90D /* SBGameTreeSearch.h in Headers */,
+				BC886BD410EACE7900FAA90D /* SBGameTreeNode.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BC72D5EC10DD63780066B1B8 /* Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC72D5F110DD637A0066B1B8 /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildPhases = (
+				BC72D5E810DD63780066B1B8 /* Resources */,
+				BC72D5E910DD63780066B1B8 /* Sources */,
+				BC72D5EA10DD63780066B1B8 /* Frameworks */,
+				BC72D5EB10DD63780066B1B8 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BC72D5F310DD637F0066B1B8 /* PBXTargetDependency */,
+			);
+			name = Tests;
+			productName = Tests;
+			productReference = BC72D5ED10DD63780066B1B8 /* Tests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+		D2AAC07D0554694100DB518D /* Scrutor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "Scrutor" */;
+			buildPhases = (
+				D2AAC07A0554694100DB518D /* Headers */,
+				D2AAC07B0554694100DB518D /* Sources */,
+				D2AAC07C0554694100DB518D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Scrutor;
+			productName = Scrutor;
+			productReference = D2AAC07E0554694100DB518D /* libScrutor.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "Scrutor" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0867D691FE84028FC02AAC07 /* Scrutor */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2AAC07D0554694100DB518D /* Scrutor */,
+				BC72D5EC10DD63780066B1B8 /* Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BC72D5E810DD63780066B1B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BC72D5EB10DD63780066B1B8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BC72D5E910DD63780066B1B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC72D60F10DD647B0066B1B8 /* AbstractStub.m in Sources */,
+				BC72D61B10DD65750066B1B8 /* NegamaxStub.m in Sources */,
+				BC72D61E10DD66640066B1B8 /* RandomStub.m in Sources */,
+				BC72D62D10DD67E90066B1B8 /* RandomSearchTest.m in Sources */,
+				BC72D65010DD70C60066B1B8 /* NegamaxSearchTest.m in Sources */,
+				BC72D68410DD76200066B1B8 /* AlphabetaSearchTest.m in Sources */,
+				BC72D6B410DD8DEC0066B1B8 /* IterativeStub.m in Sources */,
+				BC72D6BF10DD8F350066B1B8 /* IterativeAlphabetaSearchStrategyTest.m in Sources */,
+				BC72D8BA10DE53280066B1B8 /* SingleMoveOptimisationDecoratorTest.m in Sources */,
+				BC72D91610DE6C350066B1B8 /* CopyStateDecoratorTest.m in Sources */,
+				BC72D92C10DE70540066B1B8 /* SingleMoveStub.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2AAC07B0554694100DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC72D5E510DD633F0066B1B8 /* SBRandomSearch.m in Sources */,
+				BC72D64610DD6F930066B1B8 /* SBNegamaxSearch.m in Sources */,
+				BC72D68D10DD768C0066B1B8 /* SBAlphabetaSearch.m in Sources */,
+				BC72D6C310DD8F4B0066B1B8 /* IterativeAlphabetaSearchStrategy.m in Sources */,
+				BC72D8B710DE519F0066B1B8 /* SingleMoveOptimisationDecorator.m in Sources */,
+				BC72D8F810DE57AE0066B1B8 /* AbstractDecorator.m in Sources */,
+				BC72D91110DE632C0066B1B8 /* CopyStateDecorator.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BC72D5F310DD637F0066B1B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AAC07D0554694100DB518D /* Scrutor */;
+			targetProxy = BC72D5F210DD637F0066B1B8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB921F08733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/Scrutor.dst;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Scrutor_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = Scrutor;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+			};
+			name = Debug;
+		};
+		1DEB922008733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DSTROOT = /tmp/Scrutor.dst;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Scrutor_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = Scrutor;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+			};
+			name = Release;
+		};
+		1DEB922308733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1DEB922408733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		BC72D5EF10DD637A0066B1B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = "Tests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Tests;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		BC72D5F010DD637A0066B1B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				INFOPLIST_FILE = "Tests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Tests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "Scrutor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB921F08733DC00010E9CD /* Debug */,
+				1DEB922008733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "Scrutor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB922308733DC00010E9CD /* Debug */,
+				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC72D5F110DD637A0066B1B8 /* Build configuration list for PBXNativeTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC72D5EF10DD637A0066B1B8 /* Debug */,
+				BC72D5F010DD637A0066B1B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}
