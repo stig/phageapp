@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Scrutor' target in the 'Scrutor' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
