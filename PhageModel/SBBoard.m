@@ -266,6 +266,27 @@
     return copy;
 }
 
+- (NSArray *)legalMoves {
+    __block NSMutableArray *moves = [NSMutableArray array];
+    [self enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
+        [moves addObject:move];
+    }];
+    return moves;
+}
+
+- (NSInteger)fitness {
+    __block NSInteger cnt = 0;
+    [self enumerateLegalMovesForPlayer:self.currentPlayerIndex withBlock:^(SBMove *move, BOOL *stop) {
+        cnt++;
+    }];
+
+    [self enumerateLegalMovesForPlayer:self.otherPlayerIndex withBlock:^(SBMove *move, BOOL *stop) {
+        cnt--;
+    }];
+    return cnt;
+}
+
+
 - (BOOL)isGameOver {
     __block BOOL isGameOver = YES;
     [self enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {

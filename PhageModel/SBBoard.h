@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "SBPiece.h"
+#import "Scrutor.h"
 
 @class SBLocation;
 @class SBMove;
 
-@interface SBBoard : NSObject <NSCopying>
+@interface SBBoard : NSObject <NSCopying, SBGameTreeNode >
 
 @property(nonatomic, readonly) NSUInteger rows;
 @property(nonatomic, readonly) NSUInteger columns;
