@@ -45,7 +45,7 @@
  Should be implemented to return the best move found from the given
  node, according to the strategy of the concrete implementation.
  */
-- (id)moveFromNode:(id<SBGameTreeNode>)node;
+- (id)moveForState:(id<SBGameTreeNode>)node;
 
 
 @end

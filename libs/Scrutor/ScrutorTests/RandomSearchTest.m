@@ -52,7 +52,7 @@
     
     NSCountedSet *set = [NSCountedSet new];
     for (int i = 0; i < [self searchCount]; i++) {
-        NSString *move = [strategy moveFromNode:stub];
+        NSString *move = [strategy moveForState:stub];
         [set addObject:move];
     }
 

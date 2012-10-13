@@ -113,13 +113,13 @@
     return moves2;
 }
 
-- (id)moveFromNode:(id<SBGameTreeNode>)state {
-	NSParameterAssert(state);
+- (id)moveForState:(id<SBGameTreeNode>)node {
+	NSParameterAssert(node);
     
     _cutOffDate = [NSDate dateWithTimeIntervalSinceNow:self.timeInterval * 0.9];
     
     id bestMove = nil;
-    NSArray *moves = [state legalMoves];
+    NSArray *moves = [node legalMoves];
     
     for (int ply = 0; ; ply++) {
         NSMutableDictionary *scores = [NSMutableDictionary dictionaryWithCapacity:moves.count];
@@ -132,7 +132,7 @@
         for (id m in moves) {
             @autoreleasepool {
 
-                NSInteger sc = -[self fitnessWithState:[state successorWithMove:m]
+                NSInteger sc = -[self fitnessWithState:[node successorWithMove:m]
                                                    ply:ply alpha:INT_MIN beta:-alpha];
                 if (sc > alpha) {
                     alpha = sc;

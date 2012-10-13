@@ -86,14 +86,14 @@
     return best;
 }
 
-- (id)moveFromNode:(id<SBGameTreeNode>)state {
-	NSParameterAssert(state);
+- (id)moveForState:(id<SBGameTreeNode>)node {
+	NSParameterAssert(node);
     
     id bestMove = nil;
     NSInteger best = INT_MIN;
-    for (id m in [state legalMoves]) {
+    for (id m in [node legalMoves]) {
         @autoreleasepool {
-            id<SBGameTreeNode> succ = [state successorWithMove:m];
+            id<SBGameTreeNode> succ = [node successorWithMove:m];
             
             NSInteger sc = -[self fitnessWithState:succ plyLeft:self.maxPly-1];
             

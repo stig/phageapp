@@ -54,7 +54,7 @@
     SingleMoveStub *stub = [SingleMoveStub new];
 
     id move;
-    STAssertNoThrow(move = [strategy moveFromNode:stub], nil);
+    STAssertNoThrow(move = [strategy moveForState:stub], nil);
     STAssertEqualObjects(move, @"A", nil);
     STAssertEquals(stub.callCount, 1u, nil);
 }

@@ -54,9 +54,9 @@
 
 #pragma mark -
 
-- (id)moveFromNode:(id<SBGameTreeNode>)state {
-	NSParameterAssert(state);
-	NSArray *moves = [state legalMoves];
+- (id)moveForState:(id<SBGameTreeNode>)node {
+	NSParameterAssert(node);
+	NSArray *moves = [node legalMoves];
     
 	NSUInteger idx = random() % moves.count;
 	return [moves objectAtIndex:idx];

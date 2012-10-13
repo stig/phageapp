@@ -35,12 +35,12 @@
 
 @implementation SingleMoveOptimisationDecorator
 
-- (id)moveFromNode:(id<SBGameTreeNode>)state {
-    NSArray *moves = [state legalMoves];
+- (id)moveForState:(id<SBGameTreeNode>)node {
+    NSArray *moves = [node legalMoves];
     if (!moves.count || moves.count == 1u)
         return [moves lastObject];
     
-    return [self.underlyingStrategy moveFromNode:state];
+    return [self.underlyingStrategy moveForState:node];
 }
 
 @end
