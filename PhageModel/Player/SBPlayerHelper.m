@@ -9,6 +9,7 @@
 #import "SBHuman.h"
 #import "SBPepperBot.h"
 #import "SBPartsBot.h"
+#import "SBColeslawBot.h"
 
 
 static NSString *const ALIAS = @"a";
@@ -36,18 +37,15 @@ static NSString *const CLASS = @"c";
     return [self fromPropertyList:[[NSUserDefaults standardUserDefaults] objectForKey:DEFAULT_BOT]];
 }
 
-- (id<SBPlayer>)partsBot {
-    return [SBPartsBot bot];
-}
-
 - (id <SBPlayer>)pepperBot {
     return [SBPepperBot bot];
 }
 
 - (NSArray *)bots {
     return @[
-        [self partsBot],
-        [self pepperBot]
+        [SBPartsBot bot],
+        [self pepperBot],
+        [SBColeslawBot bot]
     ];
 }
 

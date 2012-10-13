@@ -11,6 +11,7 @@
 #import "SBPepperBot.h"
 #import "SBMatch.h"
 #import "SBMovePicker.h"
+#import "SBColeslawBot.h"
 
 @interface SBBotLeagueTest : SenTestCase
 @end
@@ -22,8 +23,9 @@
 
     id<SBPlayer> parts = [SBPartsBot bot];
     id<SBPlayer> pepper = [SBPepperBot bot];
+    id<SBPlayer> coleslaw = [SBColeslawBot bot];
 
-    NSArray *players = @[parts, pepper];
+    NSArray *players = @[parts, pepper, coleslaw];
     NSCountedSet *outcomes = [NSCountedSet set];
 
     for (int i = 0; i < N ; i++) {
@@ -31,7 +33,6 @@
             for (id b in players) {
                 if (a == b) continue;
                 [self playA:a andB:b result:outcomes];
-                [self playA:b andB:a result:outcomes];
             }
         }
     }
@@ -39,6 +40,7 @@
     // Everyone has played everyone else both as player 1 and player 2;
     // time to tally up the scores.
     STAssertTrue([outcomes countForObject:pepper] > [outcomes countForObject:parts], @"%@", outcomes);
+    STAssertTrue([outcomes countForObject:coleslaw] > [outcomes countForObject:pepper], @"%@", outcomes);
 }
 
 - (void)playA:(id)a andB:(id)b result:(NSCountedSet*)outcomes {
