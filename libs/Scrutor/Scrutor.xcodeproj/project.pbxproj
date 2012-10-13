@@ -14,7 +14,6 @@
 		D735C21616297EF5006EC106 /* libScrutor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D735C1FD16297EF4006EC106 /* libScrutor.a */; };
 		D735C21C16297EF5006EC106 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D735C21A16297EF5006EC106 /* InfoPlist.strings */; };
 		D735C23916297F38006EC106 /* AbstractDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = D735C22916297F38006EC106 /* AbstractDecorator.m */; };
-		D735C23A16297F38006EC106 /* CopyStateDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = D735C22B16297F38006EC106 /* CopyStateDecorator.m */; };
 		D735C23B16297F38006EC106 /* IterativeAlphabetaSearchStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = D735C22D16297F38006EC106 /* IterativeAlphabetaSearchStrategy.m */; };
 		D735C23C16297F38006EC106 /* SBAlphabetaSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = D735C22F16297F38006EC106 /* SBAlphabetaSearch.m */; };
 		D735C23D16297F38006EC106 /* SBNegamaxSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = D735C23316297F38006EC106 /* SBNegamaxSearch.m */; };
@@ -22,7 +21,6 @@
 		D735C23F16297F39006EC106 /* SingleMoveOptimisationDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = D735C23816297F38006EC106 /* SingleMoveOptimisationDecorator.m */; };
 		D735C25616297F50006EC106 /* AbstractStub.m in Sources */ = {isa = PBXBuildFile; fileRef = D735C24116297F50006EC106 /* AbstractStub.m */; };
 		D735C25716297F50006EC106 /* AlphabetaSearchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D735C24316297F50006EC106 /* AlphabetaSearchTest.m */; };
-		D735C25816297F50006EC106 /* CopyStateDecoratorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D735C24516297F50006EC106 /* CopyStateDecoratorTest.m */; };
 		D735C25916297F50006EC106 /* IterativeAlphabetaSearchStrategyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D735C24716297F50006EC106 /* IterativeAlphabetaSearchStrategyTest.m */; };
 		D735C25A16297F50006EC106 /* IterativeStub.m in Sources */ = {isa = PBXBuildFile; fileRef = D735C24916297F50006EC106 /* IterativeStub.m */; };
 		D735C25B16297F50006EC106 /* NegamaxSearchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D735C24B16297F50006EC106 /* NegamaxSearchTest.m */; };
@@ -66,8 +64,6 @@
 		D735C21B16297EF5006EC106 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D735C22816297F38006EC106 /* AbstractDecorator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractDecorator.h; sourceTree = "<group>"; };
 		D735C22916297F38006EC106 /* AbstractDecorator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractDecorator.m; sourceTree = "<group>"; };
-		D735C22A16297F38006EC106 /* CopyStateDecorator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyStateDecorator.h; sourceTree = "<group>"; };
-		D735C22B16297F38006EC106 /* CopyStateDecorator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyStateDecorator.m; sourceTree = "<group>"; };
 		D735C22C16297F38006EC106 /* IterativeAlphabetaSearchStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IterativeAlphabetaSearchStrategy.h; sourceTree = "<group>"; };
 		D735C22D16297F38006EC106 /* IterativeAlphabetaSearchStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IterativeAlphabetaSearchStrategy.m; sourceTree = "<group>"; };
 		D735C22E16297F38006EC106 /* SBAlphabetaSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAlphabetaSearch.h; sourceTree = "<group>"; };
@@ -85,8 +81,6 @@
 		D735C24116297F50006EC106 /* AbstractStub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractStub.m; sourceTree = "<group>"; };
 		D735C24216297F50006EC106 /* AlphabetaSearchTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphabetaSearchTest.h; sourceTree = "<group>"; };
 		D735C24316297F50006EC106 /* AlphabetaSearchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlphabetaSearchTest.m; sourceTree = "<group>"; };
-		D735C24416297F50006EC106 /* CopyStateDecoratorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyStateDecoratorTest.h; sourceTree = "<group>"; };
-		D735C24516297F50006EC106 /* CopyStateDecoratorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyStateDecoratorTest.m; sourceTree = "<group>"; };
 		D735C24616297F50006EC106 /* IterativeAlphabetaSearchStrategyTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IterativeAlphabetaSearchStrategyTest.h; sourceTree = "<group>"; };
 		D735C24716297F50006EC106 /* IterativeAlphabetaSearchStrategyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IterativeAlphabetaSearchStrategyTest.m; sourceTree = "<group>"; };
 		D735C24816297F50006EC106 /* IterativeStub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IterativeStub.h; sourceTree = "<group>"; };
@@ -162,8 +156,6 @@
 			children = (
 				D735C22816297F38006EC106 /* AbstractDecorator.h */,
 				D735C22916297F38006EC106 /* AbstractDecorator.m */,
-				D735C22A16297F38006EC106 /* CopyStateDecorator.h */,
-				D735C22B16297F38006EC106 /* CopyStateDecorator.m */,
 				D735C22C16297F38006EC106 /* IterativeAlphabetaSearchStrategy.h */,
 				D735C22D16297F38006EC106 /* IterativeAlphabetaSearchStrategy.m */,
 				D735C22E16297F38006EC106 /* SBAlphabetaSearch.h */,
@@ -197,8 +189,6 @@
 				D735C24116297F50006EC106 /* AbstractStub.m */,
 				D735C24216297F50006EC106 /* AlphabetaSearchTest.h */,
 				D735C24316297F50006EC106 /* AlphabetaSearchTest.m */,
-				D735C24416297F50006EC106 /* CopyStateDecoratorTest.h */,
-				D735C24516297F50006EC106 /* CopyStateDecoratorTest.m */,
 				D735C24616297F50006EC106 /* IterativeAlphabetaSearchStrategyTest.h */,
 				D735C24716297F50006EC106 /* IterativeAlphabetaSearchStrategyTest.m */,
 				D735C24816297F50006EC106 /* IterativeStub.h */,
@@ -328,7 +318,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D735C23916297F38006EC106 /* AbstractDecorator.m in Sources */,
-				D735C23A16297F38006EC106 /* CopyStateDecorator.m in Sources */,
 				D735C23B16297F38006EC106 /* IterativeAlphabetaSearchStrategy.m in Sources */,
 				D735C23C16297F38006EC106 /* SBAlphabetaSearch.m in Sources */,
 				D735C23D16297F38006EC106 /* SBNegamaxSearch.m in Sources */,
@@ -343,7 +332,6 @@
 			files = (
 				D735C25616297F50006EC106 /* AbstractStub.m in Sources */,
 				D735C25716297F50006EC106 /* AlphabetaSearchTest.m in Sources */,
-				D735C25816297F50006EC106 /* CopyStateDecoratorTest.m in Sources */,
 				D735C25916297F50006EC106 /* IterativeAlphabetaSearchStrategyTest.m in Sources */,
 				D735C25A16297F50006EC106 /* IterativeStub.m in Sources */,
 				D735C25B16297F50006EC106 /* NegamaxSearchTest.m in Sources */,

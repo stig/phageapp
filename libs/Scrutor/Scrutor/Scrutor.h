@@ -39,5 +39,4 @@
 
 #import "AbstractDecorator.h"
 #import "SingleMoveOptimisationDecorator.h"
-#import "CopyStateDecorator.h"
 
