@@ -77,13 +77,11 @@
     
     NSInteger best = INT_MIN;
     for (id m in moves) {
-        [state performLegalMove:m];
-        
-        NSInteger sc = -[self fitnessWithState:state plyLeft:plyLeft-1];
+
+        NSInteger sc = -[self fitnessWithState:[state successorWithMove:m]
+                                       plyLeft:plyLeft - 1];
         if (sc > best)
             best = sc;
-        
-        [state undoLegalMove:m];
     }
     return best;
 }
@@ -94,17 +92,15 @@
     id bestMove = nil;
     NSInteger best = INT_MIN;
     for (id m in [state legalMoves]) {
-        @autoreleasepool {        
-            [state performLegalMove:m];
+        @autoreleasepool {
+            id<SBGameTreeNode> succ = [state successorWithMove:m];
             
-            NSInteger sc = -[self fitnessWithState:state plyLeft:self.maxPly-1];
+            NSInteger sc = -[self fitnessWithState:succ plyLeft:self.maxPly-1];
             
             if (sc > best) {
                 best = sc;
                 bestMove = m;
             }
-            
-            [state undoLegalMove:m];
         }
     }
     

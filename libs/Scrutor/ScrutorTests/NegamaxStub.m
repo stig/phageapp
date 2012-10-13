@@ -38,7 +38,7 @@
 
 - (id)init {
     if (self = [super init]) {
-        _tree = @{@"A": @"-2",
+        self.tree = @{@"A": @"-2",
                  @"B": @"4",
                  
                  // Ply 2

@@ -46,14 +46,7 @@
  
  This move is guaranteed to have been returned by the legalMoves method for this state.
  */
-- (void)performLegalMove:(id)move;
-
-/**
- @brief Reverts the state back to its successor.
- 
- The move passed in will be the last move passed to performLegalMove: for this state.
- */
-- (void)undoLegalMove:(id)move;
+- (id <SBGameTreeNode>)successorWithMove:(id)move;
 
 /**
  @brief Returns an array of legal moves.

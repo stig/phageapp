@@ -33,19 +33,13 @@
 #import <Foundation/Foundation.h>
 #import "SBGameTreeSearch.h"
 
-@interface AbstractStub : NSObject < SBGameTreeNode > {
-
-    NSString *_path;
-    NSDictionary *_tree;
-
-    NSUInteger _maxPlyVisited;
-    NSUInteger _countOfVisited;
-}
+@interface AbstractStub : NSObject < SBGameTreeNode >
 
 @property (copy) NSString *path;
 @property NSUInteger countOfVisited;
 @property NSUInteger maxPlyVisited;
 
+@property (copy, nonatomic) NSDictionary *tree;
 @property (weak, readonly) NSArray* candidates;
 
 @end

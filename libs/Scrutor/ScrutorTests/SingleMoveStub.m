@@ -47,7 +47,7 @@
     @throw @"fitness";
 }
 
-- (void)performLegalMove:(id)move {
+- (id <SBGameTreeNode>)successorWithMove:(id)move {
     _callCount++;
     @throw @"performMove";
 }

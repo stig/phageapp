@@ -76,14 +76,11 @@
         return [state fitness];
     
     for (id m in moves) {
-        [state performLegalMove:m];
-        
-        NSInteger sc = -[self fitnessWithState:state alpha:-beta beta:-alpha plyLeft:plyLeft-1];
+
+        NSInteger sc = -[self fitnessWithState:[state successorWithMove:m] alpha:-beta beta:-alpha plyLeft:plyLeft - 1];
         if (sc > alpha)
             alpha = sc;
-        
-        [state undoLegalMove:m];
-        
+
         if (beta != INT_MIN && alpha > beta)
             break;
     }
@@ -100,15 +97,13 @@
     
     for (id m in [state legalMoves]) {
         @autoreleasepool {
-            [state performLegalMove:m];
-            
-            NSInteger sc = -[self fitnessWithState:state alpha:INT_MIN beta:-alpha plyLeft:self.maxPly-1];        
+
+            NSInteger sc = -[self fitnessWithState:[state successorWithMove:m] alpha:INT_MIN beta:-alpha
+                                           plyLeft:self.maxPly - 1];
             if (sc > alpha) {
                 alpha = sc;
                 bestMove = m;
             }
-            
-            [state undoLegalMove:m];
         }
     }
     

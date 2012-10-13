@@ -32,17 +32,20 @@
 
 #import "AbstractStub.h"
 
+@interface AbstractStub ()
+@property (strong, nonatomic) NSMutableDictionary *stats;
+@end
+
 @implementation AbstractStub
 
-@synthesize path = _path;
-@synthesize countOfVisited = _countOfVisited;
-@synthesize maxPlyVisited = _maxPlyVisited;
 
 #pragma mark -
 
 - (id)init {
-    if (self = [super init])
+    if (self = [super init]) {
+        self.stats = [@{} mutableCopy];
         self.path = @"";
+    }
     return self;
 }
 
@@ -50,8 +53,9 @@
 
 - (id)copyWithZone:(NSZone *)zone {
     AbstractStub *copy = [[self class] new];
+    copy.stats = self.stats;
     copy.path = self.path;
-    copy->_tree = [_tree copy];
+    copy.tree = self.tree;
     return copy;
 }
 
@@ -66,7 +70,7 @@
     for (NSString *m in [self candidates]) {
         NSString *path = [self.path stringByAppendingPathComponent:m];
         
-        if ([_tree objectForKey:path])
+        if ([self.tree objectForKey:path])
             [moves addObject:m];
     
     }
@@ -74,20 +78,36 @@
     return moves;
 }
 
-- (void)performLegalMove:(id)move {    
-    _countOfVisited++;
-    self.path = [self.path stringByAppendingPathComponent:move];
-    
-    // Count path components to record the deepest path we see
-    _maxPlyVisited = MAX(_maxPlyVisited, [[self.path pathComponents] count]);
+- (NSUInteger)countOfVisited {
+    return [[self.stats objectForKey:@"countOfVisited"] unsignedIntegerValue];
 }
 
-- (void)undoLegalMove:(id)move {
-    self.path = [self.path stringByDeletingLastPathComponent];
+- (void)setCountOfVisited:(NSUInteger)countOfVisited {
+    [self.stats setObject:@(countOfVisited) forKey:@"countOfVisited"];
+}
+
+- (NSUInteger)maxPlyVisited {
+    return [[self.stats objectForKey:@"maxPlyVisited"] unsignedIntegerValue];
+}
+
+- (void)setMaxPlyVisited:(NSUInteger)maxPlyVisited {
+    [self.stats setObject:@(maxPlyVisited) forKey:@"maxPlyVisited"];
+}
+
+- (id <SBGameTreeNode>)successorWithMove:(id)move {
+    AbstractStub *copy = [self copy];
+    copy.tree = self.tree;
+    copy.countOfVisited++;
+    copy.path = [self.path stringByAppendingPathComponent:move];
+    
+    // Count path components to record the deepest path we see
+    copy.maxPlyVisited = MAX(self.maxPlyVisited, [[copy.path pathComponents] count]);
+
+    return copy;
 }
 
 - (NSInteger)fitness {
-    return [[_tree objectForKey:self.path] integerValue];
+    return [[self.tree objectForKey:self.path] integerValue];
 }
 
 @end

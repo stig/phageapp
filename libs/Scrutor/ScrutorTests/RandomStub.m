@@ -47,12 +47,8 @@
     @throw @"fitness";
 }
 
-- (void)performLegalMove:(id)move {
+- (id <SBGameTreeNode>)successorWithMove:(id)move {
     @throw @"performMove";
 }
-
-- (void)undoLegalMove:(id)move {
-    @throw @"undoMove";
-}    
 
 @end

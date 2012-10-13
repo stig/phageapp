@@ -62,7 +62,7 @@
             [tree setObject:@(score) forKey:node];
         }
                 
-        _tree = [tree copy];
+        self.tree = [tree copy];
         
     }
     return self;
