@@ -5,7 +5,8 @@
 //
 
 
-#import "SBMovePicker.h"
 
-@interface SBRandomMovePicker : NSObject < SBMovePicker >
+#import "Scrutor.h"
+
+@interface SBRandomMovePicker : NSObject < SBGameTreeSearch >
 @end

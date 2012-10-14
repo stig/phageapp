@@ -48,7 +48,7 @@
     return YES;
 }
 
-- (id<SBMovePicker>)movePicker {
+- (id<SBGameTreeSearch>)movePicker {
     @throw [NSException exceptionWithName:@"unimplemented" reason:@"This belongs on Bot subclasses" userInfo:nil];
 }
 

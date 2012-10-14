@@ -14,7 +14,7 @@
     return [self botWithAlias:NSLocalizedString(@"Sgt Pepper", @"Bot alias")];
 }
 
-- (id<SBMovePicker>)movePicker {
+- (id<SBGameTreeSearch>)movePicker {
     return [[SBOpponentMobilityMinimisingMovePicker alloc] init];
 }
 

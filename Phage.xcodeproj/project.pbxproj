@@ -400,7 +400,6 @@
 		F8D04F17554236A1544CF2A4 /* SBAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAnalytics.m; sourceTree = "<group>"; };
 		F8D04F4D68C1FA2F496E5965 /* piece-south-triangle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-triangle@2x.png"; sourceTree = "<group>"; };
 		F8D04F5489774187AD134A8F /* piece-north-diamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-north-diamond.png"; sourceTree = "<group>"; };
-		F8D04F605C2C197702E421B0 /* SBMovePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMovePicker.h; sourceTree = "<group>"; };
 		F8D04F6638188C73DB16F213 /* SBPartsBot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPartsBot.h; sourceTree = "<group>"; };
 		F8D04F690B8CF18952F19CC4 /* SBHowtoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBHowtoViewController.h; sourceTree = "<group>"; };
 		F8D04F86906968EE117D5681 /* SBHowtoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBHowtoViewController.m; sourceTree = "<group>"; };
@@ -702,7 +701,6 @@
 			children = (
 				D70F135C16234955008E8FD7 /* SBRandomMovePicker.h */,
 				D70F135D16234955008E8FD7 /* SBRandomMovePicker.m */,
-				F8D04F605C2C197702E421B0 /* SBMovePicker.h */,
 				D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */,
 				D7BFA3B2151F2AD300435C8A /* SBOpponentMobilityMinimisingMovePicker.h */,
 			);

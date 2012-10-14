@@ -11,11 +11,9 @@
 #import "SBAlertView.h"
 #import "SBBoardView.h"
 #import "MBProgressHUD.h"
-#import "SBWebViewController.h"
 #import "SBAnalytics.h"
 #import "SBMatch.h"
 #import "SBBoard.h"
-#import "SBMovePicker.h"
 #import "SBPlayer.h"
 
 @interface SBMatchViewController () < SBBoardViewDelegate, UIPopoverControllerDelegate, ADBannerViewDelegate>
@@ -78,7 +76,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         [NSThread sleepForTimeInterval: ANIM_DURATION];
 
-        id<SBMovePicker> pm = [self.match.currentPlayer movePicker];
+        id<SBGameTreeSearch> pm = [self.match.currentPlayer movePicker];
         SBMove *move = [pm moveForState:board];
 
         dispatch_async(dispatch_get_main_queue(), ^{

@@ -4,7 +4,8 @@
 // To change the template use AppCode | Preferences | File Templates.
 //
 
-#import "SBMovePicker.h"
 
-@interface SBOpponentMobilityMinimisingMovePicker : NSObject <SBMovePicker>
+#import "Scrutor.h"
+
+@interface SBOpponentMobilityMinimisingMovePicker : NSObject <SBGameTreeSearch>
 @end

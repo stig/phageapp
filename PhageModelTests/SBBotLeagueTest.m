@@ -10,7 +10,6 @@
 #import "SBPartsBot.h"
 #import "SBPepperBot.h"
 #import "SBMatch.h"
-#import "SBMovePicker.h"
 #import "SBColeslawBot.h"
 
 @interface SBBotLeagueTest : SenTestCase
@@ -46,7 +45,7 @@
 - (void)playA:(id)a andB:(id)b result:(NSCountedSet*)outcomes {
     SBMatch *match = [SBMatch matchWithPlayerOne:a two:b];
     do {
-        id move = [match.currentPlayer.movePicker moveForState:match.board];
+        id move = [match.currentPlayer.movePicker moveForState:(id<SBGameTreeNode>)match.board];
         [match performMove:move completionHandler:nil];
     } while (!match.isGameOver);
     if (match.winner)

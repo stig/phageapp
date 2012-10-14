@@ -15,7 +15,7 @@
     return [self botWithAlias:NSLocalizedString(@"Cpt Coleslaw", @"Bot alias")];
 }
 
-- (id<SBMovePicker>)movePicker {
+- (id<SBGameTreeSearch>)movePicker {
     SBAlphabetaSearch *ab = [[SBAlphabetaSearch alloc] init];
     ab.maxPly = 2;
     return ab;

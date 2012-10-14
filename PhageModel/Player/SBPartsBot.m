@@ -14,7 +14,7 @@
     return [self botWithAlias:NSLocalizedString(@"Pte Parts", @"Bot alias")];
 }
 
-- (id<SBMovePicker>)movePicker {
+- (id<SBGameTreeSearch>)movePicker {
     return [[SBRandomMovePicker alloc] init];
 }
 

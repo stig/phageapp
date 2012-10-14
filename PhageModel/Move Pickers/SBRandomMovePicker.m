@@ -11,11 +11,11 @@
 @implementation SBRandomMovePicker
 
 // Private "Spare" parts doesn't know what he's doing. He just picks a move at random.
-- (SBMove *)moveForState:(SBBoard *)state {
+- (id)moveForState:(id<SBGameTreeNode>)state {
     __block NSInteger max = INT_MIN;
     __block id bestMove = nil;
 
-    [state enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
+    [(SBBoard*)state enumerateLegalMovesWithBlock:^(SBMove *move, BOOL *stop) {
         NSInteger rnd = arc4random_uniform(1000);
         if (rnd > max) {
             max = rnd;

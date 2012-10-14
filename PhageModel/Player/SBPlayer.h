@@ -4,7 +4,7 @@
 // To change the template use AppCode | Preferences | File Templates.
 //
 
-@protocol SBMovePicker;
+#import "Scrutor.h"
 
 typedef enum {
     SBPlayerOutcomeNone = 0u,
@@ -18,7 +18,7 @@ typedef enum {
 @property(nonatomic, readonly) NSString *alias;
 @property(nonatomic, readonly, getter=isHuman) BOOL human;
 @property(nonatomic, readonly) SBPlayerOutcome outcome;
-@property(nonatomic, readonly) id<SBMovePicker> movePicker;
+@property(nonatomic, readonly) id<SBGameTreeSearch> movePicker;
 
 - (id)withOutcome:(SBPlayerOutcome)outcome;
 

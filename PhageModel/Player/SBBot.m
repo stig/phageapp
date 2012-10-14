@@ -6,6 +6,7 @@
 
 
 #import "SBBot.h"
+#import "Scrutor.h"
 
 @implementation SBBot
 
@@ -51,7 +52,7 @@
     return NO;
 }
 
-- (id<SBMovePicker>)movePicker {
+- (id<SBGameTreeSearch>)movePicker {
     @throw [NSException exceptionWithName:@"unimplemented" reason:@"Must be implemented in subclass" userInfo:nil];
 }
 
