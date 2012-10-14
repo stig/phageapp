@@ -74,10 +74,18 @@
     [MBProgressHUD showHUDAddedTo:self.board animated:YES];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        [NSThread sleepForTimeInterval: ANIM_DURATION];
+        NSDate *start = [NSDate date];
 
         id<SBGameTreeSearch> pm = [self.match.currentPlayer movePicker];
         SBMove *move = [pm moveForState:board];
+
+        NSTimeInterval duration = [[NSDate date] timeIntervalSinceDate:start];
+        NSLog(@"%@ took %.2fs to find a move", self.match.currentPlayer, duration);
+
+        if (duration < ANIM_DURATION) {
+            NSLog(@"Sleeping a bit to give time to display HUD");
+            [NSThread sleepForTimeInterval: ANIM_DURATION - duration];
+        }
 
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.board animated:YES];
