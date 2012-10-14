@@ -12,6 +12,12 @@
 
 @implementation SBAnalytics
 
++ (void)initialize {
+    [TestFlight setOptions:@{@"logToConsole": @(NO)}];
+    [TestFlight setOptions:@{@"logToSTDERR": @(NO)}];
+}
+
+
 + (void)logEvent:(NSString *)event {
     [self logEvent:event withParameters:nil];
 }
@@ -25,10 +31,18 @@
     [Flurry logEvent:event withParameters:params timed:timed];
 
     // TestFlight doesn't take arguments, so we have to hack it a bit.
+    id tmp = [self stringFromParams:params];
+    [TestFlight passCheckpoint:[event stringByAppendingString:tmp]];
+}
+
++ (id)stringFromParams:(NSDictionary *)params {
+    if (params == nil || [params isEqualToDictionary:@{}])
+        return @"";
+
     NSMutableArray *kv = [NSMutableArray array];
     for (id k in [[params allKeys] sortedArrayUsingSelector:@selector(compare:)])
         [kv addObject:[NSString stringWithFormat:@"%@=%@", k, [params objectForKey:k]]];
-    [TestFlight passCheckpoint:[event stringByAppendingFormat:@"_%@", [kv componentsJoinedByString:@";"]]];
+    return [@"_" stringByAppendingString:[kv componentsJoinedByString:@";"]];
 }
 
 + (void)endTimedEvent:(NSString *)event {
