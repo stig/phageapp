@@ -1429,6 +1429,7 @@
 					"\"$(SRCROOT)/libs/TestFlight\"",
 					"\"$(SRCROOT)/libs/Flurry\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
