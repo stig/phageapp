@@ -115,7 +115,7 @@
 
     NSIndexPath *path = self.tableView.indexPathForSelectedRow;
     if ([segue.identifier isEqualToString:@"showPlayerAlias"]) {
-        NSString *aliasKey = [[[self.players objectAtIndex:path.section] objectAtIndex:path.row] objectForKey:@"aliasKey"];
+        NSString *aliasKey = [@[ PLAYER_ONE_ALIAS, PLAYER_TWO_ALIAS] objectAtIndex:path.row];
         [segue.destinationViewController setAliasKey:aliasKey];
     }
 
