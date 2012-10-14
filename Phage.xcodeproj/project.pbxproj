@@ -585,29 +585,14 @@
 		D76A456B151DDC7500E59146 /* Phage */ = {
 			isa = PBXGroup;
 			children = (
-				F8D04F690B8CF18952F19CC4 /* SBHowtoViewController.h */,
-				F8D04F86906968EE117D5681 /* SBHowtoViewController.m */,
-				F8D046CAED9986E230E5C0C1 /* SBLegalViewController.h */,
-				F8D0443299BF07AFB6DCDCFB /* SBLegalViewController.m */,
-				D70F137016234AEB008E8FD7 /* SBBotSelectorViewController.h */,
-				D70F137116234AEB008E8FD7 /* SBBotSelectorViewController.m */,
-				F8D049A778AE4777A0FF86B3 /* SBAboutViewController.h */,
-				F8D0496ADD10FCC8E86ACDA3 /* SBAboutViewController.m */,
-				F8D04A5E3FC58C124F077A44 /* SBRootViewController.h */,
-				F8D049E7B11F27F102F6CBDE /* SBRootViewController.m */,
-				D74EC46115E9362900505EEE /* SBSettingsViewController.h */,
-				D74EC46215E9362900505EEE /* SBSettingsViewController.m */,
-				D77E0C8215DD88430004EFAF /* SBCreateMatchViewController.h */,
-				D77E0C8315DD88430004EFAF /* SBCreateMatchViewController.m */,
 				D76A4574151DDC7500E59146 /* SBAppDelegate.h */,
 				D76A4575151DDC7500E59146 /* SBAppDelegate.m */,
 				D76A4577151DDC7500E59146 /* MainStoryboard_iPhone.storyboard */,
 				D76A457A151DDC7500E59146 /* MainStoryboard_iPad.storyboard */,
-				D791504915ED65B3005B9FCF /* SBPlayerAliasViewController.h */,
-				D791504A15ED65B3005B9FCF /* SBPlayerAliasViewController.m */,
 				D76A456C151DDC7500E59146 /* Supporting Files */,
 				FB89D43C154C7D27001A0C29 /* Utils */,
-				F8D0474D23B61FF6DC78C790 /* Match View */,
+				F8D0474D23B61FF6DC78C790 /* Views */,
+				F8D044D1F7838AFC565CFE52 /* Controllers */,
 			);
 			path = Phage;
 			sourceTree = "<group>";
@@ -724,11 +709,34 @@
 			path = Piece;
 			sourceTree = "<group>";
 		};
-		F8D0474D23B61FF6DC78C790 /* Match View */ = {
+		F8D044D1F7838AFC565CFE52 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FB89D43C154C7D27001A0C26 /* SBMatchViewController.h */,
+				F8D0496ADD10FCC8E86ACDA3 /* SBAboutViewController.m */,
+				F8D049E7B11F27F102F6CBDE /* SBRootViewController.m */,
 				FB89D43C154C7D27001A0C27 /* SBMatchViewController.m */,
+				F8D04F86906968EE117D5681 /* SBHowtoViewController.m */,
+				F8D049A778AE4777A0FF86B3 /* SBAboutViewController.h */,
+				D74EC46215E9362900505EEE /* SBSettingsViewController.m */,
+				F8D04F690B8CF18952F19CC4 /* SBHowtoViewController.h */,
+				D70F137116234AEB008E8FD7 /* SBBotSelectorViewController.m */,
+				D77E0C8215DD88430004EFAF /* SBCreateMatchViewController.h */,
+				F8D04A5E3FC58C124F077A44 /* SBRootViewController.h */,
+				D791504A15ED65B3005B9FCF /* SBPlayerAliasViewController.m */,
+				D74EC46115E9362900505EEE /* SBSettingsViewController.h */,
+				F8D046CAED9986E230E5C0C1 /* SBLegalViewController.h */,
+				D70F137016234AEB008E8FD7 /* SBBotSelectorViewController.h */,
+				D791504915ED65B3005B9FCF /* SBPlayerAliasViewController.h */,
+				D77E0C8315DD88430004EFAF /* SBCreateMatchViewController.m */,
+				F8D0443299BF07AFB6DCDCFB /* SBLegalViewController.m */,
+				FB89D43C154C7D27001A0C26 /* SBMatchViewController.h */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F8D0474D23B61FF6DC78C790 /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				F8D04129838B653D03F76144 /* SBPieceView.m */,
 				F8D0469ABCAA9ECE9023B1F9 /* SBPieceView.h */,
 				F8D04440E13E946BC7E8DEC2 /* SBCellView.m */,
@@ -736,7 +744,7 @@
 				D7DD0D2A15E4475100103EE4 /* SBBoardView.m */,
 				D7DD0D2915E4475100103EE4 /* SBBoardView.h */,
 			);
-			name = "Match View";
+			name = Views;
 			sourceTree = "<group>";
 		};
 		F8D047711DEFE23111FDED73 /* Arrows */ = {
