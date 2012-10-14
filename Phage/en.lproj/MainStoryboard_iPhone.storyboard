@@ -205,7 +205,7 @@
             </objects>
             <point key="canvasLocation" x="113" y="-363"/>
         </scene>
-        <!--Match View Controller - Phage-->
+        <!--Match View Controller-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="SBMatchViewController" sceneMemberID="viewController">
@@ -221,13 +221,6 @@
                                     <outlet property="delegate" destination="2" id="xfy-IU-yfa"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Placeholder text" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" id="B21-sf-XI3">
-                                <rect key="frame" x="47" y="319" width="227" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Uhe-jj-kDy">
                                 <rect key="frame" x="0.0" y="366" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
@@ -257,7 +250,22 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Phage" id="gFt-hw-xtC">
+                    <navigationItem key="navigationItem" id="gFt-hw-xtC">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="tsg-b2-p4c">
+                            <rect key="frame" x="70" y="6" width="180" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Placeholder text" textAlignment="center" lineBreakMode="middleTruncation" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" id="B21-sf-XI3">
+                                    <rect key="frame" x="0.0" y="0.0" width="180" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="0eX-jY-cIL"/>
                     </navigationItem>
                     <connections>
