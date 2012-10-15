@@ -6,7 +6,6 @@
 
 
 #import "SBPepperBot.h"
-#import "SBOpponentMobilityMinimisingMovePicker.h"
 
 @implementation SBPepperBot
 
@@ -15,7 +14,9 @@
 }
 
 - (id<SBGameTreeSearch>)movePicker {
-    return [[SBOpponentMobilityMinimisingMovePicker alloc] init];
+    SBAlphabetaSearch *ab = [[SBAlphabetaSearch alloc] init];
+    ab.maxPly = 1;
+    return ab;
 }
 
 

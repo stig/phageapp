@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		536BE854153E17F000750F54 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536BE853153E17F000750F54 /* QuartzCore.framework */; };
-		D70F135E16234955008E8FD7 /* SBRandomMovePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D70F135D16234955008E8FD7 /* SBRandomMovePicker.m */; };
-		D70F136016234964008E8FD7 /* SBRandomMovePickerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D70F135F16234964008E8FD7 /* SBRandomMovePickerTest.m */; };
 		D70F137216234AEB008E8FD7 /* SBBotSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D70F137116234AEB008E8FD7 /* SBBotSelectorViewController.m */; };
 		D719864F155D78BB00349052 /* HowToPlay.md in Resources */ = {isa = PBXBuildFile; fileRef = D719864D155D78BB00349052 /* HowToPlay.md */; };
 		D725C41215FBD68700E30ADC /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D725C41115FBD68700E30ADC /* iAd.framework */; };
@@ -89,7 +87,6 @@
 		F8D04945DD27D4D6780F6654 /* piece-south-triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D041465C485CAD621B1C32 /* piece-south-triangle.png */; };
 		F8D0498B9AE8789A6AB52645 /* SBHowtoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D04F86906968EE117D5681 /* SBHowtoViewController.m */; };
 		F8D049E0266262B921BB7564 /* piece-north-circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04161D4ADF998FC691722 /* piece-north-circle@2x.png */; };
-		F8D049FEF38D41389F177CB7 /* SBOpponentMobilityMinimisingMovePickerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C8B /* SBOpponentMobilityMinimisingMovePickerTest.m */; };
 		F8D04A1E9EA4FFED5B1028E5 /* piece-south-circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04149ED52B9B8D24C4027 /* piece-south-circle@2x.png */; };
 		F8D04A42E98A62D9C0DBBD26 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D044993B30C3D3230597CA /* icon.png */; };
 		F8D04A5FC2C36B2C6B1A2EA9 /* arrow-north-east.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04E8D86A6E6EE9B215C2C /* arrow-north-east.png */; };
@@ -101,7 +98,6 @@
 		F8D04D79CA0B70BAFBAE9889 /* piece-north-square@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D043B609D0835BB2096A82 /* piece-north-square@2x.png */; };
 		F8D04D95863A93B8C25D8980 /* piece-north-square.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04D7C9C0ACA6769F30D6F /* piece-north-square.png */; };
 		F8D04D9F58A65CFCE6A84BA0 /* SBCarrotBot.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8D04F910E2701FD0D534666 /* SBCarrotBot.h */; };
-		F8D04DEEE68C46E1C918CE64 /* SBOpponentMobilityMinimisingMovePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */; };
 		F8D04EDB66528413A494E20B /* piece-south-square@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D048101EE1DBECE70B4A28 /* piece-south-square@2x.png */; };
 		F8D04F02D027342A4E9D981E /* piece-south-square.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D047EC9CA8AF7E7320B150 /* piece-south-square.png */; };
 		F8D04F4BF7175222BB9BFB22 /* cell-available.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04ABF7EBABB168C48D0CA /* cell-available.png */; };
@@ -266,9 +262,6 @@
 
 /* Begin PBXFileReference section */
 		536BE853153E17F000750F54 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		D70F135C16234955008E8FD7 /* SBRandomMovePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRandomMovePicker.h; sourceTree = "<group>"; };
-		D70F135D16234955008E8FD7 /* SBRandomMovePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRandomMovePicker.m; sourceTree = "<group>"; };
-		D70F135F16234964008E8FD7 /* SBRandomMovePickerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRandomMovePickerTest.m; sourceTree = "<group>"; };
 		D70F137016234AEB008E8FD7 /* SBBotSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBotSelectorViewController.h; sourceTree = "<group>"; };
 		D70F137116234AEB008E8FD7 /* SBBotSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBotSelectorViewController.m; sourceTree = "<group>"; };
 		D719864E155D78BB00349052 /* HowToPlay.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = HowToPlay.md; path = en.lproj/HowToPlay.md; sourceTree = "<group>"; };
@@ -329,9 +322,6 @@
 		D7BFA3B2151F2AD300435C80 /* SBDirection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDirection.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C82 /* SBDirection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBDirection.h; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C83 /* SBDirectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDirectionTest.m; sourceTree = "<group>"; };
-		D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBOpponentMobilityMinimisingMovePicker.m; sourceTree = "<group>"; };
-		D7BFA3B2151F2AD300435C8A /* SBOpponentMobilityMinimisingMovePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBOpponentMobilityMinimisingMovePicker.h; sourceTree = "<group>"; };
-		D7BFA3B2151F2AD300435C8B /* SBOpponentMobilityMinimisingMovePickerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBOpponentMobilityMinimisingMovePickerTest.m; sourceTree = "<group>"; };
 		D7BFA3B2151F2AD300435C96 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = libs/ocmock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
 		D7BFD52B15FA70FB00704DCC /* board@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "board@2x.png"; sourceTree = "<group>"; };
 		D7BFD52C15FA70FB00704DCC /* cell-available@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-available@2x.png"; sourceTree = "<group>"; };
@@ -492,7 +482,6 @@
 				D7BFA3AE151F108100435C7F /* SBBoard.m */,
 				D7BFA3AD151F108100435C7F /* SBBoard.h */,
 				D72F239B15C5F248006EFE0D /* Supporting Files */,
-				F8D043DD45BAC77EE648EE03 /* Move Pickers */,
 				F8D041D7C2420FF5DA4A3BFB /* Player */,
 				F8D04494476687B4ED082149 /* Piece */,
 			);
@@ -511,9 +500,7 @@
 			isa = PBXGroup;
 			children = (
 				F8D04775AAEABD11353DECE3 /* SBBotLeagueTest.m */,
-				D70F135F16234964008E8FD7 /* SBRandomMovePickerTest.m */,
 				F8D04DF107FC3B606EF8DB4C /* SBMatchIntegrationTest.m */,
-				D7BFA3B2151F2AD300435C8B /* SBOpponentMobilityMinimisingMovePickerTest.m */,
 				FB89D43C154C7D27001A0C30 /* SBMatchServiceTest.m */,
 				FB89D43C154C7D27001A0BF2 /* SBHumanTest.m */,
 				D73965B1151FB10600118094 /* SBPieceTest.m */,
@@ -679,17 +666,6 @@
 				F8D04F910E2701FD0D534666 /* SBCarrotBot.h */,
 			);
 			path = Player;
-			sourceTree = "<group>";
-		};
-		F8D043DD45BAC77EE648EE03 /* Move Pickers */ = {
-			isa = PBXGroup;
-			children = (
-				D70F135C16234955008E8FD7 /* SBRandomMovePicker.h */,
-				D70F135D16234955008E8FD7 /* SBRandomMovePicker.m */,
-				D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */,
-				D7BFA3B2151F2AD300435C8A /* SBOpponentMobilityMinimisingMovePicker.h */,
-			);
-			path = "Move Pickers";
 			sourceTree = "<group>";
 		};
 		F8D04494476687B4ED082149 /* Piece */ = {
@@ -1118,8 +1094,6 @@
 				FB89D43C154C7D27001A0C17 /* SBSquare.m in Sources */,
 				FB89D43C154C7D27001A0C18 /* SBTriangle.m in Sources */,
 				FB89D43C154C7D27001A0C2E /* SBMatchService.m in Sources */,
-				F8D04DEEE68C46E1C918CE64 /* SBOpponentMobilityMinimisingMovePicker.m in Sources */,
-				D70F135E16234955008E8FD7 /* SBRandomMovePicker.m in Sources */,
 				F8D048CF9801F55ABD57A30A /* SBPlayerHelper.m in Sources */,
 				F8D043B482BB950C7497AB29 /* SBPepperBot.m in Sources */,
 				F8D046FEE08AAFADC8A02F2F /* SBHuman.m in Sources */,
@@ -1141,9 +1115,7 @@
 				FB89D43C154C7D27001A0C1E /* SBPieceTest.m in Sources */,
 				FB89D43C154C7D27001A0C1F /* SBHumanTest.m in Sources */,
 				FB89D43C154C7D27001A0C31 /* SBMatchServiceTest.m in Sources */,
-				F8D049FEF38D41389F177CB7 /* SBOpponentMobilityMinimisingMovePickerTest.m in Sources */,
 				F8D046173F193995AE743CE5 /* SBMatchIntegrationTest.m in Sources */,
-				D70F136016234964008E8FD7 /* SBRandomMovePickerTest.m in Sources */,
 				F8D0413B14B2B20152B13D0A /* SBBotLeagueTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

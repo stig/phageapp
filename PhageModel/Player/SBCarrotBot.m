@@ -6,8 +6,6 @@
 
 
 #import "SBCarrotBot.h"
-#import "SBOpponentMobilityMinimisingMovePicker.h"
-#import "Scrutor.h"
 
 @implementation SBCarrotBot
 

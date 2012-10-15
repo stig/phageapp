@@ -6,7 +6,6 @@
 
 
 #import "SBPartsBot.h"
-#import "SBRandomMovePicker.h"
 
 @implementation SBPartsBot
 
@@ -15,7 +14,7 @@
 }
 
 - (id<SBGameTreeSearch>)movePicker {
-    return [[SBRandomMovePicker alloc] init];
+    return [[SBRandomSearch alloc] init];
 }
 
 
