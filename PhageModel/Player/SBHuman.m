@@ -9,40 +9,15 @@
 
 @implementation SBHuman
 
-@synthesize outcome = _outcome;
-@synthesize alias = _alias;
-
-- (id)initWithAlias:(NSString *)alias outcome:(SBPlayerOutcome)outcome {
-    self = [super init];
-    if (self) {
-        _alias = alias;
-        _outcome = outcome;
-    }
-    return self;
-}
-
 + (id)humanWithAlias:(NSString *)alias {
-    return [[self alloc] initWithAlias:alias outcome:SBPlayerOutcomeNone];
-}
-
-- (BOOL)isEqual:(id)object {
-    return [self class] == [object class] && [self.alias isEqualToString:[object alias]];
-}
-
-- (NSUInteger)hash {
-    return [self.alias hash];
+    return [self objectWithAlias:alias];
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"<SBHuman=%@>", self.alias];
+    return @"Human";
 }
-
 
 #pragma mark - methods
-
-- (id)withOutcome:(SBPlayerOutcome)outcome {
-    return [[[self class] alloc] initWithAlias:self.alias outcome:outcome];
-}
 
 - (BOOL)isHuman {
     return YES;
@@ -50,6 +25,10 @@
 
 - (id<SBGameTreeSearch>)movePicker {
     @throw [NSException exceptionWithName:@"unimplemented" reason:@"This belongs on Bot subclasses" userInfo:nil];
+}
+
+- (NSString *)displayName {
+    return self.alias;
 }
 
 @end

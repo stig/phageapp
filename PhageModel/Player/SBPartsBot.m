@@ -10,10 +10,11 @@
 @implementation SBPartsBot
 
 + (id)bot {
-    return [self botWithAlias:NSLocalizedString(@"Pte Parts", @"Bot alias")];
+    return [self objectWithAlias:NSLocalizedString(@"Pte Parts", @"Bot alias")
+                     displayName:NSLocalizedString(@"Private \"Spare\" Parts", @"Bot name")];
 }
 
-- (id<SBGameTreeSearch>)movePicker {
+- (id <SBGameTreeSearch>)movePicker {
     return [[SBRandomSearch alloc] init];
 }
 

@@ -7,10 +7,10 @@
 
 
 #import "SBPlayer.h"
+#import "SBAbstractPlayer.h"
 
-@interface SBBot : NSObject < SBPlayer >
+@interface SBBot : SBAbstractPlayer < SBPlayer >
 
 + (id)bot;
-+ (id)botWithAlias:(NSString *)alias;
 
 @end

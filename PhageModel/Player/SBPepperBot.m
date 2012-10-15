@@ -10,10 +10,11 @@
 @implementation SBPepperBot
 
 + (id)bot {
-    return [self botWithAlias:NSLocalizedString(@"Sgt Pepper", @"Bot alias")];
+    return [self objectWithAlias:NSLocalizedString(@"Sgt Pepper", @"Bot alias")
+                     displayName:NSLocalizedString(@"Sergeant Pepper", @"Bot name")];
 }
 
-- (id<SBGameTreeSearch>)movePicker {
+- (id <SBGameTreeSearch>)movePicker {
     SBAlphabetaSearch *ab = [[SBAlphabetaSearch alloc] init];
     ab.maxPly = 1;
     return ab;

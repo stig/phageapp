@@ -7,8 +7,9 @@
 
 
 #import "SBPlayer.h"
+#import "SBAbstractPlayer.h"
 
-@interface SBHuman : NSObject <SBPlayer>
+@interface SBHuman : SBAbstractPlayer <SBPlayer>
 
 + (id)humanWithAlias:(NSString *)alias;
 

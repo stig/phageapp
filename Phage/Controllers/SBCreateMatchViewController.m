@@ -77,7 +77,7 @@
             ? NSLocalizedString(@"Player 1", @"Player Number Indicator")
             : NSLocalizedString(@"Player 2", @"Player Number Indicator");
 
-        cell.detailTextLabel.text = [players[indexPath.row] alias];
+        cell.detailTextLabel.text = [players[indexPath.row] displayName];
 
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"ButtonCell"];

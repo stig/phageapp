@@ -8,9 +8,11 @@
 #import "SBBotSelectorViewController.h"
 #import "SBPlayer.h"
 #import "SBPlayerHelper.h"
+#import "SBBot.h"
 
 @interface SBBotSelectorViewController ()
 @property (nonatomic, strong) SBPlayerHelper *playerHelper;
+@property (nonatomic, strong) SBBot *defaultBot;
 @end
 
 @implementation SBBotSelectorViewController
@@ -23,11 +25,16 @@
     self.dataSource = @[
         @{ rows: [self.playerHelper bots] }
     ];
+
+    self.defaultBot = [self.playerHelper defaultBot];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier"];
-    cell.textLabel.text = [[self itemAtIndexPath:indexPath] alias];
+
+    SBBot *bot = [self itemAtIndexPath:indexPath];
+    cell.textLabel.text = [bot displayName];
+    cell.accessoryType = [bot isEqual:self.defaultBot] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     return cell;
 }
 

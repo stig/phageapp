@@ -72,6 +72,7 @@
 		F8D044B7B83CAD74B0B4A5DD /* piece-north-diamond@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D046F787E8BB2E49D5C8A7 /* piece-north-diamond@2x.png */; };
 		F8D044E3B182A8BFEBD46836 /* SBBot.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D04ED9A4A687D163F7CBBA /* SBBot.m */; };
 		F8D04528EDA4F41EA12C0EEB /* SBPartsBot.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D0419F8AF7D25B6B06F652 /* SBPartsBot.m */; };
+		F8D04531E6791DAFC0B07807 /* SBAbstractPlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8D0496A279FDBEE7F9D190F /* SBAbstractPlayer.h */; };
 		F8D045406EAB61421DEDF1B2 /* piece-south-diamond@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04537F0BE75A9A4578310 /* piece-south-diamond@2x.png */; };
 		F8D0454397ECD056ADAD019E /* SBLegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D0443299BF07AFB6DCDCFB /* SBLegalViewController.m */; };
 		F8D0458F0826F3A197156CD7 /* piece-north-diamond.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04F5489774187AD134A8F /* piece-north-diamond.png */; };
@@ -79,6 +80,7 @@
 		F8D0469CCC0DFA2DD17245EE /* arrow-north-west.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04AC93C41EAF24F1E1D50 /* arrow-north-west.png */; };
 		F8D046B32349E01DDE030A94 /* arrow-east.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D040E043FC1384AB1B0542 /* arrow-east.png */; };
 		F8D046FEE08AAFADC8A02F2F /* SBHuman.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D046A8E9648B0895E50084 /* SBHuman.m */; };
+		F8D048552E3E6DFFC2080517 /* SBAbstractPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D040EE08FF1BEDB8156539 /* SBAbstractPlayer.m */; };
 		F8D0486E9894DF8FB2DA09A2 /* arrow-south-east.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D047CFF9FF3A2C00C033DE /* arrow-south-east.png */; };
 		F8D048CF9801F55ABD57A30A /* SBPlayerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D048070516960944AEC975 /* SBPlayerHelper.m */; };
 		F8D048D5E9559FBA1D1645DC /* SBPepperBot.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8D042213B51C5DA2D848A4E /* SBPepperBot.h */; };
@@ -255,6 +257,7 @@
 				F8D04414EEEDE293FBE989C2 /* SBPartsBot.h in CopyFiles */,
 				F8D048EEB4FB3E770BCE66A8 /* SBBot.h in CopyFiles */,
 				F8D04D9F58A65CFCE6A84BA0 /* SBCarrotBot.h in CopyFiles */,
+				F8D04531E6791DAFC0B07807 /* SBAbstractPlayer.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +342,7 @@
 		D7FDA3A3156DAA8F00E65C5E /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTestFlight.a; path = libs/TestFlight/libTestFlight.a; sourceTree = "<group>"; };
 		F8D04072CA6DA6FF14E35B40 /* SBCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBCellView.h; sourceTree = "<group>"; };
 		F8D040E043FC1384AB1B0542 /* arrow-east.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-east.png"; sourceTree = "<group>"; };
+		F8D040EE08FF1BEDB8156539 /* SBAbstractPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAbstractPlayer.m; sourceTree = "<group>"; };
 		F8D04129838B653D03F76144 /* SBPieceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPieceView.m; sourceTree = "<group>"; };
 		F8D04138734E822DB98EB02F /* arrow-west.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-west.png"; sourceTree = "<group>"; };
 		F8D041465C485CAD621B1C32 /* piece-south-triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-triangle.png"; sourceTree = "<group>"; };
@@ -370,6 +374,7 @@
 		F8D048070516960944AEC975 /* SBPlayerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPlayerHelper.m; sourceTree = "<group>"; };
 		F8D048101EE1DBECE70B4A28 /* piece-south-square@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-square@2x.png"; sourceTree = "<group>"; };
 		F8D0485D2A145F89AE4B1F8F /* cell-blocked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-blocked.png"; sourceTree = "<group>"; };
+		F8D0496A279FDBEE7F9D190F /* SBAbstractPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAbstractPlayer.h; sourceTree = "<group>"; };
 		F8D0496ADD10FCC8E86ACDA3 /* SBAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAboutViewController.m; sourceTree = "<group>"; };
 		F8D0499AD0E25D9FF9B15B38 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F8D049A778AE4777A0FF86B3 /* SBAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAboutViewController.h; sourceTree = "<group>"; };
@@ -664,6 +669,8 @@
 				F8D042213B51C5DA2D848A4E /* SBPepperBot.h */,
 				F8D044B71AA47E87699EFE76 /* SBCarrotBot.m */,
 				F8D04F910E2701FD0D534666 /* SBCarrotBot.h */,
+				F8D040EE08FF1BEDB8156539 /* SBAbstractPlayer.m */,
+				F8D0496A279FDBEE7F9D190F /* SBAbstractPlayer.h */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -1100,6 +1107,7 @@
 				F8D04528EDA4F41EA12C0EEB /* SBPartsBot.m in Sources */,
 				F8D044E3B182A8BFEBD46836 /* SBBot.m in Sources */,
 				F8D043236CE38E63EFE852EF /* SBCarrotBot.m in Sources */,
+				F8D048552E3E6DFFC2080517 /* SBAbstractPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

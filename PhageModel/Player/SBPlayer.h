@@ -15,7 +15,9 @@ typedef enum {
 } SBPlayerOutcome;
 
 @protocol SBPlayer <NSObject>
+
 @property(nonatomic, readonly) NSString *alias;
+@property(nonatomic, readonly) NSString *displayName;
 @property(nonatomic, readonly, getter=isHuman) BOOL human;
 @property(nonatomic, readonly) SBPlayerOutcome outcome;
 @property(nonatomic, readonly) id<SBGameTreeSearch> movePicker;

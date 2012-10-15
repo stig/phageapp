@@ -22,24 +22,25 @@
 
     id<SBPlayer> parts = [SBPartsBot bot];
     id<SBPlayer> pepper = [SBPepperBot bot];
-    id<SBPlayer> coleslaw = [SBCarrotBot bot];
+    id<SBPlayer> carrot = [SBCarrotBot bot];
 
-    NSArray *players = @[parts, pepper, coleslaw];
-    NSCountedSet *outcomes = [NSCountedSet set];
+    NSArray *players = @[parts, pepper, carrot];
+    NSCountedSet *league = [NSCountedSet set];
 
     for (int i = 0; i < N ; i++) {
         for (id a in players) {
             for (id b in players) {
                 if (a == b) continue;
-                [self playA:a andB:b result:outcomes];
+                [self playA:a andB:b result:league];
             }
         }
+        NSLog(@"%@", league);
     }
 
     // Everyone has played everyone else both as player 1 and player 2;
     // time to tally up the scores.
-    STAssertTrue([outcomes countForObject:pepper] > [outcomes countForObject:parts], @"%@", outcomes);
-    STAssertTrue([outcomes countForObject:coleslaw] > [outcomes countForObject:pepper], @"%@", outcomes);
+    STAssertTrue([league countForObject:pepper] > [league countForObject:parts], @"%@", league);
+    STAssertTrue([league countForObject:carrot] > [league countForObject:pepper], @"%@", league);
 }
 
 - (void)playA:(id)a andB:(id)b result:(NSCountedSet*)outcomes {
