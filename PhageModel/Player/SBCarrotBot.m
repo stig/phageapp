@@ -5,14 +5,14 @@
 //
 
 
-#import "SBColeslawBot.h"
+#import "SBCarrotBot.h"
 #import "SBOpponentMobilityMinimisingMovePicker.h"
 #import "Scrutor.h"
 
-@implementation SBColeslawBot
+@implementation SBCarrotBot
 
 + (id)bot {
-    return [self botWithAlias:NSLocalizedString(@"Cpt Coleslaw", @"Bot alias")];
+    return [self botWithAlias:NSLocalizedString(@"Cpt Carrot", @"Bot alias")];
 }
 
 - (id<SBGameTreeSearch>)movePicker {

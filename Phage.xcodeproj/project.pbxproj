@@ -65,7 +65,7 @@
 		F8D041AEA9425524156B3DEC /* SBRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D049E7B11F27F102F6CBDE /* SBRootViewController.m */; };
 		F8D0424AED4DE6C1C51B3A3B /* arrow-south.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04E772C8C2415B46F9778 /* arrow-south.png */; };
 		F8D042EDC3CB083A1D1693DD /* SBAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D04F17554236A1544CF2A4 /* SBAnalytics.m */; };
-		F8D043236CE38E63EFE852EF /* SBColeslawBot.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D044B71AA47E87699EFE76 /* SBColeslawBot.m */; };
+		F8D043236CE38E63EFE852EF /* SBCarrotBot.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D044B71AA47E87699EFE76 /* SBCarrotBot.m */; };
 		F8D043B482BB950C7497AB29 /* SBPepperBot.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D04B0B3FC16546613343FC /* SBPepperBot.m */; };
 		F8D04410AB84C76EACD689DB /* arrow-north.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04FD03E7DF1466D92D0F7 /* arrow-north.png */; };
 		F8D04414EEEDE293FBE989C2 /* SBPartsBot.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8D04F6638188C73DB16F213 /* SBPartsBot.h */; };
@@ -100,7 +100,7 @@
 		F8D04D437301EC2C4190B824 /* cell-blocked.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D0485D2A145F89AE4B1F8F /* cell-blocked.png */; };
 		F8D04D79CA0B70BAFBAE9889 /* piece-north-square@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D043B609D0835BB2096A82 /* piece-north-square@2x.png */; };
 		F8D04D95863A93B8C25D8980 /* piece-north-square.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D04D7C9C0ACA6769F30D6F /* piece-north-square.png */; };
-		F8D04D9F58A65CFCE6A84BA0 /* SBColeslawBot.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8D04F910E2701FD0D534666 /* SBColeslawBot.h */; };
+		F8D04D9F58A65CFCE6A84BA0 /* SBCarrotBot.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8D04F910E2701FD0D534666 /* SBCarrotBot.h */; };
 		F8D04DEEE68C46E1C918CE64 /* SBOpponentMobilityMinimisingMovePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BFA3B2151F2AD300435C88 /* SBOpponentMobilityMinimisingMovePicker.m */; };
 		F8D04EDB66528413A494E20B /* piece-south-square@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D048101EE1DBECE70B4A28 /* piece-south-square@2x.png */; };
 		F8D04F02D027342A4E9D981E /* piece-south-square.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D047EC9CA8AF7E7320B150 /* piece-south-square.png */; };
@@ -258,7 +258,7 @@
 				F8D04C373DF654A8F2EF93A7 /* SBHuman.h in CopyFiles */,
 				F8D04414EEEDE293FBE989C2 /* SBPartsBot.h in CopyFiles */,
 				F8D048EEB4FB3E770BCE66A8 /* SBBot.h in CopyFiles */,
-				F8D04D9F58A65CFCE6A84BA0 /* SBColeslawBot.h in CopyFiles */,
+				F8D04D9F58A65CFCE6A84BA0 /* SBCarrotBot.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,7 +367,7 @@
 		F8D0443299BF07AFB6DCDCFB /* SBLegalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBLegalViewController.m; sourceTree = "<group>"; };
 		F8D04440E13E946BC7E8DEC2 /* SBCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCellView.m; sourceTree = "<group>"; };
 		F8D044993B30C3D3230597CA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		F8D044B71AA47E87699EFE76 /* SBColeslawBot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBColeslawBot.m; sourceTree = "<group>"; };
+		F8D044B71AA47E87699EFE76 /* SBCarrotBot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCarrotBot.m; sourceTree = "<group>"; };
 		F8D045227BFF000469526CE1 /* piece-south-diamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-diamond.png"; sourceTree = "<group>"; };
 		F8D04537F0BE75A9A4578310 /* piece-south-diamond@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "piece-south-diamond@2x.png"; sourceTree = "<group>"; };
 		F8D0469ABCAA9ECE9023B1F9 /* SBPieceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPieceView.h; sourceTree = "<group>"; };
@@ -403,7 +403,7 @@
 		F8D04F6638188C73DB16F213 /* SBPartsBot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPartsBot.h; sourceTree = "<group>"; };
 		F8D04F690B8CF18952F19CC4 /* SBHowtoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBHowtoViewController.h; sourceTree = "<group>"; };
 		F8D04F86906968EE117D5681 /* SBHowtoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBHowtoViewController.m; sourceTree = "<group>"; };
-		F8D04F910E2701FD0D534666 /* SBColeslawBot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBColeslawBot.h; sourceTree = "<group>"; };
+		F8D04F910E2701FD0D534666 /* SBCarrotBot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBCarrotBot.h; sourceTree = "<group>"; };
 		F8D04FD03E7DF1466D92D0F7 /* arrow-north.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-north.png"; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BE8 /* SBMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMatch.m; sourceTree = "<group>"; };
 		FB89D43C154C7D27001A0BEA /* SBMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMatch.h; sourceTree = "<group>"; };
@@ -675,8 +675,8 @@
 				FB89D43C154C7D27001A0BF1 /* SBPlayer.h */,
 				F8D04B0B3FC16546613343FC /* SBPepperBot.m */,
 				F8D042213B51C5DA2D848A4E /* SBPepperBot.h */,
-				F8D044B71AA47E87699EFE76 /* SBColeslawBot.m */,
-				F8D04F910E2701FD0D534666 /* SBColeslawBot.h */,
+				F8D044B71AA47E87699EFE76 /* SBCarrotBot.m */,
+				F8D04F910E2701FD0D534666 /* SBCarrotBot.h */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -1125,7 +1125,7 @@
 				F8D046FEE08AAFADC8A02F2F /* SBHuman.m in Sources */,
 				F8D04528EDA4F41EA12C0EEB /* SBPartsBot.m in Sources */,
 				F8D044E3B182A8BFEBD46836 /* SBBot.m in Sources */,
-				F8D043236CE38E63EFE852EF /* SBColeslawBot.m in Sources */,
+				F8D043236CE38E63EFE852EF /* SBCarrotBot.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,5 +8,5 @@
 
 #import "SBBot.h"
 
-@interface SBColeslawBot : SBBot
+@interface SBCarrotBot : SBBot
 @end

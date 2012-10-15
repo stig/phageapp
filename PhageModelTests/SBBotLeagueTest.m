@@ -10,7 +10,7 @@
 #import "SBPartsBot.h"
 #import "SBPepperBot.h"
 #import "SBMatch.h"
-#import "SBColeslawBot.h"
+#import "SBCarrotBot.h"
 
 @interface SBBotLeagueTest : SenTestCase
 @end
@@ -22,7 +22,7 @@
 
     id<SBPlayer> parts = [SBPartsBot bot];
     id<SBPlayer> pepper = [SBPepperBot bot];
-    id<SBPlayer> coleslaw = [SBColeslawBot bot];
+    id<SBPlayer> coleslaw = [SBCarrotBot bot];
 
     NSArray *players = @[parts, pepper, coleslaw];
     NSCountedSet *outcomes = [NSCountedSet set];

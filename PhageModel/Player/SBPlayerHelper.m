@@ -9,7 +9,7 @@
 #import "SBHuman.h"
 #import "SBPepperBot.h"
 #import "SBPartsBot.h"
-#import "SBColeslawBot.h"
+#import "SBCarrotBot.h"
 
 
 static NSString *const ALIAS = @"a";
@@ -45,7 +45,7 @@ static NSString *const CLASS = @"c";
     return @[
         [SBPartsBot bot],
         [self pepperBot],
-        [SBColeslawBot bot]
+        [SBCarrotBot bot]
     ];
 }
 
