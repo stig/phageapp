@@ -210,6 +210,17 @@
 
 #pragma mark Banner View Delegate
 
+
+- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave {
+    [SBAnalytics logEvent:@"SHOW_IAD" withParameters:@{ @"WILL_LEAVE" : @(willLeave) } timed:YES];
+    return YES;
+}
+
+- (void)bannerViewActionDidFinish:(ADBannerView *)banner {
+    [SBAnalytics endTimedEvent:@"SHOW_IAD"];
+
+}
+
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner {
     banner.alpha = 1.0;
 }
