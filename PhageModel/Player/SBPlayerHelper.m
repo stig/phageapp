@@ -73,7 +73,7 @@ static NSString *const CLASS = @"c";
         if (clazz == [SBHuman class])
             player = [clazz humanWithAlias:dict[ALIAS]];
         else
-            player = [NSClassFromString(dict[CLASS]) bot];
+            player = [clazz bot];
 
     } else {
         @throw @"Unsupported version; please upgrade Phage!";

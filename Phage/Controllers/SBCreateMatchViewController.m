@@ -14,8 +14,8 @@
 #import "SBAnalytics.h"
 
 @interface SBCreateMatchViewController ()
-@property (strong, nonatomic) NSArray *titles;
-@property (strong, nonatomic) NSArray *players;
+@property (copy, nonatomic) NSArray *titles;
+@property (copy, nonatomic) NSArray *players;
 @end
 
 @implementation SBCreateMatchViewController
