@@ -1,3 +1,12 @@
+1.1 (2012-10-17)
+================
+
+This release introduces two new AIs: Private "Spare" Parts is easier to beat than the existing AI, while Captain Carrot is harder to beat. You can change the AI from the Create Match screen, by tapping on the AI's name.
+
+Pieces now recognise double-taps for selecting & highlight legal moves in one go. Additionally, when highlighting legal moves an outline of the piece is used rather than a circle.
+
+Player aliases are now limited to 25 characters. The prompts & status messages on the match screen now appear in the navigation bar. This should cause the info button that brings up the "How To Play" guide to be less obscured, making it easier to find.
+
 1.0 (2012-09-21)
 ================
 
