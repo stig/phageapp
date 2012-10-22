@@ -29,14 +29,14 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>????</string>
-	<key>SBBundleShortVersionSuffix</key>
-	<string>${BUNDLE_SHORT_VERSION_SUFFIX}</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>????</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>SBBundleShortVersionSuffix</key>
+	<string>${BUNDLE_SHORT_VERSION_SUFFIX}</string>
 	<key>UIMainStoryboardFile</key>
 	<string>MainStoryboard_iPhone</string>
 	<key>UIMainStoryboardFile~ipad</key>
